@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using NinjaTrader.Cbi;
+using NinjaTrader.Gui;
+using NinjaTrader.Data;
+using NinjaTrader.NinjaScript;
+
+// 🛑 IMPORTANT: To actually compile this in NinjaTrader, you must first download 
+// the Microsoft.ML.OnnxRuntime NuGet package and drop the Microsoft.ML.OnnxRuntime.dll 
+// into your Documents/NinjaTrader 8/bin/Custom/ folder, then add it as a Reference.
+// using Microsoft.ML.OnnxRuntime;
+// using Microsoft.ML.OnnxRuntime.Tensors;
+
+namespace NinjaTrader.NinjaScript.Strategies
+{
+    public class AIOnnxTraderPOC : Strategy
+    {
+        // ONNX Inference Session
+        // private InferenceSession session;
+        private string modelPath = @"ai_research\ppo_mnq_sniper.onnx";
+
+        // LSTM Memory States (Required for RecurrentPPO)
+        private float[,,] lstm_hidden_state;
+        private float[,,] lstm_cell_state;
+
+        protected override void OnStateChange()
+        {
+            if (State == State.SetDefaults)
+            {
+                Description = "Proof of Concept: Loading an ONNX AI Model Natively in C#";
+                Name = "AIOnnxTraderPOC";
+                Calculate = Calculate.OnBarClose;
+            }
+            else if (State == State.Configure)
+            {
+                // 1. Initialize the ONNX Runtime Session natively in C#
+                // session = new InferenceSession(modelPath);
+
+                // 2. Initialize the PyTorch LSTM Hidden States (usually 1x1x256 for SB3)
+                lstm_hidden_state = new float[1, 1, 256];
+                lstm_cell_state = new float[1, 1, 256];
+            }
+            else if (State == State.Terminated)
+            {
+                // session?.Dispose();
+            }
+        }
+
+        protected override void OnBarUpdate()
+        {
+            if (CurrentBar < 20) return;
+
+            // 1. Natively calculate the 23 Indicators in C#
+            // Example:
+            // double volumeDelta = (Close[0] > Open[0]) ? Volume[0] : -Volume[0];
+            // double rsi14 = RSI(14, 1)[0];
+            // double vwapDev = (Close[0] - OrderFlowVWAP()[0]) / OrderFlowVWAP().StdDev[0];
+
+            // 2. Normalize the Array (using the mean/var exported from Python)
+            float[] obsArray = new float[23];
+            // obsArray[0] = (float)((volumeDelta - norm_mean[0]) / norm_var[0]);
+            // ... load all 23 features
+
+            /*
+            // 3. Create ONNX Tensors
+            var obsTensor = new DenseTensor<float>(obsArray, new[] { 1, 23 });
+            var hiddenTensor = new DenseTensor<float>(lstm_hidden_state, new[] { 1, 1, 256 });
+            var cellTensor = new DenseTensor<float>(lstm_cell_state, new[] { 1, 1, 256 });
+            var episodeStartsTensor = new DenseTensor<float>(new float[] { 0 }, new[] { 1 });
+
+            // 4. Pass inputs to the ONNX Model
+            var inputs = new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("obs", obsTensor),
+                NamedOnnxValue.CreateFromTensor("lstm_hidden", hiddenTensor),
+                NamedOnnxValue.CreateFromTensor("lstm_cell", cellTensor),
+                NamedOnnxValue.CreateFromTensor("episode_starts", episodeStartsTensor)
+            };
+
+            // 5. Run Native Inference (Takes < 1 millisecond)
+            using (var results = session.Run(inputs))
+            {
+                // Extract the AI's Action
+                float[] actionOutput = results.First(v => v.Name == "action").AsTensor<float>().ToArray();
+                
+                // Extract and update the LSTM Memory for the next candle!
+                lstm_hidden_state = results.First(v => v.Name == "lstm_hidden_out").AsTensor<float>().ToArray();
+                lstm_cell_state = results.First(v => v.Name == "lstm_cell_out").AsTensor<float>().ToArray();
+
+                // 6. Execute the Trade based on the native AI decision
+                int targetPosition = TranslateAction(actionOutput[0]);
+                ExecuteTrade(targetPosition);
+            }
+            */
+        }
+    }
+}
