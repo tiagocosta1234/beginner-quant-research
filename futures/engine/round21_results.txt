@@ -1,0 +1,44 @@
+Loading MNQ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+
+seed=0: 953 random entries -> 953 with valid ATR stop
+
+### BASELINE SANITY CHECK: flat sizing (Round 19's resolve_trailing), seed=0 only ###
+  FLAT (seed=0 only) risk=$400: n=691 exp=$98.81 worst_maxdd=$7638.35
+  FLAT (seed=0 only) risk=$75: n=691 exp=$24.75 worst_maxdd=$3102.28
+
+
+### PART 1: PYRAMID (max 2 units) vs FLAT, seed=0, $400/$600 risk ###
+
+=== Pyramid, add-trigger grid {0.5,1.0,1.5}xATR, max_units=2 ===
+  risk=$400 2024-01-01->2024-07-01 add_trig=1.0 n=124 (added_2nd_unit=56) win%=27.4% exp=$107.00 total=$13268.57 maxdd=$8436.53 breach=True
+  risk=$400 2024-07-01->2025-01-01 add_trig=1.0 n=129 (added_2nd_unit=73) win%=21.7% exp=$5.57 total=$718.74 maxdd=$11027.41 breach=True
+  risk=$400 2025-01-01->2025-07-01 add_trig=1.0 n=127 (added_2nd_unit=64) win%=29.1% exp=$12.06 total=$1531.35 maxdd=$10705.76 breach=True
+  risk=$400 2025-07-01->2026-01-01 add_trig=1.0 n=130 (added_2nd_unit=81) win%=33.8% exp=$226.42 total=$29434.50 maxdd=$6931.30 breach=True
+  risk=$400 2026-01-01->2026-07-01 add_trig=1.5 n=127 (added_2nd_unit=57) win%=22.8% exp=$92.08 total=$11694.33 maxdd=$4860.90 breach=False
+  risk=$400 2026-07-01->2026-09-16 add_trig=0.5 n=54 (added_2nd_unit=37) win%=38.9% exp=$91.45 total=$4938.33 maxdd=$2391.03 breach=False
+  AGGREGATE risk=$400 n=691 exp=$89.13 total=$61585.81 win%=27.9% worst_maxdd=$11027.41 2nd-unit added on 368/691 (53.3%) tail10=75.6% tail20=127.9%
+  risk=$600 2024-01-01->2024-07-01 add_trig=1.0 n=124 (added_2nd_unit=56) win%=27.4% exp=$179.61 total=$22271.17 maxdd=$12826.04 breach=True
+  risk=$600 2024-07-01->2025-01-01 add_trig=1.0 n=129 (added_2nd_unit=73) win%=21.7% exp=$1.76 total=$226.86 maxdd=$17523.60 breach=True
+  risk=$600 2025-01-01->2025-07-01 add_trig=1.0 n=127 (added_2nd_unit=64) win%=29.1% exp=$10.60 total=$1346.05 maxdd=$16445.64 breach=True
+  risk=$600 2025-07-01->2026-01-01 add_trig=1.0 n=130 (added_2nd_unit=81) win%=34.6% exp=$340.89 total=$44316.27 maxdd=$10825.95 breach=True
+  risk=$600 2026-01-01->2026-07-01 add_trig=1.5 n=127 (added_2nd_unit=57) win%=22.8% exp=$154.71 total=$19648.47 maxdd=$7740.34 breach=True
+  risk=$600 2026-07-01->2026-09-16 add_trig=0.5 n=54 (added_2nd_unit=37) win%=38.9% exp=$172.28 total=$9303.25 maxdd=$4150.87 breach=False
+  AGGREGATE risk=$600 n=691 exp=$140.54 total=$97112.07 win%=28.1% worst_maxdd=$17523.60 2nd-unit added on 368/691 (53.3%) tail10=75.3% tail20=125.8%
+
+
+### PART 2: buffer-safe sizing search for pyramid version ###
+
+=== Pyramid buffer-safe sizing search (target worst maxdd <= $3456.25 = 70% of $4937.50) ===
+  risk=$400: n=691 exp=$89.13 worst_maxdd=$11027.41 within_target=False
+  risk=$300: n=691 exp=$61.88 worst_maxdd=$8234.42 within_target=False
+  risk=$250: n=691 exp=$60.86 worst_maxdd=$6535.70 within_target=False
+  risk=$200: n=691 exp=$40.13 worst_maxdd=$5736.68 within_target=False
+  risk=$150: n=691 exp=$31.66 worst_maxdd=$4930.15 within_target=False
+  risk=$125: n=691 exp=$29.90 worst_maxdd=$4449.31 within_target=False
+  risk=$100: n=691 exp=$23.87 worst_maxdd=$4650.77 within_target=False
+  risk=$75: n=691 exp=$23.12 worst_maxdd=$4618.22 within_target=False
+  risk=$50: n=691 exp=$22.78 worst_maxdd=$4732.14 within_target=False
+No pyramid risk level found whose worst-fold maxdd clears the buffer-safe target.
+
+DONE

@@ -1,0 +1,199 @@
+
+======================================================================
+Loading MNQ from futures\engine\..\data\MNQ_CONTINUOUS.txt ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+MNQ: computed causal 15m ATR(14), 25711 values
+
+--- MNQ seed=0: 953 random entries -> 953 with valid ATR stop ---
+  seed=0 variant=A risk=$400 n=691 exp=$32.11 total=$22190.28 win%=36.9% folds_breaching_buffer=2/6 worst_fold_maxdd=$9436.89 (2024-07-01->2025-01-01)
+  seed=0 variant=A risk=$600 n=691 exp=$47.27 total=$32663.71 win%=36.9% folds_breaching_buffer=5/6 worst_fold_maxdd=$14715.66 (2024-07-01->2025-01-01)
+  seed=0 variant=B risk=$400 n=691 exp=$15.44 total=$10667.21 win%=41.1% folds_breaching_buffer=2/6 worst_fold_maxdd=$7723.06 (2024-01-01->2024-07-01)
+  seed=0 variant=B risk=$600 n=691 exp=$21.42 total=$14800.67 win%=41.1% folds_breaching_buffer=3/6 worst_fold_maxdd=$11992.64 (2024-01-01->2024-07-01)
+  seed=0 variant=C risk=$400 n=691 exp=$98.81 total=$68275.57 win%=38.1% folds_breaching_buffer=2/6 worst_fold_maxdd=$7638.35 (2025-01-01->2025-07-01)
+  seed=0 variant=C risk=$600 n=691 exp=$152.72 total=$105529.33 win%=38.1% folds_breaching_buffer=3/6 worst_fold_maxdd=$11415.72 (2025-01-01->2025-07-01)
+  seed=0 variant=D risk=$400 n=691 exp=$63.13 total=$43622.11 win%=47.3% folds_breaching_buffer=0/6 worst_fold_maxdd=$4931.20 (2024-01-01->2024-07-01)
+  seed=0 variant=D risk=$600 n=691 exp=$95.28 total=$65841.81 win%=47.3% folds_breaching_buffer=3/6 worst_fold_maxdd=$7687.33 (2024-01-01->2024-07-01)
+
+--- MNQ seed=1: 953 random entries -> 952 with valid ATR stop ---
+  seed=1 variant=A risk=$400 n=691 exp=$-3.81 total=$-2632.79 win%=42.4% folds_breaching_buffer=2/6 worst_fold_maxdd=$8264.55 (2024-01-01->2024-07-01)
+  seed=1 variant=A risk=$600 n=691 exp=$-12.53 total=$-8655.70 win%=44.1% folds_breaching_buffer=5/6 worst_fold_maxdd=$12768.61 (2024-01-01->2024-07-01)
+  seed=1 variant=B risk=$400 n=691 exp=$-9.48 total=$-6547.95 win%=50.1% folds_breaching_buffer=2/6 worst_fold_maxdd=$6517.87 (2024-01-01->2024-07-01)
+  seed=1 variant=B risk=$600 n=691 exp=$-15.60 total=$-10778.54 win%=50.1% folds_breaching_buffer=5/6 worst_fold_maxdd=$10188.64 (2024-01-01->2024-07-01)
+  seed=1 variant=C risk=$400 n=691 exp=$59.24 total=$40933.64 win%=36.3% folds_breaching_buffer=4/6 worst_fold_maxdd=$10403.81 (2024-01-01->2024-07-01)
+  seed=1 variant=C risk=$600 n=691 exp=$95.79 total=$66189.94 win%=36.3% folds_breaching_buffer=5/6 worst_fold_maxdd=$16053.41 (2024-01-01->2024-07-01)
+  seed=1 variant=D risk=$400 n=691 exp=$7.78 total=$5377.37 win%=41.0% folds_breaching_buffer=1/6 worst_fold_maxdd=$10988.54 (2024-01-01->2024-07-01)
+  seed=1 variant=D risk=$600 n=691 exp=$11.84 total=$8182.42 win%=41.0% folds_breaching_buffer=5/6 worst_fold_maxdd=$16446.09 (2024-01-01->2024-07-01)
+
+--- MNQ seed=2: 953 random entries -> 953 with valid ATR stop ---
+  seed=2 variant=A risk=$400 n=691 exp=$11.84 total=$8178.41 win%=35.3% folds_breaching_buffer=3/6 worst_fold_maxdd=$8156.42 (2024-07-01->2025-01-01)
+  seed=2 variant=A risk=$600 n=691 exp=$21.22 total=$14665.16 win%=35.3% folds_breaching_buffer=4/6 worst_fold_maxdd=$12213.98 (2024-07-01->2025-01-01)
+  seed=2 variant=B risk=$400 n=691 exp=$-4.35 total=$-3002.91 win%=32.3% folds_breaching_buffer=2/6 worst_fold_maxdd=$7358.16 (2025-07-01->2026-01-01)
+  seed=2 variant=B risk=$600 n=691 exp=$-7.07 total=$-4885.30 win%=32.3% folds_breaching_buffer=5/6 worst_fold_maxdd=$11362.61 (2025-07-01->2026-01-01)
+  seed=2 variant=C risk=$400 n=691 exp=$31.31 total=$21638.34 win%=35.5% folds_breaching_buffer=4/6 worst_fold_maxdd=$7881.58 (2026-01-01->2026-07-01)
+  seed=2 variant=C risk=$600 n=691 exp=$51.01 total=$35251.34 win%=35.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$13303.14 (2026-01-01->2026-07-01)
+  seed=2 variant=D risk=$400 n=691 exp=$27.55 total=$19037.05 win%=44.0% folds_breaching_buffer=1/6 worst_fold_maxdd=$7049.88 (2024-01-01->2024-07-01)
+  seed=2 variant=D risk=$600 n=691 exp=$45.98 total=$31773.41 win%=44.0% folds_breaching_buffer=3/6 worst_fold_maxdd=$10781.69 (2024-01-01->2024-07-01)
+
+--- MNQ seed=3: 953 random entries -> 953 with valid ATR stop ---
+  seed=3 variant=A risk=$400 n=691 exp=$12.90 total=$8911.11 win%=37.0% folds_breaching_buffer=2/6 worst_fold_maxdd=$7597.15 (2025-01-01->2025-07-01)
+  seed=3 variant=A risk=$600 n=691 exp=$25.28 total=$17470.90 win%=36.0% folds_breaching_buffer=5/6 worst_fold_maxdd=$11750.37 (2025-01-01->2025-07-01)
+  seed=3 variant=B risk=$400 n=691 exp=$1.06 total=$732.19 win%=25.5% folds_breaching_buffer=3/6 worst_fold_maxdd=$8853.53 (2025-07-01->2026-01-01)
+  seed=3 variant=B risk=$600 n=691 exp=$1.41 total=$973.63 win%=25.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$14055.05 (2025-07-01->2026-01-01)
+  seed=3 variant=C risk=$400 n=691 exp=$60.08 total=$41512.83 win%=36.6% folds_breaching_buffer=3/6 worst_fold_maxdd=$9369.10 (2025-07-01->2026-01-01)
+  seed=3 variant=C risk=$600 n=691 exp=$89.73 total=$62003.76 win%=36.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$14523.14 (2025-07-01->2026-01-01)
+  seed=3 variant=D risk=$400 n=691 exp=$24.95 total=$17237.90 win%=46.0% folds_breaching_buffer=1/6 worst_fold_maxdd=$6165.68 (2025-07-01->2026-01-01)
+  seed=3 variant=D risk=$600 n=691 exp=$34.63 total=$23931.88 win%=46.0% folds_breaching_buffer=2/6 worst_fold_maxdd=$9916.19 (2025-07-01->2026-01-01)
+
+--- MNQ seed=4: 953 random entries -> 953 with valid ATR stop ---
+  seed=4 variant=A risk=$400 n=691 exp=$20.27 total=$14003.36 win%=37.6% folds_breaching_buffer=4/6 worst_fold_maxdd=$6699.63 (2025-01-01->2025-07-01)
+  seed=4 variant=A risk=$600 n=691 exp=$36.70 total=$25356.95 win%=36.3% folds_breaching_buffer=5/6 worst_fold_maxdd=$10643.64 (2025-01-01->2025-07-01)
+  seed=4 variant=B risk=$400 n=691 exp=$10.50 total=$7254.43 win%=26.5% folds_breaching_buffer=0/6 worst_fold_maxdd=$4871.68 (2025-01-01->2025-07-01)
+  seed=4 variant=B risk=$600 n=691 exp=$15.98 total=$11043.73 win%=26.5% folds_breaching_buffer=4/6 worst_fold_maxdd=$7708.85 (2025-01-01->2025-07-01)
+  seed=4 variant=C risk=$400 n=691 exp=$92.88 total=$64183.24 win%=38.6% folds_breaching_buffer=1/6 worst_fold_maxdd=$5541.55 (2025-01-01->2025-07-01)
+  seed=4 variant=C risk=$600 n=691 exp=$144.18 total=$99628.50 win%=38.6% folds_breaching_buffer=4/6 worst_fold_maxdd=$7449.02 (2025-01-01->2025-07-01)
+  seed=4 variant=D risk=$400 n=691 exp=$41.69 total=$28805.93 win%=45.6% folds_breaching_buffer=0/6 worst_fold_maxdd=$4424.96 (2026-01-01->2026-07-01)
+  seed=4 variant=D risk=$600 n=691 exp=$61.80 total=$42701.98 win%=45.6% folds_breaching_buffer=3/6 worst_fold_maxdd=$6749.05 (2026-01-01->2026-07-01)
+
+--- MNQ seed=5: 953 random entries -> 953 with valid ATR stop ---
+  seed=5 variant=A risk=$400 n=691 exp=$-14.43 total=$-9972.67 win%=38.6% folds_breaching_buffer=2/6 worst_fold_maxdd=$10306.72 (2024-01-01->2024-07-01)
+  seed=5 variant=A risk=$600 n=691 exp=$-22.35 total=$-15440.74 win%=38.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$15791.83 (2024-01-01->2024-07-01)
+  seed=5 variant=B risk=$400 n=691 exp=$-16.22 total=$-11206.67 win%=25.9% folds_breaching_buffer=3/6 worst_fold_maxdd=$8960.76 (2024-01-01->2024-07-01)
+  seed=5 variant=B risk=$600 n=691 exp=$-25.59 total=$-17679.24 win%=25.9% folds_breaching_buffer=5/6 worst_fold_maxdd=$13515.84 (2024-01-01->2024-07-01)
+  seed=5 variant=C risk=$400 n=691 exp=$51.43 total=$35540.19 win%=36.5% folds_breaching_buffer=1/6 worst_fold_maxdd=$6345.88 (2024-01-01->2024-07-01)
+  seed=5 variant=C risk=$600 n=691 exp=$80.20 total=$55418.10 win%=36.5% folds_breaching_buffer=4/6 worst_fold_maxdd=$9667.57 (2024-01-01->2024-07-01)
+  seed=5 variant=D risk=$400 n=691 exp=$1.38 total=$955.83 win%=42.0% folds_breaching_buffer=1/6 worst_fold_maxdd=$6237.60 (2026-01-01->2026-07-01)
+  seed=5 variant=D risk=$600 n=691 exp=$4.66 total=$3216.79 win%=42.0% folds_breaching_buffer=5/6 worst_fold_maxdd=$9227.48 (2026-01-01->2026-07-01)
+
+--- MNQ seed=6: 953 random entries -> 952 with valid ATR stop ---
+  seed=6 variant=A risk=$400 n=691 exp=$2.09 total=$1444.61 win%=42.0% folds_breaching_buffer=2/6 worst_fold_maxdd=$8823.30 (2025-01-01->2025-07-01)
+  seed=6 variant=A risk=$600 n=691 exp=$-0.79 total=$-546.46 win%=40.4% folds_breaching_buffer=5/6 worst_fold_maxdd=$12463.81 (2025-01-01->2025-07-01)
+  seed=6 variant=B risk=$400 n=691 exp=$1.53 total=$1054.65 win%=39.7% folds_breaching_buffer=3/6 worst_fold_maxdd=$10265.53 (2025-01-01->2025-07-01)
+  seed=6 variant=B risk=$600 n=691 exp=$1.19 total=$822.09 win%=39.7% folds_breaching_buffer=4/6 worst_fold_maxdd=$14938.28 (2025-01-01->2025-07-01)
+  seed=6 variant=C risk=$400 n=691 exp=$79.93 total=$55228.86 win%=40.4% folds_breaching_buffer=3/6 worst_fold_maxdd=$7492.05 (2024-01-01->2024-07-01)
+  seed=6 variant=C risk=$600 n=691 exp=$127.60 total=$88169.91 win%=40.4% folds_breaching_buffer=4/6 worst_fold_maxdd=$11659.32 (2024-01-01->2024-07-01)
+  seed=6 variant=D risk=$400 n=691 exp=$-2.47 total=$-1707.48 win%=44.3% folds_breaching_buffer=1/6 worst_fold_maxdd=$10312.57 (2025-01-01->2025-07-01)
+  seed=6 variant=D risk=$600 n=691 exp=$-1.73 total=$-1192.59 win%=44.3% folds_breaching_buffer=6/6 worst_fold_maxdd=$14894.94 (2025-01-01->2025-07-01)
+
+--- MNQ seed=7: 953 random entries -> 953 with valid ATR stop ---
+  seed=7 variant=A risk=$400 n=691 exp=$-9.64 total=$-6661.69 win%=42.7% folds_breaching_buffer=3/6 worst_fold_maxdd=$10003.90 (2024-01-01->2024-07-01)
+  seed=7 variant=A risk=$600 n=691 exp=$-18.60 total=$-12854.81 win%=42.7% folds_breaching_buffer=6/6 worst_fold_maxdd=$15360.22 (2024-01-01->2024-07-01)
+  seed=7 variant=B risk=$400 n=691 exp=$-0.78 total=$-539.80 win%=46.6% folds_breaching_buffer=3/6 worst_fold_maxdd=$6419.49 (2024-01-01->2024-07-01)
+  seed=7 variant=B risk=$600 n=691 exp=$-2.24 total=$-1549.74 win%=46.6% folds_breaching_buffer=5/6 worst_fold_maxdd=$9941.01 (2024-01-01->2024-07-01)
+  seed=7 variant=C risk=$400 n=691 exp=$56.48 total=$39026.56 win%=38.6% folds_breaching_buffer=2/6 worst_fold_maxdd=$6201.34 (2024-01-01->2024-07-01)
+  seed=7 variant=C risk=$600 n=691 exp=$85.22 total=$58886.97 win%=38.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$10656.57 (2026-01-01->2026-07-01)
+  seed=7 variant=D risk=$400 n=691 exp=$32.28 total=$22308.16 win%=46.3% folds_breaching_buffer=1/6 worst_fold_maxdd=$5092.67 (2024-01-01->2024-07-01)
+  seed=7 variant=D risk=$600 n=691 exp=$49.83 total=$34435.26 win%=46.3% folds_breaching_buffer=4/6 worst_fold_maxdd=$7704.92 (2024-01-01->2024-07-01)
+
+### MNQ: ACROSS-SEED SUMMARY (8 seeds) ###
+  A_fixed_rr risk=$400: mean_exp=$6.41 std=$14.74 min=$-14.43 max=$32.11 positive_seeds=5/8 | seed-fold windows breaching buffer=20/48 worst_maxdd=$10306.72 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$35460.63 tail10=22.7% tail20=44.9%
+  A_fixed_rr risk=$600: mean_exp=$9.53 std=$24.87 min=$-22.35 max=$47.27 positive_seeds=4/8 | seed-fold windows breaching buffer=41/48 worst_maxdd=$15791.83 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$52659.00 tail10=22.5% tail20=45.0%
+  B_fixed_rr_plus_be risk=$400: mean_exp=$-0.29 std=$9.51 min=$-16.22 max=$15.44 positive_seeds=4/8 | seed-fold windows breaching buffer=18/48 worst_maxdd=$10265.53 (2025-01-01->2025-07-01)
+  B_fixed_rr_plus_be risk=$600: mean_exp=$-1.31 std=$14.39 min=$-25.59 max=$21.42 positive_seeds=4/8 | seed-fold windows breaching buffer=36/48 worst_maxdd=$14938.28 (2025-01-01->2025-07-01)
+  C_atr_trailing risk=$400: mean_exp=$66.27 std=$21.15 min=$31.31 max=$98.81 positive_seeds=8/8 | seed-fold windows breaching buffer=20/48 worst_maxdd=$10403.81 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$366339.22 tail10=11.9% tail20=21.5%
+  C_atr_trailing risk=$600: mean_exp=$103.31 std=$32.67 min=$51.01 max=$152.72 positive_seeds=8/8 | seed-fold windows breaching buffer=37/48 worst_maxdd=$16053.41 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$571077.85 tail10=12.0% tail20=21.6%
+  D_time_exit_30m risk=$400: mean_exp=$24.54 std=$20.61 min=$-2.47 max=$63.13 positive_seeds=7/8 | seed-fold windows breaching buffer=6/48 worst_maxdd=$10988.54 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$135636.88 tail10=27.9% tail20=49.3%
+  D_time_exit_30m risk=$600: mean_exp=$37.79 std=$30.49 min=$-1.73 max=$95.28 positive_seeds=7/8 | seed-fold windows breaching buffer=31/48 worst_maxdd=$16446.09 (2024-01-01->2024-07-01)
+    pooled n=5528 total=$208890.98 tail10=27.3% tail20=49.3%
+
+======================================================================
+Loading MGC from futures\engine\..\data\MGC_CONTINUOUS.txt ...
+MGC: 1271123 1m bars, 2023-01-02 23:01:00 -> 2026-09-10 04:00:00
+MGC: computed causal 15m ATR(14), 85401 values
+
+--- MGC seed=0: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=0 variant=A risk=$400 n=830 exp=$-20.61 total=$-17106.89 win%=51.1% folds_breaching_buffer=3/6 worst_fold_maxdd=$16898.82 (2024-07-01->2025-01-01)
+  seed=0 variant=A risk=$600 n=830 exp=$-31.17 total=$-25867.01 win%=51.1% folds_breaching_buffer=4/6 worst_fold_maxdd=$25930.97 (2024-07-01->2025-01-01)
+  seed=0 variant=B risk=$400 n=830 exp=$-20.61 total=$-17106.89 win%=51.1% folds_breaching_buffer=3/6 worst_fold_maxdd=$16898.82 (2024-07-01->2025-01-01)
+  seed=0 variant=B risk=$600 n=830 exp=$-31.17 total=$-25867.01 win%=51.1% folds_breaching_buffer=4/6 worst_fold_maxdd=$25930.97 (2024-07-01->2025-01-01)
+  seed=0 variant=C risk=$400 n=830 exp=$14.76 total=$12251.25 win%=35.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$17677.84 (2024-07-01->2025-01-01)
+  seed=0 variant=C risk=$600 n=830 exp=$24.25 total=$20130.35 win%=35.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$26942.46 (2024-07-01->2025-01-01)
+  seed=0 variant=D risk=$400 n=830 exp=$-6.51 total=$-5407.32 win%=44.5% folds_breaching_buffer=3/6 worst_fold_maxdd=$9450.54 (2024-07-01->2025-01-01)
+  seed=0 variant=D risk=$600 n=830 exp=$-10.64 total=$-8827.15 win%=44.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$14414.64 (2024-07-01->2025-01-01)
+
+--- MGC seed=1: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=1 variant=A risk=$400 n=830 exp=$-34.26 total=$-28438.71 win%=40.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$16149.11 (2024-07-01->2025-01-01)
+  seed=1 variant=A risk=$600 n=830 exp=$-53.41 total=$-44333.17 win%=40.5% folds_breaching_buffer=6/6 worst_fold_maxdd=$24534.11 (2024-07-01->2025-01-01)
+  seed=1 variant=B risk=$400 n=830 exp=$-32.24 total=$-26761.31 win%=40.5% folds_breaching_buffer=4/6 worst_fold_maxdd=$16017.72 (2024-07-01->2025-01-01)
+  seed=1 variant=B risk=$600 n=830 exp=$-50.77 total=$-42138.17 win%=40.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$24310.75 (2024-07-01->2025-01-01)
+  seed=1 variant=C risk=$400 n=830 exp=$-11.81 total=$-9802.31 win%=35.9% folds_breaching_buffer=5/6 worst_fold_maxdd=$12836.38 (2024-07-01->2025-01-01)
+  seed=1 variant=C risk=$600 n=830 exp=$-19.07 total=$-15827.35 win%=35.9% folds_breaching_buffer=5/6 worst_fold_maxdd=$19592.33 (2024-07-01->2025-01-01)
+  seed=1 variant=D risk=$400 n=830 exp=$-27.02 total=$-22426.35 win%=42.4% folds_breaching_buffer=4/6 worst_fold_maxdd=$13333.44 (2024-07-01->2025-01-01)
+  seed=1 variant=D risk=$600 n=830 exp=$-42.40 total=$-35190.92 win%=42.4% folds_breaching_buffer=4/6 worst_fold_maxdd=$20067.86 (2024-07-01->2025-01-01)
+
+--- MGC seed=2: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=2 variant=A risk=$400 n=830 exp=$-34.24 total=$-28422.14 win%=48.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$14140.07 (2025-07-01->2026-01-01)
+  seed=2 variant=A risk=$600 n=830 exp=$-54.41 total=$-45157.04 win%=48.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$22298.45 (2025-07-01->2026-01-01)
+  seed=2 variant=B risk=$400 n=830 exp=$-34.24 total=$-28422.14 win%=48.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$14140.07 (2025-07-01->2026-01-01)
+  seed=2 variant=B risk=$600 n=830 exp=$-54.41 total=$-45157.04 win%=48.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$22298.45 (2025-07-01->2026-01-01)
+  seed=2 variant=C risk=$400 n=830 exp=$-11.65 total=$-9666.78 win%=35.3% folds_breaching_buffer=6/6 worst_fold_maxdd=$12354.54 (2025-07-01->2026-01-01)
+  seed=2 variant=C risk=$600 n=830 exp=$-18.99 total=$-15762.65 win%=35.3% folds_breaching_buffer=6/6 worst_fold_maxdd=$19342.30 (2025-07-01->2026-01-01)
+  seed=2 variant=D risk=$400 n=830 exp=$-26.60 total=$-22080.35 win%=43.9% folds_breaching_buffer=6/6 worst_fold_maxdd=$9509.36 (2025-01-01->2025-07-01)
+  seed=2 variant=D risk=$600 n=830 exp=$-42.71 total=$-35450.40 win%=43.9% folds_breaching_buffer=6/6 worst_fold_maxdd=$14372.83 (2025-01-01->2025-07-01)
+
+--- MGC seed=3: 1131 random entries -> 1129 with valid ATR stop ---
+  seed=3 variant=A risk=$400 n=830 exp=$-47.89 total=$-39750.09 win%=44.3% folds_breaching_buffer=4/6 worst_fold_maxdd=$14599.01 (2024-07-01->2025-01-01)
+  seed=3 variant=A risk=$600 n=830 exp=$-73.33 total=$-60862.48 win%=44.3% folds_breaching_buffer=5/6 worst_fold_maxdd=$22420.81 (2024-07-01->2025-01-01)
+  seed=3 variant=B risk=$400 n=830 exp=$-36.53 total=$-30318.09 win%=45.7% folds_breaching_buffer=4/6 worst_fold_maxdd=$11281.06 (2024-01-01->2024-07-01)
+  seed=3 variant=B risk=$600 n=830 exp=$-55.55 total=$-46104.09 win%=45.7% folds_breaching_buffer=5/6 worst_fold_maxdd=$17367.93 (2024-01-01->2024-07-01)
+  seed=3 variant=C risk=$400 n=830 exp=$-1.86 total=$-1541.38 win%=35.9% folds_breaching_buffer=4/6 worst_fold_maxdd=$14626.21 (2024-01-01->2024-07-01)
+  seed=3 variant=C risk=$600 n=830 exp=$-3.84 total=$-3183.66 win%=35.9% folds_breaching_buffer=6/6 worst_fold_maxdd=$22080.61 (2024-01-01->2024-07-01)
+  seed=3 variant=D risk=$400 n=830 exp=$-24.80 total=$-20581.49 win%=42.4% folds_breaching_buffer=4/6 worst_fold_maxdd=$11867.67 (2024-01-01->2024-07-01)
+  seed=3 variant=D risk=$600 n=830 exp=$-38.57 total=$-32009.37 win%=42.4% folds_breaching_buffer=6/6 worst_fold_maxdd=$18235.51 (2024-01-01->2024-07-01)
+
+--- MGC seed=4: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=4 variant=A risk=$400 n=830 exp=$-20.48 total=$-16999.72 win%=44.6% folds_breaching_buffer=5/6 worst_fold_maxdd=$11830.46 (2025-01-01->2025-07-01)
+  seed=4 variant=A risk=$600 n=830 exp=$-29.79 total=$-24723.84 win%=44.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$18177.30 (2025-01-01->2025-07-01)
+  seed=4 variant=B risk=$400 n=830 exp=$-21.36 total=$-17731.65 win%=50.8% folds_breaching_buffer=4/6 worst_fold_maxdd=$10349.58 (2025-01-01->2025-07-01)
+  seed=4 variant=B risk=$600 n=830 exp=$-31.82 total=$-26408.45 win%=50.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$16258.27 (2025-01-01->2025-07-01)
+  seed=4 variant=C risk=$400 n=830 exp=$12.54 total=$10408.71 win%=35.7% folds_breaching_buffer=6/6 worst_fold_maxdd=$10762.82 (2025-01-01->2025-07-01)
+  seed=4 variant=C risk=$600 n=830 exp=$20.52 total=$17029.27 win%=35.7% folds_breaching_buffer=6/6 worst_fold_maxdd=$17140.26 (2025-01-01->2025-07-01)
+  seed=4 variant=D risk=$400 n=830 exp=$-18.83 total=$-15628.58 win%=44.0% folds_breaching_buffer=3/6 worst_fold_maxdd=$13015.09 (2025-01-01->2025-07-01)
+  seed=4 variant=D risk=$600 n=830 exp=$-27.58 total=$-22892.66 win%=44.0% folds_breaching_buffer=5/6 worst_fold_maxdd=$20183.77 (2025-01-01->2025-07-01)
+
+--- MGC seed=5: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=5 variant=A risk=$400 n=830 exp=$-50.64 total=$-42033.81 win%=43.1% folds_breaching_buffer=6/6 worst_fold_maxdd=$11882.01 (2024-01-01->2024-07-01)
+  seed=5 variant=A risk=$600 n=830 exp=$-78.41 total=$-65079.24 win%=43.1% folds_breaching_buffer=6/6 worst_fold_maxdd=$17939.39 (2024-01-01->2024-07-01)
+  seed=5 variant=B risk=$400 n=830 exp=$-42.73 total=$-35467.46 win%=44.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$11882.01 (2024-01-01->2024-07-01)
+  seed=5 variant=B risk=$600 n=830 exp=$-66.14 total=$-54899.03 win%=44.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$17939.39 (2024-01-01->2024-07-01)
+  seed=5 variant=C risk=$400 n=830 exp=$27.23 total=$22605.04 win%=35.8% folds_breaching_buffer=4/6 worst_fold_maxdd=$14103.11 (2024-01-01->2024-07-01)
+  seed=5 variant=C risk=$600 n=830 exp=$41.38 total=$34344.76 win%=35.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$21443.65 (2024-01-01->2024-07-01)
+  seed=5 variant=D risk=$400 n=830 exp=$-16.70 total=$-13860.35 win%=44.0% folds_breaching_buffer=5/6 worst_fold_maxdd=$9169.73 (2024-07-01->2025-01-01)
+  seed=5 variant=D risk=$600 n=830 exp=$-25.81 total=$-21419.88 win%=44.0% folds_breaching_buffer=6/6 worst_fold_maxdd=$13950.07 (2024-07-01->2025-01-01)
+
+--- MGC seed=6: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=6 variant=A risk=$400 n=830 exp=$-33.57 total=$-27859.76 win%=40.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$15205.48 (2025-01-01->2025-07-01)
+  seed=6 variant=A risk=$600 n=830 exp=$-52.93 total=$-43930.68 win%=40.8% folds_breaching_buffer=6/6 worst_fold_maxdd=$22934.53 (2025-01-01->2025-07-01)
+  seed=6 variant=B risk=$400 n=830 exp=$-39.42 total=$-32722.55 win%=45.5% folds_breaching_buffer=4/6 worst_fold_maxdd=$14044.48 (2025-01-01->2025-07-01)
+  seed=6 variant=B risk=$600 n=830 exp=$-61.15 total=$-50753.75 win%=45.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$21315.25 (2025-01-01->2025-07-01)
+  seed=6 variant=C risk=$400 n=830 exp=$-18.99 total=$-15761.33 win%=34.5% folds_breaching_buffer=5/6 worst_fold_maxdd=$16294.89 (2025-01-01->2025-07-01)
+  seed=6 variant=C risk=$600 n=830 exp=$-25.13 total=$-20861.32 win%=34.5% folds_breaching_buffer=6/6 worst_fold_maxdd=$24702.40 (2025-01-01->2025-07-01)
+  seed=6 variant=D risk=$400 n=830 exp=$-4.91 total=$-4074.33 win%=44.3% folds_breaching_buffer=2/6 worst_fold_maxdd=$14268.74 (2025-01-01->2025-07-01)
+  seed=6 variant=D risk=$600 n=830 exp=$-5.63 total=$-4671.11 win%=44.3% folds_breaching_buffer=4/6 worst_fold_maxdd=$21592.44 (2025-01-01->2025-07-01)
+
+--- MGC seed=7: 1131 random entries -> 1130 with valid ATR stop ---
+  seed=7 variant=A risk=$400 n=830 exp=$-60.07 total=$-49854.66 win%=34.1% folds_breaching_buffer=5/6 worst_fold_maxdd=$22449.56 (2024-01-01->2024-07-01)
+  seed=7 variant=A risk=$600 n=830 exp=$-94.70 total=$-78601.02 win%=34.9% folds_breaching_buffer=5/6 worst_fold_maxdd=$33940.95 (2024-01-01->2024-07-01)
+  seed=7 variant=B risk=$400 n=830 exp=$-56.26 total=$-46697.16 win%=41.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$14670.78 (2024-01-01->2024-07-01)
+  seed=7 variant=B risk=$600 n=830 exp=$-84.80 total=$-70383.91 win%=41.8% folds_breaching_buffer=5/6 worst_fold_maxdd=$22364.53 (2024-01-01->2024-07-01)
+  seed=7 variant=C risk=$400 n=830 exp=$-34.16 total=$-28353.59 win%=33.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$11885.56 (2026-01-01->2026-07-01)
+  seed=7 variant=C risk=$600 n=830 exp=$-52.36 total=$-43462.80 win%=33.6% folds_breaching_buffer=6/6 worst_fold_maxdd=$18189.61 (2026-01-01->2026-07-01)
+  seed=7 variant=D risk=$400 n=830 exp=$-39.60 total=$-32869.23 win%=41.7% folds_breaching_buffer=5/6 worst_fold_maxdd=$11224.36 (2024-01-01->2024-07-01)
+  seed=7 variant=D risk=$600 n=830 exp=$-59.80 total=$-49636.55 win%=41.7% folds_breaching_buffer=5/6 worst_fold_maxdd=$16960.83 (2024-01-01->2024-07-01)
+
+### MGC: ACROSS-SEED SUMMARY (8 seeds) ###
+  A_fixed_rr risk=$400: mean_exp=$-37.72 std=$13.23 min=$-60.07 max=$-20.48 positive_seeds=0/8 | seed-fold windows breaching buffer=38/48 worst_maxdd=$22449.56 (2024-01-01->2024-07-01)
+  A_fixed_rr risk=$600: mean_exp=$-58.52 std=$21.13 min=$-94.70 max=$-29.79 positive_seeds=0/8 | seed-fold windows breaching buffer=44/48 worst_maxdd=$33940.95 (2024-01-01->2024-07-01)
+  B_fixed_rr_plus_be risk=$400: mean_exp=$-35.43 std=$10.80 min=$-56.26 max=$-20.61 positive_seeds=0/8 | seed-fold windows breaching buffer=35/48 worst_maxdd=$16898.82 (2024-07-01->2025-01-01)
+  B_fixed_rr_plus_be risk=$600: mean_exp=$-54.47 std=$16.48 min=$-84.80 max=$-31.17 positive_seeds=0/8 | seed-fold windows breaching buffer=41/48 worst_maxdd=$25930.97 (2024-07-01->2025-01-01)
+  C_atr_trailing risk=$400: mean_exp=$-2.99 std=$18.88 min=$-34.16 max=$27.23 positive_seeds=3/8 | seed-fold windows breaching buffer=41/48 worst_maxdd=$17677.84 (2024-07-01->2025-01-01)
+  C_atr_trailing risk=$600: mean_exp=$-4.16 std=$28.93 min=$-52.36 max=$41.38 positive_seeds=3/8 | seed-fold windows breaching buffer=47/48 worst_maxdd=$26942.46 (2024-07-01->2025-01-01)
+  D_time_exit_30m risk=$400: mean_exp=$-20.62 std=$10.72 min=$-39.60 max=$-4.91 positive_seeds=0/8 | seed-fold windows breaching buffer=32/48 worst_maxdd=$14268.74 (2025-01-01->2025-07-01)
+  D_time_exit_30m risk=$600: mean_exp=$-31.64 std=$16.76 min=$-59.80 max=$-5.63 positive_seeds=0/8 | seed-fold windows breaching buffer=41/48 worst_maxdd=$21592.44 (2025-01-01->2025-07-01)
+
+
+DONE.

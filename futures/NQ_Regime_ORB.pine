@@ -1,0 +1,213 @@
+//@version=6
+indicator("NQ VWAP Extreme Wick Rejection [2.5σ]", overlay=true, max_labels_count=500, max_lines_count=100)
+
+// ==============================================================================
+// 1. INPUT PARAMETERS
+// ==============================================================================
+var string G_MODE = "Account Gear & Risk Protocol"
+op_mode = input.string("Broker 250k Sprint ($2,500)", "Operating Mode",
+     options=["Broker 250k Sprint ($2,500)", "Broker 250k Hybrid ($2,000)", "Broker 250k Shield ($1,000)", "Custom Dollar Risk"], 
+group=G_MODE)
+custom_risk_dlr = input.float(2500.0, "Custom Risk ($)", group=G_MODE)
+
+float target_risk_dlr = op_mode == "Broker 250k Sprint ($2,500)" ? 2500.0 :
+     (op_mode == "Broker 250k Hybrid ($2,000)" ? 2000.0 :
+     (op_mode == "Broker 250k Shield ($1,000)" ? 1000.0 : custom_risk_dlr))
+
+var string G_GEOM = "Trade Geometry (1:1 R:R — SL=20 TP=20)"
+stop_pts   = input.float(20.0, "Stop Loss Points", minval=5.0, step=1.0, group=G_GEOM)
+target_pts = input.float(20.0, "Take Profit Points", minval=5.0, step=1.0, group=G_GEOM)
+stdev_mult = input.float(2.5, "VWAP StDev Multiplier", minval=1.0, step=0.5, group=G_GEOM, tooltip="2.5 is the backtested optimal. Higher = fewer, higher-quality signals.")
+
+var string G_TIME = "Session Windows (America/New_York)"
+tz = "America/New_York"
+flatten_hr  = input.int(15, "EOD Flatten Hour (EST)", group=G_TIME)
+flatten_min = input.int(55, "EOD Flatten Minute (EST)", group=G_TIME)
+use_loss_pause     = input.bool(true, "Enforce 1-Loss Daily Lockout", group=G_TIME)
+daily_profit_limit = input.float(1000.0, "Daily Profit Limit ($)", group=G_TIME)
+
+// ==============================================================================
+// 2. VWAP + STANDARD DEVIATION BANDS
+// ==============================================================================
+is_new_day = ta.change(time("D", tz)) != 0
+
+var float cum_pv  = 0.0
+var float cum_vol = 0.0
+var float cum_dev = 0.0
+
+typ_price = (high + low + close) / 3.0
+
+if is_new_day
+    cum_pv  := typ_price * volume
+    cum_vol := volume
+    cum_dev := 0.0
+else
+    cum_pv  := cum_pv + typ_price * volume
+    cum_vol := cum_vol + volume
+
+float session_vwap = cum_pv / cum_vol
+
+// Running variance via welford-style (cumulative volume-weighted)
+if is_new_day
+    cum_dev := 0.0
+else
+    cum_dev := cum_dev + (typ_price - session_vwap) * (typ_price - session_vwap) * volume
+
+float vwap_stdev = math.sqrt(math.max(cum_dev / cum_vol, 0))
+
+float upper_band = session_vwap + stdev_mult * vwap_stdev
+float lower_band = session_vwap - stdev_mult * vwap_stdev
+
+// Plot bands
+plot(session_vwap, title="VWAP", color=color.new(color.white, 20), linewidth=2)
+plot(upper_band, title="Upper 2.5σ Band", color=color.new(color.red, 30), linewidth=1)
+plot(lower_band, title="Lower 2.5σ Band", color=color.new(color.green, 30), linewidth=1)
+
+// Band fill
+fill_up = plot(upper_band, display=display.none)
+fill_vw = plot(session_vwap, display=display.none)
+fill_dn = plot(lower_band, display=display.none)
+fill(fill_up, fill_vw, color=color.new(color.red, 92))
+fill(fill_vw, fill_dn, color=color.new(color.green, 92))
+
+// ==============================================================================
+// 3. TIME GATES
+// ==============================================================================
+int bar_open_mins     = hour(time, tz) * 60 + minute(time, tz)
+int eod_flatten_mins  = flatten_hr * 60 + flatten_min
+bool in_eod_flatten   = bar_open_mins >= eod_flatten_mins and bar_open_mins[1] < eod_flatten_mins
+bool in_signal_window = not na(time(timeframe.period, "1000-1330:23456", tz))
+
+// ==============================================================================
+// 4. STATE MACHINE
+// ==============================================================================
+var float cum_net_pnl   = 0.0
+var float daily_pnl     = 0.0
+var bool  daily_loss_locked = false
+var bool  daily_win_locked  = false
+var int   active_dir    = 0
+var float active_entry  = na
+var float active_sl     = na
+var float active_tp     = na
+var int   total_trades  = 0
+var int   win_trades    = 0
+var int   loss_trades   = 0
+
+if is_new_day
+    daily_pnl         := 0.0
+    daily_loss_locked := false
+    daily_win_locked  := false
+    active_dir        := 0
+
+bool can_trade = not daily_loss_locked and not daily_win_locked and active_dir == 0
+
+// ==============================================================================
+// 5. SIGNAL DETECTION — WICK REJECTION AT EXTREME BANDS
+// ==============================================================================
+// Long: candle wick pierces BELOW lower_band but closes BACK ABOVE it (institutional buy absorption)
+// Exact backtest match: only requires low < band AND close > band (no candle direction filter)
+bool sig_long  = in_signal_window and can_trade and
+     (low < lower_band) and (close > lower_band)
+
+// Short: candle wick pierces ABOVE upper_band but closes BACK BELOW it (institutional sell absorption)
+bool sig_short = in_signal_window and can_trade and
+     (high > upper_band) and (close < upper_band)
+
+// ==============================================================================
+// 6. ENTRY EXECUTION
+// ==============================================================================
+float pt_val    = syminfo.pointvalue
+int raw_cts     = stop_pts * pt_val > 0 ? int(math.floor(target_risk_dlr / (stop_pts * pt_val))) : 1
+int contracts   = math.min(250, math.max(1, raw_cts))
+float trade_risk_dlr   = stop_pts   * pt_val * contracts
+float trade_target_dlr = target_pts * pt_val * contracts
+float comm_per_trade   = contracts  * 1.50
+
+var bool just_entered = false  // Guard: prevents exit logic firing on entry bar
+
+if sig_long
+    active_dir   := 1
+    active_entry := close
+    active_sl    := close - stop_pts
+    active_tp    := close + target_pts
+    just_entered := true
+    label.new(bar_index, close, "▲ LONG\n" + str.tostring(close), color=color.new(color.lime, 20), textcolor=color.white, style=label.style_label_up, size=size.normal)
+
+else if sig_short
+    active_dir   := -1
+    active_entry := close
+    active_sl    := close + stop_pts
+    active_tp    := close - target_pts
+    just_entered := true
+    label.new(bar_index, close, "▼ SHORT\n" + str.tostring(close), color=color.new(color.red, 20), textcolor=color.white, style=label.style_label_down, size=size.normal)
+
+else
+    just_entered := false
+
+// ==============================================================================
+// 7. EXIT LOGIC — only fires on bars AFTER entry (just_entered guard)
+// ==============================================================================
+if active_dir != 0 and not just_entered
+    bool hit_sl = active_dir == 1 ? low  <= active_sl : high >= active_sl
+    bool hit_tp = active_dir == 1 ? high >= active_tp : low  <= active_tp
+
+    if hit_sl or hit_tp or in_eod_flatten
+        float out_pnl = 0.0
+
+        if hit_tp
+            out_pnl := trade_target_dlr - comm_per_trade
+            win_trades += 1
+            label.new(bar_index, active_tp, "TP +$" + str.tostring(math.round(out_pnl)), color=color.green, textcolor=color.white, style=label.style_label_down, size=size.normal)
+        else if hit_sl
+            out_pnl := -trade_risk_dlr - comm_per_trade
+            loss_trades += 1
+            if use_loss_pause
+                daily_loss_locked := true
+            label.new(bar_index, active_sl, "SL -$" + str.tostring(math.abs(math.round(out_pnl))), color=color.red, textcolor=color.white, style=label.style_label_up, size=size.normal)
+        else
+            float pts_diff = active_dir == 1 ? (close - active_entry) : (active_entry - close)
+            out_pnl := pts_diff * pt_val * contracts - comm_per_trade
+            if out_pnl >= 0
+                win_trades += 1
+                label.new(bar_index, close, "FLAT +$" + str.tostring(math.round(out_pnl)), color=color.green, textcolor=color.white, style=label.style_label_down, size=size.small)
+            else
+                loss_trades += 1
+                if use_loss_pause
+                    daily_loss_locked := true
+                label.new(bar_index, close, "FLAT -$" + str.tostring(math.abs(math.round(out_pnl))), color=color.red, textcolor=color.white, style=label.style_label_up, size=size.small)
+
+        daily_pnl    += out_pnl
+        cum_net_pnl  += out_pnl
+        total_trades += 1
+
+        if daily_pnl >= daily_profit_limit
+            daily_win_locked := true
+
+        active_dir := 0
+
+// ==============================================================================
+// 8. DASHBOARD TABLE
+// ==============================================================================
+var table dash = table.new(position.bottom_right, 2, 8, bgcolor=color.new(color.black, 70), border_color=color.gray, border_width=1, frame_color=color.gray, frame_width=1)
+int ttl = win_trades + loss_trades
+float wr = ttl > 0 ? (win_trades / ttl) * 100 : 0.0
+color pnl_col = cum_net_pnl >= 0 ? color.lime : color.red
+
+table.cell(dash, 0, 0, "NQ 2.5σ WICK REJECTION",  text_color=color.white,  bgcolor=color.new(color.navy, 40), text_halign=text.align_center)
+table.cell(dash, 1, 0, str.tostring(contracts) + " " + syminfo.ticker, text_color=color.yellow, bgcolor=color.new(color.navy, 40), text_halign=text.align_center)
+table.cell(dash, 0, 1, "Net PnL",     text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 1, "$" + str.tostring(math.round(cum_net_pnl)), text_color=pnl_col, text_halign=text.align_left)
+table.cell(dash, 0, 2, "Win Rate",    text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 2, str.tostring(math.round(wr, 1)) + "%", text_color=wr >= 55 ? color.lime : color.orange, text_halign=text.align_left)
+table.cell(dash, 0, 3, "Trades",      text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 3, str.tostring(ttl) + " (" + str.tostring(win_trades) + "W/" + str.tostring(loss_trades) + "L)", text_color=color.white, text_halign=text.align_left)
+table.cell(dash, 0, 4, "Risk/Trade",  text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 4, "$" + str.tostring(math.round(trade_risk_dlr)), text_color=color.orange, text_halign=text.align_left)
+table.cell(dash, 0, 5, "Daily PnL",   text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 5, "$" + str.tostring(math.round(daily_pnl)), text_color=daily_pnl >= 0 ? color.lime : color.red, text_halign=text.align_left)
+table.cell(dash, 0, 6, "Status",      text_color=color.gray, text_halign=text.align_right)
+string status_txt = daily_win_locked ? "PROFIT LOCKED" : (daily_loss_locked ? "LOSS LOCKED" : (active_dir == 1 ? "LONG ACTIVE" : (active_dir == -1 ? "SHORT ACTIVE" : "SCANNING")))
+color  status_col = daily_win_locked ? color.rgb(255, 215, 0) : (daily_loss_locked ? color.red : (active_dir != 0 ? color.yellow : color.lime))
+table.cell(dash, 1, 6, status_txt, text_color=status_col, text_halign=text.align_left)
+table.cell(dash, 0, 7, "Window",      text_color=color.gray, text_halign=text.align_right)
+table.cell(dash, 1, 7, in_signal_window ? "10AM-1:30PM OPEN" : "CLOSED", text_color=in_signal_window ? color.lime : color.red, text_halign=text.align_left)

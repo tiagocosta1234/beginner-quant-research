@@ -1,0 +1,2316 @@
+{
+  "nodes": [
+    {
+      "id": "1m_eval_4",
+      "label": "1m_eval_4.cs",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "csharp_namespace:6f0ae3b710c24da0",
+      "label": "NinjaTrader.NinjaScript.Strategies",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L25",
+      "type": "namespace",
+      "metadata": {
+        "kind": "csharp_namespace",
+        "namespace": "NinjaTrader.NinjaScript.Strategies"
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "label": "_1m_eval_4",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L27",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "strategy",
+      "label": "Strategy",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_cs_double",
+      "label": "double",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_cs_int",
+      "label": "int",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "bool",
+      "label": "bool",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "order",
+      "label": "Order",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "atr",
+      "label": "ATR",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "ema",
+      "label": "EMA",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "string",
+      "label": "string",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_cs_datetime",
+      "label": "DateTime",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_macrorecord",
+      "label": "MacroRecord",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L77",
+      "metadata": {
+        "is_nested_type": true,
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "dictionary",
+      "label": "Dictionary",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_fvg",
+      "label": "FVG",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L95",
+      "metadata": {
+        "is_nested_type": true,
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "list",
+      "label": "List",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_bpr",
+      "label": "BPR",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L108",
+      "metadata": {
+        "is_nested_type": true,
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_liquiditypool",
+      "label": "LiquidityPool",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L120",
+      "metadata": {
+        "is_nested_type": true,
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "brush",
+      "label": "Brush",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onstatechange",
+      "label": ".OnStateChange()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L131",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_loadhistoricalmacrodata",
+      "label": ".LoadHistoricalMacroData()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L177",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "label": ".OnBarUpdate()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L222",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackmss",
+      "label": ".TrackMSS()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L294",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackfvgs",
+      "label": ".TrackFVGs()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L317",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackliquidity",
+      "label": ".TrackLiquidity()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L512",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_tracksessions",
+      "label": ".TrackSessions()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L538",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_readmacrostate",
+      "label": ".ReadMacroState()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L643",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_executeentries",
+      "label": ".ExecuteEntries()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L704",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "label": ".OnOrderUpdate()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "orderstate",
+      "label": "OrderState",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "errorcode",
+      "label": "ErrorCode",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_getnearestliquiditytarget",
+      "label": ".GetNearestLiquidityTarget()",
+      "file_type": "code",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L851",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s654"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq",
+      "label": "StdvPo3Nq.cs",
+      "file_type": "code",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "label": "StdvPo3Nq",
+      "file_type": "code",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L16",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s342"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "strategy",
+      "label": "Strategy",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "sma",
+      "label": "SMA",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "rsi",
+      "label": "RSI",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_cs_int",
+      "label": "int",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_cs_double",
+      "label": "double",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onstatechange",
+      "label": ".OnStateChange()",
+      "file_type": "code",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L25",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s342"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onbarupdate",
+      "label": ".OnBarUpdate()",
+      "file_type": "code",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L67",
+      "metadata": {
+        "namespace": "NinjaTrader.NinjaScript.Strategies",
+        "scope_chain": [
+          "s342"
+        ]
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "stdvpo3nq_cs_datetime",
+      "label": "DateTime",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "ff_historical_scraper",
+      "label": "ff_historical_scraper.py",
+      "file_type": "code",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "ff_historical_scraper_scrape_forex_factory",
+      "label": "scrape_forex_factory()",
+      "file_type": "code",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "ml_macro_predictor",
+      "label": "ml_macro_predictor.py",
+      "file_type": "code",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "ml_macro_predictor_build_features",
+      "label": "build_features()",
+      "file_type": "code",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "ml_macro_predictor_train_model",
+      "label": "train_model()",
+      "file_type": "code",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "ml_macro_predictor_predict_history",
+      "label": "predict_history()",
+      "file_type": "code",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "ml_macro_predictor_merge_and_save",
+      "label": "merge_and_save()",
+      "file_type": "code",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L98",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1m_eval_4",
+      "target": "system",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_collections_generic",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L3",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Collections.Generic",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_componentmodel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.ComponentModel",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_componentmodel_dataannotations",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.ComponentModel.DataAnnotations",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_linq",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Linq",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_text",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Text",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_threading_tasks",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Threading.Tasks",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_windows",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Windows",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_windows_input",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Windows.Input",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_windows_media",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Windows.Media",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "system_xml_serialization",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Xml.Serialization",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_cbi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Cbi",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_gui",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Gui",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_gui_chart",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Gui.Chart",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_gui_superdom",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Gui.SuperDom",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_gui_tools",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Gui.Tools",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_data",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Data",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_ninjascript",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_core_floatingpoint",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L20",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Core.FloatingPoint",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_ninjascript_indicators",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript.Indicators",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "ninjatrader_ninjascript_drawingtools",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript.DrawingTools",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "csharp_namespace:6f0ae3b710c24da0",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "strategy",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "metadata": {
+        "ref_token": "Strategy"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L30",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L31",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_int",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "int"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L34",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L35",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_int",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L36",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "int"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_int",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L40",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "int"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L42",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L43",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L44",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "order",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L47",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "Order"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "order",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L48",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "Order"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_int",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L49",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "int"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L52",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "atr",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L67",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "ATR"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "ema",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "EMA"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "ema",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L69",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "EMA"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "string",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "string"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L73",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L74",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L75",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_macrorecord",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_macrorecord",
+      "target": "1m_eval_4_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L81",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "dictionary",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L84",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "Dictionary"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "string",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L85",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "string"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L88",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L89",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L90",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L91",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L92",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "bool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L93",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "bool"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_fvg",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "list",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L106",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "List"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_bpr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_bpr",
+      "target": "1m_eval_4_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L114",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "list",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L117",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "List"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "list",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L118",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "List"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_liquiditypool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_liquiditypool",
+      "target": "brush",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L125",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "Brush"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "list",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L129",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "List"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onstatechange",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_loadhistoricalmacrodata",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L222",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackmss",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L294",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackfvgs",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L317",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackliquidity",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L512",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_tracksessions",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L538",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_readmacrostate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L643",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_executeentries",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L704",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "target": "order",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "metadata": {
+        "ref_token": "Order"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "target": "orderstate",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "metadata": {
+        "ref_token": "OrderState"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "target": "1m_eval_4_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onorderupdate",
+      "target": "errorcode",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L835",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "metadata": {
+        "ref_token": "ErrorCode"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_getnearestliquiditytarget",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L851",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onstatechange",
+      "target": "atr",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onstatechange",
+      "target": "ema",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onstatechange",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_loadhistoricalmacrodata",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackmss",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_readmacrostate",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L240",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_tracksessions",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L287",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackliquidity",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L288",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_trackfvgs",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L289",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_onbarupdate",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_executeentries",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L290",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_executeentries",
+      "target": "1m_eval_4_ninjatrader_ninjascript_strategies_1m_eval_4_getnearestliquiditytarget",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "1m_eval_4.cs",
+      "source_location": "L735",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "system",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "system_componentmodel",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L3",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.ComponentModel",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "system_componentmodel_dataannotations",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.ComponentModel.DataAnnotations",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "system_windows_media",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "System.Windows.Media",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_cbi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Cbi",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_data",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Data",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_gui",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.Gui",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_ninjascript",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_ninjascript_indicators",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L10",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript.Indicators",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "ninjatrader_ninjascript_drawingtools",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L11",
+      "weight": 1.0,
+      "metadata": {
+        "using_kind": "namespace",
+        "target_fqn": "NinjaTrader.NinjaScript.DrawingTools",
+        "scope_kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "csharp_namespace:6f0ae3b710c24da0",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq",
+      "target": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "strategy",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L16",
+      "weight": 1.0,
+      "metadata": {
+        "ref_token": "Strategy"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "sma",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "SMA"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "rsi",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "RSI"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_int",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "int"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_double",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L23",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "double"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onstatechange",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onbarupdate",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L230",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L235",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L240",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq",
+      "target": "stdvpo3nq_cs_datetime",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L245",
+      "weight": 1.0,
+      "context": "field",
+      "metadata": {
+        "ref_token": "DateTime"
+      },
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onstatechange",
+      "target": "sma",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "stdvpo3nq_ninjatrader_ninjascript_strategies_stdvpo3nq_onstatechange",
+      "target": "rsi",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "StdvPo3Nq.cs",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "cloudscraper",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "bs4",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "csv",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "datetime",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ff_historical_scraper",
+      "target": "ff_historical_scraper_scrape_forex_factory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ff_historical_scraper.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "yfinance",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "sklearn_ensemble",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "csv",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "datetime",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "ml_macro_predictor_build_features",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "ml_macro_predictor_train_model",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "ml_macro_predictor_predict_history",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "ml_macro_predictor",
+      "target": "ml_macro_predictor_merge_and_save",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ml_macro_predictor.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

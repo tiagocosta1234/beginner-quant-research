@@ -1,0 +1,2 @@
+brokerapi-py>=4.3.1
+python-dotenv>=1.0

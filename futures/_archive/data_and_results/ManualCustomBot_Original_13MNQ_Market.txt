@@ -1,0 +1,190 @@
+using NinjaTrader.Cbi;
+using NinjaTrader.Gui;
+using NinjaTrader.Gui.Chart;
+using NinjaTrader.Gui.Tools;
+using NinjaTrader.Data;
+using NinjaTrader.NinjaScript;
+using NinjaTrader.Core.FloatingPoint;
+using NinjaTrader.NinjaScript.DrawingTools;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Windows.Media;
+
+namespace NinjaTrader.NinjaScript.Strategies
+{
+    public class ManualCustomBot : Strategy
+    {
+        [NinjaScriptProperty]
+        [Range(1, 100)]
+        [Display(Name = "Contracts (MNQ)", Order = 1, GroupName = "1. Sprint Size")]
+        public int Contracts { get; set; }
+
+        [NinjaScriptProperty]
+        [Display(Name = "Loss Pause Filter", Order = 2, GroupName = "1. Sprint Size")]
+        public bool LossPauseFilter { get; set; }
+
+        [NinjaScriptProperty]
+        [Range(1.0, 10000.0)]
+        [Display(Name = "Daily Loss Limit ($)", Order = 1, GroupName = "2. Risk Management")]
+        public double DailyLossLimit { get; set; }
+
+        [NinjaScriptProperty]
+        [Range(1.0, 10000.0)]
+        [Display(Name = "Daily Profit Limit ($)", Order = 2, GroupName = "2. Risk Management")]
+        public double DailyProfitLimit { get; set; }
+        
+        [NinjaScriptProperty]
+        [Range(10.0, 10000.0)]
+        [Display(Name = "Stop Loss ($)", Order = 1, GroupName = "3. 5-Bar Anomaly")]
+        public double StopLossCurrency { get; set; }
+
+        [NinjaScriptProperty]
+        [Range(10.0, 10000.0)]
+        [Display(Name = "Take Profit ($)", Order = 2, GroupName = "3. 5-Bar Anomaly")]
+        public double TakeProfitCurrency { get; set; }
+
+        private double dailyRealizedPnL;
+        private double startOfDayCumProfit;
+        private bool hitDailyLimit;
+        private bool hitLossPause;
+        private int lastTradeCount;
+
+        protected override void OnStateChange()
+        {
+            if (State == State.SetDefaults)
+            {
+                Description                                 = @"15-Minute 5-Bar Anomaly (Pure 24/7 Inverted Momentum Sprint).";
+                Name                                        = "ManualCustomBot";
+                Calculate                                   = Calculate.OnBarClose;
+                EntriesPerDirection                         = 1;
+                EntryHandling                               = EntryHandling.AllEntries;
+                IsExitOnSessionCloseStrategy                = true;
+                ExitOnSessionCloseSeconds                   = 30;
+                IsFillLimitOnTouch                          = false;
+                MaximumBarsLookBack                         = MaximumBarsLookBack.TwoHundredFiftySix;
+                OrderFillResolution                         = OrderFillResolution.Standard;
+                Slippage                                    = 2;
+                StartBehavior                               = StartBehavior.WaitUntilFlat;
+                TimeInForce                                 = TimeInForce.Gtc;
+                TraceOrders                                 = false;
+                RealtimeErrorHandling                       = RealtimeErrorHandling.StopCancelClose;
+                StopTargetHandling                          = StopTargetHandling.PerEntryExecution;
+                BarsRequiredToTrade                         = 20;
+                IsInstantiatedOnEachOptimizationIteration   = true;
+
+                Contracts                                   = 13;
+                LossPauseFilter                             = false;
+                DailyLossLimit                              = 1000.0;
+                DailyProfitLimit                            = 1000.0;
+                StopLossCurrency = 1040.0;
+                TakeProfitCurrency = 1040.0;
+            }
+            else if (State == State.DataLoaded)
+            {
+                dailyRealizedPnL = 0;
+                startOfDayCumProfit = 0;
+                hitDailyLimit = false;
+                hitLossPause = false;
+                lastTradeCount = 0;
+            }
+        }
+
+        protected override void OnBarUpdate()
+        {
+            if (CurrentBar < BarsRequiredToTrade) return;
+
+            if (Bars.IsFirstBarOfSession)
+            {
+                dailyRealizedPnL = 0;
+                hitDailyLimit = false;
+                hitLossPause = false;
+                startOfDayCumProfit = (SystemPerformance != null) ? SystemPerformance.AllTrades.TradesPerformance.Currency.CumProfit : 0;
+                lastTradeCount = (SystemPerformance != null) ? SystemPerformance.AllTrades.Count : 0;
+            }
+
+            if (SystemPerformance != null)
+            {
+                dailyRealizedPnL = SystemPerformance.AllTrades.TradesPerformance.Currency.CumProfit - startOfDayCumProfit;
+                
+                if (SystemPerformance.AllTrades.Count > lastTradeCount)
+                {
+                    Trade lastTrade = SystemPerformance.AllTrades[SystemPerformance.AllTrades.Count - 1];
+                    if (lastTrade.ProfitCurrency < 0) hitLossPause = true;
+                    lastTradeCount = SystemPerformance.AllTrades.Count;
+                }
+            }
+            
+            double currentDailyPnL = dailyRealizedPnL + (Position.MarketPosition != MarketPosition.Flat ? Position.GetUnrealizedProfitLoss(PerformanceUnit.Currency, Close[0]) : 0);
+            
+            if (!hitDailyLimit && (currentDailyPnL <= -DailyLossLimit || currentDailyPnL >= DailyProfitLimit))
+            {
+                hitDailyLimit = true;
+                if (Position.MarketPosition != MarketPosition.Flat)
+                {
+                    ExitLong("CircuitBreaker", "");
+                    ExitShort("CircuitBreaker", "");
+                }
+            }
+
+            UpdateChartDashboard();
+
+            bool isPausedForLoss = LossPauseFilter && hitLossPause;
+            if (hitDailyLimit || isPausedForLoss || Position.MarketPosition != MarketPosition.Flat) return;
+
+            // ====================================================================
+            // 15-MINUTE 5-BAR ANOMALY LOGIC (INVERTED - 24/7 MOMENTUM CONTINUATION)
+            // ====================================================================
+            bool is5BarDownAnomaly = true;
+            bool is5BarUpAnomaly = true;
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (Close[i] >= Open[i]) is5BarDownAnomaly = false;
+                if (Close[i] <= Open[i]) is5BarUpAnomaly = false;
+            }
+
+            double tickVal = Instrument.MasterInstrument.PointValue;
+            double stopPts = StopLossCurrency / (Contracts * tickVal);
+            double targetPts = TakeProfitCurrency / (Contracts * tickVal);
+            
+            // Ensure minimum distance of at least 1 tick
+            stopPts = Math.Max(stopPts, TickSize);
+            targetPts = Math.Max(targetPts, TickSize);
+
+            if (is5BarDownAnomaly)
+            {
+                SetStopLoss(CalculationMode.Price, Close[0] + stopPts);
+                SetProfitTarget(CalculationMode.Price, Close[0] - targetPts);
+                EnterShort(Contracts, "5_Bar_Anomaly_Short");
+            }
+            else if (is5BarUpAnomaly)
+            {
+                SetStopLoss(CalculationMode.Price, Close[0] - stopPts);
+                SetProfitTarget(CalculationMode.Price, Close[0] + targetPts);
+                EnterLong(Contracts, "5_Bar_Anomaly_Long");
+            }
+        }
+
+        private void UpdateChartDashboard()
+        {
+            if (State != State.Historical && State != State.Realtime) return;
+
+            string status = hitDailyLimit ? "LOCKED (Limit Hit)" : (hitLossPause ? "PAUSED (Loss Filter)" : "HUNTING ANOMALY");
+            double currentOpenPnL = Position.MarketPosition != MarketPosition.Flat ? Position.GetUnrealizedProfitLoss(PerformanceUnit.Currency, Close[0]) : 0;
+            double liveDailyPnL = dailyRealizedPnL + currentOpenPnL;
+
+            string dashboardText = string.Format(
+                "=== 24/7 PURE SPRINT ===\n" +
+                " Status: {0}\n" +
+                " Session PnL: ${1:F2}\n" +
+                " Target: 3 Massive Wins\n" +
+                "========================",
+                status, liveDailyPnL);
+
+            Draw.TextFixed(this, "ManualDashboard", dashboardText, TextPosition.TopRight, 
+                           Brushes.White, new Gui.Tools.SimpleFont("Consolas", 14), 
+                           Brushes.Black, Brushes.Magenta, 80);
+        }
+    }
+}

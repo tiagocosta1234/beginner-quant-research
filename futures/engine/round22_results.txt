@@ -1,0 +1,113 @@
+
+======================================================================
+Round 22: MNQ from futures\engine\..\data\MNQ_CONTINUOUS.txt
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+tpd_target=1 risk=$400: actual_tpd=1.00 n_trades_pooled=7622 exp/trade=$42.80 exp/day=$42.80 worst_day_maxdd(over 8 seeds, 6 folds)=$14592.04 tail10=16.467763137295837 tail20=29.68719133736509
+tpd_target=1 risk=$600: actual_tpd=1.00 n_trades_pooled=7622 exp/trade=$65.85 exp/day=$65.85 worst_day_maxdd(over 8 seeds, 6 folds)=$22933.88 tail10=16.338477911208532 tail20=29.730601857853017
+tpd_target=2 risk=$400: actual_tpd=1.52 n_trades_pooled=11619 exp/trade=$50.47 exp/day=$76.77 worst_day_maxdd(over 8 seeds, 6 folds)=$13911.90 tail10=11.080318077109764 tail20=18.62767034632072
+tpd_target=2 risk=$600: actual_tpd=1.52 n_trades_pooled=11619 exp/trade=$80.06 exp/day=$121.73 worst_day_maxdd(over 8 seeds, 6 folds)=$23238.71 tail10=11.028196265850067 tail20=18.49787006447154
+tpd_target=3 risk=$400: actual_tpd=1.86 n_trades_pooled=14199 exp/trade=$53.28 exp/day=$99.18 worst_day_maxdd(over 8 seeds, 6 folds)=$11342.60 tail10=8.547347099500088 tail20=14.865793096725987
+tpd_target=3 risk=$600: actual_tpd=1.86 n_trades_pooled=14199 exp/trade=$83.61 exp/day=$155.61 worst_day_maxdd(over 8 seeds, 6 folds)=$17549.92 tail10=8.484521688748998 tail20=14.874865083867942
+tpd_target=4 risk=$400: actual_tpd=2.14 n_trades_pooled=16278 exp/trade=$60.82 exp/day=$129.92 worst_day_maxdd(over 8 seeds, 6 folds)=$12723.66 tail10=8.69678623334646 tail20=14.137188357948144
+tpd_target=4 risk=$600: actual_tpd=2.14 n_trades_pooled=16278 exp/trade=$95.66 exp/day=$204.30 worst_day_maxdd(over 8 seeds, 6 folds)=$20203.70 tail10=8.599497613809412 tail20=14.052620368190691
+
+
+=== MNQ SUMMARY TABLE ($400/$600, headline comparison to Round 19/20) ===
+ tpd_target  risk  actual_tpd     n  exp_trade    exp_day  worst_day_maxdd    tail10    tail20
+          1   400    0.999738  7622  42.798665  42.798665     14592.042143 16.467763 29.687191
+          1   600    0.999738  7622  65.852658  65.852658     22933.875714 16.338478 29.730602
+          2   400    1.524003 11619  50.472322  76.768678     13911.899286 11.080318 18.627670
+          2   600    1.524003 11619  80.055684 121.734001     23238.707857 11.028196 18.497870
+          3   400    1.862408 14199  53.284748  99.182772     11342.603571  8.547347 14.865793
+          3   600    1.862408 14199  83.611893 155.606873     17549.920714  8.484522 14.874865
+          4   400    2.135100 16278  60.823888 129.916864     12723.659286  8.696786 14.137188
+          4   600    2.135100 16278  95.658322 204.295225     20203.700000  8.599498 14.052620
+
+
+=== BUFFER-SAFE SIZING SEARCH (per trades/day target) ===
+
+--- tpd_target=1 ---
+  [sizing] tpd=1 risk=$400: exp/day=$42.80 worst_day_maxdd=$14592.04 within_70pct_target=False
+  [sizing] tpd=1 risk=$300: exp/day=$30.64 worst_day_maxdd=$10702.52 within_70pct_target=False
+  [sizing] tpd=1 risk=$200: exp/day=$18.51 worst_day_maxdd=$7429.25 within_70pct_target=False
+  [sizing] tpd=1 risk=$150: exp/day=$13.98 worst_day_maxdd=$5597.41 within_70pct_target=False
+  [sizing] tpd=1 risk=$125: exp/day=$12.01 worst_day_maxdd=$5295.12 within_70pct_target=False
+  [sizing] tpd=1 risk=$100: exp/day=$11.07 worst_day_maxdd=$4972.36 within_70pct_target=False
+  [sizing] tpd=1 risk=$75: exp/day=$10.58 worst_day_maxdd=$4759.03 within_70pct_target=False
+  [sizing] tpd=1 risk=$50: exp/day=$10.63 worst_day_maxdd=$4795.94 within_70pct_target=False
+  [sizing] tpd=1 risk=$25: exp/day=$10.54 worst_day_maxdd=$4795.94 within_70pct_target=False
+
+--- tpd_target=2 ---
+  [sizing] tpd=2 risk=$400: exp/day=$76.77 worst_day_maxdd=$13911.90 within_70pct_target=False
+  [sizing] tpd=2 risk=$300: exp/day=$55.05 worst_day_maxdd=$10524.31 within_70pct_target=False
+  [sizing] tpd=2 risk=$200: exp/day=$34.22 worst_day_maxdd=$8904.30 within_70pct_target=False
+  [sizing] tpd=2 risk=$150: exp/day=$26.44 worst_day_maxdd=$7513.97 within_70pct_target=False
+  [sizing] tpd=2 risk=$125: exp/day=$23.02 worst_day_maxdd=$6931.69 within_70pct_target=False
+  [sizing] tpd=2 risk=$100: exp/day=$21.00 worst_day_maxdd=$6702.00 within_70pct_target=False
+  [sizing] tpd=2 risk=$75: exp/day=$20.55 worst_day_maxdd=$6354.34 within_70pct_target=False
+  [sizing] tpd=2 risk=$50: exp/day=$20.15 worst_day_maxdd=$6354.34 within_70pct_target=False
+  [sizing] tpd=2 risk=$25: exp/day=$19.96 worst_day_maxdd=$6354.34 within_70pct_target=False
+
+--- tpd_target=3 ---
+  [sizing] tpd=3 risk=$400: exp/day=$99.18 worst_day_maxdd=$11342.60 within_70pct_target=False
+  [sizing] tpd=3 risk=$300: exp/day=$71.88 worst_day_maxdd=$8671.89 within_70pct_target=False
+  [sizing] tpd=3 risk=$200: exp/day=$45.42 worst_day_maxdd=$5762.13 within_70pct_target=False
+  [sizing] tpd=3 risk=$150: exp/day=$35.74 worst_day_maxdd=$4131.04 within_70pct_target=False
+  [sizing] tpd=3 risk=$125: exp/day=$32.27 worst_day_maxdd=$3566.15 within_70pct_target=False
+  [sizing] tpd=3 risk=$100: exp/day=$30.27 worst_day_maxdd=$3698.75 within_70pct_target=False
+  [sizing] tpd=3 risk=$75: exp/day=$28.82 worst_day_maxdd=$3512.90 within_70pct_target=False
+  [sizing] tpd=3 risk=$50: exp/day=$28.36 worst_day_maxdd=$3558.80 within_70pct_target=False
+  [sizing] tpd=3 risk=$25: exp/day=$28.06 worst_day_maxdd=$3558.80 within_70pct_target=False
+
+--- tpd_target=4 ---
+  [sizing] tpd=4 risk=$400: exp/day=$129.92 worst_day_maxdd=$12723.66 within_70pct_target=False
+  [sizing] tpd=4 risk=$300: exp/day=$93.34 worst_day_maxdd=$10664.54 within_70pct_target=False
+  [sizing] tpd=4 risk=$200: exp/day=$59.77 worst_day_maxdd=$5691.34 within_70pct_target=False
+  [sizing] tpd=4 risk=$150: exp/day=$46.97 worst_day_maxdd=$4678.37 within_70pct_target=False
+  [sizing] tpd=4 risk=$125: exp/day=$41.48 worst_day_maxdd=$4217.93 within_70pct_target=False
+  [sizing] tpd=4 risk=$100: exp/day=$38.22 worst_day_maxdd=$3893.38 within_70pct_target=False
+  [sizing] tpd=4 risk=$75: exp/day=$37.52 worst_day_maxdd=$3830.12 within_70pct_target=False
+  [sizing] tpd=4 risk=$50: exp/day=$37.42 worst_day_maxdd=$3856.94 within_70pct_target=False
+  [sizing] tpd=4 risk=$25: exp/day=$37.49 worst_day_maxdd=$3838.56 within_70pct_target=False
+
+
+=== FULL SIZING TABLE ===
+ tpd_target  risk     n  exp_trade    exp_day  worst_day_maxdd  within_70pct_target
+          1   400  7622  42.798665  42.798665     14592.042143                False
+          1   300  7622  30.635511  30.635511     10702.517143                False
+          1   200  7622  18.506843  18.506843      7429.245714                False
+          1   150  7622  13.976701  13.976701      5597.410714                False
+          1   125  7622  12.005798  12.005798      5295.117857                False
+          1   100  7622  11.066141  11.066141      4972.355000                False
+          1    75  7622  10.579890  10.579890      4759.028571                False
+          1    50  7622  10.626427  10.626427      4795.935714                False
+          1    25  7622  10.544338  10.544338      4795.935714                False
+          2   400 11619  50.472322  76.768678     13911.899286                False
+          2   300 11619  36.201209  55.049868     10524.307857                False
+          2   200 11619  22.515951  34.223327      8904.296429                False
+          2   150 11619  17.395131  26.438691      7513.973571                False
+          2   125 11619  15.149669  23.021594      6931.695000                False
+          2   100 11619  13.822933  21.000917      6701.997143                False
+          2    75 11619  13.523361  20.550120      6354.337143                False
+          2    50 11619  13.260530  20.149077      6354.337143                False
+          2    25 11619  13.138168  19.963193      6354.337143                False
+          3   400 14199  53.284748  99.182772     11342.603571                False
+          3   300 14199  38.626162  71.882025      8671.888571                False
+          3   200 14199  24.412151  45.422114      5762.133571                False
+          3   150 14199  19.213229  35.743629      4131.036429                False
+          3   125 14199  17.348266  32.269862      3566.145000                False
+          3   100 14199  16.271528  30.268255      3698.749286                False
+          3    75 14199  15.493314  28.815420      3512.900714                False
+          3    50 14199  15.247493  28.359393      3558.801429                False
+          3    25 14199  15.084856  28.057506      3558.801429                False
+          4   400 16278  60.823888 129.916864     12723.659286                False
+          4   300 16278  43.707903  93.341458     10664.542857                False
+          4   200 16278  27.988817  59.773609      5691.337143                False
+          4   150 16278  21.986834  46.967385      4678.370000                False
+          4   125 16278  19.414109  41.477220      4217.927143                False
+          4   100 16278  17.893882  38.222099      3893.377857                False
+          4    75 16278  17.566362  37.519288      3830.118571                False
+          4    50 16278  17.518331  37.421637      3856.944286                False
+          4    25 16278  17.548827  37.486606      3838.561429                False
+
+DONE.

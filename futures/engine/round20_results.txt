@@ -1,0 +1,78 @@
+Loading MNQ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+Entry 1 (FVG-confirm + weekly-bias): 650 raw -> 649 with valid ATR stop
+Entry 2 (1H EMA slope): 991 raw -> 991 with valid ATR stop
+
+=== ENTRY 1: FVG-confirmation + weekly-bias (Round 18 Level B) + ATR-trailing exit: 649 entries ===
+  2024-01-01->2024-07-01 n=79 win%=39.2% exp=$6.69 total=$528.27 maxdd=$5861.01 breach=True
+  2024-07-01->2025-01-01 n=98 win%=34.7% exp=$66.28 total=$6495.82 maxdd=$3413.54 breach=False
+  2025-01-01->2025-07-01 n=79 win%=34.2% exp=$-12.06 total=$-952.62 maxdd=$3580.54 breach=False
+  2025-07-01->2026-01-01 n=89 win%=40.4% exp=$94.33 total=$8395.23 maxdd=$2580.89 breach=False
+  2026-01-01->2026-07-01 n=88 win%=36.4% exp=$22.59 total=$1987.62 maxdd=$3250.34 breach=False
+  2026-07-01->2026-09-16 n=35 win%=34.3% exp=$49.30 total=$1725.35 maxdd=$1993.89 breach=False
+  AGGREGATE risk=$400 n=468 exp=$38.85 total=$18179.67 win%=36.8% folds_breaching=1/6 worst_maxdd=$5861.01 tail10=128.1% tail20=213.1%
+  2024-01-01->2024-07-01 n=79 win%=39.2% exp=$8.28 total=$654.32 maxdd=$9297.58 breach=True
+  2024-07-01->2025-01-01 n=98 win%=34.7% exp=$96.34 total=$9441.17 maxdd=$5548.33 breach=True
+  2025-01-01->2025-07-01 n=79 win%=34.2% exp=$-7.40 total=$-584.85 maxdd=$5174.01 breach=True
+  2025-07-01->2026-01-01 n=89 win%=40.4% exp=$159.52 total=$14197.14 maxdd=$4148.74 breach=False
+  2026-01-01->2026-07-01 n=88 win%=36.4% exp=$31.73 total=$2792.66 maxdd=$5183.48 breach=True
+  2026-07-01->2026-09-16 n=35 win%=34.3% exp=$90.06 total=$3151.96 maxdd=$3411.74 breach=False
+  AGGREGATE risk=$600 n=468 exp=$63.36 total=$29652.40 win%=36.8% folds_breaching=4/6 worst_maxdd=$9297.58 tail10=123.1% tail20=204.1%
+
+=== ENTRY 2: 1H EMA-slope trend (simple) + ATR-trailing exit: 991 entries ===
+  2024-01-01->2024-07-01 n=126 win%=37.3% exp=$-31.10 total=$-3919.21 maxdd=$13085.64 breach=True
+  2024-07-01->2025-01-01 n=135 win%=34.8% exp=$68.59 total=$9260.08 maxdd=$4355.19 breach=False
+  2025-01-01->2025-07-01 n=140 win%=42.9% exp=$70.40 total=$9855.83 maxdd=$3118.84 breach=False
+  2025-07-01->2026-01-01 n=138 win%=41.3% exp=$81.95 total=$11309.04 maxdd=$5221.95 breach=True
+  2026-01-01->2026-07-01 n=127 win%=37.8% exp=$36.64 total=$4652.87 maxdd=$4283.02 breach=False
+  2026-07-01->2026-09-16 n=55 win%=36.4% exp=$43.01 total=$2365.45 maxdd=$2268.12 breach=False
+  AGGREGATE risk=$400 n=721 exp=$46.50 total=$33524.07 win%=38.7% folds_breaching=2/6 worst_maxdd=$13085.64 tail10=74.5% tail20=126.3%
+  2024-01-01->2024-07-01 n=126 win%=37.3% exp=$-57.11 total=$-7195.68 maxdd=$21515.21 breach=True
+  2024-07-01->2025-01-01 n=135 win%=34.8% exp=$111.57 total=$15062.17 maxdd=$6465.12 breach=True
+  2025-01-01->2025-07-01 n=140 win%=42.9% exp=$125.92 total=$17629.46 maxdd=$5048.67 breach=True
+  2025-07-01->2026-01-01 n=138 win%=41.3% exp=$133.14 total=$18373.66 maxdd=$7924.97 breach=True
+  2026-01-01->2026-07-01 n=127 win%=37.8% exp=$57.40 total=$7290.33 maxdd=$6829.26 breach=True
+  2026-07-01->2026-09-16 n=55 win%=36.4% exp=$98.26 total=$5404.31 maxdd=$3710.41 breach=False
+  AGGREGATE risk=$600 n=721 exp=$78.45 total=$56564.25 win%=38.7% folds_breaching=5/6 worst_maxdd=$21515.21 tail10=70.8% tail20=120.5%
+
+
+### PART 1 SUMMARY: real entries vs Round 19's random-entry baseline ###
+Round 19 random baseline (8-seed mean): risk=$400 exp=$66.27 std=$21.15 tail10=11.9% tail20=21.5% worst_maxdd~$10,404-16,053 (range across seeds/folds)
+Round 19 random baseline (8-seed mean): risk=$600 exp=$103.31 tail10=12.0% tail20=21.6%
+  Entry 1 (FVG+weekly-bias) risk=$400: n=468 exp=$38.85 win%=36.8% worst_maxdd=$5861.01 folds_breaching=1/6
+  Entry 1 (FVG+weekly-bias) risk=$600: n=468 exp=$63.36 win%=36.8% worst_maxdd=$9297.58 folds_breaching=4/6
+  Entry 2 (1H EMA slope) risk=$400: n=721 exp=$46.50 win%=38.7% worst_maxdd=$13085.64 folds_breaching=2/6
+  Entry 2 (1H EMA slope) risk=$600: n=721 exp=$78.45 win%=38.7% worst_maxdd=$21515.21 folds_breaching=5/6
+
+
+### PART 2: buffer-safe sizing for best-performing config: Entry 2 (1H EMA slope) (exp@$400=$46.50) ###
+
+=== Buffer-safe sizing search (target worst maxdd <= $3456.25 = 70% of $4937.50 buffer) ===
+  risk=$400: n=721 exp=$46.50 worst_maxdd=$13085.64 within_target=False
+  risk=$300: n=721 exp=$36.42 worst_maxdd=$9444.28 within_target=False
+  risk=$250: n=721 exp=$27.51 worst_maxdd=$8478.15 within_target=False
+  risk=$200: n=721 exp=$23.19 worst_maxdd=$5431.56 within_target=False
+  risk=$150: n=721 exp=$22.35 worst_maxdd=$4085.97 within_target=False
+  risk=$125: n=721 exp=$23.26 worst_maxdd=$3840.72 within_target=False
+  risk=$100: n=721 exp=$22.21 worst_maxdd=$3556.37 within_target=False
+  risk=$75: n=721 exp=$22.09 worst_maxdd=$3643.44 within_target=False
+  risk=$50: n=721 exp=$22.26 worst_maxdd=$3643.44 within_target=False
+No candidate risk level found whose worst-fold maxdd clears the buffer-safe target even at very small size -- worth noting explicitly rather than silently failing.
+
+DONE
+
+
+=== PART 2 (corrected): buffer-safe sizing for RANDOM entry + ATR-trailing (the actual best-performing, cleanest candidate per Part 1's real-entries-underperform finding) ===
+Target: worst-fold maxdd <= $3456.25 (70% of $4937.50 buffer), averaged across 8 seeds per risk level for a stable estimate.
+  risk=$400: mean_exp=$66.27 (across 8 seeds) mean_worst_maxdd=$7609.21 max_worst_maxdd_any_seed=$10403.81 within_target(using max-over-seeds)=False
+  risk=$300: mean_exp=$46.72 (across 8 seeds) mean_worst_maxdd=$5855.07 max_worst_maxdd_any_seed=$7758.45 within_target(using max-over-seeds)=False
+  risk=$250: mean_exp=$39.77 (across 8 seeds) mean_worst_maxdd=$4679.42 max_worst_maxdd_any_seed=$6210.25 within_target(using max-over-seeds)=False
+  risk=$200: mean_exp=$30.77 (across 8 seeds) mean_worst_maxdd=$3804.63 max_worst_maxdd_any_seed=$4757.95 within_target(using max-over-seeds)=False
+  risk=$150: mean_exp=$25.56 (across 8 seeds) mean_worst_maxdd=$3134.74 max_worst_maxdd_any_seed=$3595.73 within_target(using max-over-seeds)=False
+  risk=$125: mean_exp=$23.13 (across 8 seeds) mean_worst_maxdd=$3033.82 max_worst_maxdd_any_seed=$3666.32 within_target(using max-over-seeds)=False
+  risk=$100: mean_exp=$21.16 (across 8 seeds) mean_worst_maxdd=$2925.37 max_worst_maxdd_any_seed=$3465.21 within_target(using max-over-seeds)=False
+  risk=$75: mean_exp=$20.47 (across 8 seeds) mean_worst_maxdd=$2903.33 max_worst_maxdd_any_seed=$3382.30 within_target(using max-over-seeds)=True
+  risk=$50: mean_exp=$20.10 (across 8 seeds) mean_worst_maxdd=$2903.67 max_worst_maxdd_any_seed=$3382.30 within_target(using max-over-seeds)=True
+
+Buffer-safe risk level: $75/trade, mean_exp=$20.47/trade across seeds, worst-case (max over seeds) drawdown=$3382.30 (within 70% margin of $4937.50 buffer)
+Required pace: $767-1,279/trade. This closes 2.7%-1.6% of that pace.

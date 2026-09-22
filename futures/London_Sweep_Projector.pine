@@ -1,0 +1,85 @@
+//@version=5
+indicator("BrokerAPI London Sweep Projector", overlay=true, max_boxes_count=500, max_labels_count=500)
+
+// =====================================================================
+// 1. RISK & TICKER SETTINGS
+// =====================================================================
+riskAmount = input.float(1000.0, "Max Risk Per Trade ($)", tooltip="Locked to $1k to prevent DLL breach")
+pointValue = input.float(20.0, "Contract Point Value", tooltip="NQ=20 | MNQ=2 | GC=100")
+forwardBars = input.int(10, "Projection Width (Bars)")
+
+// =====================================================================
+// 2. LONDON SESSION RANGE MAPPING (EST)
+// =====================================================================
+lonSession = input.session("0300-0800", "London Session")
+inSession = not na(time(timeframe.period, lonSession, "America/New_York"))
+
+var float lonHigh = na
+var float lonLow = na
+
+if inSession and not inSession[1]
+    lonHigh := high
+    lonLow := low
+else if inSession
+    lonHigh := math.max(lonHigh, high)
+    lonLow := math.min(lonLow, low)
+
+// Plot the Session Liquidity Pools
+plot(not inSession ? lonHigh : na, color=color.new(color.blue, 50), style=plot.style_linebr, title="London High")
+plot(not inSession ? lonLow : na, color=color.new(color.fuchsia, 50), style=plot.style_linebr, title="London Low")
+
+// =====================================================================
+// 3. VWAP & INSTITUTIONAL TRIGGERS
+// =====================================================================
+vwapValue = ta.vwap(hlc3)
+plot(vwapValue, color=color.new(color.orange, 0), title="Daily VWAP")
+
+// Fair Value Gap (FVG) Detection
+bullFVG = low[0] > high[2] and close[1] > open[1]
+bearFVG = high[0] < low[2] and close[1] < open[1]
+
+// =====================================================================
+// 4. SETUP LOGIC & VISUAL RENDERER
+// =====================================================================
+postLondon = not inSession and time > timestamp("America/New_York", year, month, day, 8, 0)
+var int lastTradeBar = 0
+
+// SHORT SETUP: Swept London High -> Closed back below -> Printed Bear FVG -> VWAP is below
+sweptHigh = ta.highest(high, 5) > lonHigh
+bearSetup = postLondon and sweptHigh and bearFVG and close < lonHigh and vwapValue < close and (bar_index - lastTradeBar > 10)
+
+// LONG SETUP: Swept London Low -> Closed back above -> Printed Bull FVG -> VWAP is above
+sweptLow = ta.lowest(low, 5) < lonLow
+bullSetup = postLondon and sweptLow and bullFVG and close > lonLow and vwapValue > close and (bar_index - lastTradeBar > 10)
+
+if bearSetup
+    lastTradeBar := bar_index
+    entryPrice   = close
+    stopPrice    = ta.highest(high, 5) + (2 * syminfo.mintick) // Tight SL above the sweep wick
+    targetPrice  = vwapValue                                   // Mean Revert to VWAP
+    
+    riskPoints   = stopPrice - entryPrice
+    contracts    = riskAmount / (riskPoints * pointValue)
+    
+    if riskPoints > 0 and targetPrice < entryPrice
+        // Render TP/SL Projection Boxes
+        box.new(bar_index, entryPrice, bar_index + forwardBars, targetPrice, bgcolor=color.new(color.green, 85), border_color=color.green)
+        box.new(bar_index, stopPrice, bar_index + forwardBars, entryPrice, bgcolor=color.new(color.red, 85), border_color=color.red)
+        label.new(bar_index, stopPrice, "SHORT\nSize: " + str.tostring(contracts, "#.##") + "c", style=label.style_label_down, color=color.black, textcolor=color.white, size=size.small)
+        alert("SHORT Setup Rendered! Check chart geometry.", alert.freq_once_per_bar)
+
+if bullSetup
+    lastTradeBar := bar_index
+    entryPrice   = close
+    stopPrice    = ta.lowest(low, 5) - (2 * syminfo.mintick) // Tight SL below the sweep wick
+    targetPrice  = vwapValue                                 // Mean Revert to VWAP
+    
+    riskPoints   = entryPrice - stopPrice
+    contracts    = riskAmount / (riskPoints * pointValue)
+    
+    if riskPoints > 0 and targetPrice > entryPrice
+        // Render TP/SL Projection Boxes
+        box.new(bar_index, targetPrice, bar_index + forwardBars, entryPrice, bgcolor=color.new(color.green, 85), border_color=color.green)
+        box.new(bar_index, entryPrice, bar_index + forwardBars, stopPrice, bgcolor=color.new(color.red, 85), border_color=color.red)
+        label.new(bar_index, stopPrice, "LONG\nSize: " + str.tostring(contracts, "#.##") + "c", style=label.style_label_up, color=color.black, textcolor=color.white, size=size.small)
+        alert("LONG Setup Rendered! Check chart geometry.", alert.freq_once_per_bar)

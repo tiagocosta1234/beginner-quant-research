@@ -1,0 +1,9 @@
+{
+    "SwingStrength": 18,
+    "MinSweepTicks": 5,
+    "MaxSweepTicks": 30,
+    "MaxSweepDurationBars": 1,
+    "StopLossPoints": 29,
+    "TakeProfitPoints": 38,
+    "ExpectedProfit": 9944.48000000001
+}

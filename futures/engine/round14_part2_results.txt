@@ -1,0 +1,327 @@
+
+
+################ MNQ ################
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+MNQ: 25724 15m bars; vol-regime series 773 days (2023-10-17 00:00:00 -> 2026-09-15 00:00:00)
+  [MNQ n=20 z=1.5 mode=reversion] n=969 quick-screen(rr=1.5,$400) exp=$3.87
+  [MNQ n=20 z=1.5 mode=momentum] n=969 quick-screen(rr=1.5,$400) exp=$-5.56
+  [MNQ n=20 z=2.5 mode=reversion] n=762 quick-screen(rr=1.5,$400) exp=$-26.58
+  [MNQ n=20 z=2.5 mode=momentum] n=762 quick-screen(rr=1.5,$400) exp=$1.70
+  [MNQ n=40 z=1.5 mode=reversion] n=889 quick-screen(rr=1.5,$400) exp=$-1.63
+  [MNQ n=40 z=1.5 mode=momentum] n=889 quick-screen(rr=1.5,$400) exp=$-4.90
+  [MNQ n=40 z=2.5 mode=reversion] n=472 quick-screen(rr=1.5,$400) exp=$8.60
+  [MNQ n=40 z=2.5 mode=momentum] n=472 quick-screen(rr=1.5,$400) exp=$-17.37
+
+---- MNQ: full walk-forward on every screened config (n_lookback x z_threshold x mode) ----
+-- MNQ n_lookback=20 z_thr=1.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=125 win%=40.8% exp=$13.27 total=$1658.56 maxdd=$4001.25 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=134 win%=34.3% exp=$4.77 total=$638.75 maxdd=$4829.64 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=133 win%=36.8% exp=$49.37 total=$6565.63 maxdd=$6984.32 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=134 win%=29.9% exp=$-27.55 total=$-3692.00 maxdd=$8529.00 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=127 win%=30.7% exp=$-6.27 total=$-795.97 maxdd=$3885.58 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=51 win%=33.3% exp=$-10.05 total=$-512.45 maxdd=$2685.00 breach=False
+  AGGREGATE n=704 total=$3862.52 exp=$5.49 win%=34.4% tail10=207.26609006329048 tail20=408.41670781297813
+-- MNQ n_lookback=20 z_thr=1.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=125 win%=40.8% exp=$20.07 total=$2508.91 maxdd=$6659.47 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=134 win%=34.3% exp=$9.50 total=$1272.95 maxdd=$7520.45 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=133 win%=36.8% exp=$79.44 total=$10565.05 maxdd=$10268.65 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=134 win%=29.9% exp=$-46.98 total=$-6295.28 maxdd=$13783.15 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=127 win%=30.7% exp=$1.20 total=$152.03 maxdd=$5868.47 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=51 win%=33.3% exp=$2.99 total=$152.67 maxdd=$3596.49 breach=False
+  AGGREGATE n=704 total=$8356.33 exp=$11.87 win%=34.4% tail10=140.48295487327988 tail20=279.5420099587421
+-- MNQ n_lookback=20 z_thr=1.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=125 win%=41.6% exp=$8.34 total=$1043.00 maxdd=$4818.39 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=134 win%=42.5% exp=$26.69 total=$3577.11 maxdd=$4026.74 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=133 win%=39.1% exp=$-16.67 total=$-2217.64 maxdd=$6894.36 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=134 win%=38.8% exp=$-9.63 total=$-1290.30 maxdd=$4852.46 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=34.6% exp=$-37.41 total=$-4750.68 maxdd=$6645.23 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=51 win%=43.1% exp=$26.26 total=$1339.46 maxdd=$2802.22 breach=False
+  AGGREGATE n=704 total=$-2299.05 exp=$-3.27 win%=39.6% tail10=None tail20=None
+-- MNQ n_lookback=20 z_thr=1.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=125 win%=41.6% exp=$15.39 total=$1923.59 maxdd=$7455.36 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=134 win%=42.5% exp=$35.52 total=$4759.82 maxdd=$7118.45 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=133 win%=39.1% exp=$-25.89 total=$-3442.82 maxdd=$10735.26 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=134 win%=38.8% exp=$-6.29 total=$-843.34 maxdd=$7471.58 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=34.6% exp=$-68.04 total=$-8641.22 maxdd=$11041.66 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=51 win%=43.1% exp=$34.92 total=$1781.08 maxdd=$3963.44 breach=False
+  AGGREGATE n=704 total=$-4462.89 exp=$-6.34 win%=39.6% tail10=None tail20=None
+-- MNQ n_lookback=20 z_thr=2.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=98 win%=38.8% exp=$-1.43 total=$-139.68 maxdd=$4990.81 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=101 win%=23.8% exp=$-115.93 total=$-11708.83 maxdd=$12704.68 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=104 win%=35.6% exp=$50.56 total=$5258.75 maxdd=$3713.99 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=113 win%=31.9% exp=$-19.65 total=$-2220.72 maxdd=$6613.61 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=101 win%=28.7% exp=$-25.52 total=$-2577.41 maxdd=$4725.10 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=38 win%=39.5% exp=$70.92 total=$2694.92 maxdd=$2871.43 breach=False
+  AGGREGATE n=555 total=$-8692.97 exp=$-15.66 win%=32.3% tail10=None tail20=None
+-- MNQ n_lookback=20 z_thr=2.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=98 win%=38.8% exp=$-6.57 total=$-643.79 maxdd=$8156.32 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=101 win%=23.8% exp=$-170.02 total=$-17172.10 maxdd=$19219.48 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=104 win%=35.6% exp=$73.44 total=$7637.84 maxdd=$6257.38 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=113 win%=31.9% exp=$-22.22 total=$-2510.34 maxdd=$9509.57 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=101 win%=28.7% exp=$-41.57 total=$-4198.12 maxdd=$8005.28 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=38 win%=39.5% exp=$134.61 total=$5115.11 maxdd=$4121.78 breach=False
+  AGGREGATE n=555 total=$-11771.40 exp=$-21.21 win%=32.3% tail10=None tail20=None
+-- MNQ n_lookback=20 z_thr=2.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=98 win%=35.7% exp=$-52.97 total=$-5190.79 maxdd=$6432.01 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=101 win%=46.5% exp=$51.95 total=$5246.89 maxdd=$2410.00 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=104 win%=38.5% exp=$-30.17 total=$-3137.32 maxdd=$6718.19 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=113 win%=43.4% exp=$41.33 total=$4669.85 maxdd=$4495.05 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=101 win%=35.6% exp=$-26.59 total=$-2685.66 maxdd=$6785.70 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=38 win%=42.1% exp=$2.23 total=$84.60 maxdd=$2660.14 breach=False
+  AGGREGATE n=555 total=$-1012.44 exp=$-1.82 win%=40.2% tail10=None tail20=None
+-- MNQ n_lookback=20 z_thr=2.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=98 win%=35.7% exp=$-74.85 total=$-7335.72 maxdd=$9211.47 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=101 win%=46.5% exp=$71.49 total=$7219.99 maxdd=$3756.42 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=104 win%=38.5% exp=$-41.87 total=$-4354.30 maxdd=$10712.37 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=113 win%=43.4% exp=$63.11 total=$7131.20 maxdd=$7218.51 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=101 win%=35.6% exp=$-47.97 total=$-4844.64 maxdd=$10775.54 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=38 win%=42.1% exp=$0.20 total=$7.71 maxdd=$4105.23 breach=False
+  AGGREGATE n=555 total=$-2175.75 exp=$-3.92 win%=40.2% tail10=None tail20=None
+-- MNQ n_lookback=40 z_thr=1.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=111 win%=41.4% exp=$23.61 total=$2620.80 maxdd=$4722.88 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=119 win%=37.0% exp=$-32.82 total=$-3906.13 maxdd=$7859.14 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=122 win%=28.7% exp=$-23.64 total=$-2884.22 maxdd=$9169.57 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=120 win%=34.2% exp=$28.55 total=$3426.21 maxdd=$5954.66 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=122 win%=32.8% exp=$14.53 total=$1772.42 maxdd=$3446.52 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=50 win%=40.0% exp=$59.18 total=$2958.85 maxdd=$1790.38 breach=False
+  AGGREGATE n=644 total=$3987.94 exp=$6.19 win%=35.1% tail10=200.65751872029784 tail20=394.87927071483824
+-- MNQ n_lookback=40 z_thr=1.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=111 win%=41.4% exp=$32.51 total=$3609.06 maxdd=$7745.54 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=119 win%=37.0% exp=$-52.11 total=$-6201.01 maxdd=$12400.15 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=122 win%=28.7% exp=$-53.07 total=$-6474.97 maxdd=$14596.59 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=120 win%=34.2% exp=$45.95 total=$5514.26 maxdd=$9489.40 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=122 win%=32.8% exp=$26.93 total=$3285.98 maxdd=$5259.39 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=50 win%=40.0% exp=$113.70 total=$5685.00 maxdd=$2434.10 breach=False
+  AGGREGATE n=644 total=$5418.33 exp=$8.41 win%=35.1% tail10=216.65773315091758 tail20=430.9916624327996
+-- MNQ n_lookback=40 z_thr=1.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=111 win%=28.8% exp=$-47.38 total=$-5259.61 maxdd=$7964.92 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=119 win%=41.2% exp=$10.60 total=$1261.80 maxdd=$2768.83 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=122 win%=43.4% exp=$13.44 total=$1639.19 maxdd=$4055.74 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=120 win%=40.0% exp=$7.08 total=$849.89 maxdd=$3929.11 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=122 win%=36.1% exp=$-20.93 total=$-2553.51 maxdd=$5668.56 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=50 win%=34.0% exp=$11.31 total=$565.28 maxdd=$1958.72 breach=False
+  AGGREGATE n=644 total=$-3496.96 exp=$-5.43 win%=37.7% tail10=None tail20=None
+-- MNQ n_lookback=40 z_thr=1.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=111 win%=36.0% exp=$-59.17 total=$-6567.51 maxdd=$10851.40 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=119 win%=41.2% exp=$15.69 total=$1867.11 maxdd=$4348.45 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=122 win%=43.4% exp=$23.45 total=$2861.12 maxdd=$6517.65 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=120 win%=40.0% exp=$17.68 total=$2122.07 maxdd=$6010.38 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=122 win%=36.1% exp=$-39.93 total=$-4872.00 maxdd=$9448.75 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=50 win%=42.0% exp=$16.79 total=$839.60 maxdd=$2940.32 breach=False
+  AGGREGATE n=644 total=$-3749.60 exp=$-5.82 win%=39.6% tail10=None tail20=None
+-- MNQ n_lookback=40 z_thr=2.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=64 win%=43.8% exp=$50.23 total=$3214.80 maxdd=$3139.98 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=61 win%=37.7% exp=$-32.14 total=$-1960.26 maxdd=$3662.14 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=66 win%=28.8% exp=$-13.01 total=$-858.43 maxdd=$4474.00 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=69 win%=37.7% exp=$59.92 total=$4134.40 maxdd=$3758.83 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=62 win%=22.6% exp=$-81.40 total=$-5046.62 maxdd=$8756.55 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=31 win%=61.3% exp=$172.23 total=$5339.10 maxdd=$1142.76 breach=False
+  AGGREGATE n=353 total=$4822.99 exp=$13.66 win%=36.5% tail10=164.66249073448202 tail20=319.7486443277287
+-- MNQ n_lookback=40 z_thr=2.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=64 win%=43.8% exp=$70.46 total=$4509.18 maxdd=$5110.67 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=61 win%=37.7% exp=$-41.08 total=$-2505.65 maxdd=$4917.67 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=66 win%=28.8% exp=$-51.05 total=$-3369.49 maxdd=$8208.88 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=69 win%=37.7% exp=$98.01 total=$6762.64 maxdd=$5822.03 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=62 win%=22.6% exp=$-136.54 total=$-8465.75 maxdd=$14228.95 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=31 win%=61.3% exp=$281.51 total=$8726.79 maxdd=$1811.65 breach=False
+  AGGREGATE n=353 total=$5657.72 exp=$16.03 win%=36.5% tail10=205.27226848086391 tail20=402.5179770283469
+-- MNQ n_lookback=40 z_thr=2.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=64 win%=28.1% exp=$-60.18 total=$-3851.49 maxdd=$4958.46 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=61 win%=34.4% exp=$10.48 total=$639.15 maxdd=$3820.30 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=66 win%=33.3% exp=$-7.11 total=$-468.96 maxdd=$3712.74 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=69 win%=24.6% exp=$-74.92 total=$-5169.60 maxdd=$7185.00 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=62 win%=37.1% exp=$36.97 total=$2292.31 maxdd=$2525.35 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=31 win%=12.9% exp=$-206.47 total=$-6400.58 maxdd=$6198.02 breach=True
+  AGGREGATE n=353 total=$-12959.17 exp=$-36.71 win%=29.7% tail10=None tail20=None
+-- MNQ n_lookback=40 z_thr=2.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=64 win%=28.1% exp=$-87.31 total=$-5587.98 maxdd=$7278.60 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=61 win%=34.4% exp=$14.20 total=$866.42 maxdd=$6090.79 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=66 win%=33.3% exp=$10.23 total=$675.47 maxdd=$5764.63 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=69 win%=24.6% exp=$-113.04 total=$-7799.72 maxdd=$10654.70 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=62 win%=37.1% exp=$66.27 total=$4108.96 maxdd=$4214.90 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=31 win%=12.9% exp=$-332.40 total=$-10304.31 maxdd=$10169.11 breach=True
+  AGGREGATE n=353 total=$-18041.16 exp=$-51.11 win%=29.7% tail10=None tail20=None
+
+---- MNQ: vol-regime filter (mid-tercile, 33rd-67th pct) applied to best screened config n_lookback=40 z_thr=2.5 mode=reversion ----
+  vol-filtered signal count: 116 (from 472 unfiltered)
+-- MNQ VOL-FILTERED n_lookback=40 z_thr=2.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=27 win%=48.1% exp=$97.18 total=$2623.84 maxdd=$1341.14 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=11 win%=45.5% exp=$23.76 total=$261.39 maxdd=$929.21 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=16 win%=43.8% exp=$35.49 total=$567.87 maxdd=$1511.22 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=19 win%=31.6% exp=$-62.42 total=$-1185.91 maxdd=$1887.75 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=16 win%=43.8% exp=$28.17 total=$450.73 maxdd=$1118.51 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=4 win%=50.0% exp=$127.87 total=$511.48 maxdd=$202.99 breach=False
+  AGGREGATE n=93 total=$3229.39 exp=$34.72 win%=43.0% tail10=178.18992955332467 tail20=348.0951749001932
+-- MNQ VOL-FILTERED n_lookback=40 z_thr=2.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=27 win%=48.1% exp=$138.16 total=$3730.41 maxdd=$2074.89 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=11 win%=45.5% exp=$41.01 total=$451.12 maxdd=$1241.04 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=16 win%=43.8% exp=$28.57 total=$457.14 maxdd=$2423.00 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=19 win%=31.6% exp=$-90.52 total=$-1719.80 maxdd=$2911.57 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=16 win%=43.8% exp=$46.11 total=$737.72 maxdd=$1713.16 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=4 win%=50.0% exp=$210.46 total=$841.83 maxdd=$405.98 breach=False
+  AGGREGATE n=93 total=$4498.42 exp=$48.37 win%=43.0% tail10=193.91730777811657 tail20=379.6303526937332
+
+
+################ MGC ################
+MGC: 1271123 1m bars, 2023-01-02 23:01:00 -> 2026-09-10 04:00:00
+MGC: 85414 15m bars; vol-regime series 953 days (2023-09-10 00:00:00 -> 2026-09-10 00:00:00)
+  [MGC n=20 z=1.5 mode=reversion] n=1082 quick-screen(rr=1.5,$400) exp=$-52.88
+  [MGC n=20 z=1.5 mode=momentum] n=1082 quick-screen(rr=1.5,$400) exp=$-66.71
+  [MGC n=20 z=2.5 mode=reversion] n=961 quick-screen(rr=1.5,$400) exp=$-50.54
+  [MGC n=20 z=2.5 mode=momentum] n=961 quick-screen(rr=1.5,$400) exp=$-51.79
+  [MGC n=40 z=1.5 mode=reversion] n=1018 quick-screen(rr=1.5,$400) exp=$-44.03
+  [MGC n=40 z=1.5 mode=momentum] n=1018 quick-screen(rr=1.5,$400) exp=$-29.91
+  [MGC n=40 z=2.5 mode=reversion] n=935 quick-screen(rr=1.5,$400) exp=$-33.99
+  [MGC n=40 z=2.5 mode=momentum] n=935 quick-screen(rr=1.5,$400) exp=$-42.41
+
+---- MGC: full walk-forward on every screened config (n_lookback x z_threshold x mode) ----
+-- MGC n_lookback=20 z_thr=1.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=146 win%=31.5% exp=$-106.44 total=$-15540.71 maxdd=$17266.17 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=150 win%=40.7% exp=$-63.94 total=$-9590.36 maxdd=$12640.09 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=152 win%=36.8% exp=$-67.43 total=$-10249.58 maxdd=$13374.47 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=145 win%=40.7% exp=$-29.37 total=$-4259.02 maxdd=$9886.46 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=148 win%=41.9% exp=$11.93 total=$1765.39 maxdd=$4105.42 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=60 win%=41.7% exp=$-9.35 total=$-561.28 maxdd=$4343.17 breach=False
+  AGGREGATE n=801 total=$-38435.56 exp=$-47.98 win%=38.6% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=1.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=146 win%=31.5% exp=$-159.22 total=$-23245.48 maxdd=$25879.93 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=150 win%=40.7% exp=$-94.87 total=$-14230.41 maxdd=$18849.88 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=152 win%=36.8% exp=$-103.42 total=$-15719.45 maxdd=$20396.26 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=145 win%=40.7% exp=$-37.94 total=$-5501.34 maxdd=$15004.61 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=148 win%=41.9% exp=$17.47 total=$2585.86 maxdd=$7346.19 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=60 win%=41.7% exp=$-10.96 total=$-657.31 maxdd=$6549.42 breach=True
+  AGGREGATE n=801 total=$-56768.13 exp=$-70.87 win%=38.6% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=1.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=146 win%=30.1% exp=$-120.11 total=$-17535.35 maxdd=$19904.94 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=150 win%=38.0% exp=$-88.96 total=$-13344.64 maxdd=$14236.91 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=152 win%=46.7% exp=$22.87 total=$3476.85 maxdd=$8517.69 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=145 win%=38.6% exp=$-38.82 total=$-5628.85 maxdd=$9494.21 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=148 win%=33.8% exp=$-5.72 total=$-846.86 maxdd=$8675.22 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=60 win%=35.0% exp=$-63.24 total=$-3794.31 maxdd=$6328.74 breach=True
+  AGGREGATE n=801 total=$-37673.17 exp=$-47.03 win%=37.3% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=1.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=146 win%=30.1% exp=$-181.65 total=$-26521.41 maxdd=$30060.98 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=150 win%=38.0% exp=$-135.27 total=$-20289.87 maxdd=$21587.32 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=152 win%=46.7% exp=$33.04 total=$5021.45 maxdd=$12856.90 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=145 win%=38.6% exp=$-62.39 total=$-9047.23 maxdd=$15018.55 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=148 win%=33.8% exp=$-6.96 total=$-1030.11 maxdd=$14602.87 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=60 win%=35.0% exp=$-94.51 total=$-5670.71 maxdd=$9785.80 breach=True
+  AGGREGATE n=801 total=$-57537.88 exp=$-71.83 win%=37.3% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=2.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=134 win%=32.8% exp=$-72.86 total=$-9762.92 maxdd=$16991.75 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=131 win%=34.4% exp=$-47.61 total=$-6236.77 maxdd=$13762.23 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=136 win%=30.1% exp=$-123.19 total=$-16754.04 maxdd=$16839.03 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=124 win%=38.7% exp=$-38.32 total=$-4751.94 maxdd=$7291.66 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=131 win%=40.5% exp=$-8.51 total=$-1115.13 maxdd=$4609.83 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=34.0% exp=$-69.38 total=$-3677.37 maxdd=$3855.28 breach=False
+  AGGREGATE n=709 total=$-42298.17 exp=$-59.66 win%=35.1% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=2.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=134 win%=32.8% exp=$-108.00 total=$-14471.68 maxdd=$25538.57 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=131 win%=34.4% exp=$-70.56 total=$-9244.01 maxdd=$20659.47 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=136 win%=30.1% exp=$-191.60 total=$-26056.97 maxdd=$26184.47 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=124 win%=38.7% exp=$-56.84 total=$-7047.73 maxdd=$11187.68 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=131 win%=40.5% exp=$-10.22 total=$-1339.38 maxdd=$6926.83 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=34.0% exp=$-111.11 total=$-5889.03 maxdd=$6048.60 breach=True
+  AGGREGATE n=709 total=$-64048.80 exp=$-90.34 win%=35.1% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=2.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=134 win%=39.6% exp=$-75.57 total=$-10126.60 maxdd=$15527.78 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=131 win%=35.1% exp=$-106.03 total=$-13890.56 maxdd=$13955.61 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=136 win%=41.9% exp=$-12.63 total=$-1717.97 maxdd=$6300.75 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=124 win%=41.9% exp=$-1.82 total=$-225.19 maxdd=$5887.03 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=131 win%=39.7% exp=$-13.49 total=$-1766.56 maxdd=$6240.11 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=49.1% exp=$66.08 total=$3502.10 maxdd=$2703.67 breach=False
+  AGGREGATE n=709 total=$-24224.78 exp=$-34.17 win%=40.3% tail10=None tail20=None
+-- MGC n_lookback=20 z_thr=2.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=134 win%=39.6% exp=$-116.71 total=$-15638.64 maxdd=$23815.13 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=131 win%=35.1% exp=$-161.67 total=$-21178.68 maxdd=$21260.37 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=136 win%=41.9% exp=$-16.20 total=$-2203.40 maxdd=$9568.64 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=124 win%=41.9% exp=$-3.75 total=$-464.45 maxdd=$9077.54 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=131 win%=39.7% exp=$-21.20 total=$-2777.77 maxdd=$10725.10 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=49.1% exp=$103.34 total=$5477.22 maxdd=$3743.59 breach=False
+  AGGREGATE n=709 total=$-36785.73 exp=$-51.88 win%=40.3% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=1.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=132 win%=44.7% exp=$-28.02 total=$-3699.15 maxdd=$8590.78 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=140 win%=37.1% exp=$-79.33 total=$-11106.08 maxdd=$16061.94 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=143 win%=36.4% exp=$-69.89 total=$-9994.98 maxdd=$12961.60 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=141 win%=32.6% exp=$-33.13 total=$-4671.30 maxdd=$6430.52 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=143 win%=41.3% exp=$2.15 total=$307.90 maxdd=$4454.76 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=57 win%=40.4% exp=$-10.05 total=$-572.59 maxdd=$2964.78 breach=False
+  AGGREGATE n=756 total=$-29736.20 exp=$-39.33 win%=38.5% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=1.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=132 win%=44.7% exp=$-43.41 total=$-5729.76 maxdd=$13206.41 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=140 win%=37.1% exp=$-122.61 total=$-17166.02 maxdd=$24668.79 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=143 win%=36.4% exp=$-108.73 total=$-15549.01 maxdd=$20040.67 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=141 win%=32.6% exp=$-55.41 total=$-7813.16 maxdd=$10139.13 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=143 win%=41.3% exp=$8.62 total=$1233.19 maxdd=$6343.50 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=57 win%=40.4% exp=$-12.98 total=$-739.65 maxdd=$4585.81 breach=False
+  AGGREGATE n=756 total=$-45764.40 exp=$-60.53 win%=38.5% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=1.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=132 win%=33.3% exp=$-72.96 total=$-9630.65 maxdd=$10468.92 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=140 win%=37.9% exp=$-1.88 total=$-262.94 maxdd=$5793.40 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=143 win%=37.8% exp=$14.82 total=$2119.20 maxdd=$7499.34 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=141 win%=38.3% exp=$25.39 total=$3579.56 maxdd=$6505.07 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=143 win%=37.8% exp=$42.16 total=$6028.97 maxdd=$3629.77 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=57 win%=31.6% exp=$-20.67 total=$-1178.16 maxdd=$4356.27 breach=False
+  AGGREGATE n=756 total=$655.98 exp=$0.87 win%=36.6% tail10=1211.2198053970085 tail20=2377.438434805056
+-- MGC n_lookback=40 z_thr=1.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=132 win%=33.3% exp=$-109.78 total=$-14490.69 maxdd=$15783.96 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=140 win%=37.9% exp=$-2.90 total=$-405.56 maxdd=$8821.45 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=143 win%=37.8% exp=$25.44 total=$3637.99 maxdd=$11060.08 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=141 win%=38.3% exp=$44.87 total=$6327.12 maxdd=$10218.51 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=143 win%=37.8% exp=$54.39 total=$7777.16 maxdd=$5961.10 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=57 win%=31.6% exp=$-39.11 total=$-2229.43 maxdd=$7015.91 breach=True
+  AGGREGATE n=756 total=$616.60 exp=$0.82 win%=36.6% tail10=1893.1471810759465 tail20=3768.4656339709027
+-- MGC n_lookback=40 z_thr=2.5 mode=reversion risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=129 win%=28.7% exp=$-111.68 total=$-14406.57 maxdd=$19338.90 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=127 win%=32.3% exp=$-62.22 total=$-7901.66 maxdd=$9897.81 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=128 win%=26.6% exp=$-95.26 total=$-12193.71 maxdd=$16683.77 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=129 win%=39.5% exp=$43.55 total=$5617.44 maxdd=$4818.46 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=125 win%=29.6% exp=$-45.52 total=$-5689.73 maxdd=$7226.29 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=53 win%=34.0% exp=$4.06 total=$215.44 maxdd=$2574.13 breach=False
+  AGGREGATE n=691 total=$-34358.79 exp=$-49.72 win%=31.5% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=2.5 mode=reversion risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=129 win%=28.7% exp=$-166.24 total=$-21444.84 maxdd=$29074.11 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=127 win%=32.3% exp=$-93.65 total=$-11893.65 maxdd=$15051.84 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=128 win%=26.6% exp=$-145.91 total=$-18676.82 maxdd=$25462.64 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=129 win%=39.5% exp=$76.17 total=$9826.49 maxdd=$7323.45 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=125 win%=29.6% exp=$-58.30 total=$-7286.89 maxdd=$9938.65 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=53 win%=34.0% exp=$3.76 total=$199.33 maxdd=$4107.07 breach=False
+  AGGREGATE n=691 total=$-49276.38 exp=$-71.31 win%=31.5% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=2.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=129 win%=45.7% exp=$-3.67 total=$-472.90 maxdd=$3824.05 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=39.4% exp=$-54.49 total=$-6920.19 maxdd=$9049.59 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=47.7% exp=$44.13 total=$5648.18 maxdd=$4647.08 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=36.4% exp=$-49.61 total=$-6399.34 maxdd=$8901.95 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=42.4% exp=$16.38 total=$2047.62 maxdd=$4206.79 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=47.2% exp=$59.01 total=$3127.76 maxdd=$2390.61 breach=False
+  AGGREGATE n=691 total=$-2968.86 exp=$-4.30 win%=42.7% tail10=None tail20=None
+-- MGC n_lookback=40 z_thr=2.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=129 win%=45.7% exp=$-7.07 total=$-912.49 maxdd=$5816.13 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=39.4% exp=$-82.89 total=$-10526.82 maxdd=$13904.32 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=47.7% exp=$68.43 total=$8759.36 maxdd=$7141.28 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=36.4% exp=$-79.01 total=$-10192.37 maxdd=$13834.06 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=42.4% exp=$16.60 total=$2075.33 maxdd=$7270.74 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=47.2% exp=$86.49 total=$4583.90 maxdd=$4012.21 breach=False
+  AGGREGATE n=691 total=$-6213.09 exp=$-8.99 win%=42.7% tail10=None tail20=None
+
+---- MGC: vol-regime filter (mid-tercile, 33rd-67th pct) applied to best screened config n_lookback=40 z_thr=1.5 mode=momentum ----
+  vol-filtered signal count: 302 (from 1018 unfiltered)
+-- MGC VOL-FILTERED n_lookback=40 z_thr=1.5 mode=momentum risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=38 win%=28.9% exp=$-135.09 total=$-5133.59 maxdd=$6087.32 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=52 win%=32.7% exp=$-67.71 total=$-3520.68 maxdd=$5364.65 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=58 win%=31.0% exp=$-66.02 total=$-3828.87 maxdd=$6904.07 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=36 win%=36.1% exp=$-15.90 total=$-572.39 maxdd=$3220.67 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=44 win%=29.5% exp=$-41.69 total=$-1834.51 maxdd=$3477.61 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=47 win%=25.5% exp=$-85.22 total=$-4005.37 maxdd=$6205.72 breach=True
+  AGGREGATE n=275 total=$-18895.42 exp=$-68.71 win%=30.5% tail10=None tail20=None
+-- MGC VOL-FILTERED n_lookback=40 z_thr=1.5 mode=momentum risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=38 win%=28.9% exp=$-203.10 total=$-7717.67 maxdd=$9162.43 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=52 win%=32.7% exp=$-100.90 total=$-5246.89 maxdd=$8153.51 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=58 win%=31.0% exp=$-97.54 total=$-5657.14 maxdd=$10519.13 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=36 win%=36.1% exp=$-6.63 total=$-238.69 maxdd=$4713.21 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=44 win%=29.5% exp=$-83.71 total=$-3683.19 maxdd=$6010.97 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=47 win%=25.5% exp=$-137.41 total=$-6458.14 maxdd=$9826.33 breach=True
+  AGGREGATE n=275 total=$-29001.71 exp=$-105.46 win%=30.5% tail10=None tail20=None
+
+
+################ Round 14 Part 2 complete ################

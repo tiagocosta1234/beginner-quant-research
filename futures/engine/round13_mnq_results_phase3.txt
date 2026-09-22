@@ -1,0 +1,84 @@
+Loading MNQ from ../data/MNQ_CONTINUOUS.txt ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+4H bars: 1947, significant gaps (>12 ticks): 972
+
+############ MNQ HTF=15m BestCombo(body=0.6,beyond=0.0): 951 base signals, 62 occur after a significant 4H gap ############
+-- BestCombo no-gap-filter HTF=15m risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=32.3% exp=$-20.37 total=$-2526.10 maxdd=$7684.11 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=20.9% exp=$-71.03 total=$-9163.42 maxdd=$9206.78 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=29.9% exp=$-24.73 total=$-3141.11 maxdd=$5683.95 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=130 win%=24.6% exp=$-69.82 total=$-9077.17 maxdd=$9255.15 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=29.1% exp=$-53.31 total=$-6770.17 maxdd=$7973.10 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-28.53 total=$-1540.59 maxdd=$3689.24 breach=False
+  AGGREGATE n=691 total=$-32218.56 exp=$-46.63 win%=27.5% tail10=None tail20=None
+-- BestCombo no-gap-filter HTF=15m risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=32.3% exp=$-28.04 total=$-3477.34 maxdd=$11591.12 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=20.9% exp=$-106.51 total=$-13740.00 maxdd=$13805.42 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=29.9% exp=$-12.16 total=$-1544.56 maxdd=$7504.83 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=130 win%=24.6% exp=$-100.79 total=$-13102.64 maxdd=$13483.40 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=29.1% exp=$-73.47 total=$-9331.20 maxdd=$10607.98 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-42.96 total=$-2320.00 maxdd=$5212.21 breach=True
+  AGGREGATE n=691 total=$-43515.74 exp=$-62.98 win%=27.5% tail10=None tail20=None
+
+FILL arm signal count: 24
+SKIPPED: sample size 24 < 50, insufficient for a 6-fold walk-forward read
+
+CONTINUATION arm signal count: 38
+SKIPPED: sample size 38 < 50, insufficient for a 6-fold walk-forward read
+
+############ MNQ HTF=30m BestCombo(body=0.75,beyond=0.15): 891 base signals, 248 occur after a significant 4H gap ############
+-- BestCombo no-gap-filter HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=115 win%=45.2% exp=$58.99 total=$6783.95 maxdd=$2606.10 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=122 win%=38.5% exp=$-3.49 total=$-425.28 maxdd=$4112.45 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=119 win%=33.6% exp=$49.44 total=$5883.44 maxdd=$2716.38 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=123 win%=25.2% exp=$-72.29 total=$-8891.08 maxdd=$12034.20 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=116 win%=29.3% exp=$-27.60 total=$-3201.52 maxdd=$7635.80 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=52 win%=26.9% exp=$-50.77 total=$-2639.86 maxdd=$3797.72 breach=False
+  AGGREGATE n=647 total=$-2490.35 exp=$-3.85 win%=33.7% tail10=None tail20=None
+-- BestCombo no-gap-filter HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=115 win%=45.2% exp=$88.07 total=$10127.71 maxdd=$4018.12 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=122 win%=38.5% exp=$-15.92 total=$-1942.51 maxdd=$6592.89 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=119 win%=33.6% exp=$69.17 total=$8231.06 maxdd=$4189.58 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=123 win%=25.2% exp=$-105.66 total=$-12996.66 maxdd=$17791.62 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=116 win%=29.3% exp=$-36.39 total=$-4221.58 maxdd=$11324.56 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=52 win%=26.9% exp=$-71.99 total=$-3743.62 maxdd=$5236.42 breach=True
+  AGGREGATE n=647 total=$-4545.60 exp=$-7.03 win%=33.7% tail10=None tail20=None
+
+FILL arm signal count: 129
+-- R3 GAP-FILL HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=27 win%=63.0% exp=$318.98 total=$8612.42 maxdd=$1337.22 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=17 win%=58.8% exp=$253.56 total=$4310.52 maxdd=$861.38 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=16 win%=37.5% exp=$80.41 total=$1286.50 maxdd=$1426.84 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=24 win%=33.3% exp=$-38.98 total=$-935.64 maxdd=$1743.78 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=15 win%=40.0% exp=$54.39 total=$815.78 maxdd=$2178.28 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=6 win%=16.7% exp=$-247.93 total=$-1487.60 maxdd=$1931.36 breach=False
+  AGGREGATE n=105 total=$12601.98 exp=$120.02 win%=45.7% tail10=61.05897644655838 tail20=120.50233376025032
+-- R3 GAP-FILL HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=27 win%=63.0% exp=$492.33 total=$13292.96 maxdd=$2028.82 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=17 win%=58.8% exp=$344.16 total=$5850.78 maxdd=$1305.94 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=16 win%=37.5% exp=$106.06 total=$1696.92 maxdd=$2533.74 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=24 win%=33.3% exp=$-63.13 total=$-1515.16 maxdd=$2627.44 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=15 win%=40.0% exp=$96.02 total=$1440.32 maxdd=$3047.02 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=6 win%=16.7% exp=$-324.57 total=$-1947.40 maxdd=$2834.92 breach=False
+  AGGREGATE n=105 total=$18818.42 exp=$179.22 win%=45.7% tail10=61.6185630887184 tail20=121.90779034584202
+
+CONTINUATION arm signal count: 119
+-- R3 GAP-CONTINUATION HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=19 win%=26.3% exp=$-41.61 total=$-790.68 maxdd=$2316.64 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=19 win%=36.8% exp=$-18.28 total=$-347.32 maxdd=$1456.72 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=15 win%=20.0% exp=$-144.93 total=$-2173.98 maxdd=$2745.66 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=12 win%=25.0% exp=$-120.75 total=$-1449.04 maxdd=$1988.70 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=15 win%=40.0% exp=$39.69 total=$595.30 maxdd=$985.38 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=9 win%=55.6% exp=$254.18 total=$2287.62 maxdd=$1355.38 breach=False
+  AGGREGATE n=89 total=$-1878.10 exp=$-21.10 win%=32.6% tail10=None tail20=None
+-- R3 GAP-CONTINUATION HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=19 win%=26.3% exp=$-49.74 total=$-944.98 maxdd=$3232.94 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=19 win%=36.8% exp=$-31.05 total=$-589.98 maxdd=$2200.28 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=15 win%=20.0% exp=$-231.73 total=$-3475.95 maxdd=$4316.43 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=12 win%=25.0% exp=$-165.65 total=$-1987.78 maxdd=$3066.66 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=15 win%=40.0% exp=$69.95 total=$1049.25 maxdd=$1616.06 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=9 win%=55.6% exp=$320.73 total=$2886.58 maxdd=$2061.06 breach=False
+  AGGREGATE n=89 total=$-3062.86 exp=$-34.41 win%=32.6% tail10=None tail20=None
+
+
+############ Round 13 Phase 3 complete ############

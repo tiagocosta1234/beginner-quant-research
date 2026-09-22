@@ -1,0 +1,14 @@
+{
+  "0": "_15m_eval_1",
+  "1": "_15m_eval_2",
+  "2": "_15m_live_1",
+  "3": "Broker 50k EOD Trailing Simulation",
+  "4": "NinjaTrader.NinjaScript.Strategies",
+  "5": "analyze_trades.py",
+  "6": "eval_stats.py",
+  "7": "simulate_trailing_stop.py",
+  "8": "_15m_eval_3",
+  "9": ".OnBarUpdate",
+  "10": "ATR",
+  "11": "LiquidityPool"
+}

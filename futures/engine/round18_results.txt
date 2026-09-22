@@ -1,0 +1,95 @@
+Loading MNQ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+FVGs detected (15m): 6602
+
+Level A signals (1/day): 951
+-- LEVEL A: base confirmation (0.60,0.0) risk=$400 --
+  2024-01-01->2024-07-01 sel=1.5 n=124 win%=32.3% exp=$-20.37 total=$-2526.10 maxdd=$7684.11 breach=True
+  2024-07-01->2025-01-01 sel=2.0 n=129 win%=20.9% exp=$-71.03 total=$-9163.42 maxdd=$9206.78 breach=True
+  2025-01-01->2025-07-01 sel=1.5 n=127 win%=29.9% exp=$-24.73 total=$-3141.11 maxdd=$5683.95 breach=True
+  2025-07-01->2026-01-01 sel=1.5 n=130 win%=24.6% exp=$-69.82 total=$-9077.17 maxdd=$9255.15 breach=True
+  2026-01-01->2026-07-01 sel=1.5 n=127 win%=29.1% exp=$-53.31 total=$-6770.17 maxdd=$7973.10 breach=True
+  2026-07-01->2026-09-16 sel=1.5 n=54 win%=29.6% exp=$-28.53 total=$-1540.59 maxdd=$3689.24 breach=False
+  AGGREGATE n=691 total=$-32218.56 exp=$-46.63 win%=27.5% tail10=None tail20=None
+
+-- LEVEL A: base confirmation (0.60,0.0) risk=$600 --
+  2024-01-01->2024-07-01 sel=1.5 n=124 win%=32.3% exp=$-28.04 total=$-3477.34 maxdd=$11591.12 breach=True
+  2024-07-01->2025-01-01 sel=2.0 n=129 win%=20.9% exp=$-106.51 total=$-13740.00 maxdd=$13805.42 breach=True
+  2025-01-01->2025-07-01 sel=1.5 n=127 win%=29.9% exp=$-12.16 total=$-1544.56 maxdd=$7504.83 breach=True
+  2025-07-01->2026-01-01 sel=1.5 n=130 win%=24.6% exp=$-100.79 total=$-13102.64 maxdd=$13483.40 breach=True
+  2026-01-01->2026-07-01 sel=1.5 n=127 win%=29.1% exp=$-73.47 total=$-9331.20 maxdd=$10607.98 breach=True
+  2026-07-01->2026-09-16 sel=1.5 n=54 win%=29.6% exp=$-42.96 total=$-2320.00 maxdd=$5212.21 breach=True
+  AGGREGATE n=691 total=$-43515.74 exp=$-62.98 win%=27.5% tail10=None tail20=None
+
+Level B signals (weekly-bias filtered): 650
+-- LEVEL B: A + weekly-bias filter risk=$400 --
+  2024-01-01->2024-07-01 sel=1.5 n=79 win%=36.7% exp=$36.97 total=$2920.41 maxdd=$2915.01 breach=False
+  2024-07-01->2025-01-01 sel=1.5 n=98 win%=33.7% exp=$16.17 total=$1585.05 maxdd=$2815.38 breach=False
+  2025-01-01->2025-07-01 sel=1.5 n=79 win%=31.6% exp=$-13.82 total=$-1091.91 maxdd=$3888.22 breach=False
+  2025-07-01->2026-01-01 sel=1.5 n=89 win%=23.6% exp=$-72.79 total=$-6478.44 maxdd=$7489.06 breach=True
+  2026-01-01->2026-07-01 sel=1.5 n=88 win%=29.5% exp=$-27.23 total=$-2396.33 maxdd=$5000.63 breach=True
+  2026-07-01->2026-09-16 sel=1.5 n=35 win%=34.3% exp=$19.59 total=$685.79 maxdd=$1849.61 breach=False
+  AGGREGATE n=468 total=$-4775.43 exp=$-10.20 win%=31.2% tail10=None tail20=None
+
+-- LEVEL B: A + weekly-bias filter risk=$600 --
+  2024-01-01->2024-07-01 sel=1.5 n=79 win%=36.7% exp=$51.31 total=$4053.47 maxdd=$4629.15 breach=False
+  2024-07-01->2025-01-01 sel=1.5 n=98 win%=33.7% exp=$10.79 total=$1057.04 maxdd=$4409.91 breach=False
+  2025-01-01->2025-07-01 sel=1.5 n=79 win%=31.6% exp=$6.96 total=$550.14 maxdd=$5532.98 breach=True
+  2025-07-01->2026-01-01 sel=1.5 n=89 win%=23.6% exp=$-103.60 total=$-9220.09 maxdd=$10709.16 breach=True
+  2026-01-01->2026-07-01 sel=1.5 n=88 win%=29.5% exp=$-34.17 total=$-3007.34 maxdd=$6301.11 breach=True
+  2026-07-01->2026-09-16 sel=1.5 n=35 win%=34.3% exp=$17.47 total=$611.31 maxdd=$2821.97 breach=False
+  AGGREGATE n=468 total=$-5955.47 exp=$-12.73 win%=31.2% tail10=None tail20=None
+
+  Level C candidate (br=0.6, bf=0.0): 650 signals after weekly-bias filter
+  Level C candidate (br=0.6, bf=0.15): 599 signals after weekly-bias filter
+  Level C candidate (br=0.75, bf=0.0): 651 signals after weekly-bias filter
+  Level C candidate (br=0.75, bf=0.15): 604 signals after weekly-bias filter
+-- LEVEL C: B + strictness grid (train-only per fold) risk=$400 --
+  2024-01-01->2024-07-01 sel=((0.6, 0.0), 1.5) n=79 win%=36.7% exp=$36.97 total=$2920.41 maxdd=$2915.01 breach=False
+  2024-07-01->2025-01-01 sel=((0.6, 0.0), 1.5) n=98 win%=33.7% exp=$16.17 total=$1585.05 maxdd=$2815.38 breach=False
+  2025-01-01->2025-07-01 sel=((0.6, 0.0), 1.5) n=79 win%=31.6% exp=$-13.82 total=$-1091.91 maxdd=$3888.22 breach=False
+  2025-07-01->2026-01-01 sel=((0.6, 0.0), 1.5) n=89 win%=23.6% exp=$-72.79 total=$-6478.44 maxdd=$7489.06 breach=True
+  2026-01-01->2026-07-01 sel=((0.6, 0.0), 1.5) n=88 win%=29.5% exp=$-27.23 total=$-2396.33 maxdd=$5000.63 breach=True
+  2026-07-01->2026-09-16 sel=((0.75, 0.0), 1.5) n=35 win%=37.1% exp=$33.44 total=$1170.43 maxdd=$2112.52 breach=False
+  AGGREGATE n=468 total=$-4290.79 exp=$-9.17 win%=31.4% tail10=None tail20=None
+
+-- LEVEL C: B + strictness grid (train-only per fold) risk=$600 --
+  2024-01-01->2024-07-01 sel=((0.6, 0.0), 1.5) n=79 win%=36.7% exp=$51.31 total=$4053.47 maxdd=$4629.15 breach=False
+  2024-07-01->2025-01-01 sel=((0.6, 0.0), 1.5) n=98 win%=33.7% exp=$10.79 total=$1057.04 maxdd=$4409.91 breach=False
+  2025-01-01->2025-07-01 sel=((0.6, 0.0), 1.5) n=79 win%=31.6% exp=$6.96 total=$550.14 maxdd=$5532.98 breach=True
+  2025-07-01->2026-01-01 sel=((0.6, 0.0), 1.5) n=89 win%=23.6% exp=$-103.60 total=$-9220.09 maxdd=$10709.16 breach=True
+  2026-01-01->2026-07-01 sel=((0.6, 0.0), 1.5) n=88 win%=29.5% exp=$-34.17 total=$-3007.34 maxdd=$6301.11 breach=True
+  2026-07-01->2026-09-16 sel=((0.6, 0.0), 1.5) n=35 win%=34.3% exp=$17.47 total=$611.31 maxdd=$2821.97 breach=False
+  AGGREGATE n=468 total=$-5955.47 exp=$-12.73 win%=31.2% tail10=None tail20=None
+
+  Level D candidate (br=0.6, bf=0.0, volq=0.0): 650 signals
+  Level D candidate (br=0.6, bf=0.0, volq=0.25): 526 signals
+  Level D candidate (br=0.6, bf=0.0, volq=0.5): 432 signals
+  Level D candidate (br=0.6, bf=0.15, volq=0.0): 599 signals
+  Level D candidate (br=0.6, bf=0.15, volq=0.25): 488 signals
+  Level D candidate (br=0.6, bf=0.15, volq=0.5): 400 signals
+  Level D candidate (br=0.75, bf=0.0, volq=0.0): 651 signals
+  Level D candidate (br=0.75, bf=0.0, volq=0.25): 527 signals
+  Level D candidate (br=0.75, bf=0.0, volq=0.5): 434 signals
+  Level D candidate (br=0.75, bf=0.15, volq=0.0): 604 signals
+  Level D candidate (br=0.75, bf=0.15, volq=0.25): 492 signals
+  Level D candidate (br=0.75, bf=0.15, volq=0.5): 403 signals
+-- LEVEL D: C + causal daily-ATR(14) volatility floor (train-only per fold) risk=$400 --
+  2024-01-01->2024-07-01 sel=((0.75, 0.0, 0.5), 1.5) n=37 win%=35.1% exp=$36.58 total=$1353.39 maxdd=$1959.89 breach=False
+  2024-07-01->2025-01-01 sel=((0.6, 0.15, 0.5), 2.0) n=73 win%=28.8% exp=$-24.30 total=$-1774.02 maxdd=$4525.96 breach=False
+  2025-01-01->2025-07-01 sel=((0.75, 0.0, 0.5), 1.5) n=75 win%=33.3% exp=$35.16 total=$2636.93 maxdd=$3084.51 breach=False
+  2025-07-01->2026-01-01 sel=((0.75, 0.15, 0.5), 2.0) n=57 win%=21.1% exp=$-73.71 total=$-4201.58 maxdd=$5082.26 breach=True
+  2026-01-01->2026-07-01 sel=((0.75, 0.15, 0.5), 2.0) n=84 win%=29.8% exp=$-19.71 total=$-1655.80 maxdd=$5132.34 breach=True
+  2026-07-01->2026-09-16 sel=((0.75, 0.0, 0.5), 1.5) n=35 win%=37.1% exp=$33.44 total=$1170.43 maxdd=$2112.52 breach=False
+  AGGREGATE n=361 total=$-2470.65 exp=$-6.84 win%=30.2% tail10=None tail20=None
+
+-- LEVEL D: C + causal daily-ATR(14) volatility floor (train-only per fold) risk=$600 --
+  2024-01-01->2024-07-01 sel=((0.75, 0.0, 0.5), 1.5) n=37 win%=35.1% exp=$54.13 total=$2002.84 maxdd=$3170.35 breach=False
+  2024-07-01->2025-01-01 sel=((0.6, 0.15, 0.5), 2.0) n=73 win%=28.8% exp=$-55.57 total=$-4056.28 maxdd=$8132.76 breach=True
+  2025-01-01->2025-07-01 sel=((0.6, 0.0, 0.5), 1.5) n=78 win%=32.1% exp=$13.41 total=$1045.86 maxdd=$5532.98 breach=True
+  2025-07-01->2026-01-01 sel=((0.75, 0.0, 0.5), 1.5) n=60 win%=23.3% exp=$-91.75 total=$-5504.78 maxdd=$6761.51 breach=True
+  2026-01-01->2026-07-01 sel=((0.75, 0.0, 0.5), 1.5) n=93 win%=32.3% exp=$-15.79 total=$-1468.56 maxdd=$6175.91 breach=True
+  2026-07-01->2026-09-16 sel=((0.75, 0.0, 0.5), 1.5) n=35 win%=37.1% exp=$45.48 total=$1591.77 maxdd=$2482.90 breach=False
+  AGGREGATE n=376 total=$-6389.15 exp=$-16.99 win%=30.9% tail10=None tail20=None
+
+DONE

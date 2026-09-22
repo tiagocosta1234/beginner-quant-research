@@ -1,0 +1,16 @@
+MNQ | Window: 09:30-10:30 | Trades: 13 | WR: 46.2% | PnL: $250.00
+MNQ | Window: 10:30-11:30 | Trades: 13 | WR: 38.5% | PnL: $100.00
+MNQ | Window: 13:30-14:30 | Trades: 24 | WR: 58.3% | PnL: $900.00
+MNQ | Window: 14:30-15:30 | Trades: 9 | WR: 88.9% | PnL: $677.00
+MES | Window: 09:30-10:30 | Trades: 12 | WR: 75.0% | PnL: $468.75
+MES | Window: 10:30-11:30 | Trades: 10 | WR: 70.0% | PnL: $343.75
+MES | Window: 13:30-14:30 | Trades: 25 | WR: 32.0% | PnL: $-31.25
+MES | Window: 14:30-15:30 | Trades: 12 | WR: 58.3% | PnL: $281.25
+MGC | Window: 09:30-10:30 | Trades: 4 | WR: 50.0% | PnL: $50.00
+MGC | Window: 10:30-11:30 | Trades: 3 | WR: 33.3% | PnL: $0.00
+MGC | Window: 13:30-14:30 | Trades: 7 | WR: 71.4% | PnL: $200.00
+MGC | Window: 14:30-15:30 | Trades: 5 | WR: 60.0% | PnL: $100.00
+MYM | Window: 09:30-10:30 | Trades: 11 | WR: 18.2% | PnL: $-125.00
+MYM | Window: 10:30-11:30 | Trades: 12 | WR: 25.0% | PnL: $-75.00
+MYM | Window: 13:30-14:30 | Trades: 24 | WR: 58.3% | PnL: $450.00
+MYM | Window: 14:30-15:30 | Trades: 8 | WR: 75.0% | PnL: $153.00

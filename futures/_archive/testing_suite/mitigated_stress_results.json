@@ -1,0 +1,67 @@
+[
+  {
+    "scenario_name": "1. Mitigated Baseline",
+    "mean_monthly_profit": 9517.18134623969,
+    "median_monthly_profit": 9528.125176801746,
+    "p_profitable_month": 99.96000000000001,
+    "p_10pct_month": 96.36416666666666,
+    "p_ruin": 0.03,
+    "median_max_dd": 1275.31285425237,
+    "p95_max_dd": 1972.9513436167022,
+    "p99_max_dd": 2411.403816696132,
+    "sharpe": 13.196985463270076,
+    "elapsed": 4.435649156570435
+  },
+  {
+    "scenario_name": "2. Mitigated Summer Chop (ADX Filter & Judas Fades Active)",
+    "mean_monthly_profit": 6228.44833427495,
+    "median_monthly_profit": 6218.392338502543,
+    "p_profitable_month": 99.465,
+    "p_10pct_month": 70.30166666666666,
+    "p_ruin": 0.2,
+    "median_max_dd": 1596.698906671474,
+    "p95_max_dd": 2534.1132465929104,
+    "p99_max_dd": 3069.651426747614,
+    "sharpe": 9.478314012630712,
+    "elapsed": 5.254275798797607
+  },
+  {
+    "scenario_name": "3. Mitigated Crisis Selloff (Vol-Normalized Sizing)",
+    "mean_monthly_profit": 6234.678909151689,
+    "median_monthly_profit": 6248.399962121583,
+    "p_profitable_month": 98.96083333333333,
+    "p_10pct_month": 69.7525,
+    "p_ruin": 0.63,
+    "median_max_dd": 1701.369692573906,
+    "p95_max_dd": 2704.3644778540297,
+    "p99_max_dd": 3388.4072277577657,
+    "sharpe": 9.174941564189115,
+    "elapsed": 5.073432922363281
+  },
+  {
+    "scenario_name": "4. Mitigated Correlation Breakdown (Liquidity Crisis rho=0.85)",
+    "mean_monthly_profit": 6815.85211460163,
+    "median_monthly_profit": 6818.090978359995,
+    "p_profitable_month": 99.53,
+    "p_10pct_month": 77.44166666666666,
+    "p_ruin": 0.27999999999999997,
+    "median_max_dd": 1590.1928778350848,
+    "p95_max_dd": 2503.58708032277,
+    "p99_max_dd": 3109.2575575918167,
+    "sharpe": 9.95940872399731,
+    "elapsed": 4.925827980041504
+  },
+  {
+    "scenario_name": "5. Mitigated Combined Extreme Stress (Chop + Crisis + rho=0.85)",
+    "mean_monthly_profit": 4374.368409452594,
+    "median_monthly_profit": 4417.336411607022,
+    "p_profitable_month": 94.78166666666667,
+    "p_10pct_month": 40.04916666666667,
+    "p_ruin": 3.38,
+    "median_max_dd": 2003.2779053415943,
+    "p95_max_dd": 3186.2679687209898,
+    "p99_max_dd": 4074.423276086371,
+    "sharpe": 7.095355718839069,
+    "elapsed": 4.6776862144470215
+  }
+]

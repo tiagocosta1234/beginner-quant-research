@@ -1,0 +1,116 @@
+Loading MNQ from ../data/MNQ_CONTINUOUS.txt ...
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+4H bars: 1947, significant gaps (>12 ticks): 972
+
+############ MNQ HTF=15m: 6602 FVGs ############
+
+=== REFINEMENT 1: stop placement, HTF=15m (body=0.60, beyond=0.0, matches Round 12 Arm B) ===
+signal counts: zone-edge=951 tight-stop=951
+-- R1 zone-edge-stop HTF=15m risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=32.3% exp=$-20.37 total=$-2526.10 maxdd=$7684.11 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=20.9% exp=$-71.03 total=$-9163.42 maxdd=$9206.78 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=29.9% exp=$-24.73 total=$-3141.11 maxdd=$5683.95 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=130 win%=24.6% exp=$-69.82 total=$-9077.17 maxdd=$9255.15 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=29.1% exp=$-53.31 total=$-6770.17 maxdd=$7973.10 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-28.53 total=$-1540.59 maxdd=$3689.24 breach=False
+  AGGREGATE n=691 total=$-32218.56 exp=$-46.63 win%=27.5% tail10=None tail20=None
+-- R1 zone-edge-stop HTF=15m risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=32.3% exp=$-28.04 total=$-3477.34 maxdd=$11591.12 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=20.9% exp=$-106.51 total=$-13740.00 maxdd=$13805.42 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=29.9% exp=$-12.16 total=$-1544.56 maxdd=$7504.83 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=130 win%=24.6% exp=$-100.79 total=$-13102.64 maxdd=$13483.40 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=29.1% exp=$-73.47 total=$-9331.20 maxdd=$10607.98 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-42.96 total=$-2320.00 maxdd=$5212.21 breach=True
+  AGGREGATE n=691 total=$-43515.74 exp=$-62.98 win%=27.5% tail10=None tail20=None
+-- R1 tight-stop HTF=15m risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=38.7% exp=$-110.73 total=$-13730.80 maxdd=$17414.62 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=30.2% exp=$-205.62 total=$-26524.56 maxdd=$29426.84 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=127 win%=39.4% exp=$-53.01 total=$-6732.68 maxdd=$10785.88 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=130 win%=36.9% exp=$-115.78 total=$-15051.14 maxdd=$15350.24 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=127 win%=29.1% exp=$-137.50 total=$-17462.40 maxdd=$18305.74 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=54 win%=37.0% exp=$-39.69 total=$-2143.22 maxdd=$5857.82 breach=True
+  AGGREGATE n=691 total=$-81644.80 exp=$-118.15 win%=35.0% tail10=None tail20=None
+-- R1 tight-stop HTF=15m risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=38.7% exp=$-166.50 total=$-20645.68 maxdd=$26169.50 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=30.2% exp=$-310.68 total=$-40078.06 maxdd=$44509.90 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=127 win%=39.4% exp=$-80.08 total=$-10170.74 maxdd=$16236.66 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=130 win%=36.9% exp=$-175.34 total=$-22794.26 maxdd=$23180.14 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=127 win%=29.1% exp=$-205.92 total=$-26152.30 maxdd=$27431.48 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=54 win%=37.0% exp=$-59.69 total=$-3223.02 maxdd=$8912.22 breach=True
+  AGGREGATE n=691 total=$-123064.06 exp=$-178.10 win%=35.0% tail10=None tail20=None
+
+=== REFINEMENT 2: confirmation strictness grid, HTF=15m (zone-edge stop) ===
+-- R2 strictness-grid HTF=15m risk=$400 --
+  2024-01-01->2024-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=124 win%=32.3% exp=$-22.37 total=$-2774.48 maxdd=$8843.96 breach=True
+  2024-07-01->2025-01-01 params(body,beyond,rr)=(0.75, 0.0, 1.5) n=129 win%=29.5% exp=$-35.73 total=$-4609.50 maxdd=$7552.59 breach=True
+  2025-01-01->2025-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=127 win%=29.1% exp=$-32.24 total=$-4094.24 maxdd=$5665.53 breach=True
+  2025-07-01->2026-01-01 params(body,beyond,rr)=(0.75, 0.15, 1.5) n=130 win%=26.9% exp=$-101.10 total=$-13143.22 maxdd=$13912.46 breach=True
+  2026-01-01->2026-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=127 win%=29.1% exp=$-55.62 total=$-7064.31 maxdd=$8180.24 breach=True
+  2026-07-01->2026-09-16 params(body,beyond,rr)=(0.75, 0.0, 1.5) n=54 win%=33.3% exp=$-12.31 total=$-664.79 maxdd=$3798.27 breach=False
+  AGGREGATE n=691 total=$-32350.54 exp=$-46.82 win%=29.7% tail10=None tail20=None
+-- R2 strictness-grid HTF=15m risk=$600 --
+  2024-01-01->2024-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=124 win%=32.3% exp=$-30.07 total=$-3728.79 maxdd=$13260.39 breach=True
+  2024-07-01->2025-01-01 params(body,beyond,rr)=(0.75, 0.0, 1.5) n=129 win%=29.5% exp=$-70.21 total=$-9056.64 maxdd=$11073.94 breach=True
+  2025-01-01->2025-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=127 win%=29.1% exp=$-25.98 total=$-3299.48 maxdd=$7421.56 breach=True
+  2025-07-01->2026-01-01 params(body,beyond,rr)=(0.75, 0.0, 1.5) n=130 win%=23.8% exp=$-109.83 total=$-14277.29 maxdd=$15598.15 breach=True
+  2026-01-01->2026-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=127 win%=29.1% exp=$-78.11 total=$-9919.68 maxdd=$11186.20 breach=True
+  2026-07-01->2026-09-16 params(body,beyond,rr)=(0.75, 0.0, 1.5) n=54 win%=33.3% exp=$-20.42 total=$-1102.67 maxdd=$4992.35 breach=True
+  AGGREGATE n=691 total=$-41384.55 exp=$-59.89 win%=29.1% tail10=None tail20=None
+
+############ MNQ HTF=30m: 4087 FVGs ############
+
+=== REFINEMENT 1: stop placement, HTF=30m (body=0.60, beyond=0.0, matches Round 12 Arm B) ===
+signal counts: zone-edge=937 tight-stop=937
+-- R1 zone-edge-stop HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=121 win%=33.1% exp=$-5.73 total=$-693.73 maxdd=$3746.96 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=29.1% exp=$-36.06 total=$-4579.08 maxdd=$7955.42 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=125 win%=30.4% exp=$-31.57 total=$-3946.86 maxdd=$6917.52 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=27.3% exp=$-67.74 total=$-8671.16 maxdd=$12681.84 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=29.6% exp=$-35.79 total=$-4473.41 maxdd=$6573.13 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=28.3% exp=$-76.42 total=$-4050.23 maxdd=$4330.94 breach=False
+  AGGREGATE n=679 total=$-26414.47 exp=$-38.90 win%=29.7% tail10=None tail20=None
+-- R1 zone-edge-stop HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=121 win%=33.1% exp=$-19.00 total=$-2299.43 maxdd=$6308.38 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=29.1% exp=$-65.48 total=$-8316.43 maxdd=$11635.86 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=125 win%=30.4% exp=$-40.16 total=$-5019.61 maxdd=$8509.61 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=27.3% exp=$-102.36 total=$-13102.48 maxdd=$18585.80 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=29.6% exp=$-41.50 total=$-5186.91 maxdd=$8318.00 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=28.3% exp=$-101.75 total=$-5392.82 maxdd=$5564.91 breach=True
+  AGGREGATE n=679 total=$-39317.68 exp=$-57.91 win%=29.7% tail10=None tail20=None
+-- R1 tight-stop HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=121 win%=47.9% exp=$-85.76 total=$-10376.54 maxdd=$12006.52 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=40.2% exp=$-149.86 total=$-19031.75 maxdd=$20525.81 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=125 win%=44.0% exp=$-74.83 total=$-9354.12 maxdd=$10879.23 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=46.9% exp=$-80.80 total=$-10342.41 maxdd=$10090.93 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=36.0% exp=$-121.61 total=$-15201.54 maxdd=$18127.26 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=22.6% exp=$-243.12 total=$-12885.58 maxdd=$14010.88 breach=True
+  AGGREGATE n=679 total=$-77191.94 exp=$-113.68 win%=41.4% tail10=None tail20=None
+-- R1 tight-stop HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=121 win%=47.9% exp=$-128.72 total=$-15574.83 maxdd=$18013.33 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=127 win%=40.2% exp=$-225.17 total=$-28597.08 maxdd=$30919.77 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=125 win%=44.0% exp=$-111.80 total=$-13975.01 maxdd=$16331.84 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=46.9% exp=$-121.86 total=$-15598.01 maxdd=$15220.79 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=125 win%=36.0% exp=$-184.16 total=$-23019.47 maxdd=$27491.61 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=53 win%=22.6% exp=$-370.22 total=$-19621.85 maxdd=$21269.29 breach=True
+  AGGREGATE n=679 total=$-116386.25 exp=$-171.41 win%=41.4% tail10=None tail20=None
+
+=== REFINEMENT 2: confirmation strictness grid, HTF=30m (zone-edge stop) ===
+-- R2 strictness-grid HTF=30m risk=$400 --
+  2024-01-01->2024-07-01 params(body,beyond,rr)=(0.5, 0.0, 1.5) n=120 win%=31.7% exp=$-28.03 total=$-3363.17 maxdd=$5084.59 breach=True
+  2024-07-01->2025-01-01 params(body,beyond,rr)=(0.75, 0.15, 1.5) n=122 win%=38.5% exp=$-3.49 total=$-425.28 maxdd=$4112.45 breach=False
+  2025-01-01->2025-07-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=119 win%=33.6% exp=$49.44 total=$5883.44 maxdd=$2716.38 breach=False
+  2025-07-01->2026-01-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=123 win%=25.2% exp=$-72.29 total=$-8891.08 maxdd=$12034.20 breach=True
+  2026-01-01->2026-07-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=116 win%=29.3% exp=$-27.60 total=$-3201.52 maxdd=$7635.80 breach=True
+  2026-07-01->2026-09-16 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=52 win%=26.9% exp=$-50.77 total=$-2639.86 maxdd=$3797.72 breach=False
+  AGGREGATE n=652 total=$-12637.47 exp=$-19.38 win%=31.3% tail10=None tail20=None
+-- R2 strictness-grid HTF=30m risk=$600 --
+  2024-01-01->2024-07-01 params(body,beyond,rr)=(0.75, 0.15, 1.5) n=115 win%=45.2% exp=$88.07 total=$10127.71 maxdd=$4018.12 breach=False
+  2024-07-01->2025-01-01 params(body,beyond,rr)=(0.75, 0.15, 1.5) n=122 win%=38.5% exp=$-15.92 total=$-1942.51 maxdd=$6592.89 breach=True
+  2025-01-01->2025-07-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=119 win%=33.6% exp=$69.17 total=$8231.06 maxdd=$4189.58 breach=False
+  2025-07-01->2026-01-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=123 win%=25.2% exp=$-105.66 total=$-12996.66 maxdd=$17791.62 breach=True
+  2026-01-01->2026-07-01 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=116 win%=29.3% exp=$-36.39 total=$-4221.58 maxdd=$11324.56 breach=True
+  2026-07-01->2026-09-16 params(body,beyond,rr)=(0.75, 0.15, 2.0) n=52 win%=26.9% exp=$-71.99 total=$-3743.62 maxdd=$5236.42 breach=True
+  AGGREGATE n=647 total=$-4545.60 exp=$-7.03 win%=33.7% tail10=None tail20=None
+
+
+############ Phase 1/2 complete for both HTFs -- see stdout above for best combo selection ############

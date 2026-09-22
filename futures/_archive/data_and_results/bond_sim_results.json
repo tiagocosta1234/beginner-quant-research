@@ -1,0 +1,9 @@
+{
+    "pass_rate": 99.18,
+    "ruin_rate": 0.8200000000000001,
+    "avg_days_to_pass": 21.947469247832224,
+    "median_days_to_pass": 21.0,
+    "p95_drawdown": 1432.5999999999767,
+    "win_pnl": 367.8,
+    "loss_pnl": -257.2
+}

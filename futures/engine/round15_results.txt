@@ -1,0 +1,271 @@
+
+
+################ MNQ: Round 15 seasonality ################
+MNQ: 371799 1m bars, 2022-12-12 09:30:00 -> 2026-09-15 16:00:00
+MNQ: session time-of-day range 570min -> 961min (09:30 -> 16:01)
+MNQ: 14 time-of-day buckets scanned x 2 directions = 28 hypotheses per fold (time-of-day part)
+
+---- MNQ: TIME-OF-DAY, per-fold training rank (top-3 reported individually) ----
+  fold train<2024-01-01: top-3 by train exp -> (bucket=570min dir=1 n=261 exp=$39.12), (bucket=900min dir=1 n=261 exp=$36.82), (bucket=930min dir=1 n=261 exp=$19.68)
+  fold train<2024-07-01: top-3 by train exp -> (bucket=900min dir=1 n=385 exp=$32.05), (bucket=570min dir=1 n=385 exp=$25.28), (bucket=720min dir=1 n=385 exp=$13.58)
+  fold train<2025-01-01: top-3 by train exp -> (bucket=570min dir=1 n=514 exp=$34.82), (bucket=720min dir=1 n=514 exp=$23.15), (bucket=900min dir=1 n=514 exp=$22.86)
+  fold train<2025-07-01: top-3 by train exp -> (bucket=570min dir=1 n=642 exp=$25.48), (bucket=900min dir=1 n=641 exp=$19.38), (bucket=720min dir=1 n=642 exp=$15.47)
+  fold train<2026-01-01: top-3 by train exp -> (bucket=570min dir=1 n=770 exp=$17.99), (bucket=750min dir=-1 n=770 exp=$11.85), (bucket=720min dir=1 n=771 exp=$8.71)
+  fold train<2026-07-01: top-3 by train exp -> (bucket=570min dir=1 n=897 exp=$14.46), (bucket=750min dir=-1 n=897 exp=$8.70), (bucket=720min dir=1 n=898 exp=$7.09)
+  PERSISTENCE CHECK: rank-1 window/direction across 6 folds = [(570, 1), (900, 1), (570, 1), (570, 1), (570, 1), (570, 1)]
+  -> 2 distinct rank-1 picks out of 6 folds (STABLE -- same pick recurs)
+
+  [MNQ TOD rank-1 bucket=570min dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ TOD rank-1 bucket=570min dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=32.3% exp=$-36.56 total=$-4533.27 maxdd=$5549.14 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=39.5% exp=$38.26 total=$4936.08 maxdd=$3600.35 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=39.8% exp=$-12.06 total=$-1543.46 maxdd=$7470.36 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=39.8% exp=$-19.58 total=$-2505.91 maxdd=$4417.39 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=39.4% exp=$-6.89 total=$-875.32 maxdd=$8105.59 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=54 win%=33.3% exp=$1.25 total=$67.61 maxdd=$2626.49 breach=False
+  AGGREGATE n=690 total=$-4454.27 exp=$-6.46 win%=37.8% tail10=None tail20=None
+-- MNQ TOD rank-1 bucket=570min dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=32.3% exp=$-59.63 total=$-7393.75 maxdd=$8878.01 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=39.5% exp=$54.15 total=$6984.72 maxdd=$6060.66 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=39.8% exp=$-18.99 total=$-2430.52 maxdd=$11731.50 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=128 win%=39.8% exp=$-34.05 total=$-4358.69 maxdd=$7007.16 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=39.4% exp=$-14.97 total=$-1900.72 maxdd=$12595.26 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=54 win%=33.3% exp=$-21.71 total=$-1172.39 maxdd=$4830.39 breach=False
+  AGGREGATE n=690 total=$-10271.34 exp=$-14.89 win%=37.8% tail10=None tail20=None
+
+  [MNQ TOD rank-2 bucket=750min dir=-1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ TOD rank-2 bucket=750min dir=-1 risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=46.8% exp=$46.88 total=$5812.64 maxdd=$3662.25 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=36.4% exp=$23.43 total=$3022.51 maxdd=$5999.99 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=39.4% exp=$-16.64 total=$-2112.95 maxdd=$6081.20 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=41.9% exp=$7.36 total=$948.87 maxdd=$3290.40 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=39.4% exp=$-10.39 total=$-1319.19 maxdd=$4391.14 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=46.3% exp=$37.77 total=$2039.62 maxdd=$2203.93 breach=False
+  AGGREGATE n=690 total=$8391.49 exp=$12.16 win%=41.2% tail10=92.45361714906558 tail20=183.4911745668999
+-- MNQ TOD rank-2 bucket=750min dir=-1 risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=124 win%=46.8% exp=$73.12 total=$9066.98 maxdd=$5528.73 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=129 win%=36.4% exp=$36.07 total=$4652.57 maxdd=$9446.41 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=127 win%=39.4% exp=$-32.96 total=$-4185.38 maxdd=$9637.38 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=41.9% exp=$5.61 total=$723.93 maxdd=$5108.53 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=39.4% exp=$-27.90 total=$-3543.16 maxdd=$7057.61 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=46.3% exp=$67.97 total=$3670.43 maxdd=$3202.01 breach=False
+  AGGREGATE n=690 total=$10385.37 exp=$15.05 win%=41.2% tail10=112.69255531973087 tail20=223.15196997865735
+
+  [MNQ TOD rank-3 bucket=720min dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ TOD rank-3 bucket=720min dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=33.1% exp=$-32.99 total=$-4090.65 maxdd=$4983.52 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=129 win%=46.5% exp=$51.71 total=$6670.79 maxdd=$3223.98 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=39.1% exp=$-15.36 total=$-1966.32 maxdd=$8338.91 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=39.5% exp=$-24.94 total=$-3217.00 maxdd=$8626.78 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=41.7% exp=$-2.74 total=$-347.38 maxdd=$6843.50 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-106.24 total=$-5736.73 maxdd=$6873.49 breach=True
+  AGGREGATE n=691 total=$-8687.29 exp=$-12.57 win%=39.2% tail10=None tail20=None
+-- MNQ TOD rank-3 bucket=720min dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=124 win%=33.1% exp=$-52.41 total=$-6499.08 maxdd=$7685.92 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=129 win%=46.5% exp=$75.81 total=$9779.99 maxdd=$4915.61 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=128 win%=39.1% exp=$-22.91 total=$-2932.15 maxdd=$12875.91 breach=True
+  2025-07-01->2026-01-01 rr=1.5 n=129 win%=39.5% exp=$-39.47 total=$-5092.27 maxdd=$12925.84 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=127 win%=41.7% exp=$7.80 total=$991.07 maxdd=$10608.85 breach=True
+  2026-07-01->2026-09-16 rr=1.5 n=54 win%=29.6% exp=$-169.97 total=$-9178.58 maxdd=$11323.61 breach=True
+  AGGREGATE n=691 total=$-12931.02 exp=$-18.71 win%=39.2% tail10=None tail20=None
+
+---- MNQ: DAY-OF-WEEK, per-fold training rank ----
+  fold train<2024-01-01: top-3 by train exp -> (Thu dir=1 n=55 exp=$107.47), (Tue dir=-1 n=52 exp=$81.15), (Wed dir=1 n=52 exp=$79.25)
+  fold train<2024-07-01: top-3 by train exp -> (Tue dir=-1 n=77 exp=$134.70), (Thu dir=1 n=81 exp=$110.97), (Wed dir=1 n=77 exp=$91.03)
+  fold train<2025-01-01: top-3 by train exp -> (Thu dir=1 n=107 exp=$125.81), (Tue dir=-1 n=104 exp=$72.51), (Wed dir=1 n=102 exp=$62.65)
+  fold train<2025-07-01: top-3 by train exp -> (Thu dir=1 n=133 exp=$67.38), (Tue dir=-1 n=129 exp=$57.14), (Wed dir=1 n=127 exp=$49.16)
+  fold train<2026-01-01: top-3 by train exp -> (Tue dir=-1 n=156 exp=$65.26), (Thu dir=1 n=158 exp=$44.92), (Wed dir=1 n=154 exp=$42.67)
+  fold train<2026-07-01: top-3 by train exp -> (Tue dir=-1 n=182 exp=$48.07), (Mon dir=1 n=176 exp=$41.83), (Wed dir=1 n=179 exp=$40.45)
+  PERSISTENCE CHECK: rank-1 day/direction across 6 folds = [(3, 1), (1, -1), (3, 1), (3, 1), (1, -1), (1, -1)]
+  -> 2 distinct rank-1 picks out of 6 folds
+
+  [MNQ DOW rank-1 day=Tue dir=-1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ DOW rank-1 day=Tue dir=-1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=25 win%=52.0% exp=$197.73 total=$4943.14 maxdd=$1512.84 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=27 win%=29.6% exp=$-104.87 total=$-2831.46 maxdd=$2934.79 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=25 win%=44.0% exp=$-6.77 total=$-169.15 maxdd=$2905.22 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=27 win%=55.6% exp=$104.04 total=$2809.08 maxdd=$1932.17 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=26 win%=34.6% exp=$-55.09 total=$-1432.43 maxdd=$2306.39 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=11 win%=27.3% exp=$-138.45 total=$-1522.95 maxdd=$1988.19 breach=False
+  AGGREGATE n=141 total=$1796.24 exp=$12.74 win%=41.8% tail10=415.4926861080792 tail20=752.1054107092799
+-- MNQ DOW rank-1 day=Tue dir=-1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=25 win%=52.0% exp=$289.31 total=$7232.79 maxdd=$2359.87 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=27 win%=29.6% exp=$-151.84 total=$-4099.56 maxdd=$4194.09 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=25 win%=44.0% exp=$14.64 total=$366.04 maxdd=$3965.51 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=27 win%=55.6% exp=$174.21 total=$4703.73 maxdd=$2898.25 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=26 win%=34.6% exp=$-92.59 total=$-2407.31 maxdd=$4108.21 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=11 win%=27.3% exp=$-188.91 total=$-2078.05 maxdd=$2775.90 breach=False
+  AGGREGATE n=141 total=$3717.64 exp=$26.37 win%=41.8% tail10=297.47632045023903 tail20=548.8229297277729
+
+  [MNQ DOW rank-2 day=Mon dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ DOW rank-2 day=Mon dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=24 win%=29.2% exp=$-70.01 total=$-1680.24 maxdd=$2692.55 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=27 win%=44.4% exp=$27.11 total=$732.09 maxdd=$1828.08 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=26 win%=53.8% exp=$91.50 total=$2378.97 maxdd=$1429.50 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=25 win%=60.0% exp=$136.09 total=$3402.29 maxdd=$1706.89 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=26 win%=46.2% exp=$55.42 total=$1441.01 maxdd=$963.06 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=11 win%=18.2% exp=$-162.29 total=$-1785.24 maxdd=$2042.45 breach=False
+  AGGREGATE n=139 total=$4488.88 exp=$32.29 win%=44.6% tail10=141.4618284455665 tail20=264.73621876029824
+-- MNQ DOW rank-2 day=Mon dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=24 win%=29.2% exp=$-107.54 total=$-2580.95 maxdd=$3939.00 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=27 win%=44.4% exp=$42.52 total=$1147.99 maxdd=$2825.24 breach=False
+  2025-01-01->2025-07-01 rr=1.5 n=26 win%=53.8% exp=$144.06 total=$3745.54 maxdd=$2028.22 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=25 win%=60.0% exp=$198.51 total=$4962.68 maxdd=$2904.38 breach=False
+  2026-01-01->2026-07-01 rr=1.5 n=26 win%=46.2% exp=$67.19 total=$1746.85 maxdd=$1771.69 breach=False
+  2026-07-01->2026-09-16 rr=1.5 n=11 win%=18.2% exp=$-308.57 total=$-3394.22 maxdd=$3782.78 breach=False
+  AGGREGATE n=139 total=$5627.89 exp=$40.49 win%=44.6% tail10=171.7207332662525 tail20=320.9384433246251
+
+  [MNQ DOW rank-3 day=Wed dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MNQ DOW rank-3 day=Wed dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=25 win%=36.0% exp=$-24.43 total=$-610.87 maxdd=$1622.42 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=25 win%=32.0% exp=$-20.09 total=$-502.37 maxdd=$2495.73 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=25 win%=40.0% exp=$59.76 total=$1493.89 maxdd=$1350.54 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=27 win%=40.7% exp=$39.92 total=$1077.86 maxdd=$1244.83 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=40.0% exp=$53.91 total=$1347.82 maxdd=$2151.47 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=11 win%=54.5% exp=$235.49 total=$2590.38 maxdd=$788.78 breach=False
+  AGGREGATE n=138 total=$5396.72 exp=$39.11 win%=39.1% tail10=144.19074236381212 tail20=277.04681919145054
+-- MNQ DOW rank-3 day=Wed dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=25 win%=36.0% exp=$-14.60 total=$-365.00 maxdd=$2269.23 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=25 win%=32.0% exp=$-34.44 total=$-861.11 maxdd=$3948.71 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=25 win%=40.0% exp=$87.93 total=$2198.28 maxdd=$2246.48 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=27 win%=40.7% exp=$69.68 total=$1881.42 maxdd=$1913.84 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=40.0% exp=$82.92 total=$2072.91 maxdd=$3195.61 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=11 win%=54.5% exp=$363.85 total=$4002.35 maxdd=$1577.56 breach=False
+  AGGREGATE n=138 total=$8928.86 exp=$64.70 win%=39.1% tail10=131.4652340091994 tail20=258.9334778406398
+
+
+################ MGC: Round 15 seasonality ################
+MGC: 1271123 1m bars, 2023-01-02 23:01:00 -> 2026-09-10 04:00:00
+MGC: session time-of-day range 0min -> 1440min (00:00 -> 24:00)
+MGC: 48 time-of-day buckets scanned x 2 directions = 96 hypotheses per fold (time-of-day part)
+
+---- MGC: TIME-OF-DAY, per-fold training rank (top-3 reported individually) ----
+  fold train<2024-01-01: top-3 by train exp -> (bucket=930min dir=-1 n=251 exp=$23.71), (bucket=750min dir=-1 n=252 exp=$12.77), (bucket=900min dir=-1 n=251 exp=$3.45)
+  fold train<2024-07-01: top-3 by train exp -> (bucket=930min dir=-1 n=380 exp=$3.13), (bucket=870min dir=-1 n=381 exp=$0.39), (bucket=900min dir=-1 n=380 exp=$-0.84)
+  fold train<2025-01-01: top-3 by train exp -> (bucket=870min dir=-1 n=509 exp=$-5.94), (bucket=750min dir=-1 n=508 exp=$-7.21), (bucket=600min dir=1 n=507 exp=$-9.09)
+  fold train<2025-07-01: top-3 by train exp -> (bucket=600min dir=1 n=632 exp=$3.05), (bucket=1050min dir=1 n=639 exp=$-5.39), (bucket=1230min dir=1 n=615 exp=$-9.57)
+  fold train<2026-01-01: top-3 by train exp -> (bucket=1050min dir=1 n=766 exp=$-2.84), (bucket=600min dir=1 n=758 exp=$-14.53), (bucket=1230min dir=1 n=738 exp=$-14.94)
+  fold train<2026-07-01: top-3 by train exp -> (bucket=1290min dir=1 n=303 exp=$-6.77), (bucket=1230min dir=1 n=856 exp=$-11.56), (bucket=1050min dir=1 n=887 exp=$-12.43)
+  PERSISTENCE CHECK: rank-1 window/direction across 6 folds = [(930, -1), (930, -1), (870, -1), (600, 1), (1050, 1), (1290, 1)]
+  -> 5 distinct rank-1 picks out of 6 folds (UNSTABLE -- different pick nearly every fold)
+
+  [MGC TOD rank-1 bucket=1290min dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC TOD rank-1 bucket=1290min dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=48 win%=45.8% exp=$-19.29 total=$-925.82 maxdd=$3598.14 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=43 win%=53.5% exp=$-15.15 total=$-651.41 maxdd=$3507.30 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=47 win%=44.7% exp=$36.90 total=$1734.12 maxdd=$1129.32 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=38 win%=42.1% exp=$-14.60 total=$-554.85 maxdd=$1743.31 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=41 win%=56.1% exp=$93.55 total=$3835.46 maxdd=$2679.33 breach=False
+  2026-07-01->2026-09-16: no OOS signals
+  AGGREGATE n=217 total=$3437.51 exp=$15.84 win%=48.4% tail10=214.7910988763363 tail20=417.7786421904685
+-- MGC TOD rank-1 bucket=1290min dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=48 win%=45.8% exp=$-28.19 total=$-1353.33 maxdd=$5391.09 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=43 win%=53.5% exp=$-25.15 total=$-1081.55 maxdd=$5364.07 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=47 win%=44.7% exp=$53.47 total=$2513.11 maxdd=$1725.96 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=38 win%=42.1% exp=$-10.61 total=$-403.10 maxdd=$2722.18 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=41 win%=56.1% exp=$156.71 total=$6425.17 maxdd=$4196.40 breach=False
+  2026-07-01->2026-09-16: no OOS signals
+  AGGREGATE n=217 total=$6100.30 exp=$28.11 win%=48.4% tail10=183.54451722770867 tail20=361.51722677935965
+
+  [MGC TOD rank-2 bucket=1230min dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC TOD rank-2 bucket=1230min dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=127 win%=50.4% exp=$5.74 total=$728.42 maxdd=$5518.52 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=124 win%=45.2% exp=$-45.21 total=$-5605.85 maxdd=$7340.52 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=121 win%=52.9% exp=$57.88 total=$7003.08 maxdd=$2537.59 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=123 win%=40.7% exp=$-41.79 total=$-5139.95 maxdd=$7986.86 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=118 win%=49.2% exp=$9.62 total=$1135.62 maxdd=$4536.67 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=49 win%=38.8% exp=$-45.89 total=$-2248.76 maxdd=$3551.10 breach=False
+  AGGREGATE n=662 total=$-4127.45 exp=$-6.23 win%=47.0% tail10=None tail20=None
+-- MGC TOD rank-2 bucket=1230min dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=127 win%=50.4% exp=$8.56 total=$1086.67 maxdd=$8333.75 breach=True
+  2024-07-01->2025-01-01 rr=1.5 n=124 win%=45.2% exp=$-68.59 total=$-8505.25 maxdd=$11107.20 breach=True
+  2025-01-01->2025-07-01 rr=1.5 n=121 win%=52.9% exp=$89.72 total=$10856.20 maxdd=$3808.94 breach=False
+  2025-07-01->2026-01-01 rr=1.5 n=123 win%=40.7% exp=$-59.53 total=$-7321.78 maxdd=$11993.20 breach=True
+  2026-01-01->2026-07-01 rr=1.5 n=118 win%=49.2% exp=$6.16 total=$726.50 maxdd=$7216.67 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=49 win%=38.8% exp=$-68.52 total=$-3357.28 maxdd=$5376.39 breach=True
+  AGGREGATE n=662 total=$-6514.94 exp=$-9.84 win%=47.0% tail10=None tail20=None
+
+  [MGC TOD rank-3 bucket=1050min dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC TOD rank-3 bucket=1050min dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=129 win%=48.8% exp=$-9.53 total=$-1229.81 maxdd=$7157.07 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=131 win%=50.4% exp=$16.62 total=$2177.28 maxdd=$4365.95 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=128 win%=50.8% exp=$71.74 total=$9182.83 maxdd=$3734.35 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=127 win%=48.0% exp=$27.74 total=$3523.55 maxdd=$5533.91 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=121 win%=27.3% exp=$-109.41 total=$-13238.95 maxdd=$13794.43 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=50 win%=34.0% exp=$-51.46 total=$-2573.23 maxdd=$3401.01 breach=False
+  AGGREGATE n=686 total=$-2158.33 exp=$-3.15 win%=44.5% tail10=None tail20=None
+-- MGC TOD rank-3 bucket=1050min dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=129 win%=48.8% exp=$-15.35 total=$-1980.45 maxdd=$10937.35 breach=True
+  2024-07-01->2025-01-01 rr=2.0 n=131 win%=50.4% exp=$27.91 total=$3656.25 maxdd=$6363.42 breach=True
+  2025-01-01->2025-07-01 rr=2.0 n=128 win%=50.8% exp=$111.10 total=$14220.27 maxdd=$5815.01 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=127 win%=48.0% exp=$48.56 total=$6167.18 maxdd=$8548.85 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=121 win%=27.3% exp=$-182.08 total=$-22031.99 maxdd=$22291.69 breach=True
+  2026-07-01->2026-09-16 rr=2.0 n=50 win%=34.0% exp=$-74.94 total=$-3747.15 maxdd=$5310.80 breach=True
+  AGGREGATE n=686 total=$-3715.89 exp=$-5.42 win%=44.5% tail10=None tail20=None
+
+---- MGC: DAY-OF-WEEK, per-fold training rank ----
+  fold train<2024-01-01: top-3 by train exp -> (Sun dir=-1 n=48 exp=$33.15), (Fri dir=1 n=50 exp=$-60.75), (Thu dir=1 n=50 exp=$-67.37)
+  fold train<2024-07-01: top-3 by train exp -> (Sun dir=-1 n=74 exp=$22.32), (Tue dir=1 n=76 exp=$-36.11), (Thu dir=1 n=76 exp=$-62.88)
+  fold train<2025-01-01: top-3 by train exp -> (Sun dir=-1 n=99 exp=$48.23), (Mon dir=-1 n=102 exp=$-2.85), (Tue dir=1 n=102 exp=$-41.83)
+  fold train<2025-07-01: top-3 by train exp -> (Sun dir=-1 n=125 exp=$19.46), (Mon dir=-1 n=128 exp=$2.18), (Thu dir=1 n=128 exp=$-20.57)
+  fold train<2026-01-01: top-3 by train exp -> (Mon dir=-1 n=153 exp=$3.14), (Sun dir=-1 n=150 exp=$-0.26), (Thu dir=1 n=154 exp=$-23.18)
+  fold train<2026-07-01: top-3 by train exp -> (Sun dir=-1 n=175 exp=$16.39), (Mon dir=-1 n=178 exp=$9.85), (Thu dir=1 n=180 exp=$-16.75)
+  PERSISTENCE CHECK: rank-1 day/direction across 6 folds = [(6, -1), (6, -1), (6, -1), (6, -1), (0, -1), (6, -1)]
+  -> 2 distinct rank-1 picks out of 6 folds
+
+  [MGC DOW rank-1 day=Sun dir=-1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC DOW rank-1 day=Sun dir=-1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=26 win%=46.2% exp=$55.95 total=$1454.80 maxdd=$1582.19 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=25 win%=48.0% exp=$44.64 total=$1116.02 maxdd=$2036.47 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=30.8% exp=$-68.72 total=$-1786.74 maxdd=$3450.73 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=25 win%=32.0% exp=$-47.86 total=$-1196.40 maxdd=$2412.69 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=48.0% exp=$176.19 total=$4404.63 maxdd=$1493.31 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=10 win%=40.0% exp=$67.03 total=$670.31 maxdd=$1066.89 breach=False
+  AGGREGATE n=137 total=$4662.61 exp=$34.03 win%=40.9% tail10=170.8751809225278 tail20=326.8468804115963
+-- MGC DOW rank-1 day=Sun dir=-1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=26 win%=46.2% exp=$81.85 total=$2127.99 maxdd=$2404.11 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=25 win%=48.0% exp=$63.24 total=$1581.11 maxdd=$3116.27 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=30.8% exp=$-105.87 total=$-2752.58 maxdd=$5250.84 breach=True
+  2025-07-01->2026-01-01 rr=2.0 n=25 win%=32.0% exp=$-66.01 total=$-1650.23 maxdd=$3552.95 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=48.0% exp=$227.41 total=$5685.32 maxdd=$2659.33 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=10 win%=40.0% exp=$84.96 total=$849.62 maxdd=$1714.90 breach=False
+  AGGREGATE n=137 total=$5841.23 exp=$42.64 win%=40.9% tail10=195.95750602490796 tail20=386.5411941024263
+
+  [MGC DOW rank-2 day=Mon dir=-1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC DOW rank-2 day=Mon dir=-1 risk=$400 --
+  2024-01-01->2024-07-01 rr=2.0 n=26 win%=42.3% exp=$34.52 total=$897.55 maxdd=$2226.34 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=26 win%=53.8% exp=$176.52 total=$4589.52 maxdd=$1411.56 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=42.3% exp=$65.41 total=$1700.75 maxdd=$1454.34 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=25 win%=36.0% exp=$3.45 total=$86.31 maxdd=$3399.05 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=48.0% exp=$116.73 total=$2918.34 maxdd=$1554.57 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=10 win%=20.0% exp=$-149.72 total=$-1497.18 maxdd=$1817.67 breach=False
+  AGGREGATE n=138 total=$8695.29 exp=$63.01 win%=42.8% tail10=87.0188157724818 tail20=170.70216350332115
+-- MGC DOW rank-2 day=Mon dir=-1 risk=$600 --
+  2024-01-01->2024-07-01 rr=2.0 n=26 win%=42.3% exp=$47.02 total=$1222.65 maxdd=$3356.15 breach=False
+  2024-07-01->2025-01-01 rr=2.0 n=26 win%=53.8% exp=$273.66 total=$7115.03 maxdd=$2106.29 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=42.3% exp=$99.28 total=$2581.24 maxdd=$2170.95 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=25 win%=36.0% exp=$9.16 total=$228.93 maxdd=$5029.79 breach=True
+  2026-01-01->2026-07-01 rr=2.0 n=25 win%=48.0% exp=$200.48 total=$5012.07 maxdd=$2515.58 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=10 win%=20.0% exp=$-248.24 total=$-2482.35 maxdd=$3002.30 breach=False
+  AGGREGATE n=138 total=$13677.57 exp=$99.11 win%=42.8% tail10=83.75125074417947 tail20=164.29445494709685
+
+  [MGC DOW rank-3 day=Thu dir=1] (selected using train<2026-07-01, applied unchanged across ALL folds' OOS windows)
+-- MGC DOW rank-3 day=Thu dir=1 risk=$400 --
+  2024-01-01->2024-07-01 rr=1.5 n=26 win%=42.3% exp=$-54.24 total=$-1410.36 maxdd=$2357.60 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=26 win%=46.2% exp=$-10.06 total=$-261.63 maxdd=$1538.45 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=50.0% exp=$148.62 total=$3864.06 maxdd=$1394.79 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=26 win%=34.6% exp=$-4.90 total=$-127.32 maxdd=$2919.97 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=26 win%=38.5% exp=$11.72 total=$304.84 maxdd=$1957.58 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=11 win%=45.5% exp=$132.71 total=$1459.85 maxdd=$1450.24 breach=False
+  AGGREGATE n=141 total=$3829.43 exp=$27.16 win%=42.6% tail10=199.44311058254198 tail20=390.0641795655068
+-- MGC DOW rank-3 day=Thu dir=1 risk=$600 --
+  2024-01-01->2024-07-01 rr=1.5 n=26 win%=42.3% exp=$-80.33 total=$-2088.49 maxdd=$3570.03 breach=False
+  2024-07-01->2025-01-01 rr=1.5 n=26 win%=46.2% exp=$-15.05 total=$-391.36 maxdd=$2399.70 breach=False
+  2025-01-01->2025-07-01 rr=2.0 n=26 win%=50.0% exp=$232.20 total=$6037.14 maxdd=$2090.61 breach=False
+  2025-07-01->2026-01-01 rr=2.0 n=26 win%=34.6% exp=$-19.28 total=$-501.15 maxdd=$4420.05 breach=False
+  2026-01-01->2026-07-01 rr=2.0 n=26 win%=38.5% exp=$56.95 total=$1480.64 maxdd=$2981.49 breach=False
+  2026-07-01->2026-09-16 rr=2.0 n=11 win%=45.5% exp=$177.36 total=$1950.95 maxdd=$2419.78 breach=False
+  AGGREGATE n=141 total=$6487.73 exp=$46.01 win%=42.6% tail10=175.10981714281635 tail20=345.704035285938
+
+
+################ Round 15 complete ################

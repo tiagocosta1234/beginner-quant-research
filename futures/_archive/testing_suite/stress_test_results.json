@@ -1,0 +1,93 @@
+[
+  {
+    "scenario_name": "1. Baseline (Unstressed Benchmark)",
+    "mean_monthly_profit": 20147.404164196538,
+    "median_monthly_profit": 20397.708800426062,
+    "p_profitable_month": 99.61333333333333,
+    "p_10pct_month": 99.60916666666667,
+    "p_ruin": 0.38999999999999996,
+    "median_max_dd": 1767.6174546397342,
+    "p95_max_dd": 2763.0625154864038,
+    "p99_max_dd": 3424.2295695438884,
+    "sharpe": 23.525880031800458,
+    "elapsed": 4.929852485656738
+  },
+  {
+    "scenario_name": "2. Severe Summer Chop (60-Day Low ADX Doldrums)",
+    "mean_monthly_profit": 428.9118671340416,
+    "median_monthly_profit": 0.0,
+    "p_profitable_month": 18.4875,
+    "p_10pct_month": 6.388333333333334,
+    "p_ruin": 80.96,
+    "median_max_dd": 3083.47423651785,
+    "p95_max_dd": 12661.910621155117,
+    "p99_max_dd": 15566.990449814291,
+    "sharpe": 2.3287128182887096,
+    "elapsed": 4.2619922161102295
+  },
+  {
+    "scenario_name": "3. High-Volatility Crisis Selloff (VIX > 40 & 4x Slippage)",
+    "mean_monthly_profit": 7242.739894951045,
+    "median_monthly_profit": 7804.676002700207,
+    "p_profitable_month": 81.23916666666666,
+    "p_10pct_month": 67.37416666666667,
+    "p_ruin": 16.03,
+    "median_max_dd": 4724.857885533027,
+    "p95_max_dd": 9976.75817118633,
+    "p99_max_dd": 12843.617940064703,
+    "sharpe": 7.557090046778002,
+    "elapsed": 4.369250297546387
+  },
+  {
+    "scenario_name": "4. Cross-Market Correlation Breakdown (Liquidity Crisis rho=0.85)",
+    "mean_monthly_profit": 13825.207230373771,
+    "median_monthly_profit": 14197.522281762638,
+    "p_profitable_month": 97.23083333333334,
+    "p_10pct_month": 96.41833333333332,
+    "p_ruin": 2.77,
+    "median_max_dd": 2614.154314898493,
+    "p95_max_dd": 4174.031036644492,
+    "p99_max_dd": 5208.983558754404,
+    "sharpe": 13.66058376578785,
+    "elapsed": 4.278572082519531
+  },
+  {
+    "scenario_name": "5. Extreme Correlation Spike (Simultaneous Dump rho=0.95)",
+    "mean_monthly_profit": 4728.2649972623985,
+    "median_monthly_profit": 4588.437312475622,
+    "p_profitable_month": 67.41666666666667,
+    "p_10pct_month": 47.43083333333333,
+    "p_ruin": 29.799999999999997,
+    "median_max_dd": 4160.771937647121,
+    "p95_max_dd": 7505.141294351457,
+    "p99_max_dd": 9390.09726364025,
+    "sharpe": 5.956897178961764,
+    "elapsed": 4.626063823699951
+  },
+  {
+    "scenario_name": "6. Intraday Multi-Position Concurrency Shock (Unhedged Flash Stopouts)",
+    "mean_monthly_profit": 7575.160830402714,
+    "median_monthly_profit": 8955.005991177777,
+    "p_profitable_month": 67.26833333333333,
+    "p_10pct_month": 64.0475,
+    "p_ruin": 32.62,
+    "median_max_dd": 3255.3519970487105,
+    "p95_max_dd": 5205.9285978400085,
+    "p99_max_dd": 6338.653966916415,
+    "sharpe": 9.177703187509902,
+    "elapsed": 5.531298398971558
+  },
+  {
+    "scenario_name": "7. Combined Nightmare Stress (High Chop + Crisis + rho=0.85 + Concurrency)",
+    "mean_monthly_profit": -188.40456692359584,
+    "median_monthly_profit": 0.0,
+    "p_profitable_month": 0.04166666666666667,
+    "p_10pct_month": 0.0016666666666666668,
+    "p_ruin": 100.0,
+    "median_max_dd": 2265.1606615245328,
+    "p95_max_dd": 2883.3458153728984,
+    "p99_max_dd": 3331.463911331205,
+    "sharpe": 0.0,
+    "elapsed": 5.4311747550964355
+  }
+]

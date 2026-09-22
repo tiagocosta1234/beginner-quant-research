@@ -1,0 +1,542 @@
+//@version=6
+indicator("NQ Mean Reversion [Institutional 1-Minute Engine]", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// ==============================================================================
+// 1. INPUT PARAMETERS & ACCOUNT GEARING (BROKER RISK PROTOCOLS)
+// ==============================================================================
+var string G_MODE = "Account Gear & Risk Protocol"
+op_mode = input.string("Broker 250k Hybrid ($2,000)", "Operating Mode", 
+     options=[
+         "Gold 14-Day Sprint ($4,000)",
+         "Broker 250k Hybrid ($2,000)",
+         "Broker 250k Shield ($1,000)",
+         "Broker 250k Standard ($1,250)",
+         "Broker 250k Moderate ($1,500)",
+         "Broker 250k Sprint ($2,500)",
+         "Evaluation Sprint ($1,100)", 
+         "The Shield ($500)", 
+         "Standard ($300)", 
+         "BROKER ($150)", 
+         "Custom Dollar Risk"
+     ], group=G_MODE,
+     tooltip="Broker 250k Hybrid: $2,000 risk\nGold 14-Day Sprint: $4,000 risk (2 GC / 20 MGC)\nBroker 250k Shield: $1,000 risk\nBroker 250k Standard: $1,250 risk\nBroker 250k Moderate: $1,500 risk\nBroker 250k Sprint: $2,500 risk\nSprint: $1,100 risk per trade\nShield: $500 risk per trade with 1-Loss Daily Lockout\nCustom: User-defined dollar risk")
+
+custom_risk_dlr = input.float(500.0, "Custom Risk ($) [if Custom selected]", minval=10.0, step=25.0, group=G_MODE)
+
+// Resolve Dynamic Dollar Risk Budget
+float target_risk_dlr = op_mode == "Gold 14-Day Sprint ($4,000)" ? 4000.0 :
+     (op_mode == "Broker 250k Hybrid ($2,000)" ? 2000.0 :
+     (op_mode == "Broker 250k Sprint ($2,500)" ? 2500.0 :
+     (op_mode == "Broker 250k Moderate ($1,500)" ? 1500.0 :
+     (op_mode == "Broker 250k Standard ($1,250)" ? 1250.0 :
+     (op_mode == "Broker 250k Shield ($1,000)" ? 1000.0 :
+     (op_mode == "Evaluation Sprint ($1,100)" ? 1100.0 :
+     (op_mode == "The Shield ($500)" ? 500.0 :
+     (op_mode == "Standard ($300)" ? 300.0 :
+     (op_mode == "BROKER ($150)" ? 150.0 :
+     custom_risk_dlr)))))))))
+
+bool is_nq = str.contains(syminfo.ticker, "NQ") or str.contains(syminfo.ticker, "MES")
+
+var string G_GEOM = "Trade Geometry (Institutional Multi-Target R:R)"
+stop_pts   = is_nq ? 30.0 : input.float(20.0, "Stop Loss Points (GC)", minval=1.0, step=1.0, group=G_GEOM)
+target_pts = is_nq ? 30.0 : input.float(30.0, "Take Profit Points (GC)", minval=1.0, step=1.0, group=G_GEOM)
+box_bars   = input.int(20, "Projection Box Width (Bars)", minval=5, maxval=50, group=G_GEOM)
+
+var string G_TIME = "Session Windows (America/New_York)"
+tz = "America/New_York"
+ny_entry_input       = input.string("1000-1130:23456", "NY Institutional Entry Window", group=G_TIME, tooltip="High frequency window for mean reversion")
+flatten_hr           = input.int(15, "EOD Flatten Hour (EST)", minval=0, maxval=23, group=G_TIME)
+flatten_min          = input.int(55, "EOD Flatten Minute (EST)", minval=0, maxval=59, group=G_TIME)
+news_flatten_hr      = input.int(14, "Red Folder News Hour (EST)", minval=0, maxval=23, group=G_TIME, tooltip="FOMC / Major News Kill Switch. Set to the exact hour of the news release to auto-flatten 1 minute prior.")
+news_flatten_min     = input.int(0, "Red Folder News Minute (EST)", minval=0, maxval=59, group=G_TIME)
+use_news_flatten     = input.bool(true, "Enable Red Folder Kill Switch", group=G_TIME)
+
+var string G_FILTERS = "Execution Rules & Risk Gates"
+vwap_stdev_mult     = input.float(2.0, "VWAP StDev Multiplier", step=0.1, group=G_FILTERS, tooltip="Band multiplier for price sweeps")
+use_loss_pause      = input.bool(true, "Enforce 1-Loss Daily Lockout (Shield)", group=G_FILTERS)
+daily_profit_limit  = input.float(1000.0, "Daily Profit Limit ($)", step=100.0, group=G_FILTERS, tooltip="Halts trading if daily profit exceeds this limit")
+enforce_1m_gate     = input.bool(true, "Enforce 1m Optimal Timeframe Gate", group=G_FILTERS, tooltip="Blocks signals if chart is not on the institutional 1m timeframe")
+
+var string G_VISUALS = "Visual & Display Settings"
+show_sessions       = input.bool(true, "Show Session Background Shading", group=G_VISUALS)
+show_sweep_lines    = input.bool(true, "Show Swept Level Reference Rays", group=G_VISUALS)
+show_entry_labels   = input.bool(true, "Show Detailed Entry Target Labels", group=G_VISUALS)
+
+var string G_TABLE = "Fleet Sizing Dashboard"
+show_sizing_tbl     = input.bool(true, "Display Dynamic Sizing Dashboard", group=G_TABLE)
+sizing_tbl_pos_str  = input.string("Top Right", "Dashboard Position", options=["Top Right", "Bottom Right", "Top Left", "Bottom Left"], group=G_TABLE)
+es_sl_pts           = input.float(10.0, "ES / MES Stop Loss Points", minval=0.25, step=0.25, group=G_TABLE)
+gc_sl_pts           = input.float(4.0, "GC / MGC Stop Loss Points", minval=0.25, step=0.10, group=G_TABLE)
+ym_sl_pts           = input.float(80.0, "YM / MYM Stop Loss Points", minval=1.0, step=1.0, group=G_TABLE)
+
+var string G_HUD = "Performance Cockpit HUD"
+show_cockpit_hud    = input.bool(true, "Display Performance Cockpit HUD", group=G_HUD)
+hud_pos_str         = input.string("Bottom Right", "Performance Cockpit Position", options=["Top Right", "Bottom Right", "Top Left", "Bottom Left"], group=G_HUD)
+
+// Dynamic Position Sizing for Active Chart Instrument
+float pt_val = syminfo.pointvalue
+int raw_active_cts = (stop_pts * pt_val > 0) ? int(math.floor(target_risk_dlr / (stop_pts * pt_val))) : 0
+bool is_micro_chart = str.contains(syminfo.ticker, "MNQ") or str.contains(syminfo.ticker, "MES") or str.contains(syminfo.ticker, "MGC") or str.contains(syminfo.ticker, "MYM")
+int max_allowed_cts = is_micro_chart ? 250 : 25
+int clamped_active  = math.min(max_allowed_cts, raw_active_cts)
+int contracts = clamped_active >= 1 ? clamped_active : (is_micro_chart ? 1 : 0)
+float trade_risk_dlr      = stop_pts * pt_val * contracts
+float trade_tp1_0_pts     = stop_pts * 1.0
+float trade_tp1_5_pts     = stop_pts * 1.5
+float trade_tp2_0_pts     = stop_pts * 2.0
+float trade_tp1_0_dlr     = trade_tp1_0_pts * pt_val * contracts
+float trade_tp1_5_dlr     = trade_tp1_5_pts * pt_val * contracts
+float trade_target_dlr    = target_pts * pt_val * contracts
+float comm_per_trade      = 0.62 * 2.0 * contracts
+
+// ==============================================================================
+// 2. SESSION TIME CALCULATIONS & TIMEFRAME CHECK
+// ==============================================================================
+// Optimal Timeframe Detection (1-Minute Chart Mandate)
+is_1m = timeframe.isminutes and timeframe.multiplier == 1
+
+in_ny_open = not na(time(timeframe.period, ny_entry_input, tz))
+int bar_open_mins  = hour(time, tz) * 60 + minute(time, tz)
+int bar_close_mins = hour(time_close(timeframe.period), tz) * 60 + minute(time_close(timeframe.period), tz)
+if bar_close_mins == 0
+    bar_close_mins := 1440
+int eod_flatten_mins = flatten_hr * 60 + flatten_min
+bool in_eod_flatten  = (bar_open_mins >= eod_flatten_mins) and (bar_open_mins[1] < eod_flatten_mins)
+
+int news_mins = news_flatten_hr * 60 + news_flatten_min
+bool is_news_minute = use_news_flatten and (bar_open_mins >= news_mins - 1) and (bar_open_mins[1] < news_mins - 1)
+bool is_news_lockout = use_news_flatten and (bar_open_mins >= news_mins - 1) and (bar_open_mins <= news_mins + 15)
+
+in_flatten = in_eod_flatten or is_news_minute
+is_new_day = ta.change(time("D", tz)) != 0
+
+// Session Backgrounds & Strict Visual Block
+bgcolor(show_sessions and not in_ny_open ? color.new(#b71c1c, 84) : na, title="Locked Out Background")
+bgcolor(show_sessions and in_ny_open ? color.new(#00e676, 90) : na, title="NY Institutional Window Background")
+bgcolor(in_flatten ? color.new(color.maroon, 70) : na, title="Hard Flatten Window")
+
+// ==============================================================================
+// 3. VWAP STANDARD DEVIATION BANDS
+// ==============================================================================
+var float sum_vol_vwap = 0.0
+var float sum_pv_vwap  = 0.0
+var float sum_p2v_vwap = 0.0
+in_rth = not na(time(timeframe.period, "0930-1600:23456", tz))
+
+if is_new_day or (not in_rth[1] and in_rth)
+    sum_vol_vwap := 0.0
+    sum_pv_vwap  := 0.0
+    sum_p2v_vwap := 0.0
+
+if in_rth
+    float typ = (high + low + close) / 3.0
+    float v = volume
+    sum_vol_vwap += v
+    sum_pv_vwap  += typ * v
+    sum_p2v_vwap += typ * typ * v
+
+session_vwap = sum_vol_vwap > 0 ? sum_pv_vwap / sum_vol_vwap : na
+variance = sum_vol_vwap > 0 ? (sum_p2v_vwap / sum_vol_vwap) - (session_vwap * session_vwap) : 0.0
+vwap_stdev = variance > 0 ? math.sqrt(variance) : 0.0
+
+vwap_upper = session_vwap + (vwap_stdev_mult * vwap_stdev)
+vwap_lower = session_vwap - (vwap_stdev_mult * vwap_stdev)
+
+plot(session_vwap, "Session VWAP", color=color.new(color.yellow, 60), linewidth=1)
+plot(vwap_upper, "VWAP Upper Band", color=color.new(color.red, 70), linewidth=1)
+plot(vwap_lower, "VWAP Lower Band", color=color.new(color.green, 70), linewidth=1)
+
+// ==============================================================================
+// 4. SIGNAL DETECTION & STATE MACHINE
+// ==============================================================================
+var int daily_trades = 0
+var float daily_pnl = 0.0
+var bool daily_loss_locked = false
+var bool daily_win_locked = false
+
+if is_new_day
+    daily_trades := 0
+    daily_pnl := 0.0
+    daily_loss_locked := false
+    daily_win_locked := false
+
+bool can_trade_today = not daily_loss_locked and not daily_win_locked
+
+// VWAP Band Sweep Conditions
+bool raw_sweep_low  = in_ny_open and not na(vwap_lower) and (low <= vwap_lower) and (close > vwap_lower) and (close > open) and can_trade_today and (not enforce_1m_gate or is_1m) and not is_news_lockout
+bool raw_sweep_high = in_ny_open and not na(vwap_upper) and (high >= vwap_upper) and (close < vwap_upper) and (close < open) and can_trade_today and (not enforce_1m_gate or is_1m) and not is_news_lockout
+
+// Institutional Dual-Asset Routing
+// GC = Mean Reversion (Buy Low, Sell High)
+// NQ = Momentum Breakout (Buy High, Sell Low)
+bool sweep_low  = is_nq ? raw_sweep_high : raw_sweep_low
+bool sweep_high = is_nq ? raw_sweep_low : raw_sweep_high
+
+// Confirmed Trigger Bar Color Highlights
+barcolor(sweep_low ? color.new(#00E676, 0) : (sweep_high ? color.new(#FF1744, 0) : na), title="Trigger Bar Highlight")
+
+// Distinctive Plotshape Entry Markers
+plotshape(sweep_low, title="Long Sweep Entry Shape", style=shape.triangleup, location=location.belowbar, color=color.new(#00E676, 0), size=size.small)
+plotshape(sweep_high, title="Short Sweep Entry Shape", style=shape.triangledown, location=location.abovebar, color=color.new(#FF1744, 0), size=size.small)
+
+// Cumulative PnL & Peak-to-Trough Drawdown Tracking
+var float cum_net_pnl  = 0.0
+var float peak_pnl     = 0.0
+var float max_drawdown = 0.0
+var int   total_trades = 0
+var int   win_trades   = 0
+var int   loss_trades  = 0
+
+// Historical Equity Trajectory Array for Mini Sparkline Curve
+var float[] equity_curve = array.new_float(0)
+
+// Active Position Tracking for Trade Resolution
+var int   active_dir   = 0 // 0 Flat, 1 Long, -1 Short
+var float active_entry = 0.0
+var float active_sl    = 0.0
+var float active_tp    = 0.0
+
+// Position Management
+if active_dir == 1 // LONG
+    bool hit_sl = low <= active_sl
+    bool hit_tp = high >= active_tp
+    if hit_sl or hit_tp or in_flatten
+        float out_pnl = 0.0
+        if hit_sl
+            out_pnl := -trade_risk_dlr - comm_per_trade
+            loss_trades += 1
+            label.new(bar_index, active_sl, "❌ L (-$" + str.tostring(math.abs(out_pnl), "#.00") + ")", color=color.red, textcolor=color.white, style=label.style_label_up, size=size.normal)
+            if use_loss_pause
+                daily_loss_locked := true
+        else if hit_tp
+            out_pnl := trade_target_dlr - comm_per_trade
+            win_trades += 1
+            label.new(bar_index, active_tp, "✅ W (+$" + str.tostring(out_pnl, "#.00") + ")", color=color.green, textcolor=color.white, style=label.style_label_down, size=size.normal)
+        else if in_flatten
+            float pts_diff = (close - active_entry) * pt_val * contracts
+            out_pnl := pts_diff - comm_per_trade
+            if out_pnl > 0
+                win_trades += 1
+                label.new(bar_index, close, "✅ W (+$" + str.tostring(out_pnl, "#.00") + " Flat)", color=color.green, textcolor=color.white, style=label.style_label_down, size=size.normal)
+            else
+                loss_trades += 1
+                label.new(bar_index, close, "❌ L (-$" + str.tostring(math.abs(out_pnl), "#.00") + " Flat)", color=color.red, textcolor=color.white, style=label.style_label_up, size=size.normal)
+                if use_loss_pause
+                    daily_loss_locked := true
+
+        cum_net_pnl += out_pnl
+        daily_pnl += out_pnl
+        if daily_pnl >= daily_profit_limit
+            daily_win_locked := true
+            
+        total_trades += 1
+        active_dir := 0
+        array.push(equity_curve, cum_net_pnl)
+        if cum_net_pnl > peak_pnl
+            peak_pnl := cum_net_pnl
+        float cur_dd = peak_pnl - cum_net_pnl
+        if cur_dd > max_drawdown
+            max_drawdown := cur_dd
+
+else if active_dir == -1 // SHORT
+    bool hit_sl = high >= active_sl
+    bool hit_tp = low <= active_tp
+    if hit_sl or hit_tp or in_flatten
+        float out_pnl = 0.0
+        if hit_sl
+            out_pnl := -trade_risk_dlr - comm_per_trade
+            loss_trades += 1
+            label.new(bar_index, active_sl, "❌ L (-$" + str.tostring(math.abs(out_pnl), "#.00") + ")", color=color.red, textcolor=color.white, style=label.style_label_down, size=size.normal)
+            if use_loss_pause
+                daily_loss_locked := true
+        else if hit_tp
+            out_pnl := trade_target_dlr - comm_per_trade
+            win_trades += 1
+            label.new(bar_index, active_tp, "✅ W (+$" + str.tostring(out_pnl, "#.00") + ")", color=color.green, textcolor=color.white, style=label.style_label_up, size=size.normal)
+        else if in_flatten
+            float pts_diff = (active_entry - close) * pt_val * contracts
+            out_pnl := pts_diff - comm_per_trade
+            if out_pnl > 0
+                win_trades += 1
+                label.new(bar_index, close, "✅ W (+$" + str.tostring(out_pnl, "#.00") + " Flat)", color=color.green, textcolor=color.white, style=label.style_label_up, size=size.normal)
+            else
+                loss_trades += 1
+                label.new(bar_index, close, "❌ L (-$" + str.tostring(math.abs(out_pnl), "#.00") + " Flat)", color=color.red, textcolor=color.white, style=label.style_label_down, size=size.normal)
+                if use_loss_pause
+                    daily_loss_locked := true
+
+        cum_net_pnl += out_pnl
+        daily_pnl += out_pnl
+        if daily_pnl >= daily_profit_limit
+            daily_win_locked := true
+            
+        total_trades += 1
+        active_dir := 0
+        array.push(equity_curve, cum_net_pnl)
+        if cum_net_pnl > peak_pnl
+            peak_pnl := cum_net_pnl
+        float cur_dd = peak_pnl - cum_net_pnl
+        if cur_dd > max_drawdown
+            max_drawdown := cur_dd
+
+// Trigger Trade Entry
+bool can_enter = (active_dir == 0) and not in_flatten and can_trade_today and (contracts > 0) and (not enforce_1m_gate or is_1m)
+
+if can_enter and (sweep_high or sweep_low)
+    daily_trades += 1
+    if sweep_low
+        active_dir   := 1
+        active_entry := close
+        active_sl    := close - stop_pts
+        active_tp    := close + target_pts
+    else if sweep_high
+        active_dir   := -1
+        active_entry := close
+        active_sl    := close + stop_pts
+        active_tp    := close - target_pts
+
+// ==============================================================================
+// 5. ENHANCED VISUAL ENTRIES & MULTI-TARGET PROJECTION BOXES
+// ==============================================================================
+if can_enter and sweep_low
+    float entry_p  = close
+    float sl_p     = entry_p - stop_pts
+    float tp1_p    = entry_p + trade_tp1_0_pts
+    float tp15_p   = entry_p + trade_tp1_5_pts
+    float tp2_p    = entry_p + target_pts
+    int right_b    = bar_index + box_bars
+    float rr_ratio = stop_pts > 0 ? target_pts / stop_pts : 1.0
+
+    // 1. Swept Level Reference Ray
+    if show_sweep_lines
+        line.new(bar_index - 5, vwap_lower, right_b, vwap_lower, color=color.new(color.aqua, 20), width=2, style=line.style_dashed)
+        label.new(right_b, vwap_lower, "SWEPT VWAP BAND: " + str.tostring(vwap_lower, "#.##"), color=color.new(color.navy, 30), textcolor=color.aqua, style=label.style_label_left, size=size.tiny)
+
+    // 2. Multi-Target R:R Projection Boxes
+    box.new(bar_index, tp2_p, right_b, entry_p, bgcolor=color.new(color.green, 82), border_color=color.new(color.green, 30), border_width=1)
+    box.new(bar_index, entry_p, right_b, sl_p, bgcolor=color.new(color.red, 82), border_color=color.new(color.red, 30), border_width=1)
+    line.new(bar_index, entry_p, right_b, entry_p, color=color.new(color.white, 30), width=1, style=line.style_solid)
+
+    // Target Intermediates (1:1 and 1:1.5)
+    line.new(bar_index, tp1_p, right_b, tp1_p, color=color.new(color.green, 60), width=1, style=line.style_dotted)
+    line.new(bar_index, tp15_p, right_b, tp15_p, color=color.new(color.green, 60), width=1, style=line.style_dotted)
+
+    // Boundary Projection Labels
+    string tp_lbl_str = "TP (1:" + str.tostring(rr_ratio, "#.#") + "): +" + str.tostring(target_pts, "#") + "pts (+$" + str.tostring(trade_target_dlr, "#") + ")"
+    label.new(right_b, tp2_p, tp_lbl_str, color=color.green, textcolor=color.white, style=label.style_label_left, size=size.small)
+    label.new(right_b, sl_p, "SL: -" + str.tostring(stop_pts, "#") + "pts (-$" + str.tostring(trade_risk_dlr, "#") + ")", color=color.red, textcolor=color.white, style=label.style_label_left, size=size.small)
+
+    // Detailed Institutional Signal Label at Entry Bar
+    if show_entry_labels
+        string long_label_txt = "▲ LONG SWEEP ENTRY" +
+             "\nEntry: " + str.tostring(entry_p, "#.##") +
+             "\nSL: " + str.tostring(sl_p, "#.##") + " (-" + str.tostring(stop_pts, "#.#") + " pts | -$" + str.tostring(trade_risk_dlr, "#") + ")" +
+             "\nTP Target (1:" + str.tostring(rr_ratio, "#.#") + "): " + str.tostring(tp2_p, "#.##") + " (+$" + str.tostring(trade_target_dlr, "#") + ")" +
+             "\nTP 1:1: " + str.tostring(tp1_p, "#.##") + " (+$" + str.tostring(trade_tp1_0_dlr, "#") + ")" +
+             "\nTP 1:1.5: " + str.tostring(tp15_p, "#.##") + " (+$" + str.tostring(trade_tp1_5_dlr, "#") + ")" +
+             "\nSize: " + str.tostring(contracts) + " " + syminfo.ticker
+        label.new(bar_index, low - (stop_pts * 0.4), long_label_txt, color=color.new(#004d40, 10), textcolor=color.white, style=label.style_label_up, size=size.small)
+
+    // Native Alert Dispatch
+    alert("INSTITUTIONAL LONG SWEEP: " + str.tostring(contracts) + " " + syminfo.ticker + " @ " + str.tostring(entry_p, "#.##") + " | SL: " + str.tostring(sl_p, "#.##") + " | TP: " + str.tostring(tp2_p, "#.##") + " | Mode: " + op_mode, alert.freq_once_per_bar_close)
+
+if can_enter and sweep_high
+    float entry_p  = close
+    float sl_p     = entry_p + stop_pts
+    float tp1_p    = entry_p - trade_tp1_0_pts
+    float tp15_p   = entry_p - trade_tp1_5_pts
+    float tp2_p    = entry_p - target_pts
+    int right_b    = bar_index + box_bars
+    float rr_ratio = stop_pts > 0 ? target_pts / stop_pts : 1.0
+
+    // 1. Swept Level Reference Ray
+    if show_sweep_lines
+        line.new(bar_index - 5, vwap_upper, right_b, vwap_upper, color=color.new(color.fuchsia, 20), width=2, style=line.style_dashed)
+        label.new(right_b, vwap_upper, "SWEPT VWAP BAND: " + str.tostring(vwap_upper, "#.##"), color=color.new(color.maroon, 30), textcolor=color.fuchsia, style=label.style_label_left, size=size.tiny)
+
+    // 2. Multi-Target R:R Projection Boxes
+    box.new(bar_index, sl_p, right_b, entry_p, bgcolor=color.new(color.red, 82), border_color=color.new(color.red, 30), border_width=1)
+    box.new(bar_index, entry_p, right_b, tp2_p, bgcolor=color.new(color.green, 82), border_color=color.new(color.green, 30), border_width=1)
+    line.new(bar_index, entry_p, right_b, entry_p, color=color.new(color.white, 30), width=1, style=line.style_solid)
+
+    // Target Intermediates (1:1 and 1:1.5)
+    line.new(bar_index, tp1_p, right_b, tp1_p, color=color.new(color.green, 60), width=1, style=line.style_dotted)
+    line.new(bar_index, tp15_p, right_b, tp15_p, color=color.new(color.green, 60), width=1, style=line.style_dotted)
+
+    // Boundary Projection Labels
+    string tp_lbl_str = "TP (1:" + str.tostring(rr_ratio, "#.#") + "): -" + str.tostring(target_pts, "#") + "pts (+$" + str.tostring(trade_target_dlr, "#") + ")"
+    label.new(right_b, tp2_p, tp_lbl_str, color=color.green, textcolor=color.white, style=label.style_label_left, size=size.small)
+    label.new(right_b, sl_p, "SL: +" + str.tostring(stop_pts, "#") + "pts (-$" + str.tostring(trade_risk_dlr, "#") + ")", color=color.red, textcolor=color.white, style=label.style_label_left, size=size.small)
+
+    // Detailed Institutional Signal Label at Entry Bar
+    if show_entry_labels
+        string short_label_txt = "▼ SHORT SWEEP ENTRY" +
+             "\nEntry: " + str.tostring(entry_p, "#.##") +
+             "\nSL: " + str.tostring(sl_p, "#.##") + " (+" + str.tostring(stop_pts, "#.#") + " pts | -$" + str.tostring(trade_risk_dlr, "#") + ")" +
+             "\nTP Target (1:" + str.tostring(rr_ratio, "#.#") + "): " + str.tostring(tp2_p, "#.##") + " (+$" + str.tostring(trade_target_dlr, "#") + ")" +
+             "\nTP 1:1: " + str.tostring(tp1_p, "#.##") + " (+$" + str.tostring(trade_tp1_0_dlr, "#") + ")" +
+             "\nTP 1:1.5: " + str.tostring(tp15_p, "#.##") + " (+$" + str.tostring(trade_tp1_5_dlr, "#") + ")" +
+             "\nSize: " + str.tostring(contracts) + " " + syminfo.ticker
+        label.new(bar_index, high + (stop_pts * 0.4), short_label_txt, color=color.new(#880e4f, 10), textcolor=color.white, style=label.style_label_down, size=size.small)
+
+    // Native Alert Dispatch
+    alert("INSTITUTIONAL SHORT SWEEP: " + str.tostring(contracts) + " " + syminfo.ticker + " @ " + str.tostring(entry_p, "#.##") + " | SL: " + str.tostring(sl_p, "#.##") + " | TP: " + str.tostring(tp2_p, "#.##") + " | Mode: " + op_mode, alert.freq_once_per_bar_close)
+
+// TradingView GUI Alert Conditions
+alertcondition(sweep_low, title="Long Sweep Entry Alert", message="Institutional Long Sweep Triggered: {{ticker}} @ {{close}}")
+alertcondition(sweep_high, title="Short Sweep Entry Alert", message="Institutional Short Sweep Triggered: {{ticker}} @ {{close}}")
+
+// ==============================================================================
+// 6. MULTI-TICKER DYNAMIC CONTRACT SIZING DASHBOARD (TABLE)
+// ==============================================================================
+f_get_table_pos(string pos_str) =>
+    pos_str == "Top Right" ? position.top_right :
+     (pos_str == "Bottom Right" ? position.bottom_right :
+     (pos_str == "Top Left" ? position.top_left : position.bottom_left))
+
+sizing_pos = f_get_table_pos(sizing_tbl_pos_str)
+var table sizing_tbl = table.new(sizing_pos, 5, 6, bgcolor=color.new(#0d1117, 10), frame_color=#30363d, frame_width=1, border_color=#21262d, border_width=1)
+
+f_calc_pair_sizing(float budget, float std_pts, float std_val, float mic_pts, float mic_val) =>
+    float std_risk_1 = std_pts * std_val
+    float mic_risk_1 = mic_pts * mic_val
+    int raw_std_cts = std_risk_1 > 0 ? int(math.max(0, math.floor(budget / std_risk_1))) : 0
+    int raw_mic_cts = mic_risk_1 > 0 ? int(math.max(1, math.floor(budget / mic_risk_1))) : 1
+    int std_cts = math.min(25, raw_std_cts)
+    int mic_cts = math.min(250, raw_mic_cts)
+    [std_cts, mic_cts, std_risk_1, mic_risk_1]
+
+[nq_std_cts, nq_mic_cts, nq_std_r1, nq_mic_r1] = f_calc_pair_sizing(target_risk_dlr, stop_pts, 20.0, stop_pts, 2.0)
+[es_std_cts, es_mic_cts, es_std_r1, es_mic_r1] = f_calc_pair_sizing(target_risk_dlr, es_sl_pts, 50.0, es_sl_pts, 5.0)
+[gc_std_cts, gc_mic_cts, gc_std_r1, gc_mic_r1] = f_calc_pair_sizing(target_risk_dlr, gc_sl_pts, 100.0, gc_sl_pts, 10.0)
+[ym_std_cts, ym_mic_cts, ym_std_r1, ym_mic_r1] = f_calc_pair_sizing(target_risk_dlr, ym_sl_pts, 5.0, ym_sl_pts, 0.50)
+
+f_render_sizing_row(table tbl, int row_idx, string ticker_pair, int mic_cts, int std_cts, float std_r1, float mic_r1, bool is_active) =>
+    color row_bg = is_active ? color.new(#d29922, 80) : color.new(#161b22, 10)
+    color sym_col = is_active ? color.yellow : color.white
+    string mic_str = str.tostring(mic_cts) + (mic_cts >= 250 ? " ct (MAX)" : " ct")
+    string std_str = std_cts > 0 ? (str.tostring(std_cts) + (std_cts >= 25 ? " ct (MAX)" : " ct")) : "⚠️ EXCEEDS"
+    color std_col = std_cts > 0 ? (is_active ? color.yellow : color.new(#00E5FF, 0)) : color.new(#FF5252, 0)
+    color mic_col = is_active ? color.yellow : color.new(#00E676, 0)
+    
+    float deployed_risk = mic_cts * mic_r1
+    float pct_mll = (deployed_risk / 10000.0) * 100.0
+    float pct_dll = (deployed_risk / 5000.0) * 100.0
+    string risk_str = "$" + str.tostring(deployed_risk, "#") + " ($" + str.tostring(mic_r1, "#.#") + "/ct)"
+    string pct_str = str.tostring(pct_mll, "#.1") + "% MLL / " + str.tostring(pct_dll, "#.1") + "% DLL"
+    color pct_col = pct_dll > 50.0 ? color.new(#FF5252, 0) : (pct_dll > 25.0 ? color.orange : color.new(#00E676, 0))
+
+    table.cell(tbl, 0, row_idx, ticker_pair, bgcolor=row_bg, text_color=sym_col, text_size=size.small)
+    table.cell(tbl, 1, row_idx, mic_str, bgcolor=row_bg, text_color=mic_col, text_size=size.small)
+    table.cell(tbl, 2, row_idx, std_str, bgcolor=row_bg, text_color=std_col, text_size=size.small)
+    table.cell(tbl, 3, row_idx, risk_str, bgcolor=row_bg, text_color=color.white, text_size=size.tiny)
+    table.cell(tbl, 4, row_idx, pct_str, bgcolor=row_bg, text_color=pct_col, text_size=size.tiny)
+
+if barstate.islast and show_sizing_tbl
+    table.cell(sizing_tbl, 0, 0, "BROKER 250K SIZING HUD", bgcolor=color.new(#1f6feb, 20), text_color=color.white, text_size=size.small)
+    table.cell(sizing_tbl, 1, 0, op_mode, bgcolor=color.new(#1f6feb, 20), text_color=color.yellow, text_size=size.small)
+    table.cell(sizing_tbl, 2, 0, "Budget: $" + str.tostring(target_risk_dlr, "#"), bgcolor=color.new(#1f6feb, 20), text_color=color.white, text_size=size.small)
+    table.cell(sizing_tbl, 3, 0, "MLL: $10k | DLL: $5k", bgcolor=color.new(#1f6feb, 20), text_color=color.white, text_size=size.tiny)
+    table.cell(sizing_tbl, 4, 0, str.tostring((target_risk_dlr / 10000.0) * 100.0, "#.1") + "% MLL | " + str.tostring((target_risk_dlr / 5000.0) * 100.0, "#.1") + "% DLL", bgcolor=color.new(#1f6feb, 20), text_color=color.aqua, text_size=size.tiny)
+
+    table.cell(sizing_tbl, 0, 1, "Ticker", bgcolor=#21262d, text_color=color.new(#00E5FF, 0), text_size=size.tiny)
+    table.cell(sizing_tbl, 1, 1, "Micro (≤250)", bgcolor=#21262d, text_color=color.new(#00E5FF, 0), text_size=size.tiny)
+    table.cell(sizing_tbl, 2, 1, "Standard (≤25)", bgcolor=#21262d, text_color=color.new(#00E5FF, 0), text_size=size.tiny)
+    table.cell(sizing_tbl, 3, 1, "Dollar Risk", bgcolor=#21262d, text_color=color.new(#00E5FF, 0), text_size=size.tiny)
+    table.cell(sizing_tbl, 4, 1, "% MLL / % DLL", bgcolor=#21262d, text_color=color.new(#00E5FF, 0), text_size=size.tiny)
+
+    string cur_ticker = syminfo.ticker
+    bool nq_active = str.contains(cur_ticker, "NQ")
+    bool es_active = str.contains(cur_ticker, "ES")
+    bool gc_active = str.contains(cur_ticker, "GC")
+    bool ym_active = str.contains(cur_ticker, "YM")
+
+    f_render_sizing_row(sizing_tbl, 2, "NQ / MNQ", nq_mic_cts, nq_std_cts, nq_std_r1, nq_mic_r1, nq_active)
+    f_render_sizing_row(sizing_tbl, 3, "ES / MES", es_mic_cts, es_std_cts, es_std_r1, es_mic_r1, es_active)
+    f_render_sizing_row(sizing_tbl, 4, "GC / MGC", gc_mic_cts, gc_std_cts, gc_std_r1, gc_mic_r1, gc_active)
+    f_render_sizing_row(sizing_tbl, 5, "YM / MYM", ym_mic_cts, ym_std_cts, ym_std_r1, ym_mic_r1, ym_active)
+
+// ==============================================================================
+// 7. INSTITUTIONAL COCKPIT HUD (PERFORMANCE & CIRCUIT BREAKER)
+// ==============================================================================
+hud_pos = f_get_table_pos(hud_pos_str)
+var table hud = table.new(hud_pos, 2, 8, bgcolor=color.new(color.black, 20), border_width=1, border_color=color.gray)
+
+f_get_sparkline() =>
+    int n = array.size(equity_curve)
+    if n < 2
+        "Awaiting closed trades"
+    else
+        float min_val = array.min(equity_curve)
+        float max_val = array.max(equity_curve)
+        float range_val = max_val - min_val
+        string sparkline = ""
+        int start_idx = math.max(0, n - 20)
+        for i = start_idx to n - 1
+            float val = array.get(equity_curve, i)
+            float norm = range_val > 0 ? (val - min_val) / range_val : 0.5
+            if norm >= 0.875
+                sparkline += "█"
+            else if norm >= 0.75
+                sparkline += "▇"
+            else if norm >= 0.625
+                sparkline += "▆"
+            else if norm >= 0.50
+                sparkline += "▅"
+            else if norm >= 0.375
+                sparkline += "▄"
+            else if norm >= 0.25
+                sparkline += "▃"
+            else if norm >= 0.125
+                sparkline += "▂"
+            else
+                sparkline += " "
+        sparkline
+
+if barstate.islast and show_cockpit_hud
+    float wr = total_trades > 0 ? (win_trades / total_trades) * 100.0 : 0.0
+    color pnl_color = cum_net_pnl >= 0 ? color.green : color.red
+    string pnl_prefix = cum_net_pnl >= 0 ? "+$" : "-$"
+
+    table.cell(hud, 0, 0, "1M VWAP SWEEP COCKPIT", bgcolor=color.new(color.purple, 30), text_color=color.white, text_size=size.small)
+    table.cell(hud, 1, 0, op_mode, bgcolor=color.new(color.purple, 30), text_color=color.yellow, text_size=size.small)
+    
+    table.cell(hud, 0, 1, "TOTAL NET PnL", bgcolor=color.new(pnl_color, 85), text_color=color.white, text_size=size.small)
+    table.cell(hud, 1, 1, pnl_prefix + str.tostring(math.abs(cum_net_pnl), "#,###.00"), bgcolor=color.new(pnl_color, 75), text_color=pnl_color, text_size=size.normal)
+
+    table.cell(hud, 0, 2, "MAX DRAWDOWN", bgcolor=color.new(color.maroon, 80), text_color=color.white, text_size=size.small)
+    table.cell(hud, 1, 2, "-$" + str.tostring(max_drawdown, "#,###.00"), bgcolor=color.new(color.maroon, 70), text_color=color.red, text_size=size.normal)
+
+    string spark = f_get_sparkline()
+    table.cell(hud, 0, 3, "EQUITY CURVE", text_color=color.white, text_size=size.small)
+    table.cell(hud, 1, 3, spark, bgcolor=color.new(color.navy, 70), text_color=cum_net_pnl >= 0 ? color.lime : color.orange, text_size=size.normal)
+
+    table.cell(hud, 0, 4, "Win Rate (W / L)", text_color=color.white, text_size=size.small)
+    table.cell(hud, 1, 4, str.tostring(wr, "#.1") + "% (" + str.tostring(win_trades) + "W / " + str.tostring(loss_trades) + "L)", text_color=color.white, text_size=size.small)
+
+    float active_pct_mll = (trade_risk_dlr / 10000.0) * 100.0
+    float active_pct_dll = (trade_risk_dlr / 5000.0) * 100.0
+    table.cell(hud, 0, 5, "Bracket Sizing", text_color=color.white, text_size=size.small)
+    string sizing_info = str.tostring(contracts) + " " + syminfo.ticker + " | -$" + str.tostring(trade_risk_dlr, "#") + " (+" + str.tostring(trade_target_dlr, "#") + ")\n" + str.tostring(active_pct_mll, "#.1") + "% MLL | " + str.tostring(active_pct_dll, "#.1") + "% DLL"
+    table.cell(hud, 1, 5, sizing_info, text_color=color.white, text_size=size.tiny)
+
+    table.cell(hud, 0, 6, "Chart Timeframe", text_color=color.white, text_size=size.small)
+    string tf_txt = is_1m ? "1M [OPTIMAL]" : "TIMEFRAME ERROR: Use 1m Chart"
+    color tf_col  = is_1m ? color.lime : color.new(#FF1744, 0)
+    color tf_bg   = is_1m ? color.new(color.navy, 70) : color.new(color.maroon, 50)
+    table.cell(hud, 1, 6, tf_txt, bgcolor=tf_bg, text_color=tf_col, text_size=size.small)
+
+    table.cell(hud, 0, 7, "Today's Status", text_color=color.white, text_size=size.small)
+    string status_txt = not is_1m ? "TIMEFRAME ERROR: Use 1m Chart" :
+         (daily_loss_locked ? "⛔ LOCKED OUT (1 Loss Shield)" :
+         (daily_win_locked ? "🔒 COMPLETED (Profit Target Hit)" :
+         (not in_ny_open ? "⛔ LOCKED OUT (Outside Window)" :
+         "🟢 ACTIVE WINDOW")))
+    color status_col = not is_1m ? color.new(#FF1744, 0) :
+         (daily_loss_locked ? color.red :
+         (daily_win_locked ? color.orange :
+         (not in_ny_open ? color.new(#FF5252, 0) :
+         color.green)))
+    color status_bg = not is_1m ? color.new(color.maroon, 50) : (not in_ny_open ? color.new(color.maroon, 80) : color.new(color.black, 20))
+    table.cell(hud, 1, 7, status_txt, bgcolor=status_bg, text_color=status_col, text_size=size.small)
