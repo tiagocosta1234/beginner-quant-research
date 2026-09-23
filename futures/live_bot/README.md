@@ -1,9 +1,11 @@
 # live_bot — BrokerAPI $250k Freedom Test execution infrastructure
 
 Strategy-agnostic live-trading scaffold for account `ACCOUNT-ID`.
-Built 2026-09-18. **Nothing in here has been run against a real BrokerAPI/BrokerAPI
-API key yet** — see the Verification Checklist at the bottom before trusting it
-with the Practice account, let alone the real one.
+Built 2026-09-18. **Auth/order/event round-trip confirmed against the real
+BrokerAPI/BrokerAPI API on the Practice account (2026-09-21/22)** — see the
+Verification Checklist at the bottom. The real (non-Practice) account has not
+been separately exercised; treat that as its own go-live step, not implied by
+the Practice-account confirmation.
 
 ## Why it's structured this way
 

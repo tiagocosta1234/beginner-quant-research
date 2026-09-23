@@ -70,6 +70,23 @@ Rules enforced:
      against 3.8 years of real historical data at the trader's chosen sizing (TOD $2,100 /
      VWAP-Z $1,500, self_imposed_daily_stop=$3,000): worst historical day under this
      exact rule was -$2,972.88, inside the cap with real margin.
+  10. Real-balance reconciliation — reconcile_balance() compares this governor's
+      own tracked current_balance against the broker's live settled balance
+      each poll cycle. A mismatch beyond balance_reconciliation_tolerance means
+      money moved on the account that record_fill() never saw — the exact,
+      real failure mode from 2026-09-22 (manual trading on the same account
+      desynced the governor undetected, which then falsely attributed the
+      resulting equity swing to the trader and tripped a DAILY_LOSS_LIMIT +
+      TRAILING_DRAWDOWN breach that shut the bot down while it was flat the
+      whole session). Unlike that incident's actual failure (a false breach
+      from *misattributed* P&L), a real desync with no threshold crossed is a
+      *silent* one — nothing else here would notice a manual trade that
+      doesn't also blow through a threshold this governor already watches.
+      Once tripped, the mismatch flag is sticky for the life of this
+      RiskGovernor instance (not cleared by start_new_trading_day) — main.py
+      treats it as a hard breach requiring the bot process to stop, the same
+      as rules 1/2, so a human re-checks and restarts with corrected state
+      rather than the loop silently trading on with unknown real risk.
   9. Dynamic, equity-scaled position sizing (opt-in, disabled by default) —
      compute_dynamic_risk() returns risk-per-trade as a fraction of the buffer
      actually remaining RIGHT NOW, not a fixed dollar amount, with a smaller
@@ -175,6 +192,12 @@ class AccountConfig:
     consecutive_loss_limit: int = 2  # lock out new entries after this many losses in a row; see rule 6
     self_imposed_daily_stop: float | None = None  # opt-in, tighter-than-DLL same-day cap; see rule 8
     dynamic_sizing: DynamicSizingConfig | None = None  # opt-in equity-scaled sizing; see rule 9
+    # Dollar slack allowed between this governor's tracked balance and the broker's
+    # live settled balance before reconcile_balance() flags a mismatch (rule 10).
+    # Not a loophole for real untracked activity -- real desyncs seen so far have
+    # been in the hundreds/thousands of dollars (a manual trade), while this only
+    # needs to absorb float/commission-rounding noise between the two sources.
+    balance_reconciliation_tolerance: float = 25.0
 
 
 class LockoutReason(Enum):
@@ -183,6 +206,7 @@ class LockoutReason(Enum):
     SESSION_FLATTEN = auto()
     CONSISTENCY_CAP = auto()  # soft: blocks new profit-taking, not entries/exits generally
     CONSECUTIVE_LOSSES = auto()  # soft: blocks new entries only, no existing position to flatten
+    BALANCE_RECONCILIATION_MISMATCH = auto()  # hard: see rule 10
 
 
 @dataclass
@@ -234,6 +258,11 @@ class RiskGovernor:
         # See rule 6 in the module docstring.
         self.consecutive_losses: int = 0
 
+        # Set by reconcile_balance() once a live-vs-tracked balance mismatch beyond
+        # tolerance is seen; sticky for this instance's lifetime -- see rule 10.
+        self.balance_reconciliation_mismatch: bool = False
+        self.last_reconciliation_diff: float | None = None
+
     # -- session lifecycle -------------------------------------------------
 
     def start_new_trading_day(self, session_date: dt.date, opening_balance: float | None = None) -> None:
@@ -283,6 +312,26 @@ class RiskGovernor:
             self.consecutive_losses += 1
         elif realized_pnl_delta > 0:
             self.consecutive_losses = 0
+
+    def reconcile_balance(self, live_settled_balance: float) -> bool:
+        """Compare this governor's tracked current_balance against the broker's
+        live settled balance; call once per poll cycle with
+        broker.get_account_balance(). Returns True if they still agree within
+        config.balance_reconciliation_tolerance.
+
+        A mismatch means the account moved in a way record_fill() never saw --
+        untracked activity (e.g. a manual trade on the same account, the real
+        2026-09-22 incident) or a bug in this bot's own fill-handling. Either
+        way, every other check in this class is now operating on a current_balance
+        it can no longer trust, so the flag this sets is sticky (see rule 10) and
+        main.py treats it as a hard breach requiring the process to stop, not
+        just a flatten-and-continue.
+        """
+        diff = live_settled_balance - self.current_balance
+        self.last_reconciliation_diff = diff
+        if abs(diff) > self.config.balance_reconciliation_tolerance:
+            self.balance_reconciliation_mismatch = True
+        return not self.balance_reconciliation_mismatch
 
     # -- rule checks ---------------------------------------------------------
 
@@ -398,6 +447,9 @@ class RiskGovernor:
         reasons: list[LockoutReason] = []
         must_flatten = False
 
+        if self.balance_reconciliation_mismatch:
+            reasons.append(LockoutReason.BALANCE_RECONCILIATION_MISMATCH)
+            must_flatten = True
         if self.daily_loss_breached():
             reasons.append(LockoutReason.DAILY_LOSS_LIMIT)
             must_flatten = True

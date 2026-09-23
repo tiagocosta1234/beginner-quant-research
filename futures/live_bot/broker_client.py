@@ -11,10 +11,11 @@ Design goals:
     requires an explicit extra confirmation env var, so a stray default/typo can't
     silently enable live trading.
 
-NOT YET VERIFIED against a real API key — see README.md checklist. The method
-signatures below were taken directly from the installed brokerapi_py==4.3.1
-source via `inspect.signature`, not guessed, but the end-to-end auth/order/event
-round-trip against BrokerAPI has not been exercised.
+VERIFIED against a real API key on the Practice account (2026-09-21/22) — see
+README.md checklist. The method signatures below were taken directly from the
+installed brokerapi_py==4.3.1 source via `inspect.signature`, not guessed, and
+the end-to-end auth/order/event round-trip against BrokerAPI has been exercised
+on Practice. The real (non-Practice) account has not been separately verified.
 """
 
 from __future__ import annotations

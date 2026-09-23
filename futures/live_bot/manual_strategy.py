@@ -35,6 +35,26 @@ VWAP-Z has shown throughout). See TRADING_JOURNAL.md Round 69/69b before
 changing this again -- the sizing is a function of the CURRENT buffer,
 target gap, AND the chosen daily-ceiling tradeoff, not a fixed constant.
 
+RESIZED AGAIN 2026-09-22/23 (Round 75), after a real DLL breach from manual
+trading shrank the account's buffer to $1,719.94 (balance $242,597.82, MLL
+floor $240,877.88 -- both read directly off the real BrokerAPI dashboard, not
+computed). $2,100/$1,500 no longer fits: the larger leg alone would exceed
+the entire remaining buffer, so check_position_size() would reject every
+the trader signal outright. Round 75 (`futures/engine/
+round75_250k_post_breach_resweep.py`) re-swept sizing against TODAY's real
+buffer/target-gap($22,402.18)/deadline(27 trading days to 2026-10-30): success
+probability turned out to RISE with sizing here, not fall, because the target
+gap is ~13x the buffer -- conservative sizing simply can't close that gap in
+time (P(success) rounds to 0.0% at 1x) and just runs out the clock instead.
+User made an explicit, informed choice to take the most aggressive sizing the
+real buffer can support: **TOD_RISK=$1,680, VWAPZ_RISK=$1,200 ->
+P(success)=19.1%, P(ruin)=62.8%**, after being shown this exact trade-off
+table. This is NOT a "safer" resize -- TOD at $1,680 is 97.7% of the entire
+remaining buffer; a single losing TOD trade leaves ~$40 of margin. There is
+no room to size this UP further: the buffer itself is now the binding
+constraint, not max_single_trade_risk. Re-sweep before changing this again if
+the account's real balance/buffer moves meaningfully in either direction.
+
 Composition, not reimplementation: wraps one `RandomEntryAtrTrailStrategy`
 (`tod_filter=True`, the Round 39 last-third-of-session variant) and one
 `VwapZScoreStrategy` internally, calling both every bar and returning
@@ -77,18 +97,17 @@ from live_bot.random_entry_atr_trail_strategy import RandomEntryAtrTrailStrategy
 from live_bot.strategy_interface import Signal, SignalAction, Strategy
 from live_bot.vwap_zscore_strategy import VwapZScoreStrategy
 
-TOD_RISK = 2100.0
-VWAPZ_RISK = 1500.0
+TOD_RISK = 1680.0
+VWAPZ_RISK = 1200.0
 
 
 class ManualStrategy(Strategy):
-    """TOD filter ($2,100/trade) + VWAP-Z ($1,500/trade), combined -- Round 69's
-    corrected sizing under the TRUE stop-distance sizing fix, paired with a
-    $3,000 self-imposed daily stop (see module docstring). Requires
-    SELF_IMPOSED_DAILY_STOP=3000 set in the environment to actually enforce the
-    daily ceiling this sizing was chosen for -- the strategy alone only sets
-    per-trade risk_dollars, not the daily governor rule. Was $2,400/$600 (Round
-    63) until 2026-09-22."""
+    """TOD filter ($1,680/trade) + VWAP-Z ($1,200/trade), combined -- Round 75's
+    post-breach resize, the most aggressive sizing the account's real $1,719.94
+    buffer can support (see module docstring). SELF_IMPOSED_DAILY_STOP=3000 in
+    the environment is now looser than the real buffer and won't be the binding
+    check -- check_position_size()'s buffer check is. Was $2,400/$600 (Round 63)
+    until 2026-09-22, then $2,100/$1,500 (Round 69) until 2026-09-23."""
 
     def __init__(self, tod: Strategy | None = None, vwapz: Strategy | None = None) -> None:
         # Injectable for testing the priority/tie-break logic in isolation

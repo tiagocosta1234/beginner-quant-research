@@ -74,9 +74,10 @@ the risk/reward trade-off, not just its magnitude — also not defaulted on. Rou
 31's 83.4%/3.8% finding above used FIXED risk per trade, not this dynamic
 sizing; combining the two hasn't been tested.
 
-This file has NOT been run end-to-end against a real API key. Everything up to
-"would call broker_client.connect()" has been verified; the actual network
-round-trip has not.
+This file HAS been run end-to-end against a real API key, on the Practice
+account (2026-09-21/22) — the auth/order/event round-trip is confirmed, not
+just the code path up to `broker_client.connect()`. The real (non-Practice)
+account has not been separately exercised; treat that as its own go-live step.
 """
 
 from __future__ import annotations
@@ -186,24 +187,23 @@ def _select_strategy() -> Strategy:
         return VwapZScoreStrategy()
     if name == "manual":
         log.warning(
-            "BOT_STRATEGY=manual: TOD filter ($2,100/trade) + VWAP-Z ($1,500/trade) combined "
-            "in one MNQ process (Round 69, 2026-09-22 -- supersedes Round 63's $2,400/$600, "
-            "not a re-tune but a real sizing-formula fix: contracts were being sized against "
-            "the signal's tight initial stop distance instead of the wider trail distance the "
-            "stop is actually placed at, so realized risk could run ~1.5x nominal). Per-signal "
-            "risk_dollars is set inside manual_strategy.py itself, but MAX_SINGLE_TRADE_RISK "
-            "MUST still be raised to >= $2,100 (the larger of the two) or check_position_size() "
-            "silently rejects every TOD signal -- confirm .env has MAX_SINGLE_TRADE_RISK=2100. "
-            "This sizing was chosen alongside SELF_IMPOSED_DAILY_STOP=3000 (risk_governor.py "
-            "rule 8) -- the two are not independent; changing one without the other invalidates "
-            "the Round 69 sweep this sizing was picked from. Full history at this sizing + "
-            "$3,000 daily stop: total P&L $488,167, EV/day $517.13 (mean, right-skewed -- "
-            "median day is actually a small loss), worst historical day -$2,972.88 (verified, "
-            "not just asserted). Deadline Monte Carlo: P(success)=32.0%%, P(ruin)=29.4%%, the "
-            "best success-minus-ruin margin found across the four daily-cap levels Round 69/69b "
-            "swept ($2,000/$3,000/$4,000/$5,000) -- notably, the $5,000-cap point (closest to "
-            "the old sizing's real behavior) has ruin EXCEEDING success. "
-            "See manual_strategy.py's module docstring and TRADING_JOURNAL.md Round 69/69b "
+            "BOT_STRATEGY=manual: TOD filter ($1,680/trade) + VWAP-Z ($1,200/trade) combined "
+            "in one MNQ process (Round 75, 2026-09-23 -- resized down from Round 69's "
+            "$2,100/$1,500 after a real DLL breach from manual trading shrank the account's "
+            "buffer to $1,719.94; the old sizing's larger leg alone would now exceed the "
+            "entire buffer and get rejected outright). Per-signal risk_dollars is set inside "
+            "manual_strategy.py itself; MAX_SINGLE_TRADE_RISK's fixed ceiling ($2,100 in .env) "
+            "is no longer the binding constraint -- the real remaining drawdown buffer is, and "
+            "it is now TIGHTER than SELF_IMPOSED_DAILY_STOP=3000, so that rule won't fire "
+            "before the buffer check does. This is the most aggressive sizing the real buffer "
+            "can support, not a conservative choice: TOD at $1,680 is 97.7%% of the entire "
+            "buffer, so a single losing TOD trade leaves ~$40 of margin. Chosen deliberately, "
+            "after being shown the real trade-off (Round 75, futures/engine/"
+            "round75_250k_post_breach_resweep.py): P(success)=19.1%%, P(ruin)=62.8%% against "
+            "the real $22,402.18 target gap and 27 trading days to the 2026-10-30 deadline -- "
+            "success RISES with sizing here because conservative sizing can't close that gap "
+            "in time at all (P(success)=0.0%% at 1x baseline). "
+            "See manual_strategy.py's module docstring and TRADING_JOURNAL.md Round 75 "
             "before proceeding."
         )
         return ManualStrategy()
@@ -357,6 +357,8 @@ async def run() -> None:
     Each polling cycle (every POLL_INTERVAL_SECONDS):
       1. Run health check; log/alert on degradation
       2. Query fills from broker (unrealized P&L, open positions)
+      2b. Reconcile governor's tracked balance against broker.get_account_balance()
+          (risk_governor.py rule 10) -- catches untracked account activity
       3. Feed fills to PnLTracker (record entries/exits for compliance)
       4. Evaluate flatten routine checks (can_open_new_position(), time-based locks)
       5. Evaluate risk governor (must_flatten_now?, can_open_new_position?)
@@ -530,6 +532,31 @@ async def run() -> None:
                         unrealized_pnl=0.0,
                     )
 
+                # --- 2b. Reconcile tracked balance against the broker's live settled
+                # balance (risk_governor.py rule 10). No network call -- reads the
+                # same cached account_info get_account_balance() already uses at
+                # startup. Catches untracked account activity (e.g. a manual trade)
+                # before it can silently invalidate every other check below.
+                live_balance = broker.get_account_balance()
+                if live_balance is not None and not governor.reconcile_balance(live_balance):
+                    log.error(
+                        "[Cycle %d] BALANCE RECONCILIATION MISMATCH: tracked=$%.2f "
+                        "live=$%.2f diff=$%.2f (tolerance $%.2f) -- account moved in a "
+                        "way this bot never recorded. Treating as a hard breach.",
+                        cycle_count, governor.current_balance, live_balance,
+                        governor.last_reconciliation_diff, account_config.balance_reconciliation_tolerance,
+                    )
+                    pnl_tracker.log_compliance_event(
+                        event_type=__import__("live_bot.pnl_tracker", fromlist=["EventType"]).EventType.RISK_BREACH,
+                        details={
+                            "error": "balance_reconciliation_mismatch",
+                            "tracked_balance": governor.current_balance,
+                            "live_balance": live_balance,
+                            "diff": governor.last_reconciliation_diff,
+                        },
+                        account_balance=governor.current_balance,
+                    )
+
                 # --- 3. Evaluate risk governor ---
                 decision = governor.evaluate(now)
                 log.debug(
@@ -565,8 +592,9 @@ async def run() -> None:
                         )
 
                     # Check for hard risk breach requiring bot shutdown
-                    if any(r.name == "TRAILING_DRAWDOWN" for r in decision.reasons) or any(
-                        r.name == "DAILY_LOSS_LIMIT" for r in decision.reasons
+                    if any(
+                        r.name in ("TRAILING_DRAWDOWN", "DAILY_LOSS_LIMIT", "BALANCE_RECONCILIATION_MISMATCH")
+                        for r in decision.reasons
                     ):
                         log.error(
                             f"[Cycle {cycle_count}] Hard risk breach (%s) — stopping the bot for the session.",

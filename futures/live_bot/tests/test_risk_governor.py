@@ -420,6 +420,48 @@ def test_consistency_cap_not_applicable_on_first_profit_day():
     )
 
 
+def test_reconcile_balance_within_tolerance_ok():
+    gov = RiskGovernor(AccountConfig(), starting_balance=245_815.38, starting_high_water_mark=250_877.88)
+    gov.start_new_trading_day(dt.date(2026, 9, 23), opening_balance=245_815.38)
+    ok = gov.reconcile_balance(245_815.38 + 10.0)  # inside the $25 default tolerance
+    decision = gov.evaluate(dt.datetime(2026, 9, 23, 10, 0, tzinfo=CT))
+    check(
+        "reconcile_balance_within_tolerance_ok",
+        ok and not gov.balance_reconciliation_mismatch
+        and LockoutReason.BALANCE_RECONCILIATION_MISMATCH not in decision.reasons,
+        f"diff={gov.last_reconciliation_diff}, reasons={decision.reasons}",
+    )
+
+
+def test_reconcile_balance_mismatch_forces_hard_breach():
+    gov = RiskGovernor(AccountConfig(), starting_balance=245_815.38, starting_high_water_mark=250_877.88)
+    gov.start_new_trading_day(dt.date(2026, 9, 23), opening_balance=245_815.38)
+    # A real untracked move (e.g. a manual trade) -- live balance is $500 lower
+    # than what this governor ever recorded via record_fill().
+    ok = gov.reconcile_balance(245_815.38 - 500.0)
+    decision = gov.evaluate(dt.datetime(2026, 9, 23, 10, 0, tzinfo=CT))
+    check(
+        "reconcile_balance_mismatch_forces_hard_breach",
+        not ok and gov.balance_reconciliation_mismatch
+        and LockoutReason.BALANCE_RECONCILIATION_MISMATCH in decision.reasons
+        and decision.must_flatten_now and not decision.can_open_new_position,
+        f"diff={gov.last_reconciliation_diff}, reasons={decision.reasons}",
+    )
+
+
+def test_reconcile_balance_mismatch_is_sticky_across_new_trading_day():
+    gov = RiskGovernor(AccountConfig(), starting_balance=245_815.38, starting_high_water_mark=250_877.88)
+    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=245_815.38)
+    gov.reconcile_balance(245_815.38 - 500.0)  # trips the mismatch
+    gov.start_new_trading_day(dt.date(2026, 9, 23))  # new session, no restart
+    decision = gov.evaluate(dt.datetime(2026, 9, 23, 10, 0, tzinfo=CT))
+    check(
+        "reconcile_balance_mismatch_is_sticky_across_new_trading_day",
+        gov.balance_reconciliation_mismatch and LockoutReason.BALANCE_RECONCILIATION_MISMATCH in decision.reasons,
+        f"reasons={decision.reasons}",
+    )
+
+
 def main() -> int:
     for fn in [
         test_daily_loss_lockout_triggers,
@@ -452,6 +494,9 @@ def main() -> int:
         test_self_imposed_daily_stop_disabled_by_default,
         test_self_imposed_daily_stop_rejects_before_breach,
         test_self_imposed_daily_stop_accepts_when_room_remains,
+        test_reconcile_balance_within_tolerance_ok,
+        test_reconcile_balance_mismatch_forces_hard_breach,
+        test_reconcile_balance_mismatch_is_sticky_across_new_trading_day,
     ]:
         fn()
 
