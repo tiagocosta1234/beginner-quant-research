@@ -64,6 +64,30 @@ def load_1m(path):
     df = df[~df.index.duplicated(keep="first")]
     return df
 
+def load_1m_brokerapi(path):
+    """Loader for the real BrokerAPI/BrokerAPI API pulls (fetch_brokerapi_history.py's
+    output, e.g. MNQ_1MIN_BROKERAPI.csv) -- a different format from load_1m's legacy
+    semicolon files (comma-separated, header row, ISO timestamps with a tz offset).
+    Standing rule from 2026-09-23: all NEW backtests use this real, verified-source
+    data, not the legacy files -- see broker-edge-search-workflow memory. Real
+    coverage is short (the active contract's own lifetime only, confirmed empirically
+    -- the Gateway does not retain 1-minute history for expired contracts), so
+    round11's own FOLDS (6 folds over 2024-2026) do not fit this data and must not
+    be reused unchanged against it."""
+    df = pd.read_csv(path)
+    # Raw API data defaults to US/Central (CME's home exchange tz, verified via the
+    # source timestamps' own -0500/-0600 offsets), NOT New York -- but this repo's
+    # ICT-style strategies (OTE/FVG, PO3) define their own rules in Eastern time
+    # ("10:00 AM EST", NY session), so bars are converted to real New York wall-clock
+    # time here, then stored naive (matching every other loader in this repo) rather
+    # than left tz-aware, which the rest of the pipeline (resample_causal, day-of-date
+    # grouping in the day-cap resolvers, etc.) does not expect.
+    df["ts"] = pd.to_datetime(df["timestamp"], utc=True).dt.tz_convert("America/New_York").dt.tz_localize(None)
+    df = df.rename(columns={"volume": "vol"})
+    df = df.set_index("ts").sort_index()[["open", "high", "low", "close", "vol"]]
+    df = df[~df.index.duplicated(keep="first")]
+    return df
+
 def resample_causal(df1m, rule):
     """Bar labeled/timestamped at its CLOSE time (right-closed, right-labeled) so a
     resampled bar's timestamp is only knowable once that timestamp is reached."""
