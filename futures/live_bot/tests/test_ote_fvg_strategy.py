@@ -137,9 +137,22 @@ def test_on_bar_fires_on_a_known_real_signal_bar():
         check("on_bar_fires_on_a_known_real_signal_bar", False, "no reference signals to test against")
         return
 
-    mid_idx = len(ref_sig) // 2
-    target_ts = pd.Timestamp(ref_sig.iloc[mid_idx]["ts"])
-    direction = int(ref_sig.iloc[mid_idx]["direction"])
+    # Picking the RAW middle index is unstable: as DATA_PATH grows with fresh real
+    # pulls, the signal landing at that index can drift outside NY RTH hours and
+    # get correctly HELD by the strategy's own RTH gate -- which would look like a
+    # detection failure here, when it's actually the (separately, explicitly
+    # tested) RTH filter doing its job. This test is about detection/sizing, not
+    # RTH gating, so pick the middle signal from the RTH-restricted subset instead
+    # -- stable regardless of how much real data accumulates.
+    rth_mask = ref_sig["ts"].dt.time.between(RTH_START, RTH_END, inclusive="left")
+    ref_sig_rth = ref_sig[rth_mask].reset_index(drop=True)
+    if ref_sig_rth.empty:
+        check("on_bar_fires_on_a_known_real_signal_bar", False, "no RTH reference signals to test against")
+        return
+
+    mid_idx = len(ref_sig_rth) // 2
+    target_ts = pd.Timestamp(ref_sig_rth.iloc[mid_idx]["ts"])
+    direction = int(ref_sig_rth.iloc[mid_idx]["direction"])
     pos = mnq_1m.index.get_loc(target_ts)
 
     strat = OteFvgStrategy()

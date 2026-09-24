@@ -3,21 +3,27 @@
 `detect_ote_signals`, the best real eval-stage candidate found in this
 campaign's 2026-09-24 strategy search. Sizing history: FIXED_STOP_POINTS=10
 since Round 82 (was 20, the videos' own constant, never fit to MNQ's real
-volatility); RR updated to 1:4 in Round 87 (was 1:2, Round 82's in-sample
-pick) specifically so a single trade's own win ($1,555.20) stays under
-the trader's real $1,650/day consistency-derived cap -- see round87's docstring
-and TRADING_JOURNAL.md's 2026-09-24 entries for the full derivation
-(including why the day-level cap alone can't enforce this without the
-sizing fix too).
+volatility); RR was set to 1:4 in Round 87 (was 1:2, Round 82's in-sample
+pick) so a single trade's own win stayed under the trader's real $1,650/day
+consistency-derived cap. RESIZED to RR=1:3 the same day (Round 97/98) after
+a real data-quality defect was found and fixed in `MNQ_1MIN_BROKERAPI.csv`
+(real RTH volume was 1,128-17,425/day for 2026-07-27 through 09-11 --
+impossible for real MNQ, a feed defect, not a market condition; fixed via
+`round11_fvg_bias.load_1m_mnq_reconciled()`, cross-validated against the
+legacy dataset). Re-run on the corrected data, the walk-forward's own
+latest (most-current) folds select RR=1:3, not 1:4 -- see
+TRADING_JOURNAL.md's 2026-09-24 "DATA FIXED" entry for the full derivation.
 
-Current validated numbers (Round 87, TRUE walk-forward -- parameters chosen
-using only data prior to each test fold, not hindsight over the whole
-sample -- NY RTH-only entries, single-trade-compliant sizing, real $1,650/day
-cap enforced PREEMPTIVELY, not reactively): P(success)=77.2%, P(ruin)=22.8%,
-median=4.0 days on a $50K Test; real BrokerAPI/BrokerAPI MNQ data, real
-one-position-at-a-time + $1,000 day-cap gating, real 55% consistency check.
-Verified exhaustively against the real sequence: zero of the 31 real
-walk-forward days exceed $1,650 (max real day $1,555.20).
+Current validated numbers (Round 97/98, TRUE walk-forward on the RECONCILED
+(data-quality-fixed) dataset -- parameters chosen using only data prior to
+each test fold, not hindsight over the whole sample -- NY RTH-only entries,
+single-trade-compliant sizing, real $1,650/day cap enforced PREEMPTIVELY,
+not reactively): n=56 real trades, bootstrap P(true edge>0)=100.0%,
+$50K-eval P(success)=100.0%, P(ruin)=0.0%, median=5.0 days at a 10-day
+window. Superseded the pre-fix Round 87 numbers (n=38, P(success)=77.2%,
+~47% of that sample sat in the since-confirmed-broken volume window) --
+this is a real, current result, not a first read; keep re-validating as
+more real days accumulate, same standing practice as always.
 
 STATUS (2026-09-24): WIRED IN for Practice-mode shadow-testing
 (`BOT_STRATEGY=ote_fvg` in `main.py`'s `_select_strategy()`), NOT VALIDATED
@@ -41,13 +47,17 @@ Strategy class, zero live-risk) -- prerequisites #1/#2 below are now done;
      That's why this class computes and sets `Signal.size` itself (see
      `_size_contracts`) rather than relying on `risk_dollars` alone.
   3. IN PROGRESS -- shadow-testing in Practice mode (ACCOUNT-ID,
-     the account this campaign already uses for rehearsals). Still needed
-     before any real Test attempt: compare its live signals against a
-     parallel offline run of round76/round82 on the same real bars.
-  4. STILL OPEN -- the real backtest sample behind the current P(success)=95.3%
-     figure is only ~59 real trading days (capped by the active MNQ contract's
-     own lifetime, not assumed) -- grow that sample and re-validate
-     periodically, not just once.
+     the account this campaign already uses for rehearsals). STILL ZERO REAL
+     FILLS as of 2026-09-24 -- the RTH-only filter means this strategy only
+     gets a real chance to fire during NY market hours, and none had
+     qualified yet as of this entry. Needed before any real Test attempt:
+     at least one real live fill, confirmed against a parallel offline run
+     of round76/round97 on the same real bars, to verify live execution
+     (stop/target placement, the unverified NY-timezone assumption below)
+     actually matches what the backtest assumes.
+  4. STILL OPEN -- even the corrected n=56 sample is ~43 real trading days
+     (capped by the active MNQ contract's own lifetime, not assumed) -- grow
+     that sample and re-validate periodically, not just once.
 
 Ported pieces, self-contained (this repo's convention: `live_bot/` does not
 import from `futures/`, matching `vwap_zscore_strategy.py`'s own
@@ -79,14 +89,13 @@ FIXED_STOP_POINTS = 10.0    # round82 finding, 2026-09-24: the videos' own 20pt 
                              # and unlike prior "great numbers" this campaign has found, it holds
                              # up under OOS-split/tail-concentration scrutiny -- see round82's
                              # own docstring for the full verification, not just the headline.
-RR = 4.0                    # round87 finding, 2026-09-24 (was 2.0, round82's in-sample pick).
-                             # Resized to RR=1:4 specifically so a single trade's own win
-                             # ($1,555.20, see single_trade_win_dollars in round83) stays under
-                             # the trader's real $1,650/day cap -- the walk-forward's own latest
-                             # (most-current, most-data) fold picked this exact value. A
-                             # day-level cap alone cannot enforce "$1,650/day" if a single win
-                             # already exceeds it in one atomic fill -- see round86/87's real,
-                             # verified finding and TRADING_JOURNAL.md's 2026-09-24 entry.
+RR = 3.0                    # round97/98 finding, 2026-09-24 (was 4.0, round87's pick under the
+                             # since-fixed, partly-broken MNQ data -- see module docstring). On
+                             # the corrected (load_1m_mnq_reconciled) data, the walk-forward's own
+                             # latest (most-current, most-data) folds pick RR=1:3, not 1:4. Single
+                             # trade win at this RR is $1,155.20 (20 contracts, 10pt stop) --
+                             # comfortably under the trader's real $1,650/day cap, same margin logic as
+                             # round87's own derivation, just re-run on trustworthy data.
 RISK_DOLLAR = 400.0         # matches the validated $50K-eval backtest's sizing
 POINT_VALUE_MNQ = 2.0       # $ per 1.0 price point, one MNQ contract (round11's POINT_VALUE["MNQ"])
 COMMISSION_RT = 1.24        # $ per contract round trip (round11's COMMISSION_RT)

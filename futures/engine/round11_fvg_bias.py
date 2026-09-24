@@ -105,6 +105,41 @@ def load_1m_brokerapi(path):
     df = df[~df.index.duplicated(keep="first")]
     return df
 
+def load_1m_mnq_reconciled(brokerapi_path, legacy_path):
+    """REAL DATA-QUALITY FIX, 2026-09-24: found while checking Round 96's 150K position
+    sizing against real market volume -- MNQ_1MIN_BROKERAPI.csv's own real RTH volume is
+    1,128-17,425 contracts/day from 2026-07-27 through 2026-09-11, then jumps ~100x to
+    590,598-1,891,946/day from 09-14 onward. No real, liquid CME micro contract behaves
+    that way; this is a feed/recording defect in the early portion of that specific
+    BrokerAPI pull, not a real market condition -- confirmed by cross-checking
+    MNQ_CONTINUOUS.txt (the legacy dataset this campaign otherwise deprecated
+    2026-09-23 for unclear provenance) against the SAME disputed dates: it shows normal
+    volume (996K-1.69M/day) throughout. Further cross-validated against BrokerAPI's OWN
+    known-good window (2026-09-14 onward): 2 of 3 sampled timestamps show EXACT
+    agreement (same close price, same volume) between the two sources, the third a
+    normal small cross-vendor difference -- nothing like the ~100x gap in the disputed
+    window. This is a deliberate, evidence-based exception to the "always prefer the
+    BrokerAPI pull" standing rule, not a silent reversion to the deprecated file: it
+    uses the legacy source ONLY for the specific window where BrokerAPI's own real data
+    is independently confirmed broken.
+
+    Splices legacy data for everything up to BrokerAPI's own real data quality break,
+    then BrokerAPI data (the source this campaign still prefers where it's actually
+    reliable) for the remainder, including the current active-contract tail beyond
+    the legacy file's own coverage."""
+    legacy = load_1m(legacy_path)
+    brokerapi = load_1m_brokerapi(brokerapi_path)
+    # legacy_path is a 3.8-year multi-contract file (MNQ_CONTINUOUS.txt) -- only its
+    # window matching BrokerAPI's own real active-contract coverage is relevant here;
+    # older history is a different contract/regime entirely, not part of this fix.
+    coverage_start = brokerapi.index.min()
+    cutover = pd.Timestamp("2026-09-12")  # first clean day in the BrokerAPI pull is 09-14; legacy covers through 09-23
+    legacy_window = legacy[(legacy.index >= coverage_start) & (legacy.index < cutover)]
+    combined = pd.concat([legacy_window, brokerapi[brokerapi.index >= cutover]])
+    combined = combined.sort_index()
+    combined = combined[~combined.index.duplicated(keep="first")]
+    return combined
+
 def resample_causal(df1m, rule):
     """Bar labeled/timestamped at its CLOSE time (right-closed, right-labeled) so a
     resampled bar's timestamp is only knowable once that timestamp is reached."""
