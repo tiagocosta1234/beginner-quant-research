@@ -495,12 +495,23 @@ async def run() -> None:
                 starting_balance,
             )
 
-    # Initialize RiskGovernor
+    # Initialize RiskGovernor. state_file persists the cross-restart state that
+    # has no live-broker equivalent (prior_days_pnl, consecutive_losing_days,
+    # high_water_mark, today's own daily_realized_pnl/consecutive_losses) -- see
+    # risk_governor.RiskGovernor's class docstring. Defaults to a path scoped to
+    # this account (BROKERAPI_ACCOUNT_NAME) so switching accounts (e.g. Practice
+    # vs. a real Test) can never load another account's state by accident.
+    _account_slug = "".join(
+        c if c.isalnum() or c in "-_" else "_" for c in os.getenv("BROKERAPI_ACCOUNT_NAME", "default")
+    )
+    state_file = os.getenv("RISK_STATE_FILE", f"./live_bot/state/risk_state_{_account_slug}.json")
     governor = RiskGovernor(
         account_config,
         starting_balance=starting_balance,
         starting_high_water_mark=starting_hwm,
+        state_file=state_file,
     )
+    log.info("RiskGovernor state persistence: %s", state_file)
     governor.start_new_trading_day(dt.date.today())
 
     # Initialize FlattenRoutine + APScheduler

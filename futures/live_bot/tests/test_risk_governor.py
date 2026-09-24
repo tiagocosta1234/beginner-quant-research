@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime as dt
 import sys
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -702,6 +703,91 @@ def test_reconcile_balance_mismatch_is_sticky_across_new_trading_day():
     )
 
 
+def test_state_persists_prior_days_pnl_and_losing_streak_across_restart():
+    """Real gap found 2026-09-24: prior_days_pnl/consecutive_losing_days lived
+    only in memory, so a process restart silently reset rule 11's (5-losing-day
+    circuit breaker) counter to 0 and forgot every prior day's PnL rule 3
+    (consistency cap) needs. Simulates two real restarts (fresh RiskGovernor
+    instances, same state_file) across three losing days and confirms both
+    survive intact -- not just that the file exists."""
+    state_path = Path(tempfile.mkdtemp()) / "state.json"
+    config = AccountConfig()
+
+    gov1 = RiskGovernor(config, starting_balance=250_000.0, starting_high_water_mark=250_000.0, state_file=state_path)
+    gov1.start_new_trading_day(dt.date(2026, 9, 1), opening_balance=250_000.0)
+    gov1.record_fill(-500.0)
+    gov1.start_new_trading_day(dt.date(2026, 9, 2), opening_balance=249_500.0)  # rolls day 1 in
+    gov1.record_fill(-300.0)
+    gov1.start_new_trading_day(dt.date(2026, 9, 3), opening_balance=249_200.0)  # rolls day 2 in
+
+    # Restart #1: brand new instance, same state_file, live balance re-seeded.
+    gov2 = RiskGovernor(config, starting_balance=249_200.0, starting_high_water_mark=250_000.0, state_file=state_path)
+    gov2.record_fill(-100.0)
+    gov2.start_new_trading_day(dt.date(2026, 9, 4), opening_balance=249_100.0)  # rolls day 3 in
+
+    # Restart #2: confirm it keeps accumulating, not just surviving one hop.
+    gov3 = RiskGovernor(config, starting_balance=249_100.0, starting_high_water_mark=250_000.0, state_file=state_path)
+    check(
+        "state_persists_prior_days_pnl_and_losing_streak_across_restart",
+        gov3.consecutive_losing_days == 3
+        and gov3.prior_days_pnl == {
+            dt.date(2026, 9, 1): -500.0,
+            dt.date(2026, 9, 2): -300.0,
+            dt.date(2026, 9, 3): -100.0,
+        }
+        and gov3.current_trading_date == dt.date(2026, 9, 4),
+        f"consecutive_losing_days={gov3.consecutive_losing_days}, prior_days_pnl={gov3.prior_days_pnl}, "
+        f"current_trading_date={gov3.current_trading_date}",
+    )
+
+
+def test_state_persists_todays_pnl_and_streak_across_a_same_day_restart():
+    """Deeper version of the same real gap: main.py calls start_new_trading_day()
+    unconditionally on every process startup, even mid-day, and that method used
+    to unconditionally reset daily_realized_pnl/consecutive_losses -- meaning a
+    same-day restart quietly forgot the day's trading SO FAR, undermining rules
+    1/6/12 for the rest of that day. Confirms a restart followed by the exact
+    call main.py makes (same session_date) preserves both instead of zeroing them."""
+    state_path = Path(tempfile.mkdtemp()) / "state.json"
+    config = AccountConfig()
+
+    gov1 = RiskGovernor(config, starting_balance=250_000.0, state_file=state_path)
+    gov1.start_new_trading_day(dt.date(2026, 9, 10), opening_balance=250_000.0)
+    gov1.record_fill(-200.0)  # one loss today, before the "restart"
+
+    # Restart mid-day: fresh instance, live balance re-seeded, same state_file.
+    gov2 = RiskGovernor(config, starting_balance=249_800.0, state_file=state_path)
+    gov2.start_new_trading_day(dt.date(2026, 9, 10))  # main.py's real call shape: same date as before restart
+
+    check(
+        "state_persists_todays_pnl_and_streak_across_a_same_day_restart",
+        gov2.daily_realized_pnl == -200.0 and gov2.consecutive_losses == 1 and gov2.current_balance == 249_800.0,
+        f"daily_realized_pnl={gov2.daily_realized_pnl}, consecutive_losses={gov2.consecutive_losses}, "
+        f"current_balance={gov2.current_balance}",
+    )
+
+
+def test_missing_state_file_starts_fresh_without_crashing():
+    state_path = Path(tempfile.mkdtemp()) / "does_not_exist_yet.json"
+    gov = RiskGovernor(AccountConfig(), state_file=state_path)
+    check(
+        "missing_state_file_starts_fresh_without_crashing",
+        gov.prior_days_pnl == {} and gov.consecutive_losing_days == 0 and gov.current_trading_date is None,
+        f"prior_days_pnl={gov.prior_days_pnl}, consecutive_losing_days={gov.consecutive_losing_days}",
+    )
+
+
+def test_corrupt_state_file_fails_safe_to_fresh_start():
+    state_path = Path(tempfile.mkdtemp()) / "corrupt.json"
+    state_path.write_text("{not valid json at all")
+    gov = RiskGovernor(AccountConfig(), state_file=state_path)
+    check(
+        "corrupt_state_file_fails_safe_to_fresh_start",
+        gov.prior_days_pnl == {} and gov.consecutive_losing_days == 0 and gov.current_trading_date is None,
+        f"prior_days_pnl={gov.prior_days_pnl}, consecutive_losing_days={gov.consecutive_losing_days}",
+    )
+
+
 def main() -> int:
     for fn in [
         test_daily_loss_lockout_triggers,
@@ -750,6 +836,10 @@ def main() -> int:
         test_consecutive_losing_days_not_triggered_below_limit,
         test_consecutive_losing_days_reset_by_a_winning_day,
         test_consecutive_losing_days_unaffected_by_intraday_losses_within_the_day_cap,
+        test_state_persists_prior_days_pnl_and_losing_streak_across_restart,
+        test_state_persists_todays_pnl_and_streak_across_a_same_day_restart,
+        test_missing_state_file_starts_fresh_without_crashing,
+        test_corrupt_state_file_fails_safe_to_fresh_start,
     ]:
         fn()
 

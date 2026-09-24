@@ -26,8 +26,20 @@ import sys
 
 pd.set_option("display.width", 160)
 
-POINT_VALUE = {"MNQ": 2.0, "MGC": 10.0}   # $ per 1.0 price point, per contract
-TICK_SIZE   = {"MNQ": 0.25, "MGC": 0.10}
+POINT_VALUE = {
+    "MNQ": 2.0, "MGC": 10.0,
+    # Added 2026-09-24 (Round 88, multi-symbol OTE/FVG walk-forward) -- confirmed
+    # via CME Group's own published Micro contract specs (cmegroup.com), not
+    # assumed: MES/M2K multiplier is $5/point, MYM is $0.50/point. SIL (Micro
+    # Silver, COMEX) covers 1,000 troy oz, so $1.00/oz price move = $1,000/contract.
+    "MES": 5.0, "MYM": 0.50, "M2K": 5.0, "SIL": 1_000.0,
+}
+TICK_SIZE = {
+    "MNQ": 0.25, "MGC": 0.10,
+    # Same sourcing as POINT_VALUE above. SIL's minimum price fluctuation is
+    # $0.005/oz (confirmed via CME Group + Ironbeam's published SIL contract specs).
+    "MES": 0.25, "MYM": 1.00, "M2K": 0.10, "SIL": 0.005,
+}
 # VERIFIED 2026-09-20 against BrokerAPI's own published fee schedule
 # (https://help.broker.com/en/articles/8284213-brokerapi-commissions-and-fees):
 # real round-turn cost is MNQ $1.22, MGC $1.92 -- this single shared constant
@@ -43,6 +55,11 @@ TICK_SIZE   = {"MNQ": 0.25, "MGC": 0.10}
 # already-settled rejection (Rounds 1-27), never overturns it. Left as-is
 # deliberately; if a future round revisits MGC for any reason, use $1.92 for it,
 # not this constant.
+# Re-verified 2026-09-24 for the 4 new symbols above, same BrokerAPI page: real RT
+# cost is MES $1.22, MYM $1.22, M2K $1.22 (all off by the same immaterial $0.02 as
+# MNQ), SIL $2.72 (understated by $1.48/RT here) -- same "left as-is, use the real
+# number if a future round needs precision" stance as MGC above, not corrected
+# retroactively for the same 13-importer-scalar reason.
 COMMISSION_RT = 1.24     # $ per contract round trip
 BUFFER = 4937.50
 

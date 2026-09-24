@@ -172,8 +172,10 @@ before the bot is pointed at a real account, especially:
 from __future__ import annotations
 
 import datetime as dt
+import json
 from dataclasses import dataclass, field
 from enum import Enum, auto
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 CENTRAL_TZ = ZoneInfo("America/Chicago")
@@ -279,6 +281,23 @@ class RiskGovernor:
     `evaluate(now)` before allowing a new entry and periodically to check for a
     forced flatten. This class does not place or cancel orders itself — main.py
     wires its decisions into broker_client.py.
+
+    Persistence (opt-in via state_file, added 2026-09-24): every field above that
+    has no live-broker equivalent (prior_days_pnl, consecutive_losing_days,
+    high_water_mark, current_trading_date, and today's own daily_realized_pnl/
+    consecutive_losses) previously lived ONLY in this instance's memory. A real
+    gap, found by inspection the same day live_bot's process had already been
+    restarted several times during a single shadow-test session: every restart
+    silently reset consecutive_losing_days to 0 and wiped prior_days_pnl, quietly
+    defeating rule 11 (the 5-losing-day circuit breaker) and rule 3's consistency
+    check across a restart -- and start_new_trading_day() being unconditionally
+    called once at every process startup (main.py) meant even a same-day restart
+    wiped today's own daily_realized_pnl/consecutive_losses, undermining rules 1/6/12
+    for the rest of that day too. current_balance is deliberately NOT persisted --
+    it always comes from the constructor's starting_balance (which callers seed
+    from broker.get_account_balance() each restart), the same live-source-of-truth
+    principle rule 10 already enforces; a persisted balance could silently mask a
+    real reconciliation mismatch instead of surfacing it.
     """
 
     def __init__(
@@ -286,6 +305,7 @@ class RiskGovernor:
         config: AccountConfig,
         starting_balance: float | None = None,
         starting_high_water_mark: float | None = None,
+        state_file: str | Path | None = None,
     ) -> None:
         self.config = config
         self.current_balance = starting_balance if starting_balance is not None else config.starting_balance
@@ -321,6 +341,62 @@ class RiskGovernor:
         self.balance_reconciliation_mismatch: bool = False
         self.last_reconciliation_diff: float | None = None
 
+        # Opt-in disk persistence for the state above that has no live-broker
+        # equivalent -- see the class docstring. None (default) preserves this
+        # class's original fully-in-memory, no-I/O behavior exactly, so every
+        # existing test that never passes state_file is unaffected.
+        self._state_file = Path(state_file) if state_file else None
+        self._load_state()
+
+    # -- persistence -----------------------------------------------------------
+
+    def _load_state(self) -> None:
+        """Restore state from a prior instance's _save_state(), if state_file is
+        set and the file exists. Missing/corrupt/unreadable state fails SAFE by
+        leaving this instance's fresh-start defaults in place (equivalent to no
+        persistence configured) rather than crashing the bot on a bad file."""
+        if self._state_file is None or not self._state_file.exists():
+            return
+        try:
+            data = json.loads(self._state_file.read_text())
+        except (OSError, ValueError):
+            return
+        if data.get("current_trading_date"):
+            self.current_trading_date = dt.date.fromisoformat(data["current_trading_date"])
+        self.daily_realized_pnl = data.get("daily_realized_pnl", self.daily_realized_pnl)
+        self.consecutive_losses = data.get("consecutive_losses", self.consecutive_losses)
+        self.consecutive_losing_days = data.get("consecutive_losing_days", self.consecutive_losing_days)
+        self.prior_days_pnl = {
+            dt.date.fromisoformat(k): v for k, v in data.get("prior_days_pnl", {}).items()
+        }
+        self.high_water_mark = data.get("high_water_mark", self.high_water_mark)
+        self.balance_reconciliation_mismatch = data.get(
+            "balance_reconciliation_mismatch", self.balance_reconciliation_mismatch
+        )
+        self.last_reconciliation_diff = data.get("last_reconciliation_diff", self.last_reconciliation_diff)
+
+    def _save_state(self) -> None:
+        """Persist the fields _load_state() restores. Called after every mutation
+        of that state (start_new_trading_day, record_fill, reconcile_balance) so a
+        process kill at any point loses at most the in-flight call, not the whole
+        session. No-op unless state_file was configured."""
+        if self._state_file is None:
+            return
+        data = {
+            "current_trading_date": self.current_trading_date.isoformat() if self.current_trading_date else None,
+            "daily_realized_pnl": self.daily_realized_pnl,
+            "consecutive_losses": self.consecutive_losses,
+            "consecutive_losing_days": self.consecutive_losing_days,
+            "prior_days_pnl": {d.isoformat(): v for d, v in self.prior_days_pnl.items()},
+            "high_water_mark": self.high_water_mark,
+            "balance_reconciliation_mismatch": self.balance_reconciliation_mismatch,
+            "last_reconciliation_diff": self.last_reconciliation_diff,
+        }
+        self._state_file.parent.mkdir(parents=True, exist_ok=True)
+        tmp = self._state_file.with_suffix(self._state_file.suffix + ".tmp")
+        tmp.write_text(json.dumps(data, indent=2))
+        tmp.replace(self._state_file)  # atomic swap -- never leaves a half-written state file
+
     # -- session lifecycle -------------------------------------------------
 
     def start_new_trading_day(self, session_date: dt.date, opening_balance: float | None = None) -> None:
@@ -329,8 +405,22 @@ class RiskGovernor:
         Must be called once at the start of each new trading session, with the
         account's actual settled opening balance (falls back to the governor's
         own tracked balance if not supplied, e.g. in tests).
+
+        main.py actually calls this unconditionally on every process startup, not
+        just once per real calendar day -- so this must also be safe to call again
+        on a same-day restart (session_date == self.current_trading_date already,
+        e.g. from a reloaded state_file) WITHOUT wiping today's already-accumulated
+        daily_realized_pnl/consecutive_losses. Only refresh the live balance and
+        return; the roll-into-prior-days logic below only fires on an actual day
+        change.
         """
-        if self.current_trading_date is not None and self.current_trading_date != session_date:
+        if self.current_trading_date == session_date:
+            if opening_balance is not None:
+                self.current_balance = opening_balance
+            self._save_state()
+            return
+
+        if self.current_trading_date is not None:
             self.prior_days_pnl[self.current_trading_date] = self.daily_realized_pnl
             self.high_water_mark = max(self.high_water_mark, self.current_balance)
             if self.daily_realized_pnl < 0:
@@ -347,6 +437,7 @@ class RiskGovernor:
         # defensively in case that invariant is ever violated upstream.
         self.unrealized_pnl = 0.0
         self.consecutive_losses = 0
+        self._save_state()
 
     def update_unrealized_pnl(self, mark_to_market_pnl: float) -> None:
         """Set the current open position's floating P&L (0.0 when flat).
@@ -374,6 +465,7 @@ class RiskGovernor:
             self.consecutive_losses += 1
         elif realized_pnl_delta > 0:
             self.consecutive_losses = 0
+        self._save_state()
 
     def reconcile_balance(self, live_settled_balance: float) -> bool:
         """Compare this governor's tracked current_balance against the broker's
@@ -393,6 +485,7 @@ class RiskGovernor:
         self.last_reconciliation_diff = diff
         if abs(diff) > self.config.balance_reconciliation_tolerance:
             self.balance_reconciliation_mismatch = True
+        self._save_state()
         return not self.balance_reconciliation_mismatch
 
     # -- rule checks ---------------------------------------------------------
