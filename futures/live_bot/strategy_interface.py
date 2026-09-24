@@ -49,6 +49,20 @@ class Signal:
     # stop/target instead.
     initial_stop_distance_points: float | None = None
     trail_distance_points: float | None = None
+    # Dollar profit this signal intends to realize if filled and its target is
+    # hit (the mirror image of risk_dollars). Added 2026-09-24 so
+    # RiskGovernor.check_position_size() can PREEMPTIVELY refuse an entry whose
+    # own best case would breach max_daily_profit (rule 12), the same way
+    # risk_dollars already lets it preemptively refuse one whose own worst case
+    # would breach self_imposed_daily_stop (rule 8) -- a reactive-only check
+    # (react after a fill already breached the cap) was proven insufficient in
+    # the backtest engine (round76's resolve_outcomes_gated) after two
+    # individually-compliant wins the same real day still summed past a
+    # $1,650 cap. Optional: only strategies with a fixed target (the bracket
+    # shape) can know this before a fill; trailing-stop strategies leave it
+    # None, and max_daily_profit then falls back to reactive-only enforcement
+    # for them.
+    expected_reward_dollars: float | None = None
 
 
 class Strategy(ABC):

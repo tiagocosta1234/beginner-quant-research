@@ -70,6 +70,24 @@ Rules enforced:
      against 3.8 years of real historical data at the trader's chosen sizing (TOD $2,100 /
      VWAP-Z $1,500, self_imposed_daily_stop=$3,000): worst historical day under this
      exact rule was -$2,972.88, inside the cap with real margin.
+  12. Self-imposed daily PROFIT cap (opt-in, disabled by default, max_daily_profit) —
+      the mirror image of rule 8: check_position_size() rejects a new entry that
+      could breach the cap. Added 2026-09-24 per the trader's direct instruction ("we
+      cant have days above $1650") — $1,650 = 0.55 x the real $3,000 $50K Test
+      target, the theoretical maximum a single day can be and still be
+      consistency-compliant once cumulative profit is exactly at the target (see
+      rule 3). FIXED the same day: the first version only checked REACTIVELY
+      (today's P&L already at/past the cap) -- proven insufficient in the backtest
+      engine (round76's resolve_outcomes_gated) once two individually-compliant
+      wins the same real day still summed past $1,650, since the first alone never
+      triggered the reactive check. Now also checks PREEMPTIVELY, mirroring rule
+      8's own loss-side principle: if the caller supplies proposed_reward_dollars
+      (Signal.expected_reward_dollars, only available for a fixed-target/bracket
+      strategy), a trade whose own best-case win would breach the cap is refused
+      before it happens, not after. `ote_fvg_strategy.py` was resized the same day
+      to a single-trade win under $1,650 (stop=10pts/RR=1:4) specifically so this
+      guarantee is actually meaningful, not just gating around a sizing that
+      already violates it on its own.
   10. Real-balance reconciliation — reconcile_balance() compares this governor's
       own tracked current_balance against the broker's live settled balance
       each poll cycle. A mismatch beyond balance_reconciliation_tolerance means
@@ -87,6 +105,18 @@ Rules enforced:
       treats it as a hard breach requiring the bot process to stop, the same
       as rules 1/2, so a human re-checks and restarts with corrected state
       rather than the loop silently trading on with unknown real risk.
+  11. Consecutive-losing-days lockout — new entries are blocked after
+      consecutive_losing_days_limit completed trading DAYS in a row that each
+      ended net negative (checked once per day, in start_new_trading_day(), not
+      per-fill). Distinct from rule 6: that counter resets every single day, so
+      it only ever catches several losses packed into ONE day, never a run of
+      separate bad days. Added 2026-09-24 after a real walk-forward backtest
+      (futures/engine/round83_ote_true_walkforward.py) surfaced
+      exactly this gap — 5 real, separate losing days in a row (each one
+      individually safe at -$889.60, well under the real $1,000 day cap) summed
+      to -$4,448, more than the real $2,000 MLL, entirely invisible to rule 6.
+      the trader's direct instruction: "we can't be having more than 5 losing
+      streaks" — default set to 5 accordingly.
   9. Dynamic, equity-scaled position sizing (opt-in, disabled by default) —
      compute_dynamic_risk() returns risk-per-trade as a fraction of the buffer
      actually remaining RIGHT NOW, not a fixed dollar amount, with a smaller
@@ -190,7 +220,28 @@ class AccountConfig:
     # default against the actual recommended sizing before relying on either.
     max_single_trade_risk: float = 700.0
     consecutive_loss_limit: int = 2  # lock out new entries after this many losses in a row; see rule 6
+    # Real gap found 2026-09-24: consecutive_loss_limit above resets every single day
+    # (start_new_trading_day), so it only ever guards against several losses packed
+    # into ONE day -- it does nothing against a run of separate BAD DAYS, which is
+    # exactly what a real walk-forward backtest surfaced (5 losing days in a row,
+    # -$4,448 total, i.e. more than the real $2,000 MLL, even though each single day
+    # was gated to a safe -$889.60). Added per the trader's direct instruction ("we can't be
+    # having more than 5 losing streaks") -- see rule 11 / consecutive_losing_days_breached().
+    consecutive_losing_days_limit: int = 5
     self_imposed_daily_stop: float | None = None  # opt-in, tighter-than-DLL same-day cap; see rule 8
+    # Opt-in, disabled by default -- blocks new entries once today's own profit
+    # is already at or past this cap. Added 2026-09-24 per the trader's direct
+    # instruction ("we cant have days above $1650") -- $1,650 = 0.55 x the real
+    # $3,000 $50K-Test target, the theoretical max a single day can be and
+    # still be compliant once cumulative profit is exactly at the target (see
+    # rule 12 below). REAL LIMIT, disclosed not hidden: this blocks a SECOND
+    # trade from compounding on top of an already-large day, but cannot stop a
+    # single trade's own fixed take-profit from landing above the cap in one
+    # atomic fill -- e.g. the currently-wired OTE/FVG strategy's own per-trade
+    # win ($3,155.20 at its stop=10pts/RR=1:8 sizing) already exceeds $1,650 by
+    # itself. Guaranteeing this fully would require resizing the strategy's own
+    # per-trade target, a separate change from this governor-level gate.
+    max_daily_profit: float | None = None
     dynamic_sizing: DynamicSizingConfig | None = None  # opt-in equity-scaled sizing; see rule 9
     # Dollar slack allowed between this governor's tracked balance and the broker's
     # live settled balance before reconcile_balance() flags a mismatch (rule 10).
@@ -207,6 +258,7 @@ class LockoutReason(Enum):
     CONSISTENCY_CAP = auto()  # soft: blocks new profit-taking, not entries/exits generally
     CONSECUTIVE_LOSSES = auto()  # soft: blocks new entries only, no existing position to flatten
     BALANCE_RECONCILIATION_MISMATCH = auto()  # hard: see rule 10
+    CONSECUTIVE_LOSING_DAYS = auto()  # soft: see rule 11; blocks new entries across day boundaries
 
 
 @dataclass
@@ -258,6 +310,12 @@ class RiskGovernor:
         # See rule 6 in the module docstring.
         self.consecutive_losses: int = 0
 
+        # Completed trading DAYS in a row that ended net negative (0 after any day
+        # that ended net >= 0). Updated once per day, in start_new_trading_day(), not
+        # per-fill -- see rule 11. Distinct from consecutive_losses above, which
+        # resets every day and so cannot see a streak spanning multiple days.
+        self.consecutive_losing_days: int = 0
+
         # Set by reconcile_balance() once a live-vs-tracked balance mismatch beyond
         # tolerance is seen; sticky for this instance's lifetime -- see rule 10.
         self.balance_reconciliation_mismatch: bool = False
@@ -275,6 +333,10 @@ class RiskGovernor:
         if self.current_trading_date is not None and self.current_trading_date != session_date:
             self.prior_days_pnl[self.current_trading_date] = self.daily_realized_pnl
             self.high_water_mark = max(self.high_water_mark, self.current_balance)
+            if self.daily_realized_pnl < 0:
+                self.consecutive_losing_days += 1
+            else:
+                self.consecutive_losing_days = 0
 
         self.current_trading_date = session_date
         self.current_balance = opening_balance if opening_balance is not None else self.current_balance
@@ -335,7 +397,9 @@ class RiskGovernor:
 
     # -- rule checks ---------------------------------------------------------
 
-    def check_position_size(self, proposed_risk_dollars: float) -> tuple[bool, str | None]:
+    def check_position_size(
+        self, proposed_risk_dollars: float, proposed_reward_dollars: float | None = None,
+    ) -> tuple[bool, str | None]:
         """Whether a proposed new trade's risk is acceptable to open right now.
 
         Rejects if the proposed risk exceeds the configured hard per-trade cap
@@ -348,6 +412,16 @@ class RiskGovernor:
         account-wide lockout state, because it needs the proposed trade's size
         as an input; call it before placing every new order, in addition to
         (not instead of) evaluate().can_open_new_position.
+
+        proposed_reward_dollars (optional, mirrors proposed_risk_dollars):
+        added 2026-09-24 so a full-target win can be checked PREEMPTIVELY
+        against max_daily_profit (rule 12), not just reactively after the fact
+        -- a reactive-only check was proven insufficient in the backtest
+        engine (round76's resolve_outcomes_gated) once two individually-
+        compliant wins the same real day still summed past the $1,650 cap.
+        Only strategies with a fixed target (Signal.expected_reward_dollars)
+        can supply this before a fill; when omitted, max_daily_profit still
+        gets checked reactively below, same as before this fix.
         """
         if proposed_risk_dollars <= 0:
             return False, "proposed risk must be positive"
@@ -369,6 +443,23 @@ class RiskGovernor:
                 f"proposed risk ${proposed_risk_dollars:,.2f} could push today's total "
                 f"P&L (${self.daily_total_pnl():,.2f}) past the self-imposed daily stop "
                 f"of -${cap:,.2f} on a full loss — see rule 8"
+            )
+        profit_cap = self.config.max_daily_profit
+        if profit_cap is not None and self.daily_total_pnl() >= profit_cap:
+            return False, (
+                f"today's total P&L (${self.daily_total_pnl():,.2f}) is already at or past "
+                f"the max_daily_profit cap of ${profit_cap:,.2f} — no new entries until "
+                f"tomorrow, see rule 12."
+            )
+        if (
+            profit_cap is not None
+            and proposed_reward_dollars is not None
+            and self.daily_total_pnl() + proposed_reward_dollars > profit_cap
+        ):
+            return False, (
+                f"proposed reward ${proposed_reward_dollars:,.2f} could push today's total "
+                f"P&L (${self.daily_total_pnl():,.2f}) past the max_daily_profit cap of "
+                f"${profit_cap:,.2f} if it fully wins — refused BEFORE the fact, see rule 12"
             )
         return True, None
 
@@ -416,17 +507,59 @@ class RiskGovernor:
     def total_net_profit_prior_to_today(self) -> float:
         return sum(self.prior_days_pnl.values())
 
-    def consistency_room_left(self) -> float | None:
-        """How much more profit today can book before breaching the consistency cap.
+    def best_single_day_profit_prior_to_today(self) -> float:
+        """Largest COMPLETED day's profit, across every day strictly before
+        today. -inf if there is no completed day yet (mathematically inert in
+        every comparison this feeds -- max(-inf, x) == x)."""
+        return max(self.prior_days_pnl.values(), default=float("-inf"))
 
-        Returns None when there isn't yet a meaningful cap to compute (no positive
-        prior-days profit to be a share of) — callers should treat None as "not
-        applicable yet", not as "unlimited".
+    def consistency_room_left(self) -> float | None:
+        """How much more profit today can book before breaching the consistency cap
+        -- negative if ALREADY breached (by today's own day, or by a past day still
+        too large a share of a total that hasn't caught up yet).
+
+        FIXED 2026-09-24, TWICE, both real bugs confirmed empirically:
+
+        Fix 1: the original formula compared today's profit only against PRIOR
+        days summed, and returned None ("no cap") whenever prior profit was <= 0
+        -- meaning a single day banking the ENTIRE profit target (100%
+        concentration, the exact case this rule exists to catch) was never
+        flagged. Confirmed with a real $3,500-in-one-day test:
+        consistency_breached() returned False. Fixed by gating on the actual
+        profit_target_balance (already on AccountConfig, never referenced here
+        before) rather than "any prior profit at all" -- matches Broker's own
+        worked example ("$50K account: $1,600 best day / $3,000 total profit =
+        53%, under 55%") and every backtest's Monte Carlo (`cum >= target and
+        best_day <= cap*cum`), which already modeled it this way.
+
+        Fix 2 (this pass): fix 1 still only checked TODAY's own contribution --
+        it had no way to see that a PAST day remains the disqualifying one
+        against a total that hasn't grown enough yet to dilute it. Confirmed
+        against Round 85's own real walk-forward data: a $11,731.20 day (Aug
+        27) kept the account genuinely non-compliant for the following week
+        even though every subsequent day was individually small and positive
+        -- the old, once-fixed check still returned consistency_breached()=False
+        the entire time. Fixed by tracking the actual best single day EVER
+        (best_single_day_profit_prior_to_today), not just "today vs. the sum of
+        everything before it", and checking that against the running total --
+        the same general form the Monte Carlo has always used.
+
+        Returns None when total accumulated profit (prior + today) hasn't
+        reached the target yet -- callers should treat None as "the rule does
+        not bind yet", not as "unlimited forever".
         """
+        target_profit = self.config.profit_target_balance - self.config.starting_balance
         prior_profit = self.total_net_profit_prior_to_today()
-        if prior_profit <= 0:
+        total_profit_today = prior_profit + self.daily_realized_pnl
+        if total_profit_today < target_profit:
             return None
         cap = self.config.consistency_cap_pct
+        prior_best_day = self.best_single_day_profit_prior_to_today()
+        if prior_best_day > cap * total_profit_today:
+            # Already breached by a day that isn't today -- no amount of
+            # room "today" can retroactively fix that day; report how far
+            # over the cap that past day currently sits, as a negative number.
+            return cap * total_profit_today - prior_best_day
         max_today = (cap / (1 - cap)) * prior_profit
         return max_today - self.daily_realized_pnl
 
@@ -440,6 +573,9 @@ class RiskGovernor:
 
     def consecutive_loss_breached(self) -> bool:
         return self.consecutive_losses >= self.config.consecutive_loss_limit
+
+    def consecutive_losing_days_breached(self) -> bool:
+        return self.consecutive_losing_days >= self.config.consecutive_losing_days_limit
 
     # -- aggregate decision ---------------------------------------------------
 
@@ -467,6 +603,11 @@ class RiskGovernor:
             reasons.append(LockoutReason.CONSECUTIVE_LOSSES)
             # same shape as the consistency cap: blocks new entries, not a reason
             # to flatten a position that's already open and otherwise fine.
+        if self.consecutive_losing_days_breached():
+            reasons.append(LockoutReason.CONSECUTIVE_LOSING_DAYS)
+            # soft, same as above -- this triggers at the start of a new day (see
+            # start_new_trading_day()), so there is never an open position to
+            # flatten when it fires.
 
         return RiskDecision(
             can_open_new_position=len(reasons) == 0,

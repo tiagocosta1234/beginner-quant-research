@@ -95,6 +95,7 @@ from live_bot.broker_client import BrokerClient, BrokerConfig
 from live_bot.flatten_routine import FlattenRoutine, AlertHandler
 from live_bot.health_check import HealthCheck, HealthStatus
 from live_bot.manual_strategy import ManualStrategy
+from live_bot.ote_fvg_strategy import OteFvgStrategy
 from live_bot.pnl_tracker import PnlTracker
 from live_bot.random_entry_atr_trail_strategy import RandomEntryAtrTrailStrategy
 from live_bot.risk_governor import AccountConfig, RiskGovernor
@@ -207,9 +208,26 @@ def _select_strategy() -> Strategy:
             "before proceeding."
         )
         return ManualStrategy()
+    if name == "ote_fvg":
+        log.warning(
+            "BOT_STRATEGY=ote_fvg: OTE (61.8-79%% retracement) + 15m FVG sweep-reclaim, "
+            "NY RTH-only entries (Round 76, resized in Round 87 -- stop=10pts/RR=1:4, was "
+            "1:2 -- specifically so a single trade's own win stays under the real $1,650/day "
+            "consistency-derived cap). Best real eval-stage candidate found this campaign, "
+            "TRUE walk-forward validated (parameters chosen using only data prior to each "
+            "test fold, not hindsight): $50K Test P(success)=77.2%%, P(ruin)=22.8%%, "
+            "median=4.0 days, real BrokerAPI/BrokerAPI MNQ data, real one-position-at-a-time + "
+            "$1,000 day-cap + $1,650 preemptive daily-profit-cap gating, real 55%% "
+            "consistency check. Verified exhaustively: zero of 31 real walk-forward days "
+            "exceed $1,650 (see round87's docstring). Wired in 2026-09-24 as the shadow-test "
+            "step of the deployment roadmap -- confirm BOT_MODE=practice before running; "
+            "this has NOT been validated for a live/real-money account. See "
+            "ote_fvg_strategy.py's module docstring for the full prerequisite checklist."
+        )
+        return OteFvgStrategy()
     raise ValueError(
         f"Unknown BOT_STRATEGY={name!r}, must be one of: noop, random_entry_atr_trail, "
-        "support_resistance_bounce, vwap_zscore, manual"
+        "support_resistance_bounce, vwap_zscore, manual, ote_fvg"
     )
 
 
@@ -270,7 +288,9 @@ async def handle_entry_signal(
             signal.action, risk_dollars,
         )
 
-    size_allowed, size_rejection_reason = governor.check_position_size(risk_dollars)
+    size_allowed, size_rejection_reason = governor.check_position_size(
+        risk_dollars, proposed_reward_dollars=signal.expected_reward_dollars,
+    )
     if not size_allowed:
         log.warning(
             "Signal %s rejected by check_position_size: %s (proposed risk_dollars=%s)",
@@ -414,13 +434,31 @@ async def run() -> None:
             "before any order is placed -- see TRADING_JOURNAL.md Round 69.",
             self_imposed_daily_stop, self_imposed_daily_stop,
         )
-    account_config = AccountConfig(
+    _max_daily_profit_env = os.getenv("MAX_DAILY_PROFIT")
+    max_daily_profit = float(_max_daily_profit_env) if _max_daily_profit_env else None
+    if max_daily_profit is not None:
+        log.warning(
+            "MAX_DAILY_PROFIT=$%.0f active: new entries refused once today's P&L is "
+            "at/past this cap, or a full-target win on the proposed trade would push "
+            "it past this cap -- see risk_governor.py rule 12.",
+            max_daily_profit,
+        )
+    _profit_target_balance_env = os.getenv("PROFIT_TARGET_BALANCE")
+    account_config_kwargs = dict(
         dynamic_sizing=dynamic_sizing,
         max_single_trade_risk=max_single_trade_risk,
         consecutive_loss_limit=consecutive_loss_limit,
         self_imposed_daily_stop=self_imposed_daily_stop,
-    )  # NOTE: consistency_cap_pct
+        max_daily_profit=max_daily_profit,
+    )
+    if _profit_target_balance_env:
+        account_config_kwargs["profit_target_balance"] = float(_profit_target_balance_env)
+    account_config = AccountConfig(**account_config_kwargs)  # NOTE: consistency_cap_pct
     # and static_lock_hwm are UNCONFIRMED defaults — see risk_governor.py docstring.
+    # profit_target_balance falls back to the $250K account's own default
+    # ($265,000) unless PROFIT_TARGET_BALANCE is set in .env -- get this right
+    # for whatever account is actually configured, or the consistency-rule
+    # check (rule 3) silently uses the wrong target for it.
     # Do not go live without verifying these against the real account.
 
     log.info("Starting live_bot in mode=%s instrument=%s", broker_config.mode, broker_config.instrument)
@@ -600,12 +638,42 @@ async def run() -> None:
                             f"[Cycle {cycle_count}] Hard risk breach (%s) — stopping the bot for the session.",
                             decision.reasons,
                         )
+                        # REAL GAP FOUND 2026-09-24: this was the one place a real,
+                        # unattended breach shutdown happened with zero external
+                        # notification -- alert_handler was constructed above but
+                        # only ever wired into FlattenRoutine's own internal
+                        # failure modes, never into THIS path, the one that matters
+                        # most (the exact shutdown that happened, unnoticed for
+                        # hours, on the $250K account). Fixed here rather than left
+                        # alongside AlertHandler's other stub-removal fix, since a
+                        # working alert() with nothing calling it on the real
+                        # breach path would have been an incomplete fix.
+                        await alert_handler.alert(
+                            level="CRITICAL",
+                            title=f"live_bot hard risk breach: {', '.join(r.name for r in decision.reasons)}",
+                            message=(
+                                f"Bot stopped at cycle {cycle_count}. Reasons: "
+                                f"{[r.name for r in decision.reasons]}. "
+                                f"Tracked balance=${governor.current_balance:.2f}. "
+                                "The bot process has exited and is NOT trading. "
+                                "Check the account and restart manually if appropriate."
+                            ),
+                        )
                         break
 
                 # --- 5b. Can trade? Query bars and run strategy ---
                 elif combined_can_open:
                     try:
-                        bars_needed = 3000 if isinstance(strategy, SupportResistanceBounceStrategy) else 500
+                        if isinstance(strategy, SupportResistanceBounceStrategy):
+                            bars_needed = 3000
+                        elif isinstance(strategy, OteFvgStrategy):
+                            # See ote_fvg_strategy.py's module docstring prerequisite #1:
+                            # worst case needs K_MIN(60) + up to 2x MAX_LOOKAHEAD_BARS(240)
+                            # + the 15m FVG resample's own lag, ~540 minutes minimum. 500
+                            # (the old default) silently missed sweeps near the window edge.
+                            bars_needed = 1500
+                        else:
+                            bars_needed = 500
                         bars = await broker.get_bars(bars=bars_needed, timeframe="1min")
                         signal = strategy.on_bar(bars)
 

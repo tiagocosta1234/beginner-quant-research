@@ -66,10 +66,59 @@ class BrokerClient:
 
         self.config = config
         self._suite: Any = None  # px.TradingSuite once connected
+        # REAL BUG FOUND 2026-09-24, during a Practice-account test of
+        # reconcile_balance() (risk_governor.py rule 10): `account_info.balance`
+        # (get_account_balance()'s old sole source) is populated ONCE during
+        # authenticate() (brokerapi_py/client/auth.py:285, `self.account_info =
+        # selected_account`) and never reassigned anywhere else in the SDK --
+        # confirmed by reading the installed brokerapi_py==4.3.1 source directly,
+        # not assumed. That means every prior call to get_account_balance() for
+        # the life of a bot process returned the SAME frozen number from connect
+        # time, regardless of any real trading (the bot's own or anyone else's)
+        # on the account since. reconcile_balance() compares the governor's
+        # tracked balance against this value -- with a frozen "live" side, a
+        # mismatch could never be detected, no matter what happened on the real
+        # account. This is very likely why manual trading was never caught
+        # before tonight, on this account or the $250K one. Real fix: subscribe
+        # to the SDK's own real-time "account_update" event (GatewayUserAccount
+        # via the already-connected User Hub SignalR feed -- confirmed to exist
+        # in realtime/event_handling.py's `_forward_account_update`, delivering
+        # balance/margin/buying-power changes) instead of the static snapshot.
+        # UNVERIFIED against a live-firing event as of this fix (no manual trade
+        # was placed after writing this) -- _on_account_update logs whatever
+        # shape it actually receives specifically so the next Practice-mode
+        # test can confirm or correct the extraction logic below.
+        self._latest_live_balance: float | None = None
 
     @property
     def is_connected(self) -> bool:
         return self._suite is not None
+
+    async def _on_account_update(self, event: Any) -> None:
+        """Handler for the SDK's real-time "account_update" event (see the
+        REAL BUG comment in __init__). Defensive extraction: log the raw shape
+        received either way, since this has not yet been observed against a
+        real firing and the exact payload shape was not empirically confirmed
+        (brokerapi_py's AccountUpdateData TypedDict says `data: dict` with a
+        `balance: float` key, but the transformation from raw SignalR args to
+        this shape happens inside the SDK's private event-forwarding code,
+        which was read but not executed/traced live)."""
+        data = getattr(event, "data", event)
+        balance = None
+        if isinstance(data, dict):
+            balance = data.get("balance")
+        else:
+            balance = getattr(data, "balance", None)
+        if balance is not None:
+            self._latest_live_balance = float(balance)
+        # Deliberately always logged (not just on the None-extraction path):
+        # this is the only way to confirm, the first time a real account_update
+        # fires, whether the extraction above is actually correct.
+        import logging
+        logging.getLogger(__name__).info(
+            "account_update event received: extracted_balance=%s raw_data=%r",
+            balance, data,
+        )
 
     async def connect(self) -> None:
         if self.config.mode == "dry_run":
@@ -79,6 +128,23 @@ class BrokerClient:
             instrument=self.config.instrument,
             timeframes=self.config.timeframes,
         )
+        # REAL BUG FOUND 2026-09-24, minutes after writing this: TradingSuite.on()
+        # (the SDK's own documented "single interface for all event handling")
+        # rejects "account_update" outright -- EventBus.on() (trading_suite.py's
+        # `on` delegates to it) does `EventType(event)` and RAISES ValueError for
+        # any string that isn't a defined EventType member; there is no
+        # ACCOUNT_UPDATE member (confirmed by reading the enum's full member
+        # list). This crashed connect() and the whole bot on first real
+        # Practice-mode start after the fix. "account_update" is a LOWER-LEVEL
+        # event, documented and only wired through the realtime client's own
+        # `add_callback()` (realtime/event_handling.py), a separate mechanism
+        # from TradingSuite's EventBus -- confirmed via that method's own
+        # docstring listing "account_update" as a valid, expected value.
+        # Callback shape also differs: add_callback hands the raw event dict
+        # directly (not wrapped in an Event with a `.data` attribute) --
+        # _on_account_update's `getattr(event, "data", event)` already handles
+        # both shapes defensively, so no change needed there.
+        await self._suite.realtime.add_callback("account_update", self._on_account_update)
 
     async def disconnect(self) -> None:
         if self._suite is not None:
@@ -232,14 +298,25 @@ class BrokerClient:
     def get_account_balance(self) -> float | None:
         """Current settled account balance, or None if not yet authenticated.
 
-        `client.account_info` is populated during connect()/authenticate() (see
-        brokerapi_py/client/auth.py) -- this makes no separate network call.
+        FIXED 2026-09-24 (see the REAL BUG comment in __init__): previously
+        always read `client.account_info.balance`, a snapshot frozen at
+        connect()/authenticate() time and never refreshed by the SDK -- making
+        this call return the same stale number for the bot's entire runtime
+        regardless of real account activity. Now prefers `_latest_live_balance`,
+        updated by the real-time "account_update" event subscription set up in
+        connect(); only falls back to the static snapshot before the first such
+        event has arrived (e.g. briefly after connecting, or if no real-time
+        event has fired yet in whatever venue/mode this runs against).
+        UNVERIFIED against a real firing as of this fix -- see _on_account_update.
+
         Does NOT give the account's historical high-water-mark (BrokerAPI's Account
         model has no such field); that must still come from a verified source
         (see risk_governor's starting_high_water_mark) since it depends on this
         account's trading history, not just its current state.
         """
         suite = self._require_connected()
+        if self._latest_live_balance is not None:
+            return self._latest_live_balance
         account = suite.client.account_info
         return account.balance if account is not None else None
 

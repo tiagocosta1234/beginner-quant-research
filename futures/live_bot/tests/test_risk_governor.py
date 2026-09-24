@@ -101,38 +101,112 @@ def test_session_flatten_due_after_310pm_ct():
     )
 
 
-def test_consistency_cap_blocks_oversized_single_day():
-    config = AccountConfig(consistency_cap_pct=0.50)
-    gov = RiskGovernor(config, starting_balance=250_000.0, starting_high_water_mark=250_000.0)
-    # Three prior profitable days totalling +9,000
-    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=250_000.0)
+def _fifty_k_config(**overrides):
+    """Real $50K Test shape: starting_balance=$50,000, profit target=$3,000
+    (profit_target_balance=$53,000), matching Broker's own worked example."""
+    kwargs = dict(starting_balance=50_000.0, profit_target_balance=53_000.0, consistency_cap_pct=0.55)
+    kwargs.update(overrides)
+    return AccountConfig(**kwargs)
+
+
+def test_consistency_cap_matches_real_broker_example():
+    """Directly replicates help.broker.com's own worked example: "$50K account:
+    $1,600 best day / $3,000 total profit = 53%" -- a compliant, PASSING case
+    (53% < 55%). $1,400 prior + $1,600 today = exactly the $3,000 target."""
+    gov = RiskGovernor(_fifty_k_config(), starting_balance=50_000.0, starting_high_water_mark=50_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=50_000.0)
+    gov.record_fill(+1_400.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=51_400.0)
+    gov.record_fill(+1_600.0)  # 1600 / 3000 = 53.3%, under 55%
+    decision = gov.evaluate(dt.datetime(2026, 9, 22, 10, 0, tzinfo=CT))
+    check(
+        "consistency_cap_matches_real_broker_example",
+        LockoutReason.CONSISTENCY_CAP not in decision.reasons,
+        f"reasons={decision.reasons}, room={decision.consistency_room_left}",
+    )
+
+
+def test_consistency_cap_catches_single_day_100pct_concentration():
+    """REAL BUG this fix closes, confirmed empirically before the fix: a single
+    day banking the ENTIRE profit target (zero prior profit, so this one day is
+    100% of accumulated profit) must be flagged -- the old formula returned
+    None (no constraint) whenever prior profit was <= 0, missing this exact
+    case, the one the consistency limit most exists to catch."""
+    gov = RiskGovernor(_fifty_k_config(), starting_balance=50_000.0, starting_high_water_mark=50_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=50_000.0)
+    gov.record_fill(+3_500.0)  # the ENTIRE target, in one day, zero prior profit
+    decision = gov.evaluate(dt.datetime(2026, 9, 21, 10, 0, tzinfo=CT))
+    check(
+        "consistency_cap_catches_single_day_100pct_concentration",
+        LockoutReason.CONSISTENCY_CAP in decision.reasons,
+        f"reasons={decision.reasons}, room={decision.consistency_room_left}",
+    )
+
+
+def test_consistency_cap_blocks_oversized_single_day_after_target_reached():
+    config = _fifty_k_config(consistency_cap_pct=0.50)
+    gov = RiskGovernor(config, starting_balance=50_000.0, starting_high_water_mark=50_000.0)
+    # Three prior profitable days totalling +9,000 -- already well past the $3,000 target
+    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=50_000.0)
     gov.record_fill(+3_000.0)
-    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=253_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=53_000.0)
     gov.record_fill(+3_000.0)
-    gov.start_new_trading_day(dt.date(2026, 9, 23), opening_balance=256_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 23), opening_balance=56_000.0)
     gov.record_fill(+3_000.0)
     # Today: try to book +9,001, which would make today's share > 50% of total (9,000 prior + 9,001 today)
-    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=259_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=59_000.0)
     gov.record_fill(+9_001.0)
     decision = gov.evaluate(dt.datetime(2026, 9, 24, 10, 0, tzinfo=CT))
     check(
-        "consistency_cap_blocks_oversized_single_day",
+        "consistency_cap_blocks_oversized_single_day_after_target_reached",
         LockoutReason.CONSISTENCY_CAP in decision.reasons and not decision.must_flatten_now,
         f"reasons={decision.reasons}, room={decision.consistency_room_left}",
     )
 
 
-def test_consistency_cap_allows_compliant_day():
-    config = AccountConfig(consistency_cap_pct=0.50)
-    gov = RiskGovernor(config, starting_balance=250_000.0, starting_high_water_mark=250_000.0)
-    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=250_000.0)
-    gov.record_fill(+3_000.0)
-    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=253_000.0)
-    gov.record_fill(+2_000.0)  # today's share = 2,000 / 5,000 = 40% < 50%
-    decision = gov.evaluate(dt.datetime(2026, 9, 22, 10, 0, tzinfo=CT))
+def test_consistency_cap_allows_compliant_day_after_target_reached():
+    """Extends the real Broker example (1,400 + 1,600 = 3,000, 53.3%, compliant)
+    with a THIRD day, confirming compliance correctly continues on a later day
+    once the crossing itself was already legitimate -- day 1 here is
+    deliberately kept below the target on its own (unlike the naive version of
+    this test before the 2nd consistency fix, which had day 1 alone reach the
+    entire $3,000 target from zero prior profit -- itself a violation the old,
+    incomplete check couldn't see, which is exactly the bug that fix closed)."""
+    gov = RiskGovernor(_fifty_k_config(), starting_balance=50_000.0, starting_high_water_mark=50_000.0)
+    gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=50_000.0)
+    gov.record_fill(+1_400.0)  # below target alone -- rule doesn't bind yet
+    gov.start_new_trading_day(dt.date(2026, 9, 22), opening_balance=51_400.0)
+    gov.record_fill(+1_600.0)  # crosses target compliantly: 1600/3000 = 53.3%
+    gov.start_new_trading_day(dt.date(2026, 9, 23), opening_balance=53_000.0)
+    gov.record_fill(+500.0)  # a further, small, compliant day: best day (1600) / total (3500) = 45.7%
+    decision = gov.evaluate(dt.datetime(2026, 9, 23, 10, 0, tzinfo=CT))
     check(
-        "consistency_cap_allows_compliant_day",
+        "consistency_cap_allows_compliant_day_after_target_reached",
         LockoutReason.CONSISTENCY_CAP not in decision.reasons,
+        f"reasons={decision.reasons}, room={decision.consistency_room_left}",
+    )
+
+
+def test_consistency_cap_catches_a_past_day_still_dominating_a_smaller_total():
+    """REAL BUG, second pass, confirmed against Round 85's actual real
+    walk-forward data: a huge day (modeled here as +$11,731.20, matching the
+    real Aug 27 day) followed by a small, individually-unremarkable POSITIVE
+    day right after (+$1,376.00, matching the real Aug 28 day). The first
+    consistency fix only ever checked TODAY's own contribution against prior
+    days summed -- it had no way to see that the PAST day (Aug 27) remains the
+    disqualifying one relative to a total that hasn't grown enough yet to
+    dilute it. Confirmed broken before this fix: consistency_breached()
+    returned False here even though the real ratio is 11731.20/13107.20 = 89.5%,
+    far over the 55% cap."""
+    gov = RiskGovernor(_fifty_k_config(), starting_balance=50_000.0, starting_high_water_mark=50_000.0)
+    gov.start_new_trading_day(dt.date(2026, 8, 27), opening_balance=50_000.0)
+    gov.record_fill(+11_731.20)
+    gov.start_new_trading_day(dt.date(2026, 8, 28), opening_balance=61_731.20)
+    gov.record_fill(+1_376.00)
+    decision = gov.evaluate(dt.datetime(2026, 8, 28, 10, 0, tzinfo=CT))
+    check(
+        "consistency_cap_catches_a_past_day_still_dominating_a_smaller_total",
+        LockoutReason.CONSISTENCY_CAP in decision.reasons,
         f"reasons={decision.reasons}, room={decision.consistency_room_left}",
     )
 
@@ -292,6 +366,79 @@ def test_consecutive_losses_reset_on_new_trading_day():
     )
 
 
+def _run_n_losing_days(gov, n, start_date, daily_loss=-300.0):
+    day = start_date
+    for _ in range(n):
+        gov.start_new_trading_day(day, opening_balance=gov.current_balance)
+        gov.record_fill(daily_loss)
+        day = day + dt.timedelta(days=1)
+    return day
+
+
+def test_consecutive_losing_days_lockout_triggers():
+    """Real gap this rule closes: consecutive_loss_limit (rule 6) resets every
+    day, so it never sees a run of separate bad DAYS -- round83's real
+    walk-forward found exactly this (5 losing days in a row, each individually
+    safe, summing to more than the real $2,000 MLL)."""
+    gov = RiskGovernor(AccountConfig(consecutive_losing_days_limit=5))
+    next_day = _run_n_losing_days(gov, 5, dt.date(2026, 9, 18))
+    gov.start_new_trading_day(next_day, opening_balance=gov.current_balance)  # rolls the 5th day in
+    decision = gov.evaluate(dt.datetime(next_day.year, next_day.month, next_day.day, 10, 0, tzinfo=CT))
+    check(
+        "consecutive_losing_days_lockout_triggers",
+        LockoutReason.CONSECUTIVE_LOSING_DAYS in decision.reasons
+        and not decision.can_open_new_position
+        and not decision.must_flatten_now,
+        f"reasons={decision.reasons}, streak={gov.consecutive_losing_days}",
+    )
+
+
+def test_consecutive_losing_days_not_triggered_below_limit():
+    gov = RiskGovernor(AccountConfig(consecutive_losing_days_limit=5))
+    next_day = _run_n_losing_days(gov, 4, dt.date(2026, 9, 18))
+    gov.start_new_trading_day(next_day, opening_balance=gov.current_balance)
+    decision = gov.evaluate(dt.datetime(next_day.year, next_day.month, next_day.day, 10, 0, tzinfo=CT))
+    check(
+        "consecutive_losing_days_not_triggered_below_limit",
+        LockoutReason.CONSECUTIVE_LOSING_DAYS not in decision.reasons and gov.consecutive_losing_days == 4,
+        f"reasons={decision.reasons}, streak={gov.consecutive_losing_days}",
+    )
+
+
+def test_consecutive_losing_days_reset_by_a_winning_day():
+    gov = RiskGovernor(AccountConfig(consecutive_losing_days_limit=5))
+    next_day = _run_n_losing_days(gov, 4, dt.date(2026, 9, 18))
+    gov.start_new_trading_day(next_day, opening_balance=gov.current_balance)
+    gov.record_fill(+900.0)  # a winning day breaks the streak
+    day_after = next_day + dt.timedelta(days=1)
+    gov.start_new_trading_day(day_after, opening_balance=gov.current_balance)  # rolls the winning day in
+    check(
+        "consecutive_losing_days_reset_by_a_winning_day",
+        gov.consecutive_losing_days == 0,
+        f"streak={gov.consecutive_losing_days}",
+    )
+
+
+def test_consecutive_losing_days_unaffected_by_intraday_losses_within_the_day_cap():
+    """Rule 6 (intraday) and rule 11 (cross-day) must stay independent: several
+    losing FILLS within one day that nets negative should count as exactly ONE
+    losing day here, not multiply-count."""
+    gov = RiskGovernor(AccountConfig(consecutive_loss_limit=10, consecutive_losing_days_limit=5))
+    day = dt.date(2026, 9, 18)
+    for _ in range(5):
+        gov.start_new_trading_day(day, opening_balance=gov.current_balance)
+        gov.record_fill(-444.80)
+        gov.record_fill(-444.80)  # two losing fills, one losing DAY
+        day = day + dt.timedelta(days=1)
+    gov.start_new_trading_day(day, opening_balance=gov.current_balance)
+    decision = gov.evaluate(dt.datetime(day.year, day.month, day.day, 10, 0, tzinfo=CT))
+    check(
+        "consecutive_losing_days_unaffected_by_intraday_losses_within_the_day_cap",
+        LockoutReason.CONSECUTIVE_LOSING_DAYS in decision.reasons and gov.consecutive_losing_days == 5,
+        f"reasons={decision.reasons}, streak={gov.consecutive_losing_days}",
+    )
+
+
 def test_dynamic_sizing_disabled_by_default():
     gov = RiskGovernor(AccountConfig(), starting_balance=245_815.38, starting_high_water_mark=250_877.88)
     gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=245_815.38)
@@ -407,14 +554,107 @@ def test_self_imposed_daily_stop_accepts_when_room_remains():
     check("self_imposed_daily_stop_accepts_when_room_remains", ok and reason is None, f"reason={reason}")
 
 
-def test_consistency_cap_not_applicable_on_first_profit_day():
+def test_max_daily_profit_disabled_by_default():
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=2_100.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    gov.record_fill(+5_000.0)  # would breach a $1,650 cap if one were configured
+    ok, reason = gov.check_position_size(500.0)
+    check("max_daily_profit_disabled_by_default", ok and reason is None, f"reason={reason}")
+
+
+def test_max_daily_profit_rejects_new_entry_once_cap_reached():
+    """the trader's exact instruction: "we cant have days above $1650" -- $1,650 =
+    0.55 x the real $3,000 $50K target, the theoretical max a single day can be
+    and still be consistency-compliant right at the target."""
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=2_100.0, max_daily_profit=1_650.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    gov.record_fill(+1_650.0)  # already at the cap
+    ok, reason = gov.check_position_size(500.0)
+    check("max_daily_profit_rejects_new_entry_once_cap_reached", not ok and reason is not None, f"reason={reason}")
+
+
+def test_max_daily_profit_accepts_when_room_remains():
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=2_100.0, max_daily_profit=1_650.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    gov.record_fill(+800.0)  # under the cap
+    ok, reason = gov.check_position_size(500.0)
+    check("max_daily_profit_accepts_when_room_remains", ok and reason is None, f"reason={reason}")
+
+
+def test_max_daily_profit_cannot_shrink_a_single_fill_that_already_overshot():
+    """Real, disclosed limit: this rule can only ever act BETWEEN trades (same
+    structural limit as rule 8's loss-side version) -- it cannot retroactively
+    shrink a single fill that already landed above the cap in one shot, e.g. a
+    fixed-target strategy whose own take-profit is bigger than the cap."""
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=5_000.0, max_daily_profit=1_650.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    gov.record_fill(+3_155.20)  # one fill, already nearly double the cap -- already happened
+    ok, reason = gov.check_position_size(500.0)  # the NEXT proposed entry is correctly blocked
+    check(
+        "max_daily_profit_cannot_shrink_a_single_fill_that_already_overshot",
+        not ok and gov.daily_realized_pnl == 3155.20,
+        f"reason={reason}, daily_realized_pnl={gov.daily_realized_pnl}",
+    )
+
+
+def test_max_daily_profit_preemptively_refuses_a_trade_whose_win_would_breach_it():
+    """REAL FIX 2026-09-24: the reactive-only check above was proven
+    insufficient in the backtest engine (round76) once two individually-
+    compliant wins the same real day still summed past $1,650, since the
+    first alone never triggered the reactive halt. This mirrors rule 8's own
+    loss-side principle: refuse a trade whose own BEST case could breach the
+    cap, checked BEFORE it happens."""
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=2_100.0, max_daily_profit=1_650.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    gov.record_fill(+1_155.20)  # one compliant win booked, still under the cap
+    # A second trade whose own full win ($1,155.20) would push today to $2,310.40 -- over the cap
+    ok, reason = gov.check_position_size(300.0, proposed_reward_dollars=1_155.20)
+    check(
+        "max_daily_profit_preemptively_refuses_a_trade_whose_win_would_breach_it",
+        not ok and reason is not None,
+        f"reason={reason}",
+    )
+
+
+def test_max_daily_profit_allows_a_trade_whose_win_stays_under_the_cap():
+    gov = RiskGovernor(
+        AccountConfig(max_single_trade_risk=2_100.0, max_daily_profit=1_650.0),
+        starting_balance=50_000.0, starting_high_water_mark=50_000.0,
+    )
+    gov.start_new_trading_day(dt.date(2026, 9, 24), opening_balance=50_000.0)
+    ok, reason = gov.check_position_size(300.0, proposed_reward_dollars=1_155.20)  # first trade of the day
+    check("max_daily_profit_allows_a_trade_whose_win_stays_under_the_cap", ok and reason is None, f"reason={reason}")
+
+
+def test_consistency_cap_not_applicable_before_reaching_target():
+    """$4,000 profit on a $250K account (default profit_target_balance=$265,000,
+    i.e. a $15,000 target) is nowhere near the target -- the rule correctly does
+    not bind yet. Distinct from the OLD (buggy) reasoning this test used to
+    encode ("no prior profit to compare against") -- see
+    consistency_cap_catches_single_day_100pct_concentration for the real gap
+    that reasoning was hiding."""
     config = AccountConfig(consistency_cap_pct=0.50)
     gov = RiskGovernor(config, starting_balance=250_000.0, starting_high_water_mark=250_000.0)
     gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=250_000.0)
-    gov.record_fill(+4_000.0)  # first-ever profitable day: no prior profit to be a "share" of
+    gov.record_fill(+4_000.0)  # nowhere near the $15,000 target yet
     decision = gov.evaluate(dt.datetime(2026, 9, 21, 10, 0, tzinfo=CT))
     check(
-        "consistency_cap_not_applicable_on_first_profit_day",
+        "consistency_cap_not_applicable_before_reaching_target",
         decision.consistency_room_left is None and LockoutReason.CONSISTENCY_CAP not in decision.reasons,
         f"room={decision.consistency_room_left}, reasons={decision.reasons}",
     )
@@ -470,8 +710,11 @@ def main() -> int:
         test_trailing_drawdown_not_breached_with_buffer_remaining,
         test_high_water_mark_rolls_forward_and_floor_trails,
         test_session_flatten_due_after_310pm_ct,
-        test_consistency_cap_blocks_oversized_single_day,
-        test_consistency_cap_allows_compliant_day,
+        test_consistency_cap_matches_real_broker_example,
+        test_consistency_cap_catches_single_day_100pct_concentration,
+        test_consistency_cap_blocks_oversized_single_day_after_target_reached,
+        test_consistency_cap_allows_compliant_day_after_target_reached,
+        test_consistency_cap_catches_a_past_day_still_dominating_a_smaller_total,
         test_unrealized_loss_alone_triggers_daily_loss_limit,
         test_realized_only_does_not_false_trigger_when_floating_is_small,
         test_unrealized_loss_alone_triggers_trailing_drawdown,
@@ -490,13 +733,23 @@ def main() -> int:
         test_dynamic_sizing_respects_floor,
         test_dynamic_sizing_respects_ceiling,
         test_dynamic_sizing_suggestion_still_subject_to_check_position_size,
-        test_consistency_cap_not_applicable_on_first_profit_day,
+        test_consistency_cap_not_applicable_before_reaching_target,
         test_self_imposed_daily_stop_disabled_by_default,
         test_self_imposed_daily_stop_rejects_before_breach,
         test_self_imposed_daily_stop_accepts_when_room_remains,
+        test_max_daily_profit_disabled_by_default,
+        test_max_daily_profit_rejects_new_entry_once_cap_reached,
+        test_max_daily_profit_accepts_when_room_remains,
+        test_max_daily_profit_cannot_shrink_a_single_fill_that_already_overshot,
+        test_max_daily_profit_preemptively_refuses_a_trade_whose_win_would_breach_it,
+        test_max_daily_profit_allows_a_trade_whose_win_stays_under_the_cap,
         test_reconcile_balance_within_tolerance_ok,
         test_reconcile_balance_mismatch_forces_hard_breach,
         test_reconcile_balance_mismatch_is_sticky_across_new_trading_day,
+        test_consecutive_losing_days_lockout_triggers,
+        test_consecutive_losing_days_not_triggered_below_limit,
+        test_consecutive_losing_days_reset_by_a_winning_day,
+        test_consecutive_losing_days_unaffected_by_intraday_losses_within_the_day_cap,
     ]:
         fn()
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import os
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import Enum
@@ -60,14 +61,72 @@ class FlattenEvent:
 
 
 class AlertHandler:
-    """
-    Stub alert handler (implement with Slack/Email/PagerDuty as needed).
+    """Sends a real email on a risk breach/compliance event, in addition to
+    the normal logging every caller already gets. Implemented 2026-09-24 --
+    this was a pure no-op stub before (`# TODO: Implement with real alert
+    backends`), meaning tonight's real events (the $250K breach, the
+    reconcile_balance() test) would have produced zero external notification
+    even if every other check had worked perfectly.
+
+    Email only, gated on env vars -- no Slack/PagerDuty (would need their own
+    credentials/setup this repo doesn't have yet). Config is optional and
+    fails soft: if SMTP_HOST/SMTP_USER/SMTP_PASS/ALERT_EMAIL_TO aren't all
+    set, `alert()` logs a CRITICAL line noting email is not configured and
+    returns -- it never raises, since a broken alert path must not be able to
+    interfere with the actual risk-handling flow that calls it (flatten,
+    lockout, etc. must proceed regardless of whether the notification send
+    succeeds).
+
+    UNVERIFIED against a real send as of this implementation -- no SMTP
+    credentials have been configured/tested yet. Set the four env vars below
+    and trigger a real `alert()` call (e.g. via a deliberate test breach in
+    Practice mode) before trusting this for an unattended live run.
     """
 
+    def __init__(self) -> None:
+        self._smtp_host = os.getenv("SMTP_HOST")
+        self._smtp_port = int(os.getenv("SMTP_PORT", "587"))
+        self._smtp_user = os.getenv("SMTP_USER")
+        self._smtp_pass = os.getenv("SMTP_PASS")
+        self._to_addr = os.getenv("ALERT_EMAIL_TO")
+
+    def _is_configured(self) -> bool:
+        return all([self._smtp_host, self._smtp_user, self._smtp_pass, self._to_addr])
+
     async def alert(self, level: str, title: str, message: str) -> None:
-        """Send alert to configured channels."""
-        # TODO: Implement with real alert backends
-        pass
+        """Send alert to configured channels. Never raises -- logs and
+        returns on any failure, since the caller's own risk-handling must
+        not depend on a notification succeeding."""
+        logger = logging.getLogger(__name__)
+        if not self._is_configured():
+            logger.critical(
+                "ALERT [%s] %s: %s  (no email sent -- SMTP_HOST/SMTP_USER/"
+                "SMTP_PASS/ALERT_EMAIL_TO not all set in the environment)",
+                level, title, message,
+            )
+            return
+        try:
+            await asyncio.to_thread(self._send_email_sync, level, title, message)
+            logger.info("Alert email sent to %s: [%s] %s", self._to_addr, level, title)
+        except Exception as e:
+            logger.critical(
+                "ALERT [%s] %s: %s  (email send FAILED: %s)",
+                level, title, message, e,
+            )
+
+    def _send_email_sync(self, level: str, title: str, message: str) -> None:
+        """Runs in a worker thread (smtplib is blocking) -- see alert()."""
+        import smtplib
+        from email.mime.text import MIMEText
+
+        msg = MIMEText(message)
+        msg["Subject"] = f"[live_bot {level}] {title}"
+        msg["From"] = self._smtp_user
+        msg["To"] = self._to_addr
+        with smtplib.SMTP(self._smtp_host, self._smtp_port, timeout=15) as server:
+            server.starttls()
+            server.login(self._smtp_user, self._smtp_pass)
+            server.send_message(msg)
 
 
 class FlattenRoutine:
