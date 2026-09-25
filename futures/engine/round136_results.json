@@ -1,0 +1,62 @@
+[
+ {
+  "name": "E1a long each currency in US hours 09-16",
+  "n": 2304,
+  "exp": -0.17734471331774332,
+  "exp_gross": -0.037702555094551116,
+  "p_is": 0.0,
+  "p_oos": 0.0,
+  "exp_is": -0.1848985483186884,
+  "exp_oos": -0.17072588069476535,
+  "positive_markets": 0,
+  "k": 136,
+  "bar": 0.9999264705882352,
+  "sharpe": -0.1797870074474566,
+  "candidate": false
+ },
+ {
+  "name": "E1b short each currency in its own hours",
+  "n": 2267,
+  "exp": -0.1674081142240013,
+  "exp_gross": 0.0050556128815576595,
+  "p_is": 0.0,
+  "p_oos": 0.0,
+  "exp_is": -0.17013340739666033,
+  "exp_oos": -0.16502320092650477,
+  "positive_markets": 0,
+  "k": 136,
+  "bar": 0.9999264705882352,
+  "sharpe": -0.23297853136522448,
+  "candidate": false
+ },
+ {
+  "name": "E2 FOMC statement day long, 4 indices",
+  "n": 678,
+  "exp": 0.09840953867351548,
+  "exp_gross": 0.13966816557207787,
+  "p_is": 1.0,
+  "p_oos": 0.247125,
+  "exp_is": 0.3034362746855988,
+  "exp_oos": -0.04671014097231677,
+  "exp_final": -0.007333808961242187,
+  "k": 136,
+  "bar": 0.9999264705882352,
+  "sharpe": 0.07913689686175082,
+  "candidate": false
+ },
+ {
+  "name": "E3 jobs-report day long, 4 indices",
+  "n": 963,
+  "exp": 0.04614012631590399,
+  "exp_gross": 0.08739375323587766,
+  "p_is": 0.0151,
+  "p_oos": 0.9985,
+  "exp_is": -0.12429782470760695,
+  "exp_oos": 0.1651761556021656,
+  "exp_final": -0.0007847269046216413,
+  "k": 136,
+  "bar": 0.9999264705882352,
+  "sharpe": 0.037397182943149365,
+  "candidate": false
+ }
+]
