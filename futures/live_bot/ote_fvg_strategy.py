@@ -14,21 +14,42 @@ legacy dataset). Re-run on the corrected data, the walk-forward's own
 latest (most-current) folds select RR=1:3, not 1:4 -- see
 TRADING_JOURNAL.md's 2026-09-24 "DATA FIXED" entry for the full derivation.
 
-Current validated numbers (Round 97/98, TRUE walk-forward on the RECONCILED
+INVALIDATED 2026-09-25 (Round 104) -- the numbers below are WRONG, kept only
+so the correction is visible in-place rather than silently deleted. Rounds
+82/96-103 all re-scored one frozen `detect_ote_signals()` signal set across a
+swept (stop, RR) grid, but that detector bakes each signal's stop-loss PRICE
+LEVEL in at detection time using round76's own hardcoded 20.0-point constant
+-- verified directly, every signal's |entry-stop| was exactly 20.0 no matter
+what stop_points got swept afterward. So every "stop=10 wins" claim below was
+actually scoring a 20-point-wide exit corridor while pricing/sizing/reporting
+it as a 10-point one. Fixed and re-run end-to-end in
+`futures/engine/round104_ote_fixed_stop_validation.py`: the
+corrected walk-forward no longer even picks stop=10/RR=3 (it picks
+stop=40/RR=4 instead), and even that corrected best configuration fails this
+campaign's own significance bar (bootstrap P(edge>0)=53.6%, 90% CI
+[-$139.78, $159.02] -- straddles zero, not >=90%). Plain reading: there is
+currently NO statistically validated real edge for this strategy on MNQ.
+Full derivation and the buggy-vs-fixed comparison table:
+TRADING_JOURNAL.md's 2026-09-25 "MAJOR CORRECTION" entry. Do not fund or
+attempt a real Test purchase off the numbers below -- they do not hold.
+The live code's OWN stop/RR constants just below (FIXED_STOP_POINTS=10,
+RR=3.0) are UNAFFECTED by this bug (self-consistent at detection time) but
+are also NOT the corrected walk-forward's pick -- they are simply unvalidated
+now, not proven wrong as specific numbers, just no longer backed by the
+(broken) evidence that was cited for them.
+
+~~Current validated numbers (Round 97/98, TRUE walk-forward on the RECONCILED
 (data-quality-fixed) dataset -- parameters chosen using only data prior to
 each test fold, not hindsight over the whole sample -- NY RTH-only entries,
 single-trade-compliant sizing, real $1,650/day cap enforced PREEMPTIVELY,
 not reactively): n=56 real trades, bootstrap P(true edge>0)=100.0%,
 $50K-eval P(success)=100.0%, P(ruin)=0.0%, median=5.0 days at a 10-day
-window. Superseded the pre-fix Round 87 numbers (n=38, P(success)=77.2%,
-~47% of that sample sat in the since-confirmed-broken volume window) --
-this is a real, current result, not a first read; keep re-validating as
-more real days accumulate, same standing practice as always.
+window.~~ INVALIDATED -- see above.
 
-STATUS (2026-09-24): WIRED IN for Practice-mode shadow-testing
+STATUS (2026-09-25): WIRED IN for Practice-mode shadow-testing
 (`BOT_STRATEGY=ote_fvg` in `main.py`'s `_select_strategy()`), NOT VALIDATED
-FOR LIVE. This is step one of the deployment roadmap (build a real live
-Strategy class, zero live-risk) -- prerequisites #1/#2 below are now done;
+FOR LIVE, and now additionally NOT VALIDATED AT ALL pending a real edge
+being found on the corrected pipeline. Prerequisites #1/#2 below are done;
 #3/#4 are the reason this must still not point at a real Test attempt:
 
   1. DONE -- `main.py`'s `bars_needed` now has an explicit `OteFvgStrategy`
