@@ -153,3 +153,61 @@ Tested with `futures/engine/idea_harness.py` from Round 126 on.
 | 138 | 2026-09-26 | F1b walk-forward gradient boosting (depth 3) (R units) | Round 137 batch F (pre-registered) | f44f1f7 | 10191 | +0.006R | +0.049R | 0.18 / 0.872 | no edge |
 
 Note: Round 138 scanned 582 sub-hour pattern cells; none passed discovery selection (t >= 3.5), so no rows were added (see TRADING_JOURNAL.md).
+| 139 | 2026-09-26 | H1a variance risk premium in top third (R units) | Round 139 batch H (pre-registered) | 70013b8 | 6098 | +0.035R | +0.071R | 0.89 / 0.949 | no edge |
+| 140 | 2026-09-26 | H1b VIX term structure in backwardation (R units) | Round 139 batch H (pre-registered) | 70013b8 | 1837 | +0.073R | +0.100R | 0.62 / 0.997 | no edge |
+| 141 | 2026-09-26 | H1c VIX spike >= 20% above 20-day average (R units) | Round 139 batch H (pre-registered) | 70013b8 | 1797 | +0.117R | +0.148R | 0.78 / 0.999 | no edge |
+| 142 | 2026-09-26 | H2a crypto TSMOM 20-day, BTC + ETH (R units) | Round 139 batch H (pre-registered) | 70013b8 | 3526 | -0.027R | +0.061R | 0.09 / 0.244 | no edge |
+| 143 | 2026-09-26 | H2a crypto TSMOM 60-day, BTC + ETH (R units) | Round 139 batch H (pre-registered) | 70013b8 | 3454 | -0.065R | +0.023R | 0.00 / 0.054 | no edge |
+| 144 | 2026-09-26 | H2b crypto intraday momentum 18-10 -> 10-16 (R units) | Round 139 batch H (pre-registered) | 70013b8 | 1109 | -0.020R | +0.073R | 0.65 / 0.141 | no edge |
+| 145 | 2026-09-26 | H1c VIX-spike long, 1993-2000 SPY replication (R units) | Round 140 replication (pre-registered) | a516a4d | 89 | +0.085R | n/a | replication P 0.727, excess P 0.962 | not replicated |
+| 146 | 2026-09-26 | I1a short ZN 2 days before auctions (R units) | Round 141 batch I (pre-registered) | 47244bb | 1088 | -0.089R | +0.005R | 0.00 / 0.103 | no edge |
+| 147 | 2026-09-26 | I1b long ZN 2 days after auctions (R units) | Round 141 batch I (pre-registered) | 47244bb | 1090 | +0.006R | +0.100R | 1.00 / 0.023 | no edge |
+| 148 | 2026-09-26 | I2 long ZN on the last trading day of the month (R units) | Round 141 batch I (pre-registered) | 47244bb | 308 | +0.111R | +0.204R | 0.98 / 0.723 | no edge |
+| 149 | 2026-09-26 | I3a long indices in OPEX week (R units) | Round 141 batch I (pre-registered) | 47244bb | 4995 | +0.023R | +0.064R | 0.39 / 0.985 | no edge |
+| 150 | 2026-09-26 | I3b short indices the week after OPEX (R units) | Round 141 batch I (pre-registered) | 47244bb | 4833 | -0.072R | -0.031R | 0.04 / 0.000 | no edge |
+| 151 | 2026-09-26 | J1 crypto CME weekend-gap fade, BTC + ETH (R units) | Round 142 batch J (pre-registered) | 3cfe3dc | 323 | -0.177R | -0.085R | 0.30 / 0.003 | no edge |
+| 152 | 2026-09-26 | J2 index weekend-gap fade, 4 indices (R units) | Round 142 batch J (pre-registered) | 3cfe3dc | 551 | +0.000R | +0.038R | 0.30 / 0.624 | no edge |
+| 153 | 2026-09-26 | J3 Connors RSI(2) < 10 above 200-day, 4 indices (R units) | Round 142 batch J (pre-registered) | 3cfe3dc | 2357 | +0.059R | +0.101R | 0.92 / 0.934 | no edge |
+| 154 | 2026-09-26 | J3 Connors RSI(2) < 5 above 200-day, 4 indices (R units) | Round 142 batch J (pre-registered) | 3cfe3dc | 1291 | +0.033R | +0.073R | 0.97 / 0.429 | no edge |
+| 155 | 2026-09-26 | J4 NQ-ES spread reversal after a 2 SD day (R units) | Round 142 batch J (pre-registered) | 3cfe3dc | 399 | -0.074R | -0.023R | 0.00 / 0.001 | no edge |
+| 156 | 2026-09-26 | pre-holiday long, 1990-2000 S&P 500 replication (R units) | Round 143 replication (pre-registered) | 9245730 | 87 | -0.207R | -0.015R | replication P 0.025, excess P 0.263 | not replicated |
+| 157 | 2026-09-26 | Connors RSI(2) < 10 long, 1990-2000 S&P 500 replication (R units) | Round 143 replication (pre-registered) | 9245730 | 422 | +0.010R | +0.193R | replication P 0.564, excess P 0.989 | not replicated |
+| 158 | 2026-09-26 | K1 month-end rebalancing: fade stocks-minus-bonds MTD, last 3 days (R units) | Round 144 batch K (pre-registered) | 2243a1f | 3045 | +0.044R | +0.084R | 0.61 / 0.996 | no edge |
+| 159 | 2026-09-26 | K2a Connors RSI(2) both sides, 6 non-equity markets (R units) | Round 144 batch K (pre-registered) | 2243a1f | 4651 | -0.058R | -0.006R | 0.06 / 0.000 | no edge |
+| 160 | 2026-09-26 | K2b Connors RSI(2) > 90 short below 200-day, 4 indices (R units) | Round 144 batch K (pre-registered) | 2243a1f | 891 | +0.016R | +0.047R | 0.22 / 0.941 | no edge |
+| 161 | 2026-09-26 | K3 Santa Claus rally, last 5 Dec + first 2 Jan days, 4 indices (R units) | Round 144 batch K (pre-registered) | 2243a1f | 590 | -0.035R | +0.008R | 0.45 / 0.147 | no edge |
+| 162 | 2026-09-26 | K4 long 4 indices when 20-day SD is below its 250-day median (R units) | Round 144 batch K (pre-registered) | 2243a1f | 11042 | -0.013R | +0.038R | 0.04 / 0.470 | no edge |
+| 163 | 2026-09-26 | K5 cross-sectional momentum 12-1, top 3 / bottom 3 of 10 markets (R units) | Round 144 batch K (pre-registered) | 2243a1f | 34914 | -0.034R | +0.016R | 0.00 / 0.002 | no edge |
+| 164 | 2026-09-26 | L1 month-end hedging flow: 6E with US-minus-DAX MTD, last day (R units) | Round 145 batch L (pre-registered) | 2044b3b | 306 | -0.071R | -0.015R | 0.46 / 0.083 | no edge |
+| 165 | 2026-09-26 | L2a volatility breakout 0.5 x prior range, 10 markets (R units) | Round 145 batch L (pre-registered) | 2044b3b | 36136 | +0.072R | +0.120R | 1.00 / 1.000 | no edge |
+| 166 | 2026-09-26 | L2b volatility breakout 1.0 x prior range, 10 markets (R units) | Round 145 batch L (pre-registered) | 2044b3b | 15876 | +0.014R | +0.063R | 0.66 / 0.993 | no edge |
+| 167 | 2026-09-26 | L3 IBS < 0.2 long next day, 4 indices (R units) | Round 145 batch L (pre-registered) | 2044b3b | 3896 | +0.077R | +0.115R | 0.89 / 1.000 | no edge |
+| 168 | 2026-09-26 | L4 lunar: long near new moon, short near full moon, 4 indices (R units) | Round 145 batch L (pre-registered) | 2044b3b | 20251 | -0.039R | +0.001R | 0.00 / 0.001 | no edge |
+Note: Round 145's L2a row shows its 50/50 headline (P 1.00 / 1.000). It is "no edge" because it failed the pre-registered worst-case check (-0.031R, P 0.00 / 0.002). On a random walk the 50/50 method scores +0.080R, so the headline is an artifact (`round145_batch_l.py --order-bias`). L3 passed the 2013-26 bar (P 1.00000) but failed the 2000-12 condition (P 0.888 < 0.95).
+| 169 | 2026-09-26 | IBS < 0.2 long, 1990-2000 S&P 500 replication (R units) | Round 146 replication (pre-registered) | 4137623 | 544 | -0.053R | +0.013R | replication P 0.138, excess P 0.189 | not replicated |
+| 170 | 2026-09-26 | M1 round-number fade, T=S/2, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 6898 | -12.9 | -4.0 | 0.00 / 0.000 | no edge |
+| 171 | 2026-09-26 | M1 round-number fade, T=S/3, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 7051 | -11.1 | -2.2 | 0.00 / 0.000 | no edge |
+| 172 | 2026-09-26 | M2 previous-day high/low fade, T=S/2, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 1686 | -21.4 | -10.7 | 0.00 / 0.032 | no edge |
+| 173 | 2026-09-26 | M2 previous-day high/low fade, T=S/3, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 1686 | -19.8 | -9.0 | 0.00 / 0.018 | no edge |
+| 174 | 2026-09-26 | M3 opening-range fade, T=S/2, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 1818 | -8.2 | +0.6 | 0.01 / 0.520 | no edge |
+| 175 | 2026-09-26 | M3 opening-range fade, T=S/3, MNQ + MGC | Round 147 batch M (pre-registered) | 37c68b8 | 1818 | -10.1 | -1.4 | 0.00 / 0.355 | no edge |
+| 176 | 2026-09-26 | N1 round-number breakout, target 2S, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 4907 | +0.2 | +9.3 | 0.51 / 0.513 | no edge |
+| 177 | 2026-09-26 | N1 round-number breakout, no target, stop to 16:00, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 3433 | +10.2 | +19.7 | 0.79 / 0.707 | no edge |
+| 178 | 2026-09-26 | N2 previous-day high/low breakout, target 2S, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 1509 | -3.0 | +7.3 | 0.50 / 0.243 | no edge |
+| 179 | 2026-09-26 | N2 previous-day high/low breakout, no target, stop to 16:00, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 1493 | +17.6 | +28.0 | 0.87 / 0.615 | no edge |
+| 180 | 2026-09-26 | N3 overnight high/low breakout in RTH, target 2S, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 1590 | -14.6 | -5.0 | 0.14 / 0.063 | no edge |
+| 181 | 2026-09-26 | N3 overnight high/low breakout in RTH, no target, stop to 16:00, MNQ + MGC | Round 148 batch N (pre-registered) | 8bb523f | 1590 | -0.8 | +8.8 | 0.53 / 0.378 | no edge |
+| 182 | 2026-09-26 | O1 walk-forward gradient boosting, 1:1 bracket, top/bottom 10%, MNQ + MGC | Round 149 batch O (pre-registered) | b8c2400 | 3738 | -14.3 | +1.1 | 0.00 / 0.035 | no edge |
+| 183 | 2026-09-26 | O2 walk-forward logistic regression, 1:1 bracket, top/bottom 10%, MNQ + MGC | Round 149 batch O (pre-registered) | b8c2400 | 4628 | -9.3 | +5.5 | 0.00 / 0.481 | no edge |
+| 184 | 2026-09-26 | P1 plain FVG retest, 5-min, 1:1, MNQ + MGC | Round 150 batch P (pre-registered; video qkzJknH5IJk) | 6ec5a9a | 24215 | -11.1 | +3.4 | 0.00 / 0.013 | no edge |
+| 185 | 2026-09-26 | P2 FVG with displacement, VWAP side, killzone, 50% entry, 5-min, 1:1, MNQ + MGC | Round 150 batch P (pre-registered; video qkzJknH5IJk) | 6ec5a9a | 4740 | -15.6 | -1.8 | 0.00 / 0.506 | no edge |
+| 186 | 2026-09-26 | P1 plain FVG retest, 15-min, 1:1, MNQ + MGC | Round 150 batch P (pre-registered; video qkzJknH5IJk) | 6ec5a9a | 11427 | -9.0 | +2.7 | 0.00 / 0.272 | no edge |
+| 187 | 2026-09-26 | P2 FVG with displacement, VWAP side, killzone, 50% entry, 15-min, 1:1, MNQ + MGC | Round 150 batch P (pre-registered; video qkzJknH5IJk) | 6ec5a9a | 2891 | -4.6 | +6.8 | 0.08 / 0.621 | no edge |
+| 188 | 2026-09-26 | Q1 same-slot persistence, 30-min slots 08-16 ET, |t| >= 2 over 20 days, MNQ + MGC | Round 151 batch Q (pre-registered) | 0266ee6 | 1497 | -30.8 | -9.9 | 0.00 / 0.283 | no edge |
+| 189 | 2026-09-26 | Q2 overnight 18:00-09:29 against a >= 1 SD previous regular session, MNQ + MGC | Round 151 batch Q (pre-registered) | 0266ee6 | 526 | +1.7 | +5.4 | 0.49 / 0.557 | no edge |
+| 190 | 2026-09-26 | Q3 08:30 news breakout of the 08:30-08:34 range, 1:1, MNQ + MGC | Round 151 batch Q (pre-registered) | 0266ee6 | 446 | -27.9 | -21.2 | 0.08 / 0.001 | no edge |
+| 191 | 2026-09-26 | Q3 inverse: fade the 08:30 news break, 1:1, MNQ + MGC (chosen after Q3 lost) | Round 152 inversion of Q3 (pre-registered; selected after Q3's result) | 48ecabb | 446 | +14.5 | +21.2 | 0.62 / 0.992 | no edge |
+| 192 | 2026-09-26 | FVG plain 5-min, exit chosen in-sample: stop 2S target 2S, MNQ + MGC | Round 153 exit grid, chosen in-sample (pre-registered) | 7510b4f | 10712 | -0.1 | +6.5 | 0.09 / 0.907 | no edge |
+| 193 | 2026-09-26 | 08:30 news fade, exit chosen in-sample: stop 0.5S target hold, MNQ + MGC | Round 153 exit grid, chosen in-sample (pre-registered) | 7510b4f | 446 | +68.1 | +82.3 | 0.82 / 0.981 | no edge |
+| 194 | 2026-09-26 | round-number breakout, exit chosen in-sample: stop 1S target hold, MNQ + MGC | Round 153 exit grid, chosen in-sample (pre-registered) | 7510b4f | 3433 | +10.2 | +19.7 | 0.79 / 0.707 | no edge |
+| 195 | 2026-09-26 | previous-day high/low breakout, exit chosen in-sample: stop 0.5S target hold, MNQ + MGC | Round 153 exit grid, chosen in-sample (pre-registered) | 7510b4f | 1496 | +43.3 | +65.3 | 0.97 / 0.523 | no edge |

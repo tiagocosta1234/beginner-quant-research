@@ -1,0 +1,11 @@
+{
+ "name": "IBS < 0.2 long, 1990-2000 S&P 500 replication (R units)",
+ "n": 544,
+ "exp": -0.052719189178979026,
+ "exp_gross": 0.012859734153327307,
+ "p_pos": 0.1382,
+ "excess": -0.04750145439036575,
+ "p_excess": 0.189,
+ "cost": 0.06557892333230635,
+ "replicated": false
+}

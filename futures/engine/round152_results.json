@@ -1,0 +1,32 @@
+{
+ "name": "Q3 inverse: fade the 08:30 news break, 1:1, MNQ + MGC (chosen after Q3 lost)",
+ "n": 446,
+ "win": 0.5291479820627802,
+ "r_net": 0.048330194319880705,
+ "exp": 14.499058295964211,
+ "exp_gross": 21.205156950672734,
+ "n_is": 368,
+ "exp_is": 4.007826086956622,
+ "p_is": 0.621,
+ "n_oos": 78,
+ "exp_oos": 63.99615384615385,
+ "p_oos": 0.9924,
+ "sharpe": 0.040866020049863415,
+ "k": 191,
+ "bar": 0.9999476439790576,
+ "candidate": false,
+ "gate": {
+  "dollars_per_R": 2000,
+  "pass_5d": 0.03675,
+  "pass_10d": 0.1129,
+  "pass_21d": 0.23965,
+  "fail_21d": 0.56815
+ },
+ "both_positive": true,
+ "per_market": {
+  "MGC": 8.586473429951885,
+  "MNQ": 19.619999999999994
+ },
+ "trade_sharpe": 0.06045173667853306,
+ "trade_sharpe_needed": 0.5237464213733066
+}

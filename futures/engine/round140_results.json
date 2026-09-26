@@ -1,0 +1,9 @@
+{
+ "name": "H1c VIX-spike long, 1993-2000 SPY replication (R units)",
+ "n": 89,
+ "exp": 0.08531887529908287,
+ "p_pos": 0.72725,
+ "excess": 0.2668271227280673,
+ "p_excess": 0.9622,
+ "replicated": false
+}

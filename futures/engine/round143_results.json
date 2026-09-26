@@ -1,0 +1,22 @@
+[
+ {
+  "name": "pre-holiday long, 1990-2000 S&P 500 replication (R units)",
+  "n": 87,
+  "exp": -0.20712510288170663,
+  "exp_gross": -0.014873875097897709,
+  "p_pos": 0.0255,
+  "excess": -0.07103587164097444,
+  "p_excess": 0.26305,
+  "replicated": false
+ },
+ {
+  "name": "Connors RSI(2) < 10 long, 1990-2000 S&P 500 replication (R units)",
+  "n": 422,
+  "exp": 0.009528055390911295,
+  "exp_gross": 0.19347509729218548,
+  "p_pos": 0.563575,
+  "excess": 0.14561728663164347,
+  "p_excess": 0.9887,
+  "replicated": false
+ }
+]

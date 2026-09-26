@@ -1,0 +1,98 @@
+[
+ {
+  "name": "Q1 same-slot persistence, 30-min slots 08-16 ET, |t| >= 2 over 20 days, MNQ + MGC",
+  "n": 1497,
+  "win": 0.47695390781563124,
+  "r_net": -0.10259131596526332,
+  "exp": -30.777394789578995,
+  "exp_gross": -9.869071476285733,
+  "n_is": 956,
+  "exp_is": -42.199393305439415,
+  "p_is": 0.0015,
+  "n_oos": 541,
+  "exp_oos": -10.593604436228599,
+  "p_oos": 0.28275,
+  "sharpe": -0.08482951841575401,
+  "k": 190,
+  "bar": 0.9999473684210526,
+  "candidate": false,
+  "gate": {
+   "dollars_per_R": 1000,
+   "pass_5d": 0.0415,
+   "pass_10d": 0.10375,
+   "pass_21d": 0.1527,
+   "fail_21d": 0.80005
+  },
+  "both_positive": false,
+  "per_market": {
+   "MGC": -40.96844444444409,
+   "MNQ": -21.333951093951097
+  },
+  "trade_sharpe": -0.0693158657813997,
+  "trade_sharpe_needed": 0.28587593480424406
+ },
+ {
+  "name": "Q2 overnight 18:00-09:29 against a >= 1 SD previous regular session, MNQ + MGC",
+  "n": 526,
+  "win": 0.5190114068441065,
+  "r_net": 0.0055007604562740805,
+  "exp": 1.6502281368822243,
+  "exp_gross": 5.386882129277666,
+  "n_is": 351,
+  "exp_is": -0.28205128205125357,
+  "p_is": 0.49025,
+  "n_oos": 175,
+  "exp_oos": 5.5258285714288,
+  "p_oos": 0.557,
+  "sharpe": 0.0032145531776877176,
+  "k": 190,
+  "bar": 0.9999473684210526,
+  "candidate": false,
+  "gate": {
+   "dollars_per_R": 3000,
+   "pass_5d": 0.0369,
+   "pass_10d": 0.10795,
+   "pass_21d": 0.19305,
+   "fail_21d": 0.7011
+  },
+  "both_positive": false,
+  "per_market": {
+   "MGC": -18.72819277108413,
+   "MNQ": 19.968736462093858
+  },
+  "trade_sharpe": 0.004245223469376784,
+  "trade_sharpe_needed": 0.4822759729329682
+ },
+ {
+  "name": "Q3 08:30 news breakout of the 08:30-08:34 range, 1:1, MNQ + MGC",
+  "n": 446,
+  "win": 0.4663677130044843,
+  "r_net": -0.0930375186846042,
+  "exp": -27.91125560538126,
+  "exp_gross": -21.205156950672734,
+  "n_is": 368,
+  "exp_is": -18.448695652174035,
+  "p_is": 0.07975,
+  "n_oos": 78,
+  "exp_oos": -72.5551282051282,
+  "p_oos": 0.00125,
+  "sharpe": -0.07827720828297278,
+  "k": 190,
+  "bar": 0.9999473684210526,
+  "candidate": false,
+  "gate": {
+   "dollars_per_R": 2000,
+   "pass_5d": 0.0232,
+   "pass_10d": 0.0704,
+   "pass_21d": 0.14315,
+   "fail_21d": 0.72535
+  },
+  "both_positive": false,
+  "per_market": {
+   "MGC": -26.273429951691018,
+   "MNQ": -29.329790794979086
+  },
+  "trade_sharpe": -0.11639182739792367,
+  "trade_sharpe_needed": 0.5237464213733066
+ }
+]

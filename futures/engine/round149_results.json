@@ -1,0 +1,68 @@
+[
+ {
+  "name": "O1 walk-forward gradient boosting, 1:1 bracket, top/bottom 10%, MNQ + MGC",
+  "n": 3738,
+  "win": 0.4959871589085072,
+  "r_net": -0.04758138710540417,
+  "exp": -14.27441613162125,
+  "exp_gross": 1.0591954253611038,
+  "n_is": 2443,
+  "exp_is": -15.31963569381913,
+  "p_is": 0.003,
+  "n_oos": 1295,
+  "exp_oos": -12.302623552123618,
+  "p_oos": 0.035,
+  "sharpe": -0.12171547658785961,
+  "k": 183,
+  "bar": 0.9999453551912568,
+  "candidate": false,
+  "call_accuracy": 0.5125168010752689,
+  "n_calls": 14669,
+  "win_needed": 0.5944999999999896,
+  "gate": {
+   "dollars_per_R": 1000,
+   "pass_5d": 0.06005,
+   "pass_10d": 0.1149,
+   "pass_21d": 0.1428,
+   "fail_21d": 0.83485
+  },
+  "both_positive": false,
+  "per_market": {
+   "MGC": -20.71950570342217,
+   "MNQ": -8.019587506589346
+  }
+ },
+ {
+  "name": "O2 walk-forward logistic regression, 1:1 bracket, top/bottom 10%, MNQ + MGC",
+  "n": 4628,
+  "win": 0.5084269662921348,
+  "r_net": -0.030876492725438832,
+  "exp": -9.26294781763165,
+  "exp_gross": 5.501174913569742,
+  "n_is": 3108,
+  "exp_is": -13.590820463320293,
+  "p_is": 0.002,
+  "n_oos": 1520,
+  "exp_oos": -0.41358717105250364,
+  "p_oos": 0.4815,
+  "sharpe": -0.08113727947086817,
+  "k": 183,
+  "bar": 0.9999453551912568,
+  "candidate": false,
+  "call_accuracy": 0.5066968325791855,
+  "n_calls": 12164,
+  "win_needed": 0.5869999999999904,
+  "gate": {
+   "dollars_per_R": 2000,
+   "pass_5d": 0.08445,
+   "pass_10d": 0.13165,
+   "pass_21d": 0.15065,
+   "fail_21d": 0.81865
+  },
+  "both_positive": false,
+  "per_market": {
+   "MGC": -21.264728150406192,
+   "MNQ": -0.38343515037588277
+  }
+ }
+]

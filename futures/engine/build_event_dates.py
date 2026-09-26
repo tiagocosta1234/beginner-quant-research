@@ -1,10 +1,14 @@
 """
+Builds data/events/treasury_coupon_auctions.csv: every auction (new issues and
+reopenings) of nominal Treasury notes/bonds with >= 4 years to maturity, 2000-2026,
+from the TreasuryDirect securities API; TIPS and floating-rate notes excluded.
+
 Builds data/events/fomc_statement_dates.csv: the day each SCHEDULED FOMC meeting
 ended (the statement day), 2000-2026, from federalreserve.gov (the current
 calendar page for 2021+, fomchistorical{year}.htm before that). Unscheduled
 meetings, cancelled meetings, conference calls and notation votes are excluded.
 """
-import os, re, time, urllib.request
+import os, re, sys, time, urllib.request
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -62,6 +66,30 @@ def dedupe(dates):
         else:
             out.append(d)
     return out
+
+
+def treasury_auctions(first=2000, last=2026):
+    import json
+    rows = []
+    for kind in ["Note", "Bond"]:
+        for y in range(first, last + 1):
+            url = (f"https://www.treasurydirect.gov/TA_WS/securities/search?type={kind}&format=json"
+                   f"&startDate=01/01/{y}&endDate=12/31/{y}")
+            for x in json.loads(get(url)):
+                years = int(re.match(r"(\d+)-Year", x["securityTerm"]).group(1)) if "-Year" in x["securityTerm"] else 0
+                if x.get("tips") == "No" and x.get("floatingRate") == "No" and years >= 4 and x.get("auctionDate"):
+                    rows.append((pd.Timestamp(x["auctionDate"][:10]), x["securityTerm"], x.get("reopening")))
+            time.sleep(0.2)
+    df = pd.DataFrame(rows, columns=["date", "term", "reopening"]).drop_duplicates().sort_values("date")
+    df = df[(df["date"] >= f"{first}-01-01") & (df["date"] <= f"{last}-12-31")]
+    df.to_csv(os.path.join(HERE, "..", "data", "events", "treasury_coupon_auctions.csv"), index=False)
+    return df
+
+
+if __name__ == "__main__" and "--treasury" in sys.argv:
+    df = treasury_auctions()
+    print(len(df), "auctions;", df.groupby(df["date"].dt.year).size().to_dict())
+    raise SystemExit
 
 
 if __name__ == "__main__":
