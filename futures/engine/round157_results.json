@@ -1,0 +1,22 @@
+{
+ "name": "Copper (HG) prior-day move -> same-direction ES/NQ/YM/RTY open->close (Dr. Copper)",
+ "n": 9014,
+ "exp": -0.052558315934159265,
+ "exp_gross": -0.014708870612249843,
+ "p_is": 0.0,
+ "p_oos": 0.019325,
+ "exp_is": -0.1134121368032766,
+ "exp_oos": -0.02917744065551498,
+ "exp_2020_26": -0.03033271437857276,
+ "k": 199,
+ "bar": 0.9999497487437186,
+ "per_market": {
+  "ES=F": -0.06939514029598795,
+  "NQ=F": -0.027743116564423687,
+  "RTY=F": -0.05193281717881575,
+  "YM=F": -0.060948832533369544
+ },
+ "n_markets_positive": 0,
+ "trade_sharpe_daily": -0.0483745270294283,
+ "candidate": false
+}

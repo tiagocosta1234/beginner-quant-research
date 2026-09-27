@@ -1,0 +1,22 @@
+{
+ "name": "Crude oil (CL) prior-day move -> OPPOSITE-direction ES/NQ/YM/RTY open->close (cost-push channel)",
+ "n": 13205,
+ "exp": -0.05018311080362509,
+ "exp_gross": -0.009432910477785932,
+ "p_is": 0.0,
+ "p_oos": 0.000825,
+ "exp_is": -0.06251603437587824,
+ "exp_oos": -0.041735601075941674,
+ "exp_2020_26": -0.04419036000806241,
+ "k": 222,
+ "bar": 0.9999549549549549,
+ "per_market": {
+  "ES=F": -0.059405893880574316,
+  "NQ=F": -0.04767795956103838,
+  "RTY=F": -0.023204172572709396,
+  "YM=F": -0.05316346305689391
+ },
+ "n_markets_positive": 0,
+ "trade_sharpe_daily": -0.04561436719414386,
+ "candidate": false
+}

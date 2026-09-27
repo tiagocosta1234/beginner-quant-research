@@ -1,0 +1,15 @@
+{
+ "name": "Round 174 confluence (>=2 of 4 dip-buy-family legs agree), 4 indices",
+ "n": 1343,
+ "exp": 0.15713649284146788,
+ "exp_gross": 0.19788980369007142,
+ "p_is": 0.999275,
+ "p_oos": 0.99945,
+ "exp_is": 0.14722216428147497,
+ "exp_oos": 0.16467294181236689,
+ "exp_final": 0.18223250201595179,
+ "k": 279,
+ "bar": 0.9999641577060931,
+ "sharpe": 0.11643332624184517,
+ "candidate": false
+}

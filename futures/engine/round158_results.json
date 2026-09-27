@@ -1,0 +1,22 @@
+{
+ "name": "Round 157 inverse: fade copper's prior-day move, ES/NQ/YM/RTY (chosen after Round 157's fade lean)",
+ "n": 9014,
+ "exp": -0.023140574709659592,
+ "exp_gross": 0.014708870612249843,
+ "p_is": 0.31895,
+ "p_oos": 0.024075,
+ "exp_is": -0.010217312840795618,
+ "exp_oos": -0.028105869733599652,
+ "exp_2020_26": 0.00013822852003502555,
+ "k": 200,
+ "bar": 0.99995,
+ "per_market": {
+  "ES=F": -0.031730414600048946,
+  "NQ=F": -0.038212096599518,
+  "RTY=F": 0.00704719160889804,
+  "YM=F": -0.012777234749512392
+ },
+ "n_markets_positive": 1,
+ "trade_sharpe_daily": -0.021305526002860915,
+ "candidate": false
+}

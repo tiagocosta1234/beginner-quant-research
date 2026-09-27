@@ -1,0 +1,22 @@
+{
+ "name": "10Y note (ZN) prior-day move -> same-direction ES/NQ/YM/RTY open->close (discount-rate channel)",
+ "n": 13127,
+ "exp": -0.026118476130673172,
+ "exp_gross": 0.014576903235469337,
+ "p_is": 0.0,
+ "p_oos": 0.7043,
+ "exp_is": -0.07428045303970107,
+ "exp_oos": 0.007055230851307451,
+ "exp_2020_26": -0.004674137078781505,
+ "k": 219,
+ "bar": 0.9999543378995434,
+ "per_market": {
+  "ES=F": -0.043174472156122363,
+  "NQ=F": -0.018594493637219153,
+  "RTY=F": -0.004664220450797753,
+  "YM=F": -0.02426495528053509
+ },
+ "n_markets_positive": 0,
+ "trade_sharpe_daily": -0.023886797571794096,
+ "candidate": false
+}

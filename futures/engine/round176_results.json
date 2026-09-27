@@ -1,0 +1,30 @@
+[
+ {
+  "name": "GC/SI ratio z>=1.5 -> fade (short rich leg/long cheap leg)",
+  "n": 513,
+  "exp": -0.030507147862991225,
+  "exp_gross": -0.004688100674596929,
+  "p_is": 0.024825,
+  "p_oos": 0.254925,
+  "exp_is": -0.04356451948761885,
+  "exp_oos": -0.017900030432316274,
+  "k": 284,
+  "bar": 0.9999647887323944,
+  "trade_sharpe_daily": -0.07616537309126517,
+  "candidate": false
+ },
+ {
+  "name": "GC/SI ratio z>=2.0 -> fade (short rich leg/long cheap leg)",
+  "n": 237,
+  "exp": -0.058494273649617734,
+  "exp_gross": -0.03304100600425406,
+  "p_is": 0.083275,
+  "p_oos": 0.06855,
+  "exp_is": -0.048953134635611996,
+  "exp_oos": -0.06844666865560646,
+  "k": 285,
+  "bar": 0.9999649122807017,
+  "trade_sharpe_daily": -0.13088900599924028,
+  "candidate": false
+ }
+]

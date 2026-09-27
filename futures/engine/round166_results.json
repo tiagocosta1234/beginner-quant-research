@@ -1,0 +1,47 @@
+{
+ "result": {
+  "name": "Round 166 ensemble: Connors+IBS+month-end+pre-holiday, netted, 4 indices",
+  "n": 8105,
+  "exp": 0.0766608233131691,
+  "exp_gross": 0.12654703753063207,
+  "p_is": 0.93655,
+  "p_oos": 1.0,
+  "exp_is": 0.03578510210389185,
+  "exp_oos": 0.10553199060940596,
+  "exp_final": 0.10694883816575748,
+  "k": 225,
+  "bar": 0.9999555555555556,
+  "sharpe": 0.050984242288791684,
+  "candidate": false
+ },
+ "leg_corr": {
+  "connors": {
+   "connors": 1.0,
+   "ibs": 0.3816073611327204,
+   "month_end": -0.012691195231019378,
+   "pre_holiday": 0.04058841787206627
+  },
+  "ibs": {
+   "connors": 0.3816073611327204,
+   "ibs": 1.0,
+   "month_end": -0.003240548648374921,
+   "pre_holiday": 0.07251289086498462
+  },
+  "month_end": {
+   "connors": -0.012691195231019378,
+   "ibs": -0.003240548648374921,
+   "month_end": 1.0,
+   "pre_holiday": -0.051025595767358246
+  },
+  "pre_holiday": {
+   "connors": 0.04058841787206627,
+   "ibs": 0.07251289086498462,
+   "month_end": -0.051025595767358246,
+   "pre_holiday": 1.0
+  }
+ },
+ "n_overlap": 1831,
+ "n_leg_days": 8105,
+ "active_days_sharpe": 0.050984242288791684,
+ "full_calendar_gate_sharpe": 0.036156985649173586
+}

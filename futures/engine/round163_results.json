@@ -1,0 +1,32 @@
+[
+ {
+  "name": "Long Tue-Fri, flat Monday, ES/NQ/YM/RTY (weekend effect)",
+  "n": 17353,
+  "exp": -0.011018329320132737,
+  "exp_gross": 0.02992032659654452,
+  "p_is": 0.000475,
+  "p_oos": 0.835475,
+  "exp_is": -0.04279456098649132,
+  "exp_oos": 0.01107014040125124,
+  "exp_final": -0.022357587355471362,
+  "k": 220,
+  "bar": 0.9999545454545454,
+  "sharpe": -0.010205176841860892,
+  "candidate": false
+ },
+ {
+  "name": "Short Monday only, flat Tue-Fri, ES/NQ/YM/RTY (Monday-effect direct test)",
+  "n": 4031,
+  "exp": -0.11891777048788132,
+  "exp_gross": -0.07794401660774257,
+  "p_is": 7.5e-05,
+  "p_oos": 0.0,
+  "exp_is": -0.09183318636038877,
+  "exp_oos": -0.13807543905751815,
+  "exp_final": -0.21543742248423758,
+  "k": 221,
+  "bar": 0.9999547511312217,
+  "sharpe": -0.11501120556191974,
+  "candidate": false
+ }
+]

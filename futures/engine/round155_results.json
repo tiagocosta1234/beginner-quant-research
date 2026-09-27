@@ -1,0 +1,15 @@
+{
+ "name": "6E prior-day move -> same-direction GC open->close (dollar leads gold)",
+ "n": 1885,
+ "exp": -0.029745680332062513,
+ "exp_gross": -0.0077422080673199565,
+ "p_is": 0.483475,
+ "p_oos": 0.10105,
+ "exp_is": -0.002162902239575114,
+ "exp_oos": -0.03779932218771683,
+ "exp_final": -0.02845141626766588,
+ "k": 197,
+ "bar": 0.9999492385786802,
+ "sharpe": -0.02645569021774434,
+ "candidate": false
+}
