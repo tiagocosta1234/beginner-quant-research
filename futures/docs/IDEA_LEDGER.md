@@ -375,3 +375,5 @@ Note: Round 145's L2a row shows its 50/50 headline (P 1.00 / 1.000). It is "no e
 | 357 | 2026-09-26 | FVG real secrets [size, color, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 5 | -9.9 | -1.9 | 0.55 / 0.000 | no edge |
 | 358 | 2026-09-26 | FVG real secrets [size, color, trend], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 430 | -8.7 | -4.6 | 0.77 / 0.073 | no edge |
 | 359 | 2026-09-26 | FVG real secrets [size, color, trend, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 2 | -23.0 | -10.0 | 0.24 / nan | no edge |
+| 360 | 2026-09-28 | 2-leg (Round 186 POC+VA) discretized +1650/-900/0 | Round 190 (pre-registered, disciplined daily bracket, +1650/-900/0) | 0f7bce1 | 1452 | +81.7 | n/a | 0.98 / 0.906 | no edge |
+| 361 | 2026-09-28 | 3-leg (Round 188 +gap fade) discretized +1650/-900/0 | Round 190 (pre-registered, disciplined daily bracket, +1650/-900/0) | 0f7bce1 | 1484 | +48.5 | n/a | 0.91 / 0.753 | no edge |

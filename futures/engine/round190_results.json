@@ -1,0 +1,58 @@
+[
+ {
+  "name": "2-leg (Round 186 POC+VA) discretized +1650/-900/0",
+  "n": 1452,
+  "exp": 81.71487603305785,
+  "p_is": 0.98275,
+  "p_oos": 0.906175,
+  "k": 360,
+  "bar": 0.9999722222222223,
+  "win_rate": 0.3849862258953168,
+  "full_cal_sharpe": 0.05900863553215615,
+  "candidate": false,
+  "gate_full": {
+   "n": 293,
+   "passed": 126,
+   "failed": 166,
+   "ongoing": 1,
+   "rate": 0.4300341296928328,
+   "median_days": 5.0
+  },
+  "gate_2026": {
+   "n": 30,
+   "passed": 13,
+   "failed": 16,
+   "ongoing": 1,
+   "rate": 0.43333333333333335,
+   "median_days": 6.0
+  }
+ },
+ {
+  "name": "3-leg (Round 188 +gap fade) discretized +1650/-900/0",
+  "n": 1484,
+  "exp": 48.517520215633425,
+  "p_is": 0.912125,
+  "p_oos": 0.752625,
+  "k": 361,
+  "bar": 0.9999722991689751,
+  "win_rate": 0.3719676549865229,
+  "full_cal_sharpe": 0.035669140202821345,
+  "candidate": false,
+  "gate_full": {
+   "n": 298,
+   "passed": 120,
+   "failed": 177,
+   "ongoing": 1,
+   "rate": 0.40268456375838924,
+   "median_days": 5.0
+  },
+  "gate_2026": {
+   "n": 28,
+   "passed": 10,
+   "failed": 17,
+   "ongoing": 1,
+   "rate": 0.35714285714285715,
+   "median_days": 5.5
+  }
+ }
+]
