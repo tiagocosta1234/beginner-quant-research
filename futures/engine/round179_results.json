@@ -1,0 +1,34 @@
+{
+ "connors": {
+  "name": "RTH-only connors",
+  "n": 330,
+  "exp": 0.051039822814079525,
+  "p_is": 0.898675,
+  "p_oos": 0.30265,
+  "sharpe": 0.04180226523176088
+ },
+ "ibs": {
+  "name": "RTH-only ibs",
+  "n": 619,
+  "exp": 0.0986118549201956,
+  "p_is": 0.993775,
+  "p_oos": 0.38135,
+  "sharpe": 0.08738911316645873
+ },
+ "pre_holiday": {
+  "name": "RTH-only pre_holiday",
+  "n": 136,
+  "exp": 0.1615167234832258,
+  "p_is": 0.995475,
+  "p_oos": 0.3107,
+  "sharpe": 0.1880260866161278
+ },
+ "ensemble": {
+  "name": "RTH-only 3-leg ensemble (Connors+IBS+pre-holiday), ES+NQ",
+  "n": 953,
+  "exp": 0.10477455836092972,
+  "p_is": 0.99835,
+  "p_oos": 0.268175,
+  "sharpe": 0.07933513487425566
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "name": "Gold (GC) prior-day move -> OPPOSITE-direction ES/NQ/YM/RTY open->close (flight-to-safety channel)",
+ "n": 6394,
+ "exp": -0.01799568316841514,
+ "exp_gross": 0.00894797680820365,
+ "p_is": 0.5546,
+ "p_oos": 0.064975,
+ "exp_is": 0.004558760576447419,
+ "exp_oos": -0.023249398564441737,
+ "exp_2020_26": -0.006531424687049905,
+ "k": 301,
+ "bar": 0.9999667774086378,
+ "per_market": {
+  "ES=F": -0.028161886309709786,
+  "NQ=F": -0.010697191965581027,
+  "RTY=F": 0.006231639788552355,
+  "YM=F": -0.028288107188527534
+ },
+ "n_markets_positive": 1,
+ "trade_sharpe_daily": -0.017176248273771306,
+ "candidate": false
+}

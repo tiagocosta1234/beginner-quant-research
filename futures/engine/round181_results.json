@@ -1,0 +1,50 @@
+[
+ {
+  "name": "Daily RTH gap fade, |gap|>=0.5x vol, ES+NQ+GC+SI",
+  "n": 3957,
+  "exp": -0.029024279748419063,
+  "p_is": 0.056225,
+  "p_oos": 0.40075,
+  "k": 297,
+  "bar": 0.99996632996633,
+  "exp_gross": -0.008007913838333552,
+  "candidate": false,
+  "sharpe": -0.02842520686621673
+ },
+ {
+  "name": "Daily RTH gap follow, |gap|>=0.5x vol, ES+NQ+GC+SI",
+  "n": 3957,
+  "exp": -0.013008452071751952,
+  "p_is": 0.252375,
+  "p_oos": 0.416825,
+  "k": 298,
+  "bar": 0.9999664429530202,
+  "exp_gross": 0.008007913838333552,
+  "candidate": false,
+  "sharpe": -0.012733120685159478
+ },
+ {
+  "name": "Daily RTH gap fade, |gap|>=1.0x vol, ES+NQ+GC+SI",
+  "n": 2069,
+  "exp": -0.05452244020454639,
+  "p_is": 0.01255,
+  "p_oos": 0.605875,
+  "k": 299,
+  "bar": 0.9999665551839465,
+  "exp_gross": -0.03201115935223406,
+  "candidate": false,
+  "sharpe": -0.04185923161686415
+ },
+ {
+  "name": "Daily RTH gap follow, |gap|>=1.0x vol, ES+NQ+GC+SI",
+  "n": 2069,
+  "exp": 0.009499878499921736,
+  "p_is": 0.745175,
+  "p_oos": 0.282775,
+  "k": 300,
+  "bar": 0.9999666666666667,
+  "exp_gross": 0.03201115935223406,
+  "candidate": false,
+  "sharpe": 0.007289766139407329
+ }
+]
