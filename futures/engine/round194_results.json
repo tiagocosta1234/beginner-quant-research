@@ -1,0 +1,62 @@
+[
+ {
+  "name": "Quad-witching Friday fade on next trading day, ES=F",
+  "n": 99,
+  "exp": -0.04184532645780958,
+  "exp_gross": 0.011892604200941148,
+  "p_is": 0.2541,
+  "p_oos": 0.518725,
+  "exp_is": -0.09643622679455537,
+  "exp_oos": 0.009534344447362947,
+  "exp_final": 0.0242832302693313,
+  "k": 366,
+  "bar": 0.9999726775956285,
+  "sharpe": -0.03740150454231482,
+  "candidate": false
+ },
+ {
+  "name": "Quad-witching Friday fade on next trading day, NQ=F",
+  "n": 102,
+  "exp": -0.168225714607386,
+  "exp_gross": -0.13106412989544083,
+  "p_is": 0.1688,
+  "p_oos": 0.1117,
+  "exp_is": -0.15229701889814004,
+  "exp_oos": -0.1823845552378269,
+  "exp_final": -0.21806931679510524,
+  "k": 367,
+  "bar": 0.9999727520435967,
+  "sharpe": -0.15017422408322098,
+  "candidate": false
+ },
+ {
+  "name": "Quad-witching Friday fade on next trading day, YM=F",
+  "n": 92,
+  "exp": -0.007909898383141533,
+  "exp_gross": 0.03160932548827962,
+  "p_is": 0.177025,
+  "p_oos": 0.70525,
+  "exp_is": -0.14551368853733054,
+  "exp_oos": 0.08892239839202852,
+  "exp_final": 0.1963136978945922,
+  "k": 368,
+  "bar": 0.9999728260869565,
+  "sharpe": -0.007045354553366549,
+  "candidate": false
+ },
+ {
+  "name": "Quad-witching Friday fade on next trading day, RTY=F",
+  "n": 36,
+  "exp": -0.05311061635133179,
+  "exp_gross": -0.029833611978641934,
+  "p_is": NaN,
+  "p_oos": 0.3924,
+  "exp_is": NaN,
+  "exp_oos": -0.05311061635133179,
+  "exp_final": 0.20294773565912216,
+  "k": 369,
+  "bar": 0.9999728997289973,
+  "sharpe": -0.044179561773569666,
+  "candidate": false
+ }
+]
