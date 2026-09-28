@@ -1,0 +1,11 @@
+{
+ "name": "NQ POC reversion + Value Area rejection, netted per day, Databento",
+ "n": 1452,
+ "exp": 218.2129087252763,
+ "p_is": 0.970375,
+ "p_oos": 0.958625,
+ "k": 322,
+ "bar": 0.9999689440993789,
+ "full_cal_sharpe": 0.059420746437116034,
+ "candidate": false
+}

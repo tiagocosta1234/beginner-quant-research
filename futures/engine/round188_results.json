@@ -1,0 +1,11 @@
+{
+ "name": "NQ POC + Value Area rejection + gap fade, netted per day, Databento",
+ "n": 1484,
+ "exp": 290.6780235432626,
+ "p_is": 0.983525,
+ "p_oos": 0.91845,
+ "k": 327,
+ "bar": 0.9999694189602446,
+ "full_cal_sharpe": 0.05844801079433509,
+ "candidate": false
+}

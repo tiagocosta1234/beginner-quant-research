@@ -337,3 +337,41 @@ Note: Round 145's L2a row shows its 50/50 headline (P 1.00 / 1.000). It is "no e
 | 319 | 2026-09-28 | Value Area rejection, NQ, bin size x4 (robustness pass on Round 184), Databento | Round 185 (pre-registered, robustness pass on Round 184's NQ Value Area rejection lead) | b4156fd | 1156 | +158.1 | +174.5 | 0.94 / 0.925 | no edge |
 | 320 | 2026-09-28 | Value Area rejection, NQ, VA 60% (robustness pass on Round 184), Databento | Round 185 (pre-registered, robustness pass on Round 184's NQ Value Area rejection lead) | b4156fd | 1186 | +172.1 | +188.2 | 0.93 / 0.986 | no edge |
 | 321 | 2026-09-28 | Value Area rejection, NQ, VA 80% (robustness pass on Round 184), Databento | Round 185 (pre-registered, robustness pass on Round 184's NQ Value Area rejection lead) | b4156fd | 1003 | +160.5 | +176.9 | 0.86 / 0.982 | no edge |
+| 322 | 2026-09-28 | NQ POC reversion + Value Area rejection, netted per day, Databento | Round 186 (pre-registered, does combining NQ's two Market Profile leads help?) | 08973b8 | 1452 | +218.2 | n/a | 0.97 / 0.959 | no edge |
+| 323 | 2026-09-28 | Daily overnight gap fade, ES, Databento | Round 187 (pre-registered, new idea class: simple daily gap fade) | 0d03fa6 | 977 | -26.3 | +0.8 | 0.36 / 0.118 | no edge |
+| 324 | 2026-09-28 | Daily overnight gap fade, NQ, Databento | Round 187 (pre-registered, new idea class: simple daily gap fade) | 0d03fa6 | 1004 | +114.1 | +125.3 | 0.97 / 0.619 | no edge |
+| 325 | 2026-09-28 | Daily overnight gap fade, GC, Databento | Round 187 (pre-registered, new idea class: simple daily gap fade) | 0d03fa6 | 1051 | -20.8 | +1.0 | 0.36 / 0.304 | no edge |
+| 326 | 2026-09-28 | Daily overnight gap fade, SI, Databento | Round 187 (pre-registered, new idea class: simple daily gap fade) | 0d03fa6 | 1042 | +5.9 | +59.6 | 0.45 / 0.559 | no edge |
+| 327 | 2026-09-28 | NQ POC + Value Area rejection + gap fade, netted per day, Databento | Round 188 (pre-registered, does combining all of NQ's leads help?) | 3bd1c7a | 1484 | +290.7 | n/a | 0.98 / 0.918 | no edge |
+| 328 | 2026-09-26 | FVG real secrets [none], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 2972 | -2.4 | +3.9 | 0.15 / 0.697 | no edge |
+| 329 | 2026-09-26 | FVG real secrets [equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 168 | +12.1 | +18.4 | 0.64 / 0.642 | no edge |
+| 330 | 2026-09-26 | FVG real secrets [trend], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1590 | -10.0 | -3.8 | 0.15 / 0.296 | no edge |
+| 331 | 2026-09-26 | FVG real secrets [trend, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 27 | +8.7 | +16.7 | 0.48 / 0.564 | no edge |
+| 332 | 2026-09-26 | FVG real secrets [color], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1917 | -0.4 | +5.5 | 0.58 / 0.386 | no edge |
+| 333 | 2026-09-26 | FVG real secrets [color, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 29 | -19.1 | -11.4 | 0.29 / 0.564 | no edge |
+| 334 | 2026-09-26 | FVG real secrets [color, trend], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 994 | -6.2 | -0.3 | 0.52 / 0.184 | no edge |
+| 335 | 2026-09-26 | FVG real secrets [color, trend, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 8 | -63.9 | -54.8 | 0.01 / 0.755 | no edge |
+| 336 | 2026-09-26 | FVG real secrets [size], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1558 | -1.4 | +3.2 | 0.27 / 0.624 | no edge |
+| 337 | 2026-09-26 | FVG real secrets [size, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 43 | +28.1 | +32.4 | 0.73 / 0.533 | no edge |
+| 338 | 2026-09-26 | FVG real secrets [size, trend], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 728 | -2.7 | +1.9 | 0.50 / 0.384 | no edge |
+| 339 | 2026-09-26 | FVG real secrets [size, trend, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 6 | +246.2 | +254.7 | 0.99 / 1.000 | CANDIDATE |
+| 340 | 2026-09-26 | FVG real secrets [size, color], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 888 | -6.2 | -1.8 | 0.55 / 0.212 | no edge |
+| 341 | 2026-09-26 | FVG real secrets [size, color, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 5 | -5.6 | +2.4 | 0.55 / 0.000 | no edge |
+| 342 | 2026-09-26 | FVG real secrets [size, color, trend], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 434 | -7.3 | -3.1 | 0.73 / 0.112 | no edge |
+| 343 | 2026-09-26 | FVG real secrets [size, color, trend, equilibrium], 1:2, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 2 | -23.0 | -10.0 | 0.24 / nan | no edge |
+| 344 | 2026-09-26 | FVG real secrets [none], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 2788 | -2.3 | +3.9 | 0.24 / 0.609 | no edge |
+| 345 | 2026-09-26 | FVG real secrets [equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 168 | +13.7 | +20.0 | 0.57 / 0.713 | no edge |
+| 346 | 2026-09-26 | FVG real secrets [trend], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1521 | -2.4 | +3.9 | 0.46 / 0.403 | no edge |
+| 347 | 2026-09-26 | FVG real secrets [trend, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 27 | +4.2 | +12.2 | 0.27 / 0.694 | no edge |
+| 348 | 2026-09-26 | FVG real secrets [color], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1872 | -1.1 | +4.9 | 0.54 / 0.384 | no edge |
+| 349 | 2026-09-26 | FVG real secrets [color, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 29 | -15.0 | -7.3 | 0.20 / 0.702 | no edge |
+| 350 | 2026-09-26 | FVG real secrets [color, trend], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 973 | -1.7 | +4.1 | 0.69 / 0.224 | no edge |
+| 351 | 2026-09-26 | FVG real secrets [color, trend, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 8 | -29.5 | -20.4 | 0.01 / 0.755 | no edge |
+| 352 | 2026-09-26 | FVG real secrets [size], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 1520 | -4.2 | +0.3 | 0.21 / 0.543 | no edge |
+| 353 | 2026-09-26 | FVG real secrets [size, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 43 | +28.3 | +32.6 | 0.62 / 0.627 | no edge |
+| 354 | 2026-09-26 | FVG real secrets [size, trend], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 719 | -5.5 | -0.9 | 0.51 / 0.265 | no edge |
+| 355 | 2026-09-26 | FVG real secrets [size, trend, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 6 | +129.8 | +138.3 | 0.97 / 1.000 | CANDIDATE |
+| 356 | 2026-09-26 | FVG real secrets [size, color], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 878 | -12.7 | -8.2 | 0.36 / 0.140 | no edge |
+| 357 | 2026-09-26 | FVG real secrets [size, color, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 5 | -9.9 | -1.9 | 0.55 / 0.000 | no edge |
+| 358 | 2026-09-26 | FVG real secrets [size, color, trend], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 430 | -8.7 | -4.6 | 0.77 / 0.073 | no edge |
+| 359 | 2026-09-26 | FVG real secrets [size, color, trend, equilibrium], 1:3, 60-min, MNQ+MGC | Round 189 (pre-registered, the video's own 5 FVG secrets) | e51c3b2 | 2 | -23.0 | -10.0 | 0.24 / nan | no edge |
