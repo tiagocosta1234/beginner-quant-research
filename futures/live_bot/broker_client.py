@@ -38,12 +38,22 @@ class BrokerConfig:
     mode: str = "dry_run"
     instrument: str = "MNQ"
     timeframes: list[str] = field(default_factory=lambda: ["5min"])
+    # Real days of historical data brokerapi_py loads from the broker's own
+    # History API at connect time (TradingSuite.create()'s own `initial_days`
+    # kwarg, confirmed 2026-09-29 by reading the installed brokerapi_py==4.3.1
+    # source -- NOT guessed; default there is 5, but strategies needing more
+    # lookback (e.g. disciplined_bracket_strategy.py's 20-session range) can
+    # request more via BOT_INITIAL_DAYS). Kept modest (5) as the default here
+    # so existing strategies that never needed multi-week history don't
+    # silently start pulling a much bigger data window.
+    initial_days: int = 5
 
     @classmethod
     def from_env(cls) -> "BrokerConfig":
         return cls(
             mode=os.getenv("BOT_MODE", "dry_run").lower(),
             instrument=os.getenv("BOT_INSTRUMENT", "MNQ"),
+            initial_days=int(os.getenv("BOT_INITIAL_DAYS", "5")),
         )
 
 
@@ -127,6 +137,7 @@ class BrokerClient:
         self._suite = await px.TradingSuite.create(
             instrument=self.config.instrument,
             timeframes=self.config.timeframes,
+            initial_days=self.config.initial_days,
         )
         # REAL BUG FOUND 2026-09-24, minutes after writing this: TradingSuite.on()
         # (the SDK's own documented "single interface for all event handling")

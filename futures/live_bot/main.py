@@ -47,6 +47,16 @@ will not make it for you by defaulting into it):
              should not be enabled for this strategy (would override its explicit
              per-edge risk_dollars). Read `manual_strategy.py`'s module docstring and
              `TRADING_JOURNAL.md`'s Round 69/69b entries first.
+  disciplined_bracket         — POC-reversion + VA-rejection, EVAL-STAGE (Round 192,
+             single leg at a time, take-profit capped at $1,650 to dodge Broker's
+             consistency-rule ratchet). Read `disciplined_bracket_strategy.py`'s
+             module docstring first.
+  combined              — the same two legs, LIVE-STAGE counterpart
+             (uncapped take-profit -- the cap above only exists for the eval-stage
+             ratchet). Switching between this and disciplined_bracket above IS the
+             eval-vs-live stage switch for this account; always set explicitly
+             per the real dashboard, never auto-detected. Read
+             `combined_strategy.py`'s module docstring first.
 
 Running BOTH edges together (Round 31's actual finding — see below) means
 running TWO separate bot processes against the same account, one per
@@ -92,6 +102,7 @@ from pathlib import Path
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from live_bot.broker_client import BrokerClient, BrokerConfig
+from live_bot.combined_strategy import CombinedStrategy
 from live_bot.disciplined_bracket_strategy import DisciplinedBracketStrategy
 from live_bot.flatten_routine import FlattenRoutine, AlertHandler
 from live_bot.health_check import HealthCheck, HealthStatus
@@ -248,9 +259,37 @@ def _select_strategy() -> Strategy:
             "been validated for a live/real-money account."
         )
         return DisciplinedBracketStrategy()
+    if name == "combined":
+        log.warning(
+            "BOT_STRATEGY=combined: live-stage counterpart to disciplined_bracket -- "
+            "same two legs (meta-labeled POC-reversion + unfiltered VA-rejection), single leg "
+            "at a time, but UNCAPPED take-profit (the $1,650 win cap exists only to dodge "
+            "Broker's eval-stage consistency-rule ratchet; once live there's no ratchet to "
+            "dodge, so this strategy is deliberately stronger, not just a copy). Switching "
+            "BOT_STRATEGY between disciplined_bracket and combined IS the eval-vs-live "
+            "stage switch for this account -- always set explicitly, never auto-detected off "
+            "the dashboard; a mismatch (live stage still running the capped strategy, or "
+            "vice versa) is a real, silent cost, not a crash, so check the dashboard's stage "
+            "yourself before switching. The meta-labeling model (poc_meta_model.json) is "
+            "pre-trained and serialized, not trained live, with its confidence threshold fit "
+            "on the training set's own distribution (not the OOS test set's, which would be a "
+            "real look-ahead problem for live use). Parity-verified 2026-09-29 against "
+            "round198_meta_labeling_poc.py's own reference feature values and predictions "
+            "across 8 real dates spanning six months, after catching and fixing two real bugs "
+            "in this file's own reconstruction: a P&L sign bug in _resolve_day_outcome (short "
+            "trades' stop/target branches weren't multiplied by direction, inverting every "
+            "short outcome) and a range_chg formula bug (was comparing two 20-day rolling "
+            "averages; the trained model expects a single day's range vs. the range exactly "
+            "20 sessions earlier, ranges.pct_change(20).shift(1)). See combined_strategy.py's "
+            "module docstring and TRADING_JOURNAL.md's 2026-09-29 entry for the full account. "
+            "Confirm BOT_MODE=practice before running; this has NOT been validated for a "
+            "live/real-money account."
+        )
+        return CombinedStrategy()
     raise ValueError(
         f"Unknown BOT_STRATEGY={name!r}, must be one of: noop, random_entry_atr_trail, "
-        "support_resistance_bounce, vwap_zscore, manual, ote_fvg, disciplined_bracket"
+        "support_resistance_bounce, vwap_zscore, manual, ote_fvg, disciplined_bracket, "
+        "combined"
     )
 
 
@@ -735,6 +774,17 @@ async def run() -> None:
                             # + the 15m FVG resample's own lag, ~540 minutes minimum. 500
                             # (the old default) silently missed sweeps near the window edge.
                             bars_needed = 1500
+                        elif isinstance(strategy, DisciplinedBracketStrategy):
+                            # Needs ~20-30 real calendar days of RTH history in view every
+                            # call (20-session range average + yesterday's own profile) --
+                            # pair with BOT_INITIAL_DAYS in .env (broker_client.py loads
+                            # that many real days from the broker's History API at connect
+                            # time; this must request at least that much back or the extra
+                            # loaded history never actually reaches the strategy). ~22
+                            # trading days x 390 1m bars/day = ~8,580 RTH bars; requesting
+                            # more headroom since the raw window also includes non-RTH bars
+                            # this strategy filters out itself.
+                            bars_needed = 12000
                         else:
                             bars_needed = 500
                         bars = await broker.get_bars(bars=bars_needed, timeframe="1min")

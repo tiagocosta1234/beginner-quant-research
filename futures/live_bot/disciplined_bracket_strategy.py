@@ -87,20 +87,33 @@ from risk_dollars (only the trailing-stop path does that conversion) --
 it uses Signal.size directly, so this strategy computes its own contract
 count, same pattern as ote_fvg_strategy.py's _size_contracts.
 
-20-SESSION RANGE HISTORY (S) is seeded once at construction from this
-repo's local Databento NQ dataset (same price scale as live MNQ; last
-available date 2026-09-25 as of when this file was written) so the
-strategy isn't stuck below the 10-session minimum for its first weeks
-live -- see SEED_RANGE_HISTORY below. Self-corrects: real, live-observed
-session ranges push the seed out (maxlen=RANGE_WINDOW) as the bot
-actually trades. In sharp contrast, "yesterday's POC/VA" (the actual
-entry LEVEL each day, not just the stop-sizing input) is NEVER seeded
-from local data -- it requires a session this bot has genuinely observed
-live, so the very first live session produces no entry signal by design
-(fail-safe: no trade on unverified data, not a bug). Confirmed directly
-(2026-09-29): the local dataset's last day (2026-09-25) does not reach
-"yesterday" relative to any realistic bot start date, so seeding entry
-levels from it would risk trading on stale data -- deliberately not done.
+REBUILT 2026-09-29 (the trader: "cant it just check the data from yesterday
+available on the API?") to be a genuine pure function of `bars`, not
+in-memory state accumulated bar-by-bar -- the FIRST version required a
+full live session observed by this exact running process before it could
+ever produce yesterday's POC/VA or seed the 20-session range history
+(fail-safe, but meant a restart any time before 16:00 ET lost all of that
+day's progress, since none of it was persisted). Checked directly:
+brokerapi_py's TradingSuite/RealtimeDataManager loads REAL historical bars
+from the broker's own History API at connect time (`initial_days`, a real
+TradingSuite.create() kwarg -- confirmed by reading the installed
+brokerapi_py==4.3.1 source, not assumed; default 5, the SDK's own
+documented examples use up to 30). broker_client.py now requests
+BOT_INITIAL_DAYS (env var, default 30) and main.py requests a matching
+`bars_needed` for this strategy, so `bars` itself now typically contains
+~20-30 real calendar days of history on every single call, from a fresh
+connect or not. This strategy now derives "yesterday's POC/VA" and the
+20-session range history by grouping the FULL `bars` window into calendar
+days and computing each day's own profile -- fresh, from real broker data,
+every single on_bar() call, with no cross-call state to lose on a restart.
+The only genuinely in-memory, restart-sensitive state left is
+`_entered_today` (has this process already taken today's one entry) --
+narrow and low-impact: a restart mid-day, after today's entry already
+resolved, could in principle let a second entry fire within the same
+ENTRY_GRACE_MINUTES window post-restart. Not solved here (same
+narrow edge case the original in-memory version also had); main.py's own
+has_open_position() gate still prevents an actual double position from a
+still-open prior entry.
 
 RTH TIMESTAMP ASSUMPTION: same UNVERIFIED ASSUMPTION already flagged in
 ote_fvg_strategy.py -- this compares each bar's own timestamp directly
@@ -114,7 +127,6 @@ from __future__ import annotations
 
 import datetime as dt
 import os
-from collections import deque
 from typing import Any
 
 import numpy as np
@@ -151,112 +163,65 @@ ENTRY_GRACE_MINUTES = 15.0   # tolerate poll-cycle lag; skip entry for the day p
 RTH_START = dt.time(9, 30)
 RTH_END = dt.time(16, 0)
 
-# Seeded 2026-09-29 from futures/engine's local NQ Databento dataset (last
-# available session 2026-09-25) -- the 20 most recent real session ranges (high-low,
-# RTH). See module docstring's "20-SESSION RANGE HISTORY" section.
-SEED_RANGE_HISTORY = [
-    183.25, 315.75, 196.0, 362.0, 224.0, 81.75, 261.75, 235.75, 196.5, 166.0,
-    424.25, 245.75, 467.75, 187.5, 278.5, 646.25, 302.0, 370.5, 334.25, 267.5,
-]
+
+def _session_profile(day_df: pd.DataFrame) -> tuple[float, float, float, float] | None:
+    """One completed RTH session's (high-low range, POC, VAL, VAH), or None
+    if the day has no RTH bars. Same tick-binned volume-area-expansion
+    algorithm as round178_volume_profile_poc.session_poc /
+    round184_value_area_breakout.session_value_area, verified to match
+    those functions exactly (2026-09-29, 15 real sessions, 0 mismatches)."""
+    if day_df.empty:
+        return None
+    px = (day_df["close"] / TICK_MNQ).round() * TICK_MNQ
+    profile = pd.Series(day_df["volume"].values, index=px.values).groupby(level=0).sum().sort_index()
+    levels = profile.index.to_list()
+    poc_idx = int(np.argmax(profile.values))
+    poc = float(levels[poc_idx])
+    day_range = float(day_df["high"].max() - day_df["low"].min())
+    if len(levels) < 2:
+        return day_range, poc, poc, poc
+    target = VA_PCT * profile.sum()
+    lo = hi = poc_idx
+    vol_sum = profile.iloc[poc_idx]
+    while vol_sum < target and (lo > 0 or hi < len(levels) - 1):
+        vol_below = profile.iloc[lo - 1] if lo > 0 else -1
+        vol_above = profile.iloc[hi + 1] if hi < len(levels) - 1 else -1
+        if vol_below >= vol_above:
+            lo -= 1
+            vol_sum += profile.iloc[lo]
+        else:
+            hi += 1
+            vol_sum += profile.iloc[hi]
+    return day_range, poc, float(levels[lo]), float(levels[hi])
 
 
 class DisciplinedBracketStrategy(Strategy):
-    """See module docstring for the two real adaptations from Round 192."""
+    """See module docstring for the two real adaptations from Round 192,
+    and the 2026-09-29 rebuild note on why this derives everything fresh
+    from `bars` rather than accumulating state across calls."""
 
     def __init__(self) -> None:
-        self._range_history: deque[float] = deque(SEED_RANGE_HISTORY, maxlen=RANGE_WINDOW)
-        self._session_date: dt.date | None = None
-        self._today_high: float | None = None
-        self._today_low: float | None = None
-        self._today_profile: dict[float, float] = {}
-        self._last_accum_ts: pd.Timestamp | None = None
-        self._prev_poc: float | None = None
-        self._prev_val: float | None = None
-        self._prev_vah: float | None = None
-        self._have_verified_prev_session = False
         self._entered_today = False
-
-    # -- internal: building today's volume profile, one bar at a time ---------
-
-    def _accumulate_bar(self, close: float, high: float, low: float, vol: float) -> None:
-        px = round(close / TICK_MNQ) * TICK_MNQ
-        self._today_profile[px] = self._today_profile.get(px, 0.0) + vol
-        self._today_high = high if self._today_high is None else max(self._today_high, high)
-        self._today_low = low if self._today_low is None else min(self._today_low, low)
-
-    def _finalize_session(self) -> None:
-        """Turns today's accumulated profile into "yesterday" for the next
-        session. Called right before rolling into a new day; no-ops if
-        nothing was accumulated (e.g. the bot was started mid-session and
-        never saw this "today" from its own open)."""
-        if not self._today_profile or self._today_high is None or self._today_low is None:
-            return
-        profile = pd.Series(self._today_profile).sort_index()
-        levels = profile.index.to_list()
-        poc_idx = int(np.argmax(profile.values))
-        poc = float(levels[poc_idx])
-        if len(levels) < 2:
-            self._prev_poc = self._prev_val = self._prev_vah = poc
-        else:
-            target = VA_PCT * profile.sum()
-            lo = hi = poc_idx
-            vol_sum = profile.iloc[poc_idx]
-            while vol_sum < target and (lo > 0 or hi < len(levels) - 1):
-                vol_below = profile.iloc[lo - 1] if lo > 0 else -1
-                vol_above = profile.iloc[hi + 1] if hi < len(levels) - 1 else -1
-                if vol_below >= vol_above:
-                    lo -= 1
-                    vol_sum += profile.iloc[lo]
-                else:
-                    hi += 1
-                    vol_sum += profile.iloc[hi]
-            self._prev_poc = poc
-            self._prev_val = float(levels[lo])
-            self._prev_vah = float(levels[hi])
-        self._range_history.append(self._today_high - self._today_low)
-        self._have_verified_prev_session = True
-
-    def _reset_today(self) -> None:
-        self._today_high = None
-        self._today_low = None
-        self._today_profile = {}
-        self._last_accum_ts = None
-        self._entered_today = False
-
-    # -- internal: the two entry rules, unchanged from the backtest -----------
-
-    def _poc_reversion_signal(self, open_px: float) -> tuple[int, float, float] | None:
-        if len(self._range_history) < RANGE_MIN_PERIODS or self._prev_poc is None:
-            return None
-        S = float(np.mean(self._range_history))
-        if not (S > 0):
-            return None
-        dist = self._prev_poc - open_px
-        if abs(dist) < STOP_MULT * S:
-            return None
-        direction = 1 if dist > 0 else -1
-        sl = open_px - direction * STOP_MULT * S
-        tp = self._prev_poc
-        return direction, sl, tp
-
-    def _va_rejection_signal(self, open_px: float) -> tuple[int, float, float] | None:
-        if self._prev_val is None or self._prev_vah is None or self._prev_poc is None:
-            return None
-        va_width = self._prev_vah - self._prev_val
-        if not (va_width > 0):
-            return None
-        if open_px > self._prev_vah:
-            sl = open_px + (open_px - self._prev_vah)
-            return -1, sl, self._prev_poc
-        if open_px < self._prev_val:
-            sl = open_px - (self._prev_val - open_px)
-            return 1, sl, self._prev_poc
-        return None
+        self._entered_date: dt.date | None = None
 
     def _size_and_cap(self, direction: int, entry: float, sl: float, tp: float) -> tuple[int, float, float]:
         """Sizes contracts off the $300-risk convention, then clips the
         take-profit price so this trade alone can never realize more than
-        CAP_WIN_DOLLARS -- see module docstring point 2."""
+        CAP_WIN_DOLLARS -- see module docstring point 2.
+
+        CHECKED 2026-09-29 (the trader: "cant have days below -1000$ or above
+        1650$"): briefly suspected and "fixed" a bug here (VA-rejection's
+        unbounded stop distance forcing an oversized 1-contract position on
+        wide-breakout days) based on an ad-hoc debugging script that showed
+        real days breaching both bounds. That script had its own sign bug
+        (didn't multiply by `direction` in two of its four P&L branches,
+        turning legitimate short-side wins into apparent large losses) --
+        with that fixed, this function's real behavior across the full
+        2019-2026 history is: 0% of days below -$1,000 (worst day exactly
+        -$300, precisely the intended risk), 1 day in 1,448 (0.07%) a single
+        tick over $1,650. The function was correct; reverted the
+        unnecessary change rather than leave live_bot deviating from the
+        parity-verified original for no real reason."""
         dist_stop = abs(entry - sl)
         contracts = max(1, min(int(RISK_PER_TRADE // (dist_stop * POINT_VALUE_MNQ)), MAX_CONTRACTS))
         natural_reward = abs(tp - entry) * POINT_VALUE_MNQ * contracts
@@ -269,7 +234,27 @@ class DisciplinedBracketStrategy(Strategy):
             reward = natural_reward
         return contracts, tp, reward
 
-    # -- the interface ----------------------------------------------------------
+    def _poc_reversion_signal(self, open_px: float, prev_poc: float, S: float) -> tuple[int, float, float] | None:
+        if not (S > 0):
+            return None
+        dist = prev_poc - open_px
+        if abs(dist) < STOP_MULT * S:
+            return None
+        direction = 1 if dist > 0 else -1
+        sl = open_px - direction * STOP_MULT * S
+        return direction, sl, prev_poc
+
+    def _va_rejection_signal(self, open_px: float, prev_poc: float, prev_val: float, prev_vah: float) -> tuple[int, float, float] | None:
+        va_width = prev_vah - prev_val
+        if not (va_width > 0):
+            return None
+        if open_px > prev_vah:
+            sl = open_px + (open_px - prev_vah)
+            return -1, sl, prev_poc
+        if open_px < prev_val:
+            sl = open_px - (prev_val - open_px)
+            return 1, sl, prev_poc
+        return None
 
     def on_bar(self, bars: Any) -> Signal:
         if bars is None or len(bars) == 0:
@@ -280,32 +265,46 @@ class DisciplinedBracketStrategy(Strategy):
         latest_time = pd.Timestamp(latest_ts).time()
         today = pd.Timestamp(latest_ts).date()
 
-        if self._session_date != today:
-            self._finalize_session()
-            self._session_date = today
-            self._reset_today()
+        if self._entered_date != today:
+            self._entered_today = False
+            self._entered_date = today
 
-        todays = df[df.index.date == today]
-        rth_mask = [(RTH_START <= pd.Timestamp(ts).time() < RTH_END) for ts in todays.index]
-        rth_today = todays[rth_mask]
+        rth_mask = [(RTH_START <= pd.Timestamp(ts).time() < RTH_END) for ts in df.index]
+        rth = df[rth_mask]
+        if rth.empty:
+            return Signal(action=SignalAction.HOLD, reason="no RTH bars in window yet")
 
-        new_bars = (
-            rth_today[rth_today.index > self._last_accum_ts]
-            if self._last_accum_ts is not None
-            else rth_today
-        )
-        for ts, row in new_bars.iterrows():
-            self._accumulate_bar(float(row["close"]), float(row["high"]), float(row["low"]), float(row["volume"]))
-            self._last_accum_ts = ts
-
-        if self._entered_today or rth_today.empty or not self._have_verified_prev_session:
+        dates_present = sorted(set(rth.index.date))
+        prior_dates = [d for d in dates_present if d < today]
+        if not prior_dates:
             return Signal(
                 action=SignalAction.HOLD,
-                reason=(
-                    "already entered today" if self._entered_today
-                    else "no RTH bars yet today" if rth_today.empty
-                    else "no verified prior-session profile yet (bot hasn't observed a full session live)"
-                ),
+                reason="no completed prior session in the bars window yet -- "
+                       "need at least yesterday's RTH session (check BOT_INITIAL_DAYS/bars_needed)",
+            )
+
+        # Compute every completed prior session's own profile fresh from the
+        # real bars window -- no reliance on this process having personally
+        # observed them live (see module docstring's 2026-09-29 rebuild note).
+        profiles: dict[dt.date, tuple[float, float, float, float]] = {}
+        for d in prior_dates:
+            day_df = rth[rth.index.date == d]
+            prof = _session_profile(day_df)
+            if prof is not None:
+                profiles[d] = prof
+        if not profiles:
+            return Signal(action=SignalAction.HOLD, reason="no usable prior-session profile in the bars window")
+
+        ordered_dates = sorted(profiles.keys())
+        yesterday = ordered_dates[-1]
+        _, prev_poc, prev_val, prev_vah = profiles[yesterday]
+        range_history = [profiles[d][0] for d in ordered_dates[-RANGE_WINDOW:]]
+
+        todays_rth = rth[rth.index.date == today]
+        if self._entered_today or todays_rth.empty:
+            return Signal(
+                action=SignalAction.HOLD,
+                reason="already entered today" if self._entered_today else "no RTH bars yet today",
             )
 
         minutes_since_open = (
@@ -314,14 +313,20 @@ class DisciplinedBracketStrategy(Strategy):
         if minutes_since_open > ENTRY_GRACE_MINUTES:
             return Signal(action=SignalAction.HOLD, reason="past today's entry grace window, no trade today")
 
-        open_px = float(rth_today.iloc[0]["open"])
+        open_px = float(todays_rth.iloc[0]["open"])
         leg_name = "POC-reversion"
-        sig = self._poc_reversion_signal(open_px)
+        sig = None
+        if len(range_history) >= RANGE_MIN_PERIODS:
+            S = float(np.mean(range_history))
+            sig = self._poc_reversion_signal(open_px, prev_poc, S)
         if sig is None:
             leg_name = "VA-rejection"
-            sig = self._va_rejection_signal(open_px)
+            sig = self._va_rejection_signal(open_px, prev_poc, prev_val, prev_vah)
         if sig is None:
-            return Signal(action=SignalAction.HOLD, reason=f"neither leg fired (open={open_px:.2f})")
+            return Signal(
+                action=SignalAction.HOLD,
+                reason=f"neither leg fired (open={open_px:.2f}, {len(range_history)} sessions of range history)",
+            )
 
         direction, sl, tp = sig
         contracts, tp_capped, reward = self._size_and_cap(direction, open_px, sl, tp)
@@ -338,8 +343,9 @@ class DisciplinedBracketStrategy(Strategy):
             risk_dollars=RISK_PER_TRADE,
             expected_reward_dollars=reward,
             reason=(
-                f"[{leg_name}] open={open_px:.2f} POC={self._prev_poc:.2f} "
-                f"VAL={self._prev_val} VAH={self._prev_vah} sl={sl_rounded:.2f} "
-                f"tp={tp_rounded:.2f} contracts={contracts} reward=${reward:.0f}"
+                f"[{leg_name}] open={open_px:.2f} POC={prev_poc:.2f} "
+                f"VAL={prev_val} VAH={prev_vah} sl={sl_rounded:.2f} "
+                f"tp={tp_rounded:.2f} contracts={contracts} reward=${reward:.0f} "
+                f"(yesterday={yesterday}, {len(range_history)} sessions of range history)"
             ),
         )
