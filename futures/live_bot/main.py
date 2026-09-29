@@ -92,6 +92,7 @@ from pathlib import Path
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from live_bot.broker_client import BrokerClient, BrokerConfig
+from live_bot.disciplined_bracket_strategy import DisciplinedBracketStrategy
 from live_bot.flatten_routine import FlattenRoutine, AlertHandler
 from live_bot.health_check import HealthCheck, HealthStatus
 from live_bot.manual_strategy import ManualStrategy
@@ -225,9 +226,31 @@ def _select_strategy() -> Strategy:
             "ote_fvg_strategy.py's module docstring for the full prerequisite checklist."
         )
         return OteFvgStrategy()
+    if name == "disciplined_bracket":
+        log.warning(
+            "BOT_STRATEGY=disciplined_bracket: Round 192's POC-reversion + VA-rejection "
+            "disciplined bracket (the trader's chosen strategy for evaluations, 2026-09-29 "
+            "split-strategy Monte Carlo -- real eval-stage pass rate 27.9%% vs the "
+            "live-stage combined signal's 2.5%%, 15-day window, 50K tier). WIRED UP AS "
+            "A SCOPED-DOWN ADAPTATION, not a 1:1 port of Round 192: single leg at a time "
+            "(has_open_position()'s one-position gate was not weakened to allow Round "
+            "192's two CONCURRENT legs) and the $1,650 win cap is enforced by clipping "
+            "the take-profit price at entry, not mark-to-market monitoring (main.py has "
+            "no EXIT-signal handling to flatten an open position mid-day). Both "
+            "adaptations make this WEAKER than Round 192's real 27.9%% backtested "
+            "number -- read disciplined_bracket_strategy.py's module docstring in full "
+            "before trusting a forward-test run to reproduce it. Entry/exit price-level "
+            "logic verified 2026-09-29 against the original backtest functions "
+            "(round178_volume_profile_poc.py, round184_value_area_breakout.py) across "
+            "60 real historical NQ sessions, 0 mismatches -- but the FIRST live session "
+            "produces no entry by design (no seeded 'yesterday' profile, only a seeded "
+            "20-session range). Confirm BOT_MODE=practice before running; this has NOT "
+            "been validated for a live/real-money account."
+        )
+        return DisciplinedBracketStrategy()
     raise ValueError(
         f"Unknown BOT_STRATEGY={name!r}, must be one of: noop, random_entry_atr_trail, "
-        "support_resistance_bounce, vwap_zscore, manual, ote_fvg"
+        "support_resistance_bounce, vwap_zscore, manual, ote_fvg, disciplined_bracket"
     )
 
 
@@ -453,6 +476,35 @@ async def run() -> None:
     )
     if _profit_target_balance_env:
         account_config_kwargs["profit_target_balance"] = float(_profit_target_balance_env)
+    # AccountConfig's own defaults (trailing_dd_amount=$10,000, daily_loss_limit=$5,000)
+    # are the $250K account's real numbers -- REAL GAP FOUND 2026-09-29 while connecting
+    # a different (150K-tier) Practice account for the first time: neither had an env
+    # override, so running against any other tier would silently use the WRONG failure
+    # floor. Confirmed dangerous, not theoretical: this exact $150K account's real MLL
+    # is $4,500 (reinvestment_snowball.FIRMS["broker_150k"]), giving a real floor of
+    # HWM-$4,500 -- $5,500 TIGHTER than the $250K default's HWM-$10,000 floor would have
+    # silently allowed. Added the same deliberate-opt-in env override pattern as every
+    # other AccountConfig field above; get this right for whatever account is actually
+    # connected before trusting the risk governor's numbers, same warning as every other
+    # override here.
+    _trailing_dd_env = os.getenv("TRAILING_DD_AMOUNT")
+    if _trailing_dd_env:
+        account_config_kwargs["trailing_dd_amount"] = float(_trailing_dd_env)
+        log.warning(
+            "TRAILING_DD_AMOUNT=$%.0f active (default $10,000, the $250K account's "
+            "real number) -- confirm this matches whatever account is actually "
+            "connected before trusting remaining_drawdown_buffer().",
+            float(_trailing_dd_env),
+        )
+    _daily_loss_limit_env = os.getenv("DAILY_LOSS_LIMIT")
+    if _daily_loss_limit_env:
+        account_config_kwargs["daily_loss_limit"] = float(_daily_loss_limit_env)
+        log.warning(
+            "DAILY_LOSS_LIMIT=$%.0f active (default $5,000, the $250K account's "
+            "real number) -- confirm this matches whatever account is actually "
+            "connected before trusting daily_loss_breached().",
+            float(_daily_loss_limit_env),
+        )
     account_config = AccountConfig(**account_config_kwargs)  # NOTE: consistency_cap_pct
     # and static_lock_hwm are UNCONFIRMED defaults — see risk_governor.py docstring.
     # profit_target_balance falls back to the $250K account's own default
