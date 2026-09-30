@@ -371,6 +371,34 @@ class BrokerClient:
                 return p
         return None
 
+    async def get_entry_fill_price(self, order_id: int, since: Any) -> float | None:
+        """Size-weighted average fill price of one order (from this account's trade
+        history on this contract since `since`), or None if no fill is visible yet.
+        Used to re-anchor a bracket's stop to the actual market-entry fill."""
+        if self.config.mode == "dry_run":
+            return None
+        suite = self._require_connected()
+        acct = getattr(suite.client, "account_info", None)
+        trades = await suite.client.search_trades(
+            start_date=since, contract_id=self.get_contract_id(),
+            account_id=getattr(acct, "id", None),
+        )
+        fills = [t for t in trades or []
+                 if getattr(t, "orderId", None) == order_id and not getattr(t, "voided", False)]
+        size = sum(getattr(t, "size", 0) or 0 for t in fills)
+        if size <= 0:
+            return None
+        return sum(float(t.price) * t.size for t in fills) / size
+
+    async def modify_stop_price(self, order_id: int, stop_price: float) -> bool:
+        """Move a working stop order to `stop_price` (the SDK aligns it to the tick).
+        Keeps the order id, so the bracket's OCO link to its target is unchanged."""
+        if self.config.mode == "dry_run":
+            return False
+        suite = self._require_connected()
+        instrument_ctx = suite[self.config.instrument]
+        return bool(await instrument_ctx.orders.modify_order(order_id, stop_price=stop_price))
+
     async def get_trades_since(self, since: Any) -> list[dict]:
         """This account's fills on THIS instrument's contract since `since`, as dicts
         {pnl, fees, size, order_id}. pnl is the broker's profitAndLoss, None on an

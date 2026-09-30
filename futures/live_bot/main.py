@@ -300,6 +300,69 @@ def _select_strategy() -> Strategy:
     )
 
 
+FILL_LOOKUP_ATTEMPTS, FILL_LOOKUP_DELAY_S = 5, 0.3
+
+
+async def reanchor_stop_to_fill(signal, response, side: int, broker: BrokerClient, *, since) -> None:
+    """Move a just-placed bracket's stop so it sits the planned distance from the
+    ACTUAL entry fill, not from signal.entry_reference_price. A market entry can fill
+    points away from the price the strategy planned from (2026-09-30: short planned
+    at 30,701.50, filled 30,690.75); a stop left at the planned price then risks more
+    (or less) than the $ the contracts were sized for. The target is left as placed.
+
+    Never raises: if the fill can't be seen or the broker rejects the move (e.g. price
+    already went through the new level), the original stop stays in place and this
+    logs an error -- the position is never left without a stop."""
+    entry_id = getattr(response, "entry_order_id", None)
+    stop_id = getattr(response, "stop_order_id", None)
+    if not getattr(response, "success", False) or entry_id is None or stop_id is None:
+        log.warning(
+            "Cannot re-anchor stop to fill: bracket response has no entry/stop order id "
+            "(success=%s entry=%s stop=%s); stop stays at planned %s",
+            getattr(response, "success", None), entry_id, stop_id, signal.stop_loss_price,
+        )
+        return
+    fill = None
+    for _ in range(FILL_LOOKUP_ATTEMPTS):
+        try:
+            fill = await broker.get_entry_fill_price(entry_id, since)
+        except Exception as e:  # noqa: BLE001 -- a lookup failure must not kill the loop
+            log.warning("Fill-price lookup for order %s failed: %s", entry_id, e)
+        if fill is not None:
+            break
+        await asyncio.sleep(FILL_LOOKUP_DELAY_S)
+    if fill is None:
+        log.error(
+            "Entry order %s fill price not visible after %d lookups; stop stays at planned %s",
+            entry_id, FILL_LOOKUP_ATTEMPTS, signal.stop_loss_price,
+        )
+        return
+    direction = 1 if side == 0 else -1
+    distance = abs(signal.entry_reference_price - signal.stop_loss_price)
+    new_stop = round(fill - direction * distance, 6)
+    adverse = direction * (fill - signal.entry_reference_price)  # > 0: filled worse than planned
+    if new_stop == signal.stop_loss_price:
+        log.info("Entry filled at the planned %.2f; stop stays at %.2f", fill, new_stop)
+        return
+    try:
+        ok = await broker.modify_stop_price(stop_id, new_stop)
+    except Exception as e:  # noqa: BLE001
+        log.error("Stop modify for order %s raised: %s", stop_id, e)
+        ok = False
+    if ok:
+        log.info(
+            "Stop re-anchored to fill: filled %.2f vs planned %.2f (%+.2f pts against), "
+            "stop %.2f -> %.2f (distance %.2f kept)",
+            fill, signal.entry_reference_price, adverse, signal.stop_loss_price, new_stop, distance,
+        )
+    else:
+        log.error(
+            "Stop re-anchor REJECTED: wanted %.2f (fill %.2f + planned distance %.2f); "
+            "original stop %.2f stays in place",
+            new_stop, fill, distance, signal.stop_loss_price,
+        )
+
+
 async def handle_entry_signal(
     signal,
     *,
@@ -416,7 +479,8 @@ async def handle_entry_signal(
             signal.action, signal.size, signal.stop_loss_price,
             signal.take_profit_price, contract_id, signal.reason,
         )
-        await broker.place_bracket_order(
+        placed_at = dt.datetime.now(dt.timezone.utc)
+        response = await broker.place_bracket_order(
             contract_id=contract_id,
             side=side,
             size=signal.size,
@@ -424,6 +488,8 @@ async def handle_entry_signal(
             stop_loss_price=signal.stop_loss_price,
             take_profit_price=signal.take_profit_price,
         )
+        if signal.entry_reference_price is not None:
+            await reanchor_stop_to_fill(signal, response, side, broker, since=placed_at - dt.timedelta(minutes=5))
         # NOTE (README item #6): record_fill() is not called here or anywhere in
         # the live loop yet -- ORDER_FILLED events are still not subscribed to,
         # so the governor's daily_realized_pnl/current_balance will NOT update

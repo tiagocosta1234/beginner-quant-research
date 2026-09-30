@@ -1,0 +1,323 @@
+{
+ "results": {
+  "F1": {
+   "name": "POC leg, flat by 16:10 (US100 CFD)",
+   "n": 1352,
+   "win": 0.3032544378698225,
+   "R_gross": 0.1309224781528845,
+   "R_base": 0.05938756112204516,
+   "R_zero": 0.05938756112204516,
+   "R_harsh": 0.05938756112204516,
+   "sharpe_day": 0.026038129970010777,
+   "size": 1500,
+   "pass_is": {
+    "21": 0.0865,
+    "42": 0.21125,
+    "63": 0.254
+   },
+   "pass_oos": {
+    "21": 0.09975,
+    "42": 0.26925,
+    "63": 0.33475
+   },
+   "pass_oos_zero": {
+    "21": 0.074,
+    "42": 0.16425,
+    "63": 0.199
+   },
+   "overnight_share": 0.0,
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": true
+   },
+   "verdict": "NOT a candidate"
+  },
+  "O2": {
+   "name": "POC leg, held overnight to next 16:10 (US100 CFD)",
+   "n": 1352,
+   "win": 0.29142011834319526,
+   "R_gross": 0.12920075504811052,
+   "R_base": 0.05567451553993582,
+   "R_zero": 0.05766583801727119,
+   "R_harsh": 0.05296867482676226,
+   "sharpe_day": 0.02299106824178002,
+   "size": 1500,
+   "pass_is": {
+    "21": 0.085,
+    "42": 0.1945,
+    "63": 0.22875
+   },
+   "pass_oos": {
+    "21": 0.094,
+    "42": 0.2395,
+    "63": 0.2935
+   },
+   "pass_oos_zero": {
+    "21": 0.06925,
+    "42": 0.1525,
+    "63": 0.176
+   },
+   "overnight_share": 0.042899408284023666,
+   "sharpe_vs_drift": [
+    0.023182943287910644,
+    0.012723926222544953
+   ],
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": true,
+    "4_beats_drift_and_harsh_swap": true
+   },
+   "verdict": "NOT a candidate"
+  },
+  "F3": {
+   "name": "the trader TOD+VWAP-Z, flat by 16:00 (US100 CFD)",
+   "n": 5533,
+   "win": 0.37122718236038316,
+   "R_gross": -0.038898257896121516,
+   "R_base": -0.07913726459992186,
+   "R_zero": -0.07913726459992186,
+   "R_harsh": -0.07913726459992186,
+   "sharpe_day": -0.1533405365011291,
+   "size": 1500,
+   "pass_is": {
+    "21": 0.00425,
+    "42": 0.007,
+    "63": 0.00725
+   },
+   "pass_oos": {
+    "21": 0.043,
+    "42": 0.0775,
+    "63": 0.0795
+   },
+   "pass_oos_zero": {
+    "21": 0.05825,
+    "42": 0.0975,
+    "63": 0.1005
+   },
+   "overnight_share": 0.0,
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": false
+   },
+   "verdict": "NOT a candidate"
+  },
+  "O1": {
+   "name": "the trader TOD+VWAP-Z, held overnight 1 session (US100 CFD)",
+   "n": 5519,
+   "win": 0.3386483058525095,
+   "R_gross": -0.04059691982363064,
+   "R_base": -0.08811382884574956,
+   "R_zero": -0.08099274519109431,
+   "R_harsh": -0.09359457383009277,
+   "sharpe_day": -0.15135249974492562,
+   "size": 1500,
+   "pass_is": {
+    "21": 0.01225,
+    "42": 0.0175,
+    "63": 0.01775
+   },
+   "pass_oos": {
+    "21": 0.0805,
+    "42": 0.127,
+    "63": 0.13025
+   },
+   "pass_oos_zero": {
+    "21": 0.09225,
+    "42": 0.14575,
+    "63": 0.1495
+   },
+   "overnight_share": 0.1647037506794709,
+   "sharpe_vs_drift": [
+    -0.1483486596012531,
+    0.012723926222544953
+   ],
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": false,
+    "4_beats_drift_and_harsh_swap": false
+   },
+   "verdict": "NOT a candidate"
+  },
+  "F2": {
+   "name": "S/R bounce, flat by 16:10 (XAUUSD CFD)",
+   "n": 8152,
+   "win": 0.3508341511285574,
+   "R_gross": 0.09012090944310097,
+   "R_base": -0.0899357311804642,
+   "R_zero": -0.0899357311804642,
+   "R_harsh": -0.0899357311804642,
+   "sharpe_day": -0.24535765058807513,
+   "size": 1000,
+   "pass_is": {
+    "21": 0.00475,
+    "42": 0.00475,
+    "63": 0.00475
+   },
+   "pass_oos": {
+    "21": 0.148,
+    "42": 0.21,
+    "63": 0.21325
+   },
+   "pass_oos_zero": {
+    "21": 0.0825,
+    "42": 0.12825,
+    "63": 0.1315
+   },
+   "overnight_share": 0.0,
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": false
+   },
+   "verdict": "NOT a candidate"
+  },
+  "B": {
+   "name": "Overnight drift: long US100 close->open, Mon-Thu (control)",
+   "n": 1318,
+   "win": 0.5303490136570561,
+   "R_gross": 0.2646480026412818,
+   "R_base": 0.0517889112855333,
+   "R_zero": 0.19502855043067366,
+   "R_harsh": -0.009599505490955387,
+   "sharpe_day": 0.012727454276466226,
+   "size": 750,
+   "pass_is": {
+    "21": 0.01775,
+    "42": 0.0685,
+    "63": 0.08325
+   },
+   "pass_oos": {
+    "21": 0.054,
+    "42": 0.09775,
+    "63": 0.1035
+   },
+   "pass_oos_zero": {
+    "21": 0.04425,
+    "42": 0.078,
+    "63": 0.0805
+   },
+   "overnight_share": 1.0,
+   "checks": {
+    "1_ledger": false,
+    "2_oos_pass63>=0.50": false,
+    "3_beats_zero_edge_10pp": false
+   },
+   "verdict": "NOT a candidate"
+  }
+ },
+ "ledger": [
+  {
+   "name": "MT5 broker 2-Step, POC leg, flat by 16:10 (US100 CFD), costs+base swap",
+   "n": 1352,
+   "win": 0.3032544378698225,
+   "r_net": 0.05938756112204514,
+   "exp": 59.38756112204514,
+   "exp_gross": 130.92247815288448,
+   "n_is": 1102,
+   "exp_is": 42.45329693772039,
+   "p_is": 0.764,
+   "n_oos": 250,
+   "exp_oos": 134.03379764654863,
+   "p_oos": 0.86375,
+   "sharpe": 0.02603095198780132,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  },
+  {
+   "name": "MT5 broker 2-Step, POC leg, held overnight to next 16:10 (US100 CFD), costs+base swap",
+   "n": 1352,
+   "win": 0.29142011834319526,
+   "r_net": 0.05567451553993581,
+   "exp": 55.67451553993581,
+   "exp_gross": 129.20075504811052,
+   "n_is": 1102,
+   "exp_is": 39.27543656789483,
+   "p_is": 0.733,
+   "n_oos": 250,
+   "exp_oos": 127.96165564869246,
+   "p_oos": 0.81625,
+   "sharpe": 0.023015250923307196,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  },
+  {
+   "name": "MT5 broker 2-Step, the trader TOD+VWAP-Z, flat by 16:00 (US100 CFD), costs+base swap",
+   "n": 5533,
+   "win": 0.37122718236038316,
+   "r_net": -0.07913726459992185,
+   "exp": -79.13726459992185,
+   "exp_gross": -38.898257896121514,
+   "n_is": 4618,
+   "exp_is": -91.07530805474615,
+   "p_is": 0.0,
+   "n_oos": 915,
+   "exp_oos": -18.88602451863386,
+   "p_oos": 0.2455,
+   "sharpe": -0.153298496599996,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  },
+  {
+   "name": "MT5 broker 2-Step, the trader TOD+VWAP-Z, held overnight 1 session (US100 CFD), costs+base swap",
+   "n": 5519,
+   "win": 0.3386483058525095,
+   "r_net": -0.08811382884574956,
+   "exp": -88.11382884574955,
+   "exp_gross": -40.59691982363064,
+   "n_is": 4611,
+   "exp_is": -102.32138028084808,
+   "p_is": 0.0,
+   "n_oos": 908,
+   "exp_oos": -15.96512877169744,
+   "p_oos": 0.3085,
+   "sharpe": -0.15375931908040869,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  },
+  {
+   "name": "MT5 broker 2-Step, S/R bounce, flat by 16:10 (XAUUSD CFD), costs+base swap",
+   "n": 8152,
+   "win": 0.3508341511285574,
+   "r_net": -0.0899357311804642,
+   "exp": -89.9357311804642,
+   "exp_gross": 90.12090944310097,
+   "n_is": 5588,
+   "exp_is": -143.17829777977286,
+   "p_is": 0.0,
+   "n_oos": 2564,
+   "exp_oos": 26.101500550010392,
+   "p_oos": 0.90175,
+   "sharpe": -0.20637216489349144,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  },
+  {
+   "name": "MT5 broker 2-Step, Overnight drift: long US100 close->open, Mon-Thu (control), costs+base swap",
+   "n": 1318,
+   "win": 0.5303490136570561,
+   "r_net": 0.05178891128553329,
+   "exp": 51.78891128553329,
+   "exp_gross": 264.6480026412818,
+   "n_is": 1081,
+   "exp_is": 42.005023056132096,
+   "p_is": 0.655,
+   "n_oos": 237,
+   "exp_oos": 96.41500063567129,
+   "p_oos": 0.6415,
+   "sharpe": 0.012723926222544955,
+   "k": 419,
+   "bar": 0.9999761336515514,
+   "candidate": false
+  }
+ ],
+ "k": 419
+}

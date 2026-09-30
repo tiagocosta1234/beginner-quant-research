@@ -63,6 +63,13 @@ class Signal:
     # None, and max_daily_profit then falls back to reactive-only enforcement
     # for them.
     expected_reward_dollars: float | None = None
+    # The price the strategy planned the entry at -- the one its stop_loss_price
+    # was measured from (e.g. the 09:30 bar's open). When set, main.py moves the
+    # stop after the market entry fills so it keeps the planned distance from the
+    # ACTUAL fill: added 2026-09-30 after a short planned at 30,701.50 filled at
+    # 30,690.75 and the stop, left at the planned price, turned a $294 risk into
+    # a $358.50 loss. None = the stop stays exactly where the strategy put it.
+    entry_reference_price: float | None = None
 
 
 class Strategy(ABC):

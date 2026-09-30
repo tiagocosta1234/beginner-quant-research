@@ -413,6 +413,7 @@ class DisciplinedBracketStrategy(Strategy):
             size=contracts,
             risk_dollars=RISK_PER_TRADE,
             expected_reward_dollars=reward,
+            entry_reference_price=open_px,
             reason=(
                 f"[{leg_name}] open={open_px:.2f} POC={prev_poc:.2f} "
                 f"VAL={prev_val} VAH={prev_vah} sl={sl_rounded:.2f} "

@@ -37,9 +37,13 @@ class FakeBroker:
     """Records every call instead of touching a network. `has_open_position`
     and the trailing-stop response's `.success` are configurable per test."""
 
-    def __init__(self, has_open_position: bool = False, trail_success: bool = True) -> None:
+    def __init__(self, has_open_position: bool = False, trail_success: bool = True,
+                 fill_price: float | None = None, modify_ok: bool = True, modify_raises: bool = False) -> None:
         self._has_open_position = has_open_position
         self._trail_success = trail_success
+        self._fill_price = fill_price
+        self._modify_ok = modify_ok
+        self._modify_raises = modify_raises
         self.calls: list[tuple[str, dict]] = []
 
     async def has_open_position(self) -> bool:
@@ -56,7 +60,17 @@ class FakeBroker:
 
     async def place_bracket_order(self, **kwargs):
         self.calls.append(("place_bracket_order", kwargs))
-        return SimpleNamespace(success=True)
+        return SimpleNamespace(success=True, entry_order_id=111, stop_order_id=222, target_order_id=333)
+
+    async def get_entry_fill_price(self, order_id, since):
+        self.calls.append(("get_entry_fill_price", {"order_id": order_id}))
+        return self._fill_price
+
+    async def modify_stop_price(self, order_id, stop_price):
+        self.calls.append(("modify_stop_price", {"order_id": order_id, "stop_price": stop_price}))
+        if self._modify_raises:
+            raise RuntimeError("broker rejected the modify")
+        return self._modify_ok
 
     async def flatten_all(self):
         self.calls.append(("flatten_all", {}))
@@ -229,6 +243,74 @@ def test_no_order_when_instrument_has_no_point_value():
     check("no_order_when_instrument_has_no_point_value", len(broker.calls) == 0, f"calls={broker.calls}")
 
 
+# --- stop re-anchored to the actual fill (2026-09-30) ---------------------------------
+
+def reference_short_signal() -> Signal:
+    """Today's real trade: short planned from the 09:30 open 30,701.50, stop 30,750.50 (49 pts)."""
+    return Signal(
+        action=SignalAction.ENTER_SHORT,
+        stop_loss_price=30_750.50,
+        take_profit_price=30_579.00,
+        size=3,
+        risk_dollars=300.0,
+        entry_reference_price=30_701.50,
+        reason="test POC short",
+    )
+
+
+def _run_bracket(signal, broker):
+    import live_bot.main as M
+    M.FILL_LOOKUP_DELAY_S = 0.0
+    gov = make_governor()
+    run_async(handle_entry_signal(signal, broker=broker, governor=gov, account_config=gov.config,
+                                  broker_config=BrokerConfig(mode="dry_run", instrument="MNQ")))
+    return [c for c in broker.calls if c[0] == "modify_stop_price"]
+
+
+def test_stop_moves_with_an_adverse_fill():
+    # filled 30,690.75 (10.75 pts worse for a short) -> stop 30,690.75 + 49 = 30,739.75, not 30,750.50
+    mods = _run_bracket(reference_short_signal(), FakeBroker(fill_price=30_690.75))
+    check("stop_moves_with_an_adverse_fill",
+          len(mods) == 1 and mods[0][1] == {"order_id": 222, "stop_price": 30_739.75}, f"mods={mods}")
+
+
+def test_stop_keeps_distance_on_a_favorable_fill():
+    sig = Signal(action=SignalAction.ENTER_LONG, stop_loss_price=19_980.0, take_profit_price=20_040.0, size=3,
+                 risk_dollars=400.0, entry_reference_price=20_000.0, reason="long")
+    mods = _run_bracket(sig, FakeBroker(fill_price=19_998.50))
+    check("stop_keeps_distance_on_a_favorable_fill",
+          len(mods) == 1 and mods[0][1]["stop_price"] == 19_978.50, f"mods={mods}")
+
+
+def test_no_modify_when_fill_equals_plan():
+    mods = _run_bracket(reference_short_signal(), FakeBroker(fill_price=30_701.50))
+    check("no_modify_when_fill_equals_plan", mods == [], f"mods={mods}")
+
+
+def test_no_modify_without_reference_price():
+    broker = FakeBroker(fill_price=19_990.0)
+    mods = _run_bracket(bracket_signal(), broker)
+    lookups = [c for c in broker.calls if c[0] == "get_entry_fill_price"]
+    check("no_modify_without_reference_price", mods == [] and lookups == [], f"calls={broker.calls}")
+
+
+def test_no_modify_when_fill_not_visible():
+    broker = FakeBroker(fill_price=None)
+    mods = _run_bracket(reference_short_signal(), broker)
+    lookups = [c for c in broker.calls if c[0] == "get_entry_fill_price"]
+    check("no_modify_when_fill_not_visible", mods == [] and len(lookups) == 5, f"calls={broker.calls}")
+
+
+def test_rejected_modify_does_not_raise():
+    ok = True
+    try:
+        _run_bracket(reference_short_signal(), FakeBroker(fill_price=30_690.75, modify_raises=True))
+        _run_bracket(reference_short_signal(), FakeBroker(fill_price=30_690.75, modify_ok=False))
+    except Exception as e:  # noqa: BLE001
+        ok = False
+    check("rejected_modify_does_not_raise", ok)
+
+
 def main() -> int:
     for fn in [
         test_trailing_signal_places_correct_contract_count,
@@ -239,6 +321,12 @@ def main() -> int:
         test_no_order_when_signal_has_neither_stop_shape,
         test_flattens_immediately_if_trailing_stop_placement_fails,
         test_no_order_when_instrument_has_no_point_value,
+        test_stop_moves_with_an_adverse_fill,
+        test_stop_keeps_distance_on_a_favorable_fill,
+        test_no_modify_when_fill_equals_plan,
+        test_no_modify_without_reference_price,
+        test_no_modify_when_fill_not_visible,
+        test_rejected_modify_does_not_raise,
     ]:
         fn()
 
