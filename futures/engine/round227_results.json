@@ -1,0 +1,9 @@
+{
+ "n_overlap_days": 956,
+ "mean_diff": 749.4762750672444,
+ "db_win_rate": 0.46338912133891214,
+ "db_win_mean": -2774.378338681062,
+ "p_winrate_low_gt_high": 0.94295,
+ "p_dollar_low_lt_high": 0.81345,
+ "verdict": "no edge -- neither regime candidate clears the 0.95 bar (trend-strength reverses sign OOS; vol-percentile is sub-threshold on win-rate and not significant on $ magnitude)"
+}

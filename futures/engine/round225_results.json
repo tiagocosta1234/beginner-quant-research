@@ -1,0 +1,64 @@
+{
+ "baseline": {
+  "pass_rates": {
+   "5": 0.3608,
+   "10": 0.5343333333333333,
+   "21": 0.5657333333333333,
+   "fail_by_horizon": 0.4338
+  },
+  "median_tries": 1.0,
+  "median_days": 7.0
+ },
+ "HTF-trend, TOD only (span=50)": {
+  "pass_rates": {
+   "5": 0.3701333333333333,
+   "10": 0.5466,
+   "21": 0.5803666666666667,
+   "fail_by_horizon": 0.41936666666666667
+  },
+  "median_tries": 1.0,
+  "median_days": 7.0
+ },
+ "databento_nq_span_grid": [
+  {
+   "span": 20,
+   "aligned_n": 82,
+   "aligned_mean": -39.52503484322244,
+   "against_n": 72,
+   "against_mean": 119.12494047619273,
+   "p_aligned_gt_against": 0.31675
+  },
+  {
+   "span": 50,
+   "aligned_n": 83,
+   "aligned_mean": -160.0583648881413,
+   "against_n": 71,
+   "against_mean": 262.2646076458782,
+   "p_aligned_gt_against": 0.1065
+  },
+  {
+   "span": 100,
+   "aligned_n": 76,
+   "aligned_mean": -182.72039473686505,
+   "against_n": 78,
+   "against_mean": 246.44478021978676,
+   "p_aligned_gt_against": 0.10275
+  },
+  {
+   "span": 150,
+   "aligned_n": 73,
+   "aligned_mean": -128.02150684933892,
+   "against_n": 81,
+   "against_mean": 181.25324514991826,
+   "p_aligned_gt_against": 0.18575
+  },
+  {
+   "span": 200,
+   "aligned_n": 73,
+   "aligned_mean": -149.81469667320928,
+   "against_n": 81,
+   "against_mean": 200.89402116402363,
+   "p_aligned_gt_against": 0.1415
+  }
+ ]
+}

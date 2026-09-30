@@ -1,0 +1,38 @@
+[
+ {
+  "name": "Opening-range (15-min) failure fade, sweep-and-reverse, hold to close, MNQ+MGC",
+  "n": 2313,
+  "win": 0.16472114137483787,
+  "r_net": 0.05021657299323609,
+  "exp": 15.064971897970828,
+  "exp_gross": 59.22524859490122,
+  "n_is": 1558,
+  "exp_is": -7.63147625159562,
+  "p_is": 0.378,
+  "n_oos": 755,
+  "exp_oos": 61.90082119204307,
+  "p_oos": 0.919,
+  "sharpe": 0.019194751679385436,
+  "k": 386,
+  "bar": 0.9999740932642487,
+  "candidate": false
+ },
+ {
+  "name": "Opening-range (30-min) failure fade, sweep-and-reverse, hold to close, MNQ+MGC",
+  "n": 2103,
+  "win": 0.15644317641464575,
+  "r_net": -0.030132097004268454,
+  "exp": -9.039629101280536,
+  "exp_gross": 34.13100332858158,
+  "n_is": 1401,
+  "exp_is": -43.223954318335274,
+  "p_is": 0.10025,
+  "n_oos": 702,
+  "exp_oos": 59.18293447292705,
+  "p_oos": 0.79125,
+  "sharpe": -0.009240920232111708,
+  "k": 387,
+  "bar": 0.9999741602067184,
+  "candidate": false
+ }
+]

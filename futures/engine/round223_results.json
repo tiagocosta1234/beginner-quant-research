@@ -1,0 +1,147 @@
+{
+ "baseline": {
+  "label": "baseline",
+  "n_trades": 3501,
+  "full": {
+   "n_days": 998,
+   "n_active": 934,
+   "mean_per_day": 727.9578685943314,
+   "win_rate": 0.5267665952890792,
+   "profit_factor_daily": 1.5947817973580327
+  },
+  "is_": {
+   "n_days": 672,
+   "n_active": 631,
+   "mean_per_day": 661.4772257653145,
+   "win_rate": 0.5340729001584786,
+   "profit_factor_daily": 1.5235063049738649
+  },
+  "oos": {
+   "n_days": 326,
+   "n_active": 303,
+   "mean_per_day": 864.99772129709,
+   "win_rate": 0.5115511551155115,
+   "profit_factor_daily": 1.7573170878153126
+  },
+  "pf_trade_full": 1.3001818619666492,
+  "pf_trade_oos": 1.3643487891409318,
+  "p_pos_is": 1.0,
+  "p_pos_oos": 1.0
+ },
+ "htf_trend_both_legs": {
+  "label": "htf_trend_both_legs",
+  "n_trades": 1482,
+  "full": {
+   "n_days": 998,
+   "n_active": 753,
+   "mean_per_day": 324.55043587174464,
+   "win_rate": 0.4634794156706507,
+   "profit_factor_daily": 1.4501621382116672
+  },
+  "is_": {
+   "n_days": 672,
+   "n_active": 505,
+   "mean_per_day": 270.35111607143205,
+   "win_rate": 0.4514851485148515,
+   "profit_factor_daily": 1.3620160689801204
+  },
+  "oos": {
+   "n_days": 326,
+   "n_active": 248,
+   "mean_per_day": 436.2741871165607,
+   "win_rate": 0.4879032258064516,
+   "profit_factor_daily": 1.6533795808596725
+  },
+  "pf_trade_full": 1.319261929868343,
+  "pf_trade_oos": 1.4701191892882992,
+  "p_pos_is": 0.99075,
+  "p_pos_oos": 0.997
+ },
+ "money_flow_both_legs": {
+  "label": "money_flow_both_legs",
+  "n_trades": 802,
+  "full": {
+   "n_days": 998,
+   "n_active": 531,
+   "mean_per_day": 241.46497208703065,
+   "win_rate": 0.4124293785310734,
+   "profit_factor_daily": 1.5179200941752653
+  },
+  "is_": {
+   "n_days": 672,
+   "n_active": 355,
+   "mean_per_day": 256.39968112244986,
+   "win_rate": 0.4309859154929577,
+   "profit_factor_daily": 1.5632888520118589
+  },
+  "oos": {
+   "n_days": 326,
+   "n_active": 176,
+   "mean_per_day": 210.6793141980683,
+   "win_rate": 0.375,
+   "profit_factor_daily": 1.4308616618539958
+  },
+  "pf_trade_full": 1.4265526469102594,
+  "pf_trade_oos": 1.3654973326353403,
+  "p_pos_is": 0.99375,
+  "p_pos_oos": 0.9405
+ },
+ "htf_trend_tod_only": {
+  "label": "htf_trend_tod_only",
+  "n_trades": 3460,
+  "full": {
+   "n_days": 998,
+   "n_active": 931,
+   "mean_per_day": 777.4928056112228,
+   "win_rate": 0.5359828141783028,
+   "profit_factor_daily": 1.6529904666229371
+  },
+  "is_": {
+   "n_days": 672,
+   "n_active": 628,
+   "mean_per_day": 730.5838764881051,
+   "win_rate": 0.5445859872611465,
+   "profit_factor_daily": 1.59121774403765
+  },
+  "oos": {
+   "n_days": 326,
+   "n_active": 303,
+   "mean_per_day": 874.1885122699196,
+   "win_rate": 0.5181518151815182,
+   "profit_factor_daily": 1.7963271966325107
+  },
+  "pf_trade_full": 1.3269463085140432,
+  "pf_trade_oos": 1.376849917008491,
+  "p_pos_is": 1.0,
+  "p_pos_oos": 1.0
+ },
+ "money_flow_tod_only": {
+  "label": "money_flow_tod_only",
+  "n_trades": 3459,
+  "full": {
+   "n_days": 998,
+   "n_active": 931,
+   "mean_per_day": 734.1772280274846,
+   "win_rate": 0.5370569280343717,
+   "profit_factor_daily": 1.6137173361514658
+  },
+  "is_": {
+   "n_days": 672,
+   "n_active": 629,
+   "mean_per_day": 690.7352476615746,
+   "win_rate": 0.5405405405405406,
+   "profit_factor_daily": 1.5547102928255594
+  },
+  "oos": {
+   "n_days": 326,
+   "n_active": 302,
+   "mean_per_day": 823.7263409289924,
+   "win_rate": 0.5298013245033113,
+   "profit_factor_daily": 1.751987543242811
+  },
+  "pf_trade_full": 1.309098878306056,
+  "pf_trade_oos": 1.3544135731867908,
+  "p_pos_is": 0.99975,
+  "p_pos_oos": 0.99975
+ }
+}
