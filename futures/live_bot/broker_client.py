@@ -54,6 +54,13 @@ class BrokerConfig:
             mode=os.getenv("BOT_MODE", "dry_run").lower(),
             instrument=os.getenv("BOT_INSTRUMENT", "MNQ"),
             initial_days=int(os.getenv("BOT_INITIAL_DAYS", "5")),
+            # BUGFIX (2026-09-30): main.py's poll loop calls get_bars(timeframe="1min")
+            # for every strategy, but TradingSuite.create() only subscribes to the
+            # timeframes passed here -- with the old ["5min"]-only default,
+            # get_data("1min") returned None every cycle (reproduced against the live
+            # Practice feed), so every strategy silently got "no bars yet" and could
+            # never trade. Subscribe to 1min as well; override with BOT_TIMEFRAMES.
+            timeframes=[t.strip() for t in os.getenv("BOT_TIMEFRAMES", "1min,5min").split(",") if t.strip()],
         )
 
 
@@ -115,6 +122,14 @@ class BrokerClient:
         which was read but not executed/traced live)."""
         data = getattr(event, "data", event)
         balance = None
+        # BUGFIX (2026-09-30), confirmed against the first real Practice event:
+        # add_callback hands over the raw dict {'action': 1, 'data': {'id': ...,
+        # 'balance': 149637.84, ...}}, so the balance sits one level down under
+        # "data". Reading the outer dict returned None on every event, leaving
+        # get_account_balance() on the connect-time snapshot and the governor
+        # blind to realized P&L.
+        if isinstance(data, dict) and "balance" not in data and isinstance(data.get("data"), dict):
+            data = data["data"]
         if isinstance(data, dict):
             balance = data.get("balance")
         else:
@@ -355,6 +370,28 @@ class BrokerClient:
             if getattr(p, "contractId", None) == own_contract_id:
                 return p
         return None
+
+    async def get_trades_since(self, since: Any) -> list[dict]:
+        """This account's fills on THIS instrument's contract since `since`, as dicts
+        {pnl, fees, size, order_id}. pnl is the broker's profitAndLoss, None on an
+        opening fill. Used by fill_recorder.FillRecorder to confirm that a balance
+        change came from this bot's own closed trade (search_trades confirmed working
+        against the Practice account on 2026-09-30)."""
+        if self.config.mode == "dry_run":
+            return []
+        suite = self._require_connected()
+        acct = getattr(suite.client, "account_info", None)
+        trades = await suite.client.search_trades(
+            start_date=since, contract_id=self.get_contract_id(),
+            account_id=getattr(acct, "id", None),
+        )
+        out = []
+        for t in trades or []:
+            if getattr(t, "voided", False):
+                continue
+            out.append(dict(pnl=getattr(t, "profitAndLoss", None), fees=getattr(t, "fees", 0.0) or 0.0,
+                            size=getattr(t, "size", 0) or 0, order_id=getattr(t, "orderId", None)))
+        return out
 
     async def has_open_position(self) -> bool:
         """True if there's currently an open position on THIS instrument specifically

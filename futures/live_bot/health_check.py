@@ -108,8 +108,17 @@ class HealthCheck:
                     issues.append("No bars returned from broker")
                     data_fresh = False
                 else:
-                    # Get the last bar's timestamp
-                    last_bar_time = bars[-1]["timestamp"]
+                    # Get the last bar's timestamp. BUGFIX (2026-09-30): get_bars()
+                    # returns a Polars DataFrame, where `bars[-1]["timestamp"]` is a
+                    # Series, so the staleness comparison below raised "truth value of
+                    # a Series is ambiguous" every cycle and the freshness check never
+                    # ran. Read the column's last element instead.
+                    ts_col = bars["timestamp"]
+                    last_bar_time = ts_col.iloc[-1] if hasattr(ts_col, "iloc") else ts_col[-1]
+                    if hasattr(last_bar_time, "to_pydatetime"):  # pandas Timestamp
+                        last_bar_time = last_bar_time.to_pydatetime()
+                    if isinstance(last_bar_time, datetime) and last_bar_time.tzinfo is None:
+                        last_bar_time = last_bar_time.replace(tzinfo=CENTRAL_TZ)
                     now = datetime.now(tz=CENTRAL_TZ)
 
                     if isinstance(last_bar_time, str):

@@ -1,0 +1,21 @@
+=== Building both real daily series ===
+
+REPRODUCED round87 walk-forward: n=38, win%=47.4, total=$19,097.60, exp/trade=$502.57  (round87's own printed numbers: n=39, win%=43.6, total=$13,852.80, exp/trade=$355.20 -- compare before trusting this reproduction)
+OTE/FVG real walk-forward daily series: 31 calendar days, 25 active trading days
+
+[round232] build_daily -> NET series ($11.24/contract)
+Disciplined bracket real daily series: 1806 calendar days, 1452 active trading days
+
+=== Fair comparison: pass_speed_gate.simulate(), same i.i.d. bootstrap, same corrected ratchet consistency limit, same built-in horizons (5/10/21d), 20,000 sims each ===
+
+OTE/FVG (Round 87)                 |  5d | pass=58.1%  fail=3.8%  still-open=38.1%  mean=$+616.05/day  Sharpe=+0.6242
+OTE/FVG (Round 87)                 | 10d | pass=87.6%  fail=6.9%  still-open=5.5%  mean=$+616.05/day  Sharpe=+0.6242
+OTE/FVG (Round 87)                 | 15d | pass=91.9%  fail=7.4%  still-open=0.7%  mean=$+616.05/day  Sharpe=+0.6242
+OTE/FVG (Round 87)                 | 21d | pass=92.6%  fail=7.3%  still-open=0.0%  mean=$+616.05/day  Sharpe=+0.6242
+
+Disciplined bracket (Round 192)    |  5d | pass=10.9%  fail=42.7%  still-open=46.4%  mean=$+43.06/day  Sharpe=+0.0348
+Disciplined bracket (Round 192)    | 10d | pass=22.0%  fail=62.7%  still-open=15.3%  mean=$+43.06/day  Sharpe=+0.0348
+Disciplined bracket (Round 192)    | 15d | pass=27.1%  fail=67.2%  still-open=5.8%  mean=$+43.06/day  Sharpe=+0.0348
+Disciplined bracket (Round 192)    | 21d | pass=28.2%  fail=69.6%  still-open=2.2%  mean=$+43.06/day  Sharpe=+0.0348
+
+[round232] build_daily calls: 1

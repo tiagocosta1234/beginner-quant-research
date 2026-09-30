@@ -1,0 +1,5 @@
+[round232] build_daily -> NET series ($11.24/contract)
+5x$50K (baseline)            | median income $    47,146 | mean $    49,476 | P95 $   107,195 | max $    157,326 | P(>= $1M) 0.0000% | avg cost $    9,566
+5x$150K                      | median income $    79,310 | mean $    82,000 | P95 $   166,088 | max $    236,500 | P(>= $1M) 0.0000% | avg cost $   25,682
+3x$50K + 2x$150K (mixed)     | median income $    59,836 | mean $    62,485 | P95 $   128,551 | max $    184,650 | P(>= $1M) 0.0000% | avg cost $   16,012
+[round232] build_daily calls: 1

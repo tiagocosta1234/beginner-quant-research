@@ -1,0 +1,132 @@
+{
+ "split at5 noact ek2.0 fk2.0": {
+  "6 months": {
+   "p_25k": 0.0545,
+   "p_5stack": 0.2515,
+   "p_5_on_dec31": 0.0515,
+   "p_stuck": 0.91,
+   "mean_received_eur": 2661.3677,
+   "median_received_eur": 0.0
+  },
+  "12 months": {
+   "p_25k": 0.064,
+   "p_5stack": 0.242,
+   "p_5_on_dec31": 0.055,
+   "p_stuck": 0.921,
+   "mean_received_eur": 3875.1446,
+   "median_received_eur": 0.0
+  },
+  "24 months": {
+   "p_25k": 0.0775,
+   "p_5stack": 0.2495,
+   "p_5_on_dec31": 0.0665,
+   "p_stuck": 0.9195,
+   "mean_received_eur": 7215.0276,
+   "median_received_eur": 0.0
+  }
+ },
+ "SR at5 noact ek1.0 fk0.5": {
+  "6 months": {
+   "p_25k": 0.0045,
+   "p_5stack": 0.2975,
+   "p_5_on_dec31": 0.078,
+   "p_stuck": 0.86,
+   "mean_received_eur": 1534.7095,
+   "median_received_eur": 0.0
+  },
+  "12 months": {
+   "p_25k": 0.027,
+   "p_5stack": 0.2895,
+   "p_5_on_dec31": 0.0745,
+   "p_stuck": 0.879,
+   "mean_received_eur": 2548.2544,
+   "median_received_eur": 0.0
+  },
+  "24 months": {
+   "p_25k": 0.088,
+   "p_5stack": 0.307,
+   "p_5_on_dec31": 0.077,
+   "p_stuck": 0.8895,
+   "mean_received_eur": 4208.3612,
+   "median_received_eur": 0.0
+  }
+ },
+ "SR at1 std ek1.0 fk0.5": {
+  "6 months": {
+   "p_25k": 0.0,
+   "p_5stack": 0.044,
+   "p_5_on_dec31": 0.022,
+   "p_stuck": 0.712,
+   "mean_received_eur": 1191.2282,
+   "median_received_eur": 0.0
+  },
+  "12 months": {
+   "p_25k": 0.0125,
+   "p_5stack": 0.0865,
+   "p_5_on_dec31": 0.025,
+   "p_stuck": 0.7865,
+   "mean_received_eur": 2289.4097,
+   "median_received_eur": 0.0
+  },
+  "24 months": {
+   "p_25k": 0.0385,
+   "p_5stack": 0.1155,
+   "p_5_on_dec31": 0.0235,
+   "p_stuck": 0.826,
+   "mean_received_eur": 3590.7004,
+   "median_received_eur": 0.0
+  }
+ },
+ "DB_noVA at2 std ek1.0 fk1.0": {
+  "6 months": {
+   "p_25k": 0.0,
+   "p_5stack": 0.013,
+   "p_5_on_dec31": 0.0065,
+   "p_stuck": 0.8685,
+   "mean_received_eur": 411.1638,
+   "median_received_eur": 0.0
+  },
+  "12 months": {
+   "p_25k": 0.0015,
+   "p_5stack": 0.034,
+   "p_5_on_dec31": 0.008,
+   "p_stuck": 0.893,
+   "mean_received_eur": 719.8902,
+   "median_received_eur": 0.0
+  },
+  "24 months": {
+   "p_25k": 0.0085,
+   "p_5stack": 0.043,
+   "p_5_on_dec31": 0.008,
+   "p_stuck": 0.9375,
+   "mean_received_eur": 1017.5485,
+   "median_received_eur": 0.0
+  }
+ },
+ "split at1 std ek1.0 fk1.0": {
+  "6 months": {
+   "p_25k": 0.002,
+   "p_5stack": 0.0,
+   "p_5_on_dec31": 0.0,
+   "p_stuck": 0.4845,
+   "mean_received_eur": 939.5785,
+   "median_received_eur": 0.0
+  },
+  "12 months": {
+   "p_25k": 0.014,
+   "p_5stack": 0.002,
+   "p_5_on_dec31": 0.0005,
+   "p_stuck": 0.8415,
+   "mean_received_eur": 1887.6059,
+   "median_received_eur": 0.0
+  },
+  "24 months": {
+   "p_25k": 0.047,
+   "p_5stack": 0.004,
+   "p_5_on_dec31": 0.0015,
+   "p_stuck": 0.842,
+   "mean_received_eur": 3278.8398,
+   "median_received_eur": 0.0
+  }
+ }
+}

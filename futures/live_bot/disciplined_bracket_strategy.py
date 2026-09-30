@@ -121,12 +121,20 @@ against RTH_START/RTH_END, assuming `bars` arrives already in NY wall-
 clock time. No existing strategy in this repo does an explicit timezone
 conversion on live bars; confirm this against a real connection before
 trusting entries are RTH-gated live, not just in backtest.
+
+RESOLVED 2026-09-30: confirmed against the real Practice feed -- bars are
+stamped in Central time (`-05:00`), NOT New York. on_bar() now converts
+tz-aware timestamps to America/New_York before any RTH/date logic (see the
+comment there and tests/test_disciplined_bracket_strategy.py). Other live
+strategies still carry the unverified assumption (combined_strategy.py
+shares this code shape).
 """
 
 from __future__ import annotations
 
 import datetime as dt
 import os
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -200,9 +208,51 @@ class DisciplinedBracketStrategy(Strategy):
     and the 2026-09-29 rebuild note on why this derives everything fresh
     from `bars` rather than accumulating state across calls."""
 
-    def __init__(self) -> None:
+    def __init__(self, disable_va: bool | None = None, poc_filter: str | None = None,
+                 filter_log_path: str | os.PathLike | None = None) -> None:
         self._entered_today = False
         self._entered_date: dt.date | None = None
+        # VA-rejection fallback on/off (2026-09-30, Round 230: the fallback lost money
+        # in both halves of the 2019-2026 history and in every 24/5 variant; dropping
+        # it was the better configuration, as an in-sample choice). Default keeps the
+        # original behavior; BRACKET_DISABLE_VA=1 in the environment turns it off.
+        if disable_va is None:
+            disable_va = os.getenv("BRACKET_DISABLE_VA", "0").strip().lower() in ("1", "true", "yes")
+        self.disable_va = disable_va
+        # POC filter (2026-09-30, Round 244's lead: POC only after a NARROW prior day in a
+        # NOT-LOW-VOL regime). "off" (default) = unchanged; "log" = trade as usual but
+        # record the filter's verdict for every POC signal (paper tracking); "on" = skip
+        # POC signals the filter rejects. Needs daily history (live_bot/daily_history.py).
+        if poc_filter is None:
+            poc_filter = os.getenv("BRACKET_POC_FILTER", "off").strip().lower()
+        if poc_filter not in ("off", "log", "on"):
+            raise ValueError(f"BRACKET_POC_FILTER must be off, log or on (got {poc_filter!r})")
+        self.poc_filter = poc_filter
+        self._history = None
+        self._filter_log_path = Path(filter_log_path or os.getenv(
+            "BRACKET_POC_FILTER_LOG", Path(__file__).resolve().parent / "logs" / "poc_filter_paper.csv"))
+        self._logged_date: dt.date | None = None
+
+    def _poc_filter_verdict(self, rth: pd.DataFrame, today: dt.date) -> dict | None:
+        from live_bot.daily_history import DailyHistory, poc_filter_features
+        if self._history is None:
+            self._history = DailyHistory()
+        self._history.merge_live(rth, today)
+        return poc_filter_features(self._history.before(today))
+
+    def _log_filter(self, today: dt.date, direction: int, open_px: float, feats: dict | None, acted: str) -> None:
+        if self._logged_date == today:
+            return
+        self._logged_date = today
+        row = dict(date=today.isoformat(), mode=self.poc_filter, direction=direction, open=open_px,
+                   verdict=("insufficient history" if feats is None else ("PASS" if feats["passed"] else "FAIL")),
+                   acted=acted, **({k: feats[k] for k in ("prev_range", "rng_sma20", "rv20", "rv20_med250",
+                                                           "narrow", "lowvol", "history_days", "last_session")}
+                                   if feats else {}))
+        path = self._filter_log_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        new = not path.exists()
+        pd.DataFrame([row]).to_csv(path, mode="a", header=new, index=False)
 
     def _size_and_cap(self, direction: int, entry: float, sl: float, tp: float) -> tuple[int, float, float]:
         """Sizes contracts off the $300-risk convention, then clips the
@@ -261,6 +311,13 @@ class DisciplinedBracketStrategy(Strategy):
             return Signal(action=SignalAction.HOLD, reason="no bars yet")
 
         df = bars.to_pandas().set_index("timestamp").sort_index()
+        # Live bars arrive tz-aware in the exchange's Central time (verified
+        # 2026-09-30: `-05:00` stamps on the BrokerAPI feed), but RTH_START/RTH_END
+        # and the Round 192 backtest are New York wall-clock. Without this the RTH
+        # window, the 15-minute entry grace and every profile day were shifted an
+        # hour. Naive timestamps are assumed to already be New York wall-clock.
+        if getattr(df.index, "tz", None) is not None:
+            df.index = df.index.tz_convert("America/New_York").tz_localize(None)
         latest_ts = df.index[-1]
         latest_time = pd.Timestamp(latest_ts).time()
         today = pd.Timestamp(latest_ts).date()
@@ -319,7 +376,21 @@ class DisciplinedBracketStrategy(Strategy):
         if len(range_history) >= RANGE_MIN_PERIODS:
             S = float(np.mean(range_history))
             sig = self._poc_reversion_signal(open_px, prev_poc, S)
-        if sig is None:
+        filter_note = ""
+        if sig is not None and self.poc_filter != "off":
+            feats = self._poc_filter_verdict(rth, today)
+            passed = bool(feats and feats["passed"])
+            skip = self.poc_filter == "on" and not passed
+            self._log_filter(today, sig[0], open_px, feats, "skipped" if skip else "traded")
+            filter_note = (f" filter[{self.poc_filter}]="
+                           + ("insufficient history" if feats is None else
+                              f"{'PASS' if passed else 'FAIL'} (narrow={feats['narrow']}, lowvol={feats['lowvol']})"))
+            if skip:
+                if self.disable_va:
+                    self._entered_today = True  # decided for today; stop re-evaluating
+                    return Signal(action=SignalAction.HOLD, reason=f"POC signal filtered out{filter_note}")
+                sig = None
+        if sig is None and not self.disable_va:
             leg_name = "VA-rejection"
             sig = self._va_rejection_signal(open_px, prev_poc, prev_val, prev_vah)
         if sig is None:
@@ -346,6 +417,6 @@ class DisciplinedBracketStrategy(Strategy):
                 f"[{leg_name}] open={open_px:.2f} POC={prev_poc:.2f} "
                 f"VAL={prev_val} VAH={prev_vah} sl={sl_rounded:.2f} "
                 f"tp={tp_rounded:.2f} contracts={contracts} reward=${reward:.0f} "
-                f"(yesterday={yesterday}, {len(range_history)} sessions of range history)"
+                f"(yesterday={yesterday}, {len(range_history)} sessions of range history){filter_note}"
             ),
         )

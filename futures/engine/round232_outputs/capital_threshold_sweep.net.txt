@@ -1,0 +1,10 @@
+[round232] build_daily -> NET series ($11.24/contract)
+Capital x reserve-depth sweep (50K-only, single-lineage, 36mo horizon):
+ seed EUR reserve_mult |  P(ever live)  median income       mean
+      500            3 |          11.1% $           0 $   28,639
+     1000            8 |          20.2% $           0 $   51,858
+     1500           12 |          27.5% $           0 $   71,422
+     2000           16 |          33.8% $           0 $   86,108
+     3000           20 |          41.2% $      12,171 $  104,885
+     5000           30 |          52.5% $     101,508 $  132,884
+[round232] build_daily calls: 1

@@ -1,0 +1,96 @@
+{
+ "agree": 15,
+ "n": 15,
+ "rows": [
+  {
+   "date": "2025-07-01",
+   "bars_bot": "ENTER_LONG [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_LONG [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2025-07-30",
+   "bars_bot": "ENTER_SHORT [POC-reversion (meta-labeled, p=0.38)",
+   "cache_bot": "ENTER_SHORT [POC-reversion (meta-labeled, p=0.38)",
+   "same": true
+  },
+  {
+   "date": "2025-08-28",
+   "bars_bot": "HOLD neither leg fired/qualified (open=23640.",
+   "cache_bot": "HOLD neither leg fired/qualified (open=23640.",
+   "same": true
+  },
+  {
+   "date": "2025-09-26",
+   "bars_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2025-10-27",
+   "bars_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2025-11-25",
+   "bars_bot": "HOLD neither leg fired/qualified (open=24857.",
+   "cache_bot": "HOLD neither leg fired/qualified (open=24857.",
+   "same": true
+  },
+  {
+   "date": "2025-12-24",
+   "bars_bot": "HOLD neither leg fired/qualified (open=25795.",
+   "cache_bot": "HOLD neither leg fired/qualified (open=25795.",
+   "same": true
+  },
+  {
+   "date": "2026-01-26",
+   "bars_bot": "HOLD neither leg fired/qualified (open=25749.",
+   "cache_bot": "HOLD neither leg fired/qualified (open=25749.",
+   "same": true
+  },
+  {
+   "date": "2026-02-24",
+   "bars_bot": "HOLD neither leg fired/qualified (open=24805.",
+   "cache_bot": "HOLD neither leg fired/qualified (open=24805.",
+   "same": true
+  },
+  {
+   "date": "2026-03-25",
+   "bars_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2026-04-24",
+   "bars_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2026-05-25",
+   "bars_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_SHORT [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2026-06-23",
+   "bars_bot": "ENTER_LONG [VA-rejection (unfiltered)",
+   "cache_bot": "ENTER_LONG [VA-rejection (unfiltered)",
+   "same": true
+  },
+  {
+   "date": "2026-07-22",
+   "bars_bot": "ENTER_LONG [POC-reversion (meta-labeled, p=0.38)",
+   "cache_bot": "ENTER_LONG [POC-reversion (meta-labeled, p=0.38)",
+   "same": true
+  },
+  {
+   "date": "2026-08-20",
+   "bars_bot": "ENTER_LONG [POC-reversion (meta-labeled, p=0.37)",
+   "cache_bot": "ENTER_LONG [POC-reversion (meta-labeled, p=0.37)",
+   "same": true
+  }
+ ]
+}

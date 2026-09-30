@@ -1,0 +1,10 @@
+[round232] build_daily -> GROSS series (Round 192 as published)
+Capital x reserve-depth sweep (50K-only, single-lineage, 36mo horizon):
+ seed EUR reserve_mult |  P(ever live)  median income       mean
+      500            3 |          14.8% $           0 $   43,040
+     1000            8 |          27.6% $           0 $   77,771
+     1500           12 |          37.5% $           0 $  105,726
+     2000           16 |          43.5% $      14,237 $  120,172
+     3000           20 |          52.2% $      92,499 $  144,515
+     5000           30 |          61.6% $     181,519 $  169,311
+[round232] build_daily calls: 1

@@ -1,0 +1,48 @@
+{
+ "part_a": {
+  "early": {
+   "window": "2024-03-04 00:00:00 .. 2024-03-16 14:57:00",
+   "live": 209,
+   "backtest": 179,
+   "matched": 165,
+   "live_only": 44,
+   "backtest_only": 14,
+   "stop_ratio_median": 0.9600798403193612,
+   "stop_ratio_p5_p95": [
+    0.9065301878853189,
+    0.9931033577140785
+   ],
+   "seconds": 78
+  },
+  "recent": {
+   "window": "2026-08-10 00:00:00 .. 2026-08-24 00:00:00",
+   "live": 175,
+   "backtest": 155,
+   "matched": 136,
+   "live_only": 39,
+   "backtest_only": 19,
+   "stop_ratio_median": 0.9579596541970643,
+   "stop_ratio_p5_p95": [
+    0.9093133396785931,
+    0.9849312865497144
+   ],
+   "seconds": 77
+  }
+ },
+ "part_b": {
+  "backtest (no governor)": {
+   "mean_day": 19.095017202688865,
+   "trades_per_day": null,
+   "p21_oos": 0.5275862068965518,
+   "p21_all": 0.31798715203426126
+  },
+  "with live governor rules": {
+   "mean_day": -23.101678384444966,
+   "trades_per_day": null,
+   "p21_oos": 0.30689655172413793,
+   "p21_all": 0.14989293361884368
+  },
+  "trades_blocked_by_governor": 4634,
+  "trades_total": 8152
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "DB_live": {
+  "label": "Disciplined bracket, live bot",
+  "n": 4000,
+  "p_reach": 1.0,
+  "p_within_6m": 0.5225,
+  "p_within_12m": 0.80825,
+  "p_within_24m": 0.9675,
+  "median_months": 5.714285714285714,
+  "p25_months": 3.1904761904761907,
+  "p75_months": 10.238095238095237,
+  "median_evals": 26.0,
+  "median_cost": 2718.2999999999997,
+  "historical": {
+   "starts": 1785,
+   "share_reached_before_data_end": 0.9955182072829132,
+   "median_months_if_reached": 5.428571428571429
+  }
+ },
+ "DB_noVA": {
+  "label": "Disciplined bracket, no VA",
+  "n": 4000,
+  "p_reach": 1.0,
+  "p_within_6m": 0.5495,
+  "p_within_12m": 0.84175,
+  "p_within_24m": 0.978,
+  "median_months": 5.428571428571429,
+  "p25_months": 3.142857142857143,
+  "p75_months": 9.380952380952381,
+  "median_evals": 24.0,
+  "median_cost": 2509.2,
+  "historical": {
+   "starts": 1785,
+   "share_reached_before_data_end": 0.9955182072829132,
+   "median_months_if_reached": 4.714285714285714
+  }
+ },
+ "Combined": {
+  "label": "Combined POC+VA",
+  "n": 4000,
+  "p_reach": 0.99925,
+  "p_within_6m": 0.18475,
+  "p_within_12m": 0.39325,
+  "p_within_24m": 0.6785,
+  "median_months": 15.761904761904763,
+  "p25_months": 7.809523809523809,
+  "p75_months": 28.428571428571427,
+  "median_evals": 68.0,
+  "median_cost": 7109.4,
+  "historical": {
+   "starts": 1785,
+   "share_reached_before_data_end": 0.8128851540616246,
+   "median_months_if_reached": 14.0
+  }
+ },
+ "SR_MGC": {
+  "label": "S/R bounce MGC ($217/trade)",
+  "n": 4000,
+  "p_reach": 1.0,
+  "p_within_6m": 0.379,
+  "p_within_12m": 0.67425,
+  "p_within_24m": 0.90425,
+  "median_months": 8.047619047619047,
+  "p25_months": 4.095238095238095,
+  "p75_months": 14.619047619047619,
+  "median_evals": 34.0,
+  "median_cost": 3554.7,
+  "historical": {
+   "starts": 919,
+   "share_reached_before_data_end": 0.970620239390642,
+   "median_months_if_reached": 8.0
+  }
+ }
+}

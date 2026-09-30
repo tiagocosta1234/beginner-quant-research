@@ -1,0 +1,13 @@
+[round232] build_daily -> NET series ($11.24/contract)
+Signal: Round 192 causal disciplined bracket, mean $+43.06/day, Sharpe/day +0.0348, 24-month horizon, 4000 simulated careers per cell
+
+ eval x  live x |  P(ever live)  med mo->live  avg attempts |   avg cost  avg income    avg net     ROI
+    0.5       0.5 |          99.4%             4.0          14.4 | $    1,502 $     6,079 $    4,577   4.05x
+    0.5       1.0 |          99.3%             4.0          16.1 | $    1,684 $     8,168 $    6,484   4.85x
+    1.0       0.5 |          99.9%             3.0          12.5 | $    1,303 $     7,177 $    5,874   5.51x
+    1.0       1.0 |         100.0%             3.0          14.4 | $    1,507 $     9,771 $    8,264   6.48x
+    1.5       0.5 |          99.9%             3.0          13.2 | $    1,382 $     6,782 $    5,400   4.91x
+    1.5       1.0 |          99.8%             3.0          15.3 | $    1,597 $     8,840 $    7,243   5.53x
+    2.0       0.5 |          99.7%             3.0          13.8 | $    1,447 $     6,410 $    4,963   4.43x
+    2.0       1.0 |          99.5%             3.0          15.7 | $    1,638 $     8,571 $    6,933   5.23x
+[round232] build_daily calls: 1

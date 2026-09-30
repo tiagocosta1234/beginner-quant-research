@@ -1,0 +1,5 @@
+[round232] build_daily -> GROSS series (Round 192 as published)
+5x$50K (baseline)            | median income $    54,542 | mean $    55,372 | P95 $   113,138 | max $    161,018 | P(>= $1M) 0.0000% | avg cost $    8,558
+5x$150K                      | median income $    88,848 | mean $    89,475 | P95 $   173,970 | max $    239,648 | P(>= $1M) 0.0000% | avg cost $   23,348
+3x$50K + 2x$150K (mixed)     | median income $    68,138 | mean $    69,014 | P95 $   135,999 | max $    187,495 | P(>= $1M) 0.0000% | avg cost $   14,474
+[round232] build_daily calls: 1

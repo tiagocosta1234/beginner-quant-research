@@ -1,0 +1,19 @@
+[round232] build_daily -> NET series ($11.24/contract)
+Fair, same-mechanics comparison (4000 sims, 120-month cap, both use the withdrawal_and_withdraw fix):
+
+--- SPLIT: disciplined bracket for eval, combined signal for live ---
+P(ever reaches the full 5-stack within 10 years): 100.0%
+  time to reach: median 11mo (0.9yr)   mean 15.5mo   P25 5mo   P75 21mo   P90 35mo
+  money to reach: median $1,728   mean $2,218   P25 $1,080   P75 $2,808   P90 $4,320
+
+--- UNIFORM: combined signal for both stages ---
+P(ever reaches the full 5-stack within 10 years): 17.0%
+  time to reach: median 60mo (5.0yr)   mean 63.0mo   P25 35mo   P75 93mo   P90 110mo
+  money to reach: median $7,020   mean $7,343   P25 $4,320   P75 $10,584   P90 $12,420
+
+--- UNIFORM: disciplined bracket for both stages ---
+P(ever reaches the full 5-stack within 10 years): 96.0%
+  time to reach: median 26mo (2.2yr)   mean 33.8mo   P25 11mo   P75 50mo   P90 77mo
+  money to reach: median $3,348   mean $4,189   P25 $1,728   P75 $5,940   P90 $8,856
+
+[round232] build_daily calls: 1

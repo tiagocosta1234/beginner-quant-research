@@ -1,0 +1,19 @@
+[round232] build_daily -> GROSS series (Round 192 as published)
+Fair, same-mechanics comparison (4000 sims, 120-month cap, both use the withdrawal_and_withdraw fix):
+
+--- SPLIT: disciplined bracket for eval, combined signal for live ---
+P(ever reaches the full 5-stack within 10 years): 100.0%
+  time to reach: median 10mo (0.8yr)   mean 14.5mo   P25 5mo   P75 19mo   P90 31mo
+  money to reach: median $1,620   mean $2,103   P25 $1,080   P75 $2,592   P90 $3,888
+
+--- UNIFORM: combined signal for both stages ---
+P(ever reaches the full 5-stack within 10 years): 17.0%
+  time to reach: median 60mo (5.0yr)   mean 63.0mo   P25 35mo   P75 93mo   P90 110mo
+  money to reach: median $7,020   mean $7,343   P25 $4,320   P75 $10,584   P90 $12,420
+
+--- UNIFORM: disciplined bracket for both stages ---
+P(ever reaches the full 5-stack within 10 years): 98.0%
+  time to reach: median 22mo (1.8yr)   mean 29.0mo   P25 9mo   P75 41mo   P90 66mo
+  money to reach: median $2,916   mean $3,677   P25 $1,512   P75 $4,968   P90 $7,668
+
+[round232] build_daily calls: 1

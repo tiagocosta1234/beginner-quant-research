@@ -1,0 +1,11 @@
+[round232] build_daily -> GROSS series (Round 192 as published)
+Real year 1 (fixed, already confirmed): bank=$393.30, 0 slots, $0 extracted
+
+Continuing 48 more months (bootstrap Monte Carlo, real signal, real Broker-only 5x$150K structure, real EUR100/mo injection, 3000 sims) from that real state:
+
+P(ever reaches the full 5-slot mature stack within 48 more months): 50.3%
+  Of those that do: median month reached = month 34 (i.e. 22 months after today)
+
+Total value at the end of the 60-month horizon (extracted income + bank + equity still held in any live accounts):
+  median $886   mean $171,259   P25 $756   P75 $143,361   P95 $1,003,011
+[round232] build_daily calls: 1

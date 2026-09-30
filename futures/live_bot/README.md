@@ -141,6 +141,30 @@ active BrokerAPI API subscription (~$14.50/mo with the Broker discount code
 
 **Do not set `BOT_MODE=live` until every item below is checked off.**
 
+## History caches and the daily updater (2026-09-30)
+
+Two strategies need more history than the broker's live 1-minute window (~22 sessions):
+the bracket bot's Round 244 POC filter (`daily_history.py`, one OHLC row per session) and
+the Combined bot's meta-model (`session_history.py`, profile + POC-trade outcome per
+session). Each starts from a Databento seed in `data/` and appends completed sessions to
+`state/`. The bots append while they run; `update_history.py` does it once a day
+without them, so a stretch with no bot running can't leave a hole (the broker keeps
+1-minute history for the active contract only, ~2 months).
+
+```
+python -m live_bot.update_history --dry-run   # what would be added; writes nothing
+python -m live_bot.update_history             # update both caches
+```
+
+Read-only against the broker (login + bar history). Log: `logs/update_history.log`;
+last run and contract: `state/history_updater.json`. Exit 2 means a hole the broker
+can no longer fill: rebuild the seeds with `futures/engine/build_daily_rth_seed.py`
+and `build_session_seed.py` from fresh Databento data. `register_history_updater.ps1`
+schedules it daily at 22:30 local. A session counts as complete when the feed covers it
+from 09:30 to at least 12:59, so the 13:00 ET early-close holidays are kept, as in the
+seeds. At a contract roll the caches carry the same price jump the Databento seed has
+at every roll; the updater logs the contract change.
+
 ## What's confirmed vs. what still needs a real API key
 
 Confirmed today (see Knowledge_Base/BROKERAPI_API_REFERENCE.md for full research):

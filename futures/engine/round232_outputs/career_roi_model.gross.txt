@@ -1,0 +1,13 @@
+[round232] build_daily -> GROSS series (Round 192 as published)
+Signal: Round 192 causal disciplined bracket, mean $+60.95/day, Sharpe/day +0.0493, 24-month horizon, 4000 simulated careers per cell
+
+ eval x  live x |  P(ever live)  med mo->live  avg attempts |   avg cost  avg income    avg net     ROI
+    0.5       0.5 |          99.6%             4.0          13.4 | $    1,396 $     7,290 $    5,894   5.22x
+    0.5       1.0 |          99.3%             4.0          15.3 | $    1,595 $     9,838 $    8,243   6.17x
+    1.0       0.5 |         100.0%             3.0          11.3 | $    1,179 $     8,585 $    7,407   7.28x
+    1.0       1.0 |          99.9%             3.0          13.3 | $    1,393 $    12,004 $   10,612   8.62x
+    1.5       0.5 |          99.9%             3.0          12.2 | $    1,271 $     8,037 $    6,767   6.32x
+    1.5       1.0 |          99.8%             3.0          14.2 | $    1,487 $    10,926 $    9,439   7.35x
+    2.0       0.5 |          99.7%             3.0          12.8 | $    1,342 $     7,665 $    6,323   5.71x
+    2.0       1.0 |          99.8%             3.0          14.8 | $    1,551 $    10,208 $    8,658   6.58x
+[round232] build_daily calls: 1

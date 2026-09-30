@@ -101,9 +101,23 @@ from pathlib import Path
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
+# BUGFIX (2026-09-30): load .env BEFORE importing any live_bot module. Strategy
+# modules read tier sizing from the environment at import time
+# (disciplined_bracket_strategy / combined_strategy BRACKET_*), and with
+# load_dotenv() further down they always got the $50K defaults -- the first live
+# trade on the $150K Practice account went out at 3 contracts / $300 risk
+# instead of 9 / $900. Kept in its original try/except form.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parent / ".env")
+except ImportError:  # pragma: no cover - dotenv is a convenience, not a hard requirement
+    pass
+
 from live_bot.broker_client import BrokerClient, BrokerConfig
 from live_bot.combined_strategy import CombinedStrategy
 from live_bot.disciplined_bracket_strategy import DisciplinedBracketStrategy
+from live_bot.fill_recorder import FillRecorder, trading_date
 from live_bot.flatten_routine import FlattenRoutine, AlertHandler
 from live_bot.health_check import HealthCheck, HealthStatus
 from live_bot.manual_strategy import ManualStrategy
@@ -121,13 +135,6 @@ from live_bot.vwap_zscore_strategy import VwapZScoreStrategy
 # Rounds 19-26; MGC: Rounds 30/30b) -- see BOT_STRATEGY in this module's
 # docstring for which Strategy class pairs with which instrument.
 POINT_VALUE = {"MNQ": 2.0, "MGC": 10.0}
-
-try:
-    from dotenv import load_dotenv
-
-    load_dotenv(Path(__file__).resolve().parent / ".env")
-except ImportError:  # pragma: no cover - dotenv is a convenience, not a hard requirement
-    pass
 
 # BUGFIX (2026-09-21): the installed brokerapi_py SDK logs several messages
 # containing emoji (e.g. "\U0001F4E1 Real-time client connected"). Windows'
@@ -603,7 +610,10 @@ async def run() -> None:
         state_file=state_file,
     )
     log.info("RiskGovernor state persistence: %s", state_file)
-    governor.start_new_trading_day(dt.date.today())
+    # Broker's trading day starts at 5 PM CT (fill_recorder.trading_date); the loop
+    # below rolls the day over the same way while running.
+    governor.start_new_trading_day(trading_date(dt.datetime.now(tz=account_config.timezone)))
+    fill_recorder = FillRecorder(logger=log)
 
     # Initialize FlattenRoutine + APScheduler
     scheduler = AsyncIOScheduler()
@@ -649,6 +659,15 @@ async def run() -> None:
             now = dt.datetime.now(tz=account_config.timezone)
 
             try:
+                # --- 0. New Broker trading day (5 PM CT): roll the governor's daily
+                # counters. Before 2026-09-30 this only happened at process start, so a
+                # bot left running past the boundary kept yesterday's realized P&L in
+                # today's daily-loss check once fills started being recorded.
+                if governor.current_trading_date != trading_date(now):
+                    governor.start_new_trading_day(trading_date(now), opening_balance=broker.get_account_balance())
+                    log.info("[Cycle %d] New trading day %s: governor daily counters rolled over",
+                             cycle_count, governor.current_trading_date)
+
                 # --- 1. Health check ---
                 health_report = await health_check.check()
                 if health_report.overall_status == HealthStatus.CRITICAL:
@@ -672,13 +691,30 @@ async def run() -> None:
                         unrealized_pnl=0.0,
                     )
 
+                # --- 2a. Record this bot's own closed trades in the governor (record_fill)
+                # BEFORE reconciling, so a normal closed trade is not read as untracked
+                # activity. See fill_recorder.py.
+                try:
+                    realized = await fill_recorder.update(broker, governor, now)
+                    if realized is not None:
+                        pnl_tracker.log_compliance_event(
+                            event_type=__import__("live_bot.pnl_tracker", fromlist=["EventType"]).EventType.POSITION_FULLY_CLOSED,
+                            details={"realized_pnl": realized, "daily_realized_pnl": governor.daily_realized_pnl},
+                            instrument=broker_config.instrument,
+                            account_balance=governor.current_balance,
+                        )
+                except Exception as e:
+                    log.error(f"[Cycle {cycle_count}] Fill recording failed: {e}")
+
                 # --- 2b. Reconcile tracked balance against the broker's live settled
                 # balance (risk_governor.py rule 10). No network call -- reads the
                 # same cached account_info get_account_balance() already uses at
                 # startup. Catches untracked account activity (e.g. a manual trade)
-                # before it can silently invalidate every other check below.
+                # before it can silently invalidate every other check below. Skipped
+                # only while this bot's own just-closed trade is still settling
+                # (bounded by FillRecorder.max_wait_cycles).
                 live_balance = broker.get_account_balance()
-                if live_balance is not None and not governor.reconcile_balance(live_balance):
+                if live_balance is not None and not fill_recorder.settling and not governor.reconcile_balance(live_balance):
                     log.error(
                         "[Cycle %d] BALANCE RECONCILIATION MISMATCH: tracked=$%.2f "
                         "live=$%.2f diff=$%.2f (tolerance $%.2f) -- account moved in a "
@@ -774,6 +810,14 @@ async def run() -> None:
                             # + the 15m FVG resample's own lag, ~540 minutes minimum. 500
                             # (the old default) silently missed sweeps near the window edge.
                             bars_needed = 1500
+                        elif isinstance(strategy, CombinedStrategy):
+                            # ADDED 2026-09-30: this strategy fell through to the 500-bar
+                            # default, so it could never see the >= 11 completed sessions
+                            # it needs and would never trade. Its meta-model feature
+                            # range_chg also looks 21 sessions back; the live 1-min feed
+                            # returns at most ~27,500 bars (~22 sessions, ~14 of them
+                            # full -- checked 2026-09-30), so request all of it.
+                            bars_needed = 30000
                         elif isinstance(strategy, DisciplinedBracketStrategy):
                             # Needs ~20-30 real calendar days of RTH history in view every
                             # call (20-session range average + yesterday's own profile) --
@@ -784,7 +828,14 @@ async def run() -> None:
                             # trading days x 390 1m bars/day = ~8,580 RTH bars; requesting
                             # more headroom since the raw window also includes non-RTH bars
                             # this strategy filters out itself.
-                            bars_needed = 12000
+                            # CORRECTED 2026-09-30 against the real Practice feed: the live
+                            # 1-min feed includes overnight bars (~1,380/day, not 390), so
+                            # 12,000 bars covered only ~9 RTH sessions -- below the strategy's
+                            # RANGE_MIN_PERIODS=10, which silently disabled the POC-reversion
+                            # leg (only VA-rejection could ever fire). 20,000 bars covers ~14
+                            # full RTH sessions (older sessions in the feed are partial, from
+                            # before the contract roll), so the range history reaches >=10.
+                            bars_needed = 20000
                         else:
                             bars_needed = 500
                         bars = await broker.get_bars(bars=bars_needed, timeframe="1min")
@@ -801,6 +852,7 @@ async def run() -> None:
                                 account_config=account_config,
                                 broker_config=broker_config,
                             )
+                            fill_recorder.note_entry(now)
                             # Log entry to compliance ledger
                             pnl_tracker.log_compliance_event(
                                 event_type=__import__("live_bot.pnl_tracker", fromlist=["EventType"]).EventType.POSITION_OPENED,

@@ -1,0 +1,11 @@
+[round232] build_daily -> NET series ($11.24/contract)
+Real year 1 (fixed, already confirmed): bank=$393.30, 0 slots, $0 extracted
+
+Continuing 48 more months (bootstrap Monte Carlo, real signal, real Broker-only 5x$150K structure, real EUR100/mo injection, 3000 sims) from that real state:
+
+P(ever reaches the full 5-slot mature stack within 48 more months): 44.4%
+  Of those that do: median month reached = month 36 (i.e. 24 months after today)
+
+Total value at the end of the 60-month horizon (extracted income + bank + equity still held in any live accounts):
+  median $786   mean $114,834   P25 $732   P75 $62,162   P95 $760,243
+[round232] build_daily calls: 1

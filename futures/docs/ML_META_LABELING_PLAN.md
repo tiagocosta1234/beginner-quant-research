@@ -1,4 +1,6 @@
-# Bounded meta-labeling plan (2026-09-30, planned only -- not yet built)
+# Bounded meta-labeling plan (2026-09-30)
+
+> **STATUS: BUILT and run as Round 228 (`round228_vwapz_meta_labeling.py`, pre-registered in `3b4b0ff`). Result: NOT a candidate (2 of 6 pre-registered gates passed) -- see the "Round 228" entry in `TRADING_JOURNAL.md`. Two deviations from this plan, both disclosed in the script's docstring: the base set is the leg's real sequential trades (3,411) rather than raw signals, and the label is sign(P&L) since the ATR-trail exit has no fixed profit barrier.** The rest of this document is the original plan, kept unchanged for reference.
 
 the trader proposed "a massive machine learning that constantly iterates through the whole
 dataset and learns until it can find the edge we're looking for," after watching a

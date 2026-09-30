@@ -1,0 +1,135 @@
+{
+ "parity_identical": true,
+ "reproduces_published": true,
+ "cost_models": {
+  "slippage_only": 10.0,
+  "repo_convention": 11.24,
+  "double": 22.48
+ },
+ "gross": {
+  "n": 1452,
+  "win_rate": 0.3925619834710744,
+  "sharpe": 0.04924333888831667,
+  "max_dd": 46595.61250000053,
+  "final": 110084.06346910016,
+  "mean_active_day": 75.81547070874667,
+  "p_mean_pos": 0.983,
+  "chained_n": 295,
+  "chained_pass": 93,
+  "chained_rate": 0.3152542372881356,
+  "chained_median_days": 5.0
+ },
+ "net": {
+  "slippage_only": {
+   "n": 1452,
+   "win_rate": 0.3925619834710744,
+   "sharpe": 0.03637792796112689,
+   "max_dd": 51395.61250000049,
+   "final": 81334.06346910016,
+   "mean_active_day": 56.015195226653006,
+   "p_mean_pos": 0.93375,
+   "chained_n": 279,
+   "chained_pass": 83,
+   "chained_rate": 0.2974910394265233,
+   "chained_median_days": 5.0
+  },
+  "repo_convention": {
+   "n": 1452,
+   "win_rate": 0.3925619834710744,
+   "sharpe": 0.034782040502466874,
+   "max_dd": 51990.81250000057,
+   "final": 77769.0634691002,
+   "mean_active_day": 53.55996106687341,
+   "p_mean_pos": 0.92725,
+   "chained_n": 286,
+   "chained_pass": 87,
+   "chained_rate": 0.3041958041958042,
+   "chained_median_days": 5.0
+  },
+  "double": {
+   "n": 1452,
+   "win_rate": 0.3918732782369146,
+   "sharpe": 0.020317109927647296,
+   "max_dd": 59798.57000000056,
+   "final": 45454.06346910013,
+   "mean_active_day": 31.304451425000103,
+   "p_mean_pos": 0.8015,
+   "chained_n": 277,
+   "chained_pass": 81,
+   "chained_rate": 0.2924187725631769,
+   "chained_median_days": 5.0
+  }
+ },
+ "net_is_oos": {
+  "IS": {
+   "gross": {
+    "n": 1185,
+    "win_rate": 0.3881856540084388,
+    "sharpe": 0.05354200364683572,
+    "max_dd": 46595.61250000053,
+    "final": 92536.68596910022,
+    "mean_active_day": 78.09003035367108,
+    "p_mean_pos": 0.97675,
+    "chained_n": 222,
+    "chained_pass": 73,
+    "chained_rate": 0.32882882882882886,
+    "chained_median_days": 6.0
+   },
+   "net": {
+    "n": 1185,
+    "win_rate": 0.3881856540084388,
+    "sharpe": 0.037914050003281914,
+    "max_dd": 51990.81250000057,
+    "final": 65549.44596910026,
+    "mean_active_day": 55.31598815957826,
+    "p_mean_pos": 0.931,
+    "chained_n": 213,
+    "chained_pass": 67,
+    "chained_rate": 0.3145539906103286,
+    "chained_median_days": 5.0
+   }
+  },
+  "OOS": {
+   "gross": {
+    "n": 267,
+    "win_rate": 0.41198501872659177,
+    "sharpe": 0.03555305161442979,
+    "max_dd": 18777.012499999983,
+    "final": 17547.37749999993,
+    "mean_active_day": 65.72051498127314,
+    "p_mean_pos": 0.73725,
+    "chained_n": 74,
+    "chained_pass": 20,
+    "chained_rate": 0.2702702702702703,
+    "chained_median_days": 4.0
+   },
+   "net": {
+    "n": 267,
+    "win_rate": 0.41198501872659177,
+    "sharpe": 0.02476537723346968,
+    "max_dd": 19473.892499999973,
+    "final": 12219.617499999933,
+    "mean_active_day": 45.76635767790239,
+    "p_mean_pos": 0.673,
+    "chained_n": 74,
+    "chained_pass": 20,
+    "chained_rate": 0.2702702702702703,
+    "chained_median_days": 4.0
+   }
+  }
+ },
+ "total_cost_repo_convention": 32315.0,
+ "downstream_importers": [
+  "capital_threshold_sweep.py",
+  "career_roi_model.py",
+  "goal_check.py",
+  "eoy_goal_reality_check.py",
+  "full_timeline_projection.py",
+  "mature_steady_state_10k.py",
+  "reinvestment_snowball.py",
+  "round200_eval_strategy_fair_comparison.py",
+  "snowball_backtest_real_year.py",
+  "split_strategy_monte_carlo.py",
+  "tier_mix_plan.py"
+ ]
+}
