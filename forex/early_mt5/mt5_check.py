@@ -37,7 +37,8 @@ def main() -> int:
     from dotenv import load_dotenv
     load_dotenv(HERE / ".env")
     login, password, server = os.getenv("MT5BROKER_MT5_LOGIN"), os.getenv("MT5BROKER_MT5_PASSWORD"), os.getenv("MT5BROKER_MT5_SERVER")
-    if not (login and password and server):
+    attach = "--attach" in sys.argv   # use the session already logged in inside the terminal; no password sent
+    if not (login and server and (password or attach)):
         print("forex/early_mt5/.env is missing MT5BROKER_MT5_LOGIN / MT5BROKER_MT5_PASSWORD / MT5BROKER_MT5_SERVER (see forex/early_mt5/.env.example)")
         return 2
     try:
@@ -45,7 +46,7 @@ def main() -> int:
     except ImportError:
         print("The MetaTrader5 Python package is not installed (pip install MetaTrader5).")
         return 2
-    kwargs = dict(login=int(login), password=password, server=server, timeout=60_000)
+    kwargs = dict(timeout=60_000) if attach else dict(login=int(login), password=password, server=server, timeout=60_000)
     terminal = os.getenv("MT5BROKER_MT5_TERMINAL")
     if terminal:
         kwargs["path"] = terminal
@@ -54,6 +55,9 @@ def main() -> int:
         return 1
     try:
         acc = mt5.account_info()
+        if acc is None or acc.login != int(login) or acc.server != server:
+            print("The terminal is not logged into the account in forex/early_mt5/.env (login/server differ); stopping.")
+            return 1
         masked = "*" * (len(login) - 3) + login[-3:]
         mode = {0: "DEMO", 1: "CONTEST", 2: "REAL"}.get(acc.trade_mode, acc.trade_mode)
         print(f"Account {masked} on {acc.server} ({mode}), {acc.currency}, leverage 1:{acc.leverage}, "
