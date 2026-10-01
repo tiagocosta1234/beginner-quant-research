@@ -1,7 +1,9 @@
 """
 Build M1 BID and ASK bars for US100.cash from MT5 MT5 tick history (read-only).
 
-  python -m mt5broker.tick_bars US100.cash --start 2021-09-20
+  python -m mt5broker.tick_bars US100.cash --start 2021-09-20            (08:30-17:10 NY window)
+  python -m mt5broker.tick_bars US100.cash --start 2021-09-20 --full     (whole server days, Mon-Fri:
+      Sunday 17:00 NY .. Friday 17:00 NY -- needed for positions held overnight)
 
 Why: the MT5 broker server serves M1 bars for US100.cash only from 2026-06-19, but tick history from
 2021-10. Ticks carry bid AND ask, so the bars built here give real fills (a long buys the real
@@ -52,7 +54,7 @@ def minute_bars(ticks: np.ndarray, point: float) -> pd.DataFrame:
     return out.reset_index()
 
 
-def build(symbol: str, start: dt.date) -> tuple[pd.DataFrame, dict]:
+def build(symbol: str, start: dt.date, full: bool = False) -> tuple[pd.DataFrame, dict]:
     mt5 = attach()
     frames, per_day = [], {}
     try:
@@ -62,8 +64,11 @@ def build(symbol: str, start: dt.date) -> tuple[pd.DataFrame, dict]:
         t0 = time.time()
         while d <= dt.date.today():
             if d.weekday() < 5:
-                srv0 = pd.Timestamp(d) + WIN_START + SERVER_MINUS_NY
-                srv1 = pd.Timestamp(d) + WIN_END + SERVER_MINUS_NY
+                if full:     # the whole server day d (00:00-24:00 server = 17:00 NY the day before .. 17:00 NY on d)
+                    srv0, srv1 = pd.Timestamp(d), pd.Timestamp(d) + pd.Timedelta(days=1)
+                else:
+                    srv0 = pd.Timestamp(d) + WIN_START + SERVER_MINUS_NY
+                    srv1 = pd.Timestamp(d) + WIN_END + SERVER_MINUS_NY
                 a = dt.datetime(srv0.year, srv0.month, srv0.day, srv0.hour, srv0.minute, tzinfo=dt.timezone.utc)
                 b = dt.datetime(srv1.year, srv1.month, srv1.day, srv1.hour, srv1.minute, tzinfo=dt.timezone.utc)
                 ticks = None
@@ -108,14 +113,16 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("symbol")
     ap.add_argument("--start", default="2021-09-20")
+    ap.add_argument("--full", action="store_true")
     a = ap.parse_args()
-    bars, per_day = build(a.symbol, dt.date.fromisoformat(a.start))
+    bars, per_day = build(a.symbol, dt.date.fromisoformat(a.start), a.full)
     (HERE / "data").mkdir(exist_ok=True)
-    path = HERE / "data" / f"{a.symbol}_M1_ticks.parquet"
+    tag = "_full" if a.full else ""
+    path = HERE / "data" / f"{a.symbol}_M1_ticks{tag}.parquet"
     bars.to_parquet(path, index=False)
     t = pd.to_datetime(bars["time"], unit="s")
     man = {"symbol": a.symbol, "source": "MT5 copy_ticks_range, COPY_TICKS_ALL, aggregated to M1 bid and ask OHLC",
-           "window_ny": "08:30-17:10 (server = NY + 7 h)",
+           "window_ny": "full server days Mon-Fri (17:00 NY prior day .. 17:00 NY)" if a.full else "08:30-17:10 (server = NY + 7 h)",
            "built_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
            "days_with_ticks": len(per_day), "first_day": min(per_day), "last_day": max(per_day),
            "ticks_total": int(sum(per_day.values())), "rows": int(len(bars)),
@@ -123,7 +130,7 @@ def main() -> int:
            "spread_points_median": float(bars["spread"].median()),
            "parity_vs_mt5_m1": parity_with_mt5_bars(bars, a.symbol),
            "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
-    (HERE / "specs" / f"{a.symbol}_M1_ticks_manifest.json").write_text(json.dumps(man, indent=1))
+    (HERE / "specs" / f"{a.symbol}_M1_ticks{tag}_manifest.json").write_text(json.dumps(man, indent=1))
     print(json.dumps({k: v for k, v in man.items() if k != "sha256"}, indent=1))
     return 0
 
