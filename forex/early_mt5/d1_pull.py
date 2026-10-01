@@ -73,36 +73,38 @@ def main() -> int:
     ap.add_argument("symbols", nargs="+")
     a = ap.parse_args()
     mt5 = attach()
+    (HERE / "data").mkdir(exist_ok=True)
     try:
-        out = {}
         for s in a.symbols:
             t0 = time.time()
             df = pull(mt5, s)
             info = mt5.symbol_info(s)
-            out[s] = (df, {k: getattr(info, k) for k in SPEC_FIELDS})
+            spec = {k: getattr(info, k) for k in SPEC_FIELDS}
             print(f"{s}: {len(df)} D1 bars ({time.time() - t0:.0f}s)", flush=True)
+            if df.empty:
+                print(f"{s}: no bars")
+                continue
+            save(s, df, spec)
     finally:
         mt5.shutdown()
-    (HERE / "data").mkdir(exist_ok=True)
-    for s, (df, spec) in out.items():
-        if df.empty:
-            print(f"{s}: no bars")
-            continue
-        path = HERE / "data" / f"{s}_D1.parquet"
-        df.to_parquet(path, index=False)
-        t = pd.to_datetime(df["time"], unit="s")
-        gaps = t.diff().dt.days
-        man = {"symbol": s, "timeframe": "D1", "price_side": "bid",
-               "server_day": f"00:00-24:00 server = 17:00-17:00 New York (server = NY + {SERVER_MINUS_NY})",
-               "pulled_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-               "rows": int(len(df)), "first_day": str(t.iloc[0].date()), "last_day": str(t.iloc[-1].date()),
-               "bars_per_year": {str(k): int(v) for k, v in t.dt.year.value_counts().sort_index().items()},
-               "gaps_over_5_days": int((gaps > 5).sum()), "spread_points_median": float(df["spread"].median()),
-               "specs_at_pull": spec, "parity_vs_tick_bars": parity_with_ticks(df, s),
-               "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
-        (HERE / "specs" / f"{s}_D1_manifest.json").write_text(json.dumps(man, indent=1))
-        print(json.dumps({k: v for k, v in man.items() if k not in ("sha256", "bars_per_year")}))
     return 0
+
+
+def save(s: str, df: pd.DataFrame, spec: dict) -> None:
+    path = HERE / "data" / f"{s}_D1.parquet"
+    df.to_parquet(path, index=False)
+    t = pd.to_datetime(df["time"], unit="s")
+    gaps = t.diff().dt.days
+    man = {"symbol": s, "timeframe": "D1", "price_side": "bid",
+           "server_day": f"00:00-24:00 server = 17:00-17:00 New York (server = NY + {SERVER_MINUS_NY})",
+           "pulled_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+           "rows": int(len(df)), "first_day": str(t.iloc[0].date()), "last_day": str(t.iloc[-1].date()),
+           "bars_per_year": {str(k): int(v) for k, v in t.dt.year.value_counts().sort_index().items()},
+           "gaps_over_5_days": int((gaps > 5).sum()), "spread_points_median": float(df["spread"].median()),
+           "specs_at_pull": spec, "parity_vs_tick_bars": parity_with_ticks(df, s),
+           "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    (HERE / "specs" / f"{s}_D1_manifest.json").write_text(json.dumps(man, indent=1))
+    print(json.dumps({k: v for k, v in man.items() if k not in ("sha256", "bars_per_year", "specs_at_pull")}), flush=True)
 
 
 if __name__ == "__main__":
