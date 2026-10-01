@@ -1,0 +1,19 @@
+{
+ "policy": [
+  0.25,
+  1500,
+  0.75
+ ],
+ "1-Step, with the best-day rule": {
+  "p": 0.395,
+  "half": 0.012369629204898045
+ },
+ "1-Step, best-day rule ignored (isolates its cost)": {
+  "p": 0.4078333333333333,
+  "half": 0.012434942580099452
+ },
+ "2-Step, Round 268 policy, same paths": {
+  "p": 0.2698333333333333,
+  "half": 0.011231538412154575
+ }
+}
