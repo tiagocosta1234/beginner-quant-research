@@ -1,0 +1,1339 @@
+{
+ "A_goal_sets": {
+  "n": 377,
+  "composition": {
+   "instrument": {
+    "NQ": 346,
+    "ES": 1,
+    "GC": 30
+   },
+   "candle": {
+    "1-min": 57,
+    "2-min": 52,
+    "3-min": 32,
+    "5-min": 14,
+    "15-min": 222
+   },
+   "target": {
+    "none": 286,
+    "0.5R": 9,
+    "1.5R": 48,
+    "2R": 21,
+    "3R": 13
+   },
+   "side": {
+    "long only": 223,
+    "both sides": 122,
+    "short only": 32
+   },
+   "bet": {
+    "normal": 371,
+    "inverted": 6
+   },
+   "entry": {
+    "close at depth 0": 66,
+    "close at depth 0.5": 40,
+    "close at depth 1": 33,
+    "limit at depth 0": 81,
+    "limit at depth 0.5": 121,
+    "limit at depth 1": 36
+   },
+   "stop": {
+    "struct": 212,
+    "gap": 9,
+    "atr": 156
+   },
+   "killzone": {
+    "AM 09:30-11:30": 125,
+    "RTH 09:30-15:50": 123,
+    "London 02:00-05:00": 25,
+    "all hours": 40,
+    "as written 09:30-11:30+13:30-15:30": 39,
+    "London + as written": 25
+   },
+   "vwap": {
+    "VWAP aligned": 306,
+    "VWAP off": 66,
+    "against VWAP": 5
+   }
+  }
+ },
+ "B_side": {
+  "NQ|1R": {
+   "long": {
+    "gross": -0.006456111394421475,
+    "h1": 0.007563583948649466,
+    "h2": -3.148694522678852e-05,
+    "n": 311040.0
+   },
+   "short": {
+    "gross": -0.016525483522708825,
+    "h1": -0.008744123438373209,
+    "h2": -0.00816393761197105,
+    "n": 295089.0
+   }
+  },
+  "NQ|none": {
+   "long": {
+    "gross": 0.09192948418228893,
+    "h1": 0.07950647957623005,
+    "h2": 0.11081446856260299,
+    "n": 311040.0
+   },
+   "short": {
+    "gross": 0.02861040743131664,
+    "h1": 0.05181214073672891,
+    "h2": -0.00031508747488260267,
+    "n": 295089.0
+   }
+  },
+  "ES|1R": {
+   "long": {
+    "gross": 0.002810391025937873,
+    "h1": 0.015298791928216815,
+    "h2": 0.009961438702885062,
+    "n": 243592.0
+   },
+   "short": {
+    "gross": -0.01145213491087106,
+    "h1": -0.006002410408109426,
+    "h2": -0.007928963378071785,
+    "n": 229970.0
+   }
+  },
+  "ES|none": {
+   "long": {
+    "gross": 0.03480326213284509,
+    "h1": 0.05817344877868891,
+    "h2": 0.0466684864833951,
+    "n": 243592.0
+   },
+   "short": {
+    "gross": -0.060006159184745264,
+    "h1": -0.021113186702132226,
+    "h2": -0.07405842766165734,
+    "n": 229970.0
+   }
+  },
+  "GC|1R": {
+   "long": {
+    "gross": -0.012224103198946084,
+    "h1": -0.009917098574806004,
+    "h2": -0.010016232077032328,
+    "n": 283203.0
+   },
+   "short": {
+    "gross": -0.0035745776760587955,
+    "h1": 0.013149881642311812,
+    "h2": -0.008878935966640711,
+    "n": 275245.0
+   }
+  },
+  "GC|none": {
+   "long": {
+    "gross": 0.03367085591799565,
+    "h1": -0.03821770921349525,
+    "h2": 0.10358767062425614,
+    "n": 283203.0
+   },
+   "short": {
+    "gross": 0.0003293890288564318,
+    "h1": 0.005366079322993755,
+    "h2": 0.0040033970028162,
+    "n": 275245.0
+   }
+  }
+ },
+ "B_corr": {
+  "both": {
+   "rho": 0.3913856605910543,
+   "n": 375000
+  },
+  "long": {
+   "rho": 0.37697422069506076,
+   "n": 375000
+  },
+  "short": {
+   "rho": 0.3752202871149935,
+   "n": 375000
+  }
+ },
+ "C_benchmarks": [
+  {
+   "label": "as written but no target, ES 3-min",
+   "sym": "ES",
+   "tf": 3,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 9834,
+   "gross": 0.08654975935723239,
+   "net": -0.030834532234756015,
+   "cost": 0.11738429159198842,
+   "long_n": 5427,
+   "long_gross": 0.12365734530579593,
+   "short_n": 4407,
+   "short_gross": 0.04085362390389578,
+   "monthly_net_R": -3.6098427380546503,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 9834,
+     "bench_gross": 0.000859320144889935,
+     "real_gross": 0.08654975935723239,
+     "diff": 0.08569043921234247,
+     "se": 0.03508798812816888,
+     "p_diff_pos": 0.9955,
+     "diff_long": 0.12155925463379377,
+     "diff_short": 0.04151978768245451
+    },
+    "B2 same day, a random later time": {
+     "n": 9834,
+     "bench_gross": 0.01875374461516997,
+     "real_gross": 0.08654975935723239,
+     "diff": 0.06779601474206243,
+     "se": 0.025930379665030836,
+     "p_diff_pos": 0.9965,
+     "diff_long": 0.09714239366877467,
+     "diff_short": 0.03165741741161828
+    }
+   }
+  },
+  {
+   "label": "as written but no target, ES 5-min",
+   "sym": "ES",
+   "tf": 5,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 6281,
+   "gross": 0.04509785515292781,
+   "net": -0.04906941558375457,
+   "cost": 0.09416727073668239,
+   "long_n": 3474,
+   "long_gross": 0.07956130533920684,
+   "short_n": 2807,
+   "short_gross": 0.0024451918301157953,
+   "monthly_net_R": -3.6691071343043147,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 6281,
+     "bench_gross": -0.005564753187453415,
+     "real_gross": 0.04509785515292781,
+     "diff": 0.050662608340381235,
+     "se": 0.03410688249669947,
+     "p_diff_pos": 0.93275,
+     "diff_long": 0.0671965138461338,
+     "diff_short": 0.030199912320792898
+    },
+    "B2 same day, a random later time": {
+     "n": 6280,
+     "bench_gross": 0.019142973568916265,
+     "real_gross": 0.045264272008843885,
+     "diff": 0.026121298439927627,
+     "se": 0.024040973979618505,
+     "p_diff_pos": 0.85575,
+     "diff_long": 0.0389261211340698,
+     "diff_short": 0.010278352513046334
+    }
+   }
+  },
+  {
+   "label": "as written but no target, ES 15-min",
+   "sym": "ES",
+   "tf": 15,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 2397,
+   "gross": 0.04251647233029924,
+   "net": -0.015495703597652167,
+   "cost": 0.05801217592795141,
+   "long_n": 1327,
+   "long_gross": 0.06284611010470022,
+   "short_n": 1070,
+   "short_gross": 0.017303921557747747,
+   "monthly_net_R": -0.4421809705187172,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 2397,
+     "bench_gross": 0.012938356439031807,
+     "real_gross": 0.04251647233029924,
+     "diff": 0.029578115891267437,
+     "se": 0.034975842544912074,
+     "p_diff_pos": 0.80375,
+     "diff_long": 0.015020632746733884,
+     "diff_short": 0.04763211601537587
+    },
+    "B2 same day, a random later time": {
+     "n": 2397,
+     "bench_gross": 0.022412441931976418,
+     "real_gross": 0.04251647233029924,
+     "diff": 0.020104030398322825,
+     "se": 0.025250554968087462,
+     "p_diff_pos": 0.78875,
+     "diff_long": 0.02958897809100707,
+     "diff_short": 0.008340922371975179
+    }
+   }
+  },
+  {
+   "label": "as written but no target, GC 3-min",
+   "sym": "GC",
+   "tf": 3,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 9982,
+   "gross": -0.004628146906260361,
+   "net": -0.13526439788138875,
+   "cost": 0.1306362509751284,
+   "long_n": 5260,
+   "long_gross": 0.00046714417870009765,
+   "short_n": 4722,
+   "short_gross": -0.010303968826398424,
+   "monthly_net_R": -16.073919281571698,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 9982,
+     "bench_gross": -0.004368150447010199,
+     "real_gross": -0.004628146906260361,
+     "diff": -0.00025999645925015686,
+     "se": 0.03339702697798628,
+     "p_diff_pos": 0.4895,
+     "diff_long": -0.00855167990570741,
+     "diff_short": 0.008976398061792856
+    },
+    "B2 same day, a random later time": {
+     "n": 9975,
+     "bench_gross": -0.022849440060995693,
+     "real_gross": -0.004598120660288921,
+     "diff": 0.018251319400706758,
+     "se": 0.025257316274660088,
+     "p_diff_pos": 0.769,
+     "diff_long": 0.016206834300978544,
+     "diff_short": 0.02052754168864571
+    }
+   }
+  },
+  {
+   "label": "as written but no target, GC 5-min",
+   "sym": "GC",
+   "tf": 5,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 6183,
+   "gross": -0.01638774634112499,
+   "net": -0.12015029093611503,
+   "cost": 0.10376254459499003,
+   "long_n": 3266,
+   "long_gross": 0.0024667929468920255,
+   "short_n": 2917,
+   "short_gross": -0.03749810812194899,
+   "monthly_net_R": -8.843919629261896,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 6183,
+     "bench_gross": -0.0036118762363104204,
+     "real_gross": -0.01638774634112499,
+     "diff": -0.012775870104814568,
+     "se": 0.03143093251561481,
+     "p_diff_pos": 0.3185,
+     "diff_long": -0.0014149960427062044,
+     "diff_short": -0.025495998554196094
+    },
+    "B2 same day, a random later time": {
+     "n": 6182,
+     "bench_gross": -0.019535747512890337,
+     "real_gross": -0.016228637273888034,
+     "diff": 0.0033071102390023048,
+     "se": 0.0240087854179209,
+     "p_diff_pos": 0.5435,
+     "diff_long": 0.014844538254655511,
+     "diff_short": -0.009615125666046867
+    }
+   }
+  },
+  {
+   "label": "as written but no target, GC 15-min",
+   "sym": "GC",
+   "tf": 15,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 2182,
+   "gross": -0.009623994598737282,
+   "net": -0.06850647173207465,
+   "cost": 0.05888247713333737,
+   "long_n": 1163,
+   "long_gross": -0.012591448540486367,
+   "short_n": 1019,
+   "short_gross": -0.006237194859528091,
+   "monthly_net_R": -1.7795371585641295,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 2182,
+     "bench_gross": -0.01238407910326342,
+     "real_gross": -0.009623994598737282,
+     "diff": 0.0027600845045261404,
+     "se": 0.029399992040489074,
+     "p_diff_pos": 0.53325,
+     "diff_long": -0.0019738075986493677,
+     "diff_short": 0.008162946639946267
+    },
+    "B2 same day, a random later time": {
+     "n": 2182,
+     "bench_gross": -0.006502380394091644,
+     "real_gross": -0.009623994598737282,
+     "diff": -0.003121614204645642,
+     "se": 0.021853199017653493,
+     "p_diff_pos": 0.44125,
+     "diff_long": -0.024264974908357072,
+     "diff_short": 0.021009620828147682
+    }
+   }
+  },
+  {
+   "label": "as written but no target, NQ 1-min",
+   "sym": "NQ",
+   "tf": 1,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 29566,
+   "gross": 0.07800219674338614,
+   "net": 0.01722850566533977,
+   "cost": 0.060773691078046345,
+   "long_n": 16459,
+   "long_gross": 0.10847885466900575,
+   "short_n": 13107,
+   "short_gross": 0.03973140153488892,
+   "monthly_net_R": 6.064023791683757,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 29565,
+     "bench_gross": 0.013065097135416702,
+     "real_gross": 0.07803776875107327,
+     "diff": 0.06497267161565655,
+     "se": 0.03531363891938002,
+     "p_diff_pos": 0.9695,
+     "diff_long": 0.0736278893559586,
+     "diff_short": 0.05410461839448533
+    },
+    "B2 same day, a random later time": {
+     "n": 29563,
+     "bench_gross": 0.03822958798561656,
+     "real_gross": 0.07795751181431115,
+     "diff": 0.03972792382869459,
+     "se": 0.024874380270194837,
+     "p_diff_pos": 0.94525,
+     "diff_long": 0.06549681450276898,
+     "diff_short": 0.007370329305328
+    }
+   }
+  },
+  {
+   "label": "best in-sample set",
+   "sym": "NQ",
+   "tf": 2,
+   "block": "close entry at depth 1; struct stop; no target; no time stop; normal",
+   "filters": "all hours; VWAP aligned; gap >= 0.5 ATR; age <= 15; long only; cost <= 0.05R",
+   "n": 2065,
+   "gross": 0.41808054774989,
+   "net": 0.38688661676653074,
+   "cost": 0.03119393098335925,
+   "long_n": 2065,
+   "long_gross": 0.41808054774989,
+   "short_n": 0,
+   "short_gross": NaN,
+   "monthly_net_R": 9.510962662177215,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 2065,
+     "bench_gross": 0.08319796847313324,
+     "real_gross": 0.41808054774989,
+     "diff": 0.33488257927675685,
+     "se": 0.13922894896291732,
+     "p_diff_pos": 0.9945,
+     "diff_long": 0.33488257927675685,
+     "diff_short": NaN
+    },
+    "B2 same day, a random later time": {
+     "n": 2062,
+     "bench_gross": 0.12576211546484536,
+     "real_gross": 0.4188782522325524,
+     "diff": 0.293116136767707,
+     "se": 0.1086576685474077,
+     "p_diff_pos": 0.99825,
+     "diff_long": 0.293116136767707,
+     "diff_short": NaN
+    }
+   }
+  },
+  {
+   "label": "as written but no target, NQ 2-min",
+   "sym": "NQ",
+   "tf": 2,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 15448,
+   "gross": 0.08641427231416972,
+   "net": 0.04354751879220155,
+   "cost": 0.04286675352196817,
+   "long_n": 8525,
+   "long_gross": 0.14080582136306793,
+   "short_n": 6923,
+   "short_gross": 0.019436378967086474,
+   "monthly_net_R": 8.00859607502297,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 15448,
+     "bench_gross": 0.038019919184926414,
+     "real_gross": 0.08641427231416972,
+     "diff": 0.048394353129243305,
+     "se": 0.03645454574820582,
+     "p_diff_pos": 0.9075,
+     "diff_long": 0.08758178993796711,
+     "diff_short": 0.00013884268660708154
+    },
+    "B2 same day, a random later time": {
+     "n": 15446,
+     "bench_gross": 0.03700236263504997,
+     "real_gross": 0.086016336358277,
+     "diff": 0.04901397372322704,
+     "se": 0.025461314352208993,
+     "p_diff_pos": 0.9755,
+     "diff_long": 0.08473470088459926,
+     "diff_short": 0.005026184309251759
+    }
+   }
+  },
+  {
+   "label": "as written but no target, NQ 3-min",
+   "sym": "NQ",
+   "tf": 3,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 10645,
+   "gross": 0.10866975709981876,
+   "net": 0.07320493092002202,
+   "cost": 0.03546482617979671,
+   "long_n": 5867,
+   "long_gross": 0.15985269787372008,
+   "short_n": 4778,
+   "short_gross": 0.04582121931821988,
+   "monthly_net_R": 9.276982019567075,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 10645,
+     "bench_gross": -0.00043449212747055156,
+     "real_gross": 0.10866975709981876,
+     "diff": 0.1091042492272893,
+     "se": 0.036990128125195434,
+     "p_diff_pos": 0.999,
+     "diff_long": 0.12868155296022102,
+     "diff_short": 0.08506489363894473
+    },
+    "B2 same day, a random later time": {
+     "n": 10643,
+     "bench_gross": 0.059685627918327384,
+     "real_gross": 0.10880222836255053,
+     "diff": 0.04911660044422313,
+     "se": 0.025922554633699472,
+     "p_diff_pos": 0.97675,
+     "diff_long": 0.07254425468866352,
+     "diff_short": 0.020348206096748287
+    }
+   }
+  },
+  {
+   "label": "as written but no target, NQ 5-min",
+   "sym": "NQ",
+   "tf": 5,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 6635,
+   "gross": 0.09372012379505335,
+   "net": 0.0671052979494453,
+   "cost": 0.02661482584560805,
+   "long_n": 3675,
+   "long_gross": 0.12162430128000955,
+   "short_n": 2960,
+   "short_gross": 0.0590755791135621,
+   "monthly_net_R": 5.300519665411542,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 6635,
+     "bench_gross": 0.01812215573238033,
+     "real_gross": 0.09372012379505335,
+     "diff": 0.07559796806267301,
+     "se": 0.03596732279349598,
+     "p_diff_pos": 0.98525,
+     "diff_long": 0.08022124187346182,
+     "diff_short": 0.06985792371988624
+    },
+    "B2 same day, a random later time": {
+     "n": 6634,
+     "bench_gross": 0.0563431304262187,
+     "real_gross": 0.09352908643854027,
+     "diff": 0.03718595601232158,
+     "se": 0.025989166311302263,
+     "p_diff_pos": 0.92525,
+     "diff_long": 0.05728715648457231,
+     "diff_short": 0.012236020020750903
+    }
+   }
+  },
+  {
+   "label": "as written, NQ 5-min",
+   "sym": "NQ",
+   "tf": 5,
+   "block": "close entry at depth 0; struct stop; 1R target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 6635,
+   "gross": 0.02107347452963728,
+   "net": -0.005541351315970771,
+   "cost": 0.026614825845608047,
+   "long_n": 3675,
+   "long_gross": 0.035118389936567476,
+   "short_n": 2960,
+   "short_gross": 0.003635952867316848,
+   "monthly_net_R": -0.43770078549364366,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 6635,
+     "bench_gross": -0.013726571839737104,
+     "real_gross": 0.02107347452963728,
+     "diff": 0.03480004636937438,
+     "se": 0.01319806020277915,
+     "p_diff_pos": 0.9935,
+     "diff_long": 0.03857597581425567,
+     "diff_short": 0.030112025859259938
+    },
+    "B2 same day, a random later time": {
+     "n": 6634,
+     "bench_gross": 0.015735346816985303,
+     "real_gross": 0.02112411341106545,
+     "diff": 0.005388766594080148,
+     "se": 0.011935861901732828,
+     "p_diff_pos": 0.67575,
+     "diff_long": 0.010994129947619733,
+     "diff_short": -0.0015729469321983118
+    }
+   }
+  },
+  {
+   "label": "as written but no target, NQ 15-min",
+   "sym": "NQ",
+   "tf": 15,
+   "block": "close entry at depth 0; struct stop; no target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 2491,
+   "gross": 0.04449142781312849,
+   "net": 0.02833761572161196,
+   "cost": 0.016153812091516527,
+   "long_n": 1364,
+   "long_gross": 0.07860812863672784,
+   "short_n": 1127,
+   "short_gross": 0.0032002300106533086,
+   "monthly_net_R": 0.8403452471730404,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 2491,
+     "bench_gross": -0.0008358806493657283,
+     "real_gross": 0.04449142781312849,
+     "diff": 0.04532730846249423,
+     "se": 0.034551591178313135,
+     "p_diff_pos": 0.90725,
+     "diff_long": 0.04678434160361561,
+     "diff_short": 0.0435638717238167
+    },
+    "B2 same day, a random later time": {
+     "n": 2491,
+     "bench_gross": 0.03914306253786226,
+     "real_gross": 0.04449142781312849,
+     "diff": 0.005348365275266213,
+     "se": 0.02503304889585409,
+     "p_diff_pos": 0.56575,
+     "diff_long": 0.022857619343429277,
+     "diff_short": -0.015842959080522967
+    }
+   }
+  },
+  {
+   "label": "as written, NQ 15-min",
+   "sym": "NQ",
+   "tf": 15,
+   "block": "close entry at depth 0; struct stop; 1R target; no time stop; normal",
+   "filters": "as written 09:30-11:30+13:30-15:30; VWAP aligned; gap any; age any; both sides; cost any",
+   "n": 2491,
+   "gross": 0.034117700586712166,
+   "net": 0.017963888495195646,
+   "cost": 0.016153812091516527,
+   "long_n": 1364,
+   "long_gross": 0.025234202177339536,
+   "short_n": 1127,
+   "short_gross": 0.0448693348638943,
+   "monthly_net_R": 0.5327148362087184,
+   "benchmarks": {
+    "B1 same clock time, another day": {
+     "n": 2491,
+     "bench_gross": 0.0077970875433063394,
+     "real_gross": 0.034117700586712166,
+     "diff": 0.026320613043405834,
+     "se": 0.019443999921815763,
+     "p_diff_pos": 0.90925,
+     "diff_long": 0.01173592890674029,
+     "diff_short": 0.04397235143063901
+    },
+    "B2 same day, a random later time": {
+     "n": 2489,
+     "bench_gross": 0.017320090980932387,
+     "real_gross": 0.034786013225961324,
+     "diff": 0.01746592224502894,
+     "se": 0.016089855543351364,
+     "p_diff_pos": 0.86375,
+     "diff_long": 0.0001526387384331888,
+     "diff_short": 0.03845731664769258
+    }
+   }
+  }
+ ],
+ "D_no_target": {
+  "NQ|1": {
+   "name": "as written, no target, NQ 1-min",
+   "n": 29566.0,
+   "net_R_per_trade": 0.017228505665339778,
+   "gross_R_per_trade": 0.07800219674338613,
+   "p_is": 0.8785,
+   "p_oos": 0.2125,
+   "is_monthly_R": 17.943881058864154,
+   "oos_monthly_R": -15.392826103192826,
+   "total_R": 509.3779985014352,
+   "monthly_R": 6.064023791683752,
+   "maxdd_R": 1056.1904909596428,
+   "daily_sharpe": 0.011650794212884442,
+   "dd_months": 174.1732102713895,
+   "candidate": false,
+   "risk_per_trade": 824.5350235691749,
+   "maxdd_dollars": 870866.0513569475,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -165.65456069287774,
+    810.3271343228979,
+    -241.29675444202888,
+    131.78546986323863,
+    385.2788773917901,
+    485.7395865541759,
+    -161.19973347848446,
+    99.93342908163648,
+    -374.7633529309688,
+    66.41714128747854,
+    -148.84829536178256,
+    -216.9389654548697,
+    132.32122677520553,
+    -293.723204413975
+   ],
+   "annual_sharpe": 0.18495062438209656
+  },
+  "NQ|2": {
+   "name": "as written, no target, NQ 2-min",
+   "n": 15448.0,
+   "net_R_per_trade": 0.04354751879220156,
+   "gross_R_per_trade": 0.08641427231416973,
+   "p_is": 0.945,
+   "p_oos": 0.46525,
+   "is_monthly_R": 12.856472173766333,
+   "oos_monthly_R": -0.7474139863996474,
+   "total_R": 672.7220703019298,
+   "monthly_R": 8.008596075022973,
+   "maxdd_R": 426.54605626679944,
+   "daily_sharpe": 0.02891403531494379,
+   "dd_months": 53.261027559761885,
+   "candidate": false,
+   "risk_per_trade": 624.3291524707914,
+   "maxdd_dollars": 266305.1377988094,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -140.5007362699306,
+    368.9998714178953,
+    -185.2083534713445,
+    132.47046185813244,
+    303.1854784911272,
+    158.97767819998504,
+    69.99283408075277,
+    128.72102527014013,
+    -141.54294165562817,
+    77.90929907888776,
+    -44.816681610112866,
+    -65.43860710907944,
+    -50.87278569509449,
+    60.8455277161991
+   ],
+   "annual_sharpe": 0.45899608105608247
+  },
+  "NQ|3": {
+   "name": "as written, no target, NQ 3-min",
+   "n": 10645.0,
+   "net_R_per_trade": 0.07320493092002203,
+   "gross_R_per_trade": 0.10866975709981876,
+   "p_is": 0.99095,
+   "p_oos": 0.609,
+   "is_monthly_R": 13.240006450773427,
+   "oos_monthly_R": 2.11915020074207,
+   "total_R": 779.2664896436348,
+   "monthly_R": 9.27698201956708,
+   "maxdd_R": 239.63491282316625,
+   "daily_sharpe": 0.04809509663206806,
+   "dd_months": 25.83112830419704,
+   "candidate": false,
+   "risk_per_trade": 538.9683831933663,
+   "maxdd_dollars": 129155.6415209852,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -81.02454693337202,
+    174.37514813409962,
+    -103.65441619712205,
+    83.32092840573894,
+    284.83183905541836,
+    142.97335416832354,
+    110.12846612894604,
+    165.07357796294386,
+    -60.19294932723933,
+    80.17006189540002,
+    -30.934166664841207,
+    -66.59433248248627,
+    -48.55236901789297,
+    129.3458945157179
+   ],
+   "annual_sharpe": 0.7634859898204335
+  },
+  "NQ|5": {
+   "name": "as written, no target, NQ 5-min",
+   "n": 6635.0,
+   "net_R_per_trade": 0.06710529794944528,
+   "gross_R_per_trade": 0.09372012379505333,
+   "p_is": 0.98875,
+   "p_oos": 0.594,
+   "is_monthly_R": 7.647586144462824,
+   "oos_monthly_R": 1.0613565170943053,
+   "total_R": 445.2436518945684,
+   "monthly_R": 5.300519665411529,
+   "maxdd_R": 100.92322382747261,
+   "daily_sharpe": 0.046202079195147745,
+   "dd_months": 19.040250805226847,
+   "candidate": false,
+   "risk_per_trade": 943.3037354105926,
+   "maxdd_dollars": 95201.25402613424,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -51.96254278870436,
+    134.60488556944702,
+    12.036382801642919,
+    100.54555499283127,
+    140.20890159912142,
+    102.84061412868539,
+    19.336147570456845,
+    -10.15903951911433,
+    -33.978121885974886,
+    -5.932179149509742,
+    11.99045083767576,
+    44.92744759513943,
+    -9.611624274733119,
+    -9.603225582394094
+   ],
+   "annual_sharpe": 0.7334352696268331
+  },
+  "NQ|15": {
+   "name": "as written, no target, NQ 15-min",
+   "n": 2491.0,
+   "net_R_per_trade": 0.028337615721611965,
+   "gross_R_per_trade": 0.044491427813128495,
+   "p_is": 0.90775,
+   "p_oos": 0.3465,
+   "is_monthly_R": 1.5898369981893063,
+   "oos_monthly_R": -0.5133521615855687,
+   "total_R": 70.58900076253555,
+   "monthly_R": 0.8403452471730423,
+   "maxdd_R": 44.84183037842931,
+   "daily_sharpe": 0.020382247034747135,
+   "dd_months": 53.36119949423069,
+   "candidate": false,
+   "risk_per_trade": 5949.935478090959,
+   "maxdd_dollars": 266805.99747115345,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -9.766809935313386,
+    33.69862292153647,
+    -11.136191777415428,
+    5.247567312158593,
+    15.089554125769364,
+    53.010491468478634,
+    16.54512124580508,
+    -11.774388463388581,
+    -4.9581744560536585,
+    -0.5255760884645264,
+    -5.35607846076655,
+    9.165242816678601,
+    0.3591237862148582,
+    -19.009503732704076
+   ],
+   "annual_sharpe": 0.3235581408877476
+  },
+  "ES|1": {
+   "name": "as written, no target, ES 1-min",
+   "n": 26095.0,
+   "net_R_per_trade": -0.12988942270367473,
+   "gross_R_per_trade": 0.052379787359931804,
+   "p_is": 0.0015,
+   "p_oos": 0.019,
+   "is_monthly_R": -41.34022293501186,
+   "oos_monthly_R": -38.563659276667295,
+   "total_R": -3389.46448545239,
+   "monthly_R": -40.350767683957024,
+   "maxdd_R": 3512.562062032158,
+   "daily_sharpe": -0.08743762568734921,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -543.5997176617414,
+    -159.20893785165526,
+    -552.6131306707443,
+    -162.13701628257314,
+    124.971164023759,
+    231.71526707602013,
+    -188.4161921466793,
+    -382.7647485804418,
+    -603.0384779054664,
+    143.6339077487954,
+    -504.86379068577503,
+    -270.28199851466906,
+    -194.32316035510385,
+    -328.5376536461173
+   ],
+   "annual_sharpe": -1.3880292767920746
+  },
+  "ES|2": {
+   "name": "as written, no target, ES 2-min",
+   "n": 14156.0,
+   "net_R_per_trade": -0.06051744349373267,
+   "gross_R_per_trade": 0.0785080738987711,
+   "p_is": 0.1425,
+   "p_oos": 0.07775,
+   "is_monthly_R": -8.296383710453345,
+   "oos_monthly_R": -13.634379789512288,
+   "total_R": -856.6849300972799,
+   "monthly_R": -10.198630120205713,
+   "maxdd_R": 916.8889634294042,
+   "daily_sharpe": -0.03976897880059656,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -288.9304353786912,
+    48.10012904208327,
+    -175.87300098621145,
+    -9.142001658647462,
+    138.19010842131013,
+    145.20751196769373,
+    74.2990943810494,
+    -151.81888252637447,
+    -228.58305834448558,
+    31.45250209097084,
+    -134.05482673879152,
+    -282.30012366941304,
+    18.251464503966822,
+    -41.48341120173919
+   ],
+   "annual_sharpe": -0.6313129668082695
+  },
+  "ES|3": {
+   "name": "as written, no target, ES 3-min",
+   "n": 9834.0,
+   "net_R_per_trade": -0.030834532234756032,
+   "gross_R_per_trade": 0.08654975935723237,
+   "p_is": 0.31475,
+   "p_oos": 0.179,
+   "is_monthly_R": -2.3521507473652994,
+   "oos_monthly_R": -5.88142796431511,
+   "total_R": -303.22678999659115,
+   "monthly_R": -3.6098427380546565,
+   "maxdd_R": 495.74720522463036,
+   "daily_sharpe": -0.020663142603625475,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -207.0693476569694,
+    50.356632968371045,
+    -73.97504421485101,
+    75.34232442011285,
+    92.42780311622715,
+    148.91900050190114,
+    13.664572876623183,
+    -32.60792393814574,
+    -194.22890519069048,
+    -41.50285438374289,
+    -14.225834739670546,
+    -142.42154639176712,
+    47.43347999569715,
+    -25.33914735968609
+   ],
+   "annual_sharpe": -0.3280172198055402
+  },
+  "ES|5": {
+   "name": "as written, no target, ES 5-min",
+   "n": 6281.0,
+   "net_R_per_trade": -0.04906941558375457,
+   "gross_R_per_trade": 0.045097855152927795,
+   "p_is": 0.109,
+   "p_oos": 0.1965,
+   "is_monthly_R": -3.8498690383606107,
+   "oos_monthly_R": -3.3426233260549463,
+   "total_R": -308.2049992815626,
+   "monthly_R": -3.669107134304317,
+   "maxdd_R": 398.7485364674622,
+   "daily_sharpe": -0.03548875876896402,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -83.26821809978634,
+    12.68565270692278,
+    -63.514574163717164,
+    111.75246186416543,
+    7.370583267051206,
+    41.24364495711726,
+    -38.09068164172559,
+    -61.8685628126899,
+    -134.45651500659747,
+    -63.07192479704702,
+    -32.520300393956376,
+    -5.4736661632756185,
+    -8.273988786843116,
+    9.281089788819475
+   ],
+   "annual_sharpe": -0.5633665802462493
+  },
+  "ES|15": {
+   "name": "as written, no target, ES 15-min",
+   "n": 2397.0,
+   "net_R_per_trade": -0.015495703597652174,
+   "gross_R_per_trade": 0.04251647233029924,
+   "p_is": 0.48675,
+   "p_oos": 0.196,
+   "is_monthly_R": -0.02322818999217673,
+   "oos_monthly_R": -1.1988741464235773,
+   "total_R": -37.14320152357227,
+   "monthly_R": -0.4421809705187175,
+   "maxdd_R": 81.72665156009899,
+   "daily_sharpe": -0.011170172924710543,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -23.609421603184913,
+    9.658507433544207,
+    -24.937483843065962,
+    22.419710059477637,
+    -1.7637975906254741,
+    32.01686305008493,
+    10.703829798410993,
+    -5.811705191877637,
+    -19.932352542735536,
+    -11.053168698198727,
+    12.197867231543858,
+    -34.440400831846134,
+    20.60752804392221,
+    -23.1991768390217
+   ],
+   "annual_sharpe": -0.1773209979622267
+  },
+  "GC|1": {
+   "name": "as written, no target, GC 1-min",
+   "n": 27007.0,
+   "net_R_per_trade": -0.20357199437654405,
+   "gross_R_per_trade": -0.004740890472685145,
+   "p_is": 0.0,
+   "p_oos": 0.1385,
+   "is_monthly_R": -88.39643191192243,
+   "oos_monthly_R": -24.007513861796696,
+   "total_R": -5497.868852127322,
+   "monthly_R": -65.4508196681824,
+   "maxdd_R": 6218.963413856476,
+   "daily_sharpe": -0.14096169161062888,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -758.6303453266343,
+    -548.2765764586799,
+    -941.1027339719016,
+    -484.1899553294709,
+    -315.628130372765,
+    -161.31003667724372,
+    -291.5878651829411,
+    -731.9370360027328,
+    -546.5601986524887,
+    -602.5304574525569,
+    -635.2341412296878,
+    284.1404043289256,
+    263.1551842296362,
+    -28.17696402878417
+   ],
+   "annual_sharpe": -2.2376974823322233
+  },
+  "GC|2": {
+   "name": "as written, no target, GC 2-min",
+   "n": 14560.0,
+   "net_R_per_trade": -0.16323274118880884,
+   "gross_R_per_trade": -0.008424144791302197,
+   "p_is": 0.0,
+   "p_oos": 0.172,
+   "is_monthly_R": -37.91641392323882,
+   "oos_monthly_R": -10.913528474417598,
+   "total_R": -2376.6687117090632,
+   "monthly_R": -28.29367513939361,
+   "maxdd_R": 2581.225938216343,
+   "daily_sharpe": -0.11793214482846197,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -307.6709843497703,
+    -251.18762855892135,
+    -488.7599378288998,
+    -228.56660355049866,
+    -125.7844385340746,
+    -5.040414307398238,
+    -229.3349607121824,
+    -181.6709439632112,
+    -231.96494096594208,
+    -189.925629660777,
+    -286.9723413084845,
+    216.58280926027663,
+    121.58284124093808,
+    -187.9555384701116
+   ],
+   "annual_sharpe": -1.8721147607793747
+  },
+  "GC|3": {
+   "name": "as written, no target, GC 3-min",
+   "n": 9982.0,
+   "net_R_per_trade": -0.1352643978813887,
+   "gross_R_per_trade": -0.004628146906260354,
+   "p_is": 0.0,
+   "p_oos": 0.2895,
+   "is_monthly_R": -22.681652596450803,
+   "oos_monthly_R": -4.1393363405438945,
+   "total_R": -1350.2092196520202,
+   "monthly_R": -16.07391928157167,
+   "maxdd_R": 1517.8384233791155,
+   "daily_sharpe": -0.09729720616755508,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -184.7524435600245,
+    -118.68920776536237,
+    -305.46075671223656,
+    -133.88741119065457,
+    11.133871862145877,
+    -70.15034046087769,
+    -45.842224452927525,
+    -192.68547823887974,
+    -185.9674636761347,
+    -74.01670333827502,
+    -176.30447177876658,
+    103.4541390558239,
+    -43.364562667375736,
+    66.32383327152293
+   ],
+   "annual_sharpe": -1.5445452646843838
+  },
+  "GC|5": {
+   "name": "as written, no target, GC 5-min",
+   "n": 6183.0,
+   "net_R_per_trade": -0.12015029093611503,
+   "gross_R_per_trade": -0.016387746341124953,
+   "p_is": 0.0,
+   "p_oos": 0.1245,
+   "is_monthly_R": -11.1493538372092,
+   "oos_monthly_R": -4.6799507675232235,
+   "total_R": -742.8892488579997,
+   "monthly_R": -8.843919629261901,
+   "maxdd_R": 779.7200820746058,
+   "daily_sharpe": -0.09230591593811995,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -124.79869937305251,
+    -93.1522238322336,
+    -80.01250256769018,
+    -84.1258722451955,
+    -52.434394314722,
+    -8.265281081285202,
+    12.670023023117185,
+    -72.40536692735328,
+    -100.27430001175075,
+    -71.90097859301946,
+    -63.100948883445064,
+    30.313282082309712,
+    12.2346923513739,
+    -47.63667848505247
+   ],
+   "annual_sharpe": -1.4653109886737925
+  },
+  "GC|15": {
+   "name": "as written, no target, GC 15-min",
+   "n": 2182.0,
+   "net_R_per_trade": -0.06850647173207465,
+   "gross_R_per_trade": -0.009623994598737277,
+   "p_is": 0.00325,
+   "p_oos": 0.296,
+   "is_monthly_R": -2.384757396999447,
+   "oos_monthly_R": -0.6864162971440335,
+   "total_R": -149.48112131938672,
+   "monthly_R": -1.7795371585641275,
+   "maxdd_R": 166.72283017222495,
+   "daily_sharpe": -0.05873053493575908,
+   "dd_months": Infinity,
+   "candidate": false,
+   "risk_per_trade": null,
+   "maxdd_dollars": null,
+   "meets_numbers_100k": false,
+   "meets_numbers_50k": false,
+   "meets_goal_oos": false,
+   "half_years": [
+    -38.42249399496419,
+    -7.89769179150796,
+    -18.340940813703213,
+    -8.086711806656947,
+    6.4559453051896,
+    -9.234031911163733,
+    10.814582124890553,
+    -36.61719476753158,
+    -27.60525371653577,
+    1.8726865779123223,
+    -12.48856180621793,
+    -12.821953964408696,
+    -7.467289203095647,
+    10.357788448406312
+   ],
+   "annual_sharpe": -0.932318338834856
+  }
+ },
+ "E_goal_sharpe": {
+  "60|0.0": {
+   "p10": 0.003,
+   "p5": 0.0,
+   "median_dd_months": 74.32488071223733
+  },
+  "60|0.5": {
+   "p10": 0.03375,
+   "p5": 0.00025,
+   "median_dd_months": 34.26026271114558
+  },
+  "60|1.0": {
+   "p10": 0.209,
+   "p5": 0.01125,
+   "median_dd_months": 16.34378213874512
+  },
+  "60|1.5": {
+   "p10": 0.55875,
+   "p5": 0.10075,
+   "median_dd_months": 9.145006725817266
+  },
+  "60|2.0": {
+   "p10": 0.87125,
+   "p5": 0.36,
+   "median_dd_months": 5.830714101984867
+  },
+  "60|2.5": {
+   "p10": 0.98125,
+   "p5": 0.71225,
+   "median_dd_months": 4.016369589773243
+  },
+  "60|3.0": {
+   "p10": 0.998,
+   "p5": 0.91675,
+   "median_dd_months": 2.973545785844234
+  },
+  "84|0.0": {
+   "p10": 0.00025,
+   "p5": 0.0,
+   "median_dd_months": 109.35010815090818
+  },
+  "84|0.5": {
+   "p10": 0.00825,
+   "p5": 0.0,
+   "median_dd_months": 42.78052060010814
+  },
+  "84|1.0": {
+   "p10": 0.127,
+   "p5": 0.0015,
+   "median_dd_months": 18.503216635941733
+  },
+  "84|1.5": {
+   "p10": 0.50125,
+   "p5": 0.0465,
+   "median_dd_months": 9.98776578483897
+  },
+  "84|2.0": {
+   "p10": 0.8735,
+   "p5": 0.27325,
+   "median_dd_months": 6.179217014914366
+  },
+  "84|2.5": {
+   "p10": 0.98775,
+   "p5": 0.65,
+   "median_dd_months": 4.372684130155358
+  },
+  "84|3.0": {
+   "p10": 0.99925,
+   "p5": 0.909,
+   "median_dd_months": 3.2265197176950693
+  }
+ }
+}
