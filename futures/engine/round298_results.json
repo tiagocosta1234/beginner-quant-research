@@ -1,0 +1,4120 @@
+{
+ "K_TOTAL": 1260,
+ "rows": [
+  {
+   "part": "A",
+   "leg": "overnight",
+   "weekday": "Mon",
+   "dir": 1,
+   "n_is": 813,
+   "n_oos": 617,
+   "IS": {
+    "net": -11.762861312652053,
+    "gross": 0.2102014179752529,
+    "P": 0.0
+   },
+   "OOS": {
+    "net": -8.721524524362774,
+    "gross": 3.285444681471909,
+    "P": 0.0
+   },
+   "indices_pos": 0,
+   "indices_n": 8,
+   "p_oos": 1.0,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "overnight",
+   "weekday": "Tue",
+   "dir": 1,
+   "n_is": 830,
+   "n_oos": 622,
+   "IS": {
+    "net": -1.214343350543499,
+    "gross": 4.403728938613127,
+    "P": 0.17375
+   },
+   "OOS": {
+    "net": -4.91976758171491,
+    "gross": 0.7489623218220672,
+    "P": 0.001
+   },
+   "indices_pos": 0,
+   "indices_n": 8,
+   "p_oos": 0.999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "overnight",
+   "weekday": "Wed",
+   "dir": 1,
+   "n_is": 828,
+   "n_oos": 624,
+   "IS": {
+    "net": -4.325849002255584,
+    "gross": 0.9980640412226768,
+    "P": 0.0025
+   },
+   "OOS": {
+    "net": -0.26421118942218,
+    "gross": 5.0780965028855105,
+    "P": 0.43025
+   },
+   "indices_pos": 3,
+   "indices_n": 8,
+   "p_oos": 0.56975,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "overnight",
+   "weekday": "Thu",
+   "dir": 1,
+   "n_is": 824,
+   "n_oos": 621,
+   "IS": {
+    "net": -0.836614922676917,
+    "gross": 4.487414203536675,
+    "P": 0.267
+   },
+   "OOS": {
+    "net": -0.0107632517666675,
+    "gross": 5.310492786880675,
+    "P": 0.496
+   },
+   "indices_pos": 4,
+   "indices_n": 8,
+   "p_oos": 0.504,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "overnight",
+   "weekday": "Fri",
+   "dir": 1,
+   "n_is": 814,
+   "n_oos": 608,
+   "IS": {
+    "net": -3.794303559543652,
+    "gross": 1.532047791807699,
+    "P": 0.00325
+   },
+   "OOS": {
+    "net": -2.7961995369971415,
+    "gross": 2.536366252476543,
+    "P": 0.07425
+   },
+   "indices_pos": 0,
+   "indices_n": 8,
+   "p_oos": 0.92575,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "intraday",
+   "weekday": "Mon",
+   "dir": 1,
+   "n_is": 813,
+   "n_oos": 617,
+   "IS": {
+    "net": -0.16572934285253008,
+    "gross": 1.8342706571474692,
+    "P": 0.4635
+   },
+   "OOS": {
+    "net": -4.6482847769826,
+    "gross": -2.6482847769826,
+    "P": 0.10075
+   },
+   "indices_pos": 1,
+   "indices_n": 8,
+   "p_oos": 0.89925,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "intraday",
+   "weekday": "Tue",
+   "dir": -1,
+   "n_is": 831,
+   "n_oos": 622,
+   "IS": {
+    "net": -1.7717259535607743,
+    "gross": 0.22827404643922578,
+    "P": 0.25425
+   },
+   "OOS": {
+    "net": -5.806541619454719,
+    "gross": -3.806541619454719,
+    "P": 0.03525
+   },
+   "indices_pos": 2,
+   "indices_n": 8,
+   "p_oos": 0.96475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "intraday",
+   "weekday": "Wed",
+   "dir": 1,
+   "n_is": 828,
+   "n_oos": 624,
+   "IS": {
+    "net": -1.2119082615562344,
+    "gross": 0.7880917384437655,
+    "P": 0.303
+   },
+   "OOS": {
+    "net": -0.2658955150638539,
+    "gross": 1.7341044849361462,
+    "P": 0.464
+   },
+   "indices_pos": 5,
+   "indices_n": 8,
+   "p_oos": 0.536,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "intraday",
+   "weekday": "Thu",
+   "dir": -1,
+   "n_is": 825,
+   "n_oos": 621,
+   "IS": {
+    "net": -1.6467196338709824,
+    "gross": 0.3532803661290175,
+    "P": 0.272
+   },
+   "OOS": {
+    "net": -1.2652120007850711,
+    "gross": 0.7347879992149285,
+    "P": 0.35325
+   },
+   "indices_pos": 3,
+   "indices_n": 8,
+   "p_oos": 0.6467499999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "intraday",
+   "weekday": "Fri",
+   "dir": 1,
+   "n_is": 814,
+   "n_oos": 608,
+   "IS": {
+    "net": 0.07629985273079794,
+    "gross": 2.076299852730798,
+    "P": 0.51425
+   },
+   "OOS": {
+    "net": -4.006400962509179,
+    "gross": -2.0064009625091805,
+    "P": 0.07225
+   },
+   "indices_pos": 0,
+   "indices_n": 8,
+   "p_oos": 0.92775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "c2c",
+   "weekday": "Mon",
+   "dir": 1,
+   "n_is": 825,
+   "n_oos": 617,
+   "IS": {
+    "net": -8.475669050940057,
+    "gross": 3.52433094905994,
+    "P": 0.01075
+   },
+   "OOS": {
+    "net": -11.382247669818002,
+    "gross": 0.6247215360166818,
+    "P": 0.0105
+   },
+   "indices_pos": 0,
+   "indices_n": 8,
+   "p_oos": 0.9895,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "c2c",
+   "weekday": "Tue",
+   "dir": 1,
+   "n_is": 830,
+   "n_oos": 622,
+   "IS": {
+    "net": -1.0367243050566946,
+    "gross": 4.581347984099933,
+    "P": 0.35725
+   },
+   "OOS": {
+    "net": -0.4196060901012393,
+    "gross": 5.249123813435738,
+    "P": 0.4485
+   },
+   "indices_pos": 5,
+   "indices_n": 8,
+   "p_oos": 0.5515,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "c2c",
+   "weekday": "Wed",
+   "dir": 1,
+   "n_is": 829,
+   "n_oos": 624,
+   "IS": {
+    "net": -1.8092879502894859,
+    "gross": 3.514596247539223,
+    "P": 0.26075
+   },
+   "OOS": {
+    "net": 0.5704174820204952,
+    "gross": 5.912725174328189,
+    "P": 0.561
+   },
+   "indices_pos": 5,
+   "indices_n": 8,
+   "p_oos": 0.43899999999999995,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "c2c",
+   "weekday": "Thu",
+   "dir": 1,
+   "n_is": 831,
+   "n_oos": 621,
+   "IS": {
+    "net": -1.766787573494279,
+    "gross": 3.561010260440738,
+    "P": 0.28175
+   },
+   "OOS": {
+    "net": -1.488088412134206,
+    "gross": 3.8331676265131382,
+    "P": 0.3515
+   },
+   "indices_pos": 1,
+   "indices_n": 8,
+   "p_oos": 0.6485000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "A",
+   "leg": "c2c",
+   "weekday": "Fri",
+   "dir": 1,
+   "n_is": 815,
+   "n_oos": 609,
+   "IS": {
+    "net": -1.3503044725768336,
+    "gross": 3.976014545828075,
+    "P": 0.333
+   },
+   "OOS": {
+    "net": -4.759265349056733,
+    "gross": 0.5732469662142046,
+    "P": 0.111
+   },
+   "indices_pos": 1,
+   "indices_n": 8,
+   "p_oos": 0.889,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 0,
+   "start": "03:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.3829575892720588,
+    "gross": 0.6389789618082824,
+    "P": 0.42325
+   },
+   "OOS": {
+    "net": -0.2341713502486731,
+    "gross": 0.9354567726930036,
+    "P": 0.43825
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.56175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 1,
+   "start": "03:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.30024699955834233,
+    "gross": 0.644196429702551,
+    "P": 0.42025
+   },
+   "OOS": {
+    "net": -3.2388068994847075,
+    "gross": -2.241682137609961,
+    "P": 0.0035
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9965,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 2,
+   "start": "04:00",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.8683042549895816,
+    "gross": 1.7871906460484013,
+    "P": 0.716
+   },
+   "OOS": {
+    "net": -2.18947398383852,
+    "gross": -1.2198934865053548,
+    "P": 0.0315
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9685,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 3,
+   "start": "04:30",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.7738343318449119,
+    "gross": 1.6680977719972636,
+    "P": 0.7105
+   },
+   "OOS": {
+    "net": -0.2532855886246621,
+    "gross": 0.6833478995935618,
+    "P": 0.38
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.62,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 4,
+   "start": "05:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.5189498867750565,
+    "gross": 1.3999641902161166,
+    "P": 0.67
+   },
+   "OOS": {
+    "net": -1.15933899186113,
+    "gross": -0.23469319931647187,
+    "P": 0.09825
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.90175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 5,
+   "start": "05:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.537893485071344,
+    "gross": 1.4073575069033963,
+    "P": 0.6955
+   },
+   "OOS": {
+    "net": -1.4300530573560992,
+    "gross": -0.5125363877669634,
+    "P": 0.04175
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.95825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 6,
+   "start": "06:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.7703849526895662,
+    "gross": 0.0895715772997616,
+    "P": 0.16975
+   },
+   "OOS": {
+    "net": 0.6602832380004099,
+    "gross": 1.5734404009997771,
+    "P": 0.67925
+   },
+   "indices_pos": 5,
+   "indices_n": 6,
+   "p_oos": 0.32075,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 7,
+   "start": "06:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 1.341939288679882,
+    "gross": 2.2051032469914613,
+    "P": 0.9345
+   },
+   "OOS": {
+    "net": -0.17309970743662656,
+    "gross": 0.7398616542018288,
+    "P": 0.38725
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.61275,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 8,
+   "start": "07:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.2866672336440375,
+    "gross": 0.5803717111830172,
+    "P": 0.391
+   },
+   "OOS": {
+    "net": 2.4377479033857217,
+    "gross": 3.360593596865528,
+    "P": 0.81225
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.18774999999999997,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 9,
+   "start": "07:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.6468202734264791,
+    "gross": 0.21702607025772847,
+    "P": 0.28025
+   },
+   "OOS": {
+    "net": 0.06952623608052359,
+    "gross": 0.9952155845069761,
+    "P": 0.51425
+   },
+   "indices_pos": 5,
+   "indices_n": 6,
+   "p_oos": 0.48575,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 10,
+   "start": "08:00",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 117,
+   "IS": {
+    "net": 0.004357875188041686,
+    "gross": 0.8873517148346179,
+    "P": 0.509
+   },
+   "OOS": {
+    "net": -2.3075448598937753,
+    "gross": -1.3688194359512518,
+    "P": 0.02025
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.97975,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 11,
+   "start": "08:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.21892433532229671,
+    "gross": 0.6830723180699092,
+    "P": 0.42225
+   },
+   "OOS": {
+    "net": 0.8487206420856972,
+    "gross": 1.7914974548563163,
+    "P": 0.76675
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.23324999999999996,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 12,
+   "start": "09:00",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.7872675215812079,
+    "gross": 0.13188708753891068,
+    "P": 0.219
+   },
+   "OOS": {
+    "net": 0.9397287859345311,
+    "gross": 1.884297410766518,
+    "P": 0.72325
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.27675000000000005,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 13,
+   "start": "09:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 3.203362740533875,
+    "gross": 4.067149262186821,
+    "P": 0.952
+   },
+   "OOS": {
+    "net": 2.84096774702713,
+    "gross": 3.8186864980363397,
+    "P": 0.89225
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.10775000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 14,
+   "start": "10:00",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.3542649315926453,
+    "gross": 1.1148389463862776,
+    "P": 0.575
+   },
+   "OOS": {
+    "net": -1.4692725556747186,
+    "gross": -0.5420916138712113,
+    "P": 0.16675
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.83325,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 15,
+   "start": "10:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.2662188435843492,
+    "gross": 0.4622371418970134,
+    "P": 0.43525
+   },
+   "OOS": {
+    "net": -1.9713845425696093,
+    "gross": -1.1175325549990094,
+    "P": 0.09375
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.90625,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 16,
+   "start": "11:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.3666983402291841,
+    "gross": 1.0919605140727142,
+    "P": 0.6085
+   },
+   "OOS": {
+    "net": -2.4069624693921656,
+    "gross": -1.550846640336705,
+    "P": 0.1365
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8634999999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 17,
+   "start": "11:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.6121679824800912,
+    "gross": 0.11490259955234854,
+    "P": 0.323
+   },
+   "OOS": {
+    "net": -1.2766989390132844,
+    "gross": -0.34491393965008976,
+    "P": 0.217
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.783,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 18,
+   "start": "12:00",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 118,
+   "IS": {
+    "net": 1.0575454777168327,
+    "gross": 1.7856704168937263,
+    "P": 0.792
+   },
+   "OOS": {
+    "net": -2.139026743966899,
+    "gross": -1.1510618572200078,
+    "P": 0.03375
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.96625,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 19,
+   "start": "12:30",
+   "dir": 1,
+   "n_is": 135,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.4012317513530281,
+    "gross": 0.3494696571886572,
+    "P": 0.3795
+   },
+   "OOS": {
+    "net": -1.363547903809928,
+    "gross": -0.3596066828048549,
+    "P": 0.13225
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.86775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 20,
+   "start": "13:00",
+   "dir": 1,
+   "n_is": 130,
+   "n_oos": 113,
+   "IS": {
+    "net": -0.3729360027708269,
+    "gross": 0.3822178228561116,
+    "P": 0.37325
+   },
+   "OOS": {
+    "net": 0.5382367479936813,
+    "gross": 1.5310995897990414,
+    "P": 0.598
+   },
+   "indices_pos": 5,
+   "indices_n": 6,
+   "p_oos": 0.402,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 21,
+   "start": "13:30",
+   "dir": 1,
+   "n_is": 126,
+   "n_oos": 112,
+   "IS": {
+    "net": 1.2957755077995594,
+    "gross": 2.040460431253461,
+    "P": 0.787
+   },
+   "OOS": {
+    "net": -0.5210562912347368,
+    "gross": 0.4597882293008503,
+    "P": 0.319
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.681,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 22,
+   "start": "14:00",
+   "dir": -1,
+   "n_is": 126,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.8151846401987635,
+    "gross": 1.5689954450371875,
+    "P": 0.729
+   },
+   "OOS": {
+    "net": -1.7531377720204797,
+    "gross": -0.7730932081615352,
+    "P": 0.082
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.918,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 23,
+   "start": "14:30",
+   "dir": 1,
+   "n_is": 128,
+   "n_oos": 111,
+   "IS": {
+    "net": 1.6253612667793345,
+    "gross": 2.4221244648287104,
+    "P": 0.94775
+   },
+   "OOS": {
+    "net": -2.7748818633798495,
+    "gross": -1.803439125687398,
+    "P": 0.00525
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Mon",
+   "slot": 24,
+   "start": "15:00",
+   "dir": -1,
+   "n_is": 126,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.31062015001590854,
+    "gross": 1.0961002235973576,
+    "P": 0.585
+   },
+   "OOS": {
+    "net": -1.1106953132421726,
+    "gross": -0.14124700507921678,
+    "P": 0.2375
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.7625,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 0,
+   "start": "03:00",
+   "dir": 1,
+   "n_is": 141,
+   "n_oos": 118,
+   "IS": {
+    "net": 1.6192485853312344,
+    "gross": 2.634932881911084,
+    "P": 0.73325
+   },
+   "OOS": {
+    "net": -1.4418788908765896,
+    "gross": -0.2581057319484596,
+    "P": 0.15375
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.84625,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 1,
+   "start": "03:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.017079834373594623,
+    "gross": 0.9188460769108004,
+    "P": 0.49
+   },
+   "OOS": {
+    "net": -1.2780709107276331,
+    "gross": -0.2814385165146321,
+    "P": 0.14225
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.85775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 2,
+   "start": "04:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 117,
+   "IS": {
+    "net": 0.7137670738320494,
+    "gross": 1.6302391940135277,
+    "P": 0.7005
+   },
+   "OOS": {
+    "net": -1.8227424379189663,
+    "gross": -0.8524805659788806,
+    "P": 0.082
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.918,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 3,
+   "start": "04:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 117,
+   "IS": {
+    "net": 0.35138234491307185,
+    "gross": 1.2490713090089056,
+    "P": 0.61075
+   },
+   "OOS": {
+    "net": -2.213869701199018,
+    "gross": -1.2614249255395784,
+    "P": 0.00975
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99025,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 4,
+   "start": "05:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.41675622280455826,
+    "gross": 0.47261079959135166,
+    "P": 0.35275
+   },
+   "OOS": {
+    "net": -1.4801936850711537,
+    "gross": -0.5405984428686369,
+    "P": 0.05825
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.94175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 5,
+   "start": "05:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.3198318781799846,
+    "gross": 0.5607881305846986,
+    "P": 0.37475
+   },
+   "OOS": {
+    "net": -0.15478773299872137,
+    "gross": 0.7739772105580631,
+    "P": 0.4135
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.5865,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 6,
+   "start": "06:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.7582692821578021,
+    "gross": 0.11267681076710093,
+    "P": 0.23025
+   },
+   "OOS": {
+    "net": -0.9970772570265987,
+    "gross": -0.07318834348864722,
+    "P": 0.1145
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.8855,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 7,
+   "start": "06:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.16108676436053718,
+    "gross": 0.7111879729094677,
+    "P": 0.4485
+   },
+   "OOS": {
+    "net": -0.7001031815408902,
+    "gross": 0.22669483473002258,
+    "P": 0.1985
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8015,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 8,
+   "start": "07:00",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.972518881070948,
+    "gross": 1.8542073350508856,
+    "P": 0.8635
+   },
+   "OOS": {
+    "net": -1.6535718896436227,
+    "gross": -0.718673931584974,
+    "P": 0.028
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.972,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 9,
+   "start": "07:30",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.5583322423976022,
+    "gross": 1.4437765349668015,
+    "P": 0.7205
+   },
+   "OOS": {
+    "net": -2.2641647180225943,
+    "gross": -1.3396170484104823,
+    "P": 0.0075
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9925,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 10,
+   "start": "08:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.8237985057116815,
+    "gross": 0.19849481087650897,
+    "P": 0.2435
+   },
+   "OOS": {
+    "net": -0.552286597979598,
+    "gross": 0.46555639520107883,
+    "P": 0.27525
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.72475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 11,
+   "start": "08:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.5159514728953386,
+    "gross": 0.5283282402589095,
+    "P": 0.4245
+   },
+   "OOS": {
+    "net": -2.0147631530085803,
+    "gross": -0.9858932942576695,
+    "P": 0.0445
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9555,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 12,
+   "start": "09:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": 0.31342815619387027,
+    "gross": 1.2478561045057799,
+    "P": 0.64025
+   },
+   "OOS": {
+    "net": -1.5594941480218942,
+    "gross": -0.6060073767087797,
+    "P": 0.0585
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9415,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 13,
+   "start": "09:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.09941065537632549,
+    "gross": 0.7840567791687718,
+    "P": 0.477
+   },
+   "OOS": {
+    "net": 0.1270372694668448,
+    "gross": 1.137244194813697,
+    "P": 0.5325
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.4675,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 14,
+   "start": "10:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 117,
+   "IS": {
+    "net": 0.3852337013955451,
+    "gross": 1.1729233683085607,
+    "P": 0.559
+   },
+   "OOS": {
+    "net": 0.6862506712898547,
+    "gross": 1.6492102806933033,
+    "P": 0.657
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.34299999999999997,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 15,
+   "start": "10:30",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": 1.154457008629242,
+    "gross": 1.8951857627892617,
+    "P": 0.71075
+   },
+   "OOS": {
+    "net": -1.775434653700926,
+    "gross": -0.9135409866454727,
+    "P": 0.165
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.835,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 16,
+   "start": "11:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.03156405381341588,
+    "gross": 0.7015177735903784,
+    "P": 0.4935
+   },
+   "OOS": {
+    "net": -0.6843430047900602,
+    "gross": 0.17991568866731533,
+    "P": 0.33
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.6699999999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 17,
+   "start": "11:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.6785615461161287,
+    "gross": 0.056756242724655605,
+    "P": 0.32
+   },
+   "OOS": {
+    "net": -0.23835443882727758,
+    "gross": 0.7120087784985822,
+    "P": 0.424
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.5760000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 18,
+   "start": "12:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 118,
+   "IS": {
+    "net": -0.5281568010532036,
+    "gross": 0.20457145266398896,
+    "P": 0.37425
+   },
+   "OOS": {
+    "net": 1.2042694357768589,
+    "gross": 2.2117561114452666,
+    "P": 0.8555
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.14449999999999996,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 19,
+   "start": "12:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 118,
+   "IS": {
+    "net": 1.0111412698621223,
+    "gross": 1.7456078842751115,
+    "P": 0.81025
+   },
+   "OOS": {
+    "net": -2.235755013866944,
+    "gross": -1.2402740505869054,
+    "P": 0.086
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.914,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 20,
+   "start": "13:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": 2.4173278276177723,
+    "gross": 3.16001642593395,
+    "P": 0.9215
+   },
+   "OOS": {
+    "net": -0.6038966508596131,
+    "gross": 0.38786967393552074,
+    "P": 0.3355
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.6645,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 21,
+   "start": "13:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.2625831924366005,
+    "gross": 0.48262101450371375,
+    "P": 0.43775
+   },
+   "OOS": {
+    "net": 2.738859653317902,
+    "gross": 3.718278731173374,
+    "P": 0.99325
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.006750000000000034,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 22,
+   "start": "14:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.3604319777252582,
+    "gross": 0.38220262628700735,
+    "P": 0.40275
+   },
+   "OOS": {
+    "net": -0.8049260977551858,
+    "gross": 0.17726399587456818,
+    "P": 0.283
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.7170000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 23,
+   "start": "14:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 117,
+   "IS": {
+    "net": 2.0679819328880273,
+    "gross": 2.8250126341609887,
+    "P": 0.91175
+   },
+   "OOS": {
+    "net": 0.5555492744710986,
+    "gross": 1.5380463888369418,
+    "P": 0.712
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.28800000000000003,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Tue",
+   "slot": 24,
+   "start": "15:00",
+   "dir": 1,
+   "n_is": 141,
+   "n_oos": 117,
+   "IS": {
+    "net": -0.3432586882829375,
+    "gross": 0.41904058264527727,
+    "P": 0.40625
+   },
+   "OOS": {
+    "net": -0.7899970853652645,
+    "gross": 0.18272569735134972,
+    "P": 0.21525
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.7847500000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 0,
+   "start": "03:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.7492146542795471,
+    "gross": 0.25173270018732896,
+    "P": 0.32975
+   },
+   "OOS": {
+    "net": -3.438582890567976,
+    "gross": -2.2792511413359575,
+    "P": 0.0065
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9935,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 1,
+   "start": "03:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.005355595920890294,
+    "gross": 0.9235185743003356,
+    "P": 0.47925
+   },
+   "OOS": {
+    "net": -0.4814082376394416,
+    "gross": 0.5018493490570346,
+    "P": 0.33275
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.66725,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 2,
+   "start": "04:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.4499077818591992,
+    "gross": 1.362292259074244,
+    "P": 0.63225
+   },
+   "OOS": {
+    "net": -1.9120060882128962,
+    "gross": -0.9559623167340018,
+    "P": 0.1015
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8985,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 3,
+   "start": "04:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.6884040430193689,
+    "gross": 1.5839976282448125,
+    "P": 0.76375
+   },
+   "OOS": {
+    "net": 0.41018817008580266,
+    "gross": 1.3405498820221045,
+    "P": 0.61575
+   },
+   "indices_pos": 5,
+   "indices_n": 6,
+   "p_oos": 0.38425,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 4,
+   "start": "05:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.6624119723048648,
+    "gross": 1.5442564614381864,
+    "P": 0.7225
+   },
+   "OOS": {
+    "net": -0.9057810314080598,
+    "gross": 0.016238061014260792,
+    "P": 0.1425
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8575,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 5,
+   "start": "05:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.23752555097976408,
+    "gross": 0.6331681075850482,
+    "P": 0.39675
+   },
+   "OOS": {
+    "net": -0.8362483666642223,
+    "gross": 0.07656821694333292,
+    "P": 0.1395
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8605,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 6,
+   "start": "06:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.32023911841245284,
+    "gross": 0.5472088038205203,
+    "P": 0.373
+   },
+   "OOS": {
+    "net": -0.12550187164825632,
+    "gross": 0.7832693241118903,
+    "P": 0.44025
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.55975,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 7,
+   "start": "06:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.6062525457151601,
+    "gross": 0.2659270766028739,
+    "P": 0.24425
+   },
+   "OOS": {
+    "net": -0.8444233533470645,
+    "gross": 0.0748960260494378,
+    "P": 0.19125
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.80875,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 8,
+   "start": "07:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.4234491978411756,
+    "gross": 0.45227430566135074,
+    "P": 0.342
+   },
+   "OOS": {
+    "net": 0.3619633960390876,
+    "gross": 1.2884179199447385,
+    "P": 0.63825
+   },
+   "indices_pos": 5,
+   "indices_n": 6,
+   "p_oos": 0.36175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 9,
+   "start": "07:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.764849114948111,
+    "gross": 0.11114653662205624,
+    "P": 0.18475
+   },
+   "OOS": {
+    "net": -0.5277276042153469,
+    "gross": 0.39007248279982665,
+    "P": 0.28
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.72,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 10,
+   "start": "08:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.2849046484452092,
+    "gross": 0.7133343428187112,
+    "P": 0.3925
+   },
+   "OOS": {
+    "net": -0.46101450489192364,
+    "gross": 0.6411123382270174,
+    "P": 0.32825
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.6717500000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 11,
+   "start": "08:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 1.6923160600664184,
+    "gross": 2.7200665339454786,
+    "P": 0.77925
+   },
+   "OOS": {
+    "net": -1.652444791728118,
+    "gross": -0.5428311117611092,
+    "P": 0.179
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.821,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 12,
+   "start": "09:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.843450473893138,
+    "gross": 1.7822901037893524,
+    "P": 0.7925
+   },
+   "OOS": {
+    "net": -1.3711875934531972,
+    "gross": -0.42619270680407173,
+    "P": 0.0505
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.9495,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 13,
+   "start": "09:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 1.5087007158943533,
+    "gross": 2.396375650451491,
+    "P": 0.8095
+   },
+   "OOS": {
+    "net": 0.2034155634898868,
+    "gross": 1.1885716011184173,
+    "P": 0.5415
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.4585,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 14,
+   "start": "10:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.23121941129056822,
+    "gross": 1.0227693240079918,
+    "P": 0.526
+   },
+   "OOS": {
+    "net": -2.138517649978217,
+    "gross": -1.200616208982825,
+    "P": 0.086
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.914,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 15,
+   "start": "10:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.030970631944212346,
+    "gross": 0.7140983267115405,
+    "P": 0.50075
+   },
+   "OOS": {
+    "net": -1.8786107372483374,
+    "gross": -1.0270256560696998,
+    "P": 0.117
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.883,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 16,
+   "start": "11:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.4702991191448378,
+    "gross": 1.206846071463821,
+    "P": 0.63
+   },
+   "OOS": {
+    "net": -0.4394328778961976,
+    "gross": 0.40843286057862005,
+    "P": 0.3805
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.6194999999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 17,
+   "start": "11:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.769927809419078,
+    "gross": 1.505719760301067,
+    "P": 0.72725
+   },
+   "OOS": {
+    "net": -1.3352893718292473,
+    "gross": -0.3906459620746444,
+    "P": 0.16275
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.83725,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 18,
+   "start": "12:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 116,
+   "IS": {
+    "net": 1.8644261985981418,
+    "gross": 2.5991035218210627,
+    "P": 0.94025
+   },
+   "OOS": {
+    "net": -1.3981367264674252,
+    "gross": -0.378504844257019,
+    "P": 0.13775
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.86225,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 19,
+   "start": "12:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.3019614824377967,
+    "gross": 0.4308902533551981,
+    "P": 0.3955
+   },
+   "OOS": {
+    "net": -0.08167918516174026,
+    "gross": 0.9233417580981764,
+    "P": 0.48
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.52,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 20,
+   "start": "13:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.3882784595125522,
+    "gross": 0.34771189819270604,
+    "P": 0.38125
+   },
+   "OOS": {
+    "net": -3.374687957395061,
+    "gross": -2.3583832986458604,
+    "P": 0.20225
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.79775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 21,
+   "start": "13:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.17892999598978993,
+    "gross": 0.6769524480953338,
+    "P": 0.41975
+   },
+   "OOS": {
+    "net": -0.0775620241285522,
+    "gross": 1.0223138008824062,
+    "P": 0.4555
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.5445,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 22,
+   "start": "14:00",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.43755910278089905,
+    "gross": 1.3077943101064575,
+    "P": 0.5845
+   },
+   "OOS": {
+    "net": -0.10201080937281537,
+    "gross": 1.0105993322552003,
+    "P": 0.4755
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.5245,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 23,
+   "start": "14:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 114,
+   "IS": {
+    "net": 0.5432750971743466,
+    "gross": 1.3210236940910116,
+    "P": 0.5965
+   },
+   "OOS": {
+    "net": -2.5299224190308065,
+    "gross": -1.487427096274746,
+    "P": 0.10175
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.89825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Wed",
+   "slot": 24,
+   "start": "15:00",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.14192073772332636,
+    "gross": 0.635283433931531,
+    "P": 0.467
+   },
+   "OOS": {
+    "net": -0.37066771163694007,
+    "gross": 0.6679347902781678,
+    "P": 0.44175
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.55825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 0,
+   "start": "03:00",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.5261005164272328,
+    "gross": 0.5002424185658325,
+    "P": 0.383
+   },
+   "OOS": {
+    "net": -1.679868139192944,
+    "gross": -0.4897672744367304,
+    "P": 0.15225
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.84775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 1,
+   "start": "03:30",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.23583205844019486,
+    "gross": 1.181590385945023,
+    "P": 0.571
+   },
+   "OOS": {
+    "net": -2.885703475450827,
+    "gross": -1.8882744441613564,
+    "P": 0.00825
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 2,
+   "start": "04:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.13380720771925889,
+    "gross": 1.0574284363039597,
+    "P": 0.56425
+   },
+   "OOS": {
+    "net": -1.6762222907998725,
+    "gross": -0.7103132162886443,
+    "P": 0.07775
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.92225,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 3,
+   "start": "04:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.019108377422708503,
+    "gross": 0.8851321012360897,
+    "P": 0.4925
+   },
+   "OOS": {
+    "net": -0.8708856030868971,
+    "gross": 0.06824006233521569,
+    "P": 0.20025
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.79975,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 4,
+   "start": "05:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.41495183940776154,
+    "gross": 1.3085019632899748,
+    "P": 0.67
+   },
+   "OOS": {
+    "net": -1.8009160065644128,
+    "gross": -0.8756879698639772,
+    "P": 0.0385
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9615,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 5,
+   "start": "05:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.3484698045556585,
+    "gross": 1.23143621621499,
+    "P": 0.65
+   },
+   "OOS": {
+    "net": -0.7685398287233274,
+    "gross": 0.14688661654560273,
+    "P": 0.19425
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.80575,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 6,
+   "start": "06:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.5521893338039646,
+    "gross": 0.31878493410857683,
+    "P": 0.294
+   },
+   "OOS": {
+    "net": -1.7092781565933852,
+    "gross": -0.7952574050544852,
+    "P": 0.054
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.946,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 7,
+   "start": "06:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.09289925208148388,
+    "gross": 0.9804667982282643,
+    "P": 0.52525
+   },
+   "OOS": {
+    "net": -0.6633894122647358,
+    "gross": 0.2695553393056982,
+    "P": 0.2155
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.7845,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 8,
+   "start": "07:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.8278213619948726,
+    "gross": 0.0751331153363447,
+    "P": 0.213
+   },
+   "OOS": {
+    "net": -0.8220292948890171,
+    "gross": 0.11927187939126438,
+    "P": 0.18225
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.81775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 9,
+   "start": "07:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.18692229444413402,
+    "gross": 0.713528472991824,
+    "P": 0.43125
+   },
+   "OOS": {
+    "net": -0.18162042385461835,
+    "gross": 0.7483693328779316,
+    "P": 0.419
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.581,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 10,
+   "start": "08:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.7172780992616066,
+    "gross": 0.4304283878416051,
+    "P": 0.23375
+   },
+   "OOS": {
+    "net": -0.9790296616472453,
+    "gross": 0.3114629297955978,
+    "P": 0.1675
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.8325,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 11,
+   "start": "08:30",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 114,
+   "IS": {
+    "net": 0.23287574469378847,
+    "gross": 1.4054285650945852,
+    "P": 0.532
+   },
+   "OOS": {
+    "net": -2.2500972869814357,
+    "gross": -0.9480206978267824,
+    "P": 0.0525
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 12,
+   "start": "09:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 2.1348939393783817,
+    "gross": 3.083121080481399,
+    "P": 0.9755
+   },
+   "OOS": {
+    "net": -2.1009990813904897,
+    "gross": -1.1426209725003602,
+    "P": 0.009
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.991,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 13,
+   "start": "09:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 1.67843411647616,
+    "gross": 2.5464071589600414,
+    "P": 0.73775
+   },
+   "OOS": {
+    "net": -3.3087235895007456,
+    "gross": -2.3331159646059807,
+    "P": 0.05825
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.94175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 14,
+   "start": "10:00",
+   "dir": -1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.43043184527918976,
+    "gross": 1.2076357591059352,
+    "P": 0.5835
+   },
+   "OOS": {
+    "net": -1.6014734699533895,
+    "gross": -0.674243217796084,
+    "P": 0.219
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.781,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 15,
+   "start": "10:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 1.7306136679980524,
+    "gross": 2.4816829182932225,
+    "P": 0.80675
+   },
+   "OOS": {
+    "net": -1.0258979437756834,
+    "gross": -0.1644688731938367,
+    "P": 0.28725
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.71275,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 16,
+   "start": "11:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.8518564583435517,
+    "gross": 1.5931948804524219,
+    "P": 0.69
+   },
+   "OOS": {
+    "net": -2.109221762761144,
+    "gross": -1.2429238919599792,
+    "P": 0.09725
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9027499999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 17,
+   "start": "11:30",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.5290547570675078,
+    "gross": 1.271478016162239,
+    "P": 0.64625
+   },
+   "OOS": {
+    "net": -2.2550810571494218,
+    "gross": -1.2964431449259406,
+    "P": 0.112
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.888,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 18,
+   "start": "12:00",
+   "dir": 1,
+   "n_is": 143,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.03346639728652608,
+    "gross": 0.7095311055054953,
+    "P": 0.49775
+   },
+   "OOS": {
+    "net": -0.13494518813789527,
+    "gross": 0.8975779543720697,
+    "P": 0.4795
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.5205,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 19,
+   "start": "12:30",
+   "dir": -1,
+   "n_is": 142,
+   "n_oos": 113,
+   "IS": {
+    "net": -0.36856270392759016,
+    "gross": 0.3840081696271428,
+    "P": 0.38025
+   },
+   "OOS": {
+    "net": -0.15867932337861101,
+    "gross": 0.8840212105547107,
+    "P": 0.485
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.515,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 20,
+   "start": "13:00",
+   "dir": 1,
+   "n_is": 142,
+   "n_oos": 111,
+   "IS": {
+    "net": -0.23472632947210226,
+    "gross": 0.5265729461093991,
+    "P": 0.43275
+   },
+   "OOS": {
+    "net": -1.1625241981297543,
+    "gross": -0.1203789380277996,
+    "P": 0.22975
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.77025,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 21,
+   "start": "13:30",
+   "dir": 1,
+   "n_is": 141,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.3543292693429038,
+    "gross": 1.119108885286998,
+    "P": 0.59725
+   },
+   "OOS": {
+    "net": -0.30351724967480587,
+    "gross": 0.7598131423268658,
+    "P": 0.414
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.5860000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 22,
+   "start": "14:00",
+   "dir": -1,
+   "n_is": 141,
+   "n_oos": 110,
+   "IS": {
+    "net": 1.2304700370813224,
+    "gross": 1.9952948035504166,
+    "P": 0.80475
+   },
+   "OOS": {
+    "net": -1.3091370080155837,
+    "gross": -0.2647732841786856,
+    "P": 0.183
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.817,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 23,
+   "start": "14:30",
+   "dir": -1,
+   "n_is": 141,
+   "n_oos": 111,
+   "IS": {
+    "net": -0.46450797280640066,
+    "gross": 0.2990756037692978,
+    "P": 0.369
+   },
+   "OOS": {
+    "net": -0.4336432107702848,
+    "gross": 0.6029884854842614,
+    "P": 0.338
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.6619999999999999,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Thu",
+   "slot": 24,
+   "start": "15:00",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.32232830658988965,
+    "gross": 0.445397305966058,
+    "P": 0.405
+   },
+   "OOS": {
+    "net": -0.4029781059655635,
+    "gross": 0.6409860761882598,
+    "P": 0.3875
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.6125,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 0,
+   "start": "03:00",
+   "dir": -1,
+   "n_is": 140,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.9702879743259268,
+    "gross": 1.9948294712346515,
+    "P": 0.732
+   },
+   "OOS": {
+    "net": -1.7125477753904081,
+    "gross": -0.5553703873604053,
+    "P": 0.121
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.879,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 1,
+   "start": "03:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.245842399208937,
+    "gross": 0.6963498477564248,
+    "P": 0.40925
+   },
+   "OOS": {
+    "net": 0.7792107924342466,
+    "gross": 1.7715823512605107,
+    "P": 0.77275
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.22724999999999995,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 2,
+   "start": "04:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.19870624991233793,
+    "gross": 0.7217246116375491,
+    "P": 0.4385
+   },
+   "OOS": {
+    "net": -2.4427654822061697,
+    "gross": -1.4815948672580346,
+    "P": 0.032
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.968,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 3,
+   "start": "04:30",
+   "dir": -1,
+   "n_is": 140,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.6721013642856382,
+    "gross": 0.22907099225495228,
+    "P": 0.27525
+   },
+   "OOS": {
+    "net": 1.2548623453109775,
+    "gross": 2.184319622365487,
+    "P": 0.89925
+   },
+   "indices_pos": 6,
+   "indices_n": 6,
+   "p_oos": 0.10075,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 4,
+   "start": "05:00",
+   "dir": -1,
+   "n_is": 140,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.7100772732255316,
+    "gross": 0.1802254135835906,
+    "P": 0.252
+   },
+   "OOS": {
+    "net": -0.636698524723611,
+    "gross": 0.27928477247884,
+    "P": 0.2665
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.7335,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 5,
+   "start": "05:30",
+   "dir": 1,
+   "n_is": 140,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.8421142308010708,
+    "gross": 0.05304907713065116,
+    "P": 0.21325
+   },
+   "OOS": {
+    "net": -0.0846651978192887,
+    "gross": 0.8306704542035939,
+    "P": 0.44175
+   },
+   "indices_pos": 3,
+   "indices_n": 6,
+   "p_oos": 0.55825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 6,
+   "start": "06:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.8648808834748128,
+    "gross": 0.03176696857474244,
+    "P": 0.26475
+   },
+   "OOS": {
+    "net": -2.613424785757019,
+    "gross": -1.700455662568085,
+    "P": 0.051
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.949,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 7,
+   "start": "06:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": 0.8334184348815092,
+    "gross": 1.7232709853420707,
+    "P": 0.802
+   },
+   "OOS": {
+    "net": -0.6546694173424952,
+    "gross": 0.2564537329206489,
+    "P": 0.2465
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.7535000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 8,
+   "start": "07:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": -0.24494410236772474,
+    "gross": 0.651790082577723,
+    "P": 0.39425
+   },
+   "OOS": {
+    "net": -1.5215075901638628,
+    "gross": -0.606936962931073,
+    "P": 0.123
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.877,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 9,
+   "start": "07:30",
+   "dir": -1,
+   "n_is": 140,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.657774072816627,
+    "gross": 1.5564941766845684,
+    "P": 0.73025
+   },
+   "OOS": {
+    "net": -2.2632575270341513,
+    "gross": -1.3495565680840365,
+    "P": 0.103
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.897,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 10,
+   "start": "08:00",
+   "dir": 1,
+   "n_is": 140,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.13217373878737665,
+    "gross": 1.0674822174426284,
+    "P": 0.46325
+   },
+   "OOS": {
+    "net": -0.3741754859016179,
+    "gross": 0.7800410606709313,
+    "P": 0.34975
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.65025,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 11,
+   "start": "08:30",
+   "dir": -1,
+   "n_is": 139,
+   "n_oos": 116,
+   "IS": {
+    "net": -1.0292963840169655,
+    "gross": 0.19595548494752754,
+    "P": 0.34975
+   },
+   "OOS": {
+    "net": 0.010582799481961032,
+    "gross": 1.1762761977789251,
+    "P": 0.5015
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.49850000000000005,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 12,
+   "start": "09:00",
+   "dir": 1,
+   "n_is": 138,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.11696383797829782,
+    "gross": 0.8310073359082524,
+    "P": 0.465
+   },
+   "OOS": {
+    "net": -0.6001579501010362,
+    "gross": 0.3557814947188581,
+    "P": 0.28775
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.71225,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 13,
+   "start": "09:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.5382202434300873,
+    "gross": 0.4027062424090509,
+    "P": 0.4155
+   },
+   "OOS": {
+    "net": -0.8189377341524202,
+    "gross": 0.1989712685052789,
+    "P": 0.3405
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.6595,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 14,
+   "start": "10:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 115,
+   "IS": {
+    "net": 0.34216840716439706,
+    "gross": 1.1913855814303498,
+    "P": 0.5385
+   },
+   "OOS": {
+    "net": -2.7333326694306823,
+    "gross": -1.7653954130740404,
+    "P": 0.12525
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.87475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 15,
+   "start": "10:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.6396783858859845,
+    "gross": 0.11606088560015608,
+    "P": 0.361
+   },
+   "OOS": {
+    "net": -1.2353611562392321,
+    "gross": -0.3697272516659515,
+    "P": 0.2065
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.7935,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 16,
+   "start": "11:00",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.01321975903877244,
+    "gross": 0.7349461144430401,
+    "P": 0.50725
+   },
+   "OOS": {
+    "net": -0.7242844417287385,
+    "gross": 0.1414825399799219,
+    "P": 0.3055
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.6945,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 17,
+   "start": "11:30",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 114,
+   "IS": {
+    "net": 0.5949332724063199,
+    "gross": 1.3410989808770049,
+    "P": 0.63075
+   },
+   "OOS": {
+    "net": -2.4320026038722355,
+    "gross": -1.4790446273478102,
+    "P": 0.061
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9390000000000001,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 18,
+   "start": "12:00",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 114,
+   "IS": {
+    "net": -0.3935574624300198,
+    "gross": 0.35002658491633326,
+    "P": 0.38925
+   },
+   "OOS": {
+    "net": -1.4287270003128565,
+    "gross": -0.4033608052897385,
+    "P": 0.11725
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.88275,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 19,
+   "start": "12:30",
+   "dir": 1,
+   "n_is": 139,
+   "n_oos": 115,
+   "IS": {
+    "net": -0.46363915196269073,
+    "gross": 0.2883376182320958,
+    "P": 0.358
+   },
+   "OOS": {
+    "net": -1.0071843720789602,
+    "gross": 0.030585460589034566,
+    "P": 0.212
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.788,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 20,
+   "start": "13:00",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.77133636035429,
+    "gross": 1.5233405572075613,
+    "P": 0.7155
+   },
+   "OOS": {
+    "net": -1.5718304986584255,
+    "gross": -0.5433471242738034,
+    "P": 0.10725
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.89275,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 21,
+   "start": "13:30",
+   "dir": -1,
+   "n_is": 138,
+   "n_oos": 112,
+   "IS": {
+    "net": -0.7225670148337224,
+    "gross": 0.020799414525369576,
+    "P": 0.295
+   },
+   "OOS": {
+    "net": -1.5028563690040266,
+    "gross": -0.48706495770984964,
+    "P": 0.1585
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.8415,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 22,
+   "start": "14:00",
+   "dir": -1,
+   "n_is": 137,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.20385744434918748,
+    "gross": 0.9477842688969326,
+    "P": 0.53875
+   },
+   "OOS": {
+    "net": 0.18059685406399822,
+    "gross": 1.2008486260192874,
+    "P": 0.536
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.46399999999999997,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 23,
+   "start": "14:30",
+   "dir": 1,
+   "n_is": 137,
+   "n_oos": 114,
+   "IS": {
+    "net": 1.3680866110461076,
+    "gross": 2.1399715123770653,
+    "P": 0.8425
+   },
+   "OOS": {
+    "net": -0.8781921390634279,
+    "gross": 0.14453879955046298,
+    "P": 0.1595
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.8405,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "Fri",
+   "slot": 24,
+   "start": "15:00",
+   "dir": 1,
+   "n_is": 136,
+   "n_oos": 112,
+   "IS": {
+    "net": 0.9029772573173006,
+    "gross": 1.6786164252058364,
+    "P": 0.773
+   },
+   "OOS": {
+    "net": -0.9591025259546965,
+    "gross": 0.04670463137067566,
+    "P": 0.196
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.804,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 0,
+   "start": "03:00",
+   "dir": 1,
+   "n_is": 705,
+   "n_oos": 583,
+   "IS": {
+    "net": -0.9128189474299502,
+    "gross": 0.1050145907869881,
+    "P": 0.14175
+   },
+   "OOS": {
+    "net": -0.3742903154942543,
+    "gross": 0.797713133270769,
+    "P": 0.28625
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.71375,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 1,
+   "start": "03:30",
+   "dir": 1,
+   "n_is": 705,
+   "n_oos": 583,
+   "IS": {
+    "net": -0.31871782735488613,
+    "gross": 0.6206729914325723,
+    "P": 0.305
+   },
+   "OOS": {
+    "net": -0.5167502580613237,
+    "gross": 0.47662995445545153,
+    "P": 0.168
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.832,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 2,
+   "start": "04:00",
+   "dir": 1,
+   "n_is": 706,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.7336308747504638,
+    "gross": 0.18471266751136667,
+    "P": 0.1085
+   },
+   "OOS": {
+    "net": -1.2341425401690806,
+    "gross": -0.26952475649790236,
+    "P": 0.018
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.982,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 3,
+   "start": "04:30",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.4163669298168787,
+    "gross": 0.48224449544178494,
+    "P": 0.19875
+   },
+   "OOS": {
+    "net": -0.8710034565224996,
+    "gross": 0.06662067510703054,
+    "P": 0.028
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.972,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 4,
+   "start": "05:00",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.4548559935406879,
+    "gross": 0.43237867572809263,
+    "P": 0.1725
+   },
+   "OOS": {
+    "net": -1.1007388941931888,
+    "gross": -0.17522283186502507,
+    "P": 0.00375
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99625,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 5,
+   "start": "05:30",
+   "dir": 1,
+   "n_is": 707,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.3589334866998165,
+    "gross": 0.52083991277931,
+    "P": 0.216
+   },
+   "OOS": {
+    "net": -0.6869902158814439,
+    "gross": 0.23100319639815514,
+    "P": 0.052
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.948,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 6,
+   "start": "06:00",
+   "dir": 1,
+   "n_is": 707,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.6969127229444897,
+    "gross": 0.1762240147959286,
+    "P": 0.08725
+   },
+   "OOS": {
+    "net": -0.9207921389673149,
+    "gross": -0.006218579615187107,
+    "P": 0.0465
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9535,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 7,
+   "start": "06:30",
+   "dir": 1,
+   "n_is": 707,
+   "n_oos": 583,
+   "IS": {
+    "net": -0.3863359811078236,
+    "gross": 0.49067735303560395,
+    "P": 0.17175
+   },
+   "OOS": {
+    "net": -0.7079241007673495,
+    "gross": 0.212678963494088,
+    "P": 0.032
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.968,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 8,
+   "start": "07:00",
+   "dir": 1,
+   "n_is": 706,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.37615652557428214,
+    "gross": 0.5087091638913572,
+    "P": 0.20575
+   },
+   "OOS": {
+    "net": -0.7994690092778458,
+    "gross": 0.1285369318945881,
+    "P": 0.123
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.877,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 9,
+   "start": "07:30",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.12224567243068027,
+    "gross": 0.7627053654424701,
+    "P": 0.39575
+   },
+   "OOS": {
+    "net": -1.190896815070558,
+    "gross": -0.2685361934227239,
+    "P": 0.014
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.986,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 10,
+   "start": "08:00",
+   "dir": -1,
+   "n_is": 708,
+   "n_oos": 580,
+   "IS": {
+    "net": -0.8162555351721431,
+    "gross": 0.23423334231611576,
+    "P": 0.05025
+   },
+   "OOS": {
+    "net": -1.2459987172369293,
+    "gross": -0.14662954503223113,
+    "P": 0.003
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.997,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 11,
+   "start": "08:30",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.442683583690184,
+    "gross": 0.6318042729868375,
+    "P": 0.3385
+   },
+   "OOS": {
+    "net": -1.3286547430963627,
+    "gross": -0.22007663178996692,
+    "P": 0.02
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.98,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 12,
+   "start": "09:00",
+   "dir": -1,
+   "n_is": 706,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.5579896771978512,
+    "gross": 0.3797670615068824,
+    "P": 0.124
+   },
+   "OOS": {
+    "net": -0.9033954776549934,
+    "gross": 0.048041742745490584,
+    "P": 0.036
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.964,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 13,
+   "start": "09:30",
+   "dir": 1,
+   "n_is": 707,
+   "n_oos": 582,
+   "IS": {
+    "net": 0.8313424689750064,
+    "gross": 1.7199543669922785,
+    "P": 0.79325
+   },
+   "OOS": {
+    "net": -0.6344499740292613,
+    "gross": 0.35886229803853537,
+    "P": 0.24675
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.75325,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 14,
+   "start": "10:00",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.1197969003696733,
+    "gross": 0.6733182267076234,
+    "P": 0.448
+   },
+   "OOS": {
+    "net": -0.7463212417354785,
+    "gross": 0.1982819528730994,
+    "P": 0.18825
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.81175,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 15,
+   "start": "10:30",
+   "dir": 1,
+   "n_is": 706,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.546278396026715,
+    "gross": 0.1979629463092675,
+    "P": 0.241
+   },
+   "OOS": {
+    "net": -0.7587032679413694,
+    "gross": 0.10014734331229334,
+    "P": 0.14525
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.85475,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 16,
+   "start": "11:00",
+   "dir": 1,
+   "n_is": 705,
+   "n_oos": 582,
+   "IS": {
+    "net": -0.23878479546397136,
+    "gross": 0.49808550345695995,
+    "P": 0.368
+   },
+   "OOS": {
+    "net": -1.4030971821764031,
+    "gross": -0.5430558121450915,
+    "P": 0.03075
+   },
+   "indices_pos": 1,
+   "indices_n": 6,
+   "p_oos": 0.96925,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 17,
+   "start": "11:30",
+   "dir": 1,
+   "n_is": 706,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.4480971578715157,
+    "gross": 0.2892525553046395,
+    "P": 0.26175
+   },
+   "OOS": {
+    "net": -0.7773332518731024,
+    "gross": 0.1702617469742712,
+    "P": 0.142
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.858,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 18,
+   "start": "12:00",
+   "dir": -1,
+   "n_is": 707,
+   "n_oos": 581,
+   "IS": {
+    "net": -0.1133600552778008,
+    "gross": 0.6230687842249413,
+    "P": 0.438
+   },
+   "OOS": {
+    "net": -1.871480043904918,
+    "gross": -0.8570695614218146,
+    "P": 0.00075
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99925,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 19,
+   "start": "12:30",
+   "dir": 1,
+   "n_is": 700,
+   "n_oos": 577,
+   "IS": {
+    "net": -0.25614688981864586,
+    "gross": 0.48827272587311377,
+    "P": 0.32925
+   },
+   "OOS": {
+    "net": -1.3234794557529266,
+    "gross": -0.3067184252640694,
+    "P": 0.0175
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.9825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 20,
+   "start": "13:00",
+   "dir": -1,
+   "n_is": 694,
+   "n_oos": 567,
+   "IS": {
+    "net": 0.0919787582376305,
+    "gross": 0.8412921377547543,
+    "P": 0.56175
+   },
+   "OOS": {
+    "net": -1.7970708424424844,
+    "gross": -0.7830370610935519,
+    "P": 0.02175
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.97825,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 21,
+   "start": "13:30",
+   "dir": 1,
+   "n_is": 689,
+   "n_oos": 567,
+   "IS": {
+    "net": 0.06542580805150772,
+    "gross": 0.8369832796051768,
+    "P": 0.546
+   },
+   "OOS": {
+    "net": 0.28224851729142164,
+    "gross": 1.3099277138160252,
+    "P": 0.6415
+   },
+   "indices_pos": 4,
+   "indices_n": 6,
+   "p_oos": 0.35850000000000004,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 22,
+   "start": "14:00",
+   "dir": -1,
+   "n_is": 688,
+   "n_oos": 566,
+   "IS": {
+    "net": -0.08186558509155423,
+    "gross": 0.6939570045229827,
+    "P": 0.453
+   },
+   "OOS": {
+    "net": -1.1633835629448326,
+    "gross": -0.1355043995611494,
+    "P": 0.03225
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.96775,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 23,
+   "start": "14:30",
+   "dir": 1,
+   "n_is": 690,
+   "n_oos": 567,
+   "IS": {
+    "net": 0.8933879155091031,
+    "gross": 1.666341343730501,
+    "P": 0.892
+   },
+   "OOS": {
+    "net": -1.4348069162571304,
+    "gross": -0.4237236387525578,
+    "P": 0.00575
+   },
+   "indices_pos": 0,
+   "indices_n": 6,
+   "p_oos": 0.99425,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  },
+  {
+   "part": "B",
+   "weekday": "all",
+   "slot": 24,
+   "start": "15:00",
+   "dir": -1,
+   "n_is": 680,
+   "n_oos": 569,
+   "IS": {
+    "net": -0.7726732793612451,
+    "gross": 0.0007372025471881596,
+    "P": 0.14075
+   },
+   "OOS": {
+    "net": -0.8183871542912525,
+    "gross": 0.1876757274247396,
+    "P": 0.09575
+   },
+   "indices_pos": 2,
+   "indices_n": 6,
+   "p_oos": 0.90425,
+   "bh": false,
+   "candidate": false,
+   "usable_filter": false
+  }
+ ],
+ "n_hypotheses": 165,
+ "is_significant": 2,
+ "is_sig_oos_gross_pos": 1,
+ "is_sig_oos_net_pos": 1,
+ "candidates": 0
+}
