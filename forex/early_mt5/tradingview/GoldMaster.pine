@@ -1,0 +1,400 @@
+//@version=6
+// GOLD MASTER -- projections and past-performance dashboard (TradingView, OANDA:XAUUSD, 1-hour chart)
+// The rules are the trader's XAUSTBreakFree strategy exactly as backtested in Round 307 (4h SuperTrend + EMA regime on UTC-aligned 4h candles, 1h Donchian breakout of the prior 85 candles, ATR stops and trails),
+// sized at 1% risk with the MT5 broker risk governor of forex/early_mt5/gold_master.py. No alerts (they need a paid plan): read the projections and the dashboard on the chart.
+// It adds no edge beyond gold's trend: see forex/early_mt5/GOLD_MASTER.md. Past performance is SIMULATED on the bars loaded on this chart with 1-hour bars (the Python backtest uses 1-minute bars), so it is an approximation.
+indicator("Gold Master - projections and dashboard", shorttitle="GoldMaster", overlay=true, max_lines_count=100, max_labels_count=100, max_bars_back=2000)
+
+// ------------------------------------------------------------------------------------------------ inputs
+var string G1 = "Account (update by hand)"
+equity0     = input.float(100000.0, "Account equity (USD)", minval=1000.0, group=G1)
+dayStartBal = input.float(100000.0, "Balance at the start of the MT5 broker day (USD)", minval=1000.0, group=G1)
+hwmDay      = input.float(100000.0, "Highest day-start balance so far (USD)", minval=1000.0, group=G1)
+riskPct     = input.float(1.0, "Risk per trade (% of equity)", minval=0.1, maxval=1.5, step=0.1, group=G1)
+longOnly    = input.bool(false, "Long only (shorts lost money in 2024+; dropping them is untested)", group=G1)
+var string G2 = "Contract (MT5 XAUUSD)"
+contractOz  = input.float(100.0, "Contract size (oz per lot)", group=G2)
+lotStep     = input.float(0.01, "Lot step", group=G2)
+lotMin      = input.float(0.01, "Minimum lot", group=G2)
+maxLev      = input.float(4.0, "Maximum notional (x equity)", group=G2)
+var string G3 = "Strategy (the tested defaults: do not tune)"
+stPeriod    = input.int(24, "SuperTrend period (4h)", group=G3)
+stFactor    = input.float(4.0, "SuperTrend factor", group=G3)
+emaLen      = input.int(10, "EMA length (4h)", group=G3)
+donLen      = input.int(85, "Donchian length (1h candles)", group=G3)
+atrStopL    = input.float(3.0, "Long stop (x 4h ATR)", group=G3)
+trailL      = input.float(6.5, "Long trail (x 4h ATR)", group=G3)
+adxLong     = input.int(10, "Long ADX minimum (4h)", group=G3)
+adxShort    = input.int(15, "Short ADX minimum (4h)", group=G3)
+stopS       = input.float(4.0, "Short stop (x 4h ATR)", group=G3)
+trailS      = input.float(3.5, "Short trail (x 4h ATR)", group=G3)
+tpS         = input.float(5.0, "Short take-profit (x 4h ATR)", group=G3)
+var string G4 = "Simulation costs (dashboard only)"
+costBp      = input.float(1.0, "Spread + slippage per trade (bp of notional)", group=G4)
+swapL       = input.float(-0.021, "Long swap (% of notional per night)", group=G4)
+swapS       = input.float(-0.001, "Short swap (% of notional per night)", group=G4)
+showTable   = input.bool(true, "Show the past-performance dashboard", group=G4)
+dashPos     = input.string("Middle left", "Dashboard position", options=["Top left", "Middle left", "Top right", "Middle right", "Bottom right"], group=G4)
+
+const float MIN_ROOM = 1500.0
+const float ROOM_FACTOR = 0.5
+const int BUCKET_MS = 4 * 60 * 60 * 1000
+const string NY = "America/New_York"
+
+// ------------------------------------------------------------------------------------------------ helpers
+inSess(int t) =>
+    int dow = dayofweek(t, NY)
+    int hr = hour(t, NY)
+    (dow == dayofweek.sunday and hr >= 18) or ((dow >= dayofweek.monday and dow <= dayofweek.thursday) and (hr < 17 or hr >= 18)) or (dow == dayofweek.friday and hr < 17)
+
+sizeLots(float entry, float stop, float risk) =>
+    float dist = math.abs(entry - stop)
+    float lots = 0.0
+    if dist > 0 and risk > 0 and entry > 0
+        float notional = math.min(risk * equity0 / dist * entry, maxLev * equity0)
+        lots := math.floor(notional / entry / contractOz / lotStep + 0.000000001) * lotStep
+        if lots < lotMin
+            lots := 0.0
+    lots
+
+fmt(float x) => str.tostring(x, "#,###.00")
+pct(float x) => str.tostring(x * 100.0, "0.0") + "%"
+
+// ------------------------------------------------------------------------------------------------ 4h anchor: UTC-aligned buckets, session candles only, completed before the current hour starts
+var int curId = -1
+var float bH = na
+var float bL = na
+var float bC = na
+var int nB = 0
+var float pC = na
+var float pH = na
+var float pL = na
+var float trSum = 0.0
+var float atr14 = na
+var float trSumSt = 0.0
+var float atrSt = na
+var float pdmSum = 0.0
+var float mdmSum = 0.0
+var float sPdm = na
+var float sMdm = na
+var int dxCnt = 0
+var float dxSum = 0.0
+var float adxV = na
+var float emaV = na
+var float fu = na
+var float fl = na
+var float stLine = na
+var int stDir = 1
+
+int bId = math.floor(time / BUCKET_MS)
+if bId != curId
+    if curId >= 0 and not na(bC) and inSess(curId * BUCKET_MS)
+        nB += 1
+        float tr = nB == 1 ? bH - bL : math.max(bH - bL, math.max(math.abs(bH - pC), math.abs(bL - pC)))
+        if nB <= 14
+            trSum += tr
+            if nB == 14
+                atr14 := trSum / 14.0
+        else
+            atr14 := (atr14 * 13.0 + tr) / 14.0
+        if nB <= stPeriod
+            trSumSt += tr
+            if nB == stPeriod
+                atrSt := trSumSt / stPeriod
+        else
+            atrSt := (atrSt * (stPeriod - 1) + tr) / stPeriod
+        float upm = nB == 1 ? 0.0 : bH - pH
+        float dnm = nB == 1 ? 0.0 : pL - bL
+        float pdm = (upm > dnm and upm > 0) ? upm : 0.0
+        float mdm = (dnm > upm and dnm > 0) ? dnm : 0.0
+        if nB <= 14
+            pdmSum += pdm
+            mdmSum += mdm
+            if nB == 14
+                sPdm := pdmSum / 14.0
+                sMdm := mdmSum / 14.0
+        else
+            sPdm := (sPdm * 13.0 + pdm) / 14.0
+            sMdm := (sMdm * 13.0 + mdm) / 14.0
+        if nB >= 14
+            float pdi = 100.0 * sPdm / atr14
+            float mdi = 100.0 * sMdm / atr14
+            float dx = (pdi + mdi) == 0 ? 0.0 : 100.0 * math.abs(pdi - mdi) / (pdi + mdi)
+            dxCnt += 1
+            if dxCnt <= 14
+                dxSum += dx
+                if dxCnt == 14
+                    adxV := dxSum / 14.0
+            else
+                adxV := (adxV * 13.0 + dx) / 14.0
+        float a = 2.0 / (emaLen + 1.0)
+        emaV := na(emaV) ? bC : a * bC + (1.0 - a) * emaV
+        if not na(atrSt)
+            float hlm = (bH + bL) / 2.0
+            float ubv = hlm + stFactor * atrSt
+            float lbv = hlm - stFactor * atrSt
+            fu := (na(fu) or ubv < fu or pC > fu) ? ubv : fu
+            fl := (na(fl) or lbv > fl or pC < fl) ? lbv : fl
+            if stDir == 1 and bC < fl
+                stDir := -1
+            else if stDir == -1 and bC > fu
+                stDir := 1
+            stLine := stDir == 1 ? fl : fu
+        pC := bC
+        pH := bH
+        pL := bL
+    curId := bId
+    bH := high
+    bL := low
+    bC := close
+else
+    bH := math.max(bH, high)
+    bL := math.min(bL, low)
+    bC := close
+
+// ------------------------------------------------------------------------------------------------ the hourly decision
+bool sessBar = inSess(time)
+float c = close
+float donHi = ta.highest(high, donLen)[1]
+float donLo = ta.lowest(low, donLen)[1]
+bool anchorOk = nB >= 31 and not na(atr14) and not na(stLine) and not na(adxV) and not na(emaV)
+int regime = 0
+if anchorOk
+    regime := c > stLine ? 1 : -1
+    if emaLen > 0
+        if (regime == 1 and c < emaV) or (regime == -1 and c > emaV)
+            regime := 0
+bool longCond = anchorOk and regime == 1 and (adxLong <= 0 or adxV >= adxLong) and not na(donHi) and c > donHi
+bool shortCond = anchorOk and not longOnly and regime == -1 and (adxShort <= 0 or adxV >= adxShort) and not na(donLo) and c < donLo
+bool longSig = longCond and sessBar
+bool shortSig = shortCond and sessBar
+
+// ------------------------------------------------------------------------------------------------ the simulated history behind the dashboard (1-hour bars)
+var int pSide = 0
+var float pEntry = na
+var float pStop = na
+var float pTp = na
+var float pBest = na
+var float pFrac = na
+var int pRolls = 0
+var int pBar = -1
+var float eq = 1.0
+var float eqPeak = 1.0
+var float maxDD = 0.0
+var float eqLast = 1.0
+var int nTr = 0
+var int nWin = 0
+var int nLong = 0
+var int nShort = 0
+var float gWin = 0.0
+var float gLoss = 0.0
+var float sumLong = 0.0
+var float sumShort = 0.0
+var int firstTime = na
+var int curYear = -1
+var float yStartEq = 1.0
+var int labPrev = -1
+var int[] yrList = array.new_int()
+var float[] yrRet = array.new_float()
+var int[] lgTime = array.new_int()
+var int[] lgSide = array.new_int()
+var float[] lgRet = array.new_float()
+
+if na(firstTime)
+    firstTime := time
+int yr = year(time, NY)
+if curYear == -1
+    curYear := yr
+if yr != curYear
+    array.push(yrList, curYear)
+    array.push(yrRet, eqLast / yStartEq - 1.0)
+    yStartEq := eqLast
+    curYear := yr
+int lab = dayofmonth(time - 18 * 3600000, NY)
+if pSide != 0 and labPrev != -1 and lab != labPrev
+    pRolls += 1
+labPrev := lab
+
+if pSide != 0 and bar_index > pBar
+    float xPx = na
+    if pSide > 0
+        if low <= pStop
+            xPx := math.min(pStop, open)
+    else
+        if high >= pStop
+            xPx := math.max(pStop, open)
+        else if not na(pTp) and low <= pTp
+            xPx := math.min(pTp, open)
+    if not na(xPx)
+        float gross = pFrac * pSide * (xPx / pEntry - 1.0)
+        float cost = pFrac * costBp / 10000.0
+        float swp = -pRolls * 1.4 * pFrac * (pSide > 0 ? swapL : swapS) / 100.0
+        float r = gross - cost - swp
+        eq := eq * (1.0 + r)
+        nTr += 1
+        if r > 0
+            nWin += 1
+            gWin += r
+        else
+            gLoss += -r
+        if pSide > 0
+            nLong += 1
+            sumLong += r
+        else
+            nShort += 1
+            sumShort += r
+        array.push(lgTime, time)
+        array.push(lgSide, pSide)
+        array.push(lgRet, r)
+        if array.size(lgTime) > 5
+            array.shift(lgTime)
+            array.shift(lgSide)
+            array.shift(lgRet)
+        pSide := 0
+
+if pSide != 0 and anchorOk
+    pBest := pSide > 0 ? math.max(pBest, c) : math.min(pBest, c)
+    if pSide > 0
+        float trl = pBest - trailL * atr14
+        if pStop < trl and trl < c
+            pStop := trl
+    else
+        float trs = pBest + trailS * atr14
+        if c < trs and trs < pStop
+            pStop := trs
+else if pSide == 0 and (longSig or shortSig)
+    pSide := longSig ? 1 : -1
+    pEntry := c
+    pStop := longSig ? c - atrStopL * atr14 : c + stopS * atr14
+    pTp := (shortSig and tpS > 0) ? c - tpS * atr14 : na
+    float dist = math.abs(c - pStop)
+    pFrac := dist > 0 ? math.min(riskPct / 100.0 * c / dist, maxLev) : 0.0
+    pBest := c
+    pBar := bar_index
+    pRolls := 0
+
+float eqM = pSide != 0 ? eq * (1.0 + pSide * pFrac * (c / pEntry - 1.0)) : eq
+eqPeak := math.max(eqPeak, eqM)
+maxDD := math.min(maxDD, eqM / eqPeak - 1.0)
+eqLast := eqM
+
+// ------------------------------------------------------------------------------------------------ plots
+plot(anchorOk ? stLine : na, "4h SuperTrend", color=stDir == 1 ? color.new(color.green, 30) : color.new(color.red, 30), linewidth=1, style=plot.style_stepline)
+plot(na(donHi) ? na : donHi, "Donchian high (prior 85)", color=color.new(color.teal, 40), linewidth=1)
+plot(na(donLo) ? na : donLo, "Donchian low (prior 85)", color=color.new(color.orange, 40), linewidth=1)
+plotshape(longSig and barstate.isconfirmed, "Long signal", shape.triangleup, location.belowbar, color.green, size=size.small)
+plotshape(shortSig and barstate.isconfirmed, "Short signal", shape.triangledown, location.abovebar, color.red, size=size.small)
+
+// ------------------------------------------------------------------------------------------------ projections and dashboard on the last bar
+var line[] pl = array.new_line()
+var label[] plb = array.new_label()
+var table dash = table.new(dashPos == "Top left" ? position.top_left : dashPos == "Middle left" ? position.middle_left : dashPos == "Top right" ? position.top_right : dashPos == "Middle right" ? position.middle_right : position.bottom_right, 3, 28, bgcolor=color.new(color.black, 25), border_width=1, border_color=color.new(color.gray, 60))
+var table state = table.new(position.bottom_left, 2, 12, bgcolor=color.new(color.black, 25), border_width=1, border_color=color.new(color.gray, 60))
+
+if barstate.islast
+    for ln in pl
+        line.delete(ln)
+    array.clear(pl)
+    for lb in plb
+        label.delete(lb)
+    array.clear(plb)
+    float floorNow = math.max(math.max(hwmDay, 100000.0) - 10000.0, dayStartBal - 3000.0)
+    float room = equity0 - floorNow
+    float effRisk = room < MIN_ROOM ? 0.0 : math.min(riskPct / 100.0, ROOM_FACTOR * room / equity0)
+    bool tf1h = timeframe.period == "60"
+    if anchorOk
+        float atr4 = atr14
+        // LONG projection: trigger = close above the Donchian high (entry assumed at the level, or at the close if it is already above)
+        float eL = (not na(donHi)) ? math.max(donHi, c) : c
+        float sL = eL - atrStopL * atr4
+        float lotsL = sizeLots(eL, sL, effRisk)
+        float riskL = lotsL * contractOz * math.abs(eL - sL)
+        string stL = longCond ? (sessBar ? "CONDITIONS MET - confirms at the hourly close" : "conditions met but outside the session") : (regime == 1 ? "regime OK, waiting for a close above " + fmt(donHi) : (regime == 0 ? "no regime (price vs SuperTrend/EMA disagree)" : "bear regime: no long"))
+        color colL = longCond ? color.lime : color.new(color.teal, 20)
+        array.push(pl, line.new(bar_index, eL, bar_index + 12, eL, color=colL, style=line.style_dashed, width=2))
+        array.push(pl, line.new(bar_index, sL, bar_index + 12, sL, color=color.red, style=line.style_dashed, width=1))
+        array.push(plb, label.new(bar_index, eL, "LONG " + str.tostring(lotsL, "0.00") + " lots\nentry ~" + fmt(eL) + "  SL " + fmt(sL) + "\nrisk $" + str.tostring(riskL, "#,###") + " (" + pct(effRisk) + ")  no TP, trail " + str.tostring(trailL, "0.0") + " ATR\n" + stL, style=label.style_label_right, color=color.new(colL, 70), textcolor=color.white, size=size.small))
+        // SHORT projection
+        if not longOnly
+            float eS = (not na(donLo)) ? math.min(donLo, c) : c
+            float sS = eS + stopS * atr4
+            float tS = tpS > 0 ? eS - tpS * atr4 : na
+            float lotsS = sizeLots(eS, sS, effRisk)
+            float riskS = lotsS * contractOz * math.abs(eS - sS)
+            string stS = shortCond ? (sessBar ? "CONDITIONS MET - confirms at the hourly close" : "conditions met but outside the session") : (regime == -1 ? "regime OK, waiting for a close below " + fmt(donLo) : (regime == 0 ? "no regime (price vs SuperTrend/EMA disagree)" : "bull regime: no short"))
+            color colS = shortCond ? color.fuchsia : color.new(color.orange, 20)
+            array.push(pl, line.new(bar_index, eS, bar_index + 12, eS, color=colS, style=line.style_dashed, width=2))
+            array.push(pl, line.new(bar_index, sS, bar_index + 12, sS, color=color.red, style=line.style_dashed, width=1))
+            if not na(tS)
+                array.push(pl, line.new(bar_index, tS, bar_index + 12, tS, color=color.green, style=line.style_dashed, width=1))
+            array.push(plb, label.new(bar_index, eS, "SHORT " + str.tostring(lotsS, "0.00") + " lots\nentry ~" + fmt(eS) + "  SL " + fmt(sS) + (na(tS) ? "" : "  TP " + fmt(tS)) + "\nrisk $" + str.tostring(riskS, "#,###") + " (" + pct(effRisk) + ")  trail " + str.tostring(trailS, "0.0") + " ATR\n" + stS, style=label.style_label_right, color=color.new(colS, 70), textcolor=color.white, size=size.small))
+    // ---- state panel
+    table.cell(state, 0, 0, "GOLD MASTER - state", text_color=color.white, bgcolor=color.new(color.blue, 40), text_size=size.small)
+    table.cell(state, 1, 0, tf1h ? "1h chart OK" : "SET THE CHART TO 1 HOUR", text_color=tf1h ? color.lime : color.red, text_size=size.small)
+    table.cell(state, 0, 1, "Regime", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 1, not anchorOk ? "warming up (" + str.tostring(nB) + "/31 4h candles)" : (regime == 1 ? "BULL (long side)" : regime == -1 ? "BEAR (short side)" : "NONE"), text_color=regime == 1 ? color.lime : regime == -1 ? color.red : color.silver, text_size=size.small)
+    table.cell(state, 0, 2, "4h ADX / need", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 2, anchorOk ? str.tostring(adxV, "0.0") + "  (long " + str.tostring(adxLong) + " / short " + str.tostring(adxShort) + ")" : "-", text_color=color.white, text_size=size.small)
+    table.cell(state, 0, 3, "4h ATR", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 3, anchorOk ? "$" + str.tostring(atr14, "0.00") : "-", text_color=color.white, text_size=size.small)
+    table.cell(state, 0, 4, "Donchian hi / lo", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 4, (na(donHi) ? "-" : fmt(donHi)) + " / " + (na(donLo) ? "-" : fmt(donLo)), text_color=color.white, text_size=size.small)
+    table.cell(state, 0, 5, "Session", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 5, sessBar ? "open (entries allowed)" : "closed", text_color=sessBar ? color.lime : color.silver, text_size=size.small)
+    table.cell(state, 0, 6, "MT5 broker floor / room", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 6, "$" + str.tostring(floorNow, "#,###") + " / $" + str.tostring(room, "#,###"), text_color=room < MIN_ROOM ? color.red : color.white, text_size=size.small)
+    table.cell(state, 0, 7, "Risk after governor", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 7, effRisk <= 0 ? "NO ENTRY (room < $1,500)" : pct(effRisk) + " = $" + str.tostring(effRisk * equity0, "#,###"), text_color=effRisk <= 0 ? color.red : color.white, text_size=size.small)
+    table.cell(state, 0, 8, "Simulated position", text_color=color.silver, text_size=size.small)
+    table.cell(state, 1, 8, pSide == 0 ? "flat" : (pSide > 0 ? "LONG from " : "SHORT from ") + fmt(pEntry) + "  stop " + fmt(pStop), text_color=pSide == 0 ? color.silver : color.yellow, text_size=size.small)
+    // ---- past-performance dashboard
+    if showTable
+        float pf = gLoss > 0 ? gWin / gLoss : na
+        float totalRet = eqM - 1.0
+        float yrs = (time - firstTime) / (365.25 * 24 * 3600 * 1000.0)
+        float cagr = yrs > 0.25 and eqM > 0 ? math.pow(eqM, 1.0 / yrs) - 1.0 : na
+        table.cell(dash, 0, 0, "GOLD MASTER - past performance (simulated, " + str.tostring(riskPct, "0.0") + "% risk)", text_color=color.white, bgcolor=color.new(color.blue, 40), text_size=size.small)
+        table.merge_cells(dash, 0, 0, 2, 0)
+        table.cell(dash, 0, 1, str.format_time(firstTime, "yyyy-MM-dd", NY) + " to " + str.format_time(time, "yyyy-MM-dd", NY) + "  (" + str.tostring(bar_index + 1) + " bars)", text_color=color.silver, text_size=size.tiny)
+        table.merge_cells(dash, 0, 1, 2, 1)
+        string[] k = array.from("Trades", "Win rate", "Profit factor", "Total return", "CAGR", "Max drawdown", "Avg trade", "Long", "Short")
+        string[] v = array.from(str.tostring(nTr), nTr > 0 ? pct(nWin / nTr) : "-", na(pf) ? "-" : str.tostring(pf, "0.00"), pct(totalRet), na(cagr) ? "-" : pct(cagr), pct(maxDD), nTr > 0 ? pct((eq - 1.0) / nTr) : "-", str.tostring(nLong) + " trades  " + pct(sumLong), str.tostring(nShort) + " trades  " + pct(sumShort))
+        for i = 0 to 8
+            table.cell(dash, 0, 2 + i, array.get(k, i), text_color=color.silver, text_size=size.small)
+            table.cell(dash, 1, 2 + i, array.get(v, i), text_color=color.white, text_size=size.small)
+            table.merge_cells(dash, 1, 2 + i, 2, 2 + i)
+        int r0 = 11
+        table.cell(dash, 0, r0, "By year", text_color=color.white, bgcolor=color.new(color.gray, 60), text_size=size.small)
+        table.merge_cells(dash, 0, r0, 2, r0)
+        int ny = array.size(yrList)
+        int shown = math.min(ny, 6)
+        for i = 0 to 5
+            if i < shown
+                int idx = ny - shown + i
+                float yv = array.get(yrRet, idx)
+                table.cell(dash, 0, r0 + 1 + i, str.tostring(array.get(yrList, idx)), text_color=color.silver, text_size=size.small)
+                table.cell(dash, 1, r0 + 1 + i, pct(yv), text_color=yv >= 0 ? color.lime : color.red, text_size=size.small)
+                table.merge_cells(dash, 1, r0 + 1 + i, 2, r0 + 1 + i)
+            else
+                table.cell(dash, 0, r0 + 1 + i, "", text_size=size.tiny)
+                table.cell(dash, 1, r0 + 1 + i, "", text_size=size.tiny)
+        table.cell(dash, 0, r0 + 7, str.tostring(curYear) + " (year to date)", text_color=color.silver, text_size=size.small)
+        float ytd = eqM / yStartEq - 1.0
+        table.cell(dash, 1, r0 + 7, pct(ytd), text_color=ytd >= 0 ? color.lime : color.red, text_size=size.small)
+        table.merge_cells(dash, 1, r0 + 7, 2, r0 + 7)
+        table.cell(dash, 0, r0 + 8, "Last trades", text_color=color.white, bgcolor=color.new(color.gray, 60), text_size=size.small)
+        table.merge_cells(dash, 0, r0 + 8, 2, r0 + 8)
+        int nl = array.size(lgTime)
+        for i = 0 to 4
+            if i < nl
+                int j = nl - 1 - i
+                float lr = array.get(lgRet, j)
+                table.cell(dash, 0, r0 + 9 + i, str.format_time(array.get(lgTime, j), "yyyy-MM-dd", NY), text_color=color.silver, text_size=size.small)
+                table.cell(dash, 1, r0 + 9 + i, array.get(lgSide, j) > 0 ? "LONG" : "SHORT", text_color=array.get(lgSide, j) > 0 ? color.lime : color.fuchsia, text_size=size.small)
+                table.cell(dash, 2, r0 + 9 + i, pct(lr), text_color=lr >= 0 ? color.lime : color.red, text_size=size.small)
+            else
+                table.cell(dash, 0, r0 + 9 + i, "", text_size=size.tiny)
+                table.cell(dash, 1, r0 + 9 + i, "", text_size=size.tiny)
+                table.cell(dash, 2, r0 + 9 + i, "", text_size=size.tiny)
+        table.cell(dash, 0, r0 + 14, "Simulation on loaded 1h bars, compounding; stops checked on 1h highs/lows. Not a forecast.", text_color=color.gray, text_size=size.tiny)
+        table.merge_cells(dash, 0, r0 + 14, 2, r0 + 14)
