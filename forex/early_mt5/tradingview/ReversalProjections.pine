@@ -13,15 +13,16 @@ riskPct     = input.float(1.0, "Risk per trade (% of equity)", minval=0.1, maxva
 contractIn  = input.float(0.0, "Contract size, units per lot (0 = auto: forex 100,000, XAUUSD 100)", minval=0.0, group=G0)
 lotStep     = input.float(0.01, "Lot step", minval=0.001, step=0.01, group=G0)
 var string G1 = "Signal and distances"
+freqMode = input.string("Strict (as built)", "Signal frequency (Round 314: more signals = a proportionally bigger loss per day)", options=["Strict (as built)", "More", "Much more"], tooltip="Strict: ATR spike filter + 3-bar divergence + MACD histogram direction (about 0.5 setups per pair per day on 5 minutes). More: any ATR spike (about 1.2). Much more: also no MACD-direction test and a 2-bar divergence (about 2.7). Measured on 6 FX pairs 2021-2026: net R per trade stays about -0.08R at every level, so the loss per day grows with the frequency.", group=G1)
 rsiPeriod = input.int(14, "RSI Period", minval=1, group=G1)
 macdShort = input.int(12, "MACD Short Length", minval=1, group=G1)
 macdLong = input.int(26, "MACD Long Length", minval=1, group=G1)
 macdSignal = input.int(9, "MACD Signal Length", minval=1, group=G1)
 atrPeriod = input.int(14, "ATR Period", minval=1, group=G1)
-volatilityThreshold = input.float(1.0, "ATR Spike Threshold", minval=0.1, group=G1)
+volatilityThreshold = input.float(1.0, "ATR Spike Threshold (used by Strict)", minval=0.1, group=G1)
 stopMult = input.float(4.0, "Stop distance (x ATR; the original was 1.0)", minval=0.5, step=0.5, group=G1)
 rrRatio = input.float(3.0, "Risk-Reward Ratio (target = this x the stop; the original was 2.0)", minval=0.5, group=G1)
-divergenceLookback = input.int(3, "Divergence Lookback", minval=1, group=G1)
+divergenceLookback = input.int(3, "Divergence Lookback (Strict and More)", minval=1, group=G1)
 var string G2 = "Look"
 zoneBars    = input.int(14, "Projection width (bars)", minval=3, group=G2)
 rewardCol   = input.color(#089981, "Reward zone", group=G2)
@@ -38,22 +39,25 @@ rsi = ta.rsi(close, rsiPeriod)
 atr = ta.atr(atrPeriod)
 macdHistChange = ta.change(macdHist)
 
-atrSpike = (high - low) > atr * volatilityThreshold
+effSpike = freqMode == "Strict (as built)" ? volatilityThreshold : 0.0
+effLook = freqMode == "Much more" ? 2 : divergenceLookback
+useMacdDir = freqMode != "Much more"
+atrSpike = (high - low) > atr * effSpike
 
-lowestClose = ta.lowest(close, divergenceLookback)
-lowestClosePrev = ta.lowest(close[1], divergenceLookback)
-lowestRsi = ta.lowest(rsi, divergenceLookback)
-lowestRsiPrev = ta.lowest(rsi[1], divergenceLookback)
-highestClose = ta.highest(close, divergenceLookback)
-highestClosePrev = ta.highest(close[1], divergenceLookback)
-highestRsi = ta.highest(rsi, divergenceLookback)
-highestRsiPrev = ta.highest(rsi[1], divergenceLookback)
+lowestClose = ta.lowest(close, effLook)
+lowestClosePrev = ta.lowest(close[1], effLook)
+lowestRsi = ta.lowest(rsi, effLook)
+lowestRsiPrev = ta.lowest(rsi[1], effLook)
+highestClose = ta.highest(close, effLook)
+highestClosePrev = ta.highest(close[1], effLook)
+highestRsi = ta.highest(rsi, effLook)
+highestRsiPrev = ta.highest(rsi[1], effLook)
 
 bullishDivergence = lowestClose < lowestClosePrev and lowestRsi > lowestRsiPrev and macdHistChange > -0.01
 bearishDivergence = highestClose > highestClosePrev and highestRsi < highestRsiPrev and macdHistChange < 0.01
 
-origLong = bullishDivergence and macdHist > macdHist[1] and atrSpike
-origShort = bearishDivergence and macdHist < macdHist[1] and atrSpike
+origLong = bullishDivergence and (not useMacdDir or macdHist > macdHist[1]) and atrSpike
+origShort = bearishDivergence and (not useMacdDir or macdHist < macdHist[1]) and atrSpike
 tradeLong = invert ? origShort : origLong
 tradeShort = invert ? origLong : origShort
 
@@ -73,10 +77,8 @@ if tradeLong or tradeShort
     float tp = tradeLong ? close + stopDist * rrRatio : close - stopDist * rrRatio
     float sl = tradeLong ? close - stopDist : close + stopDist
     int x2 = bar_index + zoneBars
-    box.new(bar_index, math.max(close, tp), x2, math.min(close, tp), border_color=na, bgcolor=color.new(rewardCol, 82))
-    box.new(bar_index, math.max(close, sl), x2, math.min(close, sl), border_color=na, bgcolor=color.new(riskCol, 82))
-    line.new(bar_index, tp, x2, tp, color=color.new(rewardCol, 10), width=1)
-    line.new(bar_index, sl, x2, sl, color=color.new(riskCol, 10), width=1)
+    box.new(bar_index, math.max(close, tp), x2, math.min(close, tp), border_color=color.new(rewardCol, 25), border_width=1, bgcolor=color.new(rewardCol, 82))
+    box.new(bar_index, math.max(close, sl), x2, math.min(close, sl), border_color=color.new(riskCol, 25), border_width=1, bgcolor=color.new(riskCol, 82))
     line.new(bar_index, close, x2, close, color=color.new(color.gray, 25), width=1, style=line.style_dashed)
     label.new(bar_index + math.round(zoneBars / 2.0), math.max(tp, sl), str.tostring(lots, "0.00") + " lots", style=label.style_label_down, color=color.new(color.black, 100), textcolor=color.new(color.white, 5), size=size.small)
 
@@ -156,7 +158,7 @@ if barstate.islast and showTable
     float pf = sim.gLoss > 0 ? sim.gWin / sim.gLoss : na
     float avgR = sim.n > 0 ? sim.rSum / sim.n : 0.0
     float ret = sim.eq - 1.0
-    string ver = invert ? "INVERTED" : "ORIGINAL"
+    string ver = (invert ? "INVERTED" : "ORIGINAL") + "  /  " + freqMode + " signals"
     table.cell(dash, 0, 0, "REVERSAL DETECTOR  -  " + ver, text_color=color.white, bgcolor=color.new(#2962FF, 35), text_size=size.small)
     table.merge_cells(dash, 0, 0, 1, 0)
     table.cell(dash, 0, 1, "Simulated on the " + str.tostring(bar_index + 1) + " loaded " + timeframe.period + "m bars since " + str.format_time(firstTime, "yyyy-MM-dd", "America/New_York") + ", " + str.tostring(riskPct, "0.0") + "% risk a trade", text_color=color.silver, text_size=size.tiny)
