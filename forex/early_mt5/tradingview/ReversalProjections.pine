@@ -1,0 +1,175 @@
+//@version=6
+// Reversal Signal Detector -- projections with lot size + one-version dashboard.
+// Signal: the trader's original (RSI divergence + rising/falling MACD histogram + ATR spike); the trade direction is the original's unless "Invert" is ticked.
+// Each setup is drawn like TradingView's position tool: a green reward zone and a red risk zone from the entry (the signal bar's close), with ONLY the lot size above it, sized so that a stop-out risks 1% of the account.
+// Dashboard (corner): the stats of the version on the chart, simulated on the loaded bars at 1% risk per trade. Rounds 311-313 (MT5 broker bid/ask 2021-2026): no setting of this signal was profitable after costs.
+indicator("Reversal Signal Detector - projections + stats", shorttitle="RevProj", overlay=true, max_lines_count=500, max_labels_count=500, max_boxes_count=500)
+
+// ------------------------------------------------------------------------------------------------ inputs
+var string G0 = "Version and account"
+invert      = input.bool(false, "Invert the signals (trade the opposite way)", group=G0)
+equity      = input.float(100000.0, "Account equity (USD)", minval=1000.0, group=G0)
+riskPct     = input.float(1.0, "Risk per trade (% of equity)", minval=0.1, maxval=5.0, step=0.1, group=G0)
+contractIn  = input.float(0.0, "Contract size, units per lot (0 = auto: forex 100,000, XAUUSD 100)", minval=0.0, group=G0)
+lotStep     = input.float(0.01, "Lot step", minval=0.001, step=0.01, group=G0)
+var string G1 = "Signal and distances"
+rsiPeriod = input.int(14, "RSI Period", minval=1, group=G1)
+macdShort = input.int(12, "MACD Short Length", minval=1, group=G1)
+macdLong = input.int(26, "MACD Long Length", minval=1, group=G1)
+macdSignal = input.int(9, "MACD Signal Length", minval=1, group=G1)
+atrPeriod = input.int(14, "ATR Period", minval=1, group=G1)
+volatilityThreshold = input.float(1.0, "ATR Spike Threshold", minval=0.1, group=G1)
+stopMult = input.float(4.0, "Stop distance (x ATR; the original was 1.0)", minval=0.5, step=0.5, group=G1)
+rrRatio = input.float(3.0, "Risk-Reward Ratio (target = this x the stop; the original was 2.0)", minval=0.5, group=G1)
+divergenceLookback = input.int(3, "Divergence Lookback", minval=1, group=G1)
+var string G2 = "Look"
+zoneBars    = input.int(14, "Projection width (bars)", minval=3, group=G2)
+rewardCol   = input.color(#089981, "Reward zone", group=G2)
+riskCol     = input.color(#F23645, "Risk zone", group=G2)
+var string G3 = "Dashboard"
+showTable   = input.bool(true, "Show the dashboard", group=G3)
+dashPos     = input.string("Top right", "Dashboard corner", options=["Top right", "Top left", "Bottom right", "Bottom left"], group=G3)
+spreadIn    = input.float(0.0, "Cost per round trip in PRICE units (0 = auto: forex 0.9 pip, XAUUSD 0.21)", minval=0.0, step=0.00001, group=G3)
+maxHold     = input.int(120, "Max bars in a simulated trade (then exit at the close)", minval=1, group=G3)
+
+// ------------------------------------------------------------------------------------------------ the original signal (unchanged)
+rsi = ta.rsi(close, rsiPeriod)
+[macdLine, signalLine, macdHist] = ta.macd(close, macdShort, macdLong, macdSignal)
+atr = ta.atr(atrPeriod)
+macdHistChange = ta.change(macdHist)
+
+atrSpike = (high - low) > atr * volatilityThreshold
+
+lowestClose = ta.lowest(close, divergenceLookback)
+lowestClosePrev = ta.lowest(close[1], divergenceLookback)
+lowestRsi = ta.lowest(rsi, divergenceLookback)
+lowestRsiPrev = ta.lowest(rsi[1], divergenceLookback)
+highestClose = ta.highest(close, divergenceLookback)
+highestClosePrev = ta.highest(close[1], divergenceLookback)
+highestRsi = ta.highest(rsi, divergenceLookback)
+highestRsiPrev = ta.highest(rsi[1], divergenceLookback)
+
+bullishDivergence = lowestClose < lowestClosePrev and lowestRsi > lowestRsiPrev and macdHistChange > -0.01
+bearishDivergence = highestClose > highestClosePrev and highestRsi < highestRsiPrev and macdHistChange < 0.01
+
+origLong = bullishDivergence and macdHist > macdHist[1] and atrSpike
+origShort = bearishDivergence and macdHist < macdHist[1] and atrSpike
+tradeLong = invert ? origShort : origLong
+tradeShort = invert ? origLong : origShort
+
+// ------------------------------------------------------------------------------------------------ distances, cost and lot size (1% of the account at risk if the stop is hit)
+stopDist = atr * stopMult
+float pip = syminfo.mintick * 10
+float autoCost = syminfo.type == "forex" ? 0.9 * pip : (str.contains(syminfo.ticker, "XAU") ? 0.21 : 0.0)
+float costPx = spreadIn > 0 ? spreadIn : autoCost
+float contract = contractIn > 0 ? contractIn : (syminfo.type == "forex" ? 100000.0 : (str.contains(syminfo.ticker, "XAU") ? 100.0 : 1.0))
+float usdPerUnit = syminfo.currency == "USD" ? 1.0 : (syminfo.basecurrency == "USD" ? 1.0 / close : 1.0)
+float riskUsd = equity * riskPct / 100.0
+float lotsRaw = stopDist > 0 ? riskUsd / (stopDist * contract * usdPerUnit) : 0.0
+float lots = math.floor(lotsRaw / lotStep + 0.000000001) * lotStep
+
+// ------------------------------------------------------------------------------------------------ the projection: reward zone, risk zone, entry line, lot size above the setup
+if tradeLong or tradeShort
+    float tp = tradeLong ? close + stopDist * rrRatio : close - stopDist * rrRatio
+    float sl = tradeLong ? close - stopDist : close + stopDist
+    int x2 = bar_index + zoneBars
+    box.new(bar_index, math.max(close, tp), x2, math.min(close, tp), border_color=na, bgcolor=color.new(rewardCol, 82))
+    box.new(bar_index, math.max(close, sl), x2, math.min(close, sl), border_color=na, bgcolor=color.new(riskCol, 82))
+    line.new(bar_index, tp, x2, tp, color=color.new(rewardCol, 10), width=1)
+    line.new(bar_index, sl, x2, sl, color=color.new(riskCol, 10), width=1)
+    line.new(bar_index, close, x2, close, color=color.new(color.gray, 25), width=1, style=line.style_dashed)
+    label.new(bar_index + math.round(zoneBars / 2.0), math.max(tp, sl), str.tostring(lots, "0.00") + " lots", style=label.style_label_down, color=color.new(color.black, 100), textcolor=color.new(color.white, 5), size=size.small)
+
+// ------------------------------------------------------------------------------------------------ simulation of the version on the chart (one position at a time, stop wins a tie, entry at the signal bar's close)
+type Sim
+    int side = 0
+    float entry = na
+    float stop = na
+    float tp = na
+    float dist = na
+    int barIn = 0
+    float eq = 1.0
+    float peak = 1.0
+    float maxDD = 0.0
+    int n = 0
+    int wins = 0
+    float gWin = 0.0
+    float gLoss = 0.0
+    float rSum = 0.0
+    float costSum = 0.0
+
+method step(Sim s, int sig, float distV, float rr, float riskP, float spr, int maxH) =>
+    bool closedNow = false
+    if s.side != 0
+        float xPx = na
+        if s.side > 0
+            if low <= s.stop
+                xPx := s.stop
+            else if high >= s.tp
+                xPx := s.tp
+        else
+            if high >= s.stop
+                xPx := s.stop
+            else if low <= s.tp
+                xPx := s.tp
+        if na(xPx) and bar_index - s.barIn >= maxH
+            xPx := close
+        if not na(xPx)
+            float cst = spr / s.dist
+            float r = s.side * (xPx - s.entry) / s.dist - cst
+            s.eq := s.eq * (1.0 + riskP / 100.0 * r)
+            s.n := s.n + 1
+            s.rSum := s.rSum + r
+            s.costSum := s.costSum + cst
+            if r > 0
+                s.wins := s.wins + 1
+                s.gWin := s.gWin + r
+            else
+                s.gLoss := s.gLoss - r
+            s.side := 0
+            closedNow := true
+    if s.side == 0 and not closedNow and sig != 0 and not na(distV) and distV > 0
+        s.side := sig
+        s.entry := close
+        s.dist := distV
+        s.stop := sig > 0 ? close - distV : close + distV
+        s.tp := sig > 0 ? close + distV * rr : close - distV * rr
+        s.barIn := bar_index
+    float eqM = s.side != 0 ? s.eq * (1.0 + riskP / 100.0 * s.side * (close - s.entry) / s.dist) : s.eq
+    s.peak := math.max(s.peak, eqM)
+    s.maxDD := math.min(s.maxDD, eqM / s.peak - 1.0)
+
+var Sim sim = Sim.new()
+var int firstTime = na
+if na(firstTime)
+    firstTime := time
+int tradeSig = tradeLong ? 1 : tradeShort ? -1 : 0
+sim.step(tradeSig, stopDist, rrRatio, riskPct, costPx, maxHold)
+
+// ------------------------------------------------------------------------------------------------ dashboard: the version on the chart only, in a corner
+pct(float x) => str.tostring(x * 100.0, "0.0") + "%"
+rr2(float x) => (x >= 0 ? "+" : "") + str.tostring(x, "0.00") + "R"
+
+var table dash = table.new(dashPos == "Top left" ? position.top_left : dashPos == "Bottom right" ? position.bottom_right : dashPos == "Bottom left" ? position.bottom_left : position.top_right, 2, 11, bgcolor=color.new(#0B0E14, 15), border_width=1, border_color=color.new(color.gray, 70), frame_color=color.new(color.gray, 55), frame_width=1)
+
+if barstate.islast and showTable
+    float pf = sim.gLoss > 0 ? sim.gWin / sim.gLoss : na
+    float avgR = sim.n > 0 ? sim.rSum / sim.n : 0.0
+    float ret = sim.eq - 1.0
+    string ver = invert ? "INVERTED" : "ORIGINAL"
+    table.cell(dash, 0, 0, "REVERSAL DETECTOR  -  " + ver, text_color=color.white, bgcolor=color.new(#2962FF, 35), text_size=size.small)
+    table.merge_cells(dash, 0, 0, 1, 0)
+    table.cell(dash, 0, 1, "Simulated on the " + str.tostring(bar_index + 1) + " loaded " + timeframe.period + "m bars since " + str.format_time(firstTime, "yyyy-MM-dd", "America/New_York") + ", " + str.tostring(riskPct, "0.0") + "% risk a trade", text_color=color.silver, text_size=size.tiny)
+    table.merge_cells(dash, 0, 1, 1, 1)
+    string[] k = array.from("Trades", "Win rate", "Avg R (net of cost)", "Profit factor", "Return", "Max drawdown", "Cost per trade", "Lot size now")
+    string[] v = array.from(str.tostring(sim.n), sim.n > 0 ? pct(sim.wins / sim.n) : "-", sim.n > 0 ? rr2(avgR) : "-", na(pf) ? "-" : str.tostring(pf, "0.00"), pct(ret), pct(sim.maxDD), sim.n > 0 ? str.tostring(sim.costSum / sim.n, "0.00") + "R" : "-", str.tostring(lots, "0.00") + " lots  ($" + str.tostring(riskUsd, "#,###") + " risk)")
+    for i = 0 to 7
+        color col = color.white
+        if i == 2 and sim.n > 0
+            col := avgR >= 0 ? #4CAF50 : #F23645
+        if i == 4
+            col := ret >= 0 ? #4CAF50 : #F23645
+        table.cell(dash, 0, 2 + i, array.get(k, i), text_color=color.silver, text_size=size.small)
+        table.cell(dash, 1, 2 + i, array.get(v, i), text_color=col, text_size=size.small)
+    table.cell(dash, 0, 10, "Loaded bars only: a small sample, not a forecast.", text_color=color.gray, text_size=size.tiny)
+    table.merge_cells(dash, 0, 10, 1, 10)

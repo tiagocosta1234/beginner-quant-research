@@ -1,13 +1,14 @@
 //@version=6
-// Reversal Signal Detector -- INVERTED, with a past-performance dashboard.
-// The signal is the trader's original (RSI divergence + rising/falling MACD histogram + ATR spike); only the trade direction is flipped by default: the bar the original called "Long" is now a SHORT
-// (stop = close + ATR, target = close - rrRatio x ATR) and the bar it called "Short" is now a LONG. Untick "Invert" to get the original back. Two simulations run side by side on the loaded bars
-// (inverted and original) so the dashboard shows both. Round 311 (MT5 XAUUSD 1-minute bid/ask 2021-2026, ledger 1996-1999): original -0.25R a trade, inverted -0.32R, spread about 0.34R of a 1 ATR stop.
+// Reversal Signal Detector -- original direction by default, wider stops, with a past-performance dashboard.
+// The signal is the trader's original (RSI divergence + rising/falling MACD histogram + ATR spike). "Invert" (off by default) flips the trade. "Stop distance (x ATR)" widens the stop and the target together
+// (stop = x ATR, target = RR x the stop). Costs are charged per trade: auto = MT5-like 0.9 pip on forex (0.3 spread + 0.6 commission), $0.21 on XAUUSD, or type your own in price units.
+// Two simulations run side by side on the loaded bars (original and inverted). Rounds 311-313 (MT5 broker bid/ask 2021-2026, ledger 1996-2006): no setting of this signal was profitable after costs;
+// before costs it has a tiny reversal tendency at 1 minute (gold +0.09R, FX +0.04R) and none at 5-15 minutes. A wider stop only shrinks the cost, it does not create an edge.
 indicator("Reversal Signal Detector - inverted + stats", shorttitle="RevInv", overlay=true, max_lines_count=500, max_labels_count=500)
 
 // ------------------------------------------------------------------------------------------------ inputs
 var string G0 = "Direction"
-invert      = input.bool(true, "Invert the signals (trade the opposite way)", group=G0)
+invert      = input.bool(false, "Invert the signals (trade the opposite way)", group=G0)
 var string G1 = "Signal (the original's inputs)"
 rsiPeriod = input.int(14, "RSI Period", minval=1, group=G1)
 macdShort = input.int(12, "MACD Short Length", minval=1, group=G1)
@@ -15,13 +16,14 @@ macdLong = input.int(26, "MACD Long Length", minval=1, group=G1)
 macdSignal = input.int(9, "MACD Signal Length", minval=1, group=G1)
 atrPeriod = input.int(14, "ATR Period", minval=1, group=G1)
 volatilityThreshold = input.float(1.0, "ATR Spike Threshold", minval=0.1, group=G1)
-rrRatio = input.float(2.0, "Risk-Reward Ratio", minval=0.5, group=G1)
+rrRatio = input.float(3.0, "Risk-Reward Ratio (target = this x the stop; the original was 2.0)", minval=0.5, group=G1)
+stopMult = input.float(4.0, "Stop distance (x ATR; the original was 1.0 = more pips when larger)", minval=0.5, step=0.5, group=G1)
 lineLength = input.int(5, "Line Length (Bars)", minval=1, group=G1)
 divergenceLookback = input.int(3, "Divergence Lookback", minval=1, group=G1)
 var string G2 = "Dashboard simulation"
 showTable   = input.bool(true, "Show the past-performance dashboard", group=G2)
 dashPos     = input.string("Middle left", "Dashboard position", options=["Top left", "Middle left", "Top right", "Middle right", "Bottom right"], group=G2)
-spreadUsd   = input.float(0.21, "Spread per round trip (USD per oz; MT5 XAUUSD median 0.21)", minval=0.0, step=0.01, group=G2)
+spreadIn    = input.float(0.0, "Cost per round trip in PRICE units (0 = auto: forex 0.9 pip, XAUUSD 0.21)", minval=0.0, step=0.00001, group=G2)
 riskPct     = input.float(1.0, "Risk per trade (% of equity, for the return and drawdown)", minval=0.1, maxval=5.0, step=0.1, group=G2)
 maxHold     = input.int(120, "Max bars in a trade (then exit at the close)", minval=1, group=G2)
 
@@ -53,10 +55,11 @@ origShort = bearishDivergence and macdHist < macdHist[1] and atrSpike     // wha
 tradeLong = invert ? origShort : origLong
 tradeShort = invert ? origLong : origShort
 
-longSL = close - atr
-longTP = close + atr * rrRatio
-shortSL = close + atr
-shortTP = close - atr * rrRatio
+stopDist = atr * stopMult
+longSL = close - stopDist
+longTP = close + stopDist * rrRatio
+shortSL = close + stopDist
+shortTP = close - stopDist * rrRatio
 
 plotshape(tradeLong, title="Long", location=location.belowbar, color=color.green, style=shape.labelup, text="Long", textcolor=color.white)
 plotshape(tradeShort, title="Short", location=location.abovebar, color=color.red, style=shape.labeldown, text="Short", textcolor=color.white)
@@ -159,8 +162,11 @@ if na(firstTime)
     firstTime := time
 
 int origSig = origLong ? 1 : origShort ? -1 : 0
-simO.step(origSig, atr, rrRatio, riskPct, spreadUsd, maxHold)
-simI.step(-origSig, atr, rrRatio, riskPct, spreadUsd, maxHold)
+float pip = syminfo.mintick * 10
+float autoCost = syminfo.type == "forex" ? 0.9 * pip : (str.contains(syminfo.ticker, "XAU") ? 0.21 : 0.0)
+float costPx = spreadIn > 0 ? spreadIn : autoCost
+simO.step(origSig, stopDist, rrRatio, riskPct, costPx, maxHold)
+simI.step(-origSig, stopDist, rrRatio, riskPct, costPx, maxHold)
 
 // ------------------------------------------------------------------------------------------------ dashboard
 pct(float x) => str.tostring(x * 100.0, "0.0") + "%"
@@ -191,10 +197,11 @@ if barstate.islast and showTable
             float tot = s.n > 0 ? s.rSum / s.n : 0.0
             color col = (i == 2 or i == 4) ? ((i == 2 ? tot : s.eq - 1.0) >= 0 ? color.lime : color.red) : color.white
             table.cell(dash, 1 + c, 3 + i, array.get(v, i), text_color=col, text_size=size.small)
-    table.cell(dash, 0, 12, "Now: ATR " + str.tostring(atr, "0.00") + "  spread " + str.tostring(spreadUsd / atr, "0.00") + "R", text_color=color.silver, text_size=size.small)
+    string unitTxt = syminfo.type == "forex" ? str.tostring(stopDist / pip, "0.0") + " pips" : str.tostring(stopDist, "0.00")
+    table.cell(dash, 0, 12, "Now: stop " + unitTxt + " (" + str.tostring(stopMult, "0.0") + " ATR)  cost " + (stopDist > 0 ? str.tostring(costPx / stopDist, "0.00") : "-") + "R per trade", text_color=color.silver, text_size=size.small)
     table.merge_cells(dash, 0, 12, 2, 12)
     table.cell(dash, 0, 13, "Open position (" + (invert ? "inverted" : "original") + ")", text_color=color.silver, text_size=size.small)
-    table.cell(dash, 1, 13, a.side == 0 ? "flat" : (a.side > 0 ? "LONG from " : "SHORT from ") + str.tostring(a.entry, "0.00") + "  SL " + str.tostring(a.stop, "0.00") + "  TP " + str.tostring(a.tp, "0.00"), text_color=a.side == 0 ? color.silver : color.yellow, text_size=size.small)
+    table.cell(dash, 1, 13, a.side == 0 ? "flat" : (a.side > 0 ? "LONG from " : "SHORT from ") + str.tostring(a.entry, format.mintick) + "  SL " + str.tostring(a.stop, format.mintick) + "  TP " + str.tostring(a.tp, format.mintick), text_color=a.side == 0 ? color.silver : color.yellow, text_size=size.small)
     table.merge_cells(dash, 1, 13, 2, 13)
     table.cell(dash, 0, 14, "Last trades (" + (invert ? "inverted" : "original") + ")", text_color=color.white, bgcolor=color.new(color.gray, 60), text_size=size.small)
     table.merge_cells(dash, 0, 14, 2, 14)
@@ -210,5 +217,5 @@ if barstate.islast and showTable
             table.cell(dash, 0, 15 + i, "", text_size=size.tiny)
             table.cell(dash, 1, 15 + i, "", text_size=size.tiny)
             table.cell(dash, 2, 15 + i, "", text_size=size.tiny)
-    table.cell(dash, 0, 19, "Simulation on the loaded bars: entry at the signal close, stop 1 ATR, target RR x ATR, spread charged per trade, one trade at a time. Not a forecast.", text_color=color.gray, text_size=size.tiny)
+    table.cell(dash, 0, 19, "Simulation on the loaded bars: entry at the signal close, stop = stop x ATR, target = RR x stop, cost charged per trade, one trade at a time. Not a forecast.", text_color=color.gray, text_size=size.tiny)
     table.merge_cells(dash, 0, 19, 2, 19)
