@@ -1,0 +1,50 @@
+{
+ "stage1": {
+  "cells": 2464,
+  "is_pass": 28,
+  "survivors": [
+   {
+    "inst": "USDJPY",
+    "group": "FX",
+    "family": "F1",
+    "variant": "trend",
+    "mode": "long",
+    "H": 1,
+    "is_n": 84,
+    "is_net": 12.672246544237474,
+    "is_P": 0.9635,
+    "val_n": 75,
+    "val_net": 11.945018370622932,
+    "val_P": 0.9595
+   }
+  ]
+ },
+ "results": [
+  {
+   "inst": "USDJPY",
+   "group": "FX",
+   "family": "F1",
+   "variant": "trend",
+   "mode": "long",
+   "H": 1,
+   "is_n": 84,
+   "is_net": 12.672246544237474,
+   "is_P": 0.9635,
+   "val_n": 75,
+   "val_net": 11.945018370622932,
+   "val_P": 0.9595,
+   "OOS": {
+    "n": 59,
+    "net": -2.6226233785558164,
+    "bench": 0.3820037573447499,
+    "excess": -3.0046271359005665,
+    "P": 0.41375,
+    "P_excess": 0.39925
+   },
+   "lead": false,
+   "candidate": false
+  }
+ ],
+ "bar": 0.999993769470405,
+ "leads": 0
+}
