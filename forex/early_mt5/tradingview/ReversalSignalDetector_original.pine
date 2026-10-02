@@ -1,0 +1,75 @@
+//@version=6
+indicator("Reversal Prediction Indicator with 2:1 RR", overlay=true)
+
+// Input parameters
+rsiPeriod = input.int(14, "RSI Period", minval=1)
+macdShort = input.int(12, "MACD Short Length", minval=1)
+macdLong = input.int(26, "MACD Long Length", minval=1)
+macdSignal = input.int(9, "MACD Signal Length", minval=1)
+atrPeriod = input.int(14, "ATR Period", minval=1)
+volatilityThreshold = input.float(1.0, "ATR Spike Threshold", minval=0.1)
+rrRatio = input.float(2.0, "Risk-Reward Ratio", minval=1.0)
+lineLength = input.int(5, "Line Length (Bars)", minval=1)
+
+divergenceLookback = input.int(3, "Divergence Lookback", minval=1)
+
+// Calculate Indicators
+rsi = ta.rsi(close, rsiPeriod)
+[macdLine, signalLine, macdHist] = ta.macd(close, macdShort, macdLong, macdSignal)
+atr = ta.atr(atrPeriod)
+macdHistChange = ta.change(macdHist)
+
+// Price Action
+candleSpread = high - low
+atrSpike = candleSpread > atr * volatilityThreshold
+
+// Precompute Divergences
+lowestClose = ta.lowest(close, divergenceLookback)
+lowestClosePrev = ta.lowest(close[1], divergenceLookback)
+lowestRsi = ta.lowest(rsi, divergenceLookback)
+lowestRsiPrev = ta.lowest(rsi[1], divergenceLookback)
+
+highestClose = ta.highest(close, divergenceLookback)
+highestClosePrev = ta.highest(close[1], divergenceLookback)
+highestRsi = ta.highest(rsi, divergenceLookback)
+highestRsiPrev = ta.highest(rsi[1], divergenceLookback)
+
+// Detect Divergences
+bullishDivergence = lowestClose < lowestClosePrev and lowestRsi > lowestRsiPrev and macdHistChange > -0.01
+bearishDivergence = highestClose > highestClosePrev and highestRsi < highestRsiPrev and macdHistChange < 0.01
+
+// Reversal Conditions
+longCondition = bullishDivergence and macdHist > macdHist[1] and atrSpike
+shortCondition = bearishDivergence and macdHist < macdHist[1] and atrSpike
+
+// Stop Loss & Take Profit Calculation
+longSL = close - atr
+longTP = close + (atr * rrRatio)
+shortSL = close + atr
+shortTP = close - (atr * rrRatio)
+
+// Plot signals
+plotshape(longCondition, title="Bullish Reversal", location=location.belowbar, color=color.green, style=shape.labelup, text="Long")
+plotshape(shortCondition, title="Bearish Reversal", location=location.abovebar, color=color.red, style=shape.labeldown, text="Short")
+
+// Draw SL and TP Lines
+var line longEntryLine = na
+var line longTPLine = na
+var line longSLLine = na
+var line shortEntryLine = na
+var line shortTPLine = na
+var line shortSLLine = na
+
+if longCondition
+    longEntryLine := line.new(bar_index, close, bar_index + lineLength, close, color=color.blue, width=2)
+    longTPLine := line.new(bar_index, longTP, bar_index + lineLength, longTP, color=color.green, width=2)
+    longSLLine := line.new(bar_index, longSL, bar_index + lineLength, longSL, color=color.red, width=2)
+
+if shortCondition
+    shortEntryLine := line.new(bar_index, close, bar_index + lineLength, close, color=color.blue, width=2)
+    shortTPLine := line.new(bar_index, shortTP, bar_index + lineLength, shortTP, color=color.green, width=2)
+    shortSLLine := line.new(bar_index, shortSL, bar_index + lineLength, shortSL, color=color.red, width=2)
+
+// Alerts
+alertcondition(longCondition, title="Bullish Reversal Alert", message="Potential Bullish Reversal Detected!")
+alertcondition(shortCondition, title="Bearish Reversal Alert", message="Potential Bearish Reversal Detected!")

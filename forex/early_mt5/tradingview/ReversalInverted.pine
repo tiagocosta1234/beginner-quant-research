@@ -1,0 +1,214 @@
+//@version=6
+// Reversal Signal Detector -- INVERTED, with a past-performance dashboard.
+// The signal is the trader's original (RSI divergence + rising/falling MACD histogram + ATR spike); only the trade direction is flipped by default: the bar the original called "Long" is now a SHORT
+// (stop = close + ATR, target = close - rrRatio x ATR) and the bar it called "Short" is now a LONG. Untick "Invert" to get the original back. Two simulations run side by side on the loaded bars
+// (inverted and original) so the dashboard shows both. Round 311 (MT5 XAUUSD 1-minute bid/ask 2021-2026, ledger 1996-1999): original -0.25R a trade, inverted -0.32R, spread about 0.34R of a 1 ATR stop.
+indicator("Reversal Signal Detector - inverted + stats", shorttitle="RevInv", overlay=true, max_lines_count=500, max_labels_count=500)
+
+// ------------------------------------------------------------------------------------------------ inputs
+var string G0 = "Direction"
+invert      = input.bool(true, "Invert the signals (trade the opposite way)", group=G0)
+var string G1 = "Signal (the original's inputs)"
+rsiPeriod = input.int(14, "RSI Period", minval=1, group=G1)
+macdShort = input.int(12, "MACD Short Length", minval=1, group=G1)
+macdLong = input.int(26, "MACD Long Length", minval=1, group=G1)
+macdSignal = input.int(9, "MACD Signal Length", minval=1, group=G1)
+atrPeriod = input.int(14, "ATR Period", minval=1, group=G1)
+volatilityThreshold = input.float(1.0, "ATR Spike Threshold", minval=0.1, group=G1)
+rrRatio = input.float(2.0, "Risk-Reward Ratio", minval=0.5, group=G1)
+lineLength = input.int(5, "Line Length (Bars)", minval=1, group=G1)
+divergenceLookback = input.int(3, "Divergence Lookback", minval=1, group=G1)
+var string G2 = "Dashboard simulation"
+showTable   = input.bool(true, "Show the past-performance dashboard", group=G2)
+dashPos     = input.string("Middle left", "Dashboard position", options=["Top left", "Middle left", "Top right", "Middle right", "Bottom right"], group=G2)
+spreadUsd   = input.float(0.21, "Spread per round trip (USD per oz; MT5 XAUUSD median 0.21)", minval=0.0, step=0.01, group=G2)
+riskPct     = input.float(1.0, "Risk per trade (% of equity, for the return and drawdown)", minval=0.1, maxval=5.0, step=0.1, group=G2)
+maxHold     = input.int(120, "Max bars in a trade (then exit at the close)", minval=1, group=G2)
+
+// ------------------------------------------------------------------------------------------------ the original signal (unchanged)
+rsi = ta.rsi(close, rsiPeriod)
+[macdLine, signalLine, macdHist] = ta.macd(close, macdShort, macdLong, macdSignal)
+atr = ta.atr(atrPeriod)
+macdHistChange = ta.change(macdHist)
+
+candleSpread = high - low
+atrSpike = candleSpread > atr * volatilityThreshold
+
+lowestClose = ta.lowest(close, divergenceLookback)
+lowestClosePrev = ta.lowest(close[1], divergenceLookback)
+lowestRsi = ta.lowest(rsi, divergenceLookback)
+lowestRsiPrev = ta.lowest(rsi[1], divergenceLookback)
+highestClose = ta.highest(close, divergenceLookback)
+highestClosePrev = ta.highest(close[1], divergenceLookback)
+highestRsi = ta.highest(rsi, divergenceLookback)
+highestRsiPrev = ta.highest(rsi[1], divergenceLookback)
+
+bullishDivergence = lowestClose < lowestClosePrev and lowestRsi > lowestRsiPrev and macdHistChange > -0.01
+bearishDivergence = highestClose > highestClosePrev and highestRsi < highestRsiPrev and macdHistChange < 0.01
+
+origLong = bullishDivergence and macdHist > macdHist[1] and atrSpike      // what the original plots as "Long"
+origShort = bearishDivergence and macdHist < macdHist[1] and atrSpike     // what the original plots as "Short"
+
+// ------------------------------------------------------------------------------------------------ the trade the chart shows (flipped when invert is on)
+tradeLong = invert ? origShort : origLong
+tradeShort = invert ? origLong : origShort
+
+longSL = close - atr
+longTP = close + atr * rrRatio
+shortSL = close + atr
+shortTP = close - atr * rrRatio
+
+plotshape(tradeLong, title="Long", location=location.belowbar, color=color.green, style=shape.labelup, text="Long", textcolor=color.white)
+plotshape(tradeShort, title="Short", location=location.abovebar, color=color.red, style=shape.labeldown, text="Short", textcolor=color.white)
+
+if tradeLong
+    line.new(bar_index, close, bar_index + lineLength, close, color=color.blue, width=2)
+    line.new(bar_index, longTP, bar_index + lineLength, longTP, color=color.green, width=2)
+    line.new(bar_index, longSL, bar_index + lineLength, longSL, color=color.red, width=2)
+if tradeShort
+    line.new(bar_index, close, bar_index + lineLength, close, color=color.blue, width=2)
+    line.new(bar_index, shortTP, bar_index + lineLength, shortTP, color=color.green, width=2)
+    line.new(bar_index, shortSL, bar_index + lineLength, shortSL, color=color.red, width=2)
+
+alertcondition(tradeLong, title="Long setup", message="Reversal detector: LONG setup")
+alertcondition(tradeShort, title="Short setup", message="Reversal detector: SHORT setup")
+
+// ------------------------------------------------------------------------------------------------ simulation (one position at a time, stop wins a tie, entry at the signal bar's close)
+type Sim
+    int side = 0
+    float entry = na
+    float stop = na
+    float tp = na
+    float dist = na
+    int barIn = 0
+    float eq = 1.0
+    float peak = 1.0
+    float maxDD = 0.0
+    int n = 0
+    int wins = 0
+    float gWin = 0.0
+    float gLoss = 0.0
+    float rSum = 0.0
+    float costSum = 0.0
+    int nL = 0
+    int nS = 0
+    float rL = 0.0
+    float rS = 0.0
+    array<int> lgT
+    array<int> lgS
+    array<float> lgR
+
+method step(Sim s, int sig, float atrV, float rr, float riskP, float spr, int maxH) =>
+    bool closedNow = false
+    if s.side != 0
+        float xPx = na
+        if s.side > 0
+            if low <= s.stop
+                xPx := s.stop
+            else if high >= s.tp
+                xPx := s.tp
+        else
+            if high >= s.stop
+                xPx := s.stop
+            else if low <= s.tp
+                xPx := s.tp
+        if na(xPx) and bar_index - s.barIn >= maxH
+            xPx := close
+        if not na(xPx)
+            float cst = spr / s.dist
+            float r = s.side * (xPx - s.entry) / s.dist - cst
+            s.eq := s.eq * (1.0 + riskP / 100.0 * r)
+            s.n := s.n + 1
+            s.rSum := s.rSum + r
+            s.costSum := s.costSum + cst
+            if r > 0
+                s.wins := s.wins + 1
+                s.gWin := s.gWin + r
+            else
+                s.gLoss := s.gLoss - r
+            if s.side > 0
+                s.nL := s.nL + 1
+                s.rL := s.rL + r
+            else
+                s.nS := s.nS + 1
+                s.rS := s.rS + r
+            array.push(s.lgT, time)
+            array.push(s.lgS, s.side)
+            array.push(s.lgR, r)
+            if array.size(s.lgT) > 5
+                array.shift(s.lgT)
+                array.shift(s.lgS)
+                array.shift(s.lgR)
+            s.side := 0
+            closedNow := true
+    if s.side == 0 and not closedNow and sig != 0 and not na(atrV) and atrV > 0
+        s.side := sig
+        s.entry := close
+        s.dist := atrV
+        s.stop := sig > 0 ? close - atrV : close + atrV
+        s.tp := sig > 0 ? close + atrV * rr : close - atrV * rr
+        s.barIn := bar_index
+    float eqM = s.side != 0 ? s.eq * (1.0 + riskP / 100.0 * s.side * (close - s.entry) / s.dist) : s.eq
+    s.peak := math.max(s.peak, eqM)
+    s.maxDD := math.min(s.maxDD, eqM / s.peak - 1.0)
+
+var Sim simO = Sim.new(lgT = array.new_int(), lgS = array.new_int(), lgR = array.new_float())
+var Sim simI = Sim.new(lgT = array.new_int(), lgS = array.new_int(), lgR = array.new_float())
+var int firstTime = na
+if na(firstTime)
+    firstTime := time
+
+int origSig = origLong ? 1 : origShort ? -1 : 0
+simO.step(origSig, atr, rrRatio, riskPct, spreadUsd, maxHold)
+simI.step(-origSig, atr, rrRatio, riskPct, spreadUsd, maxHold)
+
+// ------------------------------------------------------------------------------------------------ dashboard
+pct(float x) => str.tostring(x * 100.0, "0.0") + "%"
+rr2(float x) => (x >= 0 ? "+" : "") + str.tostring(x, "0.00") + "R"
+
+var table dash = table.new(dashPos == "Top left" ? position.top_left : dashPos == "Middle left" ? position.middle_left : dashPos == "Top right" ? position.top_right : dashPos == "Middle right" ? position.middle_right : position.bottom_right, 3, 20, bgcolor=color.new(color.black, 25), border_width=1, border_color=color.new(color.gray, 60))
+
+if barstate.islast and showTable
+    Sim a = invert ? simI : simO
+    Sim b = invert ? simO : simI
+    string an = invert ? "INVERTED (on chart)" : "ORIGINAL (on chart)"
+    string bn = invert ? "Original" : "Inverted"
+    table.cell(dash, 0, 0, "REVERSAL DETECTOR - past performance (simulated)", text_color=color.white, bgcolor=color.new(color.blue, 40), text_size=size.small)
+    table.merge_cells(dash, 0, 0, 2, 0)
+    table.cell(dash, 0, 1, str.format_time(firstTime, "yyyy-MM-dd HH:mm", "America/New_York") + " to " + str.format_time(time, "yyyy-MM-dd HH:mm", "America/New_York") + "  (" + str.tostring(bar_index + 1) + " bars, " + timeframe.period + "m)", text_color=color.silver, text_size=size.tiny)
+    table.merge_cells(dash, 0, 1, 2, 1)
+    table.cell(dash, 0, 2, "", text_size=size.small)
+    table.cell(dash, 1, 2, an, text_color=color.yellow, text_size=size.small)
+    table.cell(dash, 2, 2, bn, text_color=color.silver, text_size=size.small)
+    string[] k = array.from("Trades", "Win rate", "Avg R (net of spread)", "Profit factor", "Total return", "Max drawdown", "Spread cost per trade", "Long trades", "Short trades")
+    for i = 0 to 8
+        table.cell(dash, 0, 3 + i, array.get(k, i), text_color=color.silver, text_size=size.small)
+    for c = 0 to 1
+        Sim s = c == 0 ? a : b
+        float pf = s.gLoss > 0 ? s.gWin / s.gLoss : na
+        string[] v = array.from(str.tostring(s.n), s.n > 0 ? pct(s.wins / s.n) : "-", s.n > 0 ? rr2(s.rSum / s.n) : "-", na(pf) ? "-" : str.tostring(pf, "0.00"), pct(s.eq - 1.0), pct(s.maxDD), s.n > 0 ? str.tostring(s.costSum / s.n, "0.00") + "R" : "-", str.tostring(s.nL) + "  " + rr2(s.rL), str.tostring(s.nS) + "  " + rr2(s.rS))
+        for i = 0 to 8
+            float tot = s.n > 0 ? s.rSum / s.n : 0.0
+            color col = (i == 2 or i == 4) ? ((i == 2 ? tot : s.eq - 1.0) >= 0 ? color.lime : color.red) : color.white
+            table.cell(dash, 1 + c, 3 + i, array.get(v, i), text_color=col, text_size=size.small)
+    table.cell(dash, 0, 12, "Now: ATR " + str.tostring(atr, "0.00") + "  spread " + str.tostring(spreadUsd / atr, "0.00") + "R", text_color=color.silver, text_size=size.small)
+    table.merge_cells(dash, 0, 12, 2, 12)
+    table.cell(dash, 0, 13, "Open position (" + (invert ? "inverted" : "original") + ")", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 13, a.side == 0 ? "flat" : (a.side > 0 ? "LONG from " : "SHORT from ") + str.tostring(a.entry, "0.00") + "  SL " + str.tostring(a.stop, "0.00") + "  TP " + str.tostring(a.tp, "0.00"), text_color=a.side == 0 ? color.silver : color.yellow, text_size=size.small)
+    table.merge_cells(dash, 1, 13, 2, 13)
+    table.cell(dash, 0, 14, "Last trades (" + (invert ? "inverted" : "original") + ")", text_color=color.white, bgcolor=color.new(color.gray, 60), text_size=size.small)
+    table.merge_cells(dash, 0, 14, 2, 14)
+    int nl = array.size(a.lgT)
+    for i = 0 to 4
+        if i < nl
+            int j = nl - 1 - i
+            float lr = array.get(a.lgR, j)
+            table.cell(dash, 0, 15 + i, str.format_time(array.get(a.lgT, j), "MM-dd HH:mm", "America/New_York"), text_color=color.silver, text_size=size.small)
+            table.cell(dash, 1, 15 + i, array.get(a.lgS, j) > 0 ? "LONG" : "SHORT", text_color=array.get(a.lgS, j) > 0 ? color.lime : color.fuchsia, text_size=size.small)
+            table.cell(dash, 2, 15 + i, rr2(lr), text_color=lr >= 0 ? color.lime : color.red, text_size=size.small)
+        else
+            table.cell(dash, 0, 15 + i, "", text_size=size.tiny)
+            table.cell(dash, 1, 15 + i, "", text_size=size.tiny)
+            table.cell(dash, 2, 15 + i, "", text_size=size.tiny)
+    table.cell(dash, 0, 19, "Simulation on the loaded bars: entry at the signal close, stop 1 ATR, target RR x ATR, spread charged per trade, one trade at a time. Not a forecast.", text_color=color.gray, text_size=size.tiny)
+    table.merge_cells(dash, 0, 19, 2, 19)
