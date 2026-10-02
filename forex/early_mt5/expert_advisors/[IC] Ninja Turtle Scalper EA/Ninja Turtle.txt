@@ -1,0 +1,3 @@
+The Ninja Turtle Scalper uses the Donchian Channel to find entry signals — the same indicator that made the legendary Turtle Traders famous. Simple in concept, proven in practice, and now built right into MT5.
+
+If you have always wanted to use the Donchian signals as a scalping entry trigger, this is the EA for you. Important: live results can differ from backtests. The strategy uses a very tight trailing stop, which can lead to slippage around news events and fast moves.

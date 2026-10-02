@@ -1,0 +1,7 @@
+{
+ "race_p_success": 0.5483333333333333,
+ "plan_p_reach_stack": 0.5313333333333333,
+ "plan_p_full_success": 0.3486666666666667,
+ "plan_p_stuck_after_stack": 0.3437892095357591,
+ "n_sims": 3000
+}

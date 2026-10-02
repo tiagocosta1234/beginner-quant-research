@@ -1,0 +1,3 @@
+The Range Breakout EA waits for a range to form in the morning. You pick two times of day, and the EA calculates the high and low between them. It then automatically places pending orders to trade the breakouts in either direction.
+
+On top of that you get a full trade-management toolkit — trailing stops, partial closes, time-based exits. Download it and test different settings until you find the variant that fits how you trade.

@@ -1,0 +1,7 @@
+{
+ "race_p_success": 0.16033333333333333,
+ "single_p_buffer_then_2000": 0.01365,
+ "single_p_2000_no_buffer": 0.051,
+ "n_sims_race": 3000,
+ "n_sims_single": 20000
+}

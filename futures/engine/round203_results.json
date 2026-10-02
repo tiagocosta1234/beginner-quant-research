@@ -1,0 +1,183 @@
+{
+ "winner": {
+  "stop_mult": 0.1,
+  "target_mode": "rr1.5",
+  "min_strength": 0.0,
+  "dollars_per_R": 1500,
+  "n_trades_is": 1246,
+  "rates": {
+   "5": 0.2594,
+   "10": 0.3204,
+   "21": 0.3264,
+   "fail_21": 0.6734,
+   "median_days_per_attempt": 3.0,
+   "median_days_to_pass": 3.0
+  }
+ },
+ "oos": {
+  "5": 0.2456,
+  "10": 0.29723333333333335,
+  "21": 0.3027,
+  "fail_21": 0.6972333333333334,
+  "median_days_per_attempt": 3.0,
+  "median_days_to_pass": 3.0
+ },
+ "top10": [
+  {
+   "stop_mult": 0.1,
+   "target_mode": "rr1.5",
+   "min_strength": 0.0,
+   "dollars_per_R": 1500,
+   "n_trades_is": 1246,
+   "rates": {
+    "5": 0.2594,
+    "10": 0.3204,
+    "21": 0.3264,
+    "fail_21": 0.6734,
+    "median_days_per_attempt": 3.0,
+    "median_days_to_pass": 3.0
+   }
+  },
+  {
+   "stop_mult": 0.1,
+   "target_mode": "rr2",
+   "min_strength": 0.0,
+   "dollars_per_R": 750,
+   "n_trades_is": 1246,
+   "rates": {
+    "5": 0.1774,
+    "10": 0.3162,
+    "21": 0.371,
+    "fail_21": 0.625,
+    "median_days_per_attempt": 5.0,
+    "median_days_to_pass": 6.0
+   }
+  },
+  {
+   "stop_mult": 0.15,
+   "target_mode": "rr1.5",
+   "min_strength": 0.0,
+   "dollars_per_R": 1500,
+   "n_trades_is": 1181,
+   "rates": {
+    "5": 0.2428,
+    "10": 0.3094,
+    "21": 0.3162,
+    "fail_21": 0.6836,
+    "median_days_per_attempt": 3.0,
+    "median_days_to_pass": 4.0
+   }
+  },
+  {
+   "stop_mult": 0.15,
+   "target_mode": "rr2",
+   "min_strength": 0.0,
+   "dollars_per_R": 750,
+   "n_trades_is": 1181,
+   "rates": {
+    "5": 0.1658,
+    "10": 0.306,
+    "21": 0.3652,
+    "fail_21": 0.6278,
+    "median_days_per_attempt": 6.0,
+    "median_days_to_pass": 6.0
+   }
+  },
+  {
+   "stop_mult": 0.1,
+   "target_mode": "rr1.5",
+   "min_strength": 0.5,
+   "dollars_per_R": 1500,
+   "n_trades_is": 941,
+   "rates": {
+    "5": 0.2044,
+    "10": 0.303,
+    "21": 0.3342,
+    "fail_21": 0.6636,
+    "median_days_per_attempt": 4.0,
+    "median_days_to_pass": 5.0
+   }
+  },
+  {
+   "stop_mult": 0.15,
+   "target_mode": "rr1.5",
+   "min_strength": 0.5,
+   "dollars_per_R": 1500,
+   "n_trades_is": 941,
+   "rates": {
+    "5": 0.2002,
+    "10": 0.2992,
+    "21": 0.325,
+    "fail_21": 0.6738,
+    "median_days_per_attempt": 4.0,
+    "median_days_to_pass": 5.0
+   }
+  },
+  {
+   "stop_mult": 0.1,
+   "target_mode": "rr1.5",
+   "min_strength": 1.0,
+   "dollars_per_R": 1500,
+   "n_trades_is": 894,
+   "rates": {
+    "5": 0.1788,
+    "10": 0.296,
+    "21": 0.34,
+    "fail_21": 0.6542,
+    "median_days_per_attempt": 5.0,
+    "median_days_to_pass": 5.0
+   }
+  },
+  {
+   "stop_mult": 0.2,
+   "target_mode": "rr1.5",
+   "min_strength": 0.5,
+   "dollars_per_R": 1500,
+   "n_trades_is": 941,
+   "rates": {
+    "5": 0.1948,
+    "10": 0.2958,
+    "21": 0.3226,
+    "fail_21": 0.6756,
+    "median_days_per_attempt": 4.0,
+    "median_days_to_pass": 5.0
+   }
+  },
+  {
+   "stop_mult": 0.1,
+   "target_mode": "rr2",
+   "min_strength": 0.5,
+   "dollars_per_R": 750,
+   "n_trades_is": 941,
+   "rates": {
+    "5": 0.1412,
+    "10": 0.2942,
+    "21": 0.4084,
+    "fail_21": 0.5614,
+    "median_days_per_attempt": 7.0,
+    "median_days_to_pass": 7.0
+   }
+  },
+  {
+   "stop_mult": 0.2,
+   "target_mode": "rr1.5",
+   "min_strength": 0.0,
+   "dollars_per_R": 1500,
+   "n_trades_is": 1102,
+   "rates": {
+    "5": 0.2192,
+    "10": 0.2912,
+    "21": 0.3032,
+    "fail_21": 0.6968,
+    "median_days_per_attempt": 4.0,
+    "median_days_to_pass": 4.0
+   }
+  }
+ ],
+ "optimized_median_tries_to_pass": 2.0,
+ "optimized_median_days_to_pass": 9.0,
+ "baseline": {
+  "median_tries": 13.0,
+  "median_days": 125.0
+ }
+}

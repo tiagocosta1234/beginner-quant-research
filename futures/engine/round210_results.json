@@ -1,0 +1,26 @@
+{
+ "A: max affordable parallel up front (6)": {
+  "p_success": 0.561,
+  "median_days": 4,
+  "p90_days": 9,
+  "n_success": 2805
+ },
+ "B: 5 parallel, ~$157.65 reserve": {
+  "p_success": 0.569,
+  "median_days": 4,
+  "p90_days": 9,
+  "n_success": 2845
+ },
+ "C: 3 parallel, ~$366.75 reserve": {
+  "p_success": 0.3244,
+  "median_days": 9,
+  "p90_days": 16,
+  "n_success": 1622
+ },
+ "D: 1 at a time (max reserve)": {
+  "p_success": 0.0836,
+  "median_days": 26,
+  "p90_days": 36,
+  "n_success": 418
+ }
+}

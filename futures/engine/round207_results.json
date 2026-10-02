@@ -1,0 +1,21 @@
+{
+ "n_days": 998,
+ "n_active": 934,
+ "start": "2022-12-12",
+ "end": "2026-09-23",
+ "raw_mean": 727.9578685943314,
+ "clipped_mean": 297.01471228170215,
+ "n_clipped_loss": 325,
+ "n_clipped_win": 332,
+ "pass_rates": {
+  "5": 0.3608,
+  "10": 0.5343333333333333,
+  "21": 0.5657333333333333,
+  "fail_by_horizon": 0.4338,
+  "still_open": 0.00046666666666666666
+ },
+ "manual_median_tries": 1.0,
+ "manual_median_days": 7.0,
+ "disciplined_bracket_median_tries": 14.0,
+ "disciplined_bracket_median_days": 137.0
+}

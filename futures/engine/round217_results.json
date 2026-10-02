@@ -1,0 +1,6 @@
+{
+ "p_buffer_then_2000": 0.4667,
+ "p_2000_no_buffer": 0.52835,
+ "window_days": 30,
+ "n_sims": 20000
+}
