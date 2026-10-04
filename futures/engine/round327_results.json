@@ -1,0 +1,28 @@
+{
+ "L120|M60": {
+  "n": 1547,
+  "mean_bp": -0.9646434728127726,
+  "P": 0.268,
+  "first_half_bp": -2.827787852340971,
+  "first_P": 0.0244,
+  "second_half_bp": 0.829933410514515,
+  "second_P": 0.618,
+  "coin_bp": -1.2900378461538993,
+  "share_cont_first": 0.39920948616600793,
+  "share_cont_second": 0.8109137055837563,
+  "candidate": false
+ },
+ "L180|M120": {
+  "n": 956,
+  "mean_bp": -4.316110011750848,
+  "P": 0.033,
+  "first_half_bp": -6.786906698923347,
+  "first_P": 0.0028,
+  "second_half_bp": -2.3385420417916913,
+  "second_P": 0.2798,
+  "coin_bp": -2.007763097033574,
+  "share_cont_first": 0.5905882352941176,
+  "share_cont_second": 0.8662900188323918,
+  "candidate": false
+ }
+}
