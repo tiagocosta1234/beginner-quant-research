@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import io
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -67,9 +68,11 @@ def parse_report(htm: Path) -> pd.DataFrame:
     raw = htm.read_bytes()
     txt = raw.decode("utf-16") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else raw.decode("utf-8", errors="ignore")
     for t in pd.read_html(io.StringIO(txt)):
-        cols = [str(c).strip().lower() for c in t.iloc[0].values] if t.shape[0] else []
-        if "deal" in cols and "profit" in cols and "time" in cols:
-            t.columns = cols; t = t.iloc[1:]
+        # the Deals header sits mid-table, below the Orders section, in MT5's report
+        hdr = next((i for i in range(t.shape[0]) if {"deal", "profit", "time"} <= {str(c).strip().lower() for c in t.iloc[i].values}), None)
+        if hdr is not None:
+            cols = [str(c).strip().lower() for c in t.iloc[hdr].values]
+            t = t.iloc[hdr + 1:].copy(); t.columns = cols
             t = t[t["type"].astype(str).str.lower().isin(["buy", "sell"])]
             num = lambda c: pd.to_numeric(t[c].astype(str).str.replace(" ", "").str.replace("\xa0", ""), errors="coerce").fillna(0.0) if c in t else 0.0
             return pd.DataFrame({"time": t["time"].values, "direction": t.get("direction", "").values,
@@ -82,7 +85,9 @@ def main(argv=None):
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--timeout", type=int, default=900); ap.add_argument("--only", default="")
     a = ap.parse_args(argv)
     man = pd.read_csv(HERE / "manifest.csv", dtype={"id": str})
-    man = man[man.keep]
+    man = man[man.keep].sample(frac=1.0, random_state=347)        # fixed random order: any partial run is an unbiased sample
+    if "precompiled_ok" in man:                                    # skip the EAs that did not compile in the offline MetaEditor check (Wine, build 6238)
+        man = man[man.precompiled_ok.astype(str).str.lower() == "true"]
     if a.only:
         man = man[man.id.isin(a.only.split(","))]
     RESULTS.mkdir(exist_ok=True)
@@ -100,9 +105,14 @@ def main(argv=None):
             break
         n += 1; t0 = time.time()
         d = exp_root / r.id; d.mkdir(exist_ok=True)
-        for name in z.namelist():
-            if name.startswith(f"{r.id}/"):
-                (d / name.split("/", 1)[1]).write_bytes(z.read(name))
+        files = {name.split("/", 1)[1]: z.read(name) for name in z.namelist() if name.startswith(f"{r.id}/")}
+        for nm, b in files.items():
+            (d / nm).write_bytes(b)
+        for b in files.values():                       # #include <dir/x.mqh> resolves under MQL5\Include: place the EA's own copy there
+            for inc in re.findall(r"#include\s*<([^>]+)>", b.decode("utf-8", errors="ignore") + b.decode("utf-16", errors="ignore")):
+                base = inc.replace("\\", "/").split("/")[-1]
+                if base in files:
+                    tgt = data / "MQL5" / "Include" / inc.replace("\\", "/"); tgt.parent.mkdir(parents=True, exist_ok=True); tgt.write_bytes(files[base])
         ok, log = compile_ea(editor, d / r.main)
         rec = dict(id=r.id, title=r.title, symbol=r.symbol, period=r.period, compiled=ok, deals=0, net=0.0, seconds=0.0, note="" if ok else f"compile: {log}")
         if ok:
