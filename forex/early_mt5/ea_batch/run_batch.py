@@ -10,8 +10,13 @@ the MT5 broker demo account's own data, then save its closed deals for the analy
 
 SAFETY: tests only (the Strategy Tester never sends orders to the account); the generated config sets AllowLiveTrading=0 and AllowDllImport=0, and the manifest
 already excludes every EA with #import or network calls. Each EA runs at most --timeout seconds, then the terminal is closed.
-TEST SETTINGS (Round 347, fixed): the manifest's symbol and timeframe, 2021.10.01 - 2026.09.30, model 1 (1-minute OHLC: fast; real ticks would take weeks for 1,000
-EAs), deposit 100,000 USD, leverage 1:100, the EA's default inputs. MT5's terminal path: MT5BROKER_MT5_TERMINAL or C:\\Program Files\\MetaTrader 5\\terminal64.exe.
+TEST SETTINGS (Round 347, current -- the first screen used model 1 and 2021.10.01 - 2026.09.30; it was misleading for pending-order and grid EAs): the manifest's symbol and
+timeframe, 2026.01.01 - 2026.09.30, model 4 (every tick based on real ticks, commission recorded), deposit 100,000 USD, leverage 1:100, the EA's default inputs. Results go to
+results_2026/: one deals CSV per EA plus status.csv, which also records the tester's maximal equity and balance drawdown ($, eq_dd / bal_dd) for the scorer's sizing.
+MT5's terminal path: MT5BROKER_MT5_TERMINAL or C:\\Program Files\\MetaTrader 5\\terminal64.exe.
+TWO STAGES (Round 347): stage 1 is the 2026 screen above. Stage 2 (confirm.py) reruns the stage-1 candidates on 2025 and 2024 at their FROZEN stage-1 size and keeps only the EAs that
+hold up there: two of the first three stage-1 leaders lost money in both years. The batch calls confirm.py by itself after every --confirm-every stage-1 EAs and once at the end
+(0 = never); confirm.py starts this runner again with --from-date / --to-date / --results for the extra years.
 """
 from __future__ import annotations
 
@@ -32,10 +37,20 @@ HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
 TERMINAL = Path(os.getenv("MT5BROKER_MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe")
 FROM, TO = "2021.10.01", "2026.09.30"
+# cloud_run.py (the Wine / M1-bar route) reads RESULTS, FROM and TO from this module, so they keep their original values. The second PC's real-tick 2026 screen takes its
+# defaults from these instead, applied in main(), so the two routes never share a results folder or a test period.
+SCREEN_RESULTS, SCREEN_FROM, SCREEN_TO = "results_2026", "2026.01.01", "2026.09.30"   # 2026 only (user's call); the earlier screens are in results/ (1-minute) and results_ticks/
 
 
 def data_folder() -> Path:
-    """The terminal's data folder (where MQL5\\Experts lives), from the MetaTrader5 package."""
+    """The terminal's data folder (where MQL5\\Experts lives). Read from the folder's origin.txt (the install path of its terminal) so that no terminal window is started;
+    falls back to the MetaTrader5 package, which starts the terminal."""
+    for origin in (Path(os.getenv("APPDATA", "")) / "MetaQuotes" / "Terminal").glob("*/origin.txt"):
+        try:
+            if Path(origin.read_bytes().decode("utf-16").lstrip("﻿").strip()).resolve() == TERMINAL.parent.resolve():
+                return origin.parent
+        except (OSError, UnicodeDecodeError):
+            continue
     import MetaTrader5 as mt5
     if not mt5.initialize(path=str(TERMINAL), timeout=90_000):
         raise SystemExit(f"could not start the terminal at {TERMINAL}: {mt5.last_error()}")
@@ -46,6 +61,74 @@ def data_folder() -> Path:
 
 def kill_terminal():
     subprocess.run(["taskkill", "/F", "/IM", TERMINAL.name], capture_output=True)
+
+
+_DESKTOP: dict = {}
+
+
+class _HiddenProcess:
+    """The slice of subprocess.Popen that main() uses: wait(timeout), raising TimeoutExpired."""
+
+    def __init__(self, handle, kernel32):
+        self._h, self._k = handle, kernel32
+
+    def wait(self, timeout=None):
+        r = self._k.WaitForSingleObject(self._h, 0xFFFFFFFF if timeout is None else int(timeout * 1000))
+        if r == 0x102:                                   # WAIT_TIMEOUT
+            raise subprocess.TimeoutExpired("terminal64", timeout)
+        self._k.CloseHandle(self._h)
+        return 0
+
+
+def _start_on_hidden_desktop(cmdline: str) -> _HiddenProcess:
+    import ctypes
+    from ctypes import wintypes
+
+    class STARTUPINFOW(ctypes.Structure):
+        _fields_ = [("cb", wintypes.DWORD), ("lpReserved", wintypes.LPWSTR), ("lpDesktop", wintypes.LPWSTR), ("lpTitle", wintypes.LPWSTR),
+                    ("dwX", wintypes.DWORD), ("dwY", wintypes.DWORD), ("dwXSize", wintypes.DWORD), ("dwYSize", wintypes.DWORD),
+                    ("dwXCountChars", wintypes.DWORD), ("dwYCountChars", wintypes.DWORD), ("dwFillAttribute", wintypes.DWORD), ("dwFlags", wintypes.DWORD),
+                    ("wShowWindow", wintypes.WORD), ("cbReserved2", wintypes.WORD), ("lpReserved2", ctypes.c_void_p),
+                    ("hStdInput", wintypes.HANDLE), ("hStdOutput", wintypes.HANDLE), ("hStdError", wintypes.HANDLE)]
+
+    class PROCESS_INFORMATION(ctypes.Structure):
+        _fields_ = [("hProcess", wintypes.HANDLE), ("hThread", wintypes.HANDLE), ("dwProcessId", wintypes.DWORD), ("dwThreadId", wintypes.DWORD)]
+
+    user32, kernel32 = ctypes.WinDLL("user32", use_last_error=True), ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel32.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]; kernel32.WaitForSingleObject.restype = wintypes.DWORD
+    kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+    kernel32.CreateProcessW.restype = wintypes.BOOL
+    kernel32.CreateProcessW.argtypes = [wintypes.LPCWSTR, wintypes.LPWSTR, ctypes.c_void_p, ctypes.c_void_p, wintypes.BOOL, wintypes.DWORD, ctypes.c_void_p,
+                                        wintypes.LPCWSTR, ctypes.POINTER(STARTUPINFOW), ctypes.POINTER(PROCESS_INFORMATION)]
+    if "h" not in _DESKTOP:
+        user32.CreateDesktopW.restype = wintypes.HANDLE
+        user32.CreateDesktopW.argtypes = [wintypes.LPCWSTR, wintypes.LPCWSTR, ctypes.c_void_p, wintypes.DWORD, wintypes.DWORD, ctypes.c_void_p]
+        h = user32.CreateDesktopW("ea_batch_hidden", None, None, 0, 0x10000000, None)       # GENERIC_ALL
+        if not h:
+            raise OSError(ctypes.get_last_error(), "CreateDesktop failed")
+        _DESKTOP["h"] = h                                # kept open for the life of this process: a desktop object dies with its last handle
+    si = STARTUPINFOW(); si.cb = ctypes.sizeof(si); si.lpDesktop = "winsta0\\ea_batch_hidden"
+    pi = PROCESS_INFORMATION()
+    if not kernel32.CreateProcessW(None, ctypes.create_unicode_buffer(cmdline), None, None, False, 0, None, str(TERMINAL.parent), ctypes.byref(si), ctypes.byref(pi)):
+        raise OSError(ctypes.get_last_error(), "CreateProcess failed")
+    kernel32.CloseHandle(pi.hThread)
+    return _HiddenProcess(pi.hProcess, kernel32)
+
+
+def start_terminal(ini: Path):
+    """Start the terminal for one tester run without a window on any of the user's desktops.
+    Default (Windows): the process is created on a private desktop OBJECT (CreateDesktop; not a virtual desktop, never displayed), so nothing pops up on Desktop 1 or 2
+    and no focus is stolen. EA_BATCH_VISIBLE=1 starts it normally (minimised, no focus); any failure of the hidden start falls back to that."""
+    if sys.platform == "win32" and os.getenv("EA_BATCH_VISIBLE") != "1":
+        try:
+            return _start_on_hidden_desktop(subprocess.list2cmdline([str(TERMINAL), f"/config:{ini}"]))
+        except OSError as e:
+            print(f"hidden desktop unavailable ({e}); starting the terminal minimised instead", flush=True)
+    kw = {}
+    if sys.platform == "win32":
+        si = subprocess.STARTUPINFO(); si.dwFlags |= subprocess.STARTF_USESHOWWINDOW; si.wShowWindow = 7        # SW_SHOWMINNOACTIVE
+        kw["startupinfo"] = si
+    return subprocess.Popen([str(TERMINAL), f"/config:{ini}"], **kw)
 
 
 def compile_ea(editor: Path, src: Path) -> tuple[bool, str]:
@@ -59,7 +142,7 @@ def compile_ea(editor: Path, src: Path) -> tuple[bool, str]:
 def write_ini(path: Path, expert_rel: str, symbol: str, period: str, report_rel: str):
     path.write_text("\n".join([
         "[Experts]", "AllowLiveTrading=0", "AllowDllImport=0", "Enabled=1",
-        "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", "Model=1", "Optimization=0", f"FromDate={FROM}", f"ToDate={TO}",
+        "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", "Model=4", "Optimization=0", f"FromDate={FROM}", f"ToDate={TO}",
         "ForwardMode=0", "Deposit=100000", "Currency=USD", "Leverage=100", "ExecutionMode=0", "Visual=0", f"Report={report_rel}", "ReplaceReport=1",
         "ShutdownTerminal=1", ""]), encoding="utf-8")
 
@@ -80,10 +163,94 @@ def parse_report(htm: Path) -> pd.DataFrame:
     return pd.DataFrame(columns=["time", "direction", "volume", "price", "commission", "swap", "profit"])
 
 
+FLOOD_MB = 100          # stop an EA whose run grows the tester journal by more than this
+MIN_FREE_GB = 10        # pause (never delete anything) while the data drive has less free space than this
+
+
+def journal_bytes(data: Path) -> int:
+    """Total size of the tester's journal files (Tester\\logs): a blown-up EA can write tens of GB there, and the journal is one file per day."""
+    return sum(f.stat().st_size for f in (data / "Tester" / "logs").glob("*.log") if f.exists())
+
+
+def wait_for_disk(data: Path) -> None:
+    """Block until the data drive has MIN_FREE_GB free. The runner never deletes logs itself: clear Tester\\logs by hand and the batch carries on."""
+    warned = False
+    while shutil.disk_usage(str(data)).free < MIN_FREE_GB << 30:
+        if not warned:
+            print(f"PAUSED: less than {MIN_FREE_GB} GB free on the data drive. Delete the big files in {data / 'Tester' / 'logs'} and the batch resumes by itself.", flush=True)
+            warned = True
+        time.sleep(60)
+
+
+def parse_drawdowns(htm: Path) -> tuple[float, float]:
+    """The tester's own maximal equity and balance drawdowns in $ (the equity one includes floating losses, which closed deals hide: grid / martingale EAs)."""
+    raw = htm.read_bytes()
+    txt = raw.decode("utf-16") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else raw.decode("utf-8", errors="ignore")
+    txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt))
+    out = []
+    for key in ("Equity Drawdown Maximal", "Balance Drawdown Maximal"):
+        m = re.search(re.escape(key) + r"\s*:?\s*([\d ]+(?:\.\d+)?)\s*\(", txt)
+        out.append(float(m.group(1).replace(" ", "")) if m else float("nan"))
+    return out[0], out[1]
+
+
+def upgrade_status(status_f: Path, rep_root: Path) -> None:
+    """Older status.csv files lack eq_dd / bal_dd: fill them from the reports still on disk (only reports of this FROM-TO period), then rewrite the file."""
+    if not status_f.exists():
+        return
+    st = pd.read_csv(status_f, dtype={"id": str})
+    if "eq_dd" in st.columns:
+        return
+    eq, bal = [], []
+    for i in st.id:
+        htm = next(iter(rep_root.glob(f"{i}*.htm*")), None)
+        e = b = float("nan")
+        if htm is not None:
+            raw = htm.read_bytes()
+            txt = raw.decode("utf-16") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else raw.decode("utf-8", errors="ignore")
+            m = re.search(r"Period:\s*\S+\s*\(([\d.]+)\s*-\s*([\d.]+)\)", re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", txt)))
+            if m and (m.group(1), m.group(2)) == (FROM, TO):
+                e, b = parse_drawdowns(htm)
+        eq.append(e); bal.append(b)
+    st["eq_dd"], st["bal_dd"] = eq, bal
+    st.to_csv(status_f, index=False)
+
+
+def run_confirmation() -> None:
+    """Stage 2 (confirm.py) on the current stage-1 candidates; a failure there must not stop the batch."""
+    try:
+        subprocess.run([sys.executable, "-u", "-m", "mt5broker.ea_batch.confirm"], cwd=str(HERE.parent.parent))
+    except Exception as e:
+        print(f"confirmation stage failed: {e}", flush=True)
+
+
+def stage_sources(d: Path, files: dict, tries: int = 5) -> bool:
+    """Create the EA's folder and write its sources. A folder deleted a moment ago can still look present (pending delete / the D: junction), and the first such error ended a 1,075-EA run at EA 2, so retry; False = give up on this EA for now."""
+    for k in range(tries):
+        try:
+            d.mkdir(exist_ok=True)
+            for nm, b in files.items():
+                (d / nm).write_bytes(b)
+            return True
+        except OSError as e:
+            print(f"  folder setup for {d.name} failed ({type(e).__name__}: {e}); retry {k + 1}/{tries}", flush=True)
+            time.sleep(3)
+    return False
+
+
 def main(argv=None):
+    global RESULTS, FROM, TO
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--timeout", type=int, default=900); ap.add_argument("--only", default="")
+    ap.add_argument("--from-date", default="", help="test period start, e.g. 2025.01.01 (default: the 2026 screen's)"); ap.add_argument("--to-date", default="")
+    ap.add_argument("--results", default="", help="results folder name under forex/early_mt5/ea_batch (default results_2026)")
+    ap.add_argument("--confirm-every", type=int, default=100, help="run the confirmation stage after this many stage-1 EAs (0 = never)")
+    ap.add_argument("--ea-root", default="", help="path to folder where EAs are staged (default: MetaTrader data\\MQL5\\Experts\\ea_batch); use for D: direct access if junction mkdir fails")
     a = ap.parse_args(argv)
+    FROM = a.from_date or SCREEN_FROM
+    TO = a.to_date or SCREEN_TO
+    RESULTS = HERE / (a.results or SCREEN_RESULTS)
+    stage1 =bool(a.confirm_every) and not a.only and RESULTS.name == "results_2026"
     man = pd.read_csv(HERE / "manifest.csv", dtype={"id": str})
     man = man[man.keep].sample(frac=1.0, random_state=347)        # fixed random order: any partial run is an unbiased sample
     if "precompiled_ok" in man:                                    # skip the EAs that did not compile in the offline MetaEditor check (Wine, build 6238)
@@ -94,8 +261,13 @@ def main(argv=None):
     status_f = RESULTS / "status.csv"
     done = set(pd.read_csv(status_f, dtype={"id": str}).id) if status_f.exists() else set()
     data = data_folder(); editor = TERMINAL.with_name("metaeditor64.exe")
-    exp_root = data / "MQL5" / "Experts" / "ea_batch"; rep_root = data / "ea_batch_reports"
+    if a.ea_root:
+        exp_root = Path(a.ea_root)
+    else:
+        exp_root = data / "MQL5" / "Experts" / "ea_batch"
+    rep_root = data / "ea_batch_reports"
     exp_root.mkdir(parents=True, exist_ok=True); rep_root.mkdir(exist_ok=True)
+    upgrade_status(status_f, rep_root)
     z = zipfile.ZipFile(HERE / "sources.zip")
     n = 0
     for _, r in man.iterrows():
@@ -104,39 +276,59 @@ def main(argv=None):
         if a.limit and n >= a.limit:
             break
         n += 1; t0 = time.time()
-        d = exp_root / r.id; d.mkdir(exist_ok=True)
+        d = exp_root / r.id
         files = {name.split("/", 1)[1]: z.read(name) for name in z.namelist() if name.startswith(f"{r.id}/")}
-        for nm, b in files.items():
-            (d / nm).write_bytes(b)
+        if not stage_sources(d, files):                # not recorded in status.csv, so the next run tries this EA again
+            print(f"[{n}] {r.id}: skipped, could not set up its folder", flush=True)
+            continue
         for b in files.values():                       # #include <dir/x.mqh> resolves under MQL5\Include: place the EA's own copy there
             for inc in re.findall(r"#include\s*<([^>]+)>", b.decode("utf-8", errors="ignore") + b.decode("utf-16", errors="ignore")):
                 base = inc.replace("\\", "/").split("/")[-1]
                 if base in files:
                     tgt = data / "MQL5" / "Include" / inc.replace("\\", "/"); tgt.parent.mkdir(parents=True, exist_ok=True); tgt.write_bytes(files[base])
         ok, log = compile_ea(editor, d / r.main)
-        rec = dict(id=r.id, title=r.title, symbol=r.symbol, period=r.period, compiled=ok, deals=0, net=0.0, seconds=0.0, note="" if ok else f"compile: {log}")
+        rec = dict(id=r.id, title=r.title, symbol=r.symbol, period=r.period, compiled=ok, deals=0, net=0.0, seconds=0.0, note="" if ok else f"compile: {log}", eq_dd=float("nan"), bal_dd=float("nan"))
         if ok:
             ini = d / "tester.ini"; rep = rep_root / r.id
             for old in rep_root.glob(f"{r.id}.*"):
                 old.unlink()
             write_ini(ini, f"ea_batch\\{r.id}\\{Path(r.main).with_suffix('.ex5').name}", r.symbol, r.period, f"ea_batch_reports\\{r.id}")
             kill_terminal()
-            p = subprocess.Popen([str(TERMINAL), f"/config:{ini}"])
-            try:
-                p.wait(timeout=a.timeout)
-            except subprocess.TimeoutExpired:
-                kill_terminal(); rec["note"] = f"timeout {a.timeout}s"
+            wait_for_disk(data)
+            j0, t_run = journal_bytes(data), time.time()
+            p = start_terminal(ini)
+            while True:
+                try:
+                    p.wait(timeout=5)
+                    break
+                except subprocess.TimeoutExpired:
+                    grown = journal_bytes(data) - j0
+                    if grown > FLOOD_MB << 20:             # an EA that blew its account keeps sending orders that fail ("No money"): one run wrote GBs of journal
+                        kill_terminal(); rec["note"] = f"journal flood: +{grown >> 20} MB in {int(time.time() - t_run)}s (account exhausted?); stopped"
+                        break
+                    if time.time() - t_run > a.timeout:
+                        kill_terminal(); rec["note"] = f"timeout {a.timeout}s"
+                        break
             htm = next(iter(rep_root.glob(f"{r.id}*.htm*")), None)
             if htm is not None:
-                deals = parse_report(htm)
-                deals.to_csv(RESULTS / f"{r.id}.csv", index=False)
-                rec.update(deals=len(deals), net=float((deals.profit + deals.commission + deals.swap).sum()))
+                try:
+                    deals = parse_report(htm)
+                except Exception as e:                     # one unparseable report must not stop the whole batch
+                    deals = None; rec["note"] = f"report parse error: {type(e).__name__}"
+                if deals is not None:
+                    deals.to_csv(RESULTS / f"{r.id}.csv", index=False)
+                    rec.update(deals=len(deals), net=float((deals.profit + deals.commission + deals.swap).sum()))
+                    rec["eq_dd"], rec["bal_dd"] = parse_drawdowns(htm)
             elif not rec["note"]:
                 rec["note"] = "no report"
         rec["seconds"] = round(time.time() - t0, 1)
         pd.DataFrame([rec]).to_csv(status_f, mode="a", header=not status_f.exists(), index=False)
         print(f"[{n}] {r.id} {r.title[:50]!r} {r.symbol} {r.period}: compiled={ok} deals={rec['deals']} net={rec['net']:,.0f} {rec['note']} ({rec['seconds']}s)", flush=True)
+        if stage1 and n % a.confirm_every == 0:
+            run_confirmation()
     kill_terminal()
+    if stage1 and not a.limit:
+        run_confirmation()
     print("done; commit forex/early_mt5/ea_batch/results")
 
 
