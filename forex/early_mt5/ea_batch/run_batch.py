@@ -240,6 +240,11 @@ def stage_sources(d: Path, files: dict, tries: int = 5) -> bool:
 
 def main(argv=None):
     global RESULTS, FROM, TO
+    for _s in (sys.stdout, sys.stderr):                                           # EA titles can hold any script; a redirected log must not crash the run on one
+        try:
+            _s.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--timeout", type=int, default=900); ap.add_argument("--only", default="")
     ap.add_argument("--from-date", default="", help="test period start, e.g. 2025.01.01 (default: the 2026 screen's)"); ap.add_argument("--to-date", default="")
@@ -266,6 +271,7 @@ def main(argv=None):
     else:
         exp_root = data / "MQL5" / "Experts" / "ea_batch"
     rep_root = data / "ea_batch_reports"
+    inc_root = (exp_root.parents[1] / "Include") if a.ea_root else data / "MQL5" / "Include"      # same junction workaround as --ea-root: use the real D: path
     exp_root.mkdir(parents=True, exist_ok=True); rep_root.mkdir(exist_ok=True)
     upgrade_status(status_f, rep_root)
     z = zipfile.ZipFile(HERE / "sources.zip")
@@ -285,7 +291,7 @@ def main(argv=None):
             for inc in re.findall(r"#include\s*<([^>]+)>", b.decode("utf-8", errors="ignore") + b.decode("utf-16", errors="ignore")):
                 base = inc.replace("\\", "/").split("/")[-1]
                 if base in files:
-                    tgt = data / "MQL5" / "Include" / inc.replace("\\", "/"); tgt.parent.mkdir(parents=True, exist_ok=True); tgt.write_bytes(files[base])
+                    tgt = inc_root / inc.replace("\\", "/"); tgt.parent.mkdir(parents=True, exist_ok=True); tgt.write_bytes(files[base])
         ok, log = compile_ea(editor, d / r.main)
         rec = dict(id=r.id, title=r.title, symbol=r.symbol, period=r.period, compiled=ok, deals=0, net=0.0, seconds=0.0, note="" if ok else f"compile: {log}", eq_dd=float("nan"), bal_dd=float("nan"))
         if ok:
