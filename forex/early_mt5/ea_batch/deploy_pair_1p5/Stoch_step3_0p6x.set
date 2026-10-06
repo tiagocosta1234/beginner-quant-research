@@ -1,0 +1,10 @@
+; Stochastic Daily Breakout, XAUUSD H1, step3_0p6x
+InpLots=0.12
+InpMagic=260931
+InpBandPeriod=9
+InpKPeriod=23
+InpDPeriod=3
+InpSlowing=7
+InpStopPct=1.9
+InpTargetPct=1.9
+InpExpiryBars=9
