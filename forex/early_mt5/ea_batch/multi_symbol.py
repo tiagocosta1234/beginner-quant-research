@@ -47,7 +47,10 @@ def main(argv=None):
             if sym == r.symbol or (r.id, sym) in seen:
                 continue
             rel = f"ea_batch\\{r.id}\\{Path(r.main).with_suffix('.ex5').name}"
-            res = run_test(f"ms_{r.id}_{sym.replace('.', '')}", rel, sym, r.period, FROM, TO, None, timeout=1500)
+            try:
+                res = run_test(f"ms_{r.id}_{sym.replace('.', '')}", rel, sym, r.period, FROM, TO, None, timeout=1500)
+            except Exception as e:                                          # an unreadable / empty tester report must not stop the screen (13:54 crash, lxml "no text parsed")
+                res = dict(note=f"error {type(e).__name__}: {str(e)[:80]}", seconds=0, deals=None)
             row = dict(id=r.id, symbol=sym, own=r.symbol, period=r.period, note=res["note"], seconds=res["seconds"], trips=0, net=float("nan"), pf=float("nan"))
             if res["deals"] is not None and len(res["deals"]):
                 res["deals"].to_csv(OUT / f"{r.id}_{sym.replace('.', '')}.csv", index=False); row.update(stats(res["deals"]))
