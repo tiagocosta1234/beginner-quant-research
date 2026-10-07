@@ -67,3 +67,14 @@ deleting the npm / bun / pip download caches and the MT5 broker installer's own 
 waiting for a trade-server sync that never comes (then tests anyway), so workers are mostly idle and scale almost linearly. Stop
 processes with `wineserver -k` per prefix (`WINEPREFIX=...`) and `pgrep -f "[c]loud_run.py"`: an unbracketed `pkill -f cloud_run.py`
 also matches the shell that runs it.
+
+## Confirmation runs in real ticks (second PC only)
+
+The batch above used the 1-minute OHLC model (fast). To confirm a lead, run it in the tester's real-tick model on the logged-in second PC terminal:
+
+```powershell
+python -m mt5broker.ea_batch.run_batch --only 77871,17147 --model 4 --results forex/early_mt5/ea_batch/results_realtick
+```
+
+`--model 4` = every tick based on real ticks; `--results` keeps these out of the batch results. Pre-register the round first (see
+`Knowledge_Base/HANDOFF_LOCAL_AGENT_2026-10-05.md`, task 3).

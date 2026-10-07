@@ -42,7 +42,7 @@ SEED = 347
 def daily_pnl(f: Path) -> pd.Series:
     d = pd.read_csv(f)
     if d.empty:
-        return pd.Series(dtype=float)
+        return pd.Series(dtype=float, index=pd.DatetimeIndex([]))       # zero-deal EA: untestable, not a crash
     t = pd.to_datetime(d["time"].astype(str).str.replace(".", "-", regex=False), errors="coerce")
     net = d["profit"] + d["commission"] + d["swap"]
     return net.groupby(t.dt.normalize()).sum().sort_index()

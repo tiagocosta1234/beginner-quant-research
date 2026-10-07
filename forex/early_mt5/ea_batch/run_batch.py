@@ -139,10 +139,10 @@ def compile_ea(editor: Path, src: Path) -> tuple[bool, str]:
     return ok, txt[-400:].replace("\n", " ")
 
 
-def write_ini(path: Path, expert_rel: str, symbol: str, period: str, report_rel: str):
+def write_ini(path: Path, expert_rel: str, symbol: str, period: str, report_rel: str, model: int = 4):
     path.write_text("\n".join([
         "[Experts]", "AllowLiveTrading=0", "AllowDllImport=0", "Enabled=1",
-        "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", "Model=4", "Optimization=0", f"FromDate={FROM}", f"ToDate={TO}",
+        "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", f"Model={model}", "Optimization=0", f"FromDate={FROM}", f"ToDate={TO}",
         "ForwardMode=0", "Deposit=100000", "Currency=USD", "Leverage=100", "ExecutionMode=0", "Visual=0", f"Report={report_rel}", "ReplaceReport=1",
         "ShutdownTerminal=1", ""]), encoding="utf-8")
 
@@ -248,13 +248,14 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--timeout", type=int, default=900); ap.add_argument("--only", default="")
     ap.add_argument("--from-date", default="", help="test period start, e.g. 2025.01.01 (default: the 2026 screen's)"); ap.add_argument("--to-date", default="")
-    ap.add_argument("--results", default="", help="results folder name under forex/early_mt5/ea_batch (default results_2026)")
+    ap.add_argument("--results", default="", help="results folder name under forex/early_mt5/ea_batch (default results_2026) or an absolute path")
     ap.add_argument("--confirm-every", type=int, default=100, help="run the confirmation stage after this many stage-1 EAs (0 = never)")
     ap.add_argument("--ea-root", default="", help="path to folder where EAs are staged (default: MetaTrader data\\MQL5\\Experts\\ea_batch); use for D: direct access if junction mkdir fails")
+    ap.add_argument("--model", type=int, default=4, help="tester model: 4 = every tick based on real ticks (default, the 2026 screen), 1 = 1-minute OHLC (the first Round 347 batch)")
     a = ap.parse_args(argv)
     FROM = a.from_date or SCREEN_FROM
     TO = a.to_date or SCREEN_TO
-    RESULTS = HERE / (a.results or SCREEN_RESULTS)
+    RESULTS = Path(a.results) if a.results and Path(a.results).is_absolute() else HERE / (a.results or SCREEN_RESULTS)
     stage1 =bool(a.confirm_every) and not a.only and RESULTS.name == "results_2026"
     man = pd.read_csv(HERE / "manifest.csv", dtype={"id": str})
     man = man[man.keep].sample(frac=1.0, random_state=347)        # fixed random order: any partial run is an unbiased sample
@@ -298,7 +299,7 @@ def main(argv=None):
             ini = d / "tester.ini"; rep = rep_root / r.id
             for old in rep_root.glob(f"{r.id}.*"):
                 old.unlink()
-            write_ini(ini, f"ea_batch\\{r.id}\\{Path(r.main).with_suffix('.ex5').name}", r.symbol, r.period, f"ea_batch_reports\\{r.id}")
+            write_ini(ini, f"ea_batch\\{r.id}\\{Path(r.main).with_suffix('.ex5').name}", r.symbol, r.period, f"ea_batch_reports\\{r.id}", a.model)
             kill_terminal()
             wait_for_disk(data)
             j0, t_run = journal_bytes(data), time.time()

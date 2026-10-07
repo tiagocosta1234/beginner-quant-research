@@ -59,3 +59,8 @@ Lessons 14-15. Go / no-go: no second edge from simple intraday rules by January 
 
 ## Iteration 13 (reaction to the 8:30 ET US data-release slot, all weekdays; k = 36): 0 hits
 No momentum or fade edge after real spreads (net -0.008..+0.008 daily ATR, t <= 0.7). Lesson 16: a time slot alone carries no information; an event calendar with surprise sizes would be needed (not available offline). Scripts: iter13_release.py. Hypotheses tested: about 716 cells over 13 iterations.
+
+## Iterations 14-15: the best strategy as OUR OWN code (Stochastic Daily Breakout, verified Python port `sdb.py`)
+Parity with the tester: 195 vs 197 trades, 191 of 197 entries matched, median entry price difference USD 0.02. Iteration 14: the rule with ATR-scaled stop / target has no multi-symbol edge (pooled non-gold mean R +0.03 DEV, +0.08 VAL, -0.03 HOLD, 0 hits) but is positive on gold in DEV, VAL and HOLD at every k (+0.07..+0.31 R); the original in R units: 2022 +0.21, 2023 -0.12, 2024 +0.26, 2025 +0.27, 2026 +0.46 (long +0.30, short +0.11). Iteration 15: all 81 parameter neighbours are positive overall (median +0.15 R), the author's set ranks first (+0.22 R): a plateau with a tuned peak, expect about 30% less than the headline.
+Lessons 17-18. Scripts: sdb.py, iter14_sdb.py, iter15_sdb_sensitivity.py. Total tested in the lab: about 740 cells over 15 iterations.
+Next (to pre-register): own improvements to SDB with a clean protocol (risk-based sizing, a session / day-of-week filter, a trailing exit) judged on the 81-neighbour plateau, not on the single best set; the same port treatment for any other open-source EA that survives the multi-symbol screen.
