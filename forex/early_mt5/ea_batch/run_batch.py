@@ -139,8 +139,21 @@ def compile_ea(editor: Path, src: Path) -> tuple[bool, str]:
     return ok, txt[-400:].replace("\n", " ")
 
 
+def common_login_lines() -> list[str]:
+    """[Common] login lines for the tester ini, read from forex/early_mt5/.env (MT5BROKER_MT5_LOGIN / PASSWORD / SERVER). The batch kills and restarts the terminal before every EA; a terminal whose
+    saved login has no stored password starts unauthorised and the tester then waits about 9 minutes for the trade server (2026-10-07). Empty if the three values are not all set."""
+    try:
+        from dotenv import dotenv_values
+        v = dotenv_values(HERE.parent / ".env")
+        if all(v.get(k) for k in ("MT5BROKER_MT5_LOGIN", "MT5BROKER_MT5_PASSWORD", "MT5BROKER_MT5_SERVER")):
+            return ["[Common]", f"Login={v['MT5BROKER_MT5_LOGIN']}", f"Password={v['MT5BROKER_MT5_PASSWORD']}", f"Server={v['MT5BROKER_MT5_SERVER']}"]
+    except Exception:
+        pass
+    return []
+
+
 def write_ini(path: Path, expert_rel: str, symbol: str, period: str, report_rel: str, model: int = 4):
-    path.write_text("\n".join([
+    path.write_text("\n".join(common_login_lines() + [
         "[Experts]", "AllowLiveTrading=0", "AllowDllImport=0", "Enabled=1",
         "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", f"Model={model}", "Optimization=0", f"FromDate={FROM}", f"ToDate={TO}",
         "ForwardMode=0", "Deposit=100000", "Currency=USD", "Leverage=100", "ExecutionMode=0", "Visual=0", f"Report={report_rel}", "ReplaceReport=1",
@@ -164,7 +177,8 @@ def parse_report(htm: Path) -> pd.DataFrame:
 
 
 FLOOD_MB = 100          # stop an EA whose run grows the tester journal by more than this
-MIN_FREE_GB = 10        # pause (never delete anything) while the data drive has less free space than this
+MIN_FREE_GB = float(os.environ.get("EA_BATCH_MIN_FREE_GB", 10))      # pause while the data drive has less free space than this (the second PC sets a high value to cap what a night can use)
+TRIM_JOURNAL_MB = float(os.environ.get("EA_BATCH_TRIM_JOURNAL_MB", 0))   # 0 = never touch the logs (default). > 0: after each EA, empty any tester journal file bigger than this (they only hold the EA's own chatter)
 
 
 def journal_bytes(data: Path) -> int:
@@ -175,11 +189,36 @@ def journal_bytes(data: Path) -> int:
 def wait_for_disk(data: Path) -> None:
     """Block until the data drive has MIN_FREE_GB free. The runner never deletes logs itself: clear Tester\\logs by hand and the batch carries on."""
     warned = False
-    while shutil.disk_usage(str(data)).free < MIN_FREE_GB << 30:
+    while shutil.disk_usage(str(data)).free < MIN_FREE_GB * (1 << 30):          # MIN_FREE_GB may be a float (EA_BATCH_MIN_FREE_GB): shifting a float crashed the batch on the second PC
         if not warned:
             print(f"PAUSED: less than {MIN_FREE_GB} GB free on the data drive. Delete the big files in {data / 'Tester' / 'logs'} and the batch resumes by itself.", flush=True)
             warned = True
         time.sleep(60)
+
+
+def trim_journal(data: Path) -> int:
+    """Opt-in (EA_BATCH_TRIM_JOURNAL_MB > 0): empty the tester journals that grew past the limit, in the terminal's Tester\\logs and in the tester agent folders. Called only after an EA's run has ended
+    (the terminal is closed), so nothing is writing to them. Returns the MB freed. Reports and results are never touched."""
+    if TRIM_JOURNAL_MB <= 0:
+        return 0
+    roots = [data / "Tester" / "logs"]
+    appdata = os.environ.get("APPDATA")
+    if appdata:
+        roots += list((Path(appdata) / "MetaQuotes" / "Tester" / data.name).glob("Agent-*/logs"))
+    freed = 0
+    for root in roots:
+        for f in root.glob("*.log"):
+            try:
+                size = f.stat().st_size
+                if size > TRIM_JOURNAL_MB * (1 << 20):
+                    with open(f, "r+b") as fh:
+                        fh.truncate(0)
+                    freed += size >> 20
+            except OSError:
+                pass
+    if freed:
+        print(f"trimmed tester journals: {freed} MB freed", flush=True)
+    return freed
 
 
 def parse_drawdowns(htm: Path) -> tuple[float, float]:
@@ -316,6 +355,7 @@ def main(argv=None):
                     if time.time() - t_run > a.timeout:
                         kill_terminal(); rec["note"] = f"timeout {a.timeout}s"
                         break
+            trim_journal(data)
             htm = next(iter(rep_root.glob(f"{r.id}*.htm*")), None)
             if htm is not None:
                 try:
