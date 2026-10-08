@@ -3,6 +3,7 @@ InpLots=0.01
 InpRiskPct=1.5
 InpRiskBase=100000
 InpMagic=260931
+InpDropOppositePending=false
 InpBandPeriod=9
 InpKPeriod=23
 InpDPeriod=3

@@ -60,7 +60,10 @@ def data_folder() -> Path:
 
 
 def kill_terminal():
-    subprocess.run(["taskkill", "/F", "/IM", TERMINAL.name], capture_output=True)
+    """Kill only the tester's OWN terminal (matched by its exe path), never another MT5 install: a live broker terminal running an EA (e.g. the MT5 broker account) must survive a tester run."""
+    path = str(TERMINAL).replace("'", "''")
+    ps = f"Get-CimInstance Win32_Process -Filter \"Name='{TERMINAL.name}'\" | Where-Object {{ $_.ExecutablePath -eq '{path}' }} | ForEach-Object {{ Stop-Process -Id $_.ProcessId -Force }}"
+    subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True)
 
 
 _DESKTOP: dict = {}

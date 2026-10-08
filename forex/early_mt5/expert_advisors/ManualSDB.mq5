@@ -33,6 +33,7 @@ input double InpLots        = 0.01;    // fixed volume when InpRiskPct = 0
 input double InpRiskPct     = 0.0;     // % of InpRiskBase lost on a stop-out (0 = use InpLots)
 input double InpRiskBase    = 100000;  // fixed risk base (0 = current balance)
 input int    InpMagic       = 260931;  // magic number
+input bool   InpDropOppositePending = false; // true = delete this EA's pending orders while it holds a position (only for a firm that forbids opposite positions; false reproduces the original EA exactly)
 input int    InpBandPeriod  = 9;       // Bollinger period (weighted price, 2.0 deviations)
 input int    InpKPeriod     = 23;      // stochastic %K period
 input int    InpDPeriod     = 3;       // stochastic signal period
@@ -148,6 +149,18 @@ bool HavePosition()
    return(false);
   }
 
+// MT5 broker forbids opposite positions on the same asset: while this EA holds a position, delete every pending order of its own
+// (the original EA let the other side's older pending order fill: 4 of 201 trades in 2021-26 started inside another trade)
+void DropPendingWhileInPosition()
+  {
+   if(!HavePosition()) return;
+   for(int i=OrdersTotal()-1;i>=0;i--)
+     {
+      ulong t=OrderGetTicket(i);
+      if(OrderSelect(t) && OrderGetInteger(ORDER_MAGIC)==InpMagic && OrderGetString(ORDER_SYMBOL)==_Symbol) DeletePending(t);
+     }
+  }
+
 void PlaceStop(const bool buy,const double level)
   {
    if(HavePosition()) return;
@@ -200,6 +213,7 @@ void OnTimer()
 void OnTick()
   {
    if(InpUseGuard) g_guard.Check();
+   if(InpDropOppositePending) DropPendingWhileInPosition();      // off by default: MT5 broker support confirmed (2026-10-08) that opposite positions inside ONE account are allowed
    if(InpUseGuard && (g_guard.m_hardHalt || g_guard.m_dayHalt || g_guard.m_locked)) return;     // no new orders while a stop is active
    datetime bar=iTime(_Symbol,_Period,0);
    if(bar==g_lastBar || Bars(_Symbol,_Period)<MIN_BARS) return;
