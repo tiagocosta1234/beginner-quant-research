@@ -19,3 +19,5 @@ InpGuardTargetPct=0
 InpGuardBufferPct=0.3
 InpGuardMinDays=0
 InpGuardPragueShiftSec=0
+; 2026-10-09: day profit cap off (old risk-based preset).
+InpGuardDayProfitPct=0.0

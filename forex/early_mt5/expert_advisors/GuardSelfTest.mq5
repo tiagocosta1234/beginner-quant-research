@@ -27,6 +27,9 @@ input bool   InpStubborn      = true;     // also try to open every 10 s wheneve
 input int    InpDirMode       = 0;        // 0 pseudo-random, 1 always buy, 2 always sell
 input int    InpKillAfter     = 0;        // 0 = kill switch off
 input string InpLogName       = "guard_test.csv";
+input double InpProfitCapPct  = 0.0;      // day profit cap halt, % of initial (0 = off)
+input int    InpShiftSec      = 3600;     // server time minus the day-reset clock (0 = server midnight, as on MT5)
+input int    InpRestartHour   = -1;       // >= 0: once a day at this server hour rebuild the day start like a restarted EA and log old vs rebuilt (RESTARTCHK)
 
 class CTestGuard : public CAccountGuard
   {
@@ -40,6 +43,7 @@ datetime      lastSched=0, lastTry=0, lastSnap=0;
 datetime      openTime=0;
 ulong         seed=12345;
 int           opens=0, failedOpens=0;
+long          lastRestartDay=-2;
 
 int NextDir()
   {
@@ -59,7 +63,8 @@ void Log(string ev,string detail="")
 int OnInit()
   {
    fh=FileOpen(InpLogName,FILE_WRITE|FILE_CSV|FILE_ANSI,',');
-   guard.Init(InpInitial,InpDailyStopPct,InpFloorStopPct,InpTargetPct,InpLockBufferPct,InpMinDays,InpPhaseStart,"GUARDTEST",InpKillAfter);
+   guard.Init(InpInitial,InpDailyStopPct,InpFloorStopPct,InpTargetPct,InpLockBufferPct,InpMinDays,InpPhaseStart,"GUARDTEST",InpKillAfter,InpProfitCapPct);
+   guard.m_pragueShiftSec=InpShiftSec;
    drv.SetDeviationInPoints(100);
    EventSetTimer(1);
    Log("START","guardOn="+(string)InpGuardOn);
@@ -98,6 +103,17 @@ void Step()
       if(guard.m_killed && ev=="ENFORCE") Log("KILL");
      }
    datetime now=TimeCurrent();
+   if(InpRestartHour>=0)
+     {
+      MqlDateTime dtm; TimeToStruct(now,dtm); long dayid=guard.DayId();
+      if(dtm.hour==InpRestartHour && dayid!=lastRestartDay)
+        {
+         lastRestartDay=dayid;
+         CTestGuard g2; g2.Init(InpInitial,InpDailyStopPct,InpFloorStopPct,InpTargetPct,InpLockBufferPct,InpMinDays,InpPhaseStart,"GUARDTEST2",InpKillAfter,InpProfitCapPct); g2.m_pragueShiftSec=InpShiftSec;
+         double rebuilt=g2.DayStartBalance(AccountInfoDouble(ACCOUNT_BALANCE));
+         Log("RESTARTCHK","old="+DoubleToString(guard.m_dayRef,2)+" rebuilt="+DoubleToString(rebuilt,2));
+        }
+     }
    if(now-lastSnap>=60) { lastSnap=now; Log("SNAP"); }
   }
 

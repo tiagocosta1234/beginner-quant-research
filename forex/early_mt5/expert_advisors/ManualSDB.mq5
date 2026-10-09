@@ -49,6 +49,7 @@ input double InpGuardTargetPct = 0;    // guard: phase target % for the pass loc
 input double InpGuardBufferPct = 0.3;  // guard: extra % above the target before locking
 input int    InpGuardMinDays   = 0;    // guard: minimum trading days before the lock
 input int    InpGuardPragueShiftSec = 3600; // server time minus the firm's day-reset clock (CHECK per firm)
+input double InpGuardDayProfitPct = 0.0; // guard: day PROFIT cap, % of initial: at +this on the day close everything and stop until the next day (MT5 Pro counts at most 2% a day; 0 = off; test preset 2.0)
 
 #define WINDOW   2000     // bars used to seed the smoothed stochastic
 #define MIN_BARS 30
@@ -192,7 +193,7 @@ int OnInit()
    if(g_bands==INVALID_HANDLE) return(INIT_FAILED);
    if(InpUseGuard)
      {
-      g_guard.Init(InpGuardInitial,InpGuardDayPct,InpGuardFloorPct,InpGuardTargetPct,InpGuardBufferPct,InpGuardMinDays,TimeCurrent(),"ManualSDB");
+      g_guard.Init(InpGuardInitial,InpGuardDayPct,InpGuardFloorPct,InpGuardTargetPct,InpGuardBufferPct,InpGuardMinDays,TimeCurrent(),"ManualSDB",3,InpGuardDayProfitPct);
       g_guard.m_pragueShiftSec=InpGuardPragueShiftSec;
       EventSetTimer(1);
      }
