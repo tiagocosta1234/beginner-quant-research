@@ -1,0 +1,18 @@
+== entries G1: DEV 527 trades | max favourable excursion before the stop (R): median 0.75, P(>=1R) 42%, P(>=2R) 26%, P(>=3R) 17% | stopped 67%
+   T1: DEV n  527 win 46.1% mean -0.086 R PF 0.83 t -2.05 | VAL n  170 win 42.4% mean -0.159 R PF 0.71
+   T2: DEV n  527 win 40.0% mean -0.045 R PF 0.92 t -0.89 | VAL n  170 win 37.1% mean -0.122 R PF 0.79
+   T3: DEV n  527 win 36.4% mean -0.013 R PF 0.98 t -0.22 | VAL n  170 win 32.9% mean -0.125 R PF 0.80
+   T4: DEV n  527 win 31.7% mean -0.007 R PF 0.99 t -0.11 | VAL n  170 win 29.4% mean -0.124 R PF 0.81
+   T5: DEV n  520 win 41.0% mean -0.011 R PF 0.98 t -0.17 | VAL n  161 win 34.8% mean -0.176 R PF 0.71
+   T6: DEV n  527 win 30.6% mean +0.041 R PF 1.06 t +0.48 | VAL n  168 win 31.0% mean -0.066 R PF 0.90
+   T7: DEV n  527 win 30.4% mean +0.020 R PF 1.03 t +0.25 | VAL n  169 win 28.4% mean -0.117 R PF 0.83
+   best DEV target T6: accepted for the hold-out = False
+== entries G2: DEV 708 trades | max favourable excursion before the stop (R): median 0.75, P(>=1R) 43%, P(>=2R) 26%, P(>=3R) 16% | stopped 69%
+   T1: DEV n  708 win 46.8% mean -0.073 R PF 0.86 t -2.01 | VAL n  232 win 42.7% mean -0.151 R PF 0.72
+   T2: DEV n  708 win 40.0% mean -0.047 R PF 0.92 t -1.07 | VAL n  232 win 36.2% mean -0.136 R PF 0.78
+   T3: DEV n  708 win 35.7% mean -0.036 R PF 0.94 t -0.74 | VAL n  232 win 32.8% mean -0.110 R PF 0.83
+   T4: DEV n  708 win 30.8% mean -0.046 R PF 0.93 t -0.81 | VAL n  232 win 27.6% mean -0.151 R PF 0.78
+   T5: DEV n  700 win 38.7% mean -0.056 R PF 0.91 t -1.01 | VAL n  222 win 33.8% mean -0.178 R PF 0.72
+   T6: DEV n  708 win 29.1% mean -0.010 R PF 0.99 t -0.13 | VAL n  230 win 27.8% mean -0.111 R PF 0.84
+   T7: DEV n  708 win 29.0% mean -0.030 R PF 0.96 t -0.43 | VAL n  231 win 26.4% mean -0.158 R PF 0.77
+   best DEV target T6: accepted for the hold-out = False

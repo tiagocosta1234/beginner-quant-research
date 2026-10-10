@@ -1,0 +1,42 @@
+
+=== S1b: 514245 market-bars; positions non-zero 20.8% ; long share of non-zero 52% ===
+S1b DEV      days  262 | net Sharpe -10.66 | daily t -10.87 | -54.43 bp/day | PF 0.16 | win 26.0% | maxDD 145.4% | gross Sharpe +3.20
+S1b VAL      days  261 | net Sharpe -5.21 | daily t -5.31 | -33.02 bp/day | PF 0.43 | win 36.8% | maxDD  88.0% | gross Sharpe +4.43
+S1b POOL     days  523 | net Sharpe -7.56 | daily t -10.89 | -43.74 bp/day | PF 0.28 | win 31.4% | maxDD 230.5% | gross Sharpe +3.85
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -24.71 | mean daily cross-sectional rank IC +0.0153 (t +5.18, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {23: 0.0, 0: -0.0, 13: -0.004} | worst: {8: -0.102, 18: -0.1}
+   POOL net Sharpe by class: {'FX': -5.2, 'index': -1.53, 'metal': -2.41, 'oil': -3.14, 'crypto': -6.72}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== S4b: 514245 market-bars; positions non-zero 20.0% ; long share of non-zero 53% ===
+S4b DEV      days  262 | net Sharpe -10.72 | daily t -10.93 | -46.77 bp/day | PF 0.14 | win 23.3% | maxDD 125.6% | gross Sharpe +2.07
+S4b VAL      days  261 | net Sharpe -8.32 | daily t -8.47 | -34.37 bp/day | PF 0.27 | win 27.6% | maxDD  89.8% | gross Sharpe +1.06
+S4b POOL     days  523 | net Sharpe -9.52 | daily t -13.71 | -40.58 bp/day | PF 0.20 | win 25.4% | maxDD 215.5% | gross Sharpe +1.56
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -17.66 | mean daily cross-sectional rank IC +0.0324 (t +7.37, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {23: 0.0, 3: -0.0, 0: -0.001} | worst: {21: -0.184, 20: -0.182}
+   POOL net Sharpe by class: {'FX': -7.41, 'index': -1.18, 'metal': 0.12, 'oil': -2.29, 'crypto': -5.26}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== G1b: 514245 market-bars; positions non-zero 13.3% ; long share of non-zero 57% ===
+G1b DEV      days  262 | net Sharpe -1.51 | daily t -1.54 |  -2.56 bp/day | PF 0.50 | win 47.3% | maxDD   7.6% | gross Sharpe -0.19
+G1b VAL      days  261 | net Sharpe -4.95 | daily t -5.04 | -40.43 bp/day | PF 0.38 | win 32.6% | maxDD 105.5% | gross Sharpe +0.46
+G1b POOL     days  523 | net Sharpe -3.57 | daily t -5.15 | -21.46 bp/day | PF 0.39 | win 40.0% | maxDD 112.5% | gross Sharpe +0.29
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -12.53 | mean daily cross-sectional rank IC +0.0210 (t +7.95, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {15: 0.041, 0: 0.0, 23: 0.0} | worst: {12: -0.117, 19: -0.098}
+   POOL net Sharpe by class: {'FX': -3.31, 'index': -1.4, 'metal': -1.29, 'oil': -0.94, 'crypto': -3.76}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== G4b: 514245 market-bars; positions non-zero 10.4% ; long share of non-zero 59% ===
+G4b DEV      days  262 | net Sharpe +0.70 | daily t +0.71 |  +0.57 bp/day | PF 1.68 | win  3.8% | maxDD   0.9% | gross Sharpe +1.37
+G4b VAL      days  261 | net Sharpe -2.43 | daily t -2.48 | -14.94 bp/day | PF 0.59 | win 44.8% | maxDD  39.8% | gross Sharpe +0.39
+G4b POOL     days  523 | net Sharpe -1.63 | daily t -2.35 |  -7.17 bp/day | PF 0.61 | win 24.3% | maxDD  39.8% | gross Sharpe +0.41
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -5.64 | mean daily cross-sectional rank IC +0.0214 (t +4.69, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {15: 0.124, 14: 0.028, 3: 0.018} | worst: {20: -0.138, 12: -0.096}
+   POOL net Sharpe by class: {'FX': -1.42, 'index': -0.75, 'metal': 0.86, 'oil': -0.72, 'crypto': -2.04}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+== controls (not trials) ==
+G1 shuffled  days  523 | net Sharpe -2.69 | daily t -3.88 | -12.79 bp/day | PF 0.42 | win 21.0% | maxDD  67.0% | gross Sharpe +0.47 | IC +0.0004 (t +0.28)
+long-only drift days  523 | net Sharpe +1.24 | daily t +1.79 | +16.52 bp/day | PF 1.23 | win 54.7% | maxDD  34.4% | gross Sharpe +1.36 (+1 on every non-FX market in the same bars)
+
+== acceptance 1-4 == {'S1b': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'S4b': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'G1b': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'G4b': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}}

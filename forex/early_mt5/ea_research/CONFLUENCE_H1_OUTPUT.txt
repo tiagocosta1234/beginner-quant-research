@@ -1,0 +1,66 @@
+
+=== S1: 514245 market-bars; positions non-zero 14.5% ; long share of non-zero 52% ===
+S1 DEV       days  262 | net Sharpe -12.83 | daily t -13.08 | -50.09 bp/day | PF 0.12 | win 18.7% | maxDD 132.6% | gross Sharpe +16.82
+S1 VAL       days  261 | net Sharpe -15.20 | daily t -15.47 | -77.47 bp/day | PF 0.08 | win 15.7% | maxDD 205.1% | gross Sharpe +19.18
+S1 POOL      days  523 | net Sharpe -13.85 | daily t -19.95 | -63.82 bp/day | PF 0.10 | win 17.2% | maxDD 335.0% | gross Sharpe +17.81
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -22.55 | mean daily cross-sectional rank IC +0.0335 (t +12.26, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {22: 0.043, 13: 0.005, 21: 0.003} | worst: {23: -0.461, 0: -0.201}
+   POOL net Sharpe by class: {'FX': -12.42, 'index': -0.64, 'metal': -0.44, 'oil': -2.64, 'crypto': -4.87}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== S4: 514245 market-bars; positions non-zero 20.8% ; long share of non-zero 57% ===
+S4 DEV       days  262 | net Sharpe -8.97 | daily t -9.14 | -40.36 bp/day | PF 0.21 | win 27.1% | maxDD 108.9% | gross Sharpe +8.89
+S4 VAL       days  261 | net Sharpe -10.37 | daily t -10.56 | -49.90 bp/day | PF 0.18 | win 24.9% | maxDD 130.1% | gross Sharpe +8.45
+S4 POOL      days  523 | net Sharpe -9.68 | daily t -13.94 | -45.12 bp/day | PF 0.20 | win 26.0% | maxDD 239.1% | gross Sharpe +8.64
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -20.72 | mean daily cross-sectional rank IC +0.0368 (t +8.91, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {0: 0.169, 18: 0.0, 15: -0.002} | worst: {23: -0.245, 1: -0.11}
+   POOL net Sharpe by class: {'FX': -8.14, 'index': -1.32, 'metal': 1.74, 'oil': -3.39, 'crypto': -4.03}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== G1: 514245 market-bars; positions non-zero 8.5% ; long share of non-zero 47% ===
+G1 DEV       days  262 | net Sharpe -6.55 | daily t -6.68 | -21.06 bp/day | PF 0.34 | win 28.6% | maxDD  56.4% | gross Sharpe +17.66
+G1 VAL       days  261 | net Sharpe -11.49 | daily t -11.70 | -68.44 bp/day | PF 0.13 | win 20.7% | maxDD 180.5% | gross Sharpe +15.32
+G1 POOL      days  523 | net Sharpe -8.94 | daily t -12.88 | -44.72 bp/day | PF 0.19 | win 24.7% | maxDD 234.6% | gross Sharpe +15.53
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -18.39 | mean daily cross-sectional rank IC +0.0434 (t +16.15, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {22: 0.11, 14: 0.006, 19: 0.005} | worst: {23: -0.448, 0: -0.212}
+   POOL net Sharpe by class: {'FX': -9.04, 'index': -1.35, 'metal': 1.1, 'oil': -1.24, 'crypto': -4.24}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+=== G4: 514245 market-bars; positions non-zero 11.1% ; long share of non-zero 70% ===
+G4 DEV       days  262 | net Sharpe +3.49 | daily t +3.56 |  +1.58 bp/day | PF 3.93 | win 41.2% | maxDD   0.3% | gross Sharpe +5.74
+G4 VAL       days  261 | net Sharpe -5.59 | daily t -5.69 | -38.34 bp/day | PF 0.32 | win 29.5% | maxDD 100.7% | gross Sharpe +7.40
+G4 POOL      days  523 | net Sharpe -3.66 | daily t -5.27 | -18.34 bp/day | PF 0.35 | win 35.4% | maxDD 100.7% | gross Sharpe +5.32
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+C:\Users\author\AppData\Roaming\Python\Python314\site-packages\numpy\lib\_function_base_impl.py:4596: RuntimeWarning: invalid value encountered in subtract
+  diff_b_a = b - a
+   permutation p (1000 circular shifts, POOL) 0.0010, null mean Sharpe -10.00 | mean daily cross-sectional rank IC +0.0306 (t +6.92, 519 days)
+   net P&L by decision hour (share of total |P&L|), top 3: {0: 0.15, 15: 0.044, 2: 0.021} | worst: {23: -0.466, 1: -0.124}
+   POOL net Sharpe by class: {'FX': -3.98, 'index': -0.11, 'metal': 0.87, 'oil': -1.67, 'crypto': -1.81}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (both years>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): True => closed
+
+== controls (not trials) ==
+G1 shuffled  days  523 | net Sharpe -15.69 | daily t -22.60 | -92.46 bp/day | PF 0.06 | win 11.9% | maxDD 484.2% | gross Sharpe +12.89 | IC -0.0002 (t -0.13)
+long-only drift days  523 | net Sharpe +1.24 | daily t +1.79 | +16.52 bp/day | PF 1.23 | win 54.7% | maxDD  34.4% | gross Sharpe +1.36 (+1 on every non-FX market in the same bars)
+
+== acceptance 1-4 == {'S1': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'S4': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'G1': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}, 'G4': {'a1': False, 'a2': False, 'a3': True, 'a4': True, 'passed': False}}

@@ -1,0 +1,7 @@
+calendar: {'NFP': 57, 'CPI': 56, 'FOMC': 40}
+V1 2024-09-18: entry server 2024-09-17 21:02:00 (= 14:02 ET 2024-09-17), exit server 2024-09-18 20:55:00 (= 13:55 ET)
+V1 2025-03-19: entry server 2025-03-18 20:02:00 (= 14:02 ET 2025-03-18), exit server 2025-03-19 19:55:00 (= 13:55 ET)
+V2 2024-03-08: 08:29 ET = server 2024-03-08 15:29:00, entry 08:47 ET = 2024-03-08 15:47:00, exit 11:30 ET = 2024-03-08 18:30:00
+V2 2024-11-01: 08:29 ET = server 2024-11-01 14:29:00, entry 08:47 ET = 2024-11-01 14:47:00, exit 11:30 ET = 2024-11-01 17:30:00
+V1 events with all three indices quoted: 38 of 40 | V2 release days with all four minutes quoted, per market: {'XAUUSD': 111, 'EURUSD': 113, 'USDJPY': 113, 'NSDQ': 111} of 113
+hand check XAUUSD 2024-03-08 08:29 ET bid/ask (2167.12, 2167.29) | no P&L computed

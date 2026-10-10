@@ -1,0 +1,10 @@
+G1 DEV: trades  512 | win 30.1% | mean +0.026 R | PF 1.04 | t +0.32
+G1 VAL: trades  157 | win 25.5% | mean -0.124 R | PF 0.82 | t -0.89
+   G1 acceptance 1-2: False
+   by class (DEV+VAL): {'FX': (0.028, 604), 'index': (-0.35, 65)} | exits: {'stop': 0.66, 'time': 0.22, 'tp': 0.12} | trades/month: 13.9 | median stop 11.9 bp, median target 4.19 R
+   best/worst markets (DEV+VAL mean R, n>=15): {'ASX': {'mean': -0.671, 'size': 19}, 'AUDJPY': {'mean': -0.586, 'size': 18}, 'NIKKEI': {'mean': -0.582, 'size': 15}, 'GBPCAD': {'mean': 0.422, 'size': 16}, 'GBPNZD': {'mean': 0.544, 'size': 32}, 'USDCHF': {'mean': 1.401, 'size': 18}}
+G2 DEV: trades  689 | win 28.7% | mean -0.030 R | PF 0.96 | t -0.42
+G2 VAL: trades  216 | win 23.6% | mean -0.166 R | PF 0.77 | t -1.42
+   G2 acceptance 1-2: False
+   by class (DEV+VAL): {'FX': (-0.045, 819), 'index': (-0.236, 86)} | exits: {'stop': 0.69, 'time': 0.2, 'tp': 0.11} | trades/month: 18.9 | median stop 11.8 bp, median target 4.28 R
+   best/worst markets (DEV+VAL mean R, n>=15): {'AUDJPY': {'mean': -0.645, 'size': 21}, 'EURCAD': {'mean': -0.632, 'size': 33}, 'NZDJPY': {'mean': -0.6, 'size': 16}, 'USDCAD': {'mean': 0.601, 'size': 21}, 'USDJPY': {'mean': 0.732, 'size': 32}, 'USDCHF': {'mean': 1.023, 'size': 24}}

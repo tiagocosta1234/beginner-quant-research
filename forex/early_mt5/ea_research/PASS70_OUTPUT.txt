@@ -1,0 +1,55 @@
+pass70 run 2026-10-10 14:42 (local clock)
+pool MT5 broker: 258 days | trades skipped by the no-hedge rule 9.8% | mean day USD by size [170, 199, 218, 233, 313, 320, 381] | sd at x1.2 815
+pool FT: 1225 days | trades skipped by the no-hedge rule 17.2% | mean day USD by size [64, 77, 91, 107, 136, 136, 177] | sd at x1.2 565
+
+== P3 first: constant sizes, the pass curve (no-hedge, loss cap, counted cap, pass lock), up to 260 business days from Mon 12 Oct ==
+x1.0: P(pass) by 30 Oct / 30 Nov / 22 Dec: 12M [np.float64(3.1), np.float64(40.4), np.float64(66.2)] | 2022-26 [np.float64(0.1), np.float64(7.2), np.float64(17.8)] | MIX [np.float64(1.6), np.float64(23.8), np.float64(42.0)] | breach within a year 12M 0.4% 2022-26 1.5%
+      first business day with P >= 70%: 12M day 56 = 2026-12-28 | 2022-26 day 146 = 2027-05-03 | MIX day 95 = 2027-02-19
+x1.2: P(pass) by 30 Oct / 30 Nov / 22 Dec: 12M [np.float64(6.9), np.float64(49.2), np.float64(72.7)] | 2022-26 [np.float64(0.8), np.float64(14.4), np.float64(28.1)] | MIX [np.float64(3.9), np.float64(31.8), np.float64(50.4)] | breach within a year 12M 0.6% 2022-26 3.3%
+      first business day with P >= 70%: 12M day 50 = 2026-12-18 | 2022-26 day 122 = 2027-03-30 | MIX day 80 = 2027-01-29
+x1.5: P(pass) by 30 Oct / 30 Nov / 22 Dec: 12M [np.float64(11.1), np.float64(52.4), np.float64(70.9)] | 2022-26 [np.float64(3.4), np.float64(23.2), np.float64(38.0)] | MIX [np.float64(7.2), np.float64(37.8), np.float64(54.5)] | breach within a year 12M 4.5% 2022-26 7.4%
+      first business day with P >= 70%: 12M day 51 = 2026-12-21 | 2022-26 day 108 = 2027-03-10 | MIX day 76 = 2027-01-25
+x1.8: P(pass) by 30 Oct / 30 Nov / 22 Dec: 12M [np.float64(13.2), np.float64(49.4), np.float64(63.0)] | 2022-26 [np.float64(5.9), np.float64(29.7), np.float64(44.5)] | MIX [np.float64(9.5), np.float64(39.5), np.float64(53.8)] | breach within a year 12M 21.3% 2022-26 12.8%
+      first business day with P >= 70%: 12M day 68 = 2027-01-13 | 2022-26 day 102 = 2027-03-02 | MIX day 89 = 2027-02-11
+
+== P1 / P2: the ceiling with ANY size every day (dynamic programming), by deadline ==
+-- deadline 30 Oct (15 business days)
+   policy designed on MIX     lambda 0.0: 12M pass  17.4% breach  15.5% | 2022-26 pass   9.1% breach   6.3% | MIX pass  13.3% breach  10.9%
+   policy designed on MIX     lambda 0.3: 12M pass  17.0% breach   7.5% | 2022-26 pass   8.9% breach   1.6% | MIX pass  13.0% breach   4.5%
+   policy designed on MIX     lambda 1.0: 12M pass  16.1% breach   2.4% | 2022-26 pass   6.9% breach   0.4% | MIX pass  11.5% breach   1.4%
+   policy designed on 12M     lambda 0.0: 12M pass  17.2% breach  13.3% | 2022-26 pass   8.9% breach   5.1% | MIX pass  13.1% breach   9.2%
+   policy designed on 12M     lambda 0.3: 12M pass  16.5% breach   6.8% | 2022-26 pass   8.3% breach   1.6% | MIX pass  12.4% breach   4.2%
+   policy designed on 12M     lambda 1.0: 12M pass  14.9% breach   1.2% | 2022-26 pass   5.4% breach   0.3% | MIX pass  10.1% breach   0.7%
+   policy designed on 2022-26 lambda 0.0: 12M pass  17.0% breach  19.2% | 2022-26 pass   9.2% breach   8.3% | MIX pass  13.1% breach  13.8%
+   policy designed on 2022-26 lambda 0.3: 12M pass  17.4% breach   8.3% | 2022-26 pass   9.0% breach   2.1% | MIX pass  13.2% breach   5.2%
+   policy designed on 2022-26 lambda 1.0: 12M pass  16.1% breach   5.9% | 2022-26 pass   8.6% breach   0.7% | MIX pass  12.3% breach   3.3%
+-- deadline 30 Nov (36 business days)
+   policy designed on MIX     lambda 0.0: 12M pass  54.0% breach  18.6% | 2022-26 pass  29.2% breach  11.1% | MIX pass  41.6% breach  14.8%
+   policy designed on MIX     lambda 0.3: 12M pass  55.4% breach   7.6% | 2022-26 pass  28.6% breach   2.2% | MIX pass  42.0% breach   4.9%
+   policy designed on MIX     lambda 1.0: 12M pass  54.9% breach   3.5% | 2022-26 pass  26.9% breach   0.8% | MIX pass  40.9% breach   2.2%
+   policy designed on 12M     lambda 0.0: 12M pass  56.4% breach  11.8% | 2022-26 pass  24.9% breach   7.5% | MIX pass  40.6% breach   9.7%
+   policy designed on 12M     lambda 0.3: 12M pass  56.3% breach   4.5% | 2022-26 pass  23.9% breach   1.6% | MIX pass  40.1% breach   3.1%
+   policy designed on 12M     lambda 1.0: 12M pass  56.6% breach   1.9% | 2022-26 pass  22.2% breach   0.6% | MIX pass  39.4% breach   1.2%
+   policy designed on 2022-26 lambda 0.0: 12M pass  50.2% breach  25.1% | 2022-26 pass  32.2% breach  15.0% | MIX pass  41.2% breach  20.0%
+   policy designed on 2022-26 lambda 0.3: 12M pass  50.2% breach  14.3% | 2022-26 pass  32.1% breach   2.8% | MIX pass  41.1% breach   8.5%
+   policy designed on 2022-26 lambda 1.0: 12M pass  50.2% breach  11.9% | 2022-26 pass  31.7% breach   1.3% | MIX pass  41.0% breach   6.6%
+-- deadline 22 Dec (52 business days)
+   policy designed on MIX     lambda 0.0: 12M pass  73.6% breach  11.3% | 2022-26 pass  40.3% breach  10.6% | MIX pass  57.0% breach  11.0%
+   policy designed on MIX     lambda 0.3: 12M pass  74.7% breach   5.4% | 2022-26 pass  40.4% breach   2.6% | MIX pass  57.6% breach   4.0%
+   policy designed on MIX     lambda 1.0: 12M pass  75.5% breach   2.7% | 2022-26 pass  38.1% breach   1.1% | MIX pass  56.8% breach   1.9%
+   policy designed on 12M     lambda 0.0: 12M pass  76.4% breach   6.5% | 2022-26 pass  37.0% breach   7.3% | MIX pass  56.7% breach   6.9%
+   policy designed on 12M     lambda 0.3: 12M pass  76.8% breach   2.6% | 2022-26 pass  35.5% breach   1.5% | MIX pass  56.2% breach   2.0%
+   policy designed on 12M     lambda 1.0: 12M pass  76.2% breach   1.4% | 2022-26 pass  35.1% breach   0.9% | MIX pass  55.7% breach   1.2%
+   policy designed on 2022-26 lambda 0.0: 12M pass  64.8% breach  22.5% | 2022-26 pass  46.4% breach  15.0% | MIX pass  55.6% breach  18.7%
+   policy designed on 2022-26 lambda 0.3: 12M pass  65.1% breach  15.1% | 2022-26 pass  45.9% breach   4.0% | MIX pass  55.5% breach   9.6%
+   policy designed on 2022-26 lambda 1.0: 12M pass  65.9% breach  13.6% | 2022-26 pass  45.3% breach   2.2% | MIX pass  55.6% breach   7.9%
+
+== P4: the edge 70% would need, at the live size x1.2 (every day shifted up by delta USD, same variability) ==
+  70% by 30 Oct: 12M: +423 USD/day -> mean day 623 vs 199 now (3.1x), daily Sharpe 0.76 vs 0.24 now | 2022-26: +521 USD/day -> mean day 598 vs 77 now (7.8x), daily Sharpe 1.06 vs 0.14 now
+  70% by 30 Nov: 12M: +71 USD/day -> mean day 270 vs 199 now (1.4x), daily Sharpe 0.33 vs 0.24 now | 2022-26: +183 USD/day -> mean day 259 vs 77 now (3.4x), daily Sharpe 0.46 vs 0.14 now
+  70% by 22 Dec: 12M: +0 USD/day -> mean day 199 vs 199 now (1.0x), daily Sharpe 0.24 vs 0.24 now | 2022-26: +105 USD/day -> mean day 182 vs 77 now (2.4x), daily Sharpe 0.32 vs 0.14 now
+  zero-edge bound (optional stopping, no deadline), loss room = MT5 broker static floor 92,000: P(pass) <= (100 + 8,000) / (8,000 + 8,000) = 50.6%
+  zero-edge bound (optional stopping, no deadline), loss room = our guard floor 6.5%: P(pass) <= (100 + 6,500) / (8,000 + 6,500) = 45.5%
+MIX 50/50, 70% by 30 Oct: +479 USD/day on top of the pair at x1.2 (pair mean day 138 averaged over the two regimes); that is +10.1% of the account a month
+MIX 50/50, 70% by 30 Nov: +140 USD/day on top of the pair at x1.2 (pair mean day 138 averaged over the two regimes); that is +2.9% of the account a month
+MIX 50/50, 70% by 22 Dec: +62 USD/day on top of the pair at x1.2 (pair mean day 138 averaged over the two regimes); that is +1.3% of the account a month

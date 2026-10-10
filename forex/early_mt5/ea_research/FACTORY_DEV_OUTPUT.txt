@@ -1,0 +1,4 @@
+  D = pd.concat([run_market(m, tf) for m in MKTS for tf in TFS], axis=1).fillna(0.0); D = D[D.index.dayofweek < 5]
+variants 272 | DEV days 777 | DEV daily Sharpe: median -0.035, best +0.046 (USDJPY_M15_M20_100), share > 0 19%
+reality check: best DEV daily Sharpe under the null (no edge, same search) median +0.098, 95th pct +0.132; real best +0.046 -> p = 1.000
+top by DEV daily Sharpe (t >= 2):

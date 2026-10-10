@@ -1,0 +1,32 @@
+== D1: C1 slope of y on the score, market-demeaned y (removes each market's own drift in the period), date-clustered t ==
+  PRE   y1: slope +0.0022 t +0.25 | y5: slope +0.0025 t +0.32
+  DEV   y1: slope -0.0094 t -1.39 | y5: slope -0.0247 t -3.81
+  VAL   y1: slope +0.0034 t +0.37 | y5: slope +0.0033 t +0.36
+  POOL  y1: slope -0.0044 t -0.81 | y5: slope -0.0140 t -2.58
+
+== D2: each C1 component alone (market-demeaned y1 / y5, POOL 2023-25 and PRE 2021-22), date-clustered t ==
+  PRE   A: y1 -0.002 (t -0.10, n 14669) | y5 -0.009 (t -0.53, n 14669)
+  PRE   B: y1 -0.002 (t -0.12, n 14670) | y5 -0.005 (t -0.28, n 14670)
+  PRE   C: y1 +0.039 (t +1.10, n 4296) | y5 +0.040 (t +1.27, n 4296)
+  PRE   D: y1 +0.038 (t +1.04, n 3820) | y5 +0.071 (t +2.36, n 3820)
+  PRE   E: y1 -0.005 (t -0.18, n 6661) | y5 +0.030 (t +1.08, n 6661)
+  PRE   G: y1 -0.005 (t -0.18, n 9665) | y5 -0.023 (t -0.91, n 9665)
+  POOL  A: y1 -0.034 (t -2.78, n 22523) | y5 -0.069 (t -5.90, n 22523)
+  POOL  B: y1 -0.031 (t -2.68, n 22527) | y5 -0.071 (t -6.31, n 22527)
+  POOL  C: y1 +0.023 (t +0.83, n 6601) | y5 +0.049 (t +1.95, n 6601)
+  POOL  D: y1 +0.057 (t +2.07, n 5892) | y5 +0.070 (t +2.90, n 5892)
+  POOL  E: y1 +0.006 (t +0.27, n 9900) | y5 +0.026 (t +1.28, n 9900)
+  POOL  G: y1 +0.021 (t +1.02, n 14729) | y5 +0.027 (t +1.30, n 14729)
+
+== D3: model predictions -- time-series IC (prediction vs y, both demeaned per market) and market-neutral P&L ==
+  C2a: time-series IC +0.0036 (slope t +0.21) | market-neutral net Sharpe -0.65 (t -1.15) | no-static-bias net Sharpe -0.38 (t -0.67)
+  C2b: time-series IC -0.0283 (slope t -1.58) | market-neutral net Sharpe -0.10 (t -0.18) | no-static-bias net Sharpe -0.54 (t -0.95)
+  C3a: time-series IC +0.0237 (slope t +1.55) | market-neutral net Sharpe +0.08 (t +0.14) | no-static-bias net Sharpe +0.53 (t +0.94)
+  C3b: time-series IC +0.0087 (slope t +0.60) | market-neutral net Sharpe -0.57 (t -1.01) | no-static-bias net Sharpe -0.40 (t -0.70)
+
+== D4: the drift yardstick by class (long-only, POOL 2023-25 net Sharpe) ==
+  FX     long-only net Sharpe +0.75 (t +1.32)
+  index  long-only net Sharpe +1.23 (t +2.16)
+  metal  long-only net Sharpe +1.78 (t +3.12)
+  oil    long-only net Sharpe -0.25 (t -0.43)
+  crypto long-only net Sharpe +1.07 (t +1.89)

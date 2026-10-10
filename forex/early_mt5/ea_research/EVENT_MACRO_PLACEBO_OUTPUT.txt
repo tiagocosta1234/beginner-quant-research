@@ -1,0 +1,8 @@
+windows with all three indices: 949 (FOMC 32, other 917)
+2022: FOMC windows   8 mean  +87.86 bp | other windows  232 mean -11.82 bp (sd 148.5) | difference  +99.68 bp, Welch t +3.25
+2023: FOMC windows   8 mean  +20.95 bp | other windows  230 mean +10.56 bp (sd  85.9) | difference  +10.39 bp, Welch t +0.72
+2024: FOMC windows   8 mean  +31.25 bp | other windows  229 mean  +7.74 bp (sd  81.2) | difference  +23.51 bp, Welch t +0.73
+2025: FOMC windows   8 mean  +17.07 bp | other windows  226 mean  +7.03 bp (sd  99.1) | difference  +10.04 bp, Welch t +0.72
+2022-25: FOMC windows  32 mean  +39.28 bp | other windows  917 mean  +3.33 bp (sd 107.4) | difference  +35.96 bp, Welch t +2.82
+rank of each FOMC window among the other windows (share of others at or above it), mean 0.390 (0.5 = ordinary); FOMC windows in the top decile of all windows: 2 of 32
+random-day placebo: mean of 32 random non-FOMC windows exceeds the FOMC mean in 2.53% of 20,000 draws

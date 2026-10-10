@@ -1,0 +1,24 @@
+== D1: relative spread at the execution minute (bp) by decision hour; hour 23 executes at 00:00 (rollover) ==
+all markets median: {0: 2.76, 1: 1.04, 2: 1.01, 21: 0.89, 22: 0.94, 23: 8.45}
+  EURUSD: {21: 0.43, 22: 0.43, 23: 2.79, 0: 0.5, 1: 0.43, 2: 0.43}
+  XAUUSD: {21: 0.8, 22: 0.85, 23: 1.15, 0: nan, 1: 0.97, 2: 0.94}
+  SP: {21: 0.79, 22: 0.81, 23: 0.97, 0: nan, 1: 0.88, 2: 0.9}
+  BTCUSD: {21: 7.94, 22: 7.92, 23: 8.11, 0: 7.93, 1: 7.85, 2: 7.92}
+
+== D2: S1b gross P&L dissected (test 2024-25) ==
+gross 21.9 bp/day vs cost 65.6 bp/day | position changes per day per market 8.45
+cells 996; correlation of cell gross between 2024 and 2025: 0.357
+gross by class (bp total): {'FX': 9016, 'index': 625, 'metal': 20, 'oil': -103, 'crypto': 1891}
+
+== D3: same positions marked at minute 5 instead of minute 0 ==
+  2024: gross Sharpe minute-0 marks 3.20 | minute-5 marks 1.27
+  2025: gross Sharpe minute-0 marks 4.43 | minute-5 marks 2.02
+  gross by class minute-0 vs minute-5 (bp): {'FX': (9016, 3128), 'index': (625, 664), 'metal': (20, 25), 'oil': (-103, -118), 'crypto': (1891, 1204)}
+
+== D4: hour x market cell t-statistics in the training window, real vs placebo (hours shuffled within market-date) ==
+  test 2024: cells 924 | |t| >= 2.5/3/3.5/4: real {2.5: 26, 3: 13, 3.5: 5, 4: 4} placebo {2.5: 9, 3: 0, 3.5: 0, 4: 0} | cells passing the cost hurdle too: 0
+     strongest (market, hour, t, mean bp, round-trip cost bp): [('XRPUSD', 9, -6.0, -20.2, 27.8), ('XRPUSD', 21, 4.5, 19.4, 28.3), ('XRPUSD', 20, 4.3, 12.9, 27.9), ('XRPUSD', 6, 4.3, 14.0, 27.8), ('AUDCHF', 1, 3.7, 1.3, 3.2)]
+  test 2025: cells 924 | |t| >= 2.5/3/3.5/4: real {2.5: 25, 3: 14, 3.5: 7, 4: 3} placebo {2.5: 13, 3: 3, 3.5: 2, 4: 1} | cells passing the cost hurdle too: 0
+     strongest (market, hour, t, mean bp, round-trip cost bp): [('XRPUSD', 9, -5.5, -12.8, 29.4), ('GBPJPY', 22, 4.7, 1.1, 0.9), ('XRPUSD', 6, 4.0, 10.7, 29.7), ('XRPUSD', 3, -3.9, -12.0, 29.3), ('USDJPY', 22, 3.9, 0.8, 0.3)]
+  test 2026: cells 924 | |t| >= 2.5/3/3.5/4: real {2.5: 29, 3: 12, 3.5: 9, 4: 5} placebo {2.5: 13, 3: 2, 3.5: 0, 4: 0} | cells passing the cost hurdle too: 1
+     strongest (market, hour, t, mean bp, round-trip cost bp): [('XRPUSD', 9, -5.7, -12.2, 24.2), ('GBPJPY', 22, 5.2, 1.0, 0.9), ('CHFJPY', 22, 4.4, 0.7, 1.0), ('USDJPY', 22, 4.3, 0.8, 0.5), ('EURJPY', 22, 4.0, 0.6, 0.6)]

@@ -1,0 +1,16 @@
+bars 1235539 | tradable 1139470
+
+== selection ==
+  test 2024: training cells 924 | SELECTED 0 (placebo with shuffled hours selects 0: 0.0% of real) | class mix {}
+     strongest cells (market, hour: t, mean bp, cost bp): []
+  test 2025: training cells 924 | SELECTED 0 (placebo with shuffled hours selects 1: 100.0% of real) | class mix {}
+     strongest cells (market, hour: t, mean bp, cost bp): []
+Y2024  days  262 | net Sharpe  +nan | daily t  +nan |   +nan bp/day | PF  nan | maxDD   nan% | gross Sharpe  +nan (gross +nan bp/day)
+Y2025  days  261 | net Sharpe  +nan | daily t  +nan |   +nan bp/day | PF  nan | maxDD   nan% | gross Sharpe  +nan (gross +nan bp/day)
+DEV    days  523 | net Sharpe  +nan | daily t  +nan |   +nan bp/day | PF  nan | maxDD   nan% | gross Sharpe  +nan (gross +nan bp/day)
+permutation p (500 circular shifts, DEV) 0.0020, null mean Sharpe +0.00
+position changes: 0.0 per day over 42 markets
+  2024: selected cells traded 0, share with positive out-of-sample gross nan%; gross by class (bp): {}
+  2025: selected cells traded 0, share with positive out-of-sample gross nan%; gross by class (bp): {}
+
+acceptance 1 (placebo < 10% of real): False | acceptance 2 (both years > 0, pooled t >= 2.0, p <= 0.01): False => CLOSED, hold-out stays unopened

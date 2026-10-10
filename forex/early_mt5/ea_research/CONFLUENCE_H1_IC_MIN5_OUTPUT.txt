@@ -1,0 +1,10 @@
+== IC of the walk-forward models (test 2024-25), cross-sectional rank IC by server day, t over days ==
+columns: ALL = K2's published figure (all hours, minute-0 label); then rollover hours 22/23/0 excluded: MIN0 = minute-0 label; MIN5 = minute-5 label (core5, adjacent bars only); BND = boundary term a(k+1)-a(k+2)
+K2  S1: ALL +0.0335 (t +12.26) | MIN0 +0.0153 (t  +5.18) | MIN5 +0.0065 (t  +2.15, 519 days, 453654 rows) | BND +0.0168 (t  +5.82)
+K2  S4: ALL +0.0368 (t  +8.91) | MIN0 +0.0324 (t  +7.37) | MIN5 +0.0222 (t  +4.89, 519 days, 427554 rows) | BND +0.0208 (t  +7.40)
+K2  G1: ALL +0.0434 (t +16.15) | MIN0 +0.0217 (t  +7.51) | MIN5 +0.0142 (t  +4.90, 519 days, 453654 rows) | BND +0.0113 (t  +5.22)
+K2  G4: ALL +0.0306 (t  +6.92) | MIN0 +0.0251 (t  +5.22) | MIN5 +0.0193 (t  +3.82, 519 days, 427554 rows) | BND +0.0076 (t  +3.61)
+K2b S1: ALL +0.0153 (t  +5.18) | MIN0 +0.0153 (t  +5.18) | MIN5 +0.0065 (t  +2.15, 519 days, 453654 rows) | BND +0.0168 (t  +5.82)
+K2b S4: ALL +0.0324 (t  +7.37) | MIN0 +0.0324 (t  +7.37) | MIN5 +0.0222 (t  +4.89, 519 days, 427554 rows) | BND +0.0208 (t  +7.40)
+K2b G1: ALL +0.0210 (t  +7.95) | MIN0 +0.0186 (t  +6.50) | MIN5 +0.0107 (t  +3.65, 519 days, 453654 rows) | BND +0.0112 (t  +5.67)
+K2b G4: ALL +0.0214 (t  +4.69) | MIN0 +0.0259 (t  +5.31) | MIN5 +0.0197 (t  +3.83, 519 days, 427554 rows) | BND +0.0059 (t  +2.85)

@@ -1,0 +1,93 @@
+
+== C1 dose-response (diagnostic, not a trial): mean y by score; usable rows ==
+PRE
+score    -6.0     -5.0     -4.0      -3.0      -2.0      -1.0       0.0       1.0       2.0       3.0      4.0      5.0     6.0
+n      63.000  160.000  651.000  1350.000  1674.000  1868.000  1797.000  2070.000  2360.000  1789.000  645.000  202.000  41.000
+y1     -0.156   -0.025    0.008    -0.055     0.017    -0.019    -0.016     0.016     0.012    -0.020    0.034    0.165   0.291
+y5     -0.340   -0.065   -0.023    -0.037    -0.045    -0.043    -0.006    -0.005     0.016     0.036    0.026    0.222   0.223
+DEV
+score    -6.0     -5.0     -4.0     -3.0      -2.0      -1.0       0.0       1.0       2.0       3.0      4.0      5.0     6.0
+n      20.000  121.000  402.000  894.000  1525.000  1708.000  1862.000  2570.000  2534.000  2219.000  881.000  219.000  71.000
+y1      0.037   -0.080    0.037    0.068     0.030     0.083     0.012     0.052    -0.013     0.059   -0.008   -0.066   0.393
+y5      0.242    0.054    0.116    0.126     0.098     0.125     0.085     0.041     0.034     0.108   -0.007    0.007   0.154
+VAL
+score   -6.0    -5.0    -4.0     -3.0     -2.0     -1.0     0.0       1.0       2.0       3.0      4.0     5.0     6.0
+n      4.000  60.000  210.00  567.000  929.000  985.000  871.00  1108.000  1174.000  1080.000  388.000  93.000  32.000
+y1     0.376   0.047   -0.04   -0.011    0.026    0.046    0.02     0.000     0.047     0.062    0.116   0.085   0.244
+y5     0.832   0.250   -0.03   -0.035    0.039    0.059    0.03     0.088     0.141     0.073    0.179   0.409   0.418
+
+=== C1a: 44476 market-days; markets 29; positions non-zero 32.3% ; long share of non-zero 64% ===
+C1a PRE        days  521 | net Sharpe +0.13 | daily t +0.19 |  +1.16 bp/day | PF 1.02 | win 49.5% | maxDD  35.9% | gross Sharpe +0.50
+C1a DEV        days  522 | net Sharpe -0.03 | daily t -0.05 |  -0.24 bp/day | PF 0.99 | win 48.3% | maxDD  31.9% | gross Sharpe +0.48
+C1a VAL        days  261 | net Sharpe +1.12 | daily t +1.14 |  +7.39 bp/day | PF 1.22 | win 52.9% | maxDD   6.7% | gross Sharpe +1.69
+C1a POOL       days  783 | net Sharpe +0.32 | daily t +0.57 |  +2.31 bp/day | PF 1.06 | win 49.8% | maxDD  31.9% | gross Sharpe +0.86
+C1a Y2023      days  260 | net Sharpe -0.48 | daily t -0.48 |  -3.32 bp/day | PF 0.92 | win 43.8% | maxDD  20.4% | gross Sharpe +0.05
+C1a Y2024      days  262 | net Sharpe +0.36 | daily t +0.37 |  +2.82 bp/day | PF 1.07 | win 52.7% | maxDD  28.3% | gross Sharpe +0.87
+C1a Y2025      days  261 | net Sharpe +1.12 | daily t +1.14 |  +7.39 bp/day | PF 1.22 | win 52.9% | maxDD   6.7% | gross Sharpe +1.69
+   permutation p (1000 circular shifts, POOL) 0.7582, null mean Sharpe +0.64
+   POOL net Sharpe by class: {'FX': -0.31, 'index': 0.85, 'metal': 0.42, 'oil': -0.25, 'crypto': 0.14}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): False | a4 (IC>0, t>=2): True => closed
+
+=== C1b: 44476 market-days; markets 29; positions non-zero 68.2% ; long share of non-zero 64% ===
+C1b PRE        days  521 | net Sharpe +0.20 | daily t +0.29 |  +2.62 bp/day | PF 1.04 | win 55.1% | maxDD  42.5% | gross Sharpe +0.31
+C1b DEV        days  522 | net Sharpe +0.15 | daily t +0.22 |  +1.59 bp/day | PF 1.03 | win 51.5% | maxDD  38.2% | gross Sharpe +0.31
+C1b VAL        days  261 | net Sharpe +1.23 | daily t +1.25 | +12.21 bp/day | PF 1.22 | win 53.3% | maxDD  13.1% | gross Sharpe +1.39
+C1b POOL       days  783 | net Sharpe +0.50 | daily t +0.88 |  +5.13 bp/day | PF 1.09 | win 52.1% | maxDD  38.2% | gross Sharpe +0.65
+C1b Y2023      days  260 | net Sharpe -0.05 | daily t -0.05 |  -0.43 bp/day | PF 0.99 | win 49.2% | maxDD  26.4% | gross Sharpe +0.11
+C1b Y2024      days  262 | net Sharpe +0.32 | daily t +0.32 |  +3.60 bp/day | PF 1.05 | win 53.8% | maxDD  38.2% | gross Sharpe +0.47
+C1b Y2025      days  261 | net Sharpe +1.23 | daily t +1.25 | +12.21 bp/day | PF 1.22 | win 53.3% | maxDD  13.1% | gross Sharpe +1.39
+   permutation p (1000 circular shifts, POOL) 0.9960, null mean Sharpe +1.47
+   POOL net Sharpe by class: {'FX': -0.09, 'index': 1.04, 'metal': 1.08, 'oil': -0.48, 'crypto': -0.1}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): False | a4 (IC>0, t>=2): True => closed
+
+=== C2a: 22527 market-days; markets 29; positions non-zero 100.0% ; long share of non-zero 48% ===
+C2a DEV        days  522 | net Sharpe -0.50 | daily t -0.71 |  -2.88 bp/day | PF 0.90 | win 50.6% | maxDD  39.7% | gross Sharpe +0.06
+C2a VAL        days  261 | net Sharpe +0.16 | daily t +0.17 |  +1.62 bp/day | PF 1.04 | win 49.0% | maxDD  15.0% | gross Sharpe +0.62
+C2a POOL       days  783 | net Sharpe -0.18 | daily t -0.33 |  -1.38 bp/day | PF 0.96 | win 50.1% | maxDD  39.7% | gross Sharpe +0.31
+C2a Y2023      days  260 | net Sharpe -1.28 | daily t -1.30 |  -5.66 bp/day | PF 0.77 | win 51.5% | maxDD  20.6% | gross Sharpe -0.79
+C2a Y2024      days  262 | net Sharpe -0.02 | daily t -0.02 |  -0.11 bp/day | PF 1.00 | win 49.6% | maxDD  24.3% | gross Sharpe +0.60
+C2a Y2025      days  261 | net Sharpe +0.16 | daily t +0.17 |  +1.62 bp/day | PF 1.04 | win 49.0% | maxDD  15.0% | gross Sharpe +0.62
+   permutation p (1000 circular shifts, POOL) 0.1399, null mean Sharpe -0.77 | mean daily rank IC +0.0107 (t +0.99, 778 days)
+   POOL net Sharpe by class: {'FX': -0.01, 'index': 0.25, 'metal': 0.27, 'oil': -0.03, 'crypto': -1.07}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): False | a4 (IC>0, t>=2): False => closed
+
+=== C2b: 22527 market-days; markets 29; positions non-zero 100.0% ; long share of non-zero 43% ===
+C2b DEV        days  522 | net Sharpe -0.07 | daily t -0.11 |  -0.44 bp/day | PF 0.98 | win 50.0% | maxDD  35.9% | gross Sharpe +0.18
+C2b VAL        days  261 | net Sharpe -0.73 | daily t -0.74 |  -7.94 bp/day | PF 0.84 | win 47.1% | maxDD  35.7% | gross Sharpe -0.54
+C2b POOL       days  783 | net Sharpe -0.37 | daily t -0.65 |  -2.94 bp/day | PF 0.91 | win 49.0% | maxDD  35.9% | gross Sharpe -0.16
+C2b Y2023      days  260 | net Sharpe -1.68 | daily t -1.71 |  -5.22 bp/day | PF 0.72 | win 49.6% | maxDD  14.7% | gross Sharpe -1.42
+C2b Y2024      days  262 | net Sharpe +0.56 | daily t +0.57 |  +4.31 bp/day | PF 1.13 | win 50.4% | maxDD  27.3% | gross Sharpe +0.84
+C2b Y2025      days  261 | net Sharpe -0.73 | daily t -0.74 |  -7.94 bp/day | PF 0.84 | win 47.1% | maxDD  35.7% | gross Sharpe -0.54
+   permutation p (1000 circular shifts, POOL) 0.6304, null mean Sharpe -0.24 | mean daily rank IC -0.0088 (t -0.77, 778 days)
+   POOL net Sharpe by class: {'FX': -0.32, 'index': -0.03, 'metal': 0.96, 'oil': -0.07, 'crypto': -1.18}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): False | a4 (IC>0, t>=2): False => closed
+
+=== C3a: 22527 market-days; markets 29; positions non-zero 100.0% ; long share of non-zero 56% ===
+C3a DEV        days  522 | net Sharpe +0.19 | daily t +0.27 |  +1.19 bp/day | PF 1.04 | win 51.7% | maxDD  25.2% | gross Sharpe +0.58
+C3a VAL        days  261 | net Sharpe +1.04 | daily t +1.06 |  +8.51 bp/day | PF 1.28 | win 47.9% | maxDD  11.4% | gross Sharpe +1.51
+C3a POOL       days  783 | net Sharpe +0.52 | daily t +0.92 |  +3.63 bp/day | PF 1.12 | win 50.4% | maxDD  25.2% | gross Sharpe +0.94
+C3a Y2023      days  260 | net Sharpe -0.12 | daily t -0.12 |  -0.89 bp/day | PF 0.98 | win 51.9% | maxDD  24.5% | gross Sharpe +0.21
+C3a Y2024      days  262 | net Sharpe +0.70 | daily t +0.71 |  +3.25 bp/day | PF 1.15 | win 51.5% | maxDD  19.5% | gross Sharpe +1.21
+C3a Y2025      days  261 | net Sharpe +1.04 | daily t +1.06 |  +8.51 bp/day | PF 1.28 | win 47.9% | maxDD  11.4% | gross Sharpe +1.51
+   permutation p (1000 circular shifts, POOL) 0.0020, null mean Sharpe -1.00 | mean daily rank IC +0.0066 (t +0.72, 778 days)
+   POOL net Sharpe by class: {'FX': 0.24, 'index': 0.76, 'metal': 0.84, 'oil': -0.29, 'crypto': 0.08}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): True | a4 (IC>0, t>=2): False => closed
+
+=== C3b: 22527 market-days; markets 29; positions non-zero 100.0% ; long share of non-zero 55% ===
+C3b DEV        days  522 | net Sharpe -0.48 | daily t -0.69 |  -3.14 bp/day | PF 0.90 | win 48.9% | maxDD  37.5% | gross Sharpe -0.11
+C3b VAL        days  261 | net Sharpe -0.13 | daily t -0.14 |  -1.48 bp/day | PF 0.96 | win 47.1% | maxDD  38.2% | gross Sharpe +0.15
+C3b POOL       days  783 | net Sharpe -0.31 | daily t -0.55 |  -2.59 bp/day | PF 0.93 | win 48.3% | maxDD  51.9% | gross Sharpe +0.01
+C3b Y2023      days  260 | net Sharpe -0.93 | daily t -0.94 |  -6.56 bp/day | PF 0.82 | win 49.6% | maxDD  26.8% | gross Sharpe -0.59
+C3b Y2024      days  262 | net Sharpe +0.04 | daily t +0.04 |  +0.25 bp/day | PF 1.01 | win 48.1% | maxDD  18.4% | gross Sharpe +0.46
+C3b Y2025      days  261 | net Sharpe -0.13 | daily t -0.14 |  -1.48 bp/day | PF 0.96 | win 47.1% | maxDD  38.2% | gross Sharpe +0.15
+   permutation p (1000 circular shifts, POOL) 0.2438, null mean Sharpe -0.67 | mean daily rank IC +0.0033 (t +0.38, 778 days)
+   POOL net Sharpe by class: {'FX': -0.64, 'index': 0.12, 'metal': 0.58, 'oil': -0.77, 'crypto': -0.03}
+   acceptance a1 (t>=2.4 & Sharpe>=1.0): False | a2 (every year>0, 2025>=0.3): False | a3 (perm p<=0.01): False | a4 (IC>0, t>=2): False => closed
+
+== controls (not trials) ==
+C3 shuffled    days  783 | net Sharpe +0.16 | daily t +0.29 |  +1.11 bp/day | PF 1.04 | win 47.5% | maxDD  24.9% | gross Sharpe +0.60 | IC -0.0032 (t -0.36)
+long-only drift days  783 | net Sharpe +1.56 | daily t +2.74 | +16.84 bp/day | PF 1.30 | win 54.8% | maxDD  34.0% | gross Sharpe +1.58 (+1 on every non-FX market: the beta/drift of 2023-25, a yardstick for the P&L above)
+
+C3a permutation importance 2025 (increase in MSE when the feature is shuffled; top 12): {'usd5': 0.00353, 'riskvol': 0.00291, 'dow': 0.00171, 'risk20': 0.00088, 'r1': 0.00084, 'gap': 0.0007, 'ry_lvl': 0.00047, 'r10': 0.00046, 'rsi2': 0.00045, 'xs20': 0.00031, 'r3': 0.00022, 'tom': 0.00018}
+
+== acceptance 1-4 == {'C1a': {'a1': False, 'a2': False, 'a3': False, 'a4': True, 'passed': False}, 'C1b': {'a1': False, 'a2': False, 'a3': False, 'a4': True, 'passed': False}, 'C2a': {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'passed': False}, 'C2b': {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'passed': False}, 'C3a': {'a1': False, 'a2': False, 'a3': True, 'a4': False, 'passed': False}, 'C3b': {'a1': False, 'a2': False, 'a3': False, 'a4': False, 'passed': False}}

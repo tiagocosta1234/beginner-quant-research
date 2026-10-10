@@ -1,0 +1,6 @@
+Z1 single DEV: trades 4090 | win 35.0% | mean -0.039 R | PF 0.94 | t -1.76
+Z1 single VAL: trades 1334 | win 34.9% | mean -0.067 R | PF 0.90 | t -1.78
+   Z1 acceptance 1-2: False
+   Z1 by class (2022-25 mean R, n): {'FX': (-0.063, 4487), 'gold': (-0.151, 139), 'index': (0.068, 798)} | median risk 18.0 bp | trades/month 113.0
+Z2 basket (diagnostic) 2022-25: baskets 5424 | win 71.3% (single Z1: 35.0%) | mean -83.4 USD per basket | units filled 1/3/7: [np.float64(0.435), np.float64(0.265), np.float64(0.3)]
+   worst basket -2,802 USD | 5 worst [-2802.0, -2459.0, -2309.0, -2219.0, -2118.0] | total -452,150 USD over 4 years | days whose summed basket loss < -2,500: 162

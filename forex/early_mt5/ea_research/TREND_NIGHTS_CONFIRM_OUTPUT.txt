@@ -1,0 +1,7 @@
+PRIMARY   US-EW  trend200 2026: nights 184 (active 173) | mean +0.81 bp/night | t +0.19 | worst -189.1 bp
+report    NSDQ   trend200 2026: nights 184 (active 172) | mean +2.50 bp/night | t +0.41 | worst -291.7 bp
+report    SP     trend200 2026: nights 184 (active 173) | mean +0.26 bp/night | t +0.07 | worst -178.9 bp
+no filter US-EW  none     2026: nights 184 (active 184) | mean +2.96 bp/night | t +0.61 | worst -189.1 bp
+PRIMARY pass (mean > 0 and t >= 1.65): False
+size for worst night <= 1,000 USD: about 27,015 USD notional -> 2026 mean +2.2 USD per night
+daily correlation with the gold pair in 2026: +0.03 (184 days)

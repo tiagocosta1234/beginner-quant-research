@@ -1,0 +1,28 @@
+== descriptive: Mon-Thu nights (15:55 ET -> 09:35 ET next day), NET of the spread, bp ==
+  2022 SP     n 199 | P(>0) 50.3% | mean  -2.01 median  +1.25 sd   89.1 skew +0.05 | 5%  -151.8 1%  -216.8 worst  -254.1
+  2022 NSDQ   n 199 | P(>0) 46.7% | mean  -5.51 median  -5.39 sd  117.8 skew +0.24 | 5%  -188.7 1%  -290.9 worst  -297.0
+  2022 DOW    n 199 | P(>0) 50.8% | mean  -0.91 median  +1.48 sd   76.1 skew -0.18 | 5%  -134.9 1%  -209.4 worst  -222.1
+  2022 night  n 199 | P(>0) 49.2% | mean  -2.81 median  -1.63 sd   92.1 skew +0.08 | 5%  -151.5 1%  -226.4 worst  -255.4
+  2023 SP     n 197 | P(>0) 54.8% | mean  +2.65 median  +4.42 sd   50.7 skew -0.05 | 5%   -75.6 1%  -115.4 worst  -160.5
+  2023 NSDQ   n 197 | P(>0) 54.8% | mean  +6.59 median  +8.30 sd   69.5 skew +0.25 | 5%  -113.8 1%  -151.5 worst  -179.8
+  2023 DOW    n 197 | P(>0) 52.3% | mean  +0.92 median  +1.31 sd   43.1 skew -0.15 | 5%   -66.8 1%  -104.2 worst  -162.0
+  2023 night  n 197 | P(>0) 54.8% | mean  +3.39 median  +3.99 sd   51.4 skew -0.01 | 5%   -75.6 1%  -123.5 worst  -155.7
+  2024 SP     n 197 | P(>0) 64.0% | mean  +8.85 median +10.48 sd   47.7 skew +0.01 | 5%   -72.1 1%  -125.2 worst  -154.4
+  2024 NSDQ   n 197 | P(>0) 57.4% | mean +10.98 median  +9.89 sd   69.0 skew -0.18 | 5%  -102.3 1%  -186.3 worst  -234.5
+  2024 DOW    n 197 | P(>0) 54.8% | mean  +3.49 median  +6.26 sd   47.1 skew +1.24 | 5%   -68.3 1%  -101.2 worst  -141.2
+  2024 night  n 197 | P(>0) 58.9% | mean  +7.78 median  +7.66 sd   51.2 skew +0.21 | 5%   -79.0 1%  -133.6 worst  -165.6
+  2025 SP     n 195 | P(>0) 56.4% | mean  +1.00 median  +3.87 sd   66.2 skew -0.19 | 5%  -103.7 1%  -231.5 worst  -317.8
+  2025 NSDQ   n 195 | P(>0) 55.9% | mean  +1.24 median  +6.05 sd   83.1 skew -0.16 | 5%  -138.3 1%  -268.3 worst  -366.2
+  2025 DOW    n 195 | P(>0) 48.2% | mean  -1.07 median  -1.51 sd   61.1 skew +0.11 | 5%  -100.9 1%  -177.6 worst  -275.4
+  2025 night  n 195 | P(>0) 54.9% | mean  +0.39 median  +2.49 sd   67.9 skew -0.10 | 5%  -114.1 1%  -225.8 worst  -319.8
+  day session (09:35->15:55, mids) equal-weight: mean +1.55 bp, P(>0) 52.3% | night gross (mids) mean +3.10 | spread cost per night 0.92 bp
+  Friday->Monday window (not traded): n 194 | P(>0) 61.3% | mean +4.06 sd 74.6 worst -372.0
+  P(night > 0) by weekday of D: {'Mon': '51.9% (mean +6.1, n 185)', 'Tue': '57.3% (mean +5.8, n 206)', 'Wed': '54.0% (mean -3.4, n 202)', 'Thu': '54.4% (mean +0.3, n 195)'}
+  conditional on the day session of D: {'down day': 'P(>0) 56.1% mean +3.04 (n 376)', 'up day': 'P(>0) 52.9% mean +1.39 (n 412)'}
+  by tercile of the day move: {'big down': 'P(>0) 57.0% mean +3.93', 'middle': 'P(>0) 51.9% mean +0.29', 'big up': 'P(>0) 54.4% mean +2.30'}
+N1 DEV: nights 593 (active 593) | mean +2.76 bp/night | active mean +2.76 | P(active>0) 54.3% | t +0.99 | worst -255.4
+N1 VAL: nights 195 (active 195) | mean +0.39 bp/night | active mean +0.39 | P(active>0) 54.9% | t +0.08 | worst -319.8
+   N1: acceptance 1-2 FAILED (closed)
+N2 DEV: nights 593 (active 294) | mean +1.81 bp/night | active mean +3.66 | P(active>0) 56.1% | t +0.94 | worst -238.8
+N2 VAL: nights 195 (active 82) | mean +0.34 bp/night | active mean +0.82 | P(active>0) 56.1% | t +0.12 | worst -275.2
+   N2: acceptance 1-2 FAILED (closed)

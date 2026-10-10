@@ -1,0 +1,9 @@
+  d["code"] = d["CFTC Contract Market Code"].str.strip(); d = d[d.code.isin(CODES)]
+  d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); d["net"] = (d["Noncommercial Positions-Long (All)"] - d["Noncommercial Positions-Short (All)"]) / d["Open Interest (All)"]
+  d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); d["net"] = (d["Noncommercial Positions-Long (All)"] - d["Noncommercial Positions-Short (All)"]) / d["Open Interest (All)"]
+P1 DEV: active weeks 154 (market-weeks 722) | weekly mean +13.34 bp | win 51.9% | t +1.15
+P1 VAL: active weeks 51 (market-weeks 222) | weekly mean +5.42 bp | win 49.0% | t +0.22
+   P1 acceptance 1-2: False | per market (2021-25 mean bp, n): {'AUDUSD': (11.1, 69), 'DOW': (10.6, 75), 'EURUSD': (-9.7, 102), 'GBPUSD': (11.3, 76), 'NSDQ': (-57.0, 50), 'NZDUSD': (21.2, 68), 'SP': (-13.5, 87), 'USDCAD': (17.8, 73), 'USDCHF': (6.4, 55), 'USDJPY': (5.7, 71), 'WTI': (111.4, 80), 'XAGUSD': (4.8, 67), 'XAUUSD': (-6.0, 71)}
+P2 DEV: active weeks 154 (market-weeks 2002) | weekly mean -2.10 bp | win 51.3% | t -0.39
+P2 VAL: active weeks 51 (market-weeks 663) | weekly mean +3.55 bp | win 51.0% | t +0.27
+   P2 acceptance 1-2: False | per market (2021-25 mean bp, n): {'AUDUSD': (-5.0, 205), 'DOW': (-32.1, 205), 'EURUSD': (6.7, 205), 'GBPUSD': (2.1, 205), 'NSDQ': (33.3, 205), 'NZDUSD': (5.2, 205), 'SP': (4.0, 205), 'USDCAD': (-4.4, 205), 'USDCHF': (-3.8, 205), 'USDJPY': (5.2, 205), 'WTI': (-30.7, 205), 'XAGUSD': (21.5, 205), 'XAUUSD': (-11.0, 205)}

@@ -1,0 +1,27 @@
+== panel == (50276, 49) dates 2020-01-01 -> 2026-10-01 | markets 29 | features 41
+first bar per market (those after 2020-01-02): {'USOIL.cash': '2020-12-31', 'LTCUSD': '2020-11-09'}
+rows 50276 | with all core features 44505 | first usable date 2020-10-06
+  PRE    market-days  14670  dates  521  markets/day  28.2
+  DEV    market-days  15026  dates  522  markets/day  28.8
+  VAL    market-days   7501  dates  261  markets/day  28.7
+  POOL   market-days  22527  dates  783  markets/day  28.8
+  HOLD   market-days   5620  dates  195  markets/day  28.8
+  Y2023  market-days   7495  dates  260  markets/day  28.8
+  Y2024  market-days   7531  dates  262  markets/day  28.7
+  Y2025  market-days   7501  dates  261  markets/day  28.7
+NaN share per feature (usable rows): {}
+  CHECK XAGUSD: max |daily log move| 0.316 on 2026-01-30 | inconsistent bars 0
+  CHECK UKOIL.cash: max |daily log move| 0.302 on 2020-03-09 | inconsistent bars 0
+  CHECK BTCUSD: max |daily log move| 0.312 on 2020-03-12 | inconsistent bars 0
+  CHECK ETHUSD: max |daily log move| 0.403 on 2020-03-12 | inconsistent bars 0
+  CHECK LTCUSD: max |daily log move| 0.396 on 2021-05-19 | inconsistent bars 0
+  CHECK XRPUSD: max |daily log move| 0.567 on 2020-11-23 | inconsistent bars 0
+causality test (truncated vs full data, 40 random rows x 29 features): 1160 comparisons, 0 mismatches
+context truncation test: max difference 0.00e+00 (must be 0 up to rounding; 0 means no future data in the context features)
+hand check XAUUSD 2026-09-29: r5 table -1.1172 vs manual -1.1172 | ibs table 0.9547 vs manual 0.9547 | rsi2 44.19
+C1 components, share non-zero: {'A': 1.0, 'B': 1.0, 'C': 0.291, 'D': 0.261, 'E': 0.441, 'G': 0.656}
+C1 score distribution (usable rows): {-6.0: 95, -5.0: 377, -4.0: 1444, -3.0: 3242, -2.0: 4601, -1.0: 5357, 0.0: 5480, 1.0: 7122, 2.0: 7582, 3.0: 6164, 4.0: 2280, 5.0: 607, 6.0: 154}
+C1a position-days: long 9205, short 5158, flat 30142 (32.3% of market-days)
+C1b position-days: long 19376, short 10992, flat 14137 (68.2% of market-days)
+first walk-forward fit (test 2023): 16300 training rows, 583 dates; scale-model fit (test 2022): 8800 rows
+matrix shapes: ridge (50, 60) gbm (50, 41) | no P&L, no signal-vs-label statistic computed

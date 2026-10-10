@@ -1,0 +1,10 @@
+M1 DEV: months 36 | mean -2.1 bp | months up 47% | t -0.06 | worst -538.1
+M1 VAL: months 12 | mean +18.0 bp | months up 58% | t +0.44 | worst -315.3
+   M1 acceptance 1-2: False
+M2 DEV: months 36 | mean +38.1 bp | months up 53% | t +0.96 | worst -635.9
+M2 VAL: months 12 | mean +53.8 bp | months up 58% | t +0.67 | worst -618.6
+   M2 acceptance 1-2: False
+   diag DAX: window days mean -1.4 bp/day (n 191) vs other days +5.6 (n 825) | Welch t -0.77
+   diag DOW: window days mean -0.4 bp/day (n 191) vs other days +3.6 (n 803) | Welch t -0.53
+   diag NSDQ: window days mean +2.8 bp/day (n 191) vs other days +4.8 (n 803) | Welch t -0.17
+   diag SP: window days mean +1.2 bp/day (n 191) vs other days +4.2 (n 803) | Welch t -0.34

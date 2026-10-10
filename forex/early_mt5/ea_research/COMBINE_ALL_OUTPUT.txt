@@ -1,0 +1,42 @@
+  d["code"] = d["CFTC Contract Market Code"].str.strip(); d = d[d.code.isin(CODES)]
+  d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); d["net"] = (d["Noncommercial Positions-Long (All)"] - d["Noncommercial Positions-Short (All)"]) / d["Open Interest (All)"]
+  d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); d["net"] = (d["Noncommercial Positions-Long (All)"] - d["Noncommercial Positions-Short (All)"]) / d["Open Interest (All)"]
+streams 760 | days 1238 | selected on DEV (t >= 2, mean > 0): 26
+   N_NSDQ|T5|trend200|all                   DEV t +2.77  mean +53.4 USD/day
+   N_XAUUSD|T5|highvol|monthu               DEV t +2.71  mean +34.3 USD/day
+   N_XAUUSD|T60|none|monthu                 DEV t +2.60  mean +59.1 USD/day
+   V1_preFOMC                               DEV t +2.60  mean +14.3 USD/day
+   N_NSDQ|T2|trend200|all                   DEV t +2.55  mean +48.2 USD/day
+   N_NSDQ|T5|trend200|monthu                DEV t +2.51  mean +43.2 USD/day
+   N_XAUUSD|T2|highvol|monthu               DEV t +2.46  mean +31.5 USD/day
+   N_NSDQ|T2|trend200|monthu                DEV t +2.44  mean +40.9 USD/day
+   N_DOW|T60|highvol|all                    DEV t +2.43  mean +34.4 USD/day
+   N_NIKKEI|T2|below200|monthu              DEV t +2.36  mean +42.3 USD/day
+   N_SP|T5|trend200|all                     DEV t +2.34  mean +32.7 USD/day
+   N_XAUUSD|T5|none|monthu                  DEV t +2.33  mean +46.5 USD/day
+   N_US-EW|T5|trend200|all                  DEV t +2.30  mean +33.5 USD/day
+   N_XAUUSD|T5|trend200|monthu              DEV t +2.29  mean +35.3 USD/day
+   N_XAUUSD|T2|trend200|monthu              DEV t +2.28  mean +34.5 USD/day
+   N_NIKKEI|T60|below200|monthu             DEV t +2.24  mean +46.7 USD/day
+   N_XAUUSD|T2|none|monthu                  DEV t +2.23  mean +44.2 USD/day
+   N_XAUUSD|T60|highvol|monthu              DEV t +2.23  mean +35.0 USD/day
+   N_NIKKEI|T5|below200|monthu              DEV t +2.21  mean +40.3 USD/day
+   PAIR_xau5                                DEV t +2.18  mean +25.1 USD/day
+   N_NSDQ|T60|trend200|all                  DEV t +2.14  mean +48.5 USD/day
+   N_XAUUSD|T60|trend200|monthu             DEV t +2.08  mean +36.7 USD/day
+   N_XAUUSD|T60|montue|monthu               DEV t +2.05  mean +29.9 USD/day
+   N_XAUUSD|T60|montue|all                  DEV t +2.05  mean +29.9 USD/day
+   N_SP|T5|trend200|monthu                  DEV t +2.03  mean +24.9 USD/day
+   N_US-EW|T5|trend200|monthu               DEV t +2.01  mean +25.9 USD/day
+   best 8 of the rest by DEV t: {'N_DOW|T5|highvol|all': 1.96, 'N_XAUUSD|T60|below200|monthu': 1.95, 'N_DOW|T60|highvol|monthu': 1.95, 'N_DAX|T60|trend200|all': 1.93, 'N_XAUUSD|T60|trend50|monthu': 1.91, 'N_DOW|T2|highvol|all': 1.9, 'N_XAUUSD|T60|afterdown|monthu': 1.88, 'N_SP|T60|highvol|all': 1.85}
+
+PORTFOLIO (selected streams, inverse-vol, -500 daily floor each):
+  portfolio  DEV 2022-24: mean  +209.1 USD/day | daily Sharpe +0.261 (~+4.1/yr) | max DD 6,191 | P(pass) 15/36/52 bd: [5.6, 44.6, 68.9]% (breach [0.0, 0.1, 0.1]%)
+  portfolio  VAL 2025   : mean  +348.6 USD/day | daily Sharpe +0.345 (~+5.5/yr) | max DD 6,684 | P(pass) 15/36/52 bd: [16.7, 74.7, 91.4]% (breach [0.0, 0.1, 0.1]%)
+  portfolio  2026       : mean  +461.3 USD/day | daily Sharpe +0.282 (~+4.5/yr) | max DD 7,527 | P(pass) 15/36/52 bd: [20.1, 69.2, 85.2]% (breach [0.2, 1.0, 1.3]%)
+   median DEV correlation between selected streams +0.04
+
+YARDSTICK (gold pair legs only, same scaling):
+  pair       DEV 2022-24: mean  +127.7 USD/day | daily Sharpe +0.160 (~+2.5/yr) | max DD 8,990 | P(pass) 15/36/52 bd: [3.1, 22.6, 39.0]% (breach [0.0, 0.5, 1.2]%)
+  pair       VAL 2025   : mean  +303.9 USD/day | daily Sharpe +0.308 (~+4.9/yr) | max DD 5,698 | P(pass) 15/36/52 bd: [15.6, 64.0, 83.3]% (breach [0.0, 0.2, 0.2]%)
+  pair       2026       : mean  +472.4 USD/day | daily Sharpe +0.385 (~+6.1/yr) | max DD 5,663 | P(pass) 15/36/52 bd: [27.1, 84.7, 96.1]% (breach [0.0, 0.1, 0.1]%)

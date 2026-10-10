@@ -1,0 +1,7 @@
+AUDUSD: days 1258 | sample day POC 0.70157 VA 0.70133-0.70252 (day range 0.70069-0.70381) | mean VA width / day range 0.52
+   stacked-overlap days 431 of 1258; days with a signal (all filters, first per day) 30
+EURUSD: days 1258 | sample day POC 1.13772 VA 1.13641-1.13835 (day range 1.13553-1.13911) | mean VA width / day range 0.52
+   stacked-overlap days 425 of 1258; days with a signal (all filters, first per day) 45
+SP: days 1251 | sample day POC 7714.93271 VA 7699.05598-7723.06470 (day range 7666.10000-7733.35000) | mean VA width / day range 0.43
+   stacked-overlap days 232 of 1251; days with a signal (all filters, first per day) 7
+no P&L computed

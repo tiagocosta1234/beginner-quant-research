@@ -1,0 +1,21 @@
+
+=== V1: 38 events ===
+V1 DEV: events  24 | net  +46.69 bp/event (gross  +47.57) | t +2.99 | win 75.0%
+V1 VAL: events   8 | net  +17.07 bp/event (gross  +18.02) | t +1.40 | win 75.0%
+   2022: events   8 net  +87.86 bp gross  +88.68
+   2023: events   8 net  +20.95 bp gross  +21.84
+   2024: events   8 net  +31.25 bp gross  +32.18
+   2025: events   8 net  +17.07 bp gross  +18.02
+   per market (DEV+VAL, net bp): {'SP': 37.05, 'NSDQ': 51.27, 'DOW': 29.53}
+   acceptance 1 (DEV mean > 0, t >= 2.0): True | 2 (VAL > 0): True => hold-out may be opened
+
+=== V2: 113 events ===
+V2 DEV: events  72 | net   -6.08 bp/event (gross   -5.76) | t -1.14 | win 48.6%
+V2 VAL: events  22 | net   +6.64 bp/event (gross   +7.36) | t +1.41 | win 59.1%
+   2022: events  24 net   -9.73 bp gross   -9.82
+   2023: events  24 net   -1.72 bp gross   -1.37
+   2024: events  24 net   -6.78 bp gross   -6.10
+   2025: events  22 net   +6.64 bp gross   +7.36
+   per market (DEV+VAL, net bp): {'XAUUSD': -2.22, 'EURUSD': -5.19, 'NSDQ': -10.77, 'USDJPY': 6.01}
+   by kind (DEV+VAL): {'CPI': {'size': 47, 'mean': 1.65}, 'NFP': {'size': 47, 'mean': -7.85}}
+   acceptance 1 (DEV mean > 0, t >= 2.0): False | 2 (VAL > 0): True => closed

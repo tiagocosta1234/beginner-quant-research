@@ -1,0 +1,16 @@
+== panel == (1235539, 41) | markets 42 | bars per market (min/median/max) 25872 30094 30119 | features 31
+bars per market: {'AUDCAD': 30094, 'AUDCHF': 30092, 'AUDJPY': 30094, 'AUDNZD': 30092, 'AUDUSD': 30118, 'CADCHF': 30119, 'CADJPY': 30095, 'CHFJPY': 30095, 'EURAUD': 30094, 'EURCAD': 30095, 'EURCHF': 30118, 'EURGBP': 30119, 'EURJPY': 30119, 'EURNZD': 30093, 'EURUSD': 30119, 'GBPAUD': 30094, 'GBPCAD': 30095, 'GBPCHF': 30095, 'GBPJPY': 30094, 'GBPNZD': 30093, 'GBPUSD': 30118, 'NZDCAD': 30117, 'NZDCHF': 30114, 'NZDJPY': 30094, 'NZDUSD': 30090, 'USDCAD': 30095, 'USDCHF': 30116, 'USDJPY': 30117, 'SP': 28566, 'NSDQ': 28566, 'DOW': 28566, 'DAX': 27920, 'NIKKEI': 28574, 'ASX': 25872, 'XAUUSD': 28628, 'XAGUSD': 28627, 'WTI': 28577, 'BRENT': 26306, 'BTCUSD': 28126, 'ETHUSD': 28126, 'LTCUSD': 28123, 'XRPUSD': 28074}
+usable rows 1230289 | first usable 2021-12-08 | last 2026-10-02
+  DEV   market-bars   257519  server dates  262  markets per bar-time  41.0
+  VAL   market-bars   256726  server dates  261  markets per bar-time  41.0
+  POOL  market-bars   514245  server dates  523  markets per bar-time  41.0
+  HOLD  market-bars   192463  server dates  195  markets per bar-time  41.1
+training rows for the first fit (test 2024): 521720 | scale-model fit (test 2023): 265847
+NaN share per feature (usable rows): {'sprm': 0.03}
+median relative spread at the first minute (bp): {'EURUSD': 0.43, 'GBPJPY': 0.7, 'XAUUSD': 0.81, 'SP': 0.83, 'NSDQ': 0.75, 'WTI': 5.54, 'BTCUSD': 7.92, 'XRPUSD': 18.92, 'AUDNZD': 0.91, 'NIKKEI': 2.27}
+hour-of-bar coverage (share of bars per server hour, all markets): {0.0: 3.2, 1.0: 4.1, 2.0: 4.1, 3.0: 4.2, 4.0: 4.2, 5.0: 4.2, 6.0: 4.2, 7.0: 4.2, 8.0: 4.2, 9.0: 4.2, 10.0: 4.2, 11.0: 4.2, 12.0: 4.2, 13.0: 4.2, 14.0: 4.2, 15.0: 4.2, 16.0: 4.2, 17.0: 4.2, 18.0: 4.2, 19.0: 4.2, 20.0: 4.2, 21.0: 4.2, 22.0: 4.2, 23.0: 4.1}
+causality test (truncated vs full bars, 25 random bars): 550 comparisons, 0 mismatches
+context truncation test: max difference 0.00e+00 (0 = no future data)
+hand check XAUUSD bar 1790838000: open mid table 4175.525 vs manual 4175.525 | close mid table 4179.890 vs manual 4179.890 | minutes 60 vs n 60
+   r4 table +1.6733 vs manual +1.6733 | nr (next bar return) table +0.001866 vs manual +0.001866 | cs table 0.710 bp vs manual 0.710 bp
+no P&L, no signal-vs-label statistic computed

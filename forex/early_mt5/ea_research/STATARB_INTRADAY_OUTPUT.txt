@@ -1,0 +1,56 @@
+
+=== R1 SP/DOW ===
+R1 DEV     trades  4640 (5.99/day) | win 45.7% | net  -1.81 bp/trade (gross  +0.08, round-trip spread  1.49) | PF 0.59 | day  -108.2 USD per 100K leg-A | daily t -11.03 | daily Sharpe -0.40 | maxDD 84,009 | exits {'zcross': 0.53, 'time': 0.43, 'session': 0.04, 'closure': 0.0}
+R1 VAL     trades  1493 (5.79/day) | win 43.7% | net  -2.52 bp/trade (gross  -0.23, round-trip spread  1.91) | PF 0.51 | day  -146.0 USD per 100K leg-A | daily t -8.13 | daily Sharpe -0.51 | maxDD 37,970 | exits {'zcross': 0.5, 'time': 0.46, 'session': 0.04, 'closure': 0.0}
+   2022: trades  1540 net  -1.28 bp gross  +0.35 bp
+   2023: trades  1562 net  -2.06 bp gross  -0.09 bp
+   2024: trades  1538 net  -2.08 bp gross  -0.02 bp
+   2025: trades  1493 net  -2.52 bp gross  -0.23 bp
+   acceptance 1: False | 2: False => closed
+
+=== R2 SP/NSDQ ===
+R2 DEV     trades  4650 (6.00/day) | win 50.1% | net  -1.36 bp/trade (gross  +0.27, round-trip spread  1.29) | PF 0.65 | day   -81.5 USD per 100K leg-A | daily t -9.18 | daily Sharpe -0.33 | maxDD 62,970 | exits {'zcross': 0.55, 'time': 0.41, 'session': 0.04, 'closure': 0.0}
+R2 VAL     trades  1459 (5.66/day) | win 38.2% | net  -1.73 bp/trade (gross  +0.51, round-trip spread  1.89) | PF 0.47 | day   -97.6 USD per 100K leg-A | daily t -8.63 | daily Sharpe -0.54 | maxDD 25,323 | exits {'zcross': 0.56, 'time': 0.39, 'session': 0.04, 'closure': 0.0}
+   2022: trades  1517 net  -0.89 bp gross  +0.53 bp
+   2023: trades  1598 net  -1.22 bp gross  +0.25 bp
+   2024: trades  1535 net  -1.96 bp gross  +0.04 bp
+   2025: trades  1459 net  -1.73 bp gross  +0.51 bp
+   acceptance 1: False | 2: False => closed
+
+=== R3 XAUUSD/XAGUSD ===
+R3 DEV     trades  4764 (6.16/day) | win 49.4% | net  -3.06 bp/trade (gross  +0.60, round-trip spread  3.38) | PF 0.55 | day  -188.5 USD per 100K leg-A | daily t -13.86 | daily Sharpe -0.50 | maxDD 145,190 | exits {'zcross': 0.53, 'time': 0.43, 'session': 0.04, 'closure': 0.0}
+R3 VAL     trades  1531 (5.93/day) | win 50.2% | net  -4.62 bp/trade (gross  -0.10, round-trip spread  4.25) | PF 0.56 | day  -274.3 USD per 100K leg-A | daily t -8.15 | daily Sharpe -0.51 | maxDD 70,825 | exits {'zcross': 0.48, 'time': 0.48, 'session': 0.04, 'closure': 0.0}
+   2022: trades  1580 net  -3.15 bp gross  +0.74 bp
+   2023: trades  1626 net  -2.92 bp gross  +0.63 bp
+   2024: trades  1558 net  -3.12 bp gross  +0.41 bp
+   2025: trades  1531 net  -4.62 bp gross  -0.10 bp
+   acceptance 1: False | 2: False => closed
+
+=== R4 BRENT/WTI ===
+R4 DEV     trades  4602 (5.95/day) | win  8.0% | net -10.85 bp/trade (gross  +0.89, round-trip spread 11.36) | PF 0.05 | day  -646.0 USD per 100K leg-A | daily t -52.61 | daily Sharpe -1.89 | maxDD 498,846 | exits {'zcross': 0.57, 'time': 0.36, 'session': 0.07, 'closure': 0.0}
+R4 VAL     trades  1563 (6.06/day) | win  3.6% | net  -8.50 bp/trade (gross  +0.67, round-trip spread  8.79) | PF 0.02 | day  -514.7 USD per 100K leg-A | daily t -42.19 | daily Sharpe -2.63 | maxDD 132,383 | exits {'zcross': 0.6, 'time': 0.34, 'session': 0.05, 'closure': 0.0}
+   2022: trades  1528 net -11.01 bp gross  +1.25 bp
+   2023: trades  1573 net -13.81 bp gross  +0.98 bp
+   2024: trades  1501 net  -7.58 bp gross  +0.42 bp
+   2025: trades  1563 net  -8.50 bp gross  +0.67 bp
+   acceptance 1: False | 2: False => closed
+
+=== R5 AUDUSD/NZDUSD ===
+R5 DEV     trades  4555 (5.87/day) | win 55.2% | net  -0.77 bp/trade (gross  +0.49, round-trip spread  0.89) | PF 0.79 | day   -45.1 USD per 100K leg-A | daily t -5.80 | daily Sharpe -0.21 | maxDD 36,253 | exits {'zcross': 0.51, 'time': 0.46, 'session': 0.03}
+R5 VAL     trades  1500 (5.79/day) | win 46.9% | net  -1.75 bp/trade (gross  +0.47, round-trip spread  1.86) | PF 0.49 | day  -101.6 USD per 100K leg-A | daily t -9.27 | daily Sharpe -0.58 | maxDD 26,393 | exits {'zcross': 0.52, 'time': 0.44, 'session': 0.04}
+   2022: trades  1520 net  -0.21 bp gross  +0.70 bp
+   2023: trades  1511 net  -0.43 bp gross  +0.29 bp
+   2024: trades  1524 net  -1.66 bp gross  +0.48 bp
+   2025: trades  1500 net  -1.75 bp gross  +0.47 bp
+   acceptance 1: False | 2: False => closed
+
+=== R6 EURUSD/GBPUSD ===
+R6 DEV     trades  4872 (6.27/day) | win 57.8% | net  -0.43 bp/trade (gross  +0.27, round-trip spread  0.36) | PF 0.87 | day   -27.2 USD per 100K leg-A | daily t -3.17 | daily Sharpe -0.11 | maxDD 22,068 | exits {'zcross': 0.56, 'time': 0.42, 'session': 0.02}
+R6 VAL     trades  1607 (6.18/day) | win 56.2% | net  -0.89 bp/trade (gross  +0.33, round-trip spread  0.87) | PF 0.72 | day   -55.3 USD per 100K leg-A | daily t -4.68 | daily Sharpe -0.29 | maxDD 14,802 | exits {'zcross': 0.55, 'time': 0.42, 'session': 0.03}
+   2022: trades  1660 net  -0.18 bp gross  +0.34 bp
+   2023: trades  1606 net  -0.13 bp gross  +0.35 bp
+   2024: trades  1606 net  -1.00 bp gross  +0.11 bp
+   2025: trades  1607 net  -0.89 bp gross  +0.33 bp
+   acceptance 1: False | 2: False => closed
+
+== acceptance == {'R1': {'a1': False, 'a2': False, 'passed': False}, 'R2': {'a1': False, 'a2': False, 'passed': False}, 'R3': {'a1': False, 'a2': False, 'passed': False}, 'R4': {'a1': False, 'a2': False, 'passed': False}, 'R5': {'a1': False, 'a2': False, 'passed': False}, 'R6': {'a1': False, 'a2': False, 'passed': False}}
