@@ -1,0 +1,15 @@
+198 SDB trades 2022-26 on MT5 broker data; long share 0.55 | mean bp 35.3
+
+=== G2: SDB confirmed by USD proxy
+  DEV   confirmed  65 (59.1%) mean   +36.4 bp PF 1.48 | unconfirmed  45 mean   -14.4 bp PF 0.86 | diff   +50.8 bp
+  VAL   confirmed  27 (60.0%) mean    +6.8 bp PF 1.07 | unconfirmed  18 mean   +63.2 bp PF 2.00 | diff   -56.4 bp
+  POOL  confirmed  92 (59.4%) mean   +27.7 bp PF 1.34 | unconfirmed  63 mean    +7.8 bp PF 1.09 | diff   +19.9 bp
+  pooled 2022-25 permutation test (one-sided): diff +19.9 bp, p = 0.261  (bar 0.05; single test of this trial)
+
+=== G3: SDB confirmed by real yield
+  DEV   confirmed  60 (54.5%) mean   +28.9 bp PF 1.36 | unconfirmed  50 mean    -0.2 bp PF 1.00 | diff   +29.1 bp
+  VAL   confirmed  23 (51.1%) mean   -25.1 bp PF 0.77 | unconfirmed  22 mean   +86.3 bp PF 2.66 | diff  -111.4 bp
+  POOL  confirmed  83 (53.5%) mean   +13.9 bp PF 1.16 | unconfirmed  72 mean   +26.2 bp PF 1.33 | diff   -12.3 bp
+  pooled 2022-25 permutation test (one-sided): diff -12.3 bp, p = 0.657  (bar 0.05; single test of this trial)
+
+Descriptive (non-overlapping 5-session windows, 247): corr(gold NEXT-5d return, previous-5d real-yield change) = -0.033; corr(gold next-5d, previous-5d USD proxy) = -0.103  (|corr| < 0.12 is noise at this size)

@@ -1,0 +1,60 @@
+
+##### MT5 broker ZERO model, LAST 12M: target 6% (full closed profit counts), static floor -3% (97,000; 100,000 after the first withdrawal), no daily limit besides our own day stop L; withdrawals capped 5,000 each, max 5; fee 999
+  k=1 x2.0 daystop 2,000 request at 7% keep 2,500: P(cash>=15k)  14.1% | P(any withdrawal) 52.9% | P(pass 6%) 73.3% test breach 26.7% | mean cash   5,766 - fees   999 | P(cash<fees) 47.1% [starts 206]
+  k=1 x1.5 daystop 1,500 request at 7% keep 2,500: P(cash>=15k)   5.3% | P(any withdrawal) 36.4% | P(pass 6%) 76.2% test breach 23.8% | mean cash   3,568 - fees   999 | P(cash<fees) 63.6% [starts 206]
+  k=1 x1.5 daystop 2,000 request at 7% keep 2,500: P(cash>=15k)   3.9% | P(any withdrawal) 36.4% | P(pass 6%) 78.6% test breach 21.4% | mean cash   3,165 - fees   999 | P(cash<fees) 63.6% [starts 206]
+  k=2 x2.0 daystop 2,000 request at 7% keep 2,500: P(cash>=15k)  27.7% | P(any withdrawal) 52.9% | P(pass 6%) 73.3% test breach 26.7% | mean cash  11,532 - fees 1,998 | P(cash<fees) 47.1% [starts 206]
+  k=2 x2.0 daystop 1,500 request at 4% keep 1,000: P(cash>=15k)  24.8% | P(any withdrawal) 51.9% | P(pass 6%) 70.9% test breach 28.6% | mean cash   7,051 - fees 1,998 | P(cash<fees) 48.1% [starts 206]
+  k=2 x2.0 daystop 1,500 request at 4% keep 2,500: P(cash>=15k)  21.4% | P(any withdrawal) 51.9% | P(pass 6%) 70.9% test breach 28.6% | mean cash   7,095 - fees 1,998 | P(cash<fees) 48.1% [starts 206]
+  k=3 x2.0 daystop 2,000 request at 7% keep 2,500: P(cash>=15k)  40.8% | P(any withdrawal) 52.9% | P(pass 6%) 73.3% test breach 26.7% | mean cash  17,297 - fees 2,997 | P(cash<fees) 47.1% [starts 206]
+  k=3 x2.0 daystop 1,500 request at 4% keep 2,500: P(cash>=15k)  39.3% | P(any withdrawal) 51.9% | P(pass 6%) 70.9% test breach 28.6% | mean cash  10,642 - fees 2,997 | P(cash<fees) 48.1% [starts 206]
+  k=3 x2.0 daystop 2,000 request at 4% keep 2,500: P(cash>=15k)  38.8% | P(any withdrawal) 59.7% | P(pass 6%) 73.3% test breach 26.7% | mean cash  10,942 - fees 2,997 | P(cash<fees) 40.3% [starts 206]
+  --- test only (pass 6% / breach by 22 Dec) by size and day stop, other knobs irrelevant:
+   x0.5 stop 1,000: pass 31.1% breach  0.0%
+   x0.5 stop 1,500: pass 31.1% breach  0.0%
+   x0.5 stop 2,000: pass 31.1% breach  0.0%
+   x0.75 stop 1,000: pass 63.6% breach  4.9%
+   x0.75 stop 1,500: pass 77.2% breach  3.9%
+   x0.75 stop 2,000: pass 77.2% breach  3.9%
+   x1.0 stop 1,000: pass 79.6% breach  9.2%
+   x1.0 stop 1,500: pass 86.4% breach  9.7%
+   x1.0 stop 2,000: pass 86.9% breach 12.1%
+   x1.25 stop 1,000: pass 76.2% breach 12.6%
+   x1.25 stop 1,500: pass 83.5% breach 14.1%
+   x1.25 stop 2,000: pass 86.9% breach 13.1%
+   x1.5 stop 1,000: pass 76.7% breach 17.0%
+   x1.5 stop 1,500: pass 76.2% breach 23.8%
+   x1.5 stop 2,000: pass 78.6% breach 21.4%
+   x2.0 stop 1,000: pass 74.8% breach 25.2%
+   x2.0 stop 1,500: pass 70.9% breach 28.6%
+   x2.0 stop 2,000: pass 73.3% breach 26.7%
+
+##### MT5 broker ZERO model, 2022-26: target 6% (full closed profit counts), static floor -3% (97,000; 100,000 after the first withdrawal), no daily limit besides our own day stop L; withdrawals capped 5,000 each, max 5; fee 999
+  k=1 x2.0 daystop 1,000 request at 4% keep 1,000: P(cash>=15k)   3.1% | P(any withdrawal) 25.4% | P(pass 6%) 47.2% test breach 34.0% | mean cash   1,683 - fees   999 | P(cash<fees) 74.6% [starts 1173]
+  k=1 x2.0 daystop 1,000 request at 7% keep 2,500: P(cash>=15k)   2.6% | P(any withdrawal) 15.5% | P(pass 6%) 47.2% test breach 34.0% | mean cash   1,296 - fees   999 | P(cash<fees) 84.5% [starts 1173]
+  k=1 x2.0 daystop 1,500 request at 4% keep 1,000: P(cash>=15k)   2.4% | P(any withdrawal) 31.5% | P(pass 6%) 52.9% test breach 35.3% | mean cash   2,017 - fees   999 | P(cash<fees) 68.5% [starts 1173]
+  k=2 x2.0 daystop 1,500 request at 4% keep 1,000: P(cash>=15k)   9.3% | P(any withdrawal) 31.5% | P(pass 6%) 52.9% test breach 35.3% | mean cash   4,034 - fees 1,998 | P(cash<fees) 68.5% [starts 1173]
+  k=2 x2.0 daystop 1,500 request at 7% keep 2,500: P(cash>=15k)   8.3% | P(any withdrawal) 22.0% | P(pass 6%) 52.9% test breach 35.3% | mean cash   3,742 - fees 1,998 | P(cash<fees) 78.0% [starts 1173]
+  k=2 x2.0 daystop 2,000 request at 7% keep 2,500: P(cash>=15k)   8.1% | P(any withdrawal) 22.0% | P(pass 6%) 51.7% test breach 44.3% | mean cash   3,531 - fees 1,998 | P(cash<fees) 78.0% [starts 1173]
+  k=3 x2.0 daystop 1,500 request at 7% keep 2,500: P(cash>=15k)  17.6% | P(any withdrawal) 22.0% | P(pass 6%) 52.9% test breach 35.3% | mean cash   5,613 - fees 2,997 | P(cash<fees) 78.0% [starts 1173]
+  k=3 x2.0 daystop 1,500 request at 4% keep 1,000: P(cash>=15k)  15.3% | P(any withdrawal) 31.5% | P(pass 6%) 52.9% test breach 35.3% | mean cash   6,051 - fees 2,997 | P(cash<fees) 68.5% [starts 1173]
+  k=3 x2.0 daystop 1,500 request at 4% keep 2,500: P(cash>=15k)  15.2% | P(any withdrawal) 31.5% | P(pass 6%) 52.9% test breach 35.3% | mean cash   5,034 - fees 2,997 | P(cash<fees) 68.5% [starts 1173]
+  --- test only (pass 6% / breach by 22 Dec) by size and day stop, other knobs irrelevant:
+   x0.5 stop 1,000: pass  6.2% breach  0.0%
+   x0.5 stop 1,500: pass  6.2% breach  0.0%
+   x0.5 stop 2,000: pass  6.2% breach  0.0%
+   x0.75 stop 1,000: pass 19.4% breach  8.8%
+   x0.75 stop 1,500: pass 19.9% breach 10.3%
+   x0.75 stop 2,000: pass 19.9% breach 10.5%
+   x1.0 stop 1,000: pass 33.8% breach 19.0%
+   x1.0 stop 1,500: pass 39.4% breach 19.4%
+   x1.0 stop 2,000: pass 39.0% breach 19.3%
+   x1.25 stop 1,000: pass 39.0% breach 19.2%
+   x1.25 stop 1,500: pass 49.4% breach 24.0%
+   x1.25 stop 2,000: pass 49.2% breach 25.5%
+   x1.5 stop 1,000: pass 45.4% breach 25.7%
+   x1.5 stop 1,500: pass 50.4% breach 32.7%
+   x1.5 stop 2,000: pass 56.5% breach 31.3%
+   x2.0 stop 1,000: pass 47.2% breach 34.0%
+   x2.0 stop 1,500: pass 52.9% breach 35.3%
+   x2.0 stop 2,000: pass 51.7% breach 44.3%

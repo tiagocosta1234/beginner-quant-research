@@ -1,0 +1,15 @@
+H1 XAUUSD DEV              days  774 trades  993 | mean    +0.7 bp/trade (+0.00 R) | PF  1.03 | daily t +0.32 | win 38.5% | net      +648 bp
+H1 XAUUSD VAL              days  258 trades  324 | mean    +6.8 bp/trade (+0.08 R) | PF  1.22 | daily t +1.37 | win 41.0% | net    +2,201 bp
+H1 XAUUSD POOL             days 1032 trades 1317 | mean    +2.1 bp/trade (+0.02 R) | PF  1.08 | daily t +1.09 | win 39.1% | net    +2,821 bp
+H1 NSDQ DEV                days  775 trades 1003 | mean    -0.4 bp/trade (+0.03 R) | PF  0.99 | daily t -0.13 | win 37.0% | net      -447 bp
+H1 NSDQ VAL                days  258 trades  344 | mean    -4.9 bp/trade (-0.10 R) | PF  0.86 | daily t -1.06 | win 34.6% | net    -1,691 bp
+H1 NSDQ POOL               days 1033 trades 1348 | mean    -1.6 bp/trade (-0.00 R) | PF  0.96 | daily t -0.56 | win 36.4% | net    -2,097 bp
+H1 SP DEV                  days  775 trades 1020 | mean    -2.4 bp/trade (+0.00 R) | PF  0.92 | daily t -0.95 | win 36.0% | net    -2,423 bp
+H1 SP VAL                  days  258 trades  342 | mean    -2.1 bp/trade (-0.06 R) | PF  0.92 | daily t -0.52 | win 36.3% | net      -708 bp
+H1 SP POOL                 days 1033 trades 1363 | mean    -2.3 bp/trade (-0.01 R) | PF  0.92 | daily t -1.08 | win 36.1% | net    -3,128 bp
+H1 BTCUSD DEV              days  990 trades 1266 | mean    -4.6 bp/trade (-0.04 R) | PF  0.94 | daily t -0.74 | win 34.8% | net    -5,795 bp
+H1 BTCUSD VAL              days  365 trades  517 | mean   -17.2 bp/trade (-0.10 R) | PF  0.75 | daily t -2.39 | win 33.7% | net    -8,872 bp
+H1 BTCUSD POOL             days 1355 trades 1783 | mean    -8.2 bp/trade (-0.06 R) | PF  0.89 | daily t -1.70 | win 34.5% | net   -14,668 bp
+H1 ETHUSD DEV              days  991 trades 1651 | mean   -47.9 bp/trade (-0.47 R) | PF  0.56 | daily t -7.23 | win 22.2% | net   -79,014 bp
+H1 ETHUSD VAL              days  365 trades  516 | mean   -29.7 bp/trade (-0.11 R) | PF  0.75 | daily t -2.22 | win 31.4% | net   -15,315 bp
+H1 ETHUSD POOL             days 1356 trades 2167 | mean   -43.4 bp/trade (-0.38 R) | PF  0.61 | daily t -7.27 | win 24.4% | net   -94,137 bp

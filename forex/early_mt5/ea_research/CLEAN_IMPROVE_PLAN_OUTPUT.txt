@@ -1,0 +1,47 @@
+last day withdrawals can be requested = 22 Dec; business days 9 Oct .. 22 Dec: 53
+12M: series built in 0s, starts 206
+12M: done in 1s
+5Y: series built in 1s, starts 1173
+5Y: done in 2s
+
+=== BASELINE (current plan after the x1.2 decision): test 1.2 / live 1.5 then 1.5, request at 5%
+  12M: pass 88.3 breach  0.0 any 27.2 >=5k 19.4 >=10k  2.4 mean  1,604
+  5Y: pass 31.8 breach  0.1 any  7.2 >=5k  3.8 >=10k  0.3 mean    343
+
+=== TOP 8 by the SUM of P(>=5k) over both pools (breach in the test <= 6% in the 12M window), shown for both pools
+  ('1.5/L1500', 3.0, 1.5, 0.03)
+     12M: pass 79.1 breach  0.5 any 41.7 >=5k 20.4 >=10k  1.0 mean  1,862
+     5Y : pass 37.5 breach  3.2 any 19.2 >=5k  6.1 >=10k  0.7 mean    796
+  ('1.5/L1500', 2.5, 1.5, 0.05)
+     12M: pass 79.1 breach  0.5 any 26.7 >=5k 20.9 >=10k  4.4 mean  1,986
+     5Y : pass 37.5 breach  3.2 any 13.9 >=5k  5.5 >=10k  0.5 mean    636
+  ('1.5/L1500', 2.0, 1.5, 0.05)
+     12M: pass 79.1 breach  0.5 any 31.6 >=5k 20.9 >=10k  5.8 mean  1,955
+     5Y : pass 37.5 breach  3.2 any 13.5 >=5k  5.5 >=10k  0.6 mean    619
+  ('1.5/L1500', 2.5, 1.0, 0.05)
+     12M: pass 79.1 breach  0.5 any 26.7 >=5k 20.9 >=10k  1.9 mean  1,680
+     5Y : pass 37.5 breach  3.2 any 13.9 >=5k  4.7 >=10k  0.0 mean    545
+  ('1.5/L1500', 3.0, 1.5, 0.05)
+     12M: pass 79.1 breach  0.5 any 24.3 >=5k 19.4 >=10k  4.4 mean  1,733
+     5Y : pass 37.5 breach  3.2 any 14.1 >=5k  5.9 >=10k  0.5 mean    657
+  ('1.2->1.8 if behind 0.50 after d20', 2.5, 1.0, 0.05)
+     12M: pass 95.1 breach  0.0 any 24.3 >=5k 21.4 >=10k  1.0 mean  1,513
+     5Y : pass 38.9 breach  2.5 any 10.7 >=5k  3.9 >=10k  0.0 mean    421
+  ('1.2->1.8 if behind 0.75 after d20', 2.5, 1.0, 0.05)
+     12M: pass 96.1 breach  1.0 any 25.7 >=5k 21.4 >=10k  1.0 mean  1,558
+     5Y : pass 42.3 breach  2.5 any 12.0 >=5k  3.8 >=10k  0.0 mean    457
+  ('1.2->1.8 if behind 0.75 after d10', 2.5, 1.0, 0.05)
+     12M: pass 86.4 breach  5.3 any 26.2 >=5k 20.9 >=10k  1.0 mean  1,585
+     5Y : pass 44.6 breach  4.3 any 12.4 >=5k  4.3 >=10k  0.0 mean    473
+
+=== TOP 5 chosen on 12M only, evaluated on 5Y;   TOP 5 chosen on 5Y only, evaluated on 12M (out-of-sample check)
+  pick on 12M: ('1.2->1.8 if behind 0.50 after d20', 2.0, 1.0, 0.03) -> 12M: >=5k 21.4 | 5Y: >=5k  2.4 any 14.9 breach  2.5
+  pick on 12M: ('1.2->1.8 if behind 0.50 after d20', 2.5, 1.0, 0.05) -> 12M: >=5k 21.4 | 5Y: >=5k  3.9 any 10.7 breach  2.5
+  pick on 12M: ('1.2->1.8 if behind 0.75 after d20', 2.0, 1.0, 0.03) -> 12M: >=5k 21.4 | 5Y: >=5k  2.5 any 18.0 breach  2.5
+  pick on 12M: ('1.2->1.8 if behind 0.75 after d20', 2.5, 1.0, 0.05) -> 12M: >=5k 21.4 | 5Y: >=5k  3.8 any 12.0 breach  2.5
+  pick on 12M: ('1.2->1.8 if behind 0.50 after d10', 2.0, 1.0, 0.03) -> 12M: >=5k 20.9 | 5Y: >=5k  2.6 any 15.7 breach  4.3
+  pick on 5Y: ('1.5/L1500', 2.0, 2.0, 0.05) -> 5Y: >=5k  7.2 | 12M: >=5k 15.0 any 31.6 breach  0.5
+  pick on 5Y: ('1.5/L1500', 2.0, 2.0, 0.03) -> 5Y: >=5k  7.0 | 12M: >=5k 14.6 any 43.2 breach  0.5
+  pick on 5Y: ('1.5/L2000', 2.5, 2.0, 0.03) -> 5Y: >=5k  6.8 | 12M: >=5k 12.6 any 35.0 breach  1.5
+  pick on 5Y: ('1.5/L2000', 3.0, 2.0, 0.03) -> 5Y: >=5k  6.6 | 12M: >=5k 11.7 any 41.7 breach  1.5
+  pick on 5Y: ('1.5/L1500', 2.5, 2.0, 0.03) -> 5Y: >=5k  6.5 | 12M: >=5k 16.0 any 39.3 breach  0.5

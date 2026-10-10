@@ -1,0 +1,13 @@
+XAU5 trades 2022-26 (MT5 broker real-tick runs, 0.01 lot): 1614 | net USD 10,809 | win rate 59.6% | longs 49%
+per year:  {'2022': {'n': 319, 'net': -152.49, 'win': 0.51, 'longs': 0.45}, '2023': {'n': 245, 'net': 675.3, 'win': 0.54, 'longs': 0.53}, '2024': {'n': 287, 'net': 1782.21, 'win': 0.56, 'longs': 0.54}, '2025': {'n': 356, 'net': 3753.0, 'win': 0.64, 'longs': 0.52}, '2026': {'n': 407, 'net': 4750.91, 'win': 0.68, 'longs': 0.42}}
+hold hours: median 16.8, p25 5.8, p75 57.5, p95 157.4
+entries by server hour: {1: 108, 2: 112, 3: 118, 4: 86, 5: 60, 6: 65, 7: 56, 8: 69, 9: 66, 10: 51, 11: 44, 12: 67, 13: 62, 14: 56, 15: 74, 16: 84, 17: 92, 18: 68, 19: 77, 20: 66, 21: 40, 22: 36, 23: 57}
+win rate / mean USD per oz by entry server hour (n>=60): {1: (56, np.float64(4.76), 108), 2: (61, np.float64(4.84), 112), 3: (58, np.float64(7.16), 118), 4: (66, np.float64(10.11), 86), 5: (50, np.float64(1.45), 60), 6: (62, np.float64(8.57), 65), 8: (55, np.float64(4.91), 69), 9: (47, np.float64(1.63), 66), 12: (70, np.float64(16.88), 67), 13: (73, np.float64(12.25), 62), 15: (61, np.float64(11.09), 74), 16: (55, np.float64(1.05), 84), 17: (54, np.float64(6.09), 92), 18: (47, np.float64(2.82), 68), 19: (66, np.float64(4.61), 77), 20: (58, np.float64(3.2), 66)}
+preceding 15m move vs trade direction: with-trend share 26% | win rate with 60% vs against 60% | mean USD/oz with +6.08 vs against +6.94
+preceding 1h move vs trade direction: with-trend share 43% | win rate with 62% vs against 58% | mean USD/oz with +7.01 vs against +6.49
+preceding 4h move vs trade direction: with-trend share 81% | win rate with 61% vs against 53% | mean USD/oz with +7.67 vs against +2.59
+position in the previous 24h range (0 = at the low, 1 = at the high): longs median 0.86, shorts median 0.20
+  longs: win rate by range-position quartile [41, 67, 70, 68] mean USD/oz [np.float64(-3.03), np.float64(12.88), np.float64(14.04), np.float64(9.93)]
+  shorts: win rate by range-position quartile [60, 58, 60, 54] mean USD/oz [np.float64(3.74), np.float64(3.87), np.float64(4.63), np.float64(8.07)]
+gap to the previous entry (minutes): median 165, share of entries within 60 min of the previous one 32%, same direction as previous 76%
+concurrent positions: max 6, 95th pct 3, share of time with >= 3 open 15%

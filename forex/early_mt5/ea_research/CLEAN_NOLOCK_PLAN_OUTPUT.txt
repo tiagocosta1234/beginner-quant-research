@@ -1,0 +1,21 @@
+last day withdrawals can be requested = 22 Dec; business days 9 Oct .. 22 Dec: 53
+
+##### LAST 12M (206 starts), NO pass lock, loss cap 2,000, withdrawals requested by 22 Dec
+  PLAN A: x1.2 plain: pass by 30 Oct  6.8% | 20 Nov 36.4% | 30 Nov 50.0% | 22 Dec 84.5% | breach by 22 Dec  0.0% | passers' day: median   34, mean 32.7
+      F1 live 1.5 then 1.5, request at 5%: any withdrawal 26.7% | >=2.5k 26.7% >=5k 19.4% >=10k  1.5% >=15k  0.0% | mean cash  1,560
+      F2 live 2.0 until the 1st withdrawal, then 1.0, 5%: any withdrawal 28.6% | >=2.5k 28.6% >=5k 20.9% >=10k  0.5% >=15k  0.0% | mean cash  1,605
+      F3 live 1.0, request at 10% (old plan): any withdrawal  2.9% | >=2.5k  2.9% >=5k  2.9% >=10k  0.0% >=15k  0.0% | mean cash    152
+  PLAN B: x1.2 + catch-up to x1.8 (d20, behind 75%): pass by 30 Oct  6.8% | 20 Nov 37.9% | 30 Nov 53.4% | 22 Dec 94.2% | breach by 22 Dec  1.0% | passers' day: median   35, mean 33.6
+      F1 live 1.5 then 1.5, request at 5%: any withdrawal 28.2% | >=2.5k 28.2% >=5k 20.4% >=10k  1.5% >=15k  0.0% | mean cash  1,626
+      F2 live 2.0 until the 1st withdrawal, then 1.0, 5%: any withdrawal 28.6% | >=2.5k 28.6% >=5k 20.9% >=10k  0.5% >=15k  0.0% | mean cash  1,624
+      F3 live 1.0, request at 10% (old plan): any withdrawal  2.9% | >=2.5k  2.9% >=5k  2.9% >=10k  0.0% >=15k  0.0% | mean cash    152
+
+##### 2022-26 (1173 starts), NO pass lock, loss cap 2,000, withdrawals requested by 22 Dec
+  PLAN A: x1.2 plain: pass by 30 Oct  1.2% | 20 Nov 10.1% | 30 Nov 13.6% | 22 Dec 29.0% | breach by 22 Dec  0.1% | passers' day: median   39, mean 36.4
+      F1 live 1.5 then 1.5, request at 5%: any withdrawal  6.8% | >=2.5k  6.8% >=5k  3.8% >=10k  0.2% >=15k  0.0% | mean cash    328
+      F2 live 2.0 until the 1st withdrawal, then 1.0, 5%: any withdrawal  8.8% | >=2.5k  8.8% >=5k  4.0% >=10k  0.0% >=15k  0.0% | mean cash    372
+      F3 live 1.0, request at 10% (old plan): any withdrawal  0.0% | >=2.5k  0.0% >=5k  0.0% >=10k  0.0% >=15k  0.0% | mean cash      0
+  PLAN B: x1.2 + catch-up to x1.8 (d20, behind 75%): pass by 30 Oct  1.2% | 20 Nov 10.6% | 30 Nov 16.9% | 22 Dec 39.5% | breach by 22 Dec  2.5% | passers' day: median   40, mean 37.4
+      F1 live 1.5 then 1.5, request at 5%: any withdrawal  7.6% | >=2.5k  7.6% >=5k  3.8% >=10k  0.2% >=15k  0.0% | mean cash    351
+      F2 live 2.0 until the 1st withdrawal, then 1.0, 5%: any withdrawal  9.8% | >=2.5k  9.8% >=5k  4.1% >=10k  0.0% >=15k  0.0% | mean cash    400
+      F3 live 1.0, request at 10% (old plan): any withdrawal  0.0% | >=2.5k  0.0% >=5k  0.0% >=10k  0.0% >=15k  0.0% | mean cash      0

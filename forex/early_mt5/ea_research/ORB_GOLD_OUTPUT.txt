@@ -1,0 +1,24 @@
+
+=== I1 Europe/London 08:00: 1243 trades; exits {'tp': 531, 'stop': 502, 'time': 210}; long share 0.53
+I1 DEV           trades   770 | mean +0.007 R | PF 1.02 | daily t +0.20 | win 50.5% | cost share of R  6.8% | 1% risk: return    +1.9% maxDD 23.9%
+I1 VAL           trades   256 | mean +0.086 R | PF 1.22 | daily t +1.48 | win 54.7% | cost share of R  5.7% | 1% risk: return   +23.1% maxDD  8.3%
+I1 POOL          trades  1026 | mean +0.027 R | PF 1.06 | daily t +0.91 | win 51.6% | cost share of R  6.5% | 1% risk: return   +25.5% maxDD 24.7%
+   2022: trades  256 mean +0.074 R PF 1.18 cost share of R  5.6%
+   2023: trades  257 mean +0.023 R PF 1.05 cost share of R  7.1%
+   2024: trades  257 mean -0.076 R PF 0.85 cost share of R  7.8%
+   2025: trades  256 mean +0.086 R PF 1.22 cost share of R  5.7%
+   2026: trades  195 mean -0.089 R PF 0.83 cost share of R  4.4%
+   12-month daily correlation with the pair: +0.038
+
+=== I2 America/New_York 09:30: 1220 trades; exits {'tp': 433, 'stop': 400, 'time': 385, 'both': 2}; long share 0.50
+I2 DEV           trades   755 | mean +0.052 R | PF 1.14 | daily t +1.64 | win 52.7% | cost share of R  3.4% | 1% risk: return   +43.4% maxDD 14.8%
+I2 VAL           trades   253 | mean -0.030 R | PF 0.93 | daily t -0.54 | win 47.8% | cost share of R  3.6% | 1% risk: return    -8.3% maxDD 12.6%
+I2 POOL          trades  1008 | mean +0.031 R | PF 1.08 | daily t +1.13 | win 51.5% | cost share of R  3.5% | 1% risk: return   +31.5% maxDD 19.4%
+   2022: trades  252 mean +0.142 R PF 1.45 cost share of R  3.1%
+   2023: trades  249 mean +0.001 R PF 1.00 cost share of R  3.3%
+   2024: trades  254 mean +0.011 R PF 1.03 cost share of R  3.9%
+   2025: trades  253 mean -0.030 R PF 0.93 cost share of R  3.6%
+   2026: trades  192 mean -0.067 R PF 0.85 cost share of R  2.4%
+   12-month daily correlation with the pair: -0.035
+
+Both sessions DEV: 1525 trades, mean +0.029 R, trades per month 42.4

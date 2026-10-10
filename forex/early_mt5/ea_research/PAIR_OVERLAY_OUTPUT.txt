@@ -1,0 +1,8 @@
+constant 1.0                      ALL 2022-26: P&L   146,744 | share of days at 1.2   0% / 0.6   0% | starts 1225: pass 1135 (93%), breach 50 (4%), median 69 bd, <=42 bd 26%, <=62 bd 41%
+constant 1.0                 PRE-BOOM 2022-24: P&L    64,043 | share of days at 1.2   0% / 0.6   0% | starts 774: pass 691 (89%), breach 50 (6%), median 134 bd, <=42 bd 13%, <=62 bd 22%
+constant 1.2                      ALL 2022-26: P&L   196,364 | share of days at 1.2 100% / 0.6   0% | starts 1225: pass 1139 (93%), breach 63 (5%), median 47 bd, <=42 bd 41%, <=62 bd 59%
+constant 1.2                 PRE-BOOM 2022-24: P&L   103,563 | share of days at 1.2 100% / 0.6   0% | starts 774: pass 685 (89%), breach 57 (7%), median 59 bd, <=42 bd 31%, <=62 bd 46%
+O1 gold trend (SMA100)            ALL 2022-26: P&L   168,575 | share of days at 1.2  68% / 0.6  26% | starts 1225: pass 1124 (92%), breach 63 (5%), median 66 bd, <=42 bd 27%, <=62 bd 44%
+O1 gold trend (SMA100)       PRE-BOOM 2022-24: P&L    83,016 | share of days at 1.2  62% / 0.6  28% | starts 774: pass 685 (89%), breach 57 (7%), median 105 bd, <=42 bd 15%, <=62 bd 28%
+O2 pair equity curve (MA20)       ALL 2022-26: P&L   173,017 | share of days at 1.2  67% / 0.6  32% | starts 1225: pass 1123 (92%), breach 79 (6%), median 58 bd, <=42 bd 33%, <=62 bd 49%
+O2 pair equity curve (MA20)  PRE-BOOM 2022-24: P&L    86,662 | share of days at 1.2  58% / 0.6  39% | starts 774: pass 669 (86%), breach 73 (9%), median 80 bd, <=42 bd 22%, <=62 bd 33%

@@ -1,0 +1,12 @@
+C1 DEV           days  901 trades   1202 | net  -15.10 bp/trade (gross of spreads   +0.69) | PF  0.82 | daily t  -2.31 | win 37.2% | <1min  0.0%
+C1 VAL           days  365 trades    496 | net  -14.86 bp/trade (gross of spreads   -1.50) | PF  0.78 | daily t  -2.02 | win 34.1% | <1min  0.0%
+C1 POOL          days 1266 trades   1698 | net  -15.03 bp/trade (gross of spreads   +0.05) | PF  0.81 | daily t  -2.94 | win 36.3% | <1min  0.0%
+C2 DEV           days  901 trades   3597 | net  -10.92 bp/trade (gross of spreads   +4.94) | PF  0.70 | daily t  -7.52 | win 58.3% | <1min  0.2%
+C2 VAL           days  365 trades   1350 | net  -11.90 bp/trade (gross of spreads   +1.54) | PF  0.62 | daily t  -5.98 | win 57.1% | <1min  0.1%
+C2 POOL          days 1266 trades   4947 | net  -11.19 bp/trade (gross of spreads   +4.01) | PF  0.68 | daily t  -9.42 | win 58.0% | <1min  0.2%
+C3 DEV           days  901 trades   1514 | net  -12.12 bp/trade (gross of spreads   +3.30) | PF  0.75 | daily t  -3.21 | win 22.7% | <1min  0.1%
+C3 VAL           days  365 trades    574 | net   -5.57 bp/trade (gross of spreads   +7.88) | PF  0.86 | daily t  -1.23 | win 27.2% | <1min  0.0%
+C3 POOL          days 1266 trades   2088 | net  -10.32 bp/trade (gross of spreads   +4.56) | PF  0.78 | daily t  -3.43 | win 23.9% | <1min  0.0%
+C4 DEV           days  901 trades    851 | net  -12.70 bp/trade (gross of spreads   +3.29) | PF  0.72 | daily t  -3.35 | win 54.6% | <1min  1.1%
+C4 VAL           days  365 trades    292 | net   -8.28 bp/trade (gross of spreads   +5.10) | PF  0.76 | daily t  -1.72 | win 57.5% | <1min  0.3%
+C4 POOL          days 1266 trades   1143 | net  -11.57 bp/trade (gross of spreads   +3.75) | PF  0.73 | daily t  -3.75 | win 55.4% | <1min  0.9%

@@ -1,0 +1,59 @@
+last day withdrawals can be requested = 22 Dec; business days 9 Oct .. 22 Dec: 53
+
+##### LAST 12M
+  starts 206; metrics per account; k identical accounts => cash x k, fees x k
+  k=1: best P(cash>=15k by 22 Dec)   0.0% with test x1.8, live x1.5, request at 3% | P(any withdrawal) 52.9% | mean cash   2,163 - fees   451 = net   1,712 | P(net<0) 47.1% | test pass 73.3% live breached 53.0% of passed
+  k=2: best P(cash>=15k by 22 Dec)  11.7% with test x1.8, live x2.0, request at 8% | P(any withdrawal) 20.9% | mean cash   3,056 - fees   902 = net   2,154 | P(net<0) 79.1% | test pass 73.3% live breached  9.3% of passed
+  k=3: best P(cash>=15k by 22 Dec)  20.9% with test x1.8, live x1.5, request at 5% | P(any withdrawal) 34.0% | mean cash   6,064 - fees 1,353 = net   4,711 | P(net<0) 66.0% | test pass 73.3% live breached 27.8% of passed
+  k=4: best P(cash>=15k by 22 Dec)  28.2% with test x1.8, live x1.5, request at 3% | P(any withdrawal) 52.9% | mean cash   8,650 - fees 1,804 = net   6,846 | P(net<0) 47.1% | test pass 73.3% live breached 53.0% of passed
+  k=5: best P(cash>=15k by 22 Dec)  30.6% with test x1.8, live x1.5, request at 5% | P(any withdrawal) 34.0% | mean cash  10,106 - fees 2,255 = net   7,851 | P(net<0) 66.0% | test pass 73.3% live breached 27.8% of passed
+  --- grid k=1 and k=3 (P(cash>=15k)), test x1.2 and x1.8, by live size (rows) and request threshold (cols 1/3/5/8/10%)
+   k=1 chall x1.2 fund x1.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x1.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x2.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x2.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x3.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x1.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x1.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x2.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x2.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x3.0:  0.0  0.0  0.0  0.0  0.0
+   k=3 chall x1.2 fund x1.0:  6.8  2.4  8.7  0.5  3.9
+   k=3 chall x1.2 fund x1.5:  2.4 17.5 19.4  6.3 14.1
+   k=3 chall x1.2 fund x2.0:  2.4 14.6 14.6  6.8 17.5
+   k=3 chall x1.2 fund x2.5:  2.4 11.2 14.1  7.8 12.6
+   k=3 chall x1.2 fund x3.0:  0.0 11.2 11.2  4.4  8.7
+   k=3 chall x1.8 fund x1.0:  6.8  2.4 11.7  1.0  6.8
+   k=3 chall x1.8 fund x1.5:  3.4 17.0 20.9 11.2 16.0
+   k=3 chall x1.8 fund x2.0:  3.4 13.6 15.5 11.7 19.4
+   k=3 chall x1.8 fund x2.5:  3.4 13.6 16.5  7.8 14.6
+   k=3 chall x1.8 fund x3.0:  0.0 13.1 13.1  5.3 11.7
+
+##### 2022-26
+  starts 1173; metrics per account; k identical accounts => cash x k, fees x k
+  k=1: best P(cash>=15k by 22 Dec)   0.4% with test x1.8, live x2.5, request at 3% | P(any withdrawal) 25.6% | mean cash   1,132 - fees   451 = net     681 | P(net<0) 74.4% | test pass 47.3% live breached 38.4% of passed
+  k=2: best P(cash>=15k by 22 Dec)   4.3% with test x1.8, live x2.0, request at 3% | P(any withdrawal) 25.2% | mean cash   2,211 - fees   902 = net   1,309 | P(net<0) 74.8% | test pass 47.3% live breached 33.2% of passed
+  k=3: best P(cash>=15k by 22 Dec)   8.6% with test x1.8, live x2.5, request at 3% | P(any withdrawal) 25.6% | mean cash   3,396 - fees 1,353 = net   2,043 | P(net<0) 74.4% | test pass 47.3% live breached 38.4% of passed
+  k=4: best P(cash>=15k by 22 Dec)  13.7% with test x1.8, live x2.5, request at 3% | P(any withdrawal) 25.6% | mean cash   4,528 - fees 1,804 = net   2,724 | P(net<0) 74.4% | test pass 47.3% live breached 38.4% of passed
+  k=5: best P(cash>=15k by 22 Dec)  15.6% with test x1.8, live x2.0, request at 3% | P(any withdrawal) 25.2% | mean cash   5,528 - fees 2,255 = net   3,273 | P(net<0) 74.8% | test pass 47.3% live breached 33.2% of passed
+  --- grid k=1 and k=3 (P(cash>=15k)), test x1.2 and x1.8, by live size (rows) and request threshold (cols 1/3/5/8/10%)
+   k=1 chall x1.2 fund x1.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x1.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x2.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x2.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.2 fund x3.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x1.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x1.5:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x2.0:  0.0  0.0  0.0  0.0  0.0
+   k=1 chall x1.8 fund x2.5:  0.0  0.4  0.0  0.0  0.0
+   k=1 chall x1.8 fund x3.0:  0.0  0.4  0.2  0.2  0.2
+   k=3 chall x1.2 fund x1.0:  0.2  0.6  0.9  0.0  0.0
+   k=3 chall x1.2 fund x1.5:  1.7  4.5  3.8  0.4  1.2
+   k=3 chall x1.2 fund x2.0:  3.2  5.0  5.5  1.3  4.1
+   k=3 chall x1.2 fund x2.5:  2.3  4.2  4.5  1.9  3.7
+   k=3 chall x1.2 fund x3.0:  3.8  3.4  4.3  1.8  3.8
+   k=3 chall x1.8 fund x1.0:  1.3  1.4  1.9  0.0  0.3
+   k=3 chall x1.8 fund x1.5:  2.6  6.2  5.4  1.0  2.7
+   k=3 chall x1.8 fund x2.0:  3.8  7.7  7.7  3.0  4.9
+   k=3 chall x1.8 fund x2.5:  3.2  8.6  7.0  3.8  6.5
+   k=3 chall x1.8 fund x3.0:  4.7  7.3  7.5  3.8  6.4

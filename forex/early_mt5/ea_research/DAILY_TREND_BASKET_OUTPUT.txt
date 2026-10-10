@@ -1,0 +1,6 @@
+T1 DEV                 days  668 | net Sharpe -0.63 | daily t -1.02 | mean  -8.04 bp/day | max DD  92.0% of capital (sum of daily R) | turnover  1.89/day | gross Sharpe -0.53
+   ex-gold DEV         days  668 | net Sharpe -0.69 | daily t -1.12 | mean  -8.67 bp/day | max DD  94.3% of capital (sum of daily R) | turnover  1.86/day | gross Sharpe -0.60
+T1 VAL                 days  259 | net Sharpe +0.32 | daily t +0.32 | mean  +4.58 bp/day | max DD  24.0% of capital (sum of daily R) | turnover  2.07/day | gross Sharpe +0.41
+   ex-gold VAL         days  259 | net Sharpe +0.09 | daily t +0.09 | mean  +1.24 bp/day | max DD  25.6% of capital (sum of daily R) | turnover  2.05/day | gross Sharpe +0.18
+T1 POOL                days  927 | net Sharpe -0.34 | daily t -0.65 | mean  -4.51 bp/day | max DD 102.4% of capital (sum of daily R) | turnover  1.94/day | gross Sharpe -0.25
+   ex-gold POOL        days  927 | net Sharpe -0.45 | daily t -0.86 | mean  -5.90 bp/day | max DD 105.6% of capital (sum of daily R) | turnover  1.91/day | gross Sharpe -0.36

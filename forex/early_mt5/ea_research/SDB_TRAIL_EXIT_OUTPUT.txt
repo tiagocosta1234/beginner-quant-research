@@ -1,0 +1,3 @@
+DEV        B0: n 107 mean +0.140 R net   +15.0 R PF 1.33 hold  6.5 d | X1: n 103 mean +0.074 R net    +7.7 R PF 1.23 hold  6.6 d max +4.0 R | common  62 paired dR +0.062 t +0.61
+VAL        B0: n  46 mean +0.217 R net   +10.0 R PF 1.56 hold  3.6 d | X1: n  41 mean +0.209 R net    +8.6 R PF 1.70 hold  4.6 d max +2.4 R | common  33 paired dR -0.103 t -0.76
+POOL       B0: n 153 mean +0.163 R net   +25.0 R PF 1.39 hold  5.6 d | X1: n 144 mean +0.113 R net   +16.2 R PF 1.36 hold  6.0 d max +4.0 R | common  95 paired dR +0.005 t +0.06

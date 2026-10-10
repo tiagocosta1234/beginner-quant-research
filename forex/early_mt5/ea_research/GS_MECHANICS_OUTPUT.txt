@@ -1,0 +1,19 @@
+139 Monday-Thursday days with ticks
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.3 | latency    0 ms | n  3475 | win  83.2% | avg win +1.39 avg loss -9.14 | mean -0.382 USD/oz | PF 0.75 | exits {'tp': 80, 'stop': 2915, 'time': 480}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.3 | latency  300 ms | n  3475 | win  83.0% | avg win +1.40 avg loss -9.14 | mean -0.398 USD/oz | PF 0.74 | exits {'tp': 77, 'stop': 2914, 'time': 484}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.3 | latency  800 ms | n  3475 | win  83.1% | avg win +1.39 avg loss -8.93 | mean -0.359 USD/oz | PF 0.76 | exits {'tp': 77, 'stop': 2924, 'time': 474}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.6 | latency    0 ms | n  3475 | win  82.6% | avg win +1.39 avg loss -8.87 | mean -0.391 USD/oz | PF 0.75 | exits {'tp': 197, 'stop': 2796, 'time': 482}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.6 | latency  300 ms | n  3475 | win  82.6% | avg win +1.39 avg loss -8.98 | mean -0.411 USD/oz | PF 0.74 | exits {'tp': 197, 'stop': 2790, 'time': 488}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 0.6 | latency  800 ms | n  3475 | win  82.8% | avg win +1.38 avg loss -8.80 | mean -0.371 USD/oz | PF 0.75 | exits {'tp': 200, 'stop': 2797, 'time': 478}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 1.2 | latency    0 ms | n  3475 | win  69.2% | avg win +1.65 avg loss -5.05 | mean -0.413 USD/oz | PF 0.73 | exits {'tp': 525, 'stop': 2458, 'time': 492}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 1.2 | latency  300 ms | n  3475 | win  69.2% | avg win +1.65 avg loss -5.12 | mean -0.431 USD/oz | PF 0.73 | exits {'tp': 526, 'stop': 2455, 'time': 494}
+S1 pullback  SL 20 TP 4 start 1.2 | trail dist 1.2 | latency  800 ms | n  3475 | win  68.7% | avg win +1.65 avg loss -4.89 | mean -0.395 USD/oz | PF 0.74 | exits {'tp': 516, 'stop': 2474, 'time': 485}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.3 | latency    0 ms | n  3475 | win  75.5% | avg win +2.27 avg loss -9.06 | mean -0.512 USD/oz | PF 0.77 | exits {'tp': 72, 'stop': 2594, 'time': 809}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.3 | latency  300 ms | n  3475 | win  75.3% | avg win +2.26 avg loss -8.95 | mean -0.511 USD/oz | PF 0.77 | exits {'tp': 65, 'stop': 2596, 'time': 814}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.3 | latency  800 ms | n  3475 | win  75.2% | avg win +2.27 avg loss -8.89 | mean -0.499 USD/oz | PF 0.77 | exits {'tp': 88, 'stop': 2569, 'time': 818}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.6 | latency    0 ms | n  3475 | win  75.4% | avg win +2.28 avg loss -9.04 | mean -0.505 USD/oz | PF 0.77 | exits {'tp': 204, 'stop': 2458, 'time': 813}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.6 | latency  300 ms | n  3475 | win  75.2% | avg win +2.27 avg loss -8.92 | mean -0.500 USD/oz | PF 0.77 | exits {'tp': 195, 'stop': 2462, 'time': 818}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 0.6 | latency  800 ms | n  3475 | win  75.2% | avg win +2.26 avg loss -8.87 | mean -0.502 USD/oz | PF 0.77 | exits {'tp': 193, 'stop': 2459, 'time': 823}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 1.2 | latency    0 ms | n  3475 | win  75.2% | avg win +2.23 avg loss -8.96 | mean -0.545 USD/oz | PF 0.75 | exits {'tp': 463, 'stop': 2190, 'time': 822}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 1.2 | latency  300 ms | n  3475 | win  75.0% | avg win +2.23 avg loss -8.83 | mean -0.540 USD/oz | PF 0.76 | exits {'tp': 450, 'stop': 2197, 'time': 828}
+S2 momentum  SL 25 TP 5 start 2.1 | trail dist 1.2 | latency  800 ms | n  3475 | win  74.8% | avg win +2.23 avg loss -8.77 | mean -0.538 USD/oz | PF 0.76 | exits {'tp': 448, 'stop': 2194, 'time': 833}

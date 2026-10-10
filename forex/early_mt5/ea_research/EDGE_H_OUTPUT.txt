@@ -1,0 +1,24 @@
+
+=== H1: XAUUSD/XAGUSD ratio mean reversion; 27 trades in total, mean held 18.0 days, long-ratio share 0.56
+  DEV   trades  18 | mean/trade  +130.2 bp | PF 2.40 | win 66.7% | daily t (all days) +0.95 | Sharpe +0.54 | mean/day  +2.69 bp
+  VAL   trades   6 | mean/trade  -483.9 bp | PF 0.19 | win 33.3% | daily t (all days) -0.86 | Sharpe -0.85 | mean/day  -6.84 bp
+  POOL  trades  24 | mean/trade   -23.3 bp | PF 0.89 | win 58.3% | daily t (all days) +0.10 | Sharpe +0.05 | mean/day  +0.30 bp
+  12-month daily correlation with the pair: -0.034 (the pair's own daily t over the same days: +4.07)
+
+=== H2: BRENT/WTI ratio mean reversion; 29 trades in total, mean held 14.3 days, long-ratio share 0.48
+  DEV   trades  18 | mean/trade    +0.2 bp | PF 1.00 | win 55.6% | daily t (all days) +0.00 | Sharpe +0.00 | mean/day  +0.00 bp
+  VAL   trades   5 | mean/trade   -56.7 bp | PF 0.17 | win 40.0% | daily t (all days) -0.68 | Sharpe -0.67 | mean/day  -1.10 bp
+  POOL  trades  23 | mean/trade   -12.2 bp | PF 0.77 | win 52.2% | daily t (all days) -0.34 | Sharpe -0.17 | mean/day  -0.27 bp
+  12-month daily correlation with the pair: +0.008 (the pair's own daily t over the same days: +4.07)
+
+=== H3: overnight (cash close -> next open); 7112 index-trades
+  DEV   index-trades  4507 | mean  +0.38 bp | PF 1.01 | win 52.7% | daily t +0.23 | Sharpe +0.13 | per index bp: ASX +0.2 DAX +0.2 DOW -0.7 NIKKEI +0.4 NSDQ +1.4 SP +0.7
+  VAL   index-trades  1444 | mean  +4.02 bp | PF 1.16 | win 56.8% | daily t +1.05 | Sharpe +1.04 | per index bp: ASX -3.7 DAX +8.3 DOW -0.7 NIKKEI +10.0 NSDQ +5.6 SP +2.7
+  POOL  index-trades  5951 | mean  +1.26 bp | PF 1.05 | win 53.7% | daily t +0.83 | Sharpe +0.41 | per index bp: ASX -0.6 DAX +2.2 DOW -0.7 NIKKEI +2.8 NSDQ +2.5 SP +1.2
+  split (POOL not shown): weekend nights (3+) 1464 trades mean -0.42 bp | one-night 5648 trades mean +2.51 bp
+  12-month daily correlation with the pair: -0.049
+
+=== DIAG-H3-daytime: daytime control (open -> close); 7099 index-trades
+  DEV   index-trades  4495 | mean  +0.37 bp | PF 1.01 | win 51.6% | daily t +0.19 | Sharpe +0.11 | per index bp: ASX -3.2 DAX +1.4 DOW +2.0 NIKKEI -1.2 NSDQ +1.6 SP +1.4
+  VAL   index-trades  1440 | mean  +0.10 bp | PF 1.00 | win 51.1% | daily t +0.01 | Sharpe +0.01 | per index bp: ASX -2.4 DAX -1.2 DOW +4.1 NIKKEI -3.3 NSDQ +1.1 SP +1.8
+  POOL  index-trades  5935 | mean  +0.30 bp | PF 1.01 | win 51.5% | daily t +0.16 | Sharpe +0.08 | per index bp: ASX -3.0 DAX +0.8 DOW +2.5 NIKKEI -1.7 NSDQ +1.5 SP +1.5

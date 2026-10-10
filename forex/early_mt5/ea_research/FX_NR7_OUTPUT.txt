@@ -1,0 +1,8 @@
+NZDUSD 136
+USDCAD 151
+USDCHF 150
+USDJPY 151
+F2 NR7 DEV             days  777 trades  2586 | mean -0.173 R | PF  0.72 | daily t -4.73 | win 32.6% | net   -447.3 R | pairs with mean>0: 4/28
+F2 NR7 VAL             days  261 trades   893 | mean -0.305 R | PF  0.53 | daily t -5.78 | win 30.9% | net   -272.7 R | pairs with mean>0: 2/28
+F2 NR7 POOL            days 1038 trades  3479 | mean -0.207 R | PF  0.67 | daily t -6.76 | win 32.2% | net   -720.0 R | pairs with mean>0: 4/28
+breadth DEV+VAL (2022-2025 pooled): pairs with mean R > 0: 4/28

@@ -1,0 +1,8 @@
+size | SDB + 5-min lots | SDB risk per trade | LAST 12M tick model: pass / breach in 15 days | LAST 12M minute model | 2022-26 minute model
+x1.2  | 0.14 + 0.048 | 1.14% | tick  4.1% /  0.0% | minute  4.1% /  0.0% | 2022-26 minute  0.8% /  0.0% | tick days replayed 36
+x1.8  | 0.22 + 0.072 | 1.71% | tick 11.9% /  1.2% | minute 11.9% /  8.2% | 2022-26 minute  5.5% /  0.3% | tick days replayed 64
+x2.5  | 0.30 + 0.100 | 2.38% | tick  8.6% / 19.3% | minute 12.3% / 15.2% | 2022-26 minute  8.3% /  3.7% | tick days replayed 83
+x3.0  | 0.36 + 0.120 | 2.85% | tick  8.6% / 17.2% | minute  8.2% / 18.4% | 2022-26 minute  7.5% /  5.8% | tick days replayed 83
+x3.5  | 0.42 + 0.140 | 3.32% | tick  6.6% / 18.9% | minute  6.6% / 26.2% | 2022-26 minute  7.6% /  6.7% | tick days replayed 86
+x4.0  | 0.48 + 0.160 | 3.80% | tick  6.1% / 22.5% | minute  5.7% / 44.3% | 2022-26 minute  7.3% / 12.1% | tick days replayed 94
+x5.0  | 0.60 + 0.200 | 4.75% | tick  7.0% / 36.5% | minute  8.2% / 33.6% | 2022-26 minute  6.2% / 24.7% | tick days replayed 106

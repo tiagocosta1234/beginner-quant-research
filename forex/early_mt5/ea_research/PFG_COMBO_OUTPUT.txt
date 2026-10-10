@@ -1,0 +1,22 @@
+mkt_brokergold_M30: 225 days with trades of 258; EA mean/day +143 USD, worst day -2553, best +8928; pair mean/day +215
+daily correlation with the pair: +0.177; both lose the same day: 15 of 83 EA losing days
+
+pair alone (plan A x1.2, no lock): by 30 Nov 50.5% | by 22 Dec 74.2% | breach 0.5% | median day 30
+
+-- EA edge kept h = 1.0
+   f = 0.5: by 30 Nov  60.0% | by 22 Dec  79.7% | breach  0.8% | median pass day   27
+   f = 1.0: by 30 Nov  59.0% | by 22 Dec  76.6% | breach  5.1% | median pass day   24
+   f = 1.5: by 30 Nov  57.4% | by 22 Dec  70.4% | breach 12.7% | median pass day   22
+   f = 2.0: by 30 Nov  53.8% | by 22 Dec  65.2% | breach 20.2% | median pass day   21
+
+-- EA edge kept h = 0.5
+   f = 0.5: by 30 Nov  51.3% | by 22 Dec  72.2% | breach  1.6% | median pass day   28
+   f = 1.0: by 30 Nov  47.2% | by 22 Dec  62.4% | breach 10.2% | median pass day   25
+   f = 1.5: by 30 Nov  43.2% | by 22 Dec  55.1% | breach 21.5% | median pass day   24
+   f = 2.0: by 30 Nov  40.2% | by 22 Dec  49.5% | breach 31.8% | median pass day   22
+
+-- EA edge kept h = 0.0
+   f = 0.5: by 30 Nov  43.2% | by 22 Dec  63.5% | breach  2.5% | median pass day   29
+   f = 1.0: by 30 Nov  35.9% | by 22 Dec  49.2% | breach 17.6% | median pass day   26
+   f = 1.5: by 30 Nov  30.3% | by 22 Dec  39.0% | breach 35.8% | median pass day   24
+   f = 2.0: by 30 Nov  28.9% | by 22 Dec  35.0% | breach 47.6% | median pass day   22

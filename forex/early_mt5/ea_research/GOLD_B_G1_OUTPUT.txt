@@ -1,0 +1,5 @@
+1826 trades in total; exits: {'stop': 1046, 'tp': 706, 'time': 74} | long share 0.47
+G1 DEV                 trades  1151 | mean -0.247 R ( -3.03 bp) | PF 0.63 | daily t -8.85 | win 39.3%
+G1 VAL                 trades   372 | mean -0.151 R ( -1.66 bp) | PF 0.75 | daily t -3.63 | win 41.7%
+G1 POOL                trades  1523 | mean -0.223 R ( -2.70 bp) | PF 0.66 | daily t -9.44 | win 39.9%
+12-month daily correlation of G1 (USD per oz, all days, 0 when flat) with the pair's guarded daily P&L: -0.100 (258 days, 210 with a G1 trade)

@@ -1,0 +1,20 @@
+candidates: DEV 53942 VAL 53220 | random control (all candidates): DEV mean -0.317 win 82.1% | VAL mean -0.395 win 81.4%
+VAL random control (sequential)    n  5696 | mean -0.432 USD/oz | win  82.0% | PF 0.73 | daily t -6.52 | 82.6 trades per active day
+S1 logistic top 5% DEV (in-sample) n  1127 | mean -0.732 USD/oz | win  85.0% | PF 0.66 | daily t -2.31 | 31.3 trades per active day
+S1 logistic top 5% VAL             n   198 | mean +0.001 USD/oz | win  90.9% | PF 1.00 | daily t +0.00 | 7.1 trades per active day
+S1 logistic top 10% DEV (in-sample) n  1975 | mean -0.653 USD/oz | win  86.1% | PF 0.68 | daily t -2.80 | 33.5 trades per active day
+S1 logistic top 10% VAL            n   637 | mean -0.036 USD/oz | win  90.9% | PF 0.97 | daily t -0.19 | 11.2 trades per active day
+S1 logistic top 20% DEV (in-sample) n  3183 | mean -0.568 USD/oz | win  86.5% | PF 0.70 | daily t -3.26 | 46.1 trades per active day
+S1 logistic top 20% VAL            n  1458 | mean -0.378 USD/oz | win  87.8% | PF 0.77 | daily t -2.64 | 21.1 trades per active day
+   registered threshold (best DEV mean): top 20% -> VAL                                    n  1458 | mean -0.378 USD/oz | win  87.8% | PF 0.77 | daily t -2.64 | 21.1 trades per active day
+   cost stress +0.3 USD/oz         n  1458 | mean -0.678 USD/oz | win  84.8% | PF 0.60 | daily t -4.72 | 21.1 trades per active day
+S2 boosting top 5% DEV (in-sample) n  1209 | mean +0.362 USD/oz | win  93.7% | PF 1.36 | daily t +2.48 | 18.6 trades per active day
+S2 boosting top 5% VAL             n   760 | mean -0.228 USD/oz | win  88.0% | PF 0.85 | daily t -1.21 | 11.5 trades per active day
+S2 boosting top 10% DEV (in-sample) n  1907 | mean +0.079 USD/oz | win  91.9% | PF 1.06 | daily t +0.66 | 28.5 trades per active day
+S2 boosting top 10% VAL            n  1300 | mean -0.256 USD/oz | win  88.4% | PF 0.83 | daily t -2.14 | 19.1 trades per active day
+S2 boosting top 20% DEV (in-sample) n  2900 | mean -0.259 USD/oz | win  89.6% | PF 0.83 | daily t -2.04 | 42.0 trades per active day
+S2 boosting top 20% VAL            n  2002 | mean -0.324 USD/oz | win  87.2% | PF 0.79 | daily t -2.59 | 29.0 trades per active day
+   registered threshold (best DEV mean): top 5% -> VAL                                    n   760 | mean -0.228 USD/oz | win  88.0% | PF 0.85 | daily t -1.21 | 11.5 trades per active day
+   cost stress +0.3 USD/oz         n   760 | mean -0.528 USD/oz | win  85.3% | PF 0.65 | daily t -2.76 | 11.5 trades per active day
+S3 hand rule DEV                   n  2566 | mean -0.366 USD/oz | win  82.6% | PF 0.76 | daily t -3.78 | 36.7 trades per active day
+S3 hand rule VAL                   n  2396 | mean -0.310 USD/oz | win  81.6% | PF 0.79 | daily t -3.30 | 34.7 trades per active day

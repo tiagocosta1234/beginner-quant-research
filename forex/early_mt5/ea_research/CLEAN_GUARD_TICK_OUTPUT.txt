@@ -1,0 +1,8 @@
+x1.0: SDB 0.120 + XAU5 0.040 | candidate days replayed at tick level 28 (no ticks: 0) | lowest UNGUARDED tick-level day path -2,567 on 2026-04-20 | lowest day equity WITH the guard (1 s reaction) -2,029 on 2026-04-20 | guarded days at or below -2,500: []
+      loss-cap triggers: minute model 2 | tick model 2 | pass / breach by 30 Nov: minute 41.3% /  0.0%  tick 41.3% /  0.0% | by 22 Dec: minute 71.8% /  0.0%  tick 72.3% /  0.0%
+x1.2: SDB 0.144 + XAU5 0.048 | candidate days replayed at tick level 36 (no ticks: 0) | lowest UNGUARDED tick-level day path -2,306 on 2026-06-30 | lowest day equity WITH the guard (1 s reaction) -2,006 on 2026-06-30 | guarded days at or below -2,500: []
+      loss-cap triggers: minute model 5 | tick model 5 | pass / breach by 30 Nov: minute 50.0% /  0.0%  tick 50.0% /  0.0% | by 22 Dec: minute 84.5% /  0.0%  tick 82.0% /  0.0%
+x1.5: SDB 0.180 + XAU5 0.060 | candidate days replayed at tick level 53 (no ticks: 0) | lowest UNGUARDED tick-level day path -2,882 on 2026-06-30 | lowest day equity WITH the guard (1 s reaction) -2,035 on 2026-01-02 | guarded days at or below -2,500: []
+      loss-cap triggers: minute model 12 | tick model 12 | pass / breach by 30 Nov: minute 50.5% /  1.5%  tick 51.5% /  0.5% | by 22 Dec: minute 84.0% /  1.5%  tick 85.9% /  0.5%
+x1.8: SDB 0.216 + XAU5 0.072 | candidate days replayed at tick level 64 (no ticks: 0) | lowest UNGUARDED tick-level day path -3,459 on 2026-06-30 | lowest day equity WITH the guard (1 s reaction) -2,165 on 2026-07-14 | guarded days at or below -2,500: []
+      loss-cap triggers: minute model 21 | tick model 22 | pass / breach by 30 Nov: minute 57.8% / 17.5%  tick 57.3% /  3.4% | by 22 Dec: minute 71.8% / 17.5%  tick 78.6% /  3.4%

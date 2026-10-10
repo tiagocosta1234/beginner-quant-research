@@ -1,0 +1,12 @@
+# Clean guard simulation at TICK level on MT5 broker's real gold ticks (last 12 months): result (2026-10-09 16:34 local, 2026-10-09)
+
+Script `clean_guard_tick.py`, raw output `CLEAN_GUARD_TICK_OUTPUT.txt`. Same event-driven logic as clean_guard_sim (guard flattens the open positions at the trigger, later trades dropped, closed positions never contribute again), but on every day where the minute-close path came within 1,000 USD of the loss cap the equity is rebuilt TICK BY TICK from the FIFO-paired real trades (longs at the bid, shorts at the ask); trigger at the first tick with equity <= -2,000, flatten 1 second later. Loss cap only, no pass lock, no profit cap. 129 cached days of MT5 broker ticks, none missing.
+| size | replayed days | lowest UNGUARDED day path | lowest day WITH the guard (1 s) | pass by 30 Nov: minute / tick | breach: minute / tick | pass by 22 Dec: minute / tick |
+|---|---|---|---|---|---|---|
+| x1.0 (0.12 + 0.04) | 28 | -2,567 (2026-04-20) | -2,029 | 41.3% / 41.3% | 0.0% / 0.0% | 71.8% / 72.3% |
+| x1.2 (0.144 + 0.048) | 36 | -2,306 (2026-06-30) | -2,006 | 50.0% / 50.0% | 0.0% / 0.0% | 84.5% / 82.0% |
+| x1.5 (0.18 + 0.06) | 53 | -2,882 (2026-06-30) | -2,035 | 50.5% / 51.5% | 1.5% / 0.5% | 84.0% / 85.9% |
+| x1.8 (0.216 + 0.072) | 64 | -3,459 (2026-06-30) | -2,165 | 57.8% / 57.3% | 17.5% / 3.4% | 71.8% / 78.6% |
+## Reading
+- With a 1-second reaction the guard keeps every day above -2,500 at every size up to x1.8 (lowest guarded day -2,165): the minute-close model OVERSTATED the breach at large sizes (flattening at the minute close, later than the guard really acts). x1.2 confirmed: no breach, pass by 30 Nov 50.0%, by 22 Dec 82.0%. The earlier note of a 'single-tick step at x1.4' came from the pre-fix pipeline and is superseded.
+- What this run does NOT cover: (a) execution slippage on closing 3-4 positions at once (about 1-3 USD per ounce, a few tens of dollars, small against a 300-500 cushion); (b) the GUARD cannot act while the market is closed: re-opening gaps hit in one step. Largest in the last 12 months (per ounce): -77.2 (2026-02-02 01:00 server), -60.7 (2026-04-20), +44.7, -42.0, -37.1, +36.3 (52 weekends). With all positions long: x1.0 (0.24 lot, 24 oz) -77 costs about 1,850 USD (1.85%); x1.2 (0.29 lot, 29 oz) about 2,200 (2.2%, within 300 of the 2,500 line); x1.5 about 2,770 and x1.8 about 3,330, i.e. a BREACH on the spot at the sizes where the guard otherwise works. The live pair holds 4 long positions (0.24 lot) over THIS weekend.

@@ -1,0 +1,25 @@
+Start: counted +99.68; 36 business days to 30 Nov, 52 to 22 Dec; block bootstrap mean block 5; 200 outer x 2,000 inner paths
+
+=== edge kept h = 1.0  (pool means per day: 12M +216 USD, 5Y +87 USD at x1.2)
+  12M regime only  PLAN A (x1.2)    : pass by 30 Nov  51.7% [ 27.7- 76.1] | by 22 Dec  73.0% [ 46.7- 93.3] | breach by 22 Dec  0.8% [ 0.0- 3.3] | median pass day   29
+  12M regime only  PLAN B (catch-up): pass by 30 Nov  53.6% [ 29.8- 77.9] | by 22 Dec  73.6% [ 46.8- 94.2] | breach by 22 Dec  3.0% [ 0.1-10.3] | median pass day   29
+  50/50 mix        PLAN A (x1.2)    : pass by 30 Nov  32.4% [ 19.2- 45.3] | by 22 Dec  50.3% [ 35.2- 63.6] | breach by 22 Dec  0.8% [ 0.1- 2.4] | median pass day   31
+  50/50 mix        PLAN B (catch-up): pass by 30 Nov  33.7% [ 21.4- 45.5] | by 22 Dec  55.1% [ 40.7- 67.1] | breach by 22 Dec  3.0% [ 0.9- 7.0] | median pass day   33
+  5Y regime only   PLAN A (x1.2)    : pass by 30 Nov  12.7% [  6.2- 22.5] | by 22 Dec  27.3% [ 15.8- 42.5] | breach by 22 Dec  0.7% [ 0.1- 1.8] | median pass day   38
+  5Y regime only   PLAN B (catch-up): pass by 30 Nov  15.8% [  7.3- 24.3] | by 22 Dec  38.1% [ 21.2- 52.2] | breach by 22 Dec  2.9% [ 0.8- 6.6] | median pass day   39
+
+=== edge kept h = 0.7  (pool means per day: 12M +153 USD, 5Y +61 USD at x1.2)
+  12M regime only  PLAN A (x1.2)    : pass by 30 Nov  36.4% [ 14.3- 59.3] | by 22 Dec  56.2% [ 29.5- 80.7] | breach by 22 Dec  2.4% [ 0.1- 9.0] | median pass day   31
+  12M regime only  PLAN B (catch-up): pass by 30 Nov  38.1% [ 15.6- 59.7] | by 22 Dec  57.6% [ 27.4- 83.8] | breach by 22 Dec  7.1% [ 0.9-21.0] | median pass day   31
+  50/50 mix        PLAN A (x1.2)    : pass by 30 Nov  22.3% [ 10.5- 33.9] | by 22 Dec  37.1% [ 20.3- 50.7] | breach by 22 Dec  2.0% [ 0.4- 5.9] | median pass day   33
+  50/50 mix        PLAN B (catch-up): pass by 30 Nov  25.2% [ 14.4- 37.8] | by 22 Dec  43.6% [ 28.9- 57.6] | breach by 22 Dec  6.1% [ 2.1-12.8] | median pass day   34
+  5Y regime only   PLAN A (x1.2)    : pass by 30 Nov   8.7% [  3.7- 15.2] | by 22 Dec  19.3% [  9.0- 31.4] | breach by 22 Dec  1.6% [ 0.3- 4.0] | median pass day   38
+  5Y regime only   PLAN B (catch-up): pass by 30 Nov  11.2% [  4.9- 18.5] | by 22 Dec  28.7% [ 15.6- 41.4] | breach by 22 Dec  5.2% [ 2.0-10.4] | median pass day   39
+
+=== edge kept h = 0.5  (pool means per day: 12M +110 USD, 5Y +44 USD at x1.2)
+  12M regime only  PLAN A (x1.2)    : pass by 30 Nov  25.9% [  7.7- 48.6] | by 22 Dec  41.8% [ 14.0- 69.9] | breach by 22 Dec  5.1% [ 0.2-16.1] | median pass day   33
+  12M regime only  PLAN B (catch-up): pass by 30 Nov  27.0% [  7.9- 50.6] | by 22 Dec  44.1% [ 16.1- 73.0] | breach by 22 Dec 12.7% [ 1.8-34.4] | median pass day   33
+  50/50 mix        PLAN A (x1.2)    : pass by 30 Nov  16.3% [  6.5- 26.4] | by 22 Dec  28.0% [ 12.8- 41.6] | breach by 22 Dec  4.1% [ 1.1-10.7] | median pass day   34
+  50/50 mix        PLAN B (catch-up): pass by 30 Nov  18.8% [  8.6- 32.9] | by 22 Dec  34.5% [ 19.7- 50.2] | breach by 22 Dec  9.9% [ 4.2-19.2] | median pass day   35
+  5Y regime only   PLAN A (x1.2)    : pass by 30 Nov   6.9% [  3.2- 13.2] | by 22 Dec  15.3% [  7.4- 27.2] | breach by 22 Dec  2.6% [ 0.6- 5.8] | median pass day   38
+  5Y regime only   PLAN B (catch-up): pass by 30 Nov   8.7% [  4.1- 14.7] | by 22 Dec  23.4% [ 12.1- 36.3] | breach by 22 Dec  7.4% [ 2.9-13.7] | median pass day   40

@@ -1,0 +1,28 @@
+
+##### ALL 2022-26 (MT5 broker trades, MT5 broker bars)
+  x1.0 no guard         halts loss   0 profit   0 | total P&L    78,647 (trade list    78,647) | by 30 Nov (37 bd): pass   9.9% breach   1.9% | with pass lock  10.4% [starts 1189]
+  x1.0 loss cap only    halts loss   2 profit   0 | total P&L    78,498 | by 30 Nov (37 bd): pass   9.9% breach   0.0% | with pass lock  10.4% [starts 1189]
+  x1.0 profit cap only  halts loss   0 profit   8 | total P&L    76,814 | by 30 Nov (37 bd): pass   9.7% breach   1.9% | with pass lock  10.2% [starts 1189]
+  x1.0 both caps        halts loss   2 profit   8 | total P&L    76,665 | by 30 Nov (37 bd): pass   9.7% breach   0.0% | with pass lock  10.2% [starts 1189]
+  x1.2 no guard         halts loss   0 profit   0 | total P&L    94,376 (trade list    94,376) | by 30 Nov (37 bd): pass  13.2% breach   1.9% | with pass lock  14.2% [starts 1189]
+  x1.2 loss cap only    halts loss   4 profit   0 | total P&L    95,942 | by 30 Nov (37 bd): pass  13.2% breach   0.0% | with pass lock  14.3% [starts 1189]
+  x1.2 profit cap only  halts loss   0 profit  17 | total P&L    88,022 | by 30 Nov (37 bd): pass  12.9% breach   1.9% | with pass lock  13.5% [starts 1189]
+  x1.2 both caps        halts loss   4 profit  17 | total P&L    89,588 | by 30 Nov (37 bd): pass  13.0% breach   0.0% | with pass lock  13.5% [starts 1189]
+  x1.4 no guard         halts loss   0 profit   0 | total P&L   110,105 (trade list   110,105) | by 30 Nov (37 bd): pass  16.0% breach   4.0% | with pass lock  17.2% [starts 1189]
+  x1.4 loss cap only    halts loss   9 profit   0 | total P&L   105,143 | by 30 Nov (37 bd): pass  14.7% breach   0.0% | with pass lock  15.6% [starts 1189]
+  x1.4 profit cap only  halts loss   0 profit  28 | total P&L    95,137 | by 30 Nov (37 bd): pass  12.3% breach   7.1% | with pass lock  13.5% [starts 1189]
+  x1.4 both caps        halts loss   9 profit  27 | total P&L    89,534 | by 30 Nov (37 bd): pass  12.8% breach   0.0% | with pass lock  13.3% [starts 1189]
+
+##### LAST 12 MONTHS (MT5 broker trades + MT5 broker bars)
+  x1.0 no guard         halts loss   0 profit   0 | total P&L    47,781 (trade list    47,781) | by 30 Nov (37 bd): pass  39.6% breach   9.9% | with pass lock  41.4% [starts 222]
+  x1.0 loss cap only    halts loss   2 profit   0 | total P&L    47,609 | by 30 Nov (37 bd): pass  39.2% breach   0.0% | with pass lock  41.0% [starts 222]
+  x1.0 profit cap only  halts loss   0 profit   8 | total P&L    45,189 | by 30 Nov (37 bd): pass  37.4% breach   9.9% | with pass lock  39.6% [starts 222]
+  x1.0 both caps        halts loss   2 profit   8 | total P&L    45,017 | by 30 Nov (37 bd): pass  37.4% breach   0.0% | with pass lock  39.6% [starts 222]
+  x1.2 no guard         halts loss   0 profit   0 | total P&L    57,337 (trade list    57,337) | by 30 Nov (37 bd): pass  55.0% breach   9.9% | with pass lock  59.0% [starts 222]
+  x1.2 loss cap only    halts loss   5 profit   0 | total P&L    55,492 | by 30 Nov (37 bd): pass  50.9% breach   0.0% | with pass lock  55.0% [starts 222]
+  x1.2 profit cap only  halts loss   0 profit  17 | total P&L    50,646 | by 30 Nov (37 bd): pass  47.7% breach   9.5% | with pass lock  52.3% [starts 222]
+  x1.2 both caps        halts loss   5 profit  16 | total P&L    49,964 | by 30 Nov (37 bd): pass  41.9% breach   0.0% | with pass lock  47.3% [starts 222]
+  x1.4 no guard         halts loss   0 profit   0 | total P&L    66,893 (trade list    66,893) | by 30 Nov (37 bd): pass  62.6% breach  17.6% | with pass lock  65.3% [starts 222]
+  x1.4 loss cap only    halts loss   9 profit   0 | total P&L    60,526 | by 30 Nov (37 bd): pass  54.5% breach   0.0% | with pass lock  55.9% [starts 222]
+  x1.4 profit cap only  halts loss   0 profit  26 | total P&L    54,474 | by 30 Nov (37 bd): pass  47.3% breach  32.4% | with pass lock  48.2% [starts 222]
+  x1.4 both caps        halts loss   9 profit  25 | total P&L    49,023 | by 30 Nov (37 bd): pass  44.1% breach   0.0% | with pass lock  44.6% [starts 222]

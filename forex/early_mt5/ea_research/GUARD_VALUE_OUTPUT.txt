@@ -1,0 +1,10 @@
+
+##### ALL 2022-26 starts
+  x1.0 NO guard              by 30 Nov (37 bd): pass  12.8% breach   1.9% | over a long life (300 bd): pass  70.8% breach   5.1%  [starts 1189 / 926]
+  x1.0 both caps (today)     by 30 Nov (37 bd): pass  22.4% breach   0.0% | over a long life (300 bd): pass  75.4% breach   5.4%  [starts 1189 / 926]
+  x1.0 caps + pass lock      by 30 Nov (37 bd): pass  23.8% breach   0.0% | over a long life (300 bd): pass  76.5% breach   5.4%  [starts 1189 / 926]
+  x1.4 NO guard              by 30 Nov (37 bd): pass  26.9% breach  18.8% | over a long life (300 bd): pass  71.6% breach  28.4%  [starts 1189 / 926]
+  x1.4 both caps (today)     by 30 Nov (37 bd): pass  40.8% breach   2.9% | over a long life (300 bd): pass  89.7% breach  10.3%  [starts 1189 / 926]
+  x1.4 caps + pass lock      by 30 Nov (37 bd): pass  43.9% breach   2.9% | over a long life (300 bd): pass  89.7% breach  10.3%  [starts 1189 / 926]
+
+##### last 12 months of starts

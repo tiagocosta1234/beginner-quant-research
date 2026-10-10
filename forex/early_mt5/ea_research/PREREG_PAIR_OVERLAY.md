@@ -1,0 +1,16 @@
+# Pre-registration: a regime overlay on the size of the gold pair (not a new EA)
+
+Written 2026-10-09 ~10:32 local (local clock), BEFORE any overlay was simulated. Own-EA programme, after rounds 1-6; ledger at 35 of 40, this round uses 2 (37). Motivation (all measured earlier today, `ea_batch/mt5data/SIZING_LONG_RESULT.md`): every breach of the pair's test attempts over 2022-26 is the 8% static floor reached in two non-trend gold regimes (June 2022, April-May 2023), never the daily line; the 5-minute EA's yearly profit tracks gold's trend (-152 / +675 / +1,782 / +3,753 / +4,751 USD a year at 0.01 lot); the locked size is slow over five years (median 71 business days) but m 1.2 is faster at a similar breach rate. Hypothesis: sizing the pair UP (1.2x of the locked test lots) when gold is in an uptrend or the pair itself is in a good run, and DOWN (0.6x) otherwise, cuts the two breach episodes and keeps most of the speed.
+
+## Overlays (parameters fixed now, no tuning)
+Multiplier m_t of the locked test lots (SDB 0.12 + 5-minute EA 0.04), set at the start of each server day t from information up to the close of day t-1, constant during the day: m_t = 1.2 in the "good" state, 0.6 in the "bad" state, 1.0 while the state is undefined (warm-up).
+- **O1 gold trend state:** good if the gold daily close of t-1 is above its 100-day simple average, bad otherwise (MT5 broker gold M1 bars, server days; defined from about mid-March 2022).
+- **O2 pair equity-curve state:** good if the cumulative daily P&L of the pair at m = 1.0 (after the daily caps) up to t-1 is above its own 20-day average, bad otherwise (defined from the 21st day).
+Day P&L and day low of a day at multiplier m are taken from the constant-size run of that multiplier (minute-level halts with carry-over, both caps -2,000 / +2,000, MT5 broker real-tick runs 2022-26, swap-free, as in `mt5data_sizing_long.py`; m = 0.6, 1.0, 1.2); days of different multipliers are spliced (the carry-over coupling between neighbouring days of different sizes is ignored: stated approximation).
+Metric: test starts on every business day, MT5 broker Pro rules (8% target with 2% a day counted, 2.5% daily line, 8% floor): pass %, breach %, median business days to pass, share passing within 42 / 62 business days, on ALL 2022-26 and on PRE-BOOM 2022-24.
+## Baselines (already measured, rerun in the same script)
+Constant 1.0: ALL 96% / breach 4% / median 71 / <=62 bd 41%; PRE-BOOM 93% / 7% / 142 / 19%. Constant 1.2: ALL 95% / 5% / 48 / 59%; PRE-BOOM 92% / 57 attempts / 62 / 46%.
+## Acceptance of an overlay (both pools)
+Versus constant 1.0: P(pass within 62 business days) up by >= 10 points on ALL AND on PRE-BOOM, with the breach count not higher on either pool. Versus constant 1.2: breach count lower on ALL and on PRE-BOOM with P(<= 62 bd) not more than 5 points lower. An overlay that meets the first test only is "faster than the locked size at no extra breach" and is reported as such; none is adopted without the trader's go and a tick-level check on the 12 months of MT5 broker real ticks.
+## Honest prior
+Low to moderate: regime filters on trend-dependent systems often help drawdowns in-sample and fail out of sample; the 100-day average and the 20-day equity average are the textbook values, and the sample holds only two bad regimes, so a pass proves little and a fail closes the idea.

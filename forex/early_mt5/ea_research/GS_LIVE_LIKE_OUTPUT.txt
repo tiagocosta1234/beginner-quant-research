@@ -1,0 +1,25 @@
+pair alone (same pool): by 30 Nov 50.9% | by 22 Dec 75.0% | breach by 22 Dec 0.4%
+
+== tester-like: lam 1.5/day, loss rate 4.4%, W 116, L 653  ->  PF 3.86, expected +123 USD a day at 1% risk
+   risk 0.5% per trade                 : by 30 Nov  67.2% | by 22 Dec  87.9% | breach  0.1%
+   risk 0.5% per trade + one loss a day: by 30 Nov  67.7% | by 22 Dec  87.5% | breach  0.1%
+   risk 1.0% per trade                 : by 30 Nov  81.6% | by 22 Dec  95.8% | breach  0.0%
+   risk 1.0% per trade + one loss a day: by 30 Nov  79.9% | by 22 Dec  95.0% | breach  0.0%
+
+== in between: lam 1.0/day, loss rate 8.5%, W 100, L 620  ->  PF 1.74, expected +39 USD a day at 1% risk
+   risk 0.5% per trade                 : by 30 Nov  56.7% | by 22 Dec  79.5% | breach  0.3%
+   risk 0.5% per trade + one loss a day: by 30 Nov  56.3% | by 22 Dec  78.9% | breach  0.2%
+   risk 1.0% per trade                 : by 30 Nov  61.6% | by 22 Dec  83.6% | breach  0.2%
+   risk 1.0% per trade + one loss a day: by 30 Nov  61.7% | by 22 Dec  84.1% | breach  0.2%
+
+== live-like (author's signal): lam 0.6/day, loss rate 12.9%, W 88, L 581  ->  PF 1.02, expected +1 USD a day at 1% risk
+   risk 0.5% per trade                 : by 30 Nov  52.0% | by 22 Dec  74.9% | breach  0.4%
+   risk 0.5% per trade + one loss a day: by 30 Nov  50.3% | by 22 Dec  74.0% | breach  0.4%
+   risk 1.0% per trade                 : by 30 Nov  51.4% | by 22 Dec  74.1% | breach  0.5%
+   risk 1.0% per trade + one loss a day: by 30 Nov  50.2% | by 22 Dec  74.4% | breach  0.5%
+
+== worse than live: lam 0.6/day, loss rate 16.0%, W 88, L 581  ->  PF 0.79, expected -12 USD a day at 1% risk
+   risk 0.5% per trade                 : by 30 Nov  49.4% | by 22 Dec  72.5% | breach  0.4%
+   risk 0.5% per trade + one loss a day: by 30 Nov  49.0% | by 22 Dec  72.1% | breach  0.6%
+   risk 1.0% per trade                 : by 30 Nov  49.1% | by 22 Dec  71.7% | breach  0.5%
+   risk 1.0% per trade + one loss a day: by 30 Nov  48.2% | by 22 Dec  71.4% | breach  0.6%

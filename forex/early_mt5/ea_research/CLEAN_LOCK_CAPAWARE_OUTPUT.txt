@@ -1,0 +1,22 @@
+
+--- edge kept 1.0
+  50/50 mix  lock none    : pass by 30 Nov  32.2% [ 19.0- 46.4] | by 22 Dec  50.3% [ 34.5- 64.4] | breach  0.8% | stuck  0.0%
+  50/50 mix  lock legacy  : pass by 30 Nov  31.8% [ 20.1- 43.5] | by 22 Dec  49.1% [ 35.1- 61.7] | breach  0.9% | stuck  2.4%
+  50/50 mix  lock capaware: pass by 30 Nov  33.3% [ 19.3- 46.8] | by 22 Dec  51.4% [ 35.7- 64.3] | breach  0.8% | stuck  0.0%
+  12M only   lock none    : pass by 30 Nov  51.2% [ 30.3- 77.1] | by 22 Dec  72.9% [ 51.6- 93.7] | breach  0.8% | stuck  0.0%
+  12M only   lock legacy  : pass by 30 Nov  50.2% [ 27.9- 72.6] | by 22 Dec  70.3% [ 44.9- 88.2] | breach  0.8% | stuck  4.0%
+  12M only   lock capaware: pass by 30 Nov  53.4% [ 28.2- 78.7] | by 22 Dec  74.3% [ 47.6- 94.5] | breach  0.7% | stuck  0.0%
+  5Y only    lock none    : pass by 30 Nov  12.7% [  5.5- 22.9] | by 22 Dec  27.1% [ 12.9- 45.8] | breach  0.8% | stuck  0.0%
+  5Y only    lock legacy  : pass by 30 Nov  14.6% [  6.9- 23.7] | by 22 Dec  29.9% [ 16.1- 43.1] | breach  0.7% | stuck  1.0%
+  5Y only    lock capaware: pass by 30 Nov  14.9% [  7.8- 24.1] | by 22 Dec  30.4% [ 18.0- 45.4] | breach  0.8% | stuck  0.0%
+
+--- edge kept 0.7
+  50/50 mix  lock none    : pass by 30 Nov  22.7% [ 10.7- 35.5] | by 22 Dec  37.5% [ 21.1- 51.5] | breach  2.0% | stuck  0.0%
+  50/50 mix  lock legacy  : pass by 30 Nov  23.0% [ 13.1- 35.6] | by 22 Dec  37.7% [ 24.3- 51.5] | breach  2.0% | stuck  1.7%
+  50/50 mix  lock capaware: pass by 30 Nov  23.4% [ 11.3- 34.9] | by 22 Dec  38.7% [ 22.9- 51.9] | breach  2.2% | stuck  0.0%
+  12M only   lock none    : pass by 30 Nov  35.0% [ 14.2- 57.8] | by 22 Dec  54.2% [ 23.9- 81.5] | breach  2.6% | stuck  0.0%
+  12M only   lock legacy  : pass by 30 Nov  33.5% [ 12.8- 57.0] | by 22 Dec  51.3% [ 23.7- 78.2] | breach  3.1% | stuck  2.6%
+  12M only   lock capaware: pass by 30 Nov  36.8% [ 14.8- 63.7] | by 22 Dec  55.6% [ 27.3- 85.1] | breach  2.9% | stuck  0.0%
+  5Y only    lock none    : pass by 30 Nov   9.1% [  3.8- 16.0] | by 22 Dec  19.8% [  9.3- 32.2] | breach  1.6% | stuck  0.0%
+  5Y only    lock legacy  : pass by 30 Nov  10.3% [  5.2- 17.0] | by 22 Dec  21.5% [ 11.3- 33.1] | breach  1.6% | stuck  0.7%
+  5Y only    lock capaware: pass by 30 Nov  10.7% [  5.4- 18.3] | by 22 Dec  22.4% [ 12.4- 36.4] | breach  1.4% | stuck  0.0%

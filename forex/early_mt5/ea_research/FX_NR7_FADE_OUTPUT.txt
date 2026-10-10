@@ -1,0 +1,5 @@
+USDCHF 153
+USDJPY 149
+F2m fade DEV           days  777 trades  2578 | mean -0.162 R | PF  0.74 | daily t -4.79 | win 32.8% | net   -418.1 R | pairs with mean>0: 7/28
+F2m fade VAL           days  261 trades   874 | mean -0.243 R | PF  0.62 | daily t -4.21 | win 31.5% | net   -212.8 R | pairs with mean>0: 5/28
+F2m fade POOL          days 1038 trades  3452 | mean -0.183 R | PF  0.71 | daily t -6.25 | win 32.5% | net   -630.9 R | pairs with mean>0: 3/28

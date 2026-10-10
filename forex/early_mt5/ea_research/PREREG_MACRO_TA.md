@@ -1,0 +1,21 @@
+# Pre-registration: slow fundamental bias + mechanical technical entries on 15-minute bars, all 28 FX pairs and the US indices (family M, two trials)
+
+Written 2026-10-09 18:47 local (local clock), BEFORE any simulation of these rules. the trader (2026-10-09): "(original wording omitted)". Ledger 52 before; trials 53 (M1, FX) and 54 (M2, indices), Bonferroni bar: daily t >= 2.5. Standing constraint kept: NO news / event trading: the fundamentals are SLOW STATE variables (policy rates, VIX), never releases.
+Data (public, FRED, saved in D:\finance\data_macro, downloaded 2026-10-09): policy / short rates: US IRSTCI01USM156N, GB IRSTCI01GBM156N, JP IRSTCI01JPM156N, AU IRSTCI01AUM156N, CA IRSTCI01CAM156N (monthly central-bank rates), CH IR3TIB01CHM156N and NZ IR3TIB01NZM156N (3-month interbank, the policy-rate series of these two stop in 2024), EUR ECBDFR (ECB deposit rate, daily); VIX VIXCLS (daily). Point-in-time: monthly series are used with a 2-month lag (the value of the month two months before the trading day's month), ECB and VIX with a 1-day lag.
+
+## Technical engine (identical for M1 and M2; only the direction filter differs)
+M15 bars built from MT5 broker M1 bid / ask bars (server clock). EMA20 and EMA50 of bid closes, ATR14 of bid true range (all known at the bar close). LONG signal at the close of bar k: EMA20 > EMA50, EMA50 > EMA50 four bars earlier, the previous bar closed BELOW its EMA20 and bar k closes ABOVE EMA20 (pullback reclaimed); SHORT is the mirror image. Entry at the OPEN of bar k+1 (long at the ask, short at the bid) with 0.2 bp slippage (FX) / 0.12 bp (indices). Stop 1.5 x ATR14(k) from the entry, target 3.0 x ATR14 (2 R), time exit at the open after 48 bars (indices: at 15:55 New York at the latest); stop first inside a bar (long: bid low <= stop, fill min(stop, bar bid open) minus slippage; short: ask high >= stop, fill max(stop, ask open) plus slippage; target fills at the target). One position at a time per instrument, at most one new trade per server day per instrument. FX signals are ignored from 23:30 to 01:30 server time (rollover spread). R = net P&L / (1.5 x ATR14).
+## M1: 28 FX pairs. Fundamental bias per pair BASE/QUOTE and day: d = rate(BASE) - rate(QUOTE) (percentage points, lagged as above); bias = +1 if d >= +1.0, -1 if d <= -1.0, else NO TRADE. Only signals in the direction of the bias are traded (carry-aligned pullbacks).
+## M2: SP+, NSDQ+, DOW+ (New York cash session: signals from 09:35 to 15:30 NY, real time zones). Fundamental bias per day: risk regime from the VIX of the previous close vs its 20-observation mean: bias = +1 (long only) if VIX < its 20-day mean, -1 (short only) otherwise.
+Controls (reported with every period, NOT trials): the same engine with the bias INVERTED (against) and with NO bias (TA only, both directions).
+Statistics: trades, win rate, mean R, profit factor on R, mean net bp, daily t (daily mean R over days with at least one trade closing), per instrument mean R and breadth. Periods: DEV 2022-01-01..2024-12-31, VAL 2025, POOL 2022-2025, HOLD-OUT 2026-01-01..2026-09-30 (one look, only for a trial that passes 1-3).
+
+## Acceptance (per trial, Bonferroni 54)
+1. DEV pooled: >= 500 trades, mean R > +0.05, profit factor >= 1.10, daily t >= 2.5.
+2. VAL 2025 pooled: mean R > 0, profit factor >= 1.05, daily t >= 1.0.
+3. The fundamental bias must ADD something: in DEV and VAL, mean R with the bias > mean R of the inverted bias (the difference is the information in the fundamentals).
+4. HOLD-OUT 2026 pooled: mean R > 0 (one look).
+5. Gate for any use: gold-pair correlation <= 0.3, clean-simulation uplift in P(pass) with at most 1 point of extra breach, MT5 broker-data tester validation, fixed risk, hard stops, AccountGuard-compatible.
+If 1 fails the trial is closed (no hold-out).
+## Honest prior
+About 3% each. Carry-aligned pullbacks have the right economics but on a SWAP-FREE MT5 broker account the carry itself is not paid (only the price drift it predicts), the earlier FX factor lab and 20+ FX/index tests found no durable low-timeframe edge, and the VIX regime on indices is a coarse filter. The controls matter more than the headline: if with-bias is not better than against-bias, the fundamentals carry no information at this horizon, which is itself a useful, cheap answer.
