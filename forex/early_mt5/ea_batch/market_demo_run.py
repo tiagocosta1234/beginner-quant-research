@@ -18,7 +18,7 @@ import pandas as pd
 from mt5broker.ea_batch import mt5data_run as ER
 
 HERE = Path(__file__).resolve().parent
-CAND = pd.read_csv(HERE / "market_candidates.csv", dtype=str).fillna("")
+CAND = pd.concat([pd.read_csv(HERE / "market_candidates.csv", dtype=str), pd.read_csv(HERE / "market_candidates_nongold.csv", dtype=str)], ignore_index=True).fillna("")   # 2026-10-11: non-gold list, own symbol column
 MARKET = ER.TERM_DIR / "MQL5" / "Experts" / "Market"
 SKIP = {"xauusd5minute"}                                              # the live pair's second leg, already tested
 STAGE1, STAGE2 = ("2025Q4", "2026"), ("2022", "2023", "2024", "2025")
@@ -37,14 +37,14 @@ def found() -> list[dict]:
             continue
         row = next((r for _, r in CAND.iterrows() if norm(r["name"]) == n or norm(r["name"]) in n or n in norm(r["name"])), None)
         key = row["key"] if row is not None else n[:20]; tfs = (row["timeframes"].split("|") if row is not None and row["timeframes"] else ["M15", "H1"])
-        out.append(dict(file=f.name, key=key, name=row["name"] if row is not None else f.stem, tfs=tfs))
+        out.append(dict(file=f.name, key=key, name=row["name"] if row is not None else f.stem, tfs=tfs, symbol=(row["symbol"] if row is not None and row.get("symbol", "") else "XAUUSD+")))
     return out
 
 
 def jobs_for(e: dict) -> list[str]:
     ids = []
     for tf in e["tfs"]:
-        eid = f"mkt_{e['key']}_{tf}"; ER.EAS[eid] = (rf"Market\{e['file']}", tf, f"{e['name']} (Market demo) {tf}"); ids.append(eid)
+        eid = f"mkt_{e['key']}_{tf}"; ER.EAS[eid] = (rf"Market\{e['file']}", tf, f"{e['name']} (Market demo) {tf}"); SYM[eid] = e.get("symbol", "XAUUSD+"); ids.append(eid)
     return ids
 
 
@@ -80,10 +80,15 @@ def verdict1(eid: str):
     return all(ok for ok, _ in checks), reasons, dict(pooled_net=pooled_net, pooled_trades=pooled_trades, ppf=ppf, netdd=netdd, conc=conc, lr=lr, per_month=pm, q=q, y26=y26)
 
 
+SYM: dict[str, str] = {}
+
+
 def run_stage(ids: list[str], years) -> None:
     for eid in ids:
+        ER.SYMBOL = SYM.get(eid, "XAUUSD+")                                   # non-gold candidates run on their own symbol (run_job reads the module global)
         for y in years:
             ER.run_job(eid, y)
+    ER.SYMBOL = "XAUUSD+"
 
 
 def ledger(eid: str, window: str, trades, avg, pf, netdd, win, note: str) -> None:

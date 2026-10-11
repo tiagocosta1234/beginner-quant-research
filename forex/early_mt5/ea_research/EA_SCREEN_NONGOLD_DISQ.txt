@@ -1,0 +1,40 @@
+   id                              title    sym  trades    t    pf  loss_pct  max_open_x  vol_ratio  worst_vs_avgwin  grid_or_marti
+19655                  GalacticExplosion EURUSD    8998 28.0  2.11      11.0        47.0        1.0             64.0           True
+48961                      YY_Cross_2_Ma EURUSD     191 16.5 99.00       0.0         4.0        1.0             -1.0           True
+74894 SuperTrend_Amarnath_Kondiyan_Mohan EURUSD    5851 16.2  2.28      22.3       584.0        1.0              6.4           True
+64444                        Babi Ngepet EURUSD    4565 13.7  1.79       9.1       508.0      256.0             95.6           True
+21971                         AMA Trader EURUSD    1478 12.5  1.90      26.0        36.0        1.0             10.7           True
+21759                         RSI_Expert USDJPY     237 11.7 99.00       0.0         6.0        1.0             -0.2           True
+39425                 DeMarker Pending 2 EURUSD    6875 11.4  2.62       5.1         2.0        1.0              9.5          False
+38300  Long and Short Stepped Grid Trade EURUSD     122 10.1 99.00       0.0        18.0        1.0             -0.8           True
+23319                  Dynamic averaging EURUSD    1186 10.0  1.25      26.7        92.0        1.0             10.1           True
+74818                       Market Miner EURUSD    9094  9.3  3.10      24.0       666.0        1.0              5.6           True
+17339                   Waddah Attar Win EURUSD     480  8.5  1.91      38.8        34.0        1.0              3.7           True
+75264                           BlueMoon EURUSD    7341  8.1  2.32      32.1        52.0       10.0              9.7           True
+17741                                EMA EURUSD    5493  8.1  1.35      18.7         1.0        1.0              9.9          False
+39591               DeMarker Pending 2_5 EURUSD    5622  7.8  1.97      16.2         3.2        3.0             11.2           True
+29115                  MT5-CoupleHedgeEA EURUSD    5736  7.5  1.49      35.6        76.0        8.0             58.2           True
+39334                   DeMarker Pending EURUSD    8695  7.2  2.26      16.1        24.5        4.5             19.0           True
+19464                             Martin EURUSD   11244  7.1  1.65       5.4       649.3       10.7            237.0           True
+33625                           Vinci EA GBPUSD    5881  6.8  1.62      32.4       992.0      256.0            157.6           True
+16994                    Bollinger Bands EURUSD   22518  6.7  1.79       8.3         5.0        5.0             19.4           True
+20668 PLC (penetration of the last candl EURUSD    3362  6.1  1.26      15.9       150.5        1.0             23.4           True
+19541                          VR---ZVER EURUSD     104  6.0  2.76      32.7         4.0        3.0              0.6           True
+68934                    SilviosEAbest26 EURUSD    2951  5.9  1.45      21.8         2.4        2.4              5.7          False
+17069                            Ilan1.4 AUDUSD     851  5.8 11.81      12.8       217.6      165.7             17.0           True
+20877                   Deep Drawdown MA EURUSD     705  5.1 99.00       0.0         0.0        1.0             -0.0           True
+17390                          BollTrade EURUSD   23521  4.8  1.27       9.9         1.7        1.7             11.2          False
+17015                 Elite eFibo Trader EURUSD   15702  4.6  1.20      61.4        53.0       21.0              1.4           True
+41732   Lazy Bot MT5 (Daily Breakout EA) EURUSD     811  4.4  1.65      55.9         2.0        1.0              0.8          False
+22788                          Fluctuate EURUSD    5558  4.3  1.21      10.5        41.0       32.0             82.8           True
+27440             VR Smart Grid Lite MT5 EURUSD    2595  4.2  1.66      33.1      1474.0      256.0             83.2           True
+62684                         BotCilento EURUSD     454  3.6  1.55      43.6         4.0        1.7              8.6           True
+
+clean survivors: [39425, 17741, 68934, 17390, 41732]
+
+HOLD 2026 (one look, the 5 clean survivors):
+  39425 DeMarker Pending 2                 EURUSD H1: trades 1234 | net +539,812 | months positive 9/9 | last deal 2026-09-29 21:00:40
+  17741 EMA                                EURUSD M5: trades 686 | net +540 | months positive 7/9 | last deal 2026-09-29 21:13:40
+  68934 SilviosEAbest26                    EURUSD H1: trades 605 | net +91,685 | months positive 8/9 | last deal 2026-09-29 23:54:59
+  17390 BollTrade                          EURUSD M30: trades 2700 | net +93,854 | months positive 8/9 | last deal 2026-09-29 23:54:59
+  41732 Lazy Bot MT5 (Daily Breakout EA)   EURUSD H1: trades 142 | net +14 | months positive 6/9 | last deal 2026-09-29 10:35:40

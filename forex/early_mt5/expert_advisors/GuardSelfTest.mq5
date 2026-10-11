@@ -33,6 +33,8 @@ input double InpCountedCapPct = 0.0;      // pass lock on COUNTED equity (MT5 Pr
 input double InpSlipOnLock    = 0.0;      // test of the release path: once the lock has closed everything and the account is flat, burn this much on spread (open+close the driver lot) BEFORE the guard verifies, as if the close had slipped
 input bool   InpNoHedge       = false;    // guard: close the newer opposite position of the same symbol
 input bool   InpOppositeDriver = false;   // test of the no-hedge rule: 300 s after the driver's position opened, open one of the OPPOSITE side
+input bool   InpNews          = false;    // guard: news flat with the release times of InpNewsFile (common Files folder)
+input string InpNewsFile      = "ManualNews_test.csv";
 input int    InpRestartHour   = -1;       // >= 0: once a day at this server hour rebuild the day start like a restarted EA and log old vs rebuilt (RESTARTCHK)
 
 class CTestGuard : public CAccountGuard
@@ -49,6 +51,7 @@ ulong         seed=12345;
 int           opens=0, failedOpens=0;
 long          lastRestartDay=-2;
 int           lastHedge=0;
+int           lastNews=0;
 datetime      lastOpp=0;
 
 int NextDir()
@@ -71,6 +74,7 @@ int OnInit()
    fh=FileOpen(InpLogName,FILE_WRITE|FILE_CSV|FILE_ANSI,',');
    guard.Init(InpInitial,InpDailyStopPct,InpFloorStopPct,InpTargetPct,InpLockBufferPct,InpMinDays,InpPhaseStart,"GUARDTEST",InpKillAfter,InpProfitCapPct,InpCountedCapPct);
    guard.m_pragueShiftSec=InpShiftSec; guard.m_noHedge=InpNoHedge;
+   if(InpNews) guard.m_newsOn=(guard.LoadNews(InpNewsFile)>0);
    drv.SetDeviationInPoints(100);
    EventSetTimer(1);
    Log("START","guardOn="+(string)InpGuardOn);
@@ -146,6 +150,7 @@ void Step()
          Log("RESTARTCHK","old="+DoubleToString(guard.m_dayRef,2)+" rebuilt="+DoubleToString(rebuilt,2));
         }
      }
+   if(guard.m_newsClosed>lastNews) { Log("NEWSFLAT","closed="+(string)(guard.m_newsClosed-lastNews)); lastNews=guard.m_newsClosed; }
    if(guard.m_hedgeClosed>lastHedge) { Log("NOHEDGE","closed="+(string)(guard.m_hedgeClosed-lastHedge)); lastHedge=guard.m_hedgeClosed; }
    if(now-lastSnap>=60)
      {

@@ -1,0 +1,4 @@
+MT5 broker (2025-10-01..2026-09-30): days 258 | mean/day 225 | mean/month 4,843 (median 4,795; best 11,103; worst -1,146) | months positive 83% | daily PF 2.05 | trades 561 | days stopped by the guard 23 (8.9%) | worst day -2,112 | days < -1,900 1 | max DD 7,188
+FT (2022-01-01..2026-09-30): days 1225 | mean/day 89 | mean/month 1,916 (median 1,282; best 10,621; worst -5,280) | months positive 68% | daily PF 1.56 | trades 1811 | days stopped by the guard 55 (4.5%) | worst day -1,760 | days < -1,900 0 | max DD 16,662
+   by year (USD): {2022: 2000, 2023: -3200, 2024: 23500, 2025: 40200, 2026: 46800}
+P(pass) MIX (12m / 2022-26): 30 Oct: 9.6% (15 / 4) | 30 Nov: 41.6% (58 / 25) | 22 Dec: 58.1% (75 / 41) | 31 Jan: 74.3% (89 / 60) | breach by 31 Jan 2.9% | median pass 44 business days from 12 Oct = 2026-12-10

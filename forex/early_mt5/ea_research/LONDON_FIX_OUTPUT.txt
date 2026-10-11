@@ -1,0 +1,9 @@
+LF1 DEV: trades 5413 | per trade -0.84 bp win 47.6% | daily portfolio days 776 mean -0.85 bp t -2.85
+LF1 VAL: trades 1799 | per trade -1.08 bp win 46.1% | daily portfolio days 258 mean -1.08 bp t -2.74
+   LF1 acceptance: False | per trade by year: {2021: 0.53, 2022: -0.66, 2023: -0.53, 2024: -1.34, 2025: -1.08} | by pair 2022-25: {'AUDUSD': -0.73, 'EURUSD': -0.47, 'GBPUSD': -1.14, 'NZDUSD': -1.74, 'USDCAD': -0.41, 'USDCHF': -0.71, 'USDJPY': -0.89}
+LF2 DEV: trades 1550 | per trade -1.65 bp win 46.0% | daily portfolio days 537 mean -1.25 bp t -2.37
+LF2 VAL: trades 507 | per trade -1.96 bp win 43.2% | daily portfolio days 179 mean -2.18 bp t -3.01
+   LF2 acceptance: False | per trade by year: {2022: -1.35, 2023: -1.71, 2024: -1.93, 2025: -1.96} | by pair 2022-25: 
+LF3 DEV: trades 1550 | per trade -0.75 bp win 49.9% | daily portfolio days 537 mean -0.29 bp t -0.36
+LF3 VAL: trades 507 | per trade -3.52 bp win 43.8% | daily portfolio days 179 mean -3.30 bp t -3.10
+   LF3 acceptance: False | per trade by year: {2022: 0.88, 2023: -1.32, 2024: -2.07, 2025: -3.52} | by pair 2022-25: 

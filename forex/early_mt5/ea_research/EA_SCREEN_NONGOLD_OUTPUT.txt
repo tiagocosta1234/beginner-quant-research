@@ -1,0 +1,19 @@
+non-gold EAs with deals: 606 | trades>=100: 559 | all 4 years positive: 62 | t>=3.5: 35 | PASS all: 30
+reality check: best monthly t across 553 EAs with no edge: median +17.14, 95th pct +223.14; real best +27.95
+top 15 by monthly t (2022-25):
+   id                              title symbol  tf  trades        y22       y23       y24        y25           pf     t  pass
+19655                  GalacticExplosion EURUSD  H1    8998    6071.80   4504.10   4135.10    4624.90 2.110000e+00 27.95  True
+48961                      YY_Cross_2_Ma EURUSD  H1     191     156.00    138.00    132.00     147.00 5.730000e+11 16.51  True
+64444                        Babi Ngepet EURUSD  H1    4565    3638.85   2206.83   2063.04    2246.67 1.790000e+00 13.73  True
+21971                         AMA Trader EURUSD  M5    1478    4287.10   3783.00   5337.80    4019.90 1.900000e+00 12.53  True
+39425                 DeMarker Pending 2 EURUSD  H1    6875 1228829.88 901702.00 596072.00 1053459.00 2.620000e+00 11.45  True
+21759                         RSI_Expert USDJPY M15     237     850.89    886.78    793.74     890.56 3.421970e+12 11.06  True
+38300  Long and Short Stepped Grid Trade EURUSD  H1     122    1097.16    625.69    356.36     605.12 2.684330e+12  9.00  True
+23319                  Dynamic averaging EURUSD  H1    1186   22675.00  16147.00  11290.00   11810.00 1.250000e+00  8.40  True
+74818                       Market Miner EURUSD  H1    9094   12493.34   8666.89  13446.72   12163.71 3.100000e+00  8.14  True
+75264                           BlueMoon EURUSD  M5    7341    3706.33   1553.69    944.12    1192.38 2.320000e+00  8.13  True
+17741                                EMA EURUSD  M5    5493    3587.90   1447.30   1050.10    1755.10 1.350000e+00  8.08  True
+39591               DeMarker Pending 2_5 EURUSD  H1    5622  142732.63 276276.44 301535.29  940147.04 1.970000e+00  7.81  True
+74894 SuperTrend_Amarnath_Kondiyan_Mohan EURUSD  H4    5851   13299.84   8361.78  10748.75   11310.85 2.280000e+00  7.78  True
+29115                  MT5-CoupleHedgeEA EURUSD  H1    5736    5148.49   1895.42   1345.47    1866.66 1.490000e+00  7.43  True
+39334                   DeMarker Pending EURUSD  H1    8695  239218.23 451326.60 560548.80 1851508.76 2.260000e+00  7.18  True

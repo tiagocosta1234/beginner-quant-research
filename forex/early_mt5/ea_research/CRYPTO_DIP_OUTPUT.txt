@@ -1,0 +1,9 @@
+CD1 DEV: trades 152 on 54 days | per trade +85.2 bp win 59.9% | daily mean -22.0 bp t -0.31
+CD1 VAL: trades 53 on 24 days | per trade +187.3 bp win 67.9% | daily mean +63.2 bp t +0.66
+   CD1 acceptance: False | per trade by year: {2022: 9.7, 2023: -113.0, 2024: 261.5, 2025: 187.3}
+CD2 DEV: trades 39 on 25 days | per trade +29.1 bp win 61.5% | daily mean +16.8 bp t +0.17
+CD2 VAL: trades 17 on 13 days | per trade +229.7 bp win 82.4% | daily mean +209.1 bp t +1.96
+   CD2 acceptance: False | per trade by year: {2022: -240.1, 2023: -5.9, 2024: 200.0, 2025: 229.7}
+CD3 DEV: trades 234 on 133 days | per trade -193.2 bp win 38.5% | daily mean -209.3 bp t -4.36
+CD3 VAL: trades 65 on 40 days | per trade +37.6 bp win 50.8% | daily mean +46.4 bp t +0.77
+   CD3 acceptance: False | per trade by year: {2022: -163.1, 2023: -204.7, 2024: -184.0, 2025: 37.6}

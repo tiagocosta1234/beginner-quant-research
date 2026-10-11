@@ -1,0 +1,9 @@
+GR1 DEV: trades 50 | mean -0.157 R | win 38.0% | PF 0.51 | daily t -1.95 | USD -3,932
+GR1 VAL: trades 9 | mean -0.024 R | win 55.6% | PF 0.92 | daily t -0.12 | USD -108
+   GR1 acceptance: False | 2022-23 USD -3,949 | corr with pair -0.08 | USD by year: {2022: -996.0, 2023: -2954.0, 2024: 17.0, 2025: -108.0}
+GR2 DEV: trades 76 | mean -0.119 R | win 46.1% | PF 0.60 | daily t -1.80 | USD -4,512
+GR2 VAL: trades 24 | mean -0.215 R | win 41.7% | PF 0.51 | daily t -1.48 | USD -2,586
+   GR2 acceptance: False | 2022-23 USD -3,325 | corr with pair -0.08 | USD by year: {2022: -106.0, 2023: -3219.0, 2024: -1187.0, 2025: -2586.0}
+GR3 DEV: trades 511 | mean -0.008 R | win 50.3% | PF 0.98 | daily t -0.20 | USD -2,055
+GR3 VAL: trades 159 | mean -0.153 R | win 44.7% | PF 0.69 | daily t -2.13 | USD -12,196
+   GR3 acceptance: False | 2022-23 USD +4,636 | corr with pair -0.21 | USD by year: {2022: 7341.0, 2023: -2705.0, 2024: -6691.0, 2025: -12196.0}

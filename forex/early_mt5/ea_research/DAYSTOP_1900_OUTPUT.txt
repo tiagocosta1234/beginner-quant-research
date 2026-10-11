@@ -1,0 +1,4 @@
+stop 1900: MT5 broker: worst -2,112, days < -1,900: 13 | FT: worst -2,215, days < -1,900: 24 || MIX 30 Nov 44.1% 22 Dec 61.0% breach 2.0%
+stop 1500: MT5 broker: worst -2,112, days < -1,900: 1 | FT: worst -1,760, days < -1,900: 0 || MIX 30 Nov 41.1% 22 Dec 57.4% breach 1.9%
+stop 1400: MT5 broker: worst -2,112, days < -1,900: 1 | FT: worst -1,730, days < -1,900: 0 || MIX 30 Nov 40.2% 22 Dec 57.0% breach 1.7%
+NEWS-FLAT (CPI/NFP/FOMC) + stop 1500: MT5 broker: worst day -1,813, days below -2,000: 0, mean/day 216 | FT: worst day -1,654, days below -2,000: 0, mean/day 84 || MIX 30 Nov 37.6% 22 Dec 54.3% breach 1.2%

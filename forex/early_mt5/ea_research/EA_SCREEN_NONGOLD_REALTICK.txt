@@ -1,0 +1,6 @@
+   id                 ea  tf  mt5_trades  mt5_net  mt5_pf  mt5_win  mt5_eqdd  mt5broker_m1_trades  mt5broker_m1_net  mt5broker_m1_pf  mt5broker_m1_win note  sec
+39425 DeMarker_Pending_2  H1        644   -4780   0.96    46.3 12484.88            1609       693640        2.28         95.6        24
+17741                EMA  M5        897    -830   0.81    76.4   926.65             901          639        1.16         79.7        16
+68934    SilviosEAbest26  H1        779  -26378   0.77    70.5 29196.91             811       133693        1.31         77.9        24
+17390          BollTrade M30       2947  -13303   0.85    84.4 13854.35            3533       125758        1.29         89.6        15
+41732     LazyBot_MT5_V1  H1        192     -16   0.68    34.4    20.90             188           15        1.44         41.0        20

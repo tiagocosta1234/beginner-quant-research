@@ -1,0 +1,9 @@
+A clip (as charted)              sd  717 | days < -2000 in 2026: 0 | 2026 evals pass/fail 7/0 | max DD 2022-26 2,504 | ETA 2026 regime 30Out/30Nov/22Dez [12, 86, 98]% breach 0.0% | half edge [3, 37, 62]%
+A no clip                        sd  822 | days < -2000 in 2026: 3 | 2026 evals pass/fail 2/0 | max DD 2022-26 8,256 | ETA 2026 regime 30Out/30Nov/22Dez [2, 29, 50]% breach 0.5% | half edge [1, 16, 30]%
+B pair x1.2 + 6 on top, no clip  sd 1087 | days < -2000 in 2026: 6 | 2026 evals pass/fail 4/0 | max DD 2022-26 9,163 | ETA 2026 regime 30Out/30Nov/22Dez [10, 61, 81]% breach 0.3% | half edge [5, 34, 52]%
+pair only                        sd  791 | days < -2000 in 2026: 3 | 2026 evals pass/fail 5/0 | max DD 2022-26 10,330 | ETA 2026 regime 30Out/30Nov/22Dez [7, 62, 83]% breach 0.1% | half edge [2, 29, 49]%
+stop per leg  None: by year {2022: 5300, 2023: 1900, 2024: 20400, 2025: 35800, 2026: 43600} | max DD 10,330 | evals 2022-26 pass/fail 13/1 | ETA 2026 regime 30Out/30Nov/22Dez [7, 62, 84] | 2022-26 regime [1, 16, 32]
+stop per leg   300: by year {2022: -3900, 2023: 5600, 2024: 12700, 2025: 20000, 2026: 21600} | max DD 8,705 | evals 2022-26 pass/fail 6/0 | ETA 2026 regime 30Out/30Nov/22Dez [1, 16, 38] | 2022-26 regime [0, 3, 8]
+stop per leg   500: by year {2022: -500, 2023: 3500, 2024: 20100, 2025: 28800, 2026: 26100} | max DD 12,071 | evals 2022-26 pass/fail 9/0 | ETA 2026 regime 30Out/30Nov/22Dez [1, 28, 52] | 2022-26 regime [0, 7, 17]
+stop per leg   800: by year {2022: 5000, 2023: -600, 2024: 17500, 2025: 33700, 2026: 37500} | max DD 11,613 | evals 2022-26 pass/fail 10/0 | ETA 2026 regime 30Out/30Nov/22Dez [5, 51, 74] | 2022-26 regime [1, 13, 26]
+stop per leg  1200: by year {2022: 2000, 2023: 1900, 2024: 20400, 2025: 35900, 2026: 41100} | max DD 10,584 | evals 2022-26 pass/fail 11/0 | ETA 2026 regime 30Out/30Nov/22Dez [6, 58, 80] | 2022-26 regime [1, 15, 30]

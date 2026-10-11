@@ -1,0 +1,10 @@
+events with all minutes: 212
+OE1 DEV: events 82 | mean -8.9 bp | win 48.8% | t -0.61
+OE1 VAL: events 24 | mean -39.4 bp | win 41.7% | t -2.06
+   OE1 acceptance: False | by year: {2022: 56.2, 2023: -28.4, 2024: -26.1, 2025: -39.4}
+OE2 DEV: events 82 | mean -2.1 bp | win 43.9% | t -0.14
+OE2 VAL: events 24 | mean +27.8 bp | win 54.2% | t +1.45
+   OE2 acceptance: False | by year: {2022: -67.7, 2023: 14.8, 2024: 17.8, 2025: 27.8}
+OE3 DEV: events 155 | mean -14.9 bp | win 45.2% | t -2.05
+OE3 VAL: events 52 | mean -13.6 bp | win 36.5% | t -1.70
+   OE3 acceptance: False | by year: {2021: 7.3, 2022: -17.1, 2023: -22.9, 2024: -4.6, 2025: -13.6}

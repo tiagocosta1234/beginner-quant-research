@@ -1,0 +1,4 @@
+A clip (as charted)              sd  717 | days < -2000 in 2026: 0 | 2026 evals pass/fail 7/0 | max DD 2022-26 2,504 | ETA 2026 regime 30Out/30Nov/22Dez [12, 86, 98]% breach 0.0% | half edge [3, 37, 62]%
+A no clip                        sd  822 | days < -2000 in 2026: 3 | 2026 evals pass/fail 2/0 | max DD 2022-26 8,256 | ETA 2026 regime 30Out/30Nov/22Dez [2, 29, 50]% breach 0.5% | half edge [1, 16, 30]%
+B pair x1.2 + 6 on top, no clip  sd 1087 | days < -2000 in 2026: 6 | 2026 evals pass/fail 4/0 | max DD 2022-26 9,163 | ETA 2026 regime 30Out/30Nov/22Dez [10, 61, 81]% breach 0.3% | half edge [5, 34, 52]%
+pair only                        sd  791 | days < -2000 in 2026: 3 | 2026 evals pass/fail 5/0 | max DD 2022-26 10,330 | ETA 2026 regime 30Out/30Nov/22Dez [7, 62, 83]% breach 0.1% | half edge [2, 29, 49]%

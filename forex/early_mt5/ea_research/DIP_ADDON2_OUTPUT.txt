@@ -1,0 +1,9 @@
+DA trades 2022-26: 209 | signal days 114 | mean +36.7 USD (+32.2 bp) | win 53.1% | stopped 2.9% | worst -1,000
+   by year (trades, USD total, bp mean): {2022: (64, 876, np.float64(30.8)), 2023: (33, -539, np.float64(-6.4)), 2024: (33, 1708, np.float64(22.7)), 2025: (51, 3624, np.float64(54.3)), 2026: (28, 1998, np.float64(51.5))}
+   by market (trades, bp mean): {'DAX': (52, np.float64(27.4)), 'DOW': (56, np.float64(33.8)), 'NSDQ': (50, np.float64(45.8)), 'SP': (51, np.float64(21.9))}
+MT5 broker: days 258 | DA active days 25 | corr(pair V, DA V) all days +0.06, DA days +0.16 | DA total 1,858
+FT: days 1225 | DA active days 114 | corr(pair V, DA V) all days +0.01, DA days +0.03 | DA total 7,666
+
+P(pass) / P(breach) from +560 counted on 2026-10-12, live x1.2, pass70 rules:
+  pair     30 Oct: MT5 broker 9% FT 1% MIX 5.2% (breach MIX 0.0%) | 30 Nov: MT5 broker 54% FT 17% MIX 35.5% (breach MIX 0.2%) | 22 Dec: MT5 broker 76% FT 31% MIX 53.9% (breach MIX 0.4%)
+  pair+DA  30 Oct: MT5 broker 10% FT 2% MIX 6.2% (breach MIX 0.0%) | 30 Nov: MT5 broker 56% FT 20% MIX 37.8% (breach MIX 0.2%) | 22 Dec: MT5 broker 78% FT 35% MIX 56.4% (breach MIX 0.4%)

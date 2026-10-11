@@ -1,0 +1,3 @@
+dip add-on risk     0: 30 Oct 7.8% | 30 Nov 37.3% | 22 Dec 54.5% | 31 Jan 71.9% | breach 1.8% | MT5 broker worst day -1,813, days < -1,900 0 | FT worst day -1,654, days < -1,900 0
+dip add-on risk   500: 30 Oct 8.1% | 30 Nov 38.9% | 22 Dec 55.8% | 31 Jan 73.1% | breach 1.8% | MT5 broker worst day -1,813, days < -1,900 0 | FT worst day -1,766, days < -1,900 0
+dip add-on risk  1000: 30 Oct 8.6% | 30 Nov 39.7% | 22 Dec 56.8% | 31 Jan 74.0% | breach 1.8% | MT5 broker worst day -2,008, days < -1,900 1 | FT worst day -2,396, days < -1,900 3

@@ -51,6 +51,8 @@ input int    InpGuardMinDays   = 0;    // guard: minimum trading days before the
 input int    InpGuardPragueShiftSec = 3600; // server time minus the firm's day-reset clock (CHECK per firm)
 input bool   InpGuardNoHedge = false;   // guard: never keep BUY and SELL positions on the same symbol (MT5 broker prohibits hedging): the NEWER opposite positions of ANY EA on the account are closed at once (test preset true)
 input double InpGuardCountedCapPct = 0.0; // guard: pass lock counts today's profit only up to this % of initial (MT5 Pro 2.0, the rest is removed at rollover); 0 = raw equity (old lock). Used only when the pass-lock target is on
+input bool   InpGuardNews = false;      // guard: NEWS FLAT, close every position of the account from 2 min before to 5 min after each release listed in InpGuardNewsFile (2026-10-11)
+input string InpGuardNewsFile = "ManualNews.csv"; // guard: release times, server clock, in the terminals' COMMON Files folder (forex/early_mt5/tools/make_news_file.py)
 input double InpGuardDayProfitPct = 0.0; // guard: day PROFIT cap, % of initial: at +this on the day close everything and stop until the next day (MT5 Pro counts at most 2% a day; 0 = off; test preset 2.0)
 
 #define WINDOW   2000     // bars used to seed the smoothed stochastic
@@ -197,6 +199,7 @@ int OnInit()
      {
       g_guard.Init(InpGuardInitial,InpGuardDayPct,InpGuardFloorPct,InpGuardTargetPct,InpGuardBufferPct,InpGuardMinDays,TimeCurrent(),"ManualSDB",3,InpGuardDayProfitPct,InpGuardCountedCapPct);
       g_guard.m_pragueShiftSec=InpGuardPragueShiftSec; g_guard.m_noHedge=InpGuardNoHedge;
+      if(InpGuardNews) g_guard.m_newsOn=(g_guard.LoadNews(InpGuardNewsFile)>0);
       EventSetTimer(1);
      }
    return(INIT_SUCCEEDED);

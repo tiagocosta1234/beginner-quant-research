@@ -1,0 +1,10 @@
+NA1 DEV: days 742 (active 608) | mean +2.87 bp/day | win 33.6% | daily t +1.89 | trades 2349 | vol-target diag mean +5.53 bp t +1.96
+NA1 VAL: days 245 (active 196) | mean +0.73 bp/day | win 28.6% | daily t +0.25 | trades 748 | vol-target diag mean -0.58 bp t -0.10
+   NA1 acceptance: False | by year bp/day: {2021: 8.4, 2022: 4.8, 2023: 2.86, 2024: 0.94, 2025: 0.73}
+NA2 DEV: days 742 (active 608) | mean +3.01 bp/day | win 33.7% | daily t +1.99 | trades 2022
+NA2 VAL: days 245 (active 196) | mean +0.89 bp/day | win 28.6% | daily t +0.31 | trades 627
+   NA2 acceptance: False | by year bp/day: {2021: 8.47, 2022: 4.92, 2023: 2.97, 2024: 1.12, 2025: 0.89}
+NA3 DEV: days 742 (active 454) | mean +5.21 bp/day | win 29.0% | daily t +2.53 | trades 746
+NA3 VAL: days 245 (active 136) | mean +2.34 bp/day | win 23.3% | daily t +0.48 | trades 244
+   NA3 acceptance: True | by year bp/day: {2021: 13.56, 2022: 7.5, 2023: 5.07, 2024: 3.05, 2025: 2.34}
+NA3 HOLD 2026: days 187 mean -1.45 bp/day t -0.47 win 23.0%

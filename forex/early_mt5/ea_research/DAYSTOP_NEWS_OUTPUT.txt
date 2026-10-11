@@ -1,0 +1,1 @@
+NEWS-FLAT (CPI/NFP/FOMC) + stop 1700: MT5 broker: worst day -1,813, days below -2,000: 0, mean/day 216 | FT: worst day -1,937, days below -2,000: 0, mean/day 90 || MIX 30 Nov 38.2% 22 Dec 55.5% breach 1.5%

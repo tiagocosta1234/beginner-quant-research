@@ -1,0 +1,5 @@
+stop 2000: MT5 broker: worst day -2,306, days below -2,000: 12 of 258, mean/day 239 | FT: worst day -2,215, days below -2,000: 21 of 1225, mean/day 104 || P(pass) MIX 30 Nov 44.9% 22 Dec 61.7% breach 2.1%
+stop 1800: MT5 broker: worst day -2,112, days below -2,000: 1 of 258, mean/day 222 | FT: worst day -1,954, days below -2,000: 0 of 1225, mean/day 104 || P(pass) MIX 30 Nov 42.9% 22 Dec 59.6% breach 2.2%
+stop 1700: MT5 broker: worst day -2,112, days below -2,000: 1 of 258, mean/day 225 | FT: worst day -1,942, days below -2,000: 0 of 1225, mean/day 100 || P(pass) MIX 30 Nov 43.0% 22 Dec 60.0% breach 2.0%
+stop 1600: MT5 broker: worst day -2,112, days below -2,000: 1 of 258, mean/day 230 | FT: worst day -1,942, days below -2,000: 0 of 1225, mean/day 92 || P(pass) MIX 30 Nov 42.9% 22 Dec 59.2% breach 2.1%
+stop 1500: MT5 broker: worst day -2,112, days below -2,000: 1 of 258, mean/day 225 | FT: worst day -1,760, days below -2,000: 0 of 1225, mean/day 89 || P(pass) MIX 30 Nov 41.2% 22 Dec 57.7% breach 1.9%

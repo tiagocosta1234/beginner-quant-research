@@ -17,3 +17,13 @@ Gate for any use (not part of this screen): daily P&L correlation with the live 
 
 ## Amendment 2026-10-09 22:30 (before any run)
 Impulse MT5 is dropped: its own listing describes a "momentum grid EA ... one unified grid framework", which the screen would reject anyway (MT5 broker and the grid / martingale detector). Timeframes were fixed from the sellers' own pages: Broker Gold EA M30 (the author's guide), Ghost Scalper H1 (listing), Lizard H1, TitanForge H1; the others stay M15 and H1 (two trials each). Authors / product ids are in market_candidates.csv; a product with the right name but another author is a DIFFERENT EA.
+
+## Amendment 2026-10-11 (non-gold candidates; written before any non-gold demo run)
+the trader: "continua a procura de mais EAs fora do ouro". Same procedure, stages and acceptance as above, on each EA's own symbol
+(`market_candidates_nongold.csv`, column symbol): Quantum Commander (DOW+), ORB Revolution (NSDQ+), Market Anomalies (USDJPY+),
+Range Breakout EA with Range Filters (USDJPY+ chart; its other built-in markets may trade too: the deals are split by symbol if the
+report allows, else reported pooled), Chiroptera (EURUSD+ chart, multi-pair), Asura Strike US100 (NSDQ+). Selection from the MQL5
+Market pages 1-3 on 2026-10-11: rating >= 4.0 with >= 15 reviews (Asura: none yet), the listing states no grid / martingale /
+averaging, a stop on each trade or a stated SL input, a published live signal. Excluded on the listing text: Quantum Emperor (splits and
+recovers losers), Quantum King (grid + martingale), Sentinel (recovery grid), Big Forex Players (lot step), Black Dragon (lot multiplier),
+Hamster Scalping (virtual SL, order series). Extra gate before any use: correlation with the live pair <= 0.3 and the v5 account test.

@@ -1,0 +1,12 @@
+RB1 DEV: days 777 | mean -0.10 bp/day | win 47.9% | t -0.13
+RB1 VAL: days 259 | mean -1.06 bp/day | win 51.0% | t -0.80
+   RB1 acceptance: False | by year: {2021: -4.29, 2022: -0.24, 2023: 0.28, 2024: -0.33, 2025: -1.06}
+RB2 DEV: days 775 | mean -0.52 bp/day | win 49.0% | t -0.52
+RB2 VAL: days 258 | mean +0.16 bp/day | win 50.8% | t +0.10
+   RB2 acceptance: False | by year: {2021: -3.19, 2022: -1.27, 2023: 1.32, 2024: -1.63, 2025: 0.16}
+RB3 DEV: days 775 | mean -0.58 bp/day | win 50.3% | t -0.48
+RB3 VAL: days 258 | mean -0.93 bp/day | win 49.6% | t -0.46
+   RB3 acceptance: False | by year: {2021: -7.48, 2022: -1.51, 2023: 1.61, 2024: -1.85, 2025: -0.93}
+RB4 DEV: days 777 | mean +0.71 bp/day | win 51.6% | t +0.60
+RB4 VAL: days 259 | mean -3.29 bp/day | win 47.1% | t -1.96
+   RB4 acceptance: False | by year: {2021: 4.4, 2022: 1.37, 2023: 1.12, 2024: -0.36, 2025: -3.29}

@@ -1,0 +1,9 @@
+CX1 DEV: weeks 150 | net -71.4 bp/week (gross +10.3) | win 33% | t -2.01 (gross t +0.29)
+CX1 VAL: weeks 52 | net -15.7 bp/week (gross +6.8) | win 50% | t -0.33 (gross t +0.14)
+   CX1 acceptance: False | net by year: {2021: -280.3, 2022: -38.3, 2023: -85.0, 2024: -90.8, 2025: -15.7}
+CX2 DEV: weeks 150 | net -91.4 bp/week (gross -10.3) | win 43% | t -2.49 (gross t -0.29)
+CX2 VAL: weeks 52 | net -29.3 bp/week (gross -6.8) | win 44% | t -0.61 (gross t -0.14)
+   CX2 acceptance: False | net by year: {2021: 279.9, 2022: -139.2, 2023: -181.9, 2024: 37.9, 2025: -29.3}
+CX3 DEV: weeks 149 | net -77.0 bp/week (gross +8.5) | win 37% | t -2.42 (gross t +0.27)
+CX3 VAL: weeks 52 | net -6.0 bp/week (gross +18.2) | win 44% | t -0.15 (gross t +0.47)
+   CX3 acceptance: False | net by year: {2021: nan, 2022: -35.2, 2023: -125.0, 2024: -73.8, 2025: -6.0}

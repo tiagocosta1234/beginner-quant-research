@@ -1,0 +1,9 @@
+GT1 DEV: trades 777 | mean +0.57 bp | win 52.5% | t +0.95
+GT1 VAL: trades 258 | mean -0.91 bp | win 50.4% | t -0.81
+   GT1 acceptance: False | by year mean bp: {2021: 2.58, 2022: 1.42, 2023: -0.62, 2024: 0.92, 2025: -0.91}
+GT2 DEV: trades 214 | mean +1.23 bp | win 56.1% | t +1.00
+GT2 VAL: trades 71 | mean -0.76 bp | win 52.1% | t -0.44
+   GT2 acceptance: False | by year mean bp: {2021: -2.1, 2022: 2.02, 2023: 1.9, 2024: -0.26, 2025: -0.76}
+GT3 DEV: trades 214 | mean +1.42 bp | win 53.7% | t +1.44
+GT3 VAL: trades 71 | mean +0.84 bp | win 50.7% | t +0.56
+   GT3 acceptance: False | by year mean bp: {2021: 3.33, 2022: 2.64, 2023: -0.78, 2024: 2.39, 2025: 0.84}

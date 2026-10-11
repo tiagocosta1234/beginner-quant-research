@@ -1,0 +1,9 @@
+GF1 DEV: trades 1050 on 477 days | per trade -5.24 bp win 57.7% | daily mean -5.32 bp t -1.58
+GF1 VAL: trades 305 on 142 days | per trade +1.52 bp win 59.3% | daily mean +4.20 bp t +0.77
+   GF1 acceptance: False | per trade by year: {2022: -11.82, 2023: 0.1, 2024: -4.6, 2025: 1.52}
+GF2 DEV: trades 112 on 56 days | per trade -4.81 bp win 42.0% | daily mean +1.16 bp t +0.08
+GF2 VAL: trades 62 on 26 days | per trade +21.96 bp win 50.0% | daily mean +19.55 bp t +0.73
+   GF2 acceptance: False | per trade by year: {2022: 0.1, 2023: -2.35, 2024: -11.48, 2025: 21.96}
+GF3 DEV: trades 1050 on 477 days | per trade -4.57 bp win 50.1% | daily mean -4.05 bp t -1.82
+GF3 VAL: trades 305 on 142 days | per trade -2.61 bp win 53.8% | daily mean +0.05 bp t +0.01
+   GF3 acceptance: False | per trade by year: {2022: -13.43, 2023: 0.94, 2024: -1.79, 2025: -2.61}
