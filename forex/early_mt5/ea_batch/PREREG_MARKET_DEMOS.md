@@ -27,3 +27,11 @@ Market pages 1-3 on 2026-10-11: rating >= 4.0 with >= 15 reviews (Asura: none ye
 averaging, a stop on each trade or a stated SL input, a published live signal. Excluded on the listing text: Quantum Emperor (splits and
 recovers losers), Quantum King (grid + martingale), Sentinel (recovery grid), Big Forex Players (lot step), Black Dragon (lot multiplier),
 Hamster Scalping (virtual SL, order series). Extra gate before any use: correlation with the live pair <= 0.3 and the v5 account test.
+
+## Amendment 2026-10-11 evening: FREE non-gold EAs only (the trader: no paid EA this year), written before any of them is downloaded or run
+Candidates (market_candidates_nongold.csv, FREE): Havana EA (DOW+ M5), RangeBreakout EA MT5 by Claye Weight (NSDQ+ M15), Dark Venus MT5
+(EURUSD+ M15), Dark Moon MT5 (EURUSD+ M15), Universal Breakout MT5 (USDJPY+ M15). Same stages and acceptance as above, default inputs.
+NEW RULE (Quantum Commander lesson): only months AFTER the product's last update count as out-of-sample. Stage 1 still runs 2025Q4 + 2026,
+but the verdict also reports the net after the last-update date; an EA whose post-update months are negative is rejected even if it
+passes the stage-1 bar. (Havana: after 2025-05-16; RangeBreakout: after 2025-01-07; Dark Moon: after 2025-10-17; Dark Venus: after
+2026-08-19, i.e. almost no out-of-sample data, reported but cannot be accepted on this window.)

@@ -1,0 +1,80 @@
+     1s guard 1500.0 sdb 0 xau5 0 done (3 rows)
+     2s guard 1500.0 sdb 0 xau5 0.6 done (7 rows)
+     3s guard 1500.0 sdb 0 xau5 1.0 done (11 rows)
+     4s guard 1500.0 sdb 0 xau5 1.5 done (15 rows)
+     5s guard 1500.0 sdb 0 xau5 2.0 done (19 rows)
+     5s guard 1500.0 sdb 0.6 xau5 0 done (23 rows)
+     6s guard 1500.0 sdb 0.6 xau5 0.6 done (27 rows)
+     7s guard 1500.0 sdb 0.6 xau5 1.0 done (31 rows)
+     8s guard 1500.0 sdb 0.6 xau5 1.5 done (35 rows)
+     9s guard 1500.0 sdb 0.6 xau5 2.0 done (39 rows)
+     9s guard 1500.0 sdb 0.9 xau5 0 done (43 rows)
+    10s guard 1500.0 sdb 0.9 xau5 0.6 done (47 rows)
+    11s guard 1500.0 sdb 0.9 xau5 1.0 done (51 rows)
+    12s guard 1500.0 sdb 0.9 xau5 1.5 done (55 rows)
+    13s guard 1500.0 sdb 0.9 xau5 2.0 done (59 rows)
+    14s guard 1500.0 sdb 1.2 xau5 0 done (63 rows)
+    15s guard 1500.0 sdb 1.2 xau5 0.6 done (67 rows)
+    16s guard 1500.0 sdb 1.2 xau5 1.0 done (71 rows)
+    17s guard 1500.0 sdb 1.2 xau5 1.5 done (75 rows)
+    18s guard 1500.0 sdb 1.2 xau5 2.0 done (79 rows)
+    18s guard 1500.0 sdb 1.5 xau5 0 done (83 rows)
+    19s guard 1500.0 sdb 1.5 xau5 0.6 done (87 rows)
+    20s guard 1500.0 sdb 1.5 xau5 1.0 done (91 rows)
+    21s guard 1500.0 sdb 1.5 xau5 1.5 done (95 rows)
+    22s guard 1500.0 sdb 1.5 xau5 2.0 done (99 rows)
+    23s guard 1500.0 sdb 1.8 xau5 0 done (103 rows)
+    24s guard 1500.0 sdb 1.8 xau5 0.6 done (107 rows)
+    25s guard 1500.0 sdb 1.8 xau5 1.0 done (111 rows)
+    26s guard 1500.0 sdb 1.8 xau5 1.5 done (115 rows)
+    27s guard 1500.0 sdb 1.8 xau5 2.0 done (119 rows)
+    27s guard 1700.0 sdb 0 xau5 0 done (122 rows)
+    28s guard 1700.0 sdb 0 xau5 0.6 done (126 rows)
+    29s guard 1700.0 sdb 0 xau5 1.0 done (130 rows)
+    30s guard 1700.0 sdb 0 xau5 1.5 done (134 rows)
+    31s guard 1700.0 sdb 0 xau5 2.0 done (138 rows)
+    32s guard 1700.0 sdb 0.6 xau5 0 done (142 rows)
+    33s guard 1700.0 sdb 0.6 xau5 0.6 done (146 rows)
+    34s guard 1700.0 sdb 0.6 xau5 1.0 done (150 rows)
+    35s guard 1700.0 sdb 0.6 xau5 1.5 done (154 rows)
+    36s guard 1700.0 sdb 0.6 xau5 2.0 done (158 rows)
+    37s guard 1700.0 sdb 0.9 xau5 0 done (162 rows)
+    38s guard 1700.0 sdb 0.9 xau5 0.6 done (166 rows)
+    39s guard 1700.0 sdb 0.9 xau5 1.0 done (170 rows)
+    40s guard 1700.0 sdb 0.9 xau5 1.5 done (174 rows)
+    41s guard 1700.0 sdb 0.9 xau5 2.0 done (178 rows)
+    42s guard 1700.0 sdb 1.2 xau5 0 done (182 rows)
+    42s guard 1700.0 sdb 1.2 xau5 0.6 done (186 rows)
+    43s guard 1700.0 sdb 1.2 xau5 1.0 done (190 rows)
+    45s guard 1700.0 sdb 1.2 xau5 1.5 done (194 rows)
+    45s guard 1700.0 sdb 1.2 xau5 2.0 done (198 rows)
+    46s guard 1700.0 sdb 1.5 xau5 0 done (202 rows)
+    47s guard 1700.0 sdb 1.5 xau5 0.6 done (206 rows)
+    48s guard 1700.0 sdb 1.5 xau5 1.0 done (210 rows)
+    49s guard 1700.0 sdb 1.5 xau5 1.5 done (214 rows)
+    50s guard 1700.0 sdb 1.5 xau5 2.0 done (218 rows)
+    51s guard 1700.0 sdb 1.8 xau5 0 done (222 rows)
+    52s guard 1700.0 sdb 1.8 xau5 0.6 done (226 rows)
+    53s guard 1700.0 sdb 1.8 xau5 1.0 done (230 rows)
+    54s guard 1700.0 sdb 1.8 xau5 1.5 done (234 rows)
+    55s guard 1700.0 sdb 1.8 xau5 2.0 done (238 rows)
+
+BEST FEASIBLE per subset by 30Nov:
+      subset  guard  sdb  xau5  dip  30Nov  22Dec  31Jan  breach  worst_mt5  worst_FT
+SDB+XAU5+DIP 1500.0  1.5   1.5  500   38.6   55.6   72.9     1.7   -1813.0   -1653.6
+    SDB+XAU5 1500.0  1.5   1.5    0   37.5   54.6   71.9     1.8   -1813.0   -1653.6
+     SDB+DIP 1500.0  1.8   0.0  250   18.5   31.9   49.7     1.2   -1639.2   -1776.9
+         SDB 1500.0  1.8   0.0    0   18.1   31.1   48.4     1.4   -1639.2   -1776.9
+    XAU5+DIP 1700.0  0.0   1.5 1000   13.4   30.3   53.9     0.2   -1813.0   -1800.0
+        XAU5 1700.0  0.0   1.5    0   11.5   27.4   50.7     0.3   -1813.0   -1723.1
+         DIP 1500.0  0.0   0.0  250    0.0    0.0    0.0     0.0    -189.8    -250.8
+
+BEST FEASIBLE per subset by 22Dec:
+      subset  guard  sdb  xau5  dip  30Nov  22Dec  31Jan  breach  worst_mt5  worst_FT
+SDB+XAU5+DIP 1500.0  1.5   1.5  500   38.6   55.6   72.9     1.7   -1813.0   -1653.6
+    SDB+XAU5 1500.0  1.5   1.5    0   37.5   54.6   71.9     1.8   -1813.0   -1653.6
+     SDB+DIP 1500.0  1.8   0.0  250   18.5   31.9   49.7     1.2   -1639.2   -1776.9
+         SDB 1500.0  1.8   0.0    0   18.1   31.1   48.4     1.4   -1639.2   -1776.9
+    XAU5+DIP 1700.0  0.0   1.5 1000   13.4   30.3   53.9     0.2   -1813.0   -1800.0
+        XAU5 1700.0  0.0   1.5    0   11.5   27.4   50.7     0.3   -1813.0   -1723.1
+         DIP 1500.0  0.0   0.0  250    0.0    0.0    0.0     0.0    -189.8    -250.8

@@ -2,7 +2,7 @@ r"""Write ManualNews.csv for the guard's NEWS FLAT rule (AccountGuard.mqh, 2026-
 (Europe/Athens wall time), "YYYY.MM.DD HH:MM,label". Copy the output to %APPDATA%\MetaQuotes\Terminal\Common\Files on EACH PC.
 Sources (checked 2026-10-11): BLS CPI and Employment Situation schedules, Federal Reserve FOMC calendar (2027 dates tentative);
 September 2026 CPI (Oct 14) from secondary calendars that agree. Update the list when BLS publishes the 2027 schedule.
-   python forex/early_mt5/tools/make_news_file.py [--out PATH]"""
+   python forex/early_mt5/tools/make_news_file.py [--out PATH] [--kinds CPI,NFP,FOMC]   (default since 2026-10-11: CPI only, ABS_STOP_2000_OUTPUT.txt)"""
 from __future__ import annotations
 
 import sys
@@ -24,7 +24,8 @@ def server_time(day: str, hm: str) -> pd.Timestamp:
 
 def main() -> int:
     out = Path(sys.argv[sys.argv.index("--out") + 1]) if "--out" in sys.argv else Path(__file__).resolve().parents[1] / "expert_advisors" / "ManualNews.csv"
-    rows = sorted((server_time(d, t), k) for k, d, t in EVENTS)
+    kinds = set((sys.argv[sys.argv.index("--kinds") + 1] if "--kinds" in sys.argv else "CPI").split(","))     # CPI only keeps every day above -2,000 at the lowest cost
+    rows = sorted((server_time(d, t), k) for k, d, t in EVENTS if k in kinds)
     lines = ["# ManualNews.csv: release times on the MT5 SERVER clock (Europe/Athens), written by forex/early_mt5/tools/make_news_file.py"] + [f"{t:%Y.%m.%d %H:%M},{k}" for t, k in rows]
     out.write_text("\r\n".join(lines) + "\r\n", encoding="ascii")
     print(f"{len(rows)} releases -> {out}"); [print("  ", l) for l in lines[1:]]
