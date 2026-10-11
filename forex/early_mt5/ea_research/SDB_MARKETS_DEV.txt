@@ -1,0 +1,25 @@
+market var  dev_trades  dev_net  dev_pf  dev_t  dev_years_ok  val_trades  val_net  val_pf  to_holdout
+  NSDQ SM1         120     5169    1.09   0.47             1          44     1257    1.06       False
+  NSDQ SM2          65    -6097    0.82  -0.78             0          15     1526    1.25       False
+    SP SM1         122     -815    0.99  -0.07             2           0        0     NaN       False
+    SP SM2          36     6157    1.43   1.06             1          19    -2232    0.78       False
+   DOW SM1         105     4434    1.09   0.44             2          34     5740    1.43       False
+   DOW SM2          16    -1597    0.81  -0.41             0          22    -1422    0.87       False
+   DAX SM1         121    -8293    0.87  -0.77             1          41     1838    1.10       False
+   DAX SM2          58    -2464    0.91  -0.34             1           0        0     NaN       False
+NIKKEI SM1           0        0     NaN    NaN             0           0        0     NaN       False
+NIKKEI SM2           0        0     NaN    NaN             0           0        0     NaN       False
+BTCUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
+BTCUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
+ETHUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
+ETHUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
+   WTI SM1           0        0     NaN    NaN             0           0        0     NaN       False
+   WTI SM2           0        0     NaN    NaN             0           0        0     NaN       False
+EURUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
+EURUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
+GBPUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
+GBPUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
+USDJPY SM1           0        0     NaN    NaN             0           0        0     NaN       False
+USDJPY SM2           0        0     NaN    NaN             0           0        0     NaN       False
+AUDUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
+AUDUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
