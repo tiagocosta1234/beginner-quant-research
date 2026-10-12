@@ -15,11 +15,11 @@ ETHUSD SM1         197   -72468    0.46  -5.51             0         117    -186
 ETHUSD SM2          74   -12882    0.69  -1.56             1          30     1896    1.15       False
    WTI SM1         246   -25279    0.82  -1.56             0          64   -19110    0.54       False
    WTI SM2          70    -6756    0.82  -0.83             0           0        0     NaN       False
-EURUSD SM1          34     5244    1.38   0.92             2          14    -5491    0.40       False
-EURUSD SM2          75     5829    1.17   0.68             2          27   -13168    0.34       False
+EURUSD SM1          50     3121    1.14   0.45             2          14    -5491    0.40       False
+EURUSD SM2          92     6504    1.16   0.68             3          27   -13168    0.34       False
 GBPUSD SM1          56   -12460    0.62  -1.75             1          15      419    1.06       False
 GBPUSD SM2         138     6572    1.10   0.57             2          33     1306    1.08       False
-USDJPY SM1          45     8843    1.49   1.33             2          17    -6559    0.44       False
+USDJPY SM1          72     8676    1.28   1.03             2          17    -6559    0.44       False
 USDJPY SM2         163    13253    1.18   1.03             2          59     8663    1.35       False
-AUDUSD SM1          58     4304    1.17   0.58             2          14    -9085    0.24       False
+AUDUSD SM1          76     1932    1.05   0.23             2          14    -9085    0.24       False
 AUDUSD SM2          91     4253    1.10   0.45             1          15    -6551    0.42       False

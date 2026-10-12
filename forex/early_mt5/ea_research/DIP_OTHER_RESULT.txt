@@ -1,0 +1,5 @@
+      group  dev_n  dev_bp  dev_t  val_n  val_bp  val_t  accepted
+DD0_indices     68     8.8   0.58     28    56.4   1.48     False
+ DD1_metals     52    -6.3  -0.42     15    31.9   0.69     False
+ DD2_energy     62    51.7   1.78     14   -46.9  -0.56     False
+     DD3_fx    176    -1.1  -0.27     52     6.4   0.87     False

@@ -1,0 +1,4 @@
+trial  dev_n  dev_bp  dev_t  val_n  val_bp  val_t  accepted  hold_n  hold_bp  PASS
+  SE1    747    1.30   0.53    247    2.26   0.47     False     NaN      NaN   NaN
+  SE2     36   64.75   1.57     12   26.28   0.35     False     NaN      NaN   NaN
+  SE3     24   49.68   3.13      8   16.93   1.50      True     6.0   -24.48 False

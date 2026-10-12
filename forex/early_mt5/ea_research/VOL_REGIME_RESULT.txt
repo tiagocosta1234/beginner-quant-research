@@ -1,0 +1,4 @@
+       feature     thr  dev_diff  dev_t  dev_hi  dev_lo  val_diff  val_t  accepted
+        F1_GVZ  16.370        -4  -0.10      25      29       148   2.24     False
+F2_VIX9D_VIX3M   0.853        40   1.02      47       7       110   1.32     False
+       F3_SKEW 136.275        46   1.19      50       4      -309  -2.70     False
