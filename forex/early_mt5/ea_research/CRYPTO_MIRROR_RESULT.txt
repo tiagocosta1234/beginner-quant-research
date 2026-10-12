@@ -1,0 +1,8 @@
+CM1 inverted rule (short) on crypto
+  PROOF Binance 2020-01..2021-11 (unseen): trades   252 (  131/yr) | days  114 | mean  -104.5 bp | PF(day) 0.37 | t -3.90
+  consistency MT5 broker OOS 2022-01..2024-09     : trades   239 (   87/yr) | days  116 | mean   -93.8 bp | PF(day) 0.44 | t -2.66
+  consistency MT5 broker in-sample 2024-10..2026-09: trades   225 (  112/yr) | days  114 | mean   -20.7 bp | PF(day) 0.79 | t -0.74
+  indicative Sharpe (25k/trade): proof -1.10 | MT5 broker OOS -1.40 | MT5 broker in-sample -0.72
+  accepted: False
+  per coin, proof window (trades, mean bp net): {'ADAUSD': (36, -101), 'BCHUSD': (28, -54), 'BNBUSD': (36, -67), 'BTCUSD': (32, -68), 'ETHUSD': (41, -24), 'LTCUSD': (32, -11), 'SOLUSD': (18, -398), 'XRPUSD': (29, -53)}
+  per coin, MT5 broker 2022-26 (trades, mean bp): {'ADAUSD': (52, -135), 'BCHUSD': (62, -96), 'BNBUSD': (58, -12), 'BTCUSD': (71, 20), 'ETHUSD': (57, 21), 'LTCUSD': (55, -53), 'SOLUSD': (58, -170), 'XRPUSD': (51, -63)}

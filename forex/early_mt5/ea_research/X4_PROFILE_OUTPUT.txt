@@ -1,0 +1,22 @@
+
+##### INSTALLED x1.5, guard 1,500  (SDB 0.18 lot, XAU5 0.06 lot, ManualDip day risk 500 USD)
+MT5 broker pool (last 12 months, real ticks): mean/month raw    5,095 (  5.1%) | counted (2,000/day cap)    4,160 ( 4.2%) | positive months 100% | worst month       53 | max drawdown    7,188
+      worst floating day   -1,813 | days <= -1,500:  22 | <= -2,000:   0 | <= -2,500 (MT5 broker hard breach):   0
+FT pool (2022-2026): mean/month raw    1,957 (  2.0%) | counted (2,000/day cap)    1,818 ( 1.8%) | positive months  67% | worst month   -5,280 | max drawdown   18,026
+      worst floating day   -1,760 | days <= -1,500:  51 | <= -2,000:   0 | <= -2,500 (MT5 broker hard breach):   0
+bootstrap, FRESH account, MIX of pools:   14 bd: pass  5.5% / breach  0.1% | 22 bd: pass 17.4% / breach  0.4% | 30 bd: pass 29.4% / breach  0.8% | 44 bd: pass 47.5% / breach  1.5% | 60 bd: pass 61.6% / breach  2.2%
+   gold-trend regime (MT5 broker pool) pass:       14 bd  9.1% | 22 bd 27.2% | 44 bd 66.3%   2022-26 regime (FT pool) pass: 14 bd  2.0% | 22 bd  7.5% | 44 bd 28.6%
+median business day of the pass (when it passes within 90 bd): 37; still open after 90 bd: 23%; ever breached within 90 bd: 3.1%
+REAL replay from every start day, MT5 broker pool: 14 bd pass  6.6% breach  0.4% | 22 bd pass 30.9% breach  0.4% | 44 bd pass 72.4% breach  0.5%
+REAL replay from every start day, FT pool: 14 bd pass  2.5% breach  0.0% | 22 bd pass 10.4% breach  0.1% | 44 bd pass 29.2% breach  1.4%
+
+##### x4.0 (+ManualDip x4), guard 2,000  (SDB 0.48 lot, XAU5 0.16 lot, ManualDip day risk 2000 USD)
+MT5 broker pool (last 12 months, real ticks): mean/month raw    6,301 (  6.3%) | counted (2,000/day cap)   -1,624 (-1.6%) | positive months  67% | worst month   -4,339 | max drawdown   17,264
+      worst floating day   -4,835 | days <= -1,500:  70 | <= -2,000:  59 | <= -2,500 (MT5 broker hard breach):   7
+FT pool (2022-2026): mean/month raw    3,349 (  3.3%) | counted (2,000/day cap)     -413 (-0.4%) | positive months  56% | worst month   -9,785 | max drawdown   51,730
+      worst floating day   -4,078 | days <= -1,500: 254 | <= -2,000: 167 | <= -2,500 (MT5 broker hard breach):   7
+bootstrap, FRESH account, MIX of pools:   14 bd: pass  7.5% / breach 23.4% | 22 bd: pass 13.6% / breach 35.3% | 30 bd: pass 18.1% / breach 44.1% | 44 bd: pass 23.3% / breach 54.1% | 60 bd: pass 26.5% / breach 60.6%
+   gold-trend regime (MT5 broker pool) pass:       14 bd  8.4% | 22 bd 13.9% | 44 bd 20.7%   2022-26 regime (FT pool) pass: 14 bd  6.6% | 22 bd 13.3% | 44 bd 25.8%
+median business day of the pass (when it passes within 90 bd): 24; still open after 90 bd: 70%; ever breached within 90 bd: 65.7%
+REAL replay from every start day, MT5 broker pool: 14 bd pass  6.6% breach 34.4% | 22 bd pass 11.9% breach 46.2% | 44 bd pass 16.4% breach 71.0%
+REAL replay from every start day, FT pool: 14 bd pass  7.3% breach  9.3% | 22 bd pass 14.1% breach 18.9% | 44 bd pass 25.5% breach 33.2%

@@ -1,0 +1,28 @@
+
+=== FT pool (FT 2022-01..2026-09, modelled on MT5 broker real ticks), every trade risks 500 USD at its stop ===
+      strategy  trades  per_year  win  avg_trade   pf    net  per_month  months_pos  max_dd  worst_day  days_le_1500  days_le_2500
+       ManualSDB     197      41.0   60        101 1.51  19983        351          58    3832      -1001             0             0
+  XAU5 (5 min)    1614     332.0   60        130 1.57 209464       3675          72   21587      -5576           217            72
+       ManualDip     209      43.0   53         33 1.62   6977        122          44    1339      -1097             0             0
+US RSI(2) dips     122      25.0   72         72 2.19   8810        155          47    1558      -1141             0             0
+
+=== FT pool (FT 2022-01..2026-09, modelled on MT5 broker real ticks), every trade risks 1000 USD at its stop ===
+      strategy  trades  per_year  win  avg_trade   pf    net  per_month  months_pos  max_dd  worst_day  days_le_1500  days_le_2500
+       ManualSDB     197      41.0   60        203 1.51  39965        701          58    7664      -2001             1             0
+  XAU5 (5 min)    1614     332.0   60        260 1.57 418928       7350          72   43175     -11152           469           283
+       ManualDip     209      43.0   53         67 1.62  13954        245          44    2679      -2194             6             0
+US RSI(2) dips     122      25.0   72        144 2.19  17619        309          47    3117      -2282             5             0
+
+=== MT5 broker pool (MT5 broker last 12 months, real ticks), every trade risks 500 USD at its stop ===
+      strategy  trades  per_year  win  avg_trade   pf   net  per_month  months_pos  max_dd  worst_day  days_le_1500  days_le_2500
+       ManualSDB      57      56.0   72        217 2.50 12389       1032         100    1188       -713             0             0
+  XAU5 (5 min)     504     492.0   65        182 1.80 91673       7639          83   11255      -5812            60            36
+       ManualDip      43      42.0   56         46 1.75  1992        166          50     865      -1097             0             0
+US RSI(2) dips      36      35.0   69         88 2.65  3185        265          67    1240      -1111             0             0
+
+=== MT5 broker pool (MT5 broker last 12 months, real ticks), every trade risks 1000 USD at its stop ===
+      strategy  trades  per_year  win  avg_trade   pf    net  per_month  months_pos  max_dd  worst_day  days_le_1500  days_le_2500
+       ManualSDB      57      56.0   72        435 2.50  24777       2065         100    2375      -1426             0             0
+  XAU5 (5 min)     504     492.0   65        364 1.80 183347      15279          83   22510     -11623           102            67
+       ManualDip      43      42.0   56         93 1.75   3984        332          50    1731      -2194             1             0
+US RSI(2) dips      36      35.0   69        177 2.65   6370        531          67    2480      -2222             2             0

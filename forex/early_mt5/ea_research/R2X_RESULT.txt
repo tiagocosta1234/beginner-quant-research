@@ -1,0 +1,18 @@
+R2X1_indices
+  DEV 2022-24: trades    59 (   20/yr) | days   56 | mean   +37.7 bp | PF(day) 1.82 | t 1.77
+  VAL 2025   : trades    21 (   21/yr) | days   21 | mean   +10.6 bp | PF(day) 1.13 | t 0.20
+  indicative Sharpe (25k/trade): DEV 1.04 | VAL 0.20
+  accepted: True
+  HOLD 2026  : trades    25 (   33/yr) | days   21 | mean   +75.9 bp | PF(day) 2.40 | t 1.53 | pass: True
+  entry days within 1 day of a US RSI(2) day: 53% | of a ManualDip signal day: 30%
+  by market 2022-26 (trades, mean bp): {'ASX': (32, 19), 'DAX': (38, 14), 'NIKKEI': (35, 97)}
+
+R2X2_crypto
+  DEV 2022-24: trades    49 (   16/yr) | days   41 | mean   +20.1 bp | PF(day) 1.13 | t 0.27
+  VAL 2025   : trades    19 (   19/yr) | days   17 | mean   +60.2 bp | PF(day) 1.46 | t 0.63
+  indicative Sharpe (25k/trade): DEV 0.20 | VAL 0.72
+  accepted: False
+  entry days within 1 day of a US RSI(2) day: 31% | of a ManualDip signal day: 14%
+  by market 2022-26 (trades, mean bp): {'BTCUSD': (40, 72), 'ETHUSD': (30, 7)}
+
+Pooled with the US block (breadth): DEV Sharpe 1.10 | VAL 1.59; US block alone DEV 1.58 | VAL 2.36

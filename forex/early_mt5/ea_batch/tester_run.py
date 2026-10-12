@@ -17,11 +17,11 @@ import pandas as pd
 from mt5broker.ea_batch import run_batch as RB
 
 
-def run_test(name: str, expert_rel: str, symbol: str, period: str, frm: str, to: str, inputs: dict | None = None, timeout: int = 3600, deposit: int = 100000, leverage: int = 100) -> dict:
+def run_test(name: str, expert_rel: str, symbol: str, period: str, frm: str, to: str, inputs: dict | None = None, timeout: int = 3600, deposit: int = 100000, leverage: int = 100, execution_mode: int = 0) -> dict:
     data = RB.data_folder(); rep_root = data / "ea_batch_reports"; rep_root.mkdir(exist_ok=True)
     ini = Path(r"D:\finance\tmp") / f"{name}.ini"; ini.parent.mkdir(parents=True, exist_ok=True)
     lines = ["[Experts]", "AllowLiveTrading=0", "AllowDllImport=0", "Enabled=1", "[Tester]", f"Expert={expert_rel}", f"Symbol={symbol}", f"Period={period}", "Model=4", "Optimization=0", f"FromDate={frm}", f"ToDate={to}",
-             "ForwardMode=0", f"Deposit={deposit}", "Currency=USD", f"Leverage={leverage}", "ExecutionMode=0", "Visual=0", f"Report=ea_batch_reports\\{name}", "ReplaceReport=1", "ShutdownTerminal=1"]
+             "ForwardMode=0", f"Deposit={deposit}", "Currency=USD", f"Leverage={leverage}", f"ExecutionMode={execution_mode}", "Visual=0", f"Report=ea_batch_reports\\{name}", "ReplaceReport=1", "ShutdownTerminal=1"]
     if inputs:
         lines += ["[TesterInputs]"] + [f"{k}={v}" for k, v in inputs.items()]
     ini.write_text("\n".join(lines) + "\n", encoding="utf-8")

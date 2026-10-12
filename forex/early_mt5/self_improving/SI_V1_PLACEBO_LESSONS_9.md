@@ -1,0 +1,8 @@
+- 2026-10-12 23:54 gen 0: 300 new specs, cumulative trials m=300, best DEV t this gen 6.10 | S1 survivors (BH q=0.1, cumulative) 20 {'low_dip': 10, 'rsi_dip': 8, 'breakout': 2} | VAL passes (S2) 13 of 20 looked at
+- 2026-10-12 23:54 gen 1: 300 new specs, cumulative trials m=600, best DEV t this gen 4.96 | S1 survivors (BH q=0.1, cumulative) 110 {'low_dip': 61, 'rsi_dip': 45, 'breakout': 4} | VAL passes (S2) 65 of 110 looked at
+- 2026-10-12 23:54 gen 2: 300 new specs, cumulative trials m=900, best DEV t this gen 4.35 | S1 survivors (BH q=0.1, cumulative) 149 {'low_dip': 90, 'rsi_dip': 54, 'breakout': 5} | VAL passes (S2) 86 of 150 looked at
+- 2026-10-12 23:54 gen 3: 300 new specs, cumulative trials m=1200, best DEV t this gen 3.88 | S1 survivors (BH q=0.1, cumulative) 175 {'low_dip': 99, 'rsi_dip': 71, 'breakout': 5} | VAL passes (S2) 103 of 182 looked at
+- 2026-10-12 23:54 gen 4: 300 new specs, cumulative trials m=1500, best DEV t this gen 4.20 | S1 survivors (BH q=0.1, cumulative) 203 {'low_dip': 106, 'rsi_dip': 93, 'breakout': 4} | VAL passes (S2) 125 of 212 looked at
+- 2026-10-12 23:54 gen 5: 300 new specs, cumulative trials m=1800, best DEV t this gen 3.59 | S1 survivors (BH q=0.1, cumulative) 218 {'rsi_dip': 111, 'low_dip': 103, 'breakout': 4} | VAL passes (S2) 140 of 235 looked at
+- 2026-10-12 23:54 gen 6: 300 new specs, cumulative trials m=2100, best DEV t this gen 3.85 | S1 survivors (BH q=0.1, cumulative) 252 {'rsi_dip': 144, 'low_dip': 104, 'breakout': 4} | VAL passes (S2) 159 of 269 looked at
+- 2026-10-12 23:55 gen 7: 300 new specs, cumulative trials m=2400, best DEV t this gen 3.83 | S1 survivors (BH q=0.1, cumulative) 262 {'rsi_dip': 158, 'low_dip': 100, 'breakout': 4} | VAL passes (S2) 167 of 287 looked at

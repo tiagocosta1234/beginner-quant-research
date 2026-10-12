@@ -1,0 +1,32 @@
+S1
+  2022 (reported)  : trades  199 | win  67% | avg     +56 USD (+2.8 pts) | PF 1.13 | total    +11,172 | t -0.92
+  DEV 2023-24      : trades  408 | win  63% | avg     +17 USD (+0.9 pts) | PF 1.04 | total     +6,984 | t -2.23
+  VAL 2025         : trades  206 | win  61% | avg      +0 USD (+0.0 pts) | PF 1.00 | total        +22 | t -1.15
+  accepted: False
+  exits: {'target': 531, 'stop': 266, 'time': 222} | by year (trades, avg USD): {2021: (6, 12), 2022: (199, 56), 2023: (201, 70), 2024: (207, -35), 2025: (206, 0), 2026: (200, -47)}
+
+S2
+  2022 (reported)  : trades  174 | win  74% | avg    -125 USD (-6.3 pts) | PF 0.47 | total    -21,794 | t -2.38
+  DEV 2023-24      : trades  422 | win  76% | avg     -82 USD (-4.1 pts) | PF 0.44 | total    -34,585 | t -3.67
+  VAL 2025         : trades  219 | win  76% | avg     -79 USD (-4.0 pts) | PF 0.58 | total    -17,357 | t -1.81
+  accepted: False
+  exits: {'target': 715, 'stop': 228, 'time': 20} | by year (trades, avg USD): {2021: (12, -184), 2022: (174, -125), 2023: (178, -38), 2024: (244, -114), 2025: (219, -79), 2026: (136, -162)}
+
+S3
+  2022 (reported)  : trades  119 | win  54% | avg    +367 USD (+18.4 pts) | PF 1.42 | total    +43,724 | t 1.58
+  DEV 2023-24      : trades  210 | win  52% | avg    +385 USD (+19.2 pts) | PF 1.61 | total    +80,822 | t 2.82
+  VAL 2025         : trades  104 | win  47% | avg     +22 USD (+1.1 pts) | PF 1.02 | total     +2,304 | t 0.08
+  accepted: True
+  HOLD 2026        : trades   76 | win  49% | avg    +231 USD (+11.6 pts) | PF 1.23 | total    +17,594 | t 0.71
+  exits: {'time': 306, 'stop': 187, 'target': 20} | by year (trades, avg USD): {2021: (2, -402), 2022: (119, 367), 2023: (92, 329), 2024: (118, 428), 2025: (104, 22), 2026: (78, 155)}
+
+PORTFOLIO at 0.5 NQ per strategy (5 micro each), daily series, guard 1,500, fresh account, MIX of pools:
+  within 22 business days: pass   3.2% | breach 12.6%
+  within 44 business days: pass   8.4% | breach 36.4%
+  within 60 business days: pass  11.3% | breach 48.4%
+  daily correlation of V between the three strategies:
+      S1    S2    S3
+S1  1.00  0.01  0.25
+S2  0.01  1.00  0.05
+S3  0.25  0.05  1.00
+  portfolio mean per day 26 USD over 940 days; best day 7870, worst realised day -3604, worst floating day -4031

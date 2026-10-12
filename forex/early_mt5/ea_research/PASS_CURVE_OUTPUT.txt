@@ -1,0 +1,17 @@
+x1.5 30 Nov: pass 42.4% breach 0.7%
+x1.5 7 Dec: pass 48.5% breach 0.9%
+x1.5 15 Dec: pass 54.6% breach 1.1%
+x1.5 22 Dec: pass 59.2% breach 1.3%
+x1.5 31 Dec: pass 63.7% breach 1.5%
+x1.5 15 Jan: pass 70.0% breach 1.8%
+x1.5 31 Jan: pass 75.4% breach 2.1%
+x1.5 28 Feb: pass 82.2% breach 2.4%
+x1.5 31 Mar: pass 86.8% breach 2.7%
+x1.5 end May: pass 91.8% breach 3.0%
+first 60%: bd 53
+first 70%: bd 68
+first 80%: bd 92
+x1.5: 30Nov 42.4/0.7 22Dec 59.2/1.3
+x1.8: 30Nov 42.0/1.9 22Dec 58.1/3.1
+x2.2: 30Nov 36.3/8.7 22Dec 49.2/12.0
+x2.6: 30Nov 31.2/11.9 22Dec 42.4/16.9

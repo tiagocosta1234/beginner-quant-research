@@ -1,0 +1,5 @@
+trial  dev_n                       dev_stat  val_n          val_stat  accepted
+   TS    497 SR 0.50; 2023 +1.2% 2024 +2.7%    247   +6.2% (SR 1.88)     False
+   PI     51               +0.29 bp, t 0.01     18 +30.24 bp, t 0.78     False
+  LL1    737              -2.73 bp, t -1.08    243  +6.29 bp, t 1.14     False
+  LL2    754               +2.29 bp, t 0.72    249  +0.88 bp, t 0.17     False

@@ -1,0 +1,8 @@
+- 2026-10-12 23:57 gen 0: 300 new specs, cumulative trials m=300, best DEV t this gen 2.40 | S1 survivors (BH q=0.1, cumulative) 0 {} | VAL passes (S2) 0 of 0 looked at
+- 2026-10-12 23:57 gen 1: 300 new specs, cumulative trials m=600, best DEV t this gen 3.24 | S1 survivors (BH q=0.1, cumulative) 2 {'rsi_dip': 2} | VAL passes (S2) 0 of 2 looked at
+- 2026-10-12 23:57 gen 2: 300 new specs, cumulative trials m=900, best DEV t this gen 3.30 | S1 survivors (BH q=0.1, cumulative) 6 {'rsi_dip': 3, 'pop_short': 3} | VAL passes (S2) 0 of 6 looked at
+- 2026-10-12 23:57 gen 3: 300 new specs, cumulative trials m=1200, best DEV t this gen 3.22 | S1 survivors (BH q=0.1, cumulative) 7 {'rsi_dip': 4, 'pop_short': 3} | VAL passes (S2) 0 of 7 looked at
+- 2026-10-12 23:57 gen 4: 300 new specs, cumulative trials m=1500, best DEV t this gen 2.67 | S1 survivors (BH q=0.1, cumulative) 7 {'rsi_dip': 4, 'pop_short': 3} | VAL passes (S2) 0 of 7 looked at
+- 2026-10-12 23:57 gen 5: 300 new specs, cumulative trials m=1800, best DEV t this gen 2.42 | S1 survivors (BH q=0.1, cumulative) 7 {'rsi_dip': 4, 'pop_short': 3} | VAL passes (S2) 0 of 7 looked at
+- 2026-10-12 23:58 gen 6: 300 new specs, cumulative trials m=2100, best DEV t this gen 1.63 | S1 survivors (BH q=0.1, cumulative) 7 {'rsi_dip': 4, 'pop_short': 3} | VAL passes (S2) 0 of 7 looked at
+- 2026-10-12 23:58 gen 7: 300 new specs, cumulative trials m=2400, best DEV t this gen 2.01 | S1 survivors (BH q=0.1, cumulative) 5 {'rsi_dip': 4, 'pop_short': 1} | VAL passes (S2) 0 of 7 looked at

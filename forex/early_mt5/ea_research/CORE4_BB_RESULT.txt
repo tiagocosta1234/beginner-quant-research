@@ -1,0 +1,7 @@
+CB1 Core4 + Bollinger, 4 h, MT5 broker bid/ask
+  OUT-OF-SAMPLE 2022-01..2024-09: trades   152 (   55/yr) | days   94 | mean    +2.7 bp | PF(day) 1.12 | t 0.34
+  in-sample 2024-10..2026-09   : trades   123 (   62/yr) | days   84 | mean   +21.7 bp | PF(day) 2.46 | t 2.80
+  indicative Sharpe (25k per trade): OOS 0.45 | in-sample 1.12
+  accepted (out-of-sample): False
+  by market OOS (trades, mean bp): {'DOW': (39, np.float64(2.8)), 'NIKKEI': (37, np.float64(-5.2)), 'NSDQ': (37, np.float64(22.2)), 'SP': (39, np.float64(2.3))}
+  by market in-sample: {'DOW': (31, np.float64(11.3)), 'NIKKEI': (34, np.float64(38.4)), 'NSDQ': (26, np.float64(0.7)), 'SP': (32, np.float64(1.4))}

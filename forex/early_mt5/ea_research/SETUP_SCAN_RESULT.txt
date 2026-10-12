@@ -1,0 +1,19 @@
+tests 552 (277 with >= 30 DEV trades) | nominally positive in DEV (mean > 0): 264, with one-sided p < 0.05: 38 (luck alone: about 14) | positive in VAL: 309 of 541
+Benjamini-Hochberg q = 0.10 passed DEV: 0 | survivors (also DEV mean >= +15 bp and VAL > 0 with >= 8 trades): 0
+
+top 12 by DEV t:
+symbol variant  side  dev_n  dev_mean  dev_t  val_n  val_mean  hold_n  hold_mean
+    SP   RSI2F short      3     131.2    9.0      2     -45.3       0        NaN
+EURCHF      BB short     14      72.0    4.3      4      49.8       5       26.2
+   DAX   RSI2F  long     20      75.3    4.1     10     -78.8       9      -61.3
+GBPUSD   RSI2F short      9      60.2    3.7      5      -7.8       2      -96.9
+CHFJPY   RSI2F  long     17      55.8    3.3      7      56.3       7       33.2
+EURUSD    RSI2 short     44      37.8    3.1     19      -4.1       7      -53.4
+  NSDQ   RSI2F  long     21      94.2    3.0     11      74.8       7      106.9
+NZDUSD   RSI2F short     13      65.3    2.7     11      50.4       4     -140.3
+EURGBP      BB  long     16      46.0    2.7      2      10.5       6      -14.4
+USDJPY     DON  long     17     203.8    2.6      7     -46.4       5     -116.9
+NZDUSD    RSI2 short     41      33.9    2.6     18      48.9       8      -42.6
+AUDCAD    RSI2 short     44      22.8    2.4     19       8.5      14        5.7
+
+no survivors

@@ -1,0 +1,15 @@
+FO1 NSDQ (limit order at the fib)
+  DEV  2022-24: trades 1304 ( 435/yr) | win   23% | planned RR 15.47 | mean R -0.196 | PF(R) 0.74 | total  -255.4 R =  -127,684 USD at 500/trade | t -1.30
+  VAL  2025   : trades  403 ( 403/yr) | win   18% | planned RR 12.85 | mean R -0.311 | PF(R) 0.61 | total  -125.4 R =   -62,696 USD at 500/trade | t -2.46
+  accepted: False
+  exits (all years): {'stop_same_bar': 822, 'stop': 705, 'eod': 420, 'target': 130} | by year (trades, mean R): {2021: (35, np.float64(0.027)), 2022: (460, np.float64(-0.18)), 2023: (453, np.float64(-0.119)), 2024: (391, np.float64(-0.303)), 2025: (403, np.float64(-0.311)), 2026: (335, np.float64(-0.185))}
+  descriptive SP: DEV trades 1359 ( 453/yr) | win   22% | planned RR 16.44 | mean R -0.167 | PF(R) 0.78 | total  -227.4 R =  -113,718 USD at 500/trade | t 0.77
+  descriptive DOW: DEV trades 1398 ( 466/yr) | win   23% | planned RR 12.98 | mean R -0.204 | PF(R) 0.73 | total  -285.2 R =  -142,608 USD at 500/trade | t 0.26
+
+FO2 NSDQ (confirmed close, next open)
+  DEV  2022-24: trades  597 ( 199/yr) | win   41% | planned RR 3.08 | mean R -0.088 | PF(R) 0.83 | total   -52.5 R =   -26,245 USD at 500/trade | t -0.76
+  VAL  2025   : trades  196 ( 196/yr) | win   36% | planned RR 2.96 | mean R -0.224 | PF(R) 0.63 | total   -43.8 R =   -21,920 USD at 500/trade | t -2.85
+  accepted: False
+  exits (all years): {'stop': 431, 'eod': 390, 'target': 130} | by year (trades, mean R): {2021: (15, np.float64(0.87)), 2022: (191, np.float64(0.039)), 2023: (217, np.float64(-0.06)), 2024: (189, np.float64(-0.248)), 2025: (196, np.float64(-0.224)), 2026: (143, np.float64(0.124))}
+  descriptive SP: DEV trades  652 ( 217/yr) | win   39% | planned RR 3.29 | mean R -0.136 | PF(R) 0.76 | total   -88.4 R =   -44,204 USD at 500/trade | t -1.18
+  descriptive DOW: DEV trades  670 ( 223/yr) | win   40% | planned RR 3.13 | mean R -0.096 | PF(R) 0.82 | total   -64.0 R =   -32,007 USD at 500/trade | t -0.53

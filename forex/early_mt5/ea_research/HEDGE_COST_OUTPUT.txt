@@ -1,0 +1,11 @@
+pool                      MT5 broker        FT
+trades                 559.0   1,806.0
+dropped                 45.0     262.0
+pct_dropped              8.1      14.5
+pl_all              60,134.5 110,725.4
+pl_dropped           3,586.5   4,459.5
+pl_kept             56,548.0 106,265.8
+spread_dropped         140.8     690.2
+pct_time_both           14.1      25.2
+pct_oz_hedged            9.9      24.2
+nohedge_net_vs_live -3,727.3  -5,149.7

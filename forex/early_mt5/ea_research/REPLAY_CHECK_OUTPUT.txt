@@ -1,0 +1,16 @@
+
+THIS ACCOUNT (+560 counted): empirical REPLAY from every real start day vs the block-bootstrap (pass70), percent pass / breach
+  MT5 broker pool, 22 business days (236 start days): replay pass  36.0% / breach  0.0%   |   bootstrap pass  32.2% / breach  0.4%
+  MT5 broker pool, 44 business days (214 start days): replay pass  76.2% / breach  0.0%   |   bootstrap pass  70.1% / breach  1.0%
+  MT5 broker pool, 60 business days (198 start days): replay pass  92.4% / breach  0.0%   |   bootstrap pass  83.0% / breach  1.3%
+  FT pool, 22 business days (1203 start days): replay pass  12.7% / breach  0.0%   |   bootstrap pass  10.0% / breach  0.1%
+  FT pool, 44 business days (1181 start days): replay pass  34.0% / breach  0.3%   |   bootstrap pass  33.0% / breach  1.0%
+  FT pool, 60 business days (1165 start days): replay pass  44.5% / breach  2.5%   |   bootstrap pass  47.0% / breach  1.8%
+
+FRESH account: empirical REPLAY from every real start day vs the block-bootstrap (pass70), percent pass / breach
+  MT5 broker pool, 22 business days (236 start days): replay pass  30.9% / breach  0.4%   |   bootstrap pass  26.8% / breach  0.5%
+  MT5 broker pool, 44 business days (214 start days): replay pass  72.4% / breach  0.5%   |   bootstrap pass  66.1% / breach  1.4%
+  MT5 broker pool, 60 business days (198 start days): replay pass  91.4% / breach  0.5%   |   bootstrap pass  80.8% / breach  1.7%
+  FT pool, 22 business days (1203 start days): replay pass  10.4% / breach  0.1%   |   bootstrap pass   7.7% / breach  0.2%
+  FT pool, 44 business days (1181 start days): replay pass  29.2% / breach  1.4%   |   bootstrap pass  28.7% / breach  1.3%
+  FT pool, 60 business days (1165 start days): replay pass  41.2% / breach  3.5%   |   bootstrap pass  42.7% / breach  2.4%

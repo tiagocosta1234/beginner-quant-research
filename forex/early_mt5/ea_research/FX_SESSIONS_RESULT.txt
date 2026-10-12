@@ -1,0 +1,27 @@
+tests 224 (224 with >= 100 DEV trades) | nominally positive in DEV 59, p < 0.05: 3 (luck about 11) | BH q 0.10 passed DEV: 0 | survivors: 0
+
+top 10 by DEV t:
+  pair   variant  dev_n  dev_mean  dev_t  val_n  val_mean  hold_n  hold_mean
+EURAUD   LON_MOM    774      1.86   2.40    258     -3.53     194       0.03
+GBPAUD  ASIA_BRK    483      2.23   1.89    165     -2.60     112      -1.09
+GBPJPY      PDHL    448      3.78   1.74    135     -0.44     108       0.99
+CADJPY      PDHL    405      3.74   1.57    149      1.16      99      -2.34
+USDJPY  ASIA_BRK    420      2.36   1.45    140      3.35     113      -0.47
+EURJPY  ASIA_BRK    546      2.00   1.41    166      2.38     122      -0.37
+AUDCHF ASIA_FADE    495      1.86   1.36    150      1.12     119      -1.12
+USDJPY      PDHL    399      2.92   1.30    144      2.49     113       3.88
+CHFJPY  ASIA_BRK    532      1.60   1.23    165      1.03     146       1.12
+AUDCAD  ASIA_BRK    426      1.43   1.17    140     -0.69     108      -1.53
+
+pooled over the 28 pairs (bp per trade, DEV / VAL / HOLD):
+  variant  dev_n  dev_bp  val_bp  hold_bp
+ ASIA_BRK  14778   -0.26   -0.97    -0.05
+ASIA_FADE  14778   -1.54   -0.45    -1.24
+   H4RSI2  15958   -0.71   -0.27    -0.81
+  LON_MOM  21644   -0.36   -1.32    -0.16
+  LON_REV  21644   -1.53   -0.37    -1.33
+   NY_MOM  21700   -1.20   -2.09     0.40
+   NY_REV  21700   -0.64    0.47    -1.88
+     PDHL  11470   -0.12   -1.27    -0.16
+
+no survivors

@@ -1,0 +1,74 @@
+indices  (6 symbols)
+  OUT-OF-SAMPLE: trades   201 (   73/yr) | days  115 | mean    +0.3 bp | PF(day) 1.01 | t 0.05
+  in-sample    : trades   174 (   87/yr) | days  107 | mean   +16.6 bp | PF(day) 2.06 | t 2.65
+  Sharpe (25k/trade): OOS 0.09 | in-sample 0.74 | accepted: False
+metals   (2 symbols)
+  OUT-OF-SAMPLE: trades    55 (   20/yr) | days   50 | mean   -13.6 bp | PF(day) 0.69 | t -0.95
+  in-sample    : trades    43 (   22/yr) | days   34 | mean   -81.4 bp | PF(day) 0.20 | t -2.06
+  Sharpe (25k/trade): OOS -0.79 | in-sample -1.28 | accepted: False
+energy   (2 symbols)
+  OUT-OF-SAMPLE: trades    49 (   18/yr) | days   33 | mean   +89.3 bp | PF(day) 5.02 | t 2.85
+  in-sample    : trades    27 (   14/yr) | days   20 | mean   +55.1 bp | PF(day) 1.98 | t 1.14
+  Sharpe (25k/trade): OOS 1.23 | in-sample 0.72 | accepted: False
+crypto   (8 symbols)
+  OUT-OF-SAMPLE: trades   240 (   87/yr) | days  116 | mean   -38.5 bp | PF(day) 0.65 | t -1.30
+  in-sample    : trades   225 (  112/yr) | days  114 | mean   -29.2 bp | PF(day) 0.69 | t -1.14
+  Sharpe (25k/trade): OOS -0.81 | in-sample -0.53 | accepted: False
+fx       (28 symbols)
+  OUT-OF-SAMPLE: trades   772 (  281/yr) | days  352 | mean    +3.8 bp | PF(day) 1.46 | t 2.59
+  in-sample    : trades   610 (  305/yr) | days  279 | mean    +0.5 bp | PF(day) 1.05 | t 0.28
+  Sharpe (25k/trade): OOS 0.04 | in-sample -0.38 | accepted: False
+all      (46 symbols)
+  OUT-OF-SAMPLE: trades  1317 (  479/yr) | days  452 | mean    -3.2 bp | PF(day) 0.90 | t -0.43
+  in-sample    : trades  1079 (  540/yr) | days  378 | mean    -3.2 bp | PF(day) 0.90 | t -0.45
+  Sharpe (25k/trade): OOS -0.59 | in-sample -0.72 | accepted: False
+
+per symbol (OOS trades, OOS mean bp | in-sample trades, mean bp):
+  ADAUSD     23   -98.4 |   29   -27.8
+  ASX        20   -19.7 |   23    -5.7
+  AUDCAD     20    -9.6 |   23    -3.9
+  AUDCHF     26   -11.5 |   26    +3.6
+  AUDJPY     34    -1.6 |   21    +6.8
+  AUDNZD     28    -3.5 |   23    +2.7
+  AUDUSD     31    +8.0 |   22    +6.8
+  BCHUSD     32   +46.3 |   30    -3.8
+  BNBUSD     28   -28.0 |   30   -25.3
+  BRENT      23   +50.6 |   10   +35.0
+  BTCUSD     37   -56.2 |   35    +2.1
+  CADCHF     26    +2.7 |   19    -3.6
+  CADJPY     33   -11.6 |   21    -0.6
+  CHFJPY     33    +7.5 |   26    +1.3
+  DAX        29    -9.0 |   28    -8.2
+  DOW        39    +2.8 |   31   +11.3
+  ETHUSD     27  -204.4 |   30   +65.1
+  EURAUD     26   +13.3 |   19    +0.3
+  EURCAD     34    +4.0 |   18    -4.9
+  EURCHF     21    -6.6 |   19    +2.6
+  EURGBP     22    -0.0 |   22    +2.5
+  EURJPY     39   +10.2 |   20   -22.1
+  EURNZD     28    +8.3 |   22   -11.5
+  EURUSD     26    +1.3 |   27    -0.8
+  GBPAUD     25    -0.3 |   17    -4.9
+  GBPCAD     34    +5.8 |   24    -2.4
+  GBPCHF     25   -14.3 |   25    -2.0
+  GBPJPY     33    +5.9 |   24    -0.4
+  GBPNZD     31    -7.3 |   25    +1.3
+  GBPUSD     25    +2.7 |   26    -1.0
+  LTCUSD     29   -44.6 |   26  -129.9
+  NIKKEI     37    -5.2 |   34   +38.4
+  NSDQ       37   +22.2 |   26    +0.7
+  NZDCAD     21    -9.6 |   17   -11.0
+  NZDCHF     13   -31.9 |   15    -0.8
+  NZDJPY     28    -6.9 |   25    +4.7
+  NZDUSD     19    +7.2 |   22    -5.2
+  SOLUSD     32   -91.0 |   26  -114.8
+  SP         39    +2.3 |   32    +1.4
+  USDCAD     29    +6.2 |   22    -1.2
+  USDCHF     27    -7.3 |   18   +13.2
+  USDJPY     35   +10.5 |   22    -0.5
+  WTI        26   +91.4 |   17   +57.4
+  XAGUSD     31   -22.9 |   19  -211.6
+  XAUUSD     24   -21.3 |   24   -21.3
+  XRPUSD     32   +85.9 |   19   -41.3
+
+symbols with a positive mean: out-of-sample 21/46, in-sample 19/46 (pure luck would give about 23/46 each)

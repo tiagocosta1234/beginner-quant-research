@@ -1,0 +1,13 @@
+ID1 (H1)
+  DEV  2022-24: trades  2578 (  859/yr) | days  550 | mean    +1.3 bp | PF(day) 1.14 | t 1.10
+  VAL  2025   : trades  1005 ( 1005/yr) | days  203 | mean    +1.9 bp | PF(day) 1.24 | t 1.03
+  indicative Sharpe (25k per trade): DEV -0.66 | VAL 0.44
+  accepted: False
+  by market (DEV+VAL, trades / mean bp): {'ASX': (529, np.float64(-0.6)), 'DAX': (575, np.float64(-2.9)), 'DOW': (610, np.float64(-0.3)), 'NIKKEI': (616, np.float64(-3.6)), 'NSDQ': (622, np.float64(2.9)), 'SP': (631, np.float64(-0.2))}
+
+ID2 (H4)
+  DEV  2022-24: trades   731 (  244/yr) | days  323 | mean    +2.9 bp | PF(day) 1.13 | t 0.83
+  VAL  2025   : trades   285 (  285/yr) | days  135 | mean   +12.0 bp | PF(day) 1.77 | t 2.41
+  indicative Sharpe (25k per trade): DEV -0.35 | VAL 1.65
+  accepted: False
+  by market (DEV+VAL, trades / mean bp): {'ASX': (133, np.float64(-1.2)), 'DAX': (177, np.float64(1.1)), 'DOW': (189, np.float64(4.4)), 'NIKKEI': (158, np.float64(-6.4)), 'NSDQ': (184, np.float64(3.6)), 'SP': (175, np.float64(3.5))}

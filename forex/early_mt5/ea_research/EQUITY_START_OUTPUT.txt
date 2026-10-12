@@ -1,0 +1,15 @@
+FT pool, 22 bd, ON  (trailing 40d P&L > 0): start days  820 | pass  12.7% | breach  0.0%
+FT pool, 22 bd, OFF (trailing 40d P&L <= 0): start days  343 | pass   6.1% | breach  0.3%
+   ratio ON/OFF pass: 2.07
+
+FT pool, 44 bd, ON  (trailing 40d P&L > 0): start days  798 | pass  35.5% | breach  0.0%
+FT pool, 44 bd, OFF (trailing 40d P&L <= 0): start days  343 | pass  17.8% | breach  4.7%
+   ratio ON/OFF pass: 1.99
+
+MT5 broker pool, 22 bd, ON  (trailing 40d P&L > 0): start days  194 | pass  35.1% | breach  0.5%
+MT5 broker pool, 22 bd, OFF (trailing 40d P&L <= 0): start days    2 | pass 100.0% | breach  0.0%
+   ratio ON/OFF pass: 0.35
+
+MT5 broker pool, 44 bd, ON  (trailing 40d P&L > 0): start days  172 | pass  79.7% | breach  0.6%
+MT5 broker pool, 44 bd, OFF (trailing 40d P&L <= 0): start days    2 | pass 100.0% | breach  0.0%
+   ratio ON/OFF pass: 0.80

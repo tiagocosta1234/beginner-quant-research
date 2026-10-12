@@ -1,0 +1,15 @@
+                 strategy                      window  raw_pct_mo  counted_pct_mo  median_pct  best  worst  pos_months  usd_mo
+         ManualSDB 0.18 lot last 12 months (real ticks)        2.77            2.72        2.57  8.14  -1.51       83.33 2770.32
+            XAU5 0.06 lot last 12 months (real ticks)        2.47            2.36        2.43  7.41  -0.76       75.00 2471.68
+      ManualDip 500 USD/day last 12 months (real ticks)        0.06            0.06        0.01  0.33  -0.43       50.00   58.07
+    SDB + XAU5 (the pair) last 12 months (real ticks)        5.02            4.07        4.79 11.10   0.03      100.00 5023.21
+INSTALLED: pair + ManualDip last 12 months (real ticks)        5.09            4.16        4.91 11.33   0.05      100.00 5094.53
+  S3 overnight ORB 0.2 NQ last 12 months (real ticks)        0.44            0.44        0.47  1.90  -1.29       75.00  440.26
+  S3 overnight ORB 0.3 NQ last 12 months (real ticks)        0.66            0.59        0.70  2.85  -1.93       75.00  660.39
+         ManualSDB 0.18 lot                   2022-2026        0.88            0.88        0.70  6.37  -3.72       57.89  880.81
+            XAU5 0.06 lot                   2022-2026        1.23            1.21        1.21  6.41  -4.64       75.44 1228.37
+      ManualDip 500 USD/day                   2022-2026        0.05            0.05        0.00  0.96  -0.43       45.61   50.44
+    SDB + XAU5 (the pair)                   2022-2026        1.91            1.77        1.43 10.62  -5.28       68.42 1912.69
+INSTALLED: pair + ManualDip                   2022-2026        1.96            1.82        1.43 11.58  -5.28       66.67 1956.58
+  S3 overnight ORB 0.2 NQ                   2022-2026        0.51            0.50        0.56  3.57  -1.97       70.18  506.82
+  S3 overnight ORB 0.3 NQ                   2022-2026        0.76            0.68        0.84  5.36  -2.95       70.18  762.23

@@ -1,0 +1,24 @@
+
+P(pass within 22 business days), best daily sigma for each annualised Sharpe (daily sigma in USD, mu = Sharpe x sigma / sqrt 252)
+  Sharpe | best sigma | mean/day |  P(pass) | P(breach)
+     1.5 |       1600 |      151 |    19.1% |   61.9%
+     2.0 |       1600 |      202 |    22.3% |   58.2%
+     3.0 |       1300 |      246 |    30.8% |   29.2%
+     4.0 |       1300 |      328 |    40.5% |   24.2%
+     6.0 |       1300 |      491 |    61.2% |   16.1%
+     8.0 |       1300 |      655 |    78.6% |   10.0%
+    12.0 |       1000 |      756 |    96.4% |    0.6%
+
+P(pass within 44 business days), best daily sigma for each annualised Sharpe (daily sigma in USD, mu = Sharpe x sigma / sqrt 252)
+  Sharpe | best sigma | mean/day |  P(pass) | P(breach)
+     1.5 |       1000 |       94 |    34.0% |   21.0%
+     2.0 |       1000 |      126 |    41.1% |   17.8%
+     3.0 |       1000 |      189 |    56.2% |   12.6%
+     4.0 |       1000 |      252 |    70.0% |    9.1%
+     6.0 |       1000 |      378 |    89.1% |    4.5%
+     8.0 |        800 |      403 |    97.3% |    0.3%
+    12.0 |        800 |      605 |    99.9% |    0.1%
+
+Where the live system sits (pair x1.5 + ManualDip, guard 1,500; daily P&L from the two pools):
+  MT5 broker: mean/day 237 USD, daily sigma 999, annualised Sharpe 3.77, P(pass 22 bd | normal model with these) 30.0%, 44 bd 66.9%
+  FT: mean/day 91 USD, daily sigma 697, annualised Sharpe 2.07, P(pass 22 bd | normal model with these) 4.4%, 44 bd 25.2%

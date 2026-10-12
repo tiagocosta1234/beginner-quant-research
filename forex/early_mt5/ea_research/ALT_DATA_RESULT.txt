@@ -1,0 +1,6 @@
+              trial  dev_n  dev_bp  dev_t  val_n  val_bp  val_t  accepted
+       AL1_fear_buy     41    55.0   0.33     15  -147.7  -1.05     False
+     AL2_greed_sell     22   -37.5  -0.22      8   459.7   1.91     False
+        AL3_funding     35   -53.1  -0.55      1  -685.6    NaN     False
+    AL4_stablecoins     50   138.6   1.18     36   -48.9  -0.39     False
+AL5_real_yield_gold     95    32.3   1.56     21  -111.1  -1.78     False

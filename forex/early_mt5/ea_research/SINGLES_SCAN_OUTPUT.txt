@@ -1,0 +1,21 @@
+       strategy          size  pass22  pass30  breach30  pass44  breach44
+  ManualSDB alone          x1.5     3.6     9.2       0.1    21.6       0.3
+     XAU5 alone          x1.5     1.3     5.3       0.1    16.5       0.2
+  pair SDB+XAU5          x1.5    16.6    28.6       0.8    46.3       1.5
+  ManualSDB alone          x2.5     7.5    13.8       1.0    25.3       2.7
+     XAU5 alone          x2.5     9.4    18.2       7.6    32.3      10.6
+  pair SDB+XAU5          x2.5    14.8    23.1      10.3    34.9      15.4
+  ManualSDB alone          x3.5     2.2     4.5       4.6     8.8      11.7
+     XAU5 alone          x3.5    15.7    25.2       9.1    38.2      13.1
+  pair SDB+XAU5          x3.5    13.6    19.6      21.6    27.4      30.8
+  ManualSDB alone          x5.0     1.2     2.2      10.0     3.9      23.5
+     XAU5 alone          x5.0    16.2    24.1      16.5    34.5      23.3
+  pair SDB+XAU5          x5.0     9.7    13.5      40.3    18.3      52.8
+  ManualDip alone  day risk 500     0.0     0.0       0.0     0.0       0.0
+US RSI(2) alone  day risk 500     0.0     0.0       0.0     0.0       0.0
+  ManualDip alone day risk 1000     0.0     0.0       0.0     0.0       0.0
+US RSI(2) alone day risk 1000     0.0     0.0       0.0     0.0       0.0
+  ManualDip alone day risk 2000     0.0     0.0       0.0     0.0       0.0
+US RSI(2) alone day risk 2000     0.0     0.0       0.1     0.0       0.2
+  ManualDip alone day risk 4000     0.0     0.0       0.2     0.1       0.7
+US RSI(2) alone day risk 4000     0.0     0.1       4.8     0.3       9.3

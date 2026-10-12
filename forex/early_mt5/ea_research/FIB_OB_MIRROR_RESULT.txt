@@ -1,0 +1,15 @@
+FM1 NSDQ inverted (sell-stop at the fib)
+  2022-25 (consistency only): trades 1570 ( 392/yr) | win  68% | planned RR 0.34 | mean   -1.0 bp | mean R -0.027 | PF 0.91 | total    -1543 bp | t -1.82
+  HOLD 2026-01..09          : trades  291 ( 388/yr) | win  67% | planned RR 0.32 | mean   -2.2 bp | mean R -0.045 | PF 0.82 | total     -641 bp | t -2.12
+  accepted: False
+  exits: {'target': 1191, 'eod': 488, 'stop': 129, 'stop_same_bar': 90} | by year (trades, mean bp): {2021: (34, np.float64(-13.9)), 2022: (413, np.float64(-0.8)), 2023: (416, np.float64(-2.7)), 2024: (367, np.float64(-0.2)), 2025: (374, np.float64(-0.1)), 2026: (294, np.float64(-2.3))}
+  descriptive SP: 2022-25 trades 1563 ( 391/yr) | win  66% | planned RR 0.23 | mean   -1.5 bp | mean R -0.053 | PF 0.83 | total    -2335 bp | t -3.92 | 2026 trades  294 ( 392/yr) | win  57% | planned RR 5.23 | mean   -4.8 bp | mean R -0.140 | PF 0.53 | total    -1415 bp | t -4.94
+  descriptive DOW: 2022-25 trades 1692 ( 423/yr) | win  65% | planned RR 0.30 | mean   -1.3 bp | mean R -0.049 | PF 0.83 | total    -2247 bp | t -4.20 | 2026 trades  334 ( 445/yr) | win  66% | planned RR 0.23 | mean   -0.7 bp | mean R +0.012 | PF 0.90 | total     -234 bp | t -1.82
+
+FM2 NSDQ inverted (confirmed close, sell next open)
+  2022-25 (consistency only): trades  786 ( 196/yr) | win  58% | planned RR 0.59 | mean   -0.9 bp | mean R +0.011 | PF 0.93 | total     -735 bp | t -1.30
+  HOLD 2026-01..09          : trades  140 ( 187/yr) | win  53% | planned RR 0.65 | mean   -6.2 bp | mean R -0.076 | PF 0.65 | total     -865 bp | t -1.73
+  accepted: False
+  exits: {'target': 415, 'eod': 389, 'stop': 139} | by year (trades, mean bp): {2021: (15, np.float64(-21.2)), 2022: (191, np.float64(-2.1)), 2023: (215, np.float64(-3.0)), 2024: (188, np.float64(1.4)), 2025: (192, np.float64(0.2)), 2026: (142, np.float64(-6.5))}
+  descriptive SP: 2022-25 trades  857 ( 214/yr) | win  57% | planned RR 0.63 | mean   -0.3 bp | mean R -0.024 | PF 0.97 | total     -284 bp | t -1.32 | 2026 trades  155 ( 207/yr) | win  50% | planned RR 0.65 | mean   -4.3 bp | mean R -0.095 | PF 0.64 | total     -659 bp | t -1.97
+  descriptive DOW: 2022-25 trades  885 ( 221/yr) | win  54% | planned RR 0.64 | mean   -1.7 bp | mean R -0.018 | PF 0.82 | total    -1494 bp | t -2.43 | 2026 trades  165 ( 220/yr) | win  59% | planned RR 0.50 | mean   +1.8 bp | mean R +0.048 | PF 1.28 | total     +297 bp | t 0.46

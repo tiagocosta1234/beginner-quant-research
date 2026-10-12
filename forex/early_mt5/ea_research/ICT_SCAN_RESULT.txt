@@ -1,0 +1,39 @@
+tests 184 (154 with >= 80 DEV trades) | nominally positive in DEV 36, p < 0.05: 7 (luck about 8) | BH q 0.10 passed DEV: 0 | survivors: 0
+
+top 10 by DEV t:
+symbol  variant  dev_n  dev_R  dev_t  val_n  val_R  hold_n  hold_R
+   DAX   FVG_KZ   1345  0.116  3.161    448  0.248     342   0.108
+EURJPY   FVG_KZ   1340  0.102  2.815    435  0.107     318  -0.095
+GBPAUD   FVG_KZ   1330  0.080  2.201    427  0.026     311  -0.094
+EURAUD   FVG_KZ   1300  0.076  2.062    437  0.019     325   0.060
+CADJPY   FVG_KZ   1282  0.067  1.813    444 -0.041     321  -0.062
+EURUSD SWEEP_PD    280  0.137  1.740     86 -0.075      58   0.110
+CHFJPY   FVG_KZ   1279  0.063  1.710    422 -0.033     327  -0.006
+  NSDQ   FVG_KZ   1376  0.057  1.551    444  0.090     349   0.011
+EURCAD   FVG_KZ   1269  0.056  1.512    433 -0.073     325   0.100
+USDJPY   FVG_KZ   1364  0.052  1.463    444 -0.041     337   0.007
+
+pooled mean R by variant and class (DEV / VAL / HOLD):
+   variant     cls  dev_n  dev_R  val_R  hold_R
+    FVG_KZ  crypto   1166 -0.099 -0.056  -0.060
+    FVG_KZ  energy    695 -0.063 -0.080  -0.110
+    FVG_KZ      fx  34870  0.007 -0.019  -0.018
+    FVG_KZ indices   6761  0.021  0.043   0.047
+    FVG_KZ  metals   1235 -0.047 -0.026  -0.042
+        SB  crypto    263 -0.132 -0.163  -0.111
+        SB  energy    217 -0.056 -0.000  -0.129
+        SB      fx   7841 -0.052 -0.093  -0.089
+        SB indices   1600 -0.055 -0.044   0.029
+        SB  metals    254  0.017 -0.034  -0.084
+SWEEP_ASIA  crypto    207 -0.371 -0.162  -0.363
+SWEEP_ASIA  energy    124 -0.298  0.428  -0.053
+SWEEP_ASIA      fx  11321 -0.077 -0.105  -0.135
+SWEEP_ASIA indices   1998 -0.091 -0.085  -0.113
+SWEEP_ASIA  metals    289 -0.080 -0.317  -0.151
+  SWEEP_PD  crypto    315 -0.142 -0.105  -0.215
+  SWEEP_PD  energy    236 -0.122 -0.393   0.069
+  SWEEP_PD      fx   6887 -0.105 -0.123  -0.076
+  SWEEP_PD indices   1438 -0.043 -0.074  -0.073
+  SWEEP_PD  metals    306 -0.083  0.056  -0.313
+
+no survivors
