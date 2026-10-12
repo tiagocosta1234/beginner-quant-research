@@ -1,25 +1,25 @@
 market var  dev_trades  dev_net  dev_pf  dev_t  dev_years_ok  val_trades  val_net  val_pf  to_holdout
-  NSDQ SM1         120     5169    1.09   0.47             1          44     1257    1.06       False
+  NSDQ SM1         170      -76    1.00  -0.01             1          44     1257    1.06       False
   NSDQ SM2          65    -6097    0.82  -0.78             0          15     1526    1.25       False
     SP SM1         122     -815    0.99  -0.07             2          31    -2038    0.88       False
-    SP SM2          36     6157    1.43   1.06             1          19    -2232    0.78       False
+    SP SM2          67     6128    1.21   0.78             2          19    -2232    0.78       False
    DOW SM1         105     4434    1.09   0.44             2          34     5740    1.43       False
-   DOW SM2          16    -1597    0.81  -0.41             0          22    -1422    0.87       False
+   DOW SM2          51     3675    1.17   0.53             1          22    -1422    0.87       False
    DAX SM1         121    -8293    0.87  -0.77             1          41     1838    1.10       False
-   DAX SM2          58    -2464    0.91  -0.34             1           0        0     NaN       False
-NIKKEI SM1          91    -3794    0.92  -0.40             0          49     1145    1.05       False
+   DAX SM2          58    -2464    0.91  -0.34             1          19     3492    1.49       False
+NIKKEI SM1         143     4483    1.07   0.38             1          49     1145    1.05       False
 NIKKEI SM2          88    -1978    0.95  -0.22             1          31     3937    1.30       False
-BTCUSD SM1         193   -15725    0.85  -1.12             0         101   -10422    0.81       False
+BTCUSD SM1         295   -14414    0.91  -0.83             1         101   -10422    0.81       False
 BTCUSD SM2          63    -6591    0.80  -0.87             1          18    -3312    0.65       False
-ETHUSD SM1         197   -72468    0.46  -5.51             0           0        0     NaN       False
-ETHUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
-   WTI SM1           0        0     NaN    NaN             0           0        0     NaN       False
-   WTI SM2           0        0     NaN    NaN             0           0        0     NaN       False
-EURUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
-EURUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
-GBPUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
-GBPUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
-USDJPY SM1           0        0     NaN    NaN             0           0        0     NaN       False
-USDJPY SM2           0        0     NaN    NaN             0           0        0     NaN       False
-AUDUSD SM1           0        0     NaN    NaN             0           0        0     NaN       False
-AUDUSD SM2           0        0     NaN    NaN             0           0        0     NaN       False
+ETHUSD SM1         197   -72468    0.46  -5.51             0         117    -1861    0.97       False
+ETHUSD SM2          74   -12882    0.69  -1.56             1          30     1896    1.15       False
+   WTI SM1         246   -25279    0.82  -1.56             0          64   -19110    0.54       False
+   WTI SM2          70    -6756    0.82  -0.83             0           0        0     NaN       False
+EURUSD SM1          34     5244    1.38   0.92             2          14    -5491    0.40       False
+EURUSD SM2          75     5829    1.17   0.68             2          27   -13168    0.34       False
+GBPUSD SM1          56   -12460    0.62  -1.75             1          15      419    1.06       False
+GBPUSD SM2         138     6572    1.10   0.57             2          33     1306    1.08       False
+USDJPY SM1          45     8843    1.49   1.33             2          17    -6559    0.44       False
+USDJPY SM2         163    13253    1.18   1.03             2          59     8663    1.35       False
+AUDUSD SM1          58     4304    1.17   0.58             2          14    -9085    0.24       False
+AUDUSD SM2          91     4253    1.10   0.45             1          15    -6551    0.42       False
