@@ -52,7 +52,7 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, "..", "..")); sys.path.insert(0, ROOT)
 
 SEED, SPLIT = 346, pd.Timestamp("2024-01-01")
-DATA = os.path.join(ROOT, "mt5broker", "data"); SPECS = os.path.join(ROOT, "mt5broker", "specs")
+DATA = os.path.join(ROOT, "mt5", "data"); SPECS = os.path.join(ROOT, "mt5", "specs")
 COMM_BP = {"XAUUSD": 0.2, "EURUSD": 0.6}
 MAX_HOLD_MIN = 60 * 24 * 60
 INITIAL, TARGET, DAILY, TRAIL = 100_000.0, 110_000.0, 3_000.0, 10_000.0

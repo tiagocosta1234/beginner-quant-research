@@ -25,7 +25,7 @@ ROOT = HERE.parent.parent
 YEARS = (2025, 2024, 2023)
 TOWER_EA_ROOT = "D:/MetaQuotes/Terminal/D0E8209F77C8CF37AD8BF550E51FF075/MQL5/Experts/ea_batch"
 EA_ROOT = os.environ.get("EA_BATCH_ROOT") or (TOWER_EA_ROOT if Path("D:/MetaQuotes").exists() else "")      # "" = run_batch's default (the terminal's own data folder), as on the second PC
-SCRATCH = Path("D:/finance/scratch") if Path("D:/finance/scratch").exists() else ROOT / "mt5broker" / "forward_test" / "log"      # main PC: D:inance\scratch; second PC (no D:): process logs next to the other bot logs
+SCRATCH = Path("D:/finance/scratch") if Path("D:/finance/scratch").exists() else ROOT / "mt5" / "forward_test" / "log"      # main PC: D:inance\scratch; second PC (no D:): process logs next to the other bot logs
 OUT = HERE / "inv_confirm_results.csv"
 MARK = SCRATCH / "inv_queue_done.txt"
 

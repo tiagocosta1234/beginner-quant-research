@@ -38,7 +38,7 @@ FEATS = []
 
 
 def load(sym):
-    raw = pd.read_parquet(os.path.join(ROOT, "mt5broker", "data", f"{sym}_M1_ticks_full.parquet"))
+    raw = pd.read_parquet(os.path.join(ROOT, "mt5", "data", f"{sym}_M1_ticks_full.parquet"))
     idx = clock.server_to_ny(raw["time"].to_numpy())
     cols = ("open", "high", "low", "close", "ask_open", "ask_high", "ask_low", "ask_close", "spread", "tick_volume")
     df = pd.DataFrame({k: raw[k].to_numpy(float) for k in cols}, index=idx)

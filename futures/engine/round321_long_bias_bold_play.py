@@ -45,7 +45,7 @@ MT5BROKER_SYMBOL = {"NQ": "US100.cash", "ES": "US500.cash", "YM": "US30.cash", "
 def _mt5broker_bars(sym):
     """MT5 M1 bid bars (forex/data/<symbol>_M1_ticks_full.parquet, MT5 server clock = New York + 7h) as naive New York o/h/l/c."""
     from mt5 import clock
-    d = os.environ.get("MT5BROKER_DATA_DIR") or os.path.join(ROOT, "mt5broker", "data")
+    d = os.environ.get("MT5BROKER_DATA_DIR") or os.path.join(ROOT, "mt5", "data")
     raw = pd.read_parquet(os.path.join(d, f"{MT5BROKER_SYMBOL[sym]}_M1_ticks_full.parquet"))
     idx = clock.server_to_ny(raw["time"].to_numpy())
     cols = {"o": raw["open"].to_numpy(), "h": raw["high"].to_numpy(), "l": raw["low"].to_numpy(), "c": raw["close"].to_numpy()}

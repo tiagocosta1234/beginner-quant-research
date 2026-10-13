@@ -29,7 +29,7 @@ def main():
     PL, days = Q8.per_lot_arrays(cfd, skip)
     n_days = len(days)
     OUT = M.outcomes(PL)
-    npz = np.load(os.path.join(HERE, "..", "..", "mt5broker", "specs", "round273_onestep_policy_cap5000.npz"))
+    npz = np.load(os.path.join(HERE, "..", "..", "mt5", "specs", "round273_onestep_policy_cap5000.npz"))
     pols = {"unrestricted (cap $3,000)": (npz["risk"], npz["k_index"])}
     for cap in CAPS:
         M.RGRID = tuple(r for r in FULL if r <= cap)

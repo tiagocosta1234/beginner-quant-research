@@ -32,7 +32,7 @@ PAGE = 5000
 def load_env():
     try:
         from dotenv import load_dotenv
-        for p in (ROOT / ".env", HERE.parent / ".env", ROOT / "mt5broker" / ".env"):
+        for p in (ROOT / ".env", HERE.parent / ".env", ROOT / "mt5" / ".env"):
             if p.exists():
                 load_dotenv(p)
     except ImportError:

@@ -26,7 +26,7 @@ FULL = (250, 500, 750, 1000, 1500, 2000, 2500, 3000)
 WINDOWS = (62, 57)
 COSTS = ("BASE", "HARSH")
 N, SEED = 6000, 2971
-TABLE = os.path.join(ROOT, "mt5broker", "specs", "round275_onestep_policy_risk1000.npz")
+TABLE = os.path.join(ROOT, "mt5", "specs", "round275_onestep_policy_risk1000.npz")
 
 
 def solve_cap1000(OUT, window):

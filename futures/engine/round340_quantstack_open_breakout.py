@@ -23,7 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.pat
 sys.path.insert(0, ROOT); sys.path.insert(0, HERE)
 from mt5 import clock
 
-DATA = os.path.join(ROOT, "mt5broker", "data")
+DATA = os.path.join(ROOT, "mt5", "data")
 SYMS = {"US100.cash": "US100.cash_M1_ticks_full.parquet", "US500.cash": "US500.cash_M1_ticks_full.parquet", "US30.cash": "US30.cash_M1_ticks_full.parquet",
         "US2000.cash": "US2000.cash_M1_ticks_full.parquet", "XAUUSD": "XAUUSD_M1_ticks_full.parquet", "BTCUSD": "BTCUSD_M1_ticks247.parquet"}
 ALLOW = 0.5; COMM = {"BTCUSD": 6.5}

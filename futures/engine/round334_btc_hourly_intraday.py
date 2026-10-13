@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PATH = os.path.join(HERE, "..", "..", "mt5broker", "data", "BTCUSD_H1.parquet")
+PATH = os.path.join(HERE, "..", "..", "mt5", "data", "BTCUSD_H1.parquet")
 COST = 9.0
 IS_END = pd.Timestamp("2023-12-31")
 START = pd.Timestamp("2021-07-01")

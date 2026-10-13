@@ -22,7 +22,7 @@ import pandas as pd
 from numba import njit
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PATH = os.path.join(HERE, "..", "..", "mt5broker", "data", "BTCUSD_M1_ticks247.parquet")
+PATH = os.path.join(HERE, "..", "..", "mt5", "data", "BTCUSD_M1_ticks247.parquet")
 COMM = 6.5
 IS_END = pd.Timestamp("2023-12-31")
 KS, THS, HS, NS = (1, 3, 5, 15, 30, 60), (2.0, 3.0), (5, 15, 30, 60), (15, 60, 240)

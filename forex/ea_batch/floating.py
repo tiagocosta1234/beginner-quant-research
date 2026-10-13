@@ -34,7 +34,7 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-DATA = Path(os.getenv("MT5BROKER_DATA_DIR") or HERE.parent.parent / "mt5broker" / "data")
+DATA = Path(os.getenv("MT5BROKER_DATA_DIR") or HERE.parent.parent / "mt5" / "data")
 CACHE = Path(os.getenv("EA_BATCH_FLOAT_CACHE") or HERE / "floating_cache")
 RATIO_LO, RATIO_HI = 0.85, 1.30        # rebuilt max equity drawdown / the tester's own: inside this band the rebuild is trusted
 MIN_POSITIONS = 8

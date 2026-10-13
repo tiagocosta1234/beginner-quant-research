@@ -92,7 +92,7 @@ BIG = 10**9
 
 
 def load_full(sym):
-    d = os.environ.get("MT5BROKER_DATA_DIR") or os.path.join(ROOT, "mt5broker", "data")
+    d = os.environ.get("MT5BROKER_DATA_DIR") or os.path.join(ROOT, "mt5", "data")
     raw = pd.read_parquet(os.path.join(d, f"{sym}_M1_ticks_full.parquet"))
     idx = clock.server_to_ny(raw["time"].to_numpy())
     b = pd.DataFrame({"o": raw["open"].to_numpy(), "h": raw["high"].to_numpy(), "l": raw["low"].to_numpy(), "c": raw["close"].to_numpy(),

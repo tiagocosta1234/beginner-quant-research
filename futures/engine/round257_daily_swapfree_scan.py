@@ -85,11 +85,11 @@ N_CTRL = 200
 
 
 def spreads():
-    return json.load(open(os.path.join(ROOT, "mt5broker", "specs", "rollover_spreads.json")))
+    return json.load(open(os.path.join(ROOT, "mt5", "specs", "rollover_spreads.json")))
 
 
 def load(sym, SP):
-    df = pd.read_parquet(os.path.join(ROOT, "mt5broker", "data", f"{sym}_D1.parquet"))
+    df = pd.read_parquet(os.path.join(ROOT, "mt5", "data", f"{sym}_D1.parquet"))
     idx = pd.to_datetime(df["time"], unit="s").dt.normalize()
     d = df.set_index(idx)[["open", "high", "low", "close"]]
     d = d[~d.index.duplicated(keep="last")].sort_index()
