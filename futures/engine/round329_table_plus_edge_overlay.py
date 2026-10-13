@@ -5,7 +5,7 @@ Standing goal: beat the coin-flip bold play (about 40% pass in 57 trading days).
 pre-FOMC drift (+31 bp, 8 a year; Round 328). Overlay = on those days an extra ticket in the lead's direction, sized from its own stop, on top of the table's ticket. Round 322 says +1 point of direction accuracy is about +2.8 points of
 pass probability; the overlays touch only about 30 days a year, so the expected lift is small; this round measures it instead of guessing.
 
-PATH PROXY (Round 321, unchanged): NQ and ES 2020-2026 09:30 sessions as US100 proxy, table = forex/early_mt5/onestep.py Policy round275 risk $1,000, Round 321 costs, every start day, 57-day window, 20 coin draws per start for the table.
+PATH PROXY (Round 321, unchanged): NQ and ES 2020-2026 09:30 sessions as US100 proxy, table = forex/onestep.py Policy round275 risk $1,000, Round 321 costs, every start day, 57-day window, 20 coin draws per start for the table.
 OVERLAY TICKETS (rules fixed now; the daily bars are the same instrument's RTH closes, the FOMC trade uses the Globex 1-minute bars):
   DIP: after a session close with z3 <= -2 (3-day log return / (60-session sigma x sqrt 3), Monday-Thursday), long at that close, exit at the NEXT session close; stop = 2 sigma below the entry; R = max(return / (2 x sigma_daily), -1) (a stop fills at its level: optimistic, no gap-through) minus
   a cost of 1 bp / (2 x sigma_daily); risk = min($1,000, 0.5 x room to the nearer floor), skipped under $250; the P&L is booked on the exit session.
@@ -24,7 +24,7 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import round321_long_bias_bold_play as R
 import round328_pre_fomc_drift as F
-from mt5broker import onestep as OS
+from mt5 import onestep as OS
 
 
 def overlays(sym, df):

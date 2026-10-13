@@ -41,7 +41,7 @@ def window_utc(day):
 
 
 def pull():
-    from mt5broker.data_pull import attach
+    from forex.data_pull import attach
     os.makedirs(CACHE, exist_ok=True)
     mt5 = attach()
     kept = []

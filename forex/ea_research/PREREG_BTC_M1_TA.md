@@ -1,0 +1,25 @@
+# Pre-registration: can classic technical analysis on 1-minute BTCUSD bars beat MT5 broker's real costs? (family B, 4 rules)
+
+Written 2026-10-09 15:41 local (local clock), BEFORE any simulation of these rules. the trader (2026-10-09 ~15:30): "(original wording omitted)". The lab budget of 40 variants was spent at ledger 40 (Update 55); this round is an AMENDMENT by the trader's instruction: +4 variants (ledger 44), the Bonferroni bar is raised accordingly. 'No crypto' was relaxed for RESEARCH only (memory 2026-10-02): nothing goes live without the trader's explicit go.
+Costs measured on MT5 broker's own BTCUSD+ M1 bars before this registration (not on any rule): median spread 7.9 bp of the price (p90 10.7), 1-minute return sd 7.65 bp, 30-minute sd 41 bp. Round trip = spread + 2 bp slippage per fill (about 12 bp): a rule needs a gross edge above that, which is why holds are minutes to 2 hours, not seconds. MT5 broker's HFT rule (no more than 50% of trades under 1 minute) is respected by construction (min hold 1 bar and most holds >= 10 bars).
+
+## Common mechanics (all four)
+Data: forex/data_mt5/BTCUSD_M1_rates.parquet (bid o/h/l/c, ask o/h/l/c, spread), server clock, from 2022-04-01. Signals at the CLOSE of bar k (bid close), fills at the OPEN of bar k+1: long at the ask open x (1 + 2 bp), short at the bid open x (1 - 2 bp); no entry if the gap to the next bar exceeds 120 s. Exits fill on the opposite side (long at the bid, short at the ask) with 2 bp slippage; stops are checked intrabar (long: bid low <= stop, fill min(stop, bar bid open); short: ask high >= stop, fill max(stop, bar ask open)), stop first. One position at a time, no pyramiding, no martingale, swap-free, no commission. ATR60 = mean true range of the previous 60 M1 bars.
+- B1 Range breakout: long if the close is above the highest high of the previous 120 bars, short if below the lowest low of the previous 120; initial stop 2 x ATR60 from the entry fill, trailing stop (highest close since entry - 2 x ATR60, never loosened; mirror for shorts); time exit after 120 bars; cool-down 30 bars.
+- B2 Bollinger overshoot fade: z = (close - SMA60) / SD60 of closes; long if z <= -3.0, short if z >= +3.0; exit at the open after z crosses 0, or after 45 bars; stop 3 x ATR60 from the fill; cool-down 10 bars.
+- B3 EMA(20)/EMA(100) trend: long when EMA20 crosses above EMA100, short when it crosses below; exit at the opposite cross but not before 30 bars, stop 3 x ATR60; cool-down 10 bars.
+- B4 RSI(14, Wilder) extremes: long if RSI <= 15, short if RSI >= 85; exit when RSI crosses 50, or after 30 bars; stop 3 x ATR60; cool-down 10 bars.
+Statistics per rule and period: trades, win rate, mean result per trade in bp of the entry price (net of spread and slippage), the same GROSS of the two spreads (diagnostic), profit factor, daily-P&L t-statistic (sum of the trades' bp by CLOSE day, zero on other calendar days with bars), share of trades held under 1 minute.
+Periods: DEV 2022-04-01..2024-12-31, VAL 2025, POOL 2022-04..2025, HOLD-OUT 2026-01-01..2026-09-30 (one look, only for a rule that passes DEV and VAL).
+
+## Acceptance (per rule; Bonferroni for 44 variants)
+1. DEV: >= 300 trades, net mean > +3 bp, profit factor >= 1.10, daily t >= 2.5.
+2. VAL 2025: net mean > 0, profit factor >= 1.05, daily t >= 1.0.
+3. HOLD-OUT 2026: net mean > 0 (one look).
+4. Gate before any MQL5 port or use: share of trades under 1 minute <= 50%; the leg raises P(pass by 22 Dec) of the pair in the clean simulation with at most 1 point of extra breach; validated on MT5 broker data in the tester; fixed lots, hard stop on every order, magic number, AccountGuard-compatible.
+If no rule passes 1 and 2 the family is closed and NO EA is delivered (an unvalidated EA is not worth running).
+## Honest prior
+About 1-2%. Round-trip costs (about 12 bp) exceed the median 1-minute move many times over, and the 30-minute return sd is 41 bp: a rule needs roughly 0.3 sd of real predictability per trade. A pass would be the first non-gold intraday edge; a fail closes the BTC intraday TA family for the record.
+
+## AMENDMENT 1 (2026-10-09 15:43, BEFORE any trial run; no performance number was used)
+A mechanics smoke test (4 rules, a week of Dec 2022; used only to check mechanics) showed that almost every trade was stopped inside the entry bar: the stops were sized in 1-minute ATRs (2-3 x ATR60 = about 1-2 spreads) for rules that hold up to 120 bars, so they sat inside one minute of noise. That is a design error of the registration, not a signal result. The stops are now sized to the hold horizon: S = ATR60 x sqrt(60) (a one-hour range proxy), measured from the bid-ask MID at the entry bar open (long: mid - k x S, short: mid + k x S); trailing stop (B1): highest BID close since entry - k x S for longs, lowest ASK close + k x S for shorts, never loosened. k: B1 1.0, B2 1.5, B3 2.0, B4 1.5. Everything else is unchanged (signals, exits, costs, cool-downs, acceptance). The earlier text of stop widths in B1-B4 is superseded by this amendment.

@@ -3,8 +3,8 @@ Round 258 (2026-10-01): a new strategy search for US100 and gold only, built on 
 tick-built bid/ask bars. the trader: "we need a whole new strategy for US100 and gold".
 PRE-REGISTRATION -- every choice below is fixed before any return of this round is computed.
 
-DATA: MT5 US100.cash and XAUUSD M1 bid/ask bars built from ticks (forex/early_mt5/tick_bars.py --full), 2021-10-01..2026-09-30,
-New York clock (forex/early_mt5/clock.py), the same real-session calendar as Round 255 (US100) / weekdays (gold). IS = before
+DATA: MT5 US100.cash and XAUUSD M1 bid/ask bars built from ticks (forex/tick_bars.py --full), 2021-10-01..2026-09-30,
+New York clock (forex/clock.py), the same real-session calendar as Round 255 (US100) / weekdays (gold). IS = before
 2025-07-01, OOS = from 2025-07-01 (untouched until the confirmation step). Every window below stays inside one
 MT5 broker server day, so it crosses no 17:00 New York rollover and pays no swap.
 

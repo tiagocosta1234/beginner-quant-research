@@ -1,6 +1,6 @@
 """
 Round 272 (2026-10-01, PRE-REGISTERED SENSITIVITY): Round 272's 104 cells re-priced with the costs MEASURED on the MT5 broker free trial.
-The demo slippage probe (forex/early_mt5/slippage_probe.py, 2026-10-01, 18 round trips of minimum lot on US100.cash, XAUUSD, EURUSD, 3 s holds,
+The demo slippage probe (forex/slippage_probe.py, 2026-10-01, 18 round trips of minimum lot on US100.cash, XAUUSD, EURUSD, 3 s holds,
 deals read back from the MT5 history) found: entry and exit slippage versus the quote at the instant of sending ~ 0 (US100: median
 +0.00 x spread, range -1.0..+2.0 points; gold +0.00 / +0.04 x spread; EURUSD 0), round-trip fill-to-fill cost ~ 1 x the quoted spread,
 and a commission of $0.06 per 0.01-lot round trip on gold and EURUSD (= $6 per lot; none on US100). Round 272 charged 1.0 x spread
@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import HistGradientBoostingClassifier
-from mt5broker import clock
+from mt5 import clock
 
 SYMS = ["US100.cash", "US500.cash", "US30.cash", "GER40.cash", "FRA40.cash", "UK100.cash", "XAUUSD", "EURUSD", "GBPUSD", "USDJPY",
         "AUDUSD", "USDCAD", "USDCHF"]

@@ -30,7 +30,7 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import pandas as pd
 import round280_swap_aware_long_short as R8
-from mt5broker import universe as U
+from mt5 import universe as U
 
 SYMS = R8.SYMS
 UNIV = {"IDX": [s for s in U.INDICES if s in SYMS], "FXU": [s for s in U.FX if s in SYMS and s != "DXY.cash"],

@@ -5,7 +5,7 @@ THE VIDEO (watched from 25 frames; audio not transcribed, the speech model could
 RULE (one, fixed, identical on every symbol): 5-minute bars built from the minute bars (24-hour data, New York clock). At the close of 5-minute bar b: BREAKOUT UP if close_b > the highest bid high of bars b-6..b-1 (the previous 30 minutes); BREAKOUT DOWN if close_b < the lowest bid low of bars b-6..b-1. Direction FOLLOW: up -> LONG, down -> SHORT. ENTRY at the open of bar b+1: a long buys the ASK open, a short sells the BID open; EXIT 30 minutes later at the close of bar b+6 (the sixth bar after the signal): a long sells at the BID close, a short buys at the ASK close. All seven bars (b-6..b+6) must be present and contiguous.
 BUCKETS (as the video): OPEN = signal bars closing in 09:30-10:00 New York (bars starting 09:30..09:55); REST = signal bars closing from 10:00 to 15:30 (the 30-minute hold then ends by 16:00); ALL = both. 3 buckets x 6 symbols = 18 hypotheses. The same clock is used for XAUUSD and BTCUSD (a convention, not a market open for them).
 COSTS: spread paid through the ask / bid fills; plus a 0.5 bp allowance on every trade; BTCUSD adds the 6.5 bp commission (3.25 bp a side, to be confirmed). Net bp of the entry price.
-SYMBOLS (all MT5 broker minute bid / ask in forex/early_mt5/data): US100.cash, US500.cash, US30.cash, US2000.cash, XAUUSD (2021-10-01..2026-10-02; US2000 from 2022-01-10) and BTCUSD (24/7 build, 2021-10-01..2026-10-03). ETHUSD has hourly bars only (cannot run). Symbols the second PC pulled but the repo lacks (EURUSD and others) are not tested.
+SYMBOLS (all MT5 broker minute bid / ask in forex/data): US100.cash, US500.cash, US30.cash, US2000.cash, XAUUSD (2021-10-01..2026-10-02; US2000 from 2022-01-10) and BTCUSD (24/7 build, 2021-10-01..2026-10-03). ETHUSD has hourly bars only (cannot run). Symbols the second PC pulled but the repo lacks (EURUSD and others) are not tested.
 TWO VERSIONS of every bucket: (1) EVERY SIGNAL (overlapping allowed: the video's convention, to compare with its numbers), (2) ONE POSITION AT A TIME (a signal while a trade is open is skipped: the tradable version). THE CANDIDATE TEST uses version (2).
 SPLIT: IS = signal dates 2021-10-01..2023-12-31, OOS = 2024-01-01 onward. Statistic: mean net bp per trade, day-clustered bootstrap (5,000 draws, seed 340), P(mean > 0). CANDIDATE (fixed now): IS mean net > 0 with P >= 0.95 AND OOS mean net >= +1.0 bp with P >= 1 - 0.05/18 = 0.9972 AND the FADE (the opposite direction on the same signals) OOS mean <= 0 (not drift). Also reported: the video's claim, OPEN minus REST mean GROSS bp (before spread and allowance), per symbol.
 Not widened after the run: no other lookback, hold, stop, filter, time bucket or symbol to rescue a failure.
@@ -21,7 +21,7 @@ from numba import njit
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, ROOT); sys.path.insert(0, HERE)
-from mt5broker import clock
+from mt5 import clock
 
 DATA = os.path.join(ROOT, "mt5broker", "data")
 SYMS = {"US100.cash": "US100.cash_M1_ticks_full.parquet", "US500.cash": "US500.cash_M1_ticks_full.parquet", "US30.cash": "US30.cash_M1_ticks_full.parquet",

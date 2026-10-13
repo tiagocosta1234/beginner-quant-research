@@ -10,7 +10,7 @@ no swap; it also holds a whole day's move, so the spread (measured below) is a f
 window is exactly one MT5 D1 bar (server day 00:00-24:00 = 17:00-17:00 New York). This round asks, on every
 liquid MT5 broker instrument, whether the direction of that day's move is predictable from what has already happened.
 
-UNIVERSE (forex/early_mt5/universe.py, 52 symbols, fixed): 12 cash indices, 5 metals, 4 energy, 7 agricultural, 15 forex
+UNIVERSE (forex/universe.py, 52 symbols, fixed): 12 cash indices, 5 metals, 4 energy, 7 agricultural, 15 forex
 pairs (the 7 USD pairs, 6 crosses, EURJPY, GBPJPY -- trimmed from 28 before any data was read, because the other crosses
 download slowly and repeat the majors), DXY, 8 crypto. Equities and exotic currencies are excluded. MT5 D1 bars from each symbol's first bar to
 2026-09-30; Monday-Friday server dates only (crypto weekend bars are dropped: no weekend holds); a symbol enters
@@ -18,7 +18,7 @@ a hypothesis only with >= 300 in-sample days.
 TRADED RETURN r_t = ln(close_t / open_t) of the D1 bar (bid). Net of the real quote: a long pays the ask at
 entry, a short buys back at the ask at exit: long net = r - s_in/price, short net = -r - s_out/price, where
 s_in / s_out are the symbol's MEDIAN bid-ask spreads at 17:05 and 16:55 New York, measured on the first tick of
-each minute over ~100 sampled weekdays 2024-10..2026-09 (forex/early_mt5/rollover_spread.py -> forex/early_mt5/specs/rollover_spreads.json).
+each minute over ~100 sampled weekdays 2024-10..2026-09 (forex/rollover_spread.py -> forex/specs/rollover_spreads.json).
 Harsh = 3x those spreads. Bars with |r| > 10 trailing sd, and bars with open == close, are dropped.
 UNIT: sd_t = trailing 60-day sd of r (>= 40 days, known before day t); a position is sized so a 1-sd day is K
 dollars.
@@ -36,7 +36,7 @@ CONFIRMATION (out of sample, >= 2025-07-01, untouched until here): a rule is CON
 one-sided bootstrap P(mean > 0) >= 0.95 (20,000 resamples, seed 257).
 PORTFOLIO AND MT5 REPLAY (only if rules are confirmed): the confirmed rules, each 1 unit = K dollars per sd; day
 P&L = sum, day worst mark = sum of each position's worst (long: ln(low/open) - s; short: -ln((high + s)/open) - s,
-capped at its net result); exact mt5broker.backtest.replay / ChallengeState from every start day with >= 63 trading days
+capped at its net result); exact forex.backtest.replay / ChallengeState from every start day with >= 63 trading days
 after it, entry 17:05 New York the evening before; K from (250, 500, 750, 1000, 1500, 2000, 3000) chosen on IS starts
 by P(live <= 63), applied to OOS starts. Candidate = the repo's four checks: (1) ledger rule on daily net $ at that
 K (IS P >= 0.95, OOS P >= 1 - 0.01/k); (2) OOS P(live <= 63) >= 0.50; (3) >= the random-direction control (each
@@ -71,7 +71,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 import idea_harness as H
-from mt5broker.universe import ALL, GROUP
+from forex.universe import ALL, GROUP
 
 OOS = pd.Timestamp("2025-07-01")
 SD_WIN, SD_MIN, BAD_SD = 60, 40, 10.0

@@ -13,7 +13,7 @@ trailing); a planned risk under $250 skips the day; once the balance is above $1
 Pass = balance > $110,000 with the best day <= 50% of the profitable days' total.
 
 THE 25 SCHEMES (fixed now; % = of the $100,000 initial balance unless stated; k = target in R):
-  S01 TABLE           the deployed table (forex/early_mt5/specs/round275_onestep_policy_risk1000.npz), max $1,000, payoff cap $5,000
+  S01 TABLE           the deployed table (forex/specs/round275_onestep_policy_risk1000.npz), max $1,000, payoff cap $5,000
   S02 TABLE_075       the table with risk capped at $750
   S03 TABLE_X1.5      the table x 1.5 (max $1,500)
   S04 TABLE_PAUSE2    the table, but skip the day after two losses in a row
@@ -62,7 +62,7 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)
 import numpy as np
 import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, "..", "..")); sys.path.insert(0, HERE); sys.path.insert(0, ROOT)
-from mt5broker import onestep as OS
+from mt5 import onestep as OS
 import round343_master_strategy_1step as M
 
 SEED, H, SPLIT = 344, 57, pd.Timestamp("2024-01-01")

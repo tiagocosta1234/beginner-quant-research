@@ -44,7 +44,7 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import pandas as pd
 import round253_multiday_trend_tom as T
-from mt5broker import universe as U
+from mt5 import universe as U
 
 CRYPTO = set(U.CRYPTO)
 SYMS = [s for s in U.ALL if s not in CRYPTO]
@@ -156,7 +156,7 @@ def build_trend():
 
 def poc_sleeve():
     import round249_mt5broker_poc_mt5 as R
-    from mt5broker.backtest import daily, run_strategy
+    from forex.backtest import daily, run_strategy
     raw, cfd = R.load_cfd()
     _, per, _, _ = R.data_checks(raw, cfd)
     skip, _ = R.calendar_check(per)

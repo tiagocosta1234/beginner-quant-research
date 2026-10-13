@@ -6,7 +6,7 @@ Equity drift is the most robust 'edge' there is, so the obvious refinement is: t
 measures what the same table does with the direction chosen by a rule, paired on the same days, using the REAL 2020-2026 NQ and ES sessions as the path proxy for US100.cash (Databento 1-minute; MT5 broker tick
 data lives on the trader's desktop, so this is a proxy, not a Round 296 repeat).
 
-MECHANICS (reuse of forex/early_mt5/onestep.py unchanged: Policy table round275_onestep_policy_risk1000.npz, sizing rules): per trading day one trade at the 09:30 NY open; stop = 0.25 x mean RTH (09:30-16:00) high-low of the
+MECHANICS (reuse of forex/onestep.py unchanged: Policy table round275_onestep_policy_risk1000.npz, sizing rules): per trading day one trade at the 09:30 NY open; stop = 0.25 x mean RTH (09:30-16:00) high-low of the
 previous 20 sessions; target = k x stop with k from the table; exit at the 15:59 close if neither is hit; stop wins a bar that touches both. Risk from the table, capped min($1,000, 0.9 x room), skipped under $250,
 and under the table's own payoff cap. Costs (Round 296 BASE for US100, scaled to the proxy's price level): entry 2.45 points total (spread + slip) and 0.5 point of stop slip at a US100 level of 25,000, i.e. 0.98 bp and 0.2 bp of price; in R: cost = (2.45 + 0.5 if stopped) x (proxy open / 25,000) / stop_points. (A first version had the ratio inverted; found in the dry run from a unit check on ES, fixed before any P&L run.)
 DIRECTION RULES (6): COIN (average over 20 random draws per start day), LONG, SHORT (control: shows how much is drift), PRIOR (sign of the previous day's close-to-close return), FADE (the opposite), DIP-LONG
@@ -31,7 +31,7 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, ROOT)
-from mt5broker import onestep as OS
+from mt5 import onestep as OS
 
 DB = os.path.join(HERE, "..", "data", "databento")
 PRICE_REF = 25000.0      # approx US100 level over the sample, for point-cost scaling
@@ -43,8 +43,8 @@ MT5BROKER_SYMBOL = {"NQ": "US100.cash", "ES": "US500.cash", "YM": "US30.cash", "
 
 
 def _mt5broker_bars(sym):
-    """MT5 M1 bid bars (forex/early_mt5/data/<symbol>_M1_ticks_full.parquet, MT5 server clock = New York + 7h) as naive New York o/h/l/c."""
-    from mt5broker import clock
+    """MT5 M1 bid bars (forex/data/<symbol>_M1_ticks_full.parquet, MT5 server clock = New York + 7h) as naive New York o/h/l/c."""
+    from mt5 import clock
     d = os.environ.get("MT5BROKER_DATA_DIR") or os.path.join(ROOT, "mt5broker", "data")
     raw = pd.read_parquet(os.path.join(d, f"{MT5BROKER_SYMBOL[sym]}_M1_ticks_full.parquet"))
     idx = clock.server_to_ny(raw["time"].to_numpy())

@@ -14,7 +14,7 @@ Step 0 (ledger checked first, k = 1999): Round 311 tested this signal on MT5 XAU
 Honest expectation (stated before the run): EURUSD's median spread is 0.3 pip and MT5 broker's measured commission is $6 a lot round trip (0.6 pip), about 0.9 pip against a 1-minute ATR of about 1.4 pips: a 1 ATR stop on 1 minute
 pays ~0.6R in costs, so only wider stops or a slower timeframe can even reach a break-even; the gross skill (+0.09R on gold) may not exist on EURUSD at all.
 
-DATA: MT5 EURUSD M1 bid/ask (forex/early_mt5/data/EURUSD_M1_ticks_full.parquet via round271.load, New York time) 2021-10-04 .. 2026-09-30, aggregated to 1, 5 and 15 minute bars (bid open/high/low/close; ask high/low/close);
+DATA: MT5 EURUSD M1 bid/ask (forex/data/EURUSD_M1_ticks_full.parquet via round271.load, New York time) 2021-10-04 .. 2026-09-30, aggregated to 1, 5 and 15 minute bars (bid open/high/low/close; ask high/low/close);
 the indicator is computed on the bid candles of the chosen timeframe. Long entries at the ASK close of the signal bar, long stops / targets / timeouts on the BID book, shorts the reverse (stop wins a tie; fills at the level);
 MT5 broker commission $6 per lot round trip = 0.6 pip charged in R; max hold 120 / 60 / 40 bars for 1 / 5 / 15 minutes; no position through a data gap (> 2 bars missing); one position at a time. R = the stop distance.
 Splits (fixed): TRAIN 2021-10-04..2023-12-31, VALID 2024-01-01..2025-06-30, TEST 2025-07-01..2026-09-30.

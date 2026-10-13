@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 import round280_swap_aware_long_short as R8
 import round285_multi_day_dip_reversal as R5
-from mt5broker import universe as U
+from mt5 import universe as U
 
 GROUPS = {"IDX": [s for s in U.INDICES if s in R8.SYMS], "FX": [s for s in U.FX if s in R8.SYMS and s != "DXY.cash"], "MET": [s for s in U.METALS if s in R8.SYMS],
           "ENG": [s for s in U.ENERGY if s in R8.SYMS], "AGR": [s for s in U.AGRI if s in R8.SYMS]}

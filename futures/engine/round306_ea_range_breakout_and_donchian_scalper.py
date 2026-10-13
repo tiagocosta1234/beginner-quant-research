@@ -1,5 +1,5 @@
 """
-Round 306 (2026-10-02, PRE-REGISTERED): the two Expert Advisors in forex/early_mt5/expert_advisors -- "Range Breakout EA" and "Ninja Turtle Scalper EA" (René Balke / BM Trading, compiled .ex5 + input PDFs; NOT executed) -- RE-IMPLEMENTED from their input documentation and tested on MULTIPLE ASSETS
+Round 306 (2026-10-02, PRE-REGISTERED): the two Expert Advisors in forex/expert_advisors -- "Range Breakout EA" and "Ninja Turtle Scalper EA" (René Balke / BM Trading, compiled .ex5 + input PDFs; NOT executed) -- RE-IMPLEMENTED from their input documentation and tested on MULTIPLE ASSETS
 (the trader: "both are to be traded on multiple assets, go ahead"; data from 2020 onward only: MT5 M1 bid/ask starts 2021-10).
 Step 0 (ledger checked first, k = 1605): the Range Breakout EA is an opening-range / range breakout: Rounds 126, 134, 167-171 (MNQ, MGC; 15 / 30-minute ranges, NR7, volume-confirmed) found no edge that survived out of sample; the Donchian scalper is a breakout with a tight trailing stop: the DAILY Donchian breakout and its fade were negative after costs in Round 303 and
 the 1-5 minute trend / momentum rules in Rounds 121-122 had no edge. NOT tested: the EAs' own mechanics (pending stop orders, range-multiple stops / targets, a percent trailing stop) on index CFDs, FX and gold together at M1 with real bid/ask.

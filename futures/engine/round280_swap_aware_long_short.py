@@ -43,7 +43,7 @@ import numpy as np
 import pandas as pd
 import round253_multiday_trend_tom as T
 import round279_multi_asset_portfolio_vs_buy_hold as R9
-from mt5broker import universe as U
+from mt5 import universe as U
 
 SYMS, INDICES, VT, SMAX = R9.SYMS, R9.INDICES, R9.VT, R9.SMAX
 COMMON, LONGW, OOS = R9.COMMON, R9.LONGW, R9.OOS

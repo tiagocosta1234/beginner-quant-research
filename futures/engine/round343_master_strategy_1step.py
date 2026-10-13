@@ -6,7 +6,7 @@ strategy, and backtest that master on the test the trader intends to buy (MT5 1-
 The honest prior (stated before the run): no sleeve of the last 340 rounds has a confirmed edge after MT5 broker costs, and combining sleeves with no edge does not create one;
 a portfolio only changes the variance and the shape of the day P&L. This round makes that a measured statement on all 14 MT5 broker symbols at once instead of a claim.
 
-DATA: MT5 M1 bid / ask (forex/early_mt5/data/<symbol>_M1_ticks_full.parquet, server clock = New York + 7 h), 14 symbols: US100.cash, US500.cash, US30.cash, US2000.cash (US
+DATA: MT5 M1 bid / ask (forex/data/<symbol>_M1_ticks_full.parquet, server clock = New York + 7 h), 14 symbols: US100.cash, US500.cash, US30.cash, US2000.cash (US
 indices), GER40.cash, UK100.cash, FRA40.cash (European indices, the new conversion target), XAUUSD, EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF (forex + gold, new
 for the six FX pairs at the daily-ticket scale). Crypto excluded (the trader's constraint). 2021-09-20 .. 2026-10-02.
 SESSIONS (New York time, fixed): US indices 09:30-16:00 (>= 370 bars, first bar 09:30); EU indices 03:00-11:30 (>= 450 bars, first bar 03:00; their cash open is 03:00 NY
@@ -47,7 +47,7 @@ THE MASTERS (replayed day by day through the 1-Step rules on the US100 trading c
           page lists; US30 / US2000 drive follow excluded because Rounds 332-333 did not confirm them)
   NAIVE   descriptive overfit check: up to 20 cells with IS mean > 0 and unadjusted IS p < 0.05 (the highest IS t): what "refine until it looks good" does out of sample
   DIV     descriptive: coin flip at the open on all 14 symbols at once (does diversification alone help the 1-Step?)
-SIZING (every master): the deployed table (forex/early_mt5/specs/round275_onestep_policy_risk1000.npz) gives (risk, k) from the account state each day; day risk = min(m x risk,
+SIZING (every master): the deployed table (forex/specs/round275_onestep_policy_risk1000.npz) gives (risk, k) from the account state each day; day risk = min(m x risk,
 0.9 x room to the nearer floor, $5,000 / k so the best-day rule cannot bind), skipped under $250; split equally over the sleeves active that day; every ticket uses the
 day's k. FILLER: on a day with no active sleeve the master either stays flat or trades BASE's coin ticket. The two knobs m in {0.5, 1, 1.5, 2} and filler in {off, on} are
 chosen per master (BASE: m only) by the IS 57-day pass probability, then frozen for OOS. COIN tickets: 20 random draws per start (seed 343).
@@ -71,8 +71,8 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, "..", "..")); sys.path.insert(0, ROOT)
-from mt5broker import onestep as OS
-from mt5broker import clock
+from mt5 import onestep as OS
+from mt5 import clock
 
 KS = [float(k) for k in OS.Policy().ks]
 SPLIT = pd.Timestamp("2024-01-01")

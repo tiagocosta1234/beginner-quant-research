@@ -1,0 +1,3 @@
+# Cloud-run results that collided with the second PC's files (merge of origin/master-h8gqs1 into master, 2026-10-07)
+The cloud branch (offline tester, 1-minute OHLC model 1, no commission recorded) and the second PC (commission recorded) both wrote `forex/ea_batch/results/<id>.csv` for 58 EAs with DIFFERENT contents. In `results/` the second PC's (master's) versions were kept; the cloud versions are here under the same names, and `status_cloud_m1.csv` is the cloud branch's full status table. `results/status.csv` is the union of both tables (master's rows win on a shared id).
+The 805 EAs that only the cloud branch ran are in `results/` untouched; their results come from the 1-minute model and are not comparable with the real-tick 2026 screen (`results_2026/`).

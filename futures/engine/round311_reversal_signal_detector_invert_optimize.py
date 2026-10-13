@@ -10,7 +10,7 @@ Step 0 (ledger checked first, k = 1995): RSI/MACD divergence and ATR-spike rever
 1-minute scale on ES/NQ/GC (costs 0.12-0.19R a trade, skill at most +0.045R). Honest expectation (stated before the run): the signal is a 3-bar divergence on a 1-minute chart, so it is close to a coin flip and a
 gold 1-minute stop of 1 ATR makes the spread a large share of R; I expect the original to lose, its inversion to lose by about as much, and an optimized parameter set to look good in training and decay on unseen data.
 
-DATA: MT5 XAUUSD M1 bid/ask (forex/early_mt5/data/XAUUSD_M1_ticks_full.parquet via round271.load, server time -> New York), 2021-10-04 .. 2026-09-30 (the CFD a MT5 broker account trades; no commission on MT5 broker gold, real spread
+DATA: MT5 XAUUSD M1 bid/ask (forex/data/XAUUSD_M1_ticks_full.parquet via round271.load, server time -> New York), 2021-10-04 .. 2026-09-30 (the CFD a MT5 broker account trades; no commission on MT5 broker gold, real spread
 in the data; the indicator is computed on bid candles, like the OANDA chart). Entries at the signal bar's close: long at the ASK, short at the BID; long stops / targets / timeouts fill on the BID book (bid low / high / close), short ones on the ASK
 book (ask high / low / close); stop wins a tie on a bar; stops and targets fill at their level. Max hold 120 bars (2 hours) then exit at the close; no position carried through a data gap (> 10 minutes); one position at a time
 (a signal while a position is open is skipped). R = the stop distance; P&L in R, shown as dollars at the repo's $300 risk for the ledger.

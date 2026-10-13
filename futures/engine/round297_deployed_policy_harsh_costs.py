@@ -1,5 +1,5 @@
 """
-Round 297 (2026-10-02, PRE-REGISTERED, DESCRIPTIVE -- no edge claim, no ledger row): the DEPLOYED 1-Step pass policy (forex/early_mt5/specs/round275_onestep_policy_risk1000.npz, the table forex/early_mt5/executor.py reads) re-measured on HARSH costs
+Round 297 (2026-10-02, PRE-REGISTERED, DESCRIPTIVE -- no edge claim, no ledger row): the DEPLOYED 1-Step pass policy (forex/specs/round275_onestep_policy_risk1000.npz, the table forex/executor.py reads) re-measured on HARSH costs
 (the trader: "yes re-measure it on harsh costs"). SIMULATION ONLY: nothing trades, buys or connects to anything.
 BACKGROUND: Round 296 measured Round 270's heuristic (39.7% base / 26.1% harsh, 57 days). The executor does NOT run that heuristic: it runs Round 275's dynamic-programming policy with a $1,000 risk cap, measured 41.6% (breach 10%) on BASE costs over 62 days. This round gives that table its harsh-cost number.
 COSTS (as Round 296): BASE = round249 BASE (spread x1, entry slip 1.0 pt, stop slip 0.5 pt); HARSH = spread x2, entry slip 5.0, stop slip 2.0. The 2026-10-02 free-trial probe (5 clean round trips, quiet overnight market, 0.01 lot) sits at or inside BASE and does not measure the 09:30 NY open.

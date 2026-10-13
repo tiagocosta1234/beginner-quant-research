@@ -1,0 +1,9 @@
+# PREREG - session system (+2,000 before -L, size and time aware), written before any run (2026-10-13)
+the trader's spec: each server day the system tries to touch +2,000 of day PnL before -L; it decides each trade's size from the PnL so far and the hours left in the session (server 01:00-24:00, i.e. local 23:00-22:00);
+near the end it may risk more; if even the maximum size cannot reach +2,000 in the time left it stops opening trades and waits for the next day (positions carried, day counted unresolved).
+At a barrier all positions close and the system trades nothing more that day. MT5 broker daily loss 2,500 and the 92,000 floor are breaches. Signal source: SDB + XAU5 trade lists (the only two confirmed EAs), ManualDip not included (no trade list). No filler trades.
+Policy family (4 parameters): m = clip(m0 * (1 + k * elapsed_fraction) * clip((L + P)/L, 0.25, 1.5)^r, 0, 6); no new entries when hours_left < H_stop and P < 2,000; no entries 23:00-01:00.
+Grid: m0 {1,1.5,2,3,4}, k {0,1,3}, r {0,1}, H_stop {0,3}, L {1000,1500,2000}. Baseline = k=0, r=0, H_stop=0 (constant size with the same barriers).
+Train on FT 2022-01..2024-12 (MT5 broker trades scaled to MT5 broker prices, MT5 broker rules), choose per L the config with breach <= 5% then fastest median pass; test untouched on MT5 broker (Oct 2025-Sep 2026) and FT 2025-26.
+Account metric: single historical path from every start day; counted day profit capped at 2,000; pass at +8,000 counted; breach at day low <= -2,500, or cumulative <= -8,000. Report day outcome rates (+2,000 / -L / unresolved).
+Verdict rule: the adaptive policy counts as useful only if it beats the baseline of the same L on the TEST pools on both pass% and speed at breach <= 5%. Caveats written now: replay of tester fills, no swap, in-sample gold regime.

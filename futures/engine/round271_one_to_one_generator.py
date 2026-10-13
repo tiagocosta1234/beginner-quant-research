@@ -6,7 +6,7 @@ negative on Databento NQ/gold futures. This round is new in data (MT5 CFD bid/as
 universe (indices, gold, 6 FX pairs), not in idea class; the honest expectation is no survivor, the point is to find out cleanly.
 
 UNIVERSE: US100, US500, US30, GER40, FRA40, UK100 (cash indices), XAUUSD, EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF (tick-built M1
-bid/ask bars, forex/early_mt5/data/*_M1_ticks_full.parquet; server = NY + 7 h).
+bid/ask bars, forex/data/*_M1_ticks_full.parquet; server = NY + 7 h).
 
 DECISIONS: every closed M15 bar whose close is 03:00-15:00 NY on weekdays; features known at the close; entry at the next M1 bar.
 LABELS (both sides, stop = s x ATR14 of the M15 bars with s in (1.0, 2.0); target = stop distance, i.e. 1:1): long fills at the next M1 ask
@@ -37,7 +37,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import HistGradientBoostingClassifier
-from mt5broker import clock
+from mt5 import clock
 
 SYMS = ["US100.cash", "US500.cash", "US30.cash", "GER40.cash", "FRA40.cash", "UK100.cash", "XAUUSD", "EURUSD", "GBPUSD", "USDJPY",
         "AUDUSD", "USDCAD", "USDCHF"]
