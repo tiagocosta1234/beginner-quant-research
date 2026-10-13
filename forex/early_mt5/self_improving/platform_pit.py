@@ -33,6 +33,11 @@ def table(m, placebo_seed=None):
         rng = np.random.default_rng(placebo_seed + zlib.crc32(m.encode()) % 1000); sp = (s.a - s.b).values / s.b.values; lr = np.log(s.b).diff().fillna(0.0).values[1:]
         blocks = [lr[i:i + 20] for i in range(0, len(lr), 20)]; order = rng.permutation(len(blocks)); new = np.concatenate([blocks[i] for i in order])
         b = s.b.iloc[0] * np.exp(np.concatenate([[0.0], np.cumsum(new)])); s = s.copy(); s["b"] = b; s["a"] = b * (1 + sp)
+    return features(s)
+
+
+def features(s):
+    """Indicator columns from a daily (t, b, a) frame; every value at day i uses closes up to day i only."""
     c = s.b; r = c.pct_change(); sd20 = r.rolling(20, min_periods=15).std()
     out = s.copy(); out["sd"] = r.rolling(60, min_periods=40).std(); out["volhi"] = (sd20 > sd20.rolling(250, min_periods=120).median()).astype(float)
     out.loc[sd20.isna() | sd20.rolling(250, min_periods=120).median().isna(), "volhi"] = np.nan

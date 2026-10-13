@@ -1,0 +1,4 @@
+- 2026-10-13 00:18 gen 0: 300 new specs, cumulative m=300, best DEV z this gen 2.63 | S1 survivors 0 {} | VAL passes (S2) 0 of 0 looked at
+- 2026-10-13 00:19 gen 1: 300 new specs, cumulative m=600, best DEV z this gen 3.17 | S1 survivors 1 {'crypto/rsi_dip': 1} | VAL passes (S2) 0 of 1 looked at
+- 2026-10-13 00:19 gen 2: 300 new specs, cumulative m=900, best DEV z this gen 4.26 | S1 survivors 31 {'crypto/rsi_dip': 21, 'crypto/pop_short': 4, 'cmd/breakout': 3, 'fx/rsi_dip': 3} | VAL passes (S2) 9 of 31 looked at
+- 2026-10-13 00:20 gen 3: 300 new specs, cumulative m=1200, best DEV z this gen 3.90 | S1 survivors 86 {'crypto/rsi_dip': 59, 'fx/rsi_dip': 11, 'crypto/pop_short': 9, 'cmd/breakout': 6, 'fx/low_dip': 1} | VAL passes (S2) 17 of 86 looked at

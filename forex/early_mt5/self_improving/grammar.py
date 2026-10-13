@@ -51,7 +51,7 @@ def exit_now(t, s, j, side):
     return False
 
 
-def trades(tab, s, drift=None):
+def trades(tab, s, drift=None, carry=0.0):
     """tab: {market: table}. Returns a frame mkt, date, t_in, t_out, e, sd, ret (fraction, after the real bid/ask), side.
     drift {market: mean daily return}: v2 null -- ret becomes the EXCESS over holding the index for the same days (a short is charged the drift)."""
     rows = []; side = -1 if s["fam"] == "pop_short" else 1
@@ -63,6 +63,7 @@ def trades(tab, s, drift=None):
                 while j < n - 1 and j - i < s["hold"] and not exit_now(t, s, j, side): j += 1
                 r = (b[j] / a[i] - 1) if side > 0 else (b[i] / a[j] - 1)
                 if drift is not None: r -= side * drift[m] * (j - i)
-                rows.append((m, idx[i], int(tt[i]), int(tt[j]), float(a[i]), float(t.sd.iat[i]), float(r), side)); i = j + 1
+                r -= carry * 1e-4 * (tt[j] - tt[i]) / 86400.0
+                rows.append((m, idx[i], int(tt[i]), int(tt[j]), float(a[i]), float(t.sd.iat[i]), float(r), side, i, j - i)); i = j + 1
             else: i += 1
-    return pd.DataFrame(rows, columns=["mkt", "date", "t_in", "t_out", "e", "sd", "ret", "side"])
+    return pd.DataFrame(rows, columns=["mkt", "date", "t_in", "t_out", "e", "sd", "ret", "side", "i", "h"])
