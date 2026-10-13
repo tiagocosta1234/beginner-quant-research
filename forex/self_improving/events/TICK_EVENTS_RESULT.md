@@ -20,3 +20,6 @@ The information is real (+2.5 bp on average, +4.6 bp on tier-1) and is absorbed 
 
 ## Verdict
 Closed: no consensus-surprise follow-through is available at a speed an EA can use. One exploratory observation, NOT tested and NOT a candidate: the partial reversal between 60 s and 300 s (tier-1: +4.59 to +2.29 bp, i.e. a fade of about 2.3 bp gross for about 0.8 bp of cost) would need a fresh pre-registered test on events after 2026-08-15, which are sealed; they can only be collected forward.
+
+## Post-release reversal: registered forward test and exploratory measure (2026-10-14; PREREG_REVERSAL.md, reversal_lab.py)
+Exploratory only (the profile was seen before registering), window 2025-10-01..2026-08-15, fade = enter against the surprise at +60 s, exit +300 s: tier-1 USD n 41, mean net +1.50 bp, t +1.68, win 59%; all strong USD n 77, +0.36 bp, t +0.65; shorter holds (120 s) and earlier entry (+30 s) are about zero. The real test (events >= 2026-08-16, n >= 25, mean net > +0.5 bp, t >= 2, beats the +7-day placebo by t >= 1.65) waits for a read-only re-export of the calendar and ticks (expected December 2026).

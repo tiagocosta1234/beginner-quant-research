@@ -53,6 +53,8 @@ input bool   InpGuardNoHedge = false;   // guard: never keep BUY and SELL positi
 input double InpGuardCountedCapPct = 0.0; // guard: pass lock counts today's profit only up to this % of initial (MT5 Pro 2.0, the rest is removed at rollover); 0 = raw equity (old lock). Used only when the pass-lock target is on
 input bool   InpGuardNews = false;      // guard: NEWS FLAT, close every position of the account from 2 min before to 5 min after each release listed in InpGuardNewsFile (2026-10-11)
 input string InpGuardNewsFile = "ManualNews.csv"; // guard: release times, server clock, in the terminals' COMMON Files folder (forex/tools/make_news_file.py)
+input bool   InpRunner = false;          // RUNNER (2026-10-14, forex/self_improving/session): no take-profit order; when price reaches the target level the stop moves to break-even and the position is closed at InpRunnerCloseHour (server) that day, or earlier if the break-even stop is hit; 0/false reproduces the original exit exactly
+input int    InpRunnerCloseHour = 22;    // runner: server hour at which an armed position is closed (the sim used 22:00 server)
 input double InpGuardDayProfitPct = 0.0; // guard: day PROFIT cap, % of initial: at +this on the day close everything and stop until the next day (MT5 Pro counts at most 2% a day; 0 = off; test preset 2.0)
 
 #define WINDOW   2000     // bars used to seed the smoothed stochastic
@@ -62,6 +64,7 @@ input double InpGuardDayProfitPct = 0.0; // guard: day PROFIT cap, % of initial:
 int      g_bands = INVALID_HANDLE;
 datetime g_lastBar = 0;
 CAccountGuard g_guard;
+CTrade g_trade;
 
 double RoundPrice(const double p)
   {
@@ -166,6 +169,40 @@ void DropPendingWhileInPosition()
      }
   }
 
+// RUNNER: a position that reaches its target level is not closed: the stop goes to break-even (its entry) and it is closed at InpRunnerCloseHour of that server day
+void ManageRunners()
+  {
+   if(!InpRunner) return;
+   datetime now=TimeTradeServer(); int tod=(int)(now%86400); long today=(long)(now/86400);
+   for(int i=PositionsTotal()-1;i>=0;i--)
+     {
+      ulong tk=PositionGetTicket(i);
+      if(!PositionSelectByTicket(tk) || PositionGetInteger(POSITION_MAGIC)!=InpMagic || PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      bool buy=(PositionGetInteger(POSITION_TYPE)==POSITION_TYPE_BUY);
+      double open=PositionGetDouble(POSITION_PRICE_OPEN), sl=PositionGetDouble(POSITION_SL);
+      string key="KSDB_ARM_"+(string)tk;
+      bool armed=GlobalVariableCheck(key);
+      if(!armed && (buy ? sl>=open-_Point/2 : (sl>0 && sl<=open+_Point/2)))      // stop already at break-even (armed on the other PC / before a restart): adopt it, closes today at the cutoff
+        { GlobalVariableSet(key,(double)today); armed=true; }
+      double tpLevel=RoundPrice(open+(buy?1.0:-1.0)*open*InpTargetPct/100.0);
+      double px=buy?SymbolInfoDouble(_Symbol,SYMBOL_BID):SymbolInfoDouble(_Symbol,SYMBOL_ASK);
+      bool reached=buy?(px>=tpLevel):(px<=tpLevel);
+      if(!armed && reached)
+        {
+         if(tod>=InpRunnerCloseHour*3600-60) { g_trade.PositionClose(tk); continue; }          // too late in the day to run: take the target now
+         MqlTradeRequest rq; ZeroMemory(rq);
+         rq.action=TRADE_ACTION_SLTP; rq.position=tk; rq.symbol=_Symbol; rq.sl=RoundPrice(open); rq.tp=0; rq.magic=InpMagic;
+         if(SendReq(rq)) GlobalVariableSet(key,(double)today);
+         continue;
+        }
+      if(armed)
+        {
+         long armDay=(long)GlobalVariableGet(key);
+         if(today!=armDay || tod>=InpRunnerCloseHour*3600) { if(g_trade.PositionClose(tk)) GlobalVariableDel(key); }
+        }
+     }
+  }
+
 void PlaceStop(const bool buy,const double level)
   {
    if(HavePosition()) return;
@@ -178,10 +215,10 @@ void PlaceStop(const bool buy,const double level)
    double vol=Volume(level);
    if(vol<SymbolInfoDouble(_Symbol,SYMBOL_VOLUME_MIN)) return;
    double dir=buy?1.0:-1.0;
-   double sl=RoundPrice(level-dir*level*InpStopPct/100.0), tp=RoundPrice(level+dir*level*InpTargetPct/100.0);
+   double sl=RoundPrice(level-dir*level*InpStopPct/100.0), tp=InpRunner ? 0.0 : RoundPrice(level+dir*level*InpTargetPct/100.0);
    double market=buy?SymbolInfoDouble(_Symbol,SYMBOL_ASK):SymbolInfoDouble(_Symbol,SYMBOL_BID);
    double gap=(double)SymbolInfoInteger(_Symbol,SYMBOL_TRADE_STOPS_LEVEL)*_Point, half=_Point/2;
-   if(dir*(level-market)<gap-half || dir*(level-sl)<gap-half || dir*(tp-level)<gap-half) return;
+   if(dir*(level-market)<gap-half || dir*(level-sl)<gap-half || (!InpRunner && dir*(tp-level)<gap-half)) return;
    double margin=0;
    if(!OrderCalcMargin(buy?ORDER_TYPE_BUY:ORDER_TYPE_SELL,_Symbol,vol,level,margin) || AccountInfoDouble(ACCOUNT_MARGIN_FREE)<=margin) return;
    MqlTradeRequest rq; ZeroMemory(rq);
@@ -200,25 +237,27 @@ int OnInit()
       g_guard.Init(InpGuardInitial,InpGuardDayPct,InpGuardFloorPct,InpGuardTargetPct,InpGuardBufferPct,InpGuardMinDays,TimeCurrent(),"ManualSDB",3,InpGuardDayProfitPct,InpGuardCountedCapPct);
       g_guard.m_pragueShiftSec=InpGuardPragueShiftSec; g_guard.m_noHedge=InpGuardNoHedge;
       if(InpGuardNews) g_guard.m_newsOn=(g_guard.LoadNews(InpGuardNewsFile)>0);
-      EventSetTimer(1);
      }
+   if(InpUseGuard || InpRunner) EventSetTimer(1);
    return(INIT_SUCCEEDED);
   }
 
 void OnDeinit(const int reason)
   {
    IndicatorRelease(g_bands);
-   if(InpUseGuard) EventKillTimer();
+   if(InpUseGuard || InpRunner) EventKillTimer();
   }
 
 void OnTimer()
   {
    if(InpUseGuard) g_guard.Check();
+   ManageRunners();
   }
 
 void OnTick()
   {
    if(InpUseGuard) g_guard.Check();
+   ManageRunners();
    if(InpDropOppositePending) DropPendingWhileInPosition();      // off by default: MT5 broker support confirmed (2026-10-08) that opposite positions inside ONE account are allowed
    if(InpUseGuard && (g_guard.m_hardHalt || g_guard.m_dayHalt || g_guard.m_locked)) return;     // no new orders while a stop is active
    datetime bar=iTime(_Symbol,_Period,0);

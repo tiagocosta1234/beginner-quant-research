@@ -10,6 +10,8 @@ from forex.ea_research.combo_grid import news_flat, bars, CH
 
 UP, MMAX, DAYLIM, COUNTCAP = 2000.0, 6.0, 2500.0, 2000.0   # COUNTCAP: MT5 broker counts at most 2,000 of profit per day
 FINMODE = None; FINQMAX = 2000.0; FINJ = 10.94   # finisher: forced gold position per session when still unresolved ('safe' = size so one 99.9th pct 1-minute jump cannot cross the loss lock, 'max' = 20 lots)
+BOOST = 0.0   # anti-martingale boost: size multiplied by 1 + BOOST * max(day PnL, 0) / UP at each entry
+COLLECT = None   # when a list: run() appends (day, P path to the barrier, net signed open q) per session (stress tests)
 VOLF = None   # optional per-trade size multiplier array (volatility sizing), aligned with the loaded trade list
 LOCKJ = None   # USD per unit q of the adverse 1-minute move (99.9th pct): when set, total open size is capped so one such jump cannot cross the loss lock
 
@@ -32,11 +34,11 @@ def run(tr, lo, hi, Lc, m0, k, r, hstop):
     for d in range(lo, hi + 1):
         t0 = d * 86400; t1 = t0 + 86400; i0 = int(np.searchsorted(tm, t0)); i1 = int(np.searchsorted(tm, t1))
         if i1 - i0 < 30: continue
-        T = tm[i0:i1]; bid = bc[i0:i1]; ask = bid + sp[i0:i1]; P = np.zeros(len(T))
+        T = tm[i0:i1]; bid = bc[i0:i1]; ask = bid + sp[i0:i1]; P = np.zeros(len(T)); NQ = np.zeros(len(T))
         def add(j, sign=1.0):
             s = sc[j] * sign; first = int(np.searchsorted(T, in_s[j])) if in_s[j] >= t0 else 0; last = int(np.searchsorted(T, out[j])); mark = bid if side[j] > 0 else ask
             base = 0.0 if in_s[j] >= t0 else side[j] * (mark[0] - entry[j]) * q[j]
-            if last > first: P[first:last] += s * (side[j] * (mark[first:last] - entry[j]) * q[j] - base)
+            if last > first: P[first:last] += s * (side[j] * (mark[first:last] - entry[j]) * q[j] - base); NQ[first:last] += s * side[j] * q[j]
             if last < len(T): P[last:] += s * (pl[j] - base)
         carried = np.nonzero((in_s < t0) & (out > t0) & (sc > 0))[0]
         for j in carried: add(j)
@@ -54,6 +56,7 @@ def run(tr, lo, hi, Lc, m0, k, r, hstop):
                 continue
             if hr < 1.0 or hr >= 23.0: continue
             s = scale_for(P[min(e, len(T) - 1)], 24.0 - hr, Lc, m0, k, r, hstop)
+            if BOOST and s > 0: s = float(min(s * (1 + BOOST * max(P[min(e, len(T) - 1)], 0.0) / UP), MMAX))
             if VOLF is not None: s = float(np.clip(s * VOLF[j], 0.0, MMAX))
             if s > 0.0 and LOCKJ:
                 act = (sc > 0) & (in_s <= in_s[j]) & (out > in_s[j]); openq = float((sc[act] * q[act]).sum()); room = Lc + P[min(e, len(T) - 1)]
@@ -65,7 +68,10 @@ def run(tr, lo, hi, Lc, m0, k, r, hstop):
             for j in act:
                 mk = bid[hit] if side[j] > 0 else ask[hit]; out[j] = tb; pl[j] = side[j] * (mk - entry[j]) * q[j]
             rows.append((d, float(P[hit]), 1 if P[hit] >= UP else -1, float(P[: hit + 1].min())))
-        else: rows.append((d, float(P[-1]), 0, float(P.min())))
+            if COLLECT is not None: COLLECT.append((d, P[: hit + 1].copy(), NQ[: hit + 1].copy()))
+        else:
+            rows.append((d, float(P[-1]), 0, float(P.min())))
+            if COLLECT is not None: COLLECT.append((d, P.copy(), NQ.copy()))
     return pd.DataFrame(rows, columns=["day", "pnl", "res", "low"])
 
 
