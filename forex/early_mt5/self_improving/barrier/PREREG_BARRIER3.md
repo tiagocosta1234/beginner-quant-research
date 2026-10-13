@@ -1,0 +1,5 @@
+# Follow-up (written 2026-10-13, before the asymmetric labels were computed): the fx k=4 cell with stop 3 sigma / take-profit 4 sigma (the -1500 / +2000 ratio)
+the trader: "(original wording omitted)". The cell found in BARRIER2 (fx, 28 pairs) failed the effect-size floor and its audit showed a long-only 2025 regime. This follow-up is exploratory and keeps the same protocol: take-profit 4 sigma_1h (unchanged), stop 3 sigma_1h (ratio 4:3 = 2000:1500), R in stop units (win +1.333, loss -1), train A, tau on B, VAL once (VAL 2025 is NOT clean any more for this family; the result is an estimate of the same year, not a validation). Pass floor in stop units: mean R >= +0.20 (hit rate >= ~52% for a 4:3 payoff), >= 100 trades, >= 20 clusters, p < 0.05.
+Placebo noise ceiling: fx placebo worlds 121, 122, 123 with the same settings (must give no cell above the floor with p < 0.05 in at least 2 of 3).
+Concurrency: from the VAL trades (entry time, hold hours), the number of simultaneously open positions and distinct symbols, hourly, median / 95th / max; plus the dollar view with a total open stop-risk cap.
+Nothing live. Swap not modelled.
