@@ -33,7 +33,9 @@ EVENT = F5.EVENT
 DAILY = ["vix_rank", "vix_chg5", "curve_chg5", "dxy_chg5", "vix9r", "skew_rank"]
 CRYPTO = ["fng", "fng_chg3", "stab_chg7", "fund_btc"]
 CS = ["cs16", "cs96"]
-FEATS = PRICE + TIME + LEVELF + MICRO + RN + PAT + SWING + FVG + OB + EVENT + DAILY + CRYPTO + CS
+import os
+MT5ONLY = os.environ.get("FF6_MT5ONLY") == "1"                       # the trader 2026-10-13: only data the MT5 MT5 offers (drops VIX / curve / dollar / SKEW and crypto sentiment)
+FEATS = PRICE + TIME + LEVELF + MICRO + RN + PAT + SWING + FVG + OB + EVENT + ([] if MT5ONLY else DAILY + CRYPTO) + CS
 FI = {f: i for i, f in enumerate(FEATS)}
 ts, events = F5.ts, F5.events
 
