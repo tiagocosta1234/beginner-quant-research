@@ -1,0 +1,35 @@
+cells 1104 | placebo max-t over all cells: median 2.87, 95th 3.38 | secs 116
+share of cells with positive net: DEV 15.9%, VAL 14.1%, both 5.3%
+median net bp per trade by variant (DEV / VAL): {'ha': {'mu_DEV': -1.71, 'mu_VAL': -1.67}, 'k2': {'mu_DEV': -1.98, 'mu_VAL': -1.73}, 'k3': {'mu_DEV': -2.1, 'mu_VAL': -1.81}}
+share positive in both by variant: {'ha': 0.033, 'k2': 0.049, 'k3': 0.079}
+median net bp per trade by timeframe (DEV / VAL):
+tf        H1   H2    H4    M1   M15    M3   M30    M5
+mu_DEV -1.94 -1.7 -3.51 -1.46 -2.22 -1.74 -2.24 -1.92
+mu_VAL -2.20 -2.5 -2.83 -1.30 -1.67 -1.53 -2.21 -1.60
+median trades per cell by timeframe (DEV): {'H1': 624.0, 'H2': 316.0, 'H4': 162.0, 'M1': 42968.0, 'M15': 2504.0, 'M3': 13218.0, 'M30': 1220.0, 'M5': 7704.0}
+TOP 10 by DEV t:
+    sym  tf var  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+GBPJPY  H4  ha    244   16.69   2.44    254   -2.23  -0.43
+GBPJPY  H1  k2    588    6.39   2.19    615   -2.58  -1.29
+EURJPY  H1  k2    587    5.32   2.11    637   -5.42  -3.06
+GBPJPY  H1  k3    322   10.00   1.98    325   -1.79  -0.50
+USDJPY M15  ha   4286    0.71   1.96   4213   -0.34  -1.03
+CADJPY M30  k3    635    4.82   1.94    668    0.26   0.14
+BTCUSD  H4  k3     91  182.65   1.91    106   30.56   0.48
+EURJPY  H2  ha    494    5.64   1.83    543   -5.48  -2.50
+BTCUSD  H2  ha    550   27.89   1.77    680    2.25   0.22
+USDJPY  H2  k2    274    9.62   1.75    293    2.26   0.46
+CANDIDATES (all gates): []
+Positive in both, top 10 by VAL t:
+    sym  tf var  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+XAUUSD  H4  k3     90    7.03   0.33     78   55.69   1.89
+NIKKEI  H4  k3     91   23.09   0.96     76   69.09   1.78
+XAUUSD  H4  ha    266    1.05   0.16    258   15.23   1.63
+   DAX  H1  k3    342    2.59   0.33    320    9.14   1.25
+USDJPY M30  k2   1243    0.70   0.57   1184    1.45   1.23
+XRPUSD  H2  k3    172   32.07   0.47    195  101.39   1.20
+USDJPY M30  k3    681    2.21   1.05    657    2.38   1.16
+   DOW  H4  k3     93   31.01   1.25     95   18.72   1.07
+  NSDQ  H2  ha    500    5.92   0.82    528    5.59   0.99
+  NSDQ  H1  k2    636    3.11   0.53    610    4.64   0.97
+done

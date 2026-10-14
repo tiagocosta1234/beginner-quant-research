@@ -1,0 +1,34 @@
+mean day USD by multiplier (12M pool): [215, 272, 329, 354, 421] | 2022-26 pool: [87, 119, 149, 168, 183]
+
+CONSTANT sizes (state: counted -374, 12 days left)
+x1.2                               30 Oct pass   1.3% (12M  2.5 / 22-26  0.2) breach  0.0% | 22 Dec pass  47.8% breach  0.7
+x1.8                               30 Oct pass   4.7% (12M  7.2 / 22-26  2.2) breach  3.0% | 22 Dec pass  52.1% breach 11.6
+x2.5                               30 Oct pass   6.5% (12M  8.9 / 22-26  4.2) breach  7.0% | 22 Dec pass  47.2% breach 24.5
+x3.5                               30 Oct pass   5.6% (12M  6.5 / 22-26  4.6) breach 14.2% | 22 Dec pass  29.5% breach 46.1
+x5.0                               30 Oct pass   5.6% (12M  6.8 / 22-26  4.4) breach 26.1% | 22 Dec pass  21.0% breach 67.8
+
+OPERABLE TABLES
+T1: x1.8 mid, x1.2 <-1000, >6000   30 Oct pass   4.3% (12M  6.7 / 22-26  1.9) breach  2.0% | 22 Dec pass  47.0% breach  3.1
+T2: x2.5 mid, x1.2 <-1000, >6000   30 Oct pass   5.6% (12M  7.7 / 22-26  3.5) breach  3.6% | 22 Dec pass  44.7% breach  5.0
+T3: x1.8 mid, x1.2 <-1500, >5500   30 Oct pass   4.2% (12M  6.5 / 22-26  2.0) breach  2.1% | 22 Dec pass  46.9% breach  3.4
+T4: x1.8 everywhere >= -1000       30 Oct pass   4.7% (12M  7.4 / 22-26  2.1) breach  1.9% | 22 Dec pass  46.9% breach  3.1
+
+DP OPTIMUM (designed on the 50/50 mix, evaluated on both pools)
+DP lambda 0.3                      30 Oct pass   6.8% (12M  9.1 / 22-26  4.4) breach  3.3% | 22 Dec pass  44.2% breach  4.7
+DP lambda 1.0                      30 Oct pass   6.0% (12M  8.6 / 22-26  3.3) breach  1.4% | 22 Dec pass  45.9% breach  2.5
+DP lambda 3.0                      30 Oct pass   3.8% (12M  6.2 / 22-26  1.4) breach  0.3% | 22 Dec pass  47.5% breach  1.0
+
+DP lambda 1.0 policy: multiplier by day (rows) and counted profit (columns)
+              -2000   -1000       0    1000    2000    3000    4000    5000    6000    7000
+day  1/12      x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.2    x1.2
+day  2/12      x1.2    x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.2
+day  3/12      x1.2    x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.2
+day  4/12      x1.2    x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.2
+day  5/12      x1.2    x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.8
+day  6/12      x1.2    x1.2    x1.2    x1.8    x1.8    x1.8    x1.8    x1.8    x1.2    x1.8
+day  7/12      x1.2    x1.2    x1.2    x1.8    x1.8    x2.5    x2.5    x1.8    x1.8    x1.8
+day  8/12      x1.2    x1.2    x1.2    x1.2    x1.8    x2.5    x2.5    x2.5    x1.8    x1.8
+day  9/12      x1.2    x1.2    x1.2    x1.2    x1.8    x1.8    x2.5    x2.5    x1.8    x1.8
+day 10/12      x1.2    x1.2    x1.2    x1.2    x1.2    x1.8    x2.5    x2.5    x2.5    x2.5
+day 11/12      x1.2    x1.2    x1.2    x1.2    x1.2    x1.2    x2.5    x3.5    x2.5    x3.5
+day 12/12      x1.2    x1.2    x1.2    x1.2    x1.2    x1.2    x1.2    x1.2    x5.0    x5.0

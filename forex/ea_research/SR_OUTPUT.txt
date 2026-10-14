@@ -1,0 +1,35 @@
+cells 552 | placebo (random levels) max-t over cells per draw: [1.83, 2.02, 2.21, 2.27, 2.31, 2.51, 2.53, 2.56, 2.6, 2.64] | 95th 2.62 | secs 61
+share positive: DEV 16.5%, VAL 15.8%, both 4.2%
+median mean R per trade by mode x timeframe (DEV / VAL):
+             mu_DEV  mu_VAL
+mode     tf                
+bounce   H1  -0.095  -0.109
+         H2  -0.076  -0.093
+         H4  -0.071  -0.063
+breakout H1  -0.070  -0.119
+         H2  -0.077  -0.093
+         H4  -0.085  -0.070
+median trades per cell (DEV): {'H1': 1185.0, 'H2': 595.5, 'H4': 277.5}
+TOP 10 by DEV t:
+    sym tf     mode  s  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+USDJPY H4 breakout  1    284   0.192  2.607    298  -0.050 -0.715
+   DAX H4 breakout  2    164   0.178  1.843    187  -0.063 -0.713
+   DAX H2   bounce  2    426   0.096  1.637    419  -0.017 -0.299
+   ASX H4 breakout  2    124   0.177  1.604    201  -0.201 -2.456
+USDCAD H1 breakout  2    673   0.072  1.566    743  -0.157 -3.689
+BTCUSD H2 breakout  2    428   0.086  1.484    442   0.026  0.463
+USDJPY H1   bounce  2    771   0.060  1.398    829  -0.033 -0.764
+AUDJPY H4 breakout  1    320   0.090  1.309    287   0.004  0.060
+USDJPY H4   bounce  1    300   0.090  1.286    296  -0.103 -1.513
+    SP H4 breakout  1    277   0.094  1.277    277   0.027  0.371
+CANDIDATES: []
+Positive in both, top 8 by VAL t:
+    sym tf     mode  s  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+  NSDQ H1 breakout  2    587   0.007  0.133    537   0.122  2.313
+XAUUSD H4 breakout  2    142   0.053  0.514    150   0.170  1.695
+USDJPY H2 breakout  2    277   0.014  0.192    323   0.096  1.402
+  NSDQ H1 breakout  1   1218   0.042  1.189   1136   0.047  1.285
+  NSDQ H1   bounce  2    685   0.020  0.428    640   0.059  1.238
+EURAUD H4   bounce  2    220   0.030  0.374    234   0.078  0.992
+GBPCAD H2   bounce  1    602   0.012  0.259    617   0.045  0.941
+    SP H4 breakout  2    148   0.096  0.953    138   0.096  0.928

@@ -13,7 +13,7 @@ import pandas as pd
 TERMINAL = r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
 DATA = Path(r"C:\Users\author\AppData\Roaming\MetaQuotes\Terminal\A2DE5F95DF1B92F855BD63606EC1CA5B")
 OUT = Path(__file__).resolve().parents[1] / "forward_test" / "live_trades.csv"
-NAME = {260931: "ManualSDB", 261011: "ManualDip"}
+NAME = {260931: "ManualSDB", 261011: "ManualDip", 261012: "ManualRSI2"}
 
 
 def ea(magic: int) -> str: return NAME.get(magic, "XAU5" if magic > 10**9 else f"magic {magic}")

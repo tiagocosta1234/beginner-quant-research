@@ -1,0 +1,9 @@
+== DEV: 513 days, trend-trade days 352
+ M: n 352 mean R -0.151 t -2.49 hit 35% | exits target 30% stop 62% time 8%
+ R: n 352 mean R +0.219 t +3.41 hit 50% | exits target 45% stop 46% time 9%
+ F: n 161 mean R -0.107 t -1.18 hit 38% | exits target 30% stop 60% time 10%
+ permutation null of M mean R: 5th -0.084 50th +0.014 95th +0.104; M mean -0.151
+== VAL: 180 days, trend-trade days 129
+ M: n 129 mean R -0.114 t -1.13 hit 37% | exits target 31% stop 59% time 10%
+ R: n 129 mean R +0.042 t +0.39 hit 43% | exits target 38% stop 55% time 7%
+ F: n 51 mean R -0.070 t -0.43 hit 35% | exits target 33% stop 55% time 12%

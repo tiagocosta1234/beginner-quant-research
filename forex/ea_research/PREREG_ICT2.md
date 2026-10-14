@@ -1,0 +1,23 @@
+# Pre-registration ICT2: SMT divergence, the ICT 2022 model, NWOG (written 2026-10-14 ~22:20, before any code or result)
+the trader: "try ICT concepts". Already tested and NOT repeated: Asian-range sweep (Judas), previous-day sweep, FVG in killzones, Silver Bullet (`ICT_SCAN_RESULT.md`, 0/154; the DAX FVG lead failed in the real-tick tester, `forex/ea_batch/MANUALFVG_TESTER_RESULT.md`), Fibonacci 79% + order block (`FIB_OB_RESULT.md`), OTE (round 347). This round tests the three core ICT tools that are still untested: SMT divergence (the only ICT tool that uses a second market), the "2022 model" (sweep -> market structure shift -> FVG entry; its parts failed alone, the sequence has not been tested), and the new-week opening gap.
+
+## Data, clock, execution
+MT5 broker M1 bid/ask, data before 2026-01-01 only (2026 sealed). Session times in America/New_York (converted from the server clock with time zones). Pattern bars: M5 built on the NY clock from M1 mid with the TRUE bid/ask highs and lows (lesson from ManualFVG: never max(open, close) proxies). Killzones: LONDON 02:00-05:00 NY with reference range = Asia (20:00-24:00 NY the evening before); NYAM 07:00-10:00 NY with reference range = the London range (02:00-05:00 NY). Market entries at the open of the minute after the signal bar (a server minute :00 moves to :01); long at the ask, exits at the bid (short mirrored); stops and targets checked minute by minute on the executable side, stop first if both in one minute, gapped stops fill at the open; forced exit at killzone end + 3 h (08:00 / 13:00 NY) or the day's last bar. Stop distance must be at least 2 spreads, else no trade. One trade per cell, market, killzone and day.
+
+## Cells (direction fixed by the rule; one-sided)
+1. **SMT** on 7 correlated pairs, each market traded against its twin (13 markets; SP is traded against both NSDQ and DOW, one signal per twin): EURUSD/GBPUSD, AUDUSD/NZDUSD, EURJPY/GBPJPY, NSDQ/SP, SP/DOW, XAUUSD/XAGUSD, BTCUSD/ETHUSD. Bearish SMT on X at the first M5 bar of the killzone where X's high since the killzone start is above X's reference high, the twin's high since the killzone start is NOT above the twin's reference high, and X's bar closes back below its reference high -> SHORT X. Stop = X's high since the killzone start; target 2R. Bullish mirror on lows.
+2. **MSS2022** on all 46 markets: in the killzone, the first M5 bar that trades through the reference high (or low; a bar through both = no trade) is the sweep. Within the next 12 bars, a close below the lowest low of the 5 bars before the sweep is the market structure shift. The first bearish FVG (high of bar k below the low of bar k-2) with k between max(sweep+2, MSS-2) and MSS+2 gives the entry: a sell limit at the gap midpoint from the minute after bar k, valid for 6 M5 bars, filled when the bid reaches it (at the minute open if it opens beyond). Stop = the highest high from the sweep bar to bar k; target 2R. Bullish mirror.
+3. **NWOG** on the 38 non-crypto markets: Friday close = last mid before 23:00 server Friday; Monday open = mid at 01:05 server. If the gap is not traded back into between 01:05 and 02:04 and the distance from the 02:05 mid to the Friday close is at least 0.1 of the previous 5 days' average daily range -> at 02:05 server trade toward the Friday close; target = Friday close, stop at the same distance on the other side (1:1); exit at 22:55 server Monday at the latest.
+P&L in R with real bid/ask (net); gross (mid) R reported next to it.
+
+## Periods, statistics, gates
+DEV 2022-01..2024-12, VAL 2025, HOLD 2026-01-01..09-30 (sealed; one look only for a cell that passes 1-5). Daily portfolio series = mean net R of the trades entered that day; Newey-West t, lag 1.
+1. DEV mean net >= +0.05 R and t >= 2.40 (Bonferroni, 3 one-sided cells).  2. VAL mean net > 0 and t >= 1.65.  3. Net positive in at least 3 of the 4 years 2022-2025.
+4. Placebo (3 worlds, seeds 41-43): every real trade is re-entered on a random other day of the same period and market, at a random minute of the same window (killzone, or Monday 02:05 for NWOG), same side, same stop distance as a share of price, same target multiple and exit rule. The real DEV t must exceed the 95th percentile of the 9 placebo DEV t.
+5. No single market makes more than 40% of the DEV net R.
+
+## Dry-run (no P&L)
+Counts per cell and period; truncation test (every trade entered more than a day before a cut is identical when the data after the cut is removed); hand check of one SMT signal with both markets' levels.
+
+## Honest prior
+About 3%: sweeps and FVGs failed on their own on the same data; SMT adds a second market (new information, small); NWOG is a gap-fill rule on a weekly scale.

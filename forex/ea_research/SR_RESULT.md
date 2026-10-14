@@ -1,0 +1,8 @@
+# SR result (2026-10-14): objective swing-level support/resistance trading, 46 symbols x H1/H2/H4
+Pre-registration `PREREG_SR.md`, engine `sr_test.py`, output `SR_OUTPUT.txt`, cells `D:\finance\tmp\sr_cells.csv` (552 cells). 2026 hold-out unopened.
+## Verdict: no candidate; swing levels carry no more information than random levels
+- Placebo (levels shifted by a random -2..+2 ATR, 10 draws, max DEV t over all cells): 1.83-2.64, 95th percentile 2.62. The best real cell, USDJPY H4 breakout (+0.19 R, t +2.61 in DEV), sits exactly at the placebo ceiling and is -0.05 R (t -0.72) in VAL. Registered bar was t >= 4.0.
+- Cells positive in DEV 16.5%, in VAL 15.8%, in both 4.2%. Median mean R per trade for both bounce and breakout, on all three timeframes: -0.06 to -0.12 R (DEV and VAL), i.e. about the spread and the 1.5R-target geometry with no information: fading the level and following it lose by the same amount (the sign-symmetry signature of a zero-information rule paying cost).
+- The few positive-in-both cells are NSDQ H1 breakout (VAL +0.12 R t 2.3, DEV +0.01 R t 0.13), XAUUSD H4 breakout, USDJPY H2 breakout, SP H4: bull-market trend continuation in indices and gold, not S/R information.
+- Reading: with an objective definition (confirmed 5-bar swings, merged within 0.25 ATR, touches counted, level age up to 300 bars) the textbook claims that levels with more touches hold (s2 vs s1) or that breakouts follow through are not visible on MT5 broker prices at H1-H4. The result is consistent with the earlier round-number (DAY2K-F) and pivot (EURUSD-LAB2) tests.
+Nothing goes to multi_fx_ea; no variants (kill rule).

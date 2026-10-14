@@ -1,0 +1,2 @@
+Round 2 rules fixed BEFORE viewing: stop >= 2.0 x ATR14(H1) shown on chart (min 20 pips), target = 1.5 x stop, horizon 24 H1 bars;
+trade only in the direction of the daily EMA20 vs EMA50 order AND price on that side of EMA20 on daily; otherwise FLAT; no entry if last H1 bar moved > 1.5 x ATR (spike).

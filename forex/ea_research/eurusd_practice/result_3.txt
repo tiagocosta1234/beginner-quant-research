@@ -1,0 +1,22 @@
+case side  result   R   bars  note
+3.1   S   +30.0p +1.50R   7  daily EMA20<50, price below EMA20
+3.2   L   +36.0p +1.50R   8  daily EMA20>50, price above EMA20
+3.3   S   -20.0p -1.00R   5  daily EMA20<50, price below EMA20
+3.4   L   -20.0p -1.00R  10  daily EMA20>50, price above EMA20
+3.5   FLAT  (market moved +25.0 pips over 24h; would a long have worked)
+3.6   FLAT  (market moved -30.1 pips over 24h; would a short have worked)
+3.7   FLAT  (market moved +0.8 pips over 24h; would a long have worked)
+3.8   L   -20.0p -1.00R   4  daily EMA20>50, price above EMA20
+3.9   L   -30.0p -1.00R   2  daily EMA20>50, price above EMA20
+3.10  L   -20.0p -1.00R   6  daily EMA20>50, price above EMA20
+3.11  S   -29.0p -1.00R   6  daily EMA20<50, price below EMA20 (big red daily c
+3.12  L   -35.0p -1.00R   2  daily EMA20>50, price above EMA20
+3.13  S   +30.0p +1.50R   9  daily EMA20<50, price below EMA20
+3.14  FLAT  (market moved -14.4 pips over 24h; would a short have worked)
+3.15  L   -25.0p -1.00R   7  daily EMA20>50, price above EMA20 (H1 is falling a
+3.16  L   +53.0p +1.47R   8  daily EMA20>50, price above EMA20 (extended)
+3.17  FLAT  (market moved -19.0 pips over 24h; would a short have worked)
+3.18  L   -20.0p -1.00R   7  daily EMA20>50, price above EMA20
+3.19  FLAT  (market moved -90.3 pips over 24h; would a short have worked)
+3.20  L   -20.0p -1.00R   5  daily EMA20>50, price above EMA20
+trades 14  net -4.03R  mean -0.29R  winners 4/14

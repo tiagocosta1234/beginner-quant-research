@@ -1,0 +1,12 @@
+{"2.1":["F",0,0,"daily EMA20>EMA50 but price below EMA20: conflict"],
+ "2.2":["F",0,0,"daily EMA20>EMA50, price below EMA20, gap/spike: conflict"],
+ "2.3":["S",20,30,"daily EMA20<EMA50, price below EMA20"],
+ "2.4":["S",20,30,"daily EMA20<EMA50, price below EMA20"],
+ "2.5":["F",0,0,"daily downtrend but price above EMA20: conflict"],
+ "2.6":["S",20,30,"daily EMA20<EMA50, price below EMA20 (H1 is rising against it)"],
+ "2.7":["S",20,30,"daily EMA20<EMA50, price below EMA20"],
+ "2.8":["S",20,30,"daily EMA20<EMA50, price below EMA20 (H1 rally against it)"],
+ "2.9":["F",0,0,"daily EMA20>EMA50, price at/below EMA20: conflict"],
+ "2.10":["F",0,0,"daily EMA20<EMA50 but price above EMA20: conflict"],
+ "2.11":["F",0,0,"price at EMA20: no side"],
+ "2.12":["F",0,0,"daily EMA20>EMA50, price below EMA20: conflict"]}

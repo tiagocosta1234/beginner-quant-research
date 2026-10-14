@@ -1,0 +1,8 @@
+# EURUSD-OF result (2026-10-14): order-flow proxies from real ticks, 15-60 minute horizons
+Pre-registration `PREREG_EURUSD_OF.md` (amendment A1 before any P&L: causal z-score activation), engine `eurusd_of.py`, output `EURUSD_OF_OUTPUT.txt`. Ticks 2025-10-01..2026-08-15; sealed HOLD 2026-08-16..10-13 NOT loaded.
+## Verdict: 0 survivors of 39 cells (36 rules + 3 ML); family closed
+- All 36 rule cells lose in DEV, VAL and TEST: net -0.1 to -1.8 bp per trade, mostly -0.5..-1.0 (t down to -6.8). Continuation and fade BOTH lose by about the same amount, which is the signature of a zero-information signal paying cost: the sum of the two directions is about -2 x 0.65 bp, the round-trip cost (spread about 0.45 bp + 0.2 bp slippage). The cont-minus-fade gap, the actual information, is within +/-0.4 bp in nearly every cell and has no stable sign.
+- The registered placebo statistic (max |t|) is dominated by this uniform cost drag (median 6.5, 95th 7.5) and is therefore not informative here; the real best t is -0.32, and no cell has a positive net beyond +0.35 bp in any window.
+- ML (gradient boosting on 12 order-flow/state features, trained on 2025-10..02 and 2025-10..05): VAL net +0.19 / -1.04 / -0.83 bp and TEST -0.43 / -0.63 / -0.80 bp for H = 15 / 30 / 60 minutes; the placebo worlds look the same as the real ones (t from -4.5 to +0.3): no skill.
+- Reading: tick-direction imbalance and quote-update skew on EURUSD at the MT5 broker dealer feed carry no tradable information at 15-60 minutes; the quote stream is dealer-generated, not an order book, so there is no queue or size information in it.
+Nothing goes to multi_fx_ea. The +1 minute latency rerun and by-hour table were not needed (nothing to audit).

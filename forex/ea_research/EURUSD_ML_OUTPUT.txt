@@ -1,0 +1,16 @@
+samples 8948 features 35 span 2022-03-01 2025-12-31
+cell           nDEV  netbp  tDEV hit | nVAL  netbp  tVAL | yearly 23/24/25 | IC(oos) | pass
+ridge c=1.0    1923  -1.15 -2.62  47 |  778  -0.99 -1.31 | -1.3/-1.0/-1.0 | -0.034 | False
+ridge c=2.0    1254  -1.67 -2.98  47 |  360  -1.45 -1.16 | -1.7/-1.6/-1.5 | -0.034 | False
+gbm c=1.0      2066  -0.61 -1.47  50 |  900   0.03  0.05 | -0.3/-0.9/+0.0 | +0.017 | False
+gbm c=2.0      1577  -0.23 -0.47  50 |  584   0.50  0.51 | +0.0/-0.6/+0.5 | +0.017 | False
+long-only drift yardstick (every slot): net -0.50 bp/4h; short-only -0.47; hit-rate of prediction sign (gbm): 51.0%
+by entry hour (best DEV cell ('gbm', 2.0)): hour       2      4       6       8       10      12      14      16      18
+count  332.00  93.00  285.00  138.00  293.00  192.00  299.00  235.00  294.00
+mean     0.61  -1.23    0.49   -0.85    0.52   -0.27   -0.33    1.17   -1.56
+placebo seed 61 best DEV t -1.21
+placebo seed 62 best DEV t -1.02
+placebo seed 63 best DEV t 0.32
+placebo seed 64 best DEV t -0.62
+placebo seed 65 best DEV t 1.04
+placebo max best t 1.04; real best t -0.47; PASSED all gates: []

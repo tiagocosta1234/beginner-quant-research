@@ -1,0 +1,5 @@
+# Pre-registration UTBOT-VARIANTS: three parameter variants of UT Bot Alerts (written 2026-10-14 before any variant run; the default-parameter result is in UTBOT_RESULT.md)
+the trader: "go ahead" to the variants offered after the default test (no candidate). Same port, data, execution, periods and fills as PREREG_UTBOT.md; only the inputs change:
+- K2: Key Value a = 2 (ATR period 10, plain candles); K3: a = 3; HA: a = 1 with "Signals from Heikin Ashi Candles" ON (src = the Heikin-Ashi close (open + high + low + close)/4 of each candle on the same timeframe, security(..., lookahead = false); the ATR still uses the regular candles, as in the Pine text).
+3 variants x 46 symbols x 8 timeframes = 1,104 new cells; with the 368 default cells that is 1,472 tests.
+Gates: DEV t >= 4.1 (two-sided 5% / 1,472), DEV n >= 100 and mean > 0; VAL mean > 0, t >= 1.65, n >= 50; DEV t above the 95th percentile of the placebo maximum over the variant cells (100 random circular shifts per cell, offset >= 5 days). A candidate is audited (year, hour, spread, latency, long/short legs, drift versus buy-and-hold) before the 2026 HOLD is opened once. No further variants after this run.

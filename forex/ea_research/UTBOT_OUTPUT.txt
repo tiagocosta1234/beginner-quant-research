@@ -1,0 +1,33 @@
+cells 368 | placebo max-t over all cells: median 2.29, 95th 3.27 | secs 86
+share of cells with positive net: DEV 10.6%, VAL 7.6%, both 3.3%
+median net bp per trade by timeframe (DEV / VAL):
+tf        H1    H2    H4    M1   M15    M3   M30    M5
+mu_DEV -2.06 -1.87 -2.18 -1.27 -2.07 -1.48 -2.15 -1.68
+mu_VAL -2.02 -1.99 -3.96 -1.13 -1.60 -1.30 -1.85 -1.41
+median trades per cell by timeframe (DEV): {'H1': 1484.0, 'H2': 746.0, 'H4': 380.0, 'M1': 101693.0, 'M15': 6152.0, 'M3': 32083.0, 'M30': 3032.0, 'M5': 18926.0}
+TOP 10 by DEV t:
+    sym  tf  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+GBPJPY  H4    356    9.25   1.89    355   -2.02  -0.59
+XAUUSD  H2    706    4.72   1.70    700    4.22   1.23
+  NSDQ  H2    697    8.21   1.58    697    6.16   1.38
+USDJPY M30   2974    0.80   1.54   2891   -0.25  -0.51
+GBPJPY  H2    730    3.28   1.42    745   -2.39  -1.44
+EURJPY  H2    732    2.69   1.35    725   -3.69  -2.31
+BTCUSD  H2    738   14.89   1.31    924   -1.72  -0.23
+EURJPY  H4    357    5.65   1.31    355   -2.32  -0.71
+BTCUSD  H4    371   26.28   1.15    474   -4.99  -0.33
+USDJPY  H4    341    5.06   1.14    361    0.42   0.11
+CANDIDATES (all gates): []
+Positive in both, top 10 by VAL t:
+    sym  tf  n_DEV  mu_DEV  t_DEV  n_VAL  mu_VAL  t_VAL
+   DAX  H2    753    2.60   0.74    648    6.61   1.90
+  NSDQ  H2    697    8.21   1.58    697    6.16   1.38
+USDJPY  H1   1451    0.84   0.77   1388    1.32   1.25
+XAUUSD  H2    706    4.72   1.70    700    4.22   1.23
+  NSDQ M30   2849    0.78   0.58   2741    0.84   0.75
+    SP M30   2943    0.29   0.31   2749    0.57   0.66
+    SP  H2    735    3.48   0.93    715    2.14   0.62
+CADJPY  H2    722    1.93   0.83    702    0.91   0.49
+AUDJPY  H2    726    2.63   1.07    690    0.79   0.34
+USDJPY  H4    341    5.06   1.14    361    0.42   0.11
+done

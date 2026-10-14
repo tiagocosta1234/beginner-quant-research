@@ -1,0 +1,9 @@
+mults (1.2, 1.8, 2.5) lambda 0.0: pass 30 Oct 6.2% (12M 8.4) breach 4.6% | 22 Dec pass 44.6% breach 6.5%
+mults (1.2, 1.8, 2.5) lambda 0.1: pass 30 Oct 6.2% (12M 8.4) breach 3.3% | 22 Dec pass 44.9% breach 4.8%
+mults (1.2, 1.8, 2.5) lambda 0.3: pass 30 Oct 6.3% (12M 8.6) breach 2.7% | 22 Dec pass 45.6% breach 4.0%
+mults (1.2, 1.8, 2.5, 3.5) lambda 0.0: pass 30 Oct 6.7% (12M 8.9) breach 6.0% | 22 Dec pass 41.9% breach 8.1%
+mults (1.2, 1.8, 2.5, 3.5) lambda 0.3: pass 30 Oct 6.7% (12M 9.2) breach 3.2% | 22 Dec pass 44.4% breach 4.5%
+mults (1.2, 1.8, 2.5, 3.5, 5.0) lambda 0.0: pass 30 Oct 7.1% (12M 9.2) breach 10.6% | 22 Dec pass 39.0% breach 13.3%
+mults (1.2, 1.8, 2.5, 3.5, 5.0) lambda 0.3: pass 30 Oct 6.9% (12M 9.4) breach 3.4% | 22 Dec pass 44.5% breach 4.6%
+constant x2.5: 30 Oct pass 6.4% breach 7.3% | day-1 only matters: 12M mean day USD at x2.5: 329, worst day -3520, worst in-day low -3520
+constant x3.5: 30 Oct pass 5.6% breach 14.2% | day-1 only matters: 12M mean day USD at x3.5: 354, worst day -4928, worst in-day low -4928

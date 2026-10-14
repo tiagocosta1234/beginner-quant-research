@@ -1,0 +1,14 @@
+case side  result   R   bars  note
+2.1   FLAT  (market moved +15.5 pips over 24h; would a long have worked)
+2.2   FLAT  (market moved +16.4 pips over 24h; would a long have worked)
+2.3   S   -20.0p -1.00R   2  daily EMA20<EMA50, price below EMA20
+2.4   S   -20.0p -1.00R   1  daily EMA20<EMA50, price below EMA20
+2.5   FLAT  (market moved +27.7 pips over 24h; would a long have worked)
+2.6   S   +30.0p +1.50R   4  daily EMA20<EMA50, price below EMA20 (H1 is rising
+2.7   S   -20.0p -1.00R   4  daily EMA20<EMA50, price below EMA20
+2.8   S   +30.0p +1.50R   7  daily EMA20<EMA50, price below EMA20 (H1 rally aga
+2.9   FLAT  (market moved +17.4 pips over 24h; would a long have worked)
+2.10  FLAT  (market moved -18.4 pips over 24h; would a short have worked)
+2.11  FLAT  (market moved -22.5 pips over 24h; would a short have worked)
+2.12  FLAT  (market moved +20.8 pips over 24h; would a long have worked)
+trades 5  net +0.00R  mean +0.00R  winners 2/5

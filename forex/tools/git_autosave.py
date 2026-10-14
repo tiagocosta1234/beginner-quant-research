@@ -9,6 +9,7 @@ import re
 import subprocess
 from pathlib import Path
 
+NO_WINDOW = 0x08000000   # CREATE_NO_WINDOW
 REPO = Path("D:/finance/beginner-quant-research")
 LOG = REPO / "forex/tools/git_autosave.log"
 NEW_OK = ("forex/ea_research/", "Knowledge_Base/", "forex/expert_advisors/", "forex/forward_test/", "forex/ea_batch/", "forex/tools/", "CLAUDE.md")
@@ -19,7 +20,7 @@ SECRET = re.compile(rb"(\d{8,10}:[A-Za-z0-9_-]{30,}|ghp_[A-Za-z0-9]{30,}|github_
 
 
 def git(*a, check=True):
-    r = subprocess.run(["git", *a], cwd=REPO, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    r = subprocess.run(["git", *a], cwd=REPO, capture_output=True, text=True, encoding="utf-8", errors="replace", creationflags=NO_WINDOW)   # pythonw has no console: without this every git call flashes a window
     if check and r.returncode: raise RuntimeError(f"git {' '.join(a)}: {r.stderr.strip()[:300]}")
     return r
 
