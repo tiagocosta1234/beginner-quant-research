@@ -51,12 +51,14 @@ void Step()
   {
    string ev=guard.Check(); if(ev!="") Log(ev);
    datetime now=TimeCurrent(); int n=ArraySize(T_OPEN);
-   for(int i=0;i<nextOpen;i++)                       // scheduled closes
-      if(opened[i] && !done[i] && now>=T_CLOSE[i])
-        {
-         if(tk[i]>0 && PositionSelectByTicket(tk[i])) drv.PositionClose(tk[i]);
-         done[i]=true;
-        }
+   for(int k=PositionsTotal()-1;k>=0;k--)            // scheduled closes: by comment "R<i>", so a position can never be orphaned
+     {
+      ulong t=PositionGetTicket(k); if(t==0) continue;
+      string c=PositionGetString(POSITION_COMMENT);
+      if(StringLen(c)<2 || StringGetCharacter(c,0)!='R') continue;
+      int i=(int)StringToInteger(StringSubstr(c,1)); if(i<0 || i>=ArraySize(T_CLOSE)) continue;
+      if(now>=T_CLOSE[i]) { if(drv.PositionClose(t)) done[i]=true; }
+     }
    while(nextOpen<n && now>=T_OPEN[nextOpen])        // scheduled opens
      {
       int i=nextOpen; nextOpen++;

@@ -1,0 +1,5 @@
+# PREREG - the session battery on the 28 FX pairs (the trader 2026-10-14: "(original wording omitted)"), written before the run
+Same 11 rules, trade construction, windows, costs and pass test as PREREG_HITRATE.md / PREREG_MULTI.md (MT5 broker server feed, bid/ask M1, 2021-12..2025-12, SEALED 2026 untouched): 28 FX pairs x 11 rules x w {0.20, 0.35} = 616 cells.
+Pass for a cell: mean R > 0 in A and B, VAL mean R >= +0.15, VAL n >= 150, VAL t >= the Bonferroni level for 616 cells (z >= 3.78 one-sided at 0.05) and above the maximum VAL t of 2 placebo worlds (random side per trade).
+Also reported: the pair-by-pair breadth of the best rule (does an edge show up on many pairs at once, the thing a multi-pair daily system needs) and what a rule with that hit rate would deliver as a share of days at +2,000 (cannot exceed about the hit rate among decided trades times the share of days it trades).
+Caveat written now: a target of 70% of ALL business days at +2,000 needs a daily Sharpe near 9 (see the answer given with this registration); this run tests whether any FX session rule even reaches the break-even hit rate (42.9%) robustly.
