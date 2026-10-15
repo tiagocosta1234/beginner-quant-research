@@ -1,0 +1,27 @@
+B CAUSAL: 32789 trades on 1513 days, 21.7 trades a day; mean -0.052 R a trade; by year R a trade: {2022: 0.02, 2023: -0.063, 2024: -0.045, 2025: -0.097, 2026: -0.067}; daily net R by year: {2022: 119.6, 2023: -426.0, 2024: -314.1, 2025: -700.0, 2026: -384.6}
+
+235 cycle starts 2022-03..2026-08 (every 5th business day). P(pass) / P(breach) within 30 and 60 calendar days and by 2026-10-02:
+  $100 a trade, optimistic : 30d pass  2.6% breach 37.4% | 60d pass  3.8% breach 72.8% | ever pass  6.8% breach 93.2% running  0.0% | median days to pass 49.0
+  $100 a trade, pessimistic: 30d pass  2.6% breach 56.6% | 60d pass  3.8% breach 80.9% | ever pass  4.7% breach 95.3% running  0.0% | median days to pass 20.0
+  $200 a trade, optimistic : 30d pass  2.1% breach 94.9% | 60d pass  2.1% breach 97.9% | ever pass  2.1% breach 97.9% running  0.0% | median days to pass 12.0
+  $200 a trade, pessimistic: 30d pass  0.0% breach 100.0% | 60d pass  0.0% breach 100.0% | ever pass  0.0% breach 100.0% running  0.0% | median days to pass nan
+  $300 a trade, optimistic : 30d pass  2.1% breach 97.9% | 60d pass  2.1% breach 97.9% | ever pass  2.1% breach 97.9% running  0.0% | median days to pass 8.0
+  $300 a trade, pessimistic: 30d pass  0.0% breach 100.0% | 60d pass  0.0% breach 100.0% | ever pass  0.0% breach 100.0% running  0.0% | median days to pass nan
+
+  by start year, $200 a trade (pass / breach, ever; optimistic | pessimistic):
+   2022: 2% / 98% | 0% / 100%  (44 starts)
+   2023: 0% / 100% | 0% / 100%  (52 starts)
+   2024: 4% / 96% | 0% / 100%  (53 starts)
+   2025: 0% / 100% | 0% / 100%  (52 starts)
+   2026: 6% / 94% | 0% / 100%  (34 starts)
+
+A IN-SAMPLE (the table's 46 rules, 2026-07-03..10-02): 1906 trades, +541.6 R in total, 21.4 trades a day, worst day -16.8 R (losers only -23.1 R)
+  $100 a trade, optimistic : PASS after 18 days (worst day $-1,554)
+  $100 a trade, pessimistic: PASS after 18 days (worst day $-2,097)
+  $200 a trade, optimistic : BREACH after 7 days (worst day $-3,108)
+  $200 a trade, pessimistic: BREACH after 3 days (worst day $-2,983)
+  $300 a trade, optimistic : BREACH after 7 days (worst day $-4,662)
+  $300 a trade, pessimistic: BREACH after 0 days (worst day $-3,000)
+  causal version over the same months, $100, optimistic: BREACH after 7 days; net -224.8 R
+  causal version over the same months, $200, optimistic: BREACH after 7 days; net -224.8 R
+  causal version over the same months, $300, optimistic: BREACH after 4 days; net -224.8 R

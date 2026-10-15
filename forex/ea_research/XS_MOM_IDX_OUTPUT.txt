@@ -1,0 +1,10 @@
+C1 OOT: days 237, mean +10.5/day per 100k gross, t +0.54, Sharpe +0.55, maxDD -5897
+C1 DEV: days 774, mean -10.1/day per 100k gross, t -0.83, Sharpe -0.47, maxDD -12053
+C1 VAL: days 258, mean -16.7/day per 100k gross, t -0.93, Sharpe -0.92, maxDD -10071
+C1 DEV+VAL: t -1.16 Sharpe -0.57 (bar 1.96)
+C2 OOT: days 425, mean +1.6/day per 100k gross, t +0.09, Sharpe +0.07, maxDD -6041
+C2 DEV: days 774, mean -13.1/day per 100k gross, t -1.10, Sharpe -0.63, maxDD -14553
+C2 VAL: days 258, mean -2.4/day per 100k gross, t -0.13, Sharpe -0.13, maxDD -7155
+C2 DEV+VAL: t -1.03 Sharpe -0.51 (bar 1.96)
+C1 daily correlation with D2 (2022-25): +0.155
+C2 daily correlation with D2 (2022-25): +0.126

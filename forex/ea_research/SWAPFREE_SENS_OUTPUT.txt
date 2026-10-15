@@ -1,0 +1,11 @@
+D2 registered          OOT  +24.5 | DEV  +30.2 | VAL  +87.5 | HOLD  +50.6 | DEV+VAL t +2.42 | Sharpe DEV +0.87 VAL +2.00 HOLD +0.91
+SMA 100                OOT  +49.5 | DEV  +20.7 | VAL  +88.0 | HOLD  +53.3 | DEV+VAL t +2.13 | Sharpe DEV +0.61 VAL +2.20 HOLD +1.04
+SMA 150                OOT  +39.7 | DEV  +26.0 | VAL  +80.7 | HOLD  +55.6 | DEV+VAL t +2.25 | Sharpe DEV +0.77 VAL +1.99 HOLD +1.04
+SMA 250                OOT  +20.1 | DEV  +27.2 | VAL  +86.2 | HOLD  +54.2 | DEV+VAL t +2.29 | Sharpe DEV +0.79 VAL +1.97 HOLD +0.92
+vol window 20          OOT  +25.7 | DEV  +34.0 | VAL  +89.3 | HOLD  +48.3 | DEV+VAL t +2.71 | Sharpe DEV +1.01 VAL +2.17 HOLD +0.92
+vol window 40          OOT  +24.7 | DEV  +29.3 | VAL  +88.8 | HOLD  +54.2 | DEV+VAL t +2.43 | Sharpe DEV +0.86 VAL +2.03 HOLD +1.03
+vol window 120         OOT  +23.5 | DEV  +30.4 | VAL  +97.8 | HOLD  +50.0 | DEV+VAL t +2.55 | Sharpe DEV +0.85 VAL +2.32 HOLD +0.88
+decide Wed             OOT  +26.6 | DEV  +28.3 | VAL  +77.7 | HOLD  +45.6 | DEV+VAL t +2.23 | Sharpe DEV +0.80 VAL +1.88 HOLD +0.84
+decide Fri             OOT  +28.5 | DEV  +33.1 | VAL  +90.5 | HOLD  +52.4 | DEV+VAL t +2.63 | Sharpe DEV +0.97 VAL +2.12 HOLD +0.96
+decide 16:00 server    OOT  +26.0 | DEV  +29.0 | VAL  +88.3 | HOLD  +51.6 | DEV+VAL t +2.39 | Sharpe DEV +0.83 VAL +2.08 HOLD +0.93
+decide 20:00 server    OOT  +23.6 | DEV  +31.4 | VAL  +90.9 | HOLD  +52.2 | DEV+VAL t +2.51 | Sharpe DEV +0.90 VAL +2.07 HOLD +0.94

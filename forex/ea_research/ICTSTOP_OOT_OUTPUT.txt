@@ -1,0 +1,8 @@
+TOUCH BE+TRAIL none  n 491 mean +0.142 R t +2.26 by year {2020: np.float64(0.157), 2021: np.float64(0.125)}  (spread 0.0010000000000047748)
+TOUCH BOX 1R         n 491 mean +0.077 R t +1.86 by year {2020: np.float64(0.096), 2021: np.float64(0.056)}  (spread 0.0010000000000047748)
+CTRL  BE+TRAIL none  n 495 mean -0.057 R t -1.66 by year {2020: np.float64(-0.075), 2021: np.float64(-0.038)}  (spread 0.0010000000000047748)
+CTRL  BOX 1R         n 495 mean -0.045 R t -1.44 by year {2020: np.float64(-0.032), 2021: np.float64(-0.059)}  (spread 0.0010000000000047748)
+TOUCH BE+TRAIL none  n 491 mean +0.097 R t +1.55 by year {2020: np.float64(0.124), 2021: np.float64(0.067)}  (pre-registered spread: MT5 broker NY median 2025-10..2026-10 = 0.0060)
+TOUCH BOX 1R         n 491 mean +0.024 R t +0.58 by year {2020: np.float64(0.056), 2021: np.float64(-0.012)}  (pre-registered spread: MT5 broker NY median 2025-10..2026-10 = 0.0060)
+CTRL  BE+TRAIL none  n 495 mean -0.103 R t -3.00 by year {2020: np.float64(-0.117), 2021: np.float64(-0.088)}  (pre-registered spread: MT5 broker NY median 2025-10..2026-10 = 0.0060)
+CTRL  BOX 1R         n 495 mean -0.089 R t -2.83 by year {2020: np.float64(-0.08), 2021: np.float64(-0.098)}  (pre-registered spread: MT5 broker NY median 2025-10..2026-10 = 0.0060)

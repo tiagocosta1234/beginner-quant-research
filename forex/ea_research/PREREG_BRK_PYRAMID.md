@@ -1,0 +1,9 @@
+# Pre-registration BRK-PYRAMID (breakout day, round 29; written 2026-10-15 13:53 local, local clock, before any code or result)
+Question (the trader: "we need more levels to open up lots"): does adding to a winning breakout (pyramiding) turn the breakout's small information into money? Pyramiding keeps the worst loss at about 1R (each add raises the common stop) and doubles or triples the size only on trades already in profit, so it pays only if moves that reach +1R / +2R continue more often than they reverse.
+Entries = round 1's session breakouts on 46 markets (30-minute box, one-cancels-other stop orders until 3 h after the open, stop at the other side of the box, R = entry - stop >= 2 spreads), hold to the session close (capped 22:55 server). Fill-minute rule as in `brk_hours.hold_fill` (a minute stops a position opened inside it only if it closes beyond the stop); adds from the minute after the entry; if a stop and an add are touched in the same minute the stop counts first.
+- **P0:** one unit (baseline, = X4 with the fill-minute rule).
+- **P1:** one add of the same size by stop order at entry + 1R (fills at max(level, ask open)); from then on the stop of both units is the first entry (breakeven of unit 1).
+- **P2:** as P1 plus a third unit at entry + 2R; the common stop then moves to entry + 1R.
+Result = the sum of the units' net P&L in units of the first R. Same rules on random entries (control).
+Gates (DEV 2022-24, VAL 2025, 2026 non-clean), per cell P1 / P2: 1. DEV mean >= +0.05 R and t >= 2.24 (daily NW lag 1; Bonferroni 2). 2. VAL mean > 0 and t >= 1.65. 3. Beats P0 by >= 0.05 R in DEV and in VAL.
+Honest prior: about 5% (round 9: 94% of breakouts return into the box within an hour; the best price comes about 4 h later, so trades reaching +1R may continue, but every add pays the spread again).

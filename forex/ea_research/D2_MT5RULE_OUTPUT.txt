@@ -1,0 +1,33 @@
+181 rolling starts, horizon 185 business days; cells pass% / breach% by ['30 Oct', '22 Dec', '31 Mar 27', '30 Jun 27']
+HOLD  G 50k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.0 | 31 Mar 27 0.0/0.0 | 30 Jun 27 6.6/0.0
+DAILY G 50k: mean +9.4/day, guard days 4, worst -1524, by year {2022: -5347.0, 2023: 5453.0, 2024: 1852.0, 2025: 5906.0, 2026: 3674.0}
+DAILY G 50k boot 2022-25: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.7 | 31 Mar 27 0.1/4.7 | 30 Jun 27 1.2/8.6
+DAILY G 50k boot 2022-26: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.8 | 31 Mar 27 0.2/5.2 | 30 Jun 27 2.1/9.2
+DAILY G 50k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.6 | 31 Mar 27 0.0/0.6 | 30 Jun 27 0.0/0.6
+HOLD  G 75k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.0 | 31 Mar 27 11.0/0.0 | 30 Jun 27 33.7/0.0
+DAILY G 75k: mean +11.9/day, guard days 21, worst -1553, by year {2022: -9151.0, 2023: 8179.0, 2024: 4577.0, 2025: 8107.0, 2026: 2886.0}
+DAILY G 75k boot 2022-25: 30 Oct 0.0/0.1 | 22 Dec 0.0/4.3 | 31 Mar 27 3.3/14.7 | 30 Jun 27 10.9/21.3
+DAILY G 75k boot 2022-26: 30 Oct 0.0/0.3 | 22 Dec 0.1/6.3 | 31 Mar 27 4.7/18.2 | 30 Jun 27 13.6/25.5
+DAILY G 75k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/2.2 | 31 Mar 27 0.6/7.2 | 30 Jun 27 2.8/7.2
+HOLD  G 100k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/1.1 | 31 Mar 27 29.8/3.3 | 30 Jun 27 59.7/4.4
+DAILY G 100k: mean +14.2/day, guard days 44, worst -1747, by year {2022: -11786.0, 2023: 10667.0, 2024: 8760.0, 2025: 9106.0, 2026: 718.0}
+DAILY G 100k boot 2022-25: 30 Oct 0.0/0.7 | 22 Dec 0.5/10.7 | 31 Mar 27 11.9/25.5 | 30 Jun 27 24.4/32.4
+DAILY G 100k boot 2022-26: 30 Oct 0.0/1.3 | 22 Dec 0.9/15.0 | 31 Mar 27 12.9/31.5 | 30 Jun 27 24.4/39.4
+DAILY G 100k rolling starts: 30 Oct 0.0/1.1 | 22 Dec 0.0/6.1 | 31 Mar 27 11.0/13.8 | 30 Jun 27 25.4/14.4
+HOLD  G 150k rolling starts: 30 Oct 0.0/1.7 | 22 Dec 2.2/12.2 | 31 Mar 27 27.6/25.4 | 30 Jun 27 49.7/35.4
+DAILY G 150k: mean +9.9/day, guard days 141, worst -1705, by year {2022: -19735.0, 2023: 13941.0, 2024: 13736.0, 2025: 8390.0, 2026: -4147.0}
+DAILY G 150k boot 2022-25: 30 Oct 0.0/4.1 | 22 Dec 6.0/27.4 | 31 Mar 27 25.4/45.5 | 30 Jun 27 34.5/51.9
+DAILY G 150k boot 2022-26: 30 Oct 0.0/5.8 | 22 Dec 6.2/33.5 | 31 Mar 27 23.2/52.9 | 30 Jun 27 30.4/59.5
+DAILY G 150k rolling starts: 30 Oct 0.0/5.0 | 22 Dec 4.4/20.4 | 31 Mar 27 33.7/37.0 | 30 Jun 27 42.5/47.5
+
+Sensitivity (descriptive, after the registered run): HOLD WITHOUT the profit skim (profits realised only by the weekly band trims, filter exits, the guard and the pass lock)
+HOLD no-skim G 75k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.0 | 31 Mar 27 0.0/0.0 | 30 Jun 27 0.0/0.0
+HOLD no-skim G 100k rolling starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/3.3 | 31 Mar 27 0.0/5.5 | 30 Jun 27 0.0/9.9
+HOLD no-skim G 150k rolling starts: 30 Oct 0.0/1.1 | 22 Dec 0.0/13.3 | 31 Mar 27 0.0/26.5 | 30 Jun 27 1.7/47.0
+By start year (HOLD with skim, G 100k): 2022 starts 3 pass / 4 breach / 45 neither; 2023 29 / 3 / 20; 2024 50 / 1 / 0; 2025 26 / 0 / 0 (horizon 185 business days)
+
+Sensitivity (descriptive): HOLD skim threshold, G 100k, rolling starts
+skim 1200: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.6 | 31 Mar 27 27.6/1.1 | 30 Jun 27 59.1/2.2
+skim 1500: 30 Oct 0.0/0.0 | 22 Dec 0.0/1.1 | 31 Mar 27 22.1/3.3 | 30 Jun 27 50.3/4.4
+skim 1800: 30 Oct 0.0/0.0 | 22 Dec 0.0/1.1 | 31 Mar 27 29.8/3.3 | 30 Jun 27 59.7/4.4
+skim 1950: 30 Oct 0.0/0.0 | 22 Dec 0.0/1.1 | 31 Mar 27 24.9/3.3 | 30 Jun 27 55.8/4.4

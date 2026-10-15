@@ -1,0 +1,13 @@
+# ORB11_ICTSTOP_RESULT - ICT-style stops on the trader's 30-minute London / NY ORB (2026-10-15, local clock 18:06)
+Pre-registrations PREREG_ORB11_ICTSTOP.md and PREREG_ICTSTOP_OOT.md. Code orb11_ictstop.py; output ORB11_ICTSTOP_OUTPUT.txt, ICTSTOP_OOT_OUTPUT.txt; tables D:/finance/si_ledgers/ORB11_ICTSTOP_*. Engine checks: truncation identical (2,568 trades), TOUCH BOX 1R = ORB11 exactly (+0.0434 on EURUSD).
+
+## Verdict: no ICT stop fixes it. 0 of 528 pools, 0 of 4,048 cells; the one lead fails its 2020-21 check at today's spread
+Stops: box (baseline), equilibrium (box 50%), last confirmed M5 swing, order block (last opposite M5 candle), FVG (candle-1 extreme; FVG required), structure trail, breakeven after +1R then structure trail; targets 1R / 2R / 3R / none; entries touch and 5-minute close; 46 symbols, MT5 broker bid/ask.
+1. **Tighter ICT stops are worse.** All symbols 2022-24, touch entry, no target: box -0.049 (London) / -0.027 (NY) R; swing -0.054 / -0.040; FVG -0.067 / -0.050; order block -0.077 / -0.074; equilibrium -0.099 / -0.125. The equilibrium and order-block stops are about half the box (9.7 and 11.1 spreads against 16.8), so the spread takes twice the share of R.
+2. **Trailing on structure does not help:** TRAIL -0.067 / -0.054, BE+TRAIL -0.056 / -0.031 (box no-target -0.049 / -0.027). Random entries with the same stops are 0.03-0.09 R worse, the same breakout-vs-random gap as in every other test.
+3. **Best pools:** NY indices touch + box stop + no target +0.061 / +0.071 / -0.103 (t 2.02, bar 3.69): the same 2022-25 NY index effect that dies in 2026.
+4. **Cells:** highest t 3.79, USDJPY NY touch + BE+TRAIL (+0.203 / +0.065 / +0.045 R), above the random ceiling 2.53 but below the bar 4.22. Walk-forward (best of 44 per cell on DEV): DEV +0.042 -> 2025 -0.065 -> 2026 -0.101; FVG chosen most often (49 of 92: small samples).
+5. **Out of time, USDJPY NY touch + BE+TRAIL, HistData 2020-21 (one look):** at the pre-registered spread (MT5 broker NY median 2025-10..2026-10, 0.6 pip) **+0.097 R, t 1.55, 2020 +0.124, 2021 +0.067: FAIL** (gate t >= 1.96); random entries -0.103 R on the same data. A first run by mistake used MT5 broker's 2022 spread (0.1 pip, the `presample.mt5_floor` helper): +0.142 R, t 2.26. Reported, not used.
+
+## Reading for the trader
+ICT stops do not create an edge: the swing, order-block, FVG and equilibrium stops are tighter than the box and pay more spread per R; trailing on structure only reshapes the same small edge. The one thing that keeps reappearing is USDJPY breakouts (London earlier today, New York here): positive in every period 2020-2026 at about +0.1 R a trade and above random entries, but never significant at today's MT5 broker spread. It is a watch item, not a strategy.

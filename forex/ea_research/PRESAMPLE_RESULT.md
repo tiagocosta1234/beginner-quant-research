@@ -1,0 +1,14 @@
+# PRESAMPLE result (breakout day round 24, run 2026-10-15 14:14, written 14:16, local clock): the USDJPY London breakout PASSES its out-of-time check; the Nasdaq trend leg FAILS
+Pre-registration `PREREG_PRESAMPLE.md` (written before any download; A1 bid-only + MT5 broker spread; A2 source switched to HistData before the data was read), engine `presample.py`, rows `D:\finance\si_ledgers\PRESAMPLE.parquet`. Period 2020-01-02 .. 2021-11-30, never used by any test; HistData 1-minute bid bars, ask = bid + MT5 broker's 2022 median session spread (USDJPY 0.0010, NSDQ 1.00). One look.
+| lead | trades | mean net R | t | 2020 / 2021 | random control | gates | verdict |
+|---|---|---|---|---|---|---|---|
+| L1 USDJPY London breakout (box 08:00-08:30, stop orders to 11:00, stop other side, hold to 17:00 London) | 494 | **+0.260** | **+2.07** | +0.362 / +0.147 | -0.043 | YY | **PASS** |
+| L2 card Nasdaq leg, daily-trend direction only (box 09:30-10:00 NY, half-box stop, 2R, exit 15:30) | 247 | +0.032 | +0.35 | +0.055 / +0.009 | +0.003 | nY | FAIL |
+Context: the Nasdaq card leg without the trend filter -0.014 (t -0.2); the Nasdaq session breakout with the box stop held to the close +0.153 (t 1.4).
+
+**Bug hunt (`presample_xcheck.py`, diagnostic):** the same L1 engine on HistData 2022-24 vs the MT5 broker-data breakouts on the same days: 2022 +0.355 vs +0.409, 2023 -0.096 vs -0.154, 2024 +0.070 vs +0.185; on 756 common days HistData +0.120 vs MT5 broker +0.151 (same side 68.5% of days, R correlation +0.57: the feeds differ minute by minute but agree in aggregate, HistData slightly less favourable). No sign that the engine or the new data inflate the result.
+
+**The USDJPY London breakout, 2020-2026 (HistData 2020-21 + MT5 broker 2022-26, 1,702 trades):** mean +0.170 R a trade (pooled t +2.87, of which only 2020-21 is out of sample, t +2.07), median -1 R, 30% winners averaging +2.83 R, losses -0.97 R, 95th percentile +4.6 R; by year +0.362 (2020), +0.147, +0.409, **-0.154 (2023)**, +0.185, +0.108, +0.114 (2026, to 2 Oct): 6 of 7 years positive; shorts +0.224, longs +0.122. Longest losing run 18 trades, worst drawdown -81 R (2023).
+Reading: this is the first lead of the whole breakout day (and of the MT5 broker lab outside the gold pair) that survived a pre-registered out-of-time test. It is weak (t about 2 per two-year block), it was picked from 46 markets, and its drawdowns are long (-81 R): an edge to keep testing forward and to size small, not a way to pass by 30 Oct. The Nasdaq trend leg of the card does not survive and should not carry money.
+
+**Cost check (14:23):** the test used MT5 broker's 2022 USDJPY spread (0.001, 0.1 pip); MT5 broker's spread has been 0.6-0.7 pip since 2024. At today's spread the 2020-21 result is +0.204 R (t 1.64, 2020 +0.289, 2021 +0.111): still positive in both years, no longer significant. Details in `PRESAMPLE2_RESULT.md`.

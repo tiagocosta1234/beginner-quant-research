@@ -1,0 +1,16 @@
+REF_D2 OOT: mean +37.6/day per 100k, t +1.44, Sharpe +1.02, maxDD -7153, worst low -3392, by market {'SP': 7699, 'NSDQ': 6336, 'DAX': 1241, 'NIKKEI': 4791, 'XAUUSD': -1282}
+REF_D2 DEV: mean +29.1/day per 100k, t +1.59, Sharpe +0.91, maxDD -10826, worst low -3549, by market {'SP': 4473, 'NSDQ': 3569, 'DAX': 4447, 'NIKKEI': 1320, 'XAUUSD': 8724}
+REF_D2 VAL: mean +81.8/day per 100k, t +2.00, Sharpe +1.98, maxDD -7277, worst low -3550, by market {'SP': 2385, 'NSDQ': 2303, 'DAX': 3868, 'NIKKEI': 3431, 'XAUUSD': 9108}
+REF_D2 DEV+VAL: t +2.47 Sharpe +1.22 (bar t >= 2.13; Sharpe above REF_D2 in DEV and VAL)
+X1 OOT: mean +83.9/day per 100k, t +2.58, Sharpe +1.83, maxDD -7935, worst low -4163, by market {'SP': 6943, 'NSDQ': 5789, 'DAX': 1050, 'NIKKEI': 4234, 'XAUUSD': -1418, 'BTCUSD': 11588, 'ETHUSD': 13785}
+X1 DEV: mean +33.5/day per 100k, t +1.66, Sharpe +0.94, maxDD -11330, worst low -5922, by market {'SP': 3842, 'NSDQ': 2972, 'DAX': 3884, 'NIKKEI': 1377, 'XAUUSD': 7510, 'BTCUSD': 6004, 'ETHUSD': 537}
+X1 VAL: mean +72.8/day per 100k, t +1.73, Sharpe +1.70, maxDD -7641, worst low -3992, by market {'SP': 2136, 'NSDQ': 1933, 'DAX': 3401, 'NIKKEI': 2985, 'XAUUSD': 8070, 'BTCUSD': 274, 'ETHUSD': 199}
+X1 DEV+VAL: t +2.35 Sharpe +1.16 (bar t >= 2.13; Sharpe above REF_D2 in DEV and VAL)
+X2 OOT: mean +43.4/day per 100k, t +1.66, Sharpe +1.18, maxDD -6653, worst low -3253, by market {'SP': 5104, 'NSDQ': 4186, 'DAX': 680, 'NIKKEI': 3285, 'XAUUSD': -697, 'XAGUSD': 2832, 'DOW': 3838, 'ASX': 2423}
+X2 DEV: mean +14.5/day per 100k, t +0.83, Sharpe +0.47, maxDD -11936, worst low -3781, by market {'SP': 2776, 'NSDQ': 2264, 'DAX': 2737, 'NIKKEI': 623, 'XAUUSD': 5273, 'XAGUSD': -1757, 'DOW': 1331, 'ASX': -2026}
+X2 VAL: mean +81.3/day per 100k, t +2.35, Sharpe +2.32, maxDD -5901, worst low -2686, by market {'SP': 1418, 'NSDQ': 1263, 'DAX': 2804, 'NIKKEI': 2030, 'XAUUSD': 5864, 'XAGUSD': 5905, 'DOW': 838, 'ASX': 862}
+X2 DEV+VAL: t +1.99 Sharpe +0.98 (bar t >= 2.13; Sharpe above REF_D2 in DEV and VAL)
+X3 OOT: mean +74.1/day per 100k, t +2.54, Sharpe +1.81, maxDD -7247, worst low -3659, by market {'SP': 4669, 'NSDQ': 3809, 'DAX': 726, 'NIKKEI': 3180, 'XAUUSD': -784, 'BTCUSD': 7872, 'ETHUSD': 9516, 'XAGUSD': 2325, 'DOW': 3541, 'ASX': 2198}
+X3 DEV: mean +18.7/day per 100k, t +1.03, Sharpe +0.59, maxDD -12946, worst low -4919, by market {'SP': 2540, 'NSDQ': 2071, 'DAX': 2511, 'NIKKEI': 733, 'XAUUSD': 4876, 'BTCUSD': 3716, 'ETHUSD': 615, 'XAGUSD': -1614, 'DOW': 1056, 'ASX': -1914}
+X3 VAL: mean +75.2/day per 100k, t +2.12, Sharpe +2.08, maxDD -6274, worst low -3160, by market {'SP': 1349, 'NSDQ': 1109, 'DAX': 2586, 'NIKKEI': 1886, 'XAUUSD': 5441, 'BTCUSD': 168, 'ETHUSD': 137, 'XAGUSD': 5445, 'DOW': 762, 'ASX': 757}
+X3 DEV+VAL: t +2.02 Sharpe +0.99 (bar t >= 2.13; Sharpe above REF_D2 in DEV and VAL)

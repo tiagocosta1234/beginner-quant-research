@@ -1,0 +1,16 @@
+G1 OOT: Mondays 98, trades 613, mean +1.08 bp net, t +0.58
+G1 DEV: Mondays 153, trades 825, mean -0.85 bp net, t -0.53
+G1 VAL: Mondays 52, trades 307, mean -0.29 bp net, t -0.16
+G1 DEV+VAL: mean -0.71 bp, t -0.55 (bar 2.50)
+G2 OOT: Mondays 98, trades 613, mean +3.31 bp net, t +1.43
+G2 DEV: Mondays 153, trades 825, mean -2.01 bp net, t -0.94
+G2 VAL: Mondays 52, trades 307, mean +4.50 bp net, t +1.33
+G2 DEV+VAL: mean -0.36 bp, t -0.20 (bar 2.50)
+G3 OOT: Mondays 38, trades 136, mean +9.94 bp net, t +0.69
+G3 DEV: Mondays 153, trades 622, mean -3.34 bp net, t -0.89
+G3 VAL: Mondays 52, trades 220, mean -10.36 bp net, t -1.60
+G3 DEV+VAL: mean -5.12 bp, t -1.58 (bar 2.50)
+G4 OOT: Mondays 38, trades 138, mean +10.03 bp net, t +0.53
+G4 DEV: Mondays 153, trades 622, mean -4.64 bp net, t -1.13
+G4 VAL: Mondays 52, trades 220, mean -13.21 bp net, t -1.37
+G4 DEV+VAL: mean -6.81 bp, t -1.74 (bar 2.50)

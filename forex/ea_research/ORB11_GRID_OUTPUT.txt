@@ -1,0 +1,57 @@
+117799 breakout trades, 119491 random entries, 99 exits each
+
+1. POOLED best exit chosen on DEV 2022-24 (R per trade), then VAL 2025 / 2026; random-entry grid alongside
+  ('LON',)                 breakout best SL3_TP10        DEV -0.113 -> VAL -0.049, 2026 -0.041 | random best SL3_TP2         DEV -0.131 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('NY',)                  breakout best SL3_TPnone      DEV -0.065 -> VAL -0.020, 2026 -0.062 | random best SL3_TP1.5       DEV -0.096 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('LON', 'crypto')        breakout best SL3_TP0.5       DEV -0.558 -> VAL -0.136, 2026 -0.303 | random best SL3_TPnone      DEV -0.594 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('LON', 'energy')        breakout best SL3_TP0.25      DEV -0.043 -> VAL -0.074, 2026 -0.050 | random best SL3_TP1.5       DEV -0.033 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('LON', 'fx')            breakout best SL3_TP10        DEV -0.007 -> VAL -0.034, 2026 +0.007 | random best SL3_TP10        DEV -0.015 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('LON', 'index')         breakout best SL1.25_TPnone   DEV +0.013 -> VAL -0.020, 2026 +0.015 | random best SL3_TP1         DEV -0.023 | exits > 0 on DEV: breakout 12/99, random 0/99
+  ('LON', 'metal')         breakout best SL3_TP0.75      DEV -0.017 -> VAL -0.019, 2026 +0.018 | random best SL3_TP1.5       DEV -0.034 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('NY', 'crypto')         breakout best SL3_TPnone      DEV -0.339 -> VAL -0.074, 2026 -0.196 | random best SL3_TP1.5       DEV -0.403 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('NY', 'energy')         breakout best SL3_TP1         DEV -0.007 -> VAL -0.012, 2026 -0.049 | random best SL3_TP0.25      DEV -0.033 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('NY', 'fx')             breakout best SL3_TP1         DEV -0.003 -> VAL -0.009, 2026 -0.017 | random best SL3_TP0.5       DEV -0.019 | exits > 0 on DEV: breakout 0/99, random 0/99
+  ('NY', 'index')          breakout best SL0.75_TPnone   DEV +0.068 -> VAL +0.024, 2026 -0.108 | random best SL3_TP6         DEV -0.019 | exits > 0 on DEV: breakout 58/99, random 0/99
+  ('NY', 'metal')          breakout best SL1.25_TPnone   DEV +0.025 -> VAL -0.040, 2026 -0.111 | random best SL3_TP0.25      DEV -0.019 | exits > 0 on DEV: breakout 17/99, random 0/99
+
+2. PER CELL (symbol x session): best of 99 exits on DEV, then the same exit in VAL / 2026
+  ORB: 92 cells; DEV-best mean DEV -0.044 -> VAL -0.037 (positive 29), 2026 -0.064 (positive 30); positive in VAL AND 2026: 12
+  CTRL: 92 cells; DEV-best mean DEV -0.084 -> VAL -0.049 (positive 16), 2026 -0.091 (positive 9); positive in VAL AND 2026: 2
+
+3. Cells passing (t >= 4.4, > 0 in DEV, VAL, 2026, beats random): 0 of 9,108. Highest DEV+VAL t per cell:
+   mkt sess    max_t   exit_max_t  passing_exits
+  NSDQ   NY 3.286340   SL0.75_TP2              0
+USDJPY   NY 3.213678    SL2_TP0.5              0
+EURUSD   NY 3.183831      SL1_TP1              0
+    SP   NY 3.183726   SL0.75_TP4              0
+   DAX   NY 2.881997   SL0.75_TP3              0
+XAUUSD  LON 2.351476    SL2_TP0.5              0
+USDJPY  LON 2.288210 SL1.5_TPnone              0
+EURCAD   NY 2.230721    SL3_TP0.5              0
+GBPUSD  LON 2.204608    SL3_TP0.5              0
+USDCHF   NY 2.161271    SL2_TP0.5              0
+   the same statistic on RANDOM entries: highest 2.88, 95th percentile 0.90
+
+4. All symbols, both sessions, 2022-25, R per trade (rows = stop in box widths, columns = target):
+BREAKOUT
+          0.25R   0.5R  0.75R     1R   1.5R     2R     3R     4R     6R    10R   none
+SL 0.1B  -3.729 -3.719 -3.713 -3.707 -3.702 -3.699 -3.694 -3.692 -3.692 -3.691 -3.687
+SL 0.25B -1.347 -1.338 -1.333 -1.329 -1.322 -1.319 -1.313 -1.306 -1.298 -1.291 -1.281
+SL 0.5B  -0.583 -0.577 -0.572 -0.567 -0.559 -0.552 -0.545 -0.542 -0.540 -0.539 -0.529
+SL 0.75B -0.367 -0.360 -0.353 -0.349 -0.340 -0.337 -0.332 -0.331 -0.331 -0.324 -0.321
+SL 1B    -0.264 -0.257 -0.250 -0.245 -0.240 -0.236 -0.236 -0.237 -0.233 -0.228 -0.227
+SL 1.25B -0.210 -0.202 -0.198 -0.193 -0.192 -0.189 -0.191 -0.191 -0.185 -0.183 -0.181
+SL 1.5B  -0.173 -0.165 -0.161 -0.159 -0.156 -0.157 -0.158 -0.156 -0.152 -0.151 -0.149
+SL 2B    -0.128 -0.122 -0.120 -0.118 -0.119 -0.121 -0.118 -0.115 -0.114 -0.113 -0.112
+SL 3B    -0.084 -0.080 -0.079 -0.080 -0.081 -0.079 -0.077 -0.076 -0.076 -0.076 -0.075
+RANDOM ENTRY
+          0.25R   0.5R  0.75R     1R   1.5R     2R     3R     4R     6R    10R   none
+SL 0.1B  -2.972 -2.952 -2.942 -2.934 -2.924 -2.919 -2.916 -2.914 -2.915 -2.918 -2.923
+SL 0.25B -1.184 -1.179 -1.177 -1.176 -1.178 -1.178 -1.181 -1.176 -1.178 -1.181 -1.183
+SL 0.5B  -0.591 -0.590 -0.593 -0.594 -0.596 -0.595 -0.598 -0.597 -0.597 -0.597 -0.595
+SL 0.75B -0.392 -0.395 -0.398 -0.398 -0.397 -0.396 -0.396 -0.395 -0.395 -0.395 -0.395
+SL 1B    -0.294 -0.298 -0.299 -0.298 -0.299 -0.299 -0.296 -0.296 -0.294 -0.297 -0.296
+SL 1.25B -0.234 -0.238 -0.236 -0.236 -0.237 -0.235 -0.233 -0.232 -0.233 -0.232 -0.233
+SL 1.5B  -0.197 -0.199 -0.197 -0.197 -0.195 -0.194 -0.193 -0.191 -0.193 -0.192 -0.192
+SL 2B    -0.148 -0.146 -0.147 -0.146 -0.144 -0.144 -0.143 -0.143 -0.144 -0.144 -0.144
+SL 3B    -0.098 -0.097 -0.096 -0.095 -0.094 -0.093 -0.094 -0.094 -0.094 -0.094 -0.094

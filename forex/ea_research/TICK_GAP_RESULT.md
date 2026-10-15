@@ -1,0 +1,12 @@
+# How optimistic is the M1 engine? Session breakouts and random entries replayed on MT5 broker real ticks (2026-10-15 14:34, local clock; diagnostic)
+Scripts `tick_gap.py` (breakouts) and `tick_gap2.py` (round 1's random-entry controls), rows `D:/finance/si_ledgers/TICK_GAP.parquet`, `TICK_GAP_CTRL.parquet`. All 46 markets, MT5 broker ticks Oct 2025 - Oct 2026, fills at the first tick 300 ms after the trigger (stop orders: after the level is touched; random entries: after the minute starts; stops: after they are touched), session box / stop / exit as round 1, compared with the M1 engine on the same days and sides.
+| | trades | M1 engine | real ticks | gap |
+|---|---|---|---|---|
+| session breakouts | 11,631 | -0.042 R | -0.072 R | **-0.029** (median -0.007) |
+| random entries (controls) | 11,704 | -0.129 R | -0.162 R | **-0.033** |
+| breakout minus random ("information") | | +0.086 R | **+0.090 R** | |
+By class, breakouts (M1 -> ticks): FX -0.044 -> -0.077, indices +0.010 -> -0.011, metals +0.111 -> +0.067, energy -0.100 -> -0.120, crypto -0.097 -> -0.118; every one of the 46 markets is worse on ticks (by 0.01 to 0.09 R; most: EURCHF -0.087, GBPUSD -0.069, NZDUSD -0.061, XAUUSD -0.057, USDJPY -0.051). Information by class on ticks: metals +0.280, crypto +0.107, FX +0.098, indices +0.009, energy -0.028.
+Reading: (1) the M1 engine is optimistic by about 0.03 R a trade for these hold-to-close trades, for breakout and random entries alike (variable spread at the moment of the trade, spikes, latency, gaps through stops), so every absolute breakout result of the day is about 0.03 R too kind and the "no edge" conclusions are only stronger; (2) the small real information of breakouts over random entries survives real ticks unchanged (+0.09 R in this period), it is simply smaller than the costs. Earlier TICK_AUDIT (card legs, 896 trades) found the same direction ("ticks slightly worse").
+
+## Addendum 14:49: news flat on real ticks, all London-session markets (`tick_gap_news.py`)
+FX and metals session breakouts (08:00 London box, hold to 17:00), MT5 broker ticks Oct 2025 - Oct 2026, 7,940 trades (683 on CPI / NFP days): holding to 17:00 -0.073 R a trade, closing at 13:25 London on CPI / NFP days -0.055 R; on the release days alone -0.376 -> -0.168 R. FX -0.082 -> -0.065, metals +0.046 -> +0.088. Holding a breakout through a US release costs about 0.2 R on those days in real execution; the bars cannot show it. A cost rule, not an edge (still negative overall).

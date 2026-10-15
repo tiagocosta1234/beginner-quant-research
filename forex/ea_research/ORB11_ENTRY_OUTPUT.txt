@@ -1,0 +1,105 @@
+557823 rule trades, 108226 random entries; 1:1 win rate by trigger: {'C15': 0.463, 'C5': 0.464, 'FADE': 0.386, 'HOLD15': 0.472, 'RETEST': 0.46, 'TOUCH': 0.466}
+
+1. LON, exit 1:1, all symbols, DEV 2022-24 R per trade (rows trigger, columns filter):
+filt       F0  TREND   WIDE  SQUEEZE  BOXDIR  TREND+WIDE
+trig                                                    
+TOUCH  -0.067 -0.084 -0.003   -0.067  -0.078      -0.032
+C5     -0.072 -0.083 -0.017   -0.077  -0.079      -0.039
+C15    -0.069 -0.070 -0.004   -0.073  -0.074      -0.020
+HOLD15 -0.056 -0.061 -0.000   -0.045  -0.069      -0.021
+RETEST -0.078 -0.095 -0.019   -0.088  -0.085      -0.054
+FADE   -0.233 -0.236 -0.136   -0.237  -0.238      -0.151
+
+1. LON, exit hold, all symbols, DEV 2022-24 R per trade (rows trigger, columns filter):
+filt       F0  TREND   WIDE  SQUEEZE  BOXDIR  TREND+WIDE
+trig                                                    
+TOUCH  -0.049 -0.051  0.052   -0.018  -0.064       0.057
+C5     -0.058 -0.045  0.024   -0.038  -0.071       0.046
+C15    -0.058 -0.046  0.026   -0.041  -0.068       0.045
+HOLD15 -0.040 -0.033  0.040    0.000  -0.050       0.042
+RETEST -0.062 -0.055  0.030   -0.030  -0.073       0.040
+FADE   -0.187 -0.170 -0.109   -0.194  -0.197      -0.086
+   LON best 6 by DEV+VAL daily t:
+  trig       filt exit    n    DEV   VAL    Y26    rnd     t  t_rnd
+ TOUCH       WIDE hold 9745  0.052 0.105  0.034  0.014 1.837 -0.102
+RETEST       WIDE hold 9306  0.030 0.043  0.015  0.012 1.622 -0.192
+ TOUCH       WIDE  1:1 9745 -0.003 0.092  0.021 -0.015 1.600 -1.671
+ TOUCH TREND+WIDE hold 4695  0.057 0.137 -0.112  0.030 1.488  1.266
+RETEST TREND+WIDE hold 4480  0.040 0.052 -0.119  0.028 1.095  1.004
+   C15       WIDE hold 9700  0.026 0.048  0.042  0.013 1.081 -0.100
+
+1. NY, exit 1:1, all symbols, DEV 2022-24 R per trade (rows trigger, columns filter):
+filt       F0  TREND   WIDE  SQUEEZE  BOXDIR  TREND+WIDE
+trig                                                    
+TOUCH  -0.048 -0.041  0.034   -0.051  -0.049       0.037
+C5     -0.051 -0.044  0.018   -0.061  -0.045       0.025
+C15    -0.044 -0.036  0.020   -0.048  -0.039       0.027
+HOLD15 -0.033 -0.017  0.021   -0.032  -0.035       0.024
+RETEST -0.061 -0.054  0.004   -0.075  -0.062       0.007
+FADE   -0.202 -0.200 -0.102   -0.219  -0.213      -0.109
+
+1. NY, exit hold, all symbols, DEV 2022-24 R per trade (rows trigger, columns filter):
+filt       F0  TREND   WIDE  SQUEEZE  BOXDIR  TREND+WIDE
+trig                                                    
+TOUCH  -0.027 -0.011  0.053   -0.027  -0.028       0.056
+C5     -0.041 -0.029  0.022   -0.063  -0.033       0.027
+C15    -0.038 -0.027  0.023   -0.053  -0.032       0.032
+HOLD15 -0.024 -0.001  0.024   -0.018  -0.028       0.029
+RETEST -0.043 -0.029  0.025   -0.070  -0.039       0.035
+FADE   -0.167 -0.194 -0.004   -0.193  -0.241      -0.090
+   NY best 6 by DEV+VAL daily t:
+  trig       filt exit     n   DEV    VAL    Y26    rnd     t  t_rnd
+ TOUCH TREND+WIDE hold  6737 0.056  0.001 -0.004 -0.029 2.391 -1.215
+ TOUCH       WIDE hold 13744 0.053 -0.003 -0.008 -0.018 2.360 -1.727
+ TOUCH       WIDE  1:1 13744 0.034  0.004  0.034 -0.015 2.159 -2.455
+ TOUCH TREND+WIDE  1:1  6737 0.037 -0.004  0.020 -0.021 1.624 -1.696
+RETEST TREND+WIDE hold  6390 0.035 -0.038  0.016 -0.024 1.284 -0.400
+RETEST       WIDE hold 13000 0.025 -0.040  0.005 -0.014 0.991 -1.252
+
+   pools passing (t >= 3.81, > 0 DEV/VAL/2026, above random): 0 of 826
+   best 12 session x class pools:
+           pool   trig       filt exit    n   DEV    VAL    Y26    rnd     t  t_rnd
+('NY', 'metal')    C15 TREND+WIDE hold  445 0.168  0.132  0.107 -0.018 3.160 -0.462
+('NY', 'metal')  TOUCH TREND+WIDE hold  452 0.243  0.121  0.068 -0.019 3.051 -0.502
+('NY', 'metal')     C5 TREND+WIDE hold  446 0.170  0.143  0.166 -0.015 2.857 -0.398
+('NY', 'metal')    C15 TREND+WIDE  1:1  445 0.105  0.068  0.062 -0.012 2.676 -0.360
+('NY', 'metal') HOLD15 TREND+WIDE hold  221 0.164  0.212  0.116 -0.034 2.607 -0.677
+('NY', 'metal')    C15       WIDE hold  878 0.088  0.061 -0.066 -0.011 2.456 -0.390
+('NY', 'metal')  TOUCH       WIDE hold  917 0.139  0.027 -0.046 -0.013 2.438 -0.493
+('NY', 'metal') HOLD15 TREND+WIDE  1:1  221 0.125  0.115  0.128 -0.015 2.353 -0.325
+('NY', 'metal') RETEST TREND+WIDE hold  431 0.215 -0.003  0.088 -0.025 2.349 -0.653
+('NY', 'metal')  TOUCH       WIDE  1:1  917 0.097 -0.023 -0.042 -0.004 2.324 -0.193
+('NY', 'index') HOLD15    SQUEEZE hold 1173 0.101  0.025 -0.169 -0.085 2.234 -1.248
+('NY', 'metal')    C15       WIDE  1:1  878 0.062  0.040 -0.012 -0.002 2.152 -0.081
+   positive in DEV, VAL and 2026: 43 of 826 pools
+
+2. CELLS: 5924 tested, passing (t >= 4.33, > 0 DEV/VAL/2026, above random): 0
+   mkt sess   trig       filt exit    n   DEV   VAL    Y26    rnd     t
+  NSDQ   NY  TOUCH      TREND   r1  616 0.140 0.106  0.021  0.011 3.338
+   DAX  LON HOLD15    SQUEEZE   rh  194 0.402 0.678  0.305  0.030 3.268
+USDJPY   NY  TOUCH TREND+WIDE   r1  350 0.151 0.260  0.075  0.025 3.231
+EURUSD   NY  TOUCH       WIDE   r1  660 0.113 0.124  0.384 -0.017 3.142
+XAUUSD   NY    C15 TREND+WIDE   rh  442 0.167 0.132  0.132 -0.018 3.132
+EURUSD   NY  TOUCH         F0   r1 1246 0.082 0.114 -0.043 -0.026 3.115
+  NSDQ   NY  TOUCH      TREND   rh  616 0.224 0.073 -0.040  0.043 3.087
+XAUUSD   NY  TOUCH TREND+WIDE   rh  448 0.242 0.121  0.090 -0.018 3.043
+  NSDQ   NY  TOUCH         F0   rh 1242 0.144 0.083 -0.096  0.014 3.039
+  NSDQ   NY  TOUCH TREND+WIDE   r1  537 0.145 0.067  0.097  0.012 3.026
+   DAX  LON HOLD15         F0   rh  607 0.168 0.281  0.001  0.016 2.963
+USDJPY   NY  TOUCH TREND+WIDE   rh  350 0.273 0.096 -0.140  0.060 2.961
+   highest t 3.34; the same search on random entries (same days, same exit): highest 3.49, 95th pct of cells 0.92 vs real 1.48
+
+3. WALK-FORWARD: best of 72 rules per symbol-session on DEV (92 cells): DEV +0.230 -> VAL -0.089 (positive 30), 2026 -0.140 (positive 28); both: 9
+   triggers chosen: {'FADE': 34, 'HOLD15': 31, 'TOUCH': 14, 'C15': 8, 'RETEST': 3, 'C5': 2}  filters: {'SQUEEZE': 31, 'TREND+WIDE': 22, 'TREND': 17, 'WIDE': 12, 'BOXDIR': 8, 'F0': 2}
+   best rule per session x class on DEV, then VAL / 2026:
+             pool   trig       filt exit    n    DEV    VAL    Y26
+('LON', 'crypto')   FADE       WIDE hold  318  0.133 -1.000    NaN
+('LON', 'energy') HOLD15    SQUEEZE  1:1  358 -0.099 -0.029  0.085
+    ('LON', 'fx')  TOUCH TREND+WIDE hold 3438  0.058  0.086  0.055
+ ('LON', 'index') HOLD15    SQUEEZE hold 1161  0.202  0.103  0.231
+ ('LON', 'metal') HOLD15    SQUEEZE hold  387  0.036  0.003  0.330
+ ('NY', 'crypto')   FADE       WIDE hold  376  0.527  0.130    NaN
+ ('NY', 'energy') RETEST       WIDE  1:1   51  0.139 -0.432    NaN
+     ('NY', 'fx')  TOUCH       WIDE hold 8636  0.047 -0.074  0.054
+  ('NY', 'index') HOLD15    SQUEEZE hold 1173  0.101  0.025 -0.169
+  ('NY', 'metal')  TOUCH TREND+WIDE hold  452  0.243  0.121  0.068

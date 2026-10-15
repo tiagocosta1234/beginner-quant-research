@@ -1,0 +1,8 @@
+# Pre-registration BRK-B12 (breakout day, round 12; written 2026-10-15 12:02 local (commit time), before any code or result)
+Four breakout ideas not tested earlier. MT5 broker M1 bid/ask, execution as rounds 1-11 (stop orders at the level, first fill, stop at the stated level, hold to the session close capped 22:55 server, real costs, R >= 2 spreads; random-entry control per cell).
+- **O1 overnight-range breakout (SP, NSDQ, DOW):** range = the CFD's bid high/low from 18:00 New York the previous evening to 09:30 NY (the overnight session); stop orders at the overnight high/low from 09:30 to 12:00 NY; stop at the overnight range's midpoint; exit 15:55 NY.
+- **O2 initial-balance (first 60 minutes) breakout, all 46 markets:** box = first 60 minutes of each market's session (as round 1 but 60 minutes); orders until open + 3 h; stop at the other side of the box; hold to the close.
+- **O3 intermarket confirmation (US indices):** the 30-minute session breakout of SP (round 1 rules), taken only if NSDQ has already broken its own box in the SAME direction at or before SP's fill; and the same for NSDQ confirmed by SP, and DOW confirmed by SP.
+- **O4 cross-session lead (US indices):** the 30-minute session breakout of SP / NSDQ / DOW taken only in the direction of DAX's 30-minute session breakout that day (DAX box 09:00-09:30 Frankfurt, breakout before 12:00 Frankfurt); days without a DAX breakout skipped.
+Gates (DEV 2022-24, VAL 2025, 2026 non-clean): 1. DEV mean >= +0.05 R and t >= 2.5 (daily portfolio NW lag 1; Bonferroni 4). 2. VAL mean > 0 and t >= 1.65. 3. Beats its random control by >= 0.05 R in DEV and VAL. Box width in spreads reported (round 10/11 lesson).
+Honest prior: about 5% each.

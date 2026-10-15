@@ -1,0 +1,9 @@
+# Pre-registration BRK-SQUEEZE (breakout day, round 26; written 2026-10-15 13:43 local, local clock, before any code or result)
+Question: do breakouts after a volatility squeeze (the "coil" traders wait for: Bollinger bands inside the Keltner channel, John Carter's TTM squeeze) carry more information than ordinary breakouts? Daily NR4/NR7 and inside days were tested (round 8, FX NR7); intraday squeezes were not.
+Bars: M15 built from MT5 broker M1 (server clock), mid prices for the indicators, bid/ask for fills. Squeeze bar = Bollinger(20, 2.0 sd of mid closes) entirely inside Keltner(EMA20 of mid close +/- 1.5 x ATR20). Bars in server hours 23 and 0, and any gap in the M15 sequence, reset the squeeze count (rollover rule). 46 markets.
+- **Q1 range break (M15):** when a squeeze reaches 6 consecutive bars, place one-cancels-other stop orders at the bid high / bid low of those 6 bars (buy at ask >= high, sell at bid <= low), live for the next 8 M15 bars (2 h); first fill wins; stop at the other side of the range; hold 4 h (capped 22:55 server); R >= 2 spreads at the fill.
+- **Q2 squeeze release (M15, TTM style):** when a squeeze of >= 6 bars ends (first non-squeeze bar), enter at the next bar's open in the direction of the release bar's mid close vs its SMA20; stop 1.5 x ATR20; hold 4 h (capped 22:55 server).
+- **Q3 range break (H1):** as Q1 on H1 bars (6-bar squeeze, orders for the next 4 H1 bars, hold 8 h capped 22:55 server).
+One trade at a time per market and cell; no entry in server hours 23 / 0. Random-entry control for each cell (random minute in the same order window (Q2: the same minute), random side, same R and exit).
+Gates (DEV 2022-24, VAL 2025, 2026 non-clean): 1. DEV mean >= +0.05 R and t >= 2.39 (daily NW lag 1; Bonferroni 3). 2. VAL mean > 0 and t >= 1.65. 3. Beats its control by >= 0.05 R in DEV and VAL.
+Honest prior: about 5%.

@@ -1,0 +1,4 @@
+# Pre-registration BRK-NEWSDAY (breakout day, round 15; written 2026-10-15 12:16 local (commit time), before splitting the rows)
+Descriptive split of the ~54,000 session breakouts (BRK_ANATOMY rows, hold-to-close net R) into NEWS days (an importance-3 release of a currency of the market in the MT5 economic calendar between the box start and the session close; calendar to 2026-08-15) and QUIET days; and by weekday. Currencies: FX pairs = both currencies; SP/NSDQ/DOW, metals, energy, crypto = USD; DAX = EUR; NIKKEI = JPY; ASX = AUD.
+Cells (2): N1 news days only, N2 quiet days only. Gates: DEV mean >= +0.05 R and t >= 2.24 (daily portfolio; Bonferroni 2); VAL > 0 with t >= 1.65; beats the other split by >= 0.05 R in DEV and VAL. Weekday table reported, not gated (5 more comparisons would be fishing).
+Honest prior: about 5%.

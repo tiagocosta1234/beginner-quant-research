@@ -1,0 +1,4 @@
+next-day re-entry (D2_MT5RULE)    G 100k, 181 starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/1.1 | 31 Mar 27 29.8/3.3 | 30 Jun 27 59.7/4.4
+next-day re-entry (D2_MT5RULE)    G 150k, 181 starts: 30 Oct 0.0/1.7 | 22 Dec 2.2/12.2 | 31 Mar 27 27.6/25.4 | 30 Jun 27 49.7/35.4
+flat until next Monday (W1)      G 100k, 181 starts: 30 Oct 0.0/0.0 | 22 Dec 0.0/0.0 | 31 Mar 27 14.4/0.6 | 30 Jun 27 40.9/1.1
+flat until next Monday (W1)      G 150k, 181 starts: 30 Oct 0.0/0.0 | 22 Dec 4.4/1.7 | 31 Mar 27 42.0/8.3 | 30 Jun 27 59.7/12.7

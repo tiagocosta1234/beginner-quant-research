@@ -1,0 +1,8 @@
+# Pre-registration TRB-LUCK (breakout day, round 30; written 2026-10-15 13:57 local, local clock, before the null is computed)
+the trader: "on 2024 a type of breakout, on 2025 a better one, 2026 the same; the markets never stay the same, we need to adapt". TRB-ADAPT showed that each year's hindsight-best variant (of 2,808 breakout variants per market) earns +0.16..+0.25 R a trade, and that picking it in real time fails. This round asks the remaining question: is that yearly prize MORE than luck produces when 2,808 noisy variants are compared?
+Data: the TRB cache (46 markets x 2,808 variants, day x variant net R, 2022-01..2026-10-02). Prize(m, y) = the best variant mean R in market m and year y among variants with >= 100 trades (>= 75 in 2026); the statistic is the mean of the prize over markets, per year (TRB-ADAPT: +0.224 / +0.248 / +0.204 / +0.159 / +0.209).
+Nulls (500 bootstrap draws each, resampling DAYS within the market-year so the variants keep their correlation):
+- **N1 all variants equal:** every variant's trades are re-centred on the market-year's grand mean.
+- **N2 stable variant quality (the trader's claim is the opposite):** every variant's trades in year y are re-centred on that variant's mean over ALL years 2022-2026, so good and bad variants stay good and bad but nothing is year-specific.
+Reading rule: if the observed yearly prize is inside the central 95% of N2 (p > 0.05 one-sided) in at least 4 of the 5 years, "a different best breakout each year" is what luck produces from a fixed set of variants; if it exceeds N2's 95th percentile in 4 or more years, there is evidence of year-specific breakout types (which TRB-ADAPT showed cannot be caught in time). N1 is reported for context.
+Prior: about 80% that the prize is inside N2.

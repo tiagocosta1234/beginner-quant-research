@@ -1,0 +1,71 @@
+1709297 rule-trades; by model (bias NONE): {'FVG': 201664, 'OB': 166326, 'SWEEP_AS': 102733, 'MSS_AS': 74829, 'SWEEP_PD': 63916, 'MSS_PD': 41919, 'MSSFVG_AS': 40507, 'MSSFVG_PD': 22025}
+
+0. All symbols, killzones and biases pooled, 2022-25, R per trade (rows model, columns target):
+tg            1R     2R     3R    LIQ   TIME
+model                                       
+SWEEP_PD  -0.154 -0.155 -0.152 -0.153 -0.149
+SWEEP_AS  -0.154 -0.152 -0.149 -0.159 -0.147
+MSS_PD    -0.083 -0.079 -0.080 -0.079 -0.077
+MSS_AS    -0.088 -0.087 -0.089 -0.089 -0.087
+MSSFVG_PD -0.078 -0.083 -0.071 -0.062 -0.056
+MSSFVG_AS -0.090 -0.090 -0.084 -0.083 -0.084
+FVG       -0.156 -0.162 -0.161 -0.159 -0.154
+OB        -0.176 -0.196 -0.199 -0.199 -0.197
+   matched random null:
+tg            1R     2R     3R    LIQ   TIME
+model                                       
+SWEEP_PD  -0.147 -0.139 -0.136 -0.109 -0.113
+SWEEP_AS  -0.147 -0.151 -0.148 -0.146 -0.143
+MSS_PD    -0.088 -0.097 -0.098 -0.102 -0.102
+MSS_AS    -0.087 -0.095 -0.098 -0.100 -0.096
+MSSFVG_PD -0.109 -0.147 -0.149 -0.152 -0.151
+MSSFVG_AS -0.105 -0.146 -0.158 -0.142 -0.152
+FVG       -0.158 -0.172 -0.181 -0.186 -0.189
+OB        -0.196 -0.213 -0.228 -0.251 -0.253
+   by killzone (2022-25): {'LKZ': -0.154, 'NYAM': -0.122, 'NYPM': -0.203, 'SB': -0.113}  by bias: {'DAILY': -0.154, 'NONE': -0.146, 'PD': -0.143}
+   by year: {2021: -0.167, 2022: -0.097, 2023: -0.134, 2024: -0.178, 2025: -0.174, 2026: -0.188}  null: {2021: -0.152, 2022: -0.128, 2023: -0.151, 2024: -0.194, 2025: -0.182, 2026: -0.19}
+
+1. CELLS: 21363 with >= 30 trades in 2022-25; passing (t >= 4.59, > 0 DEV/VAL/2026, above null): 0
+   mkt                    rule  n_dv   DEV    VAL    Y26   c_dv     t
+EURUSD    MSS_PD NYAM DAILY 1R    87 0.344  0.461 -0.033  0.022 4.073
+EURUSD MSSFVG_PD NYAM DAILY 2R    48 0.608  0.630  0.032 -0.125 3.193
+USDCAD    MSS_PD NYPM DAILY 1R    53 0.214  0.335 -0.447 -0.056 3.072
+EURUSD    MSS_PD NYAM DAILY 2R    87 0.364  0.266  0.022 -0.056 2.963
+EURUSD MSSFVG_PD NYAM DAILY 1R    48 0.378  0.333 -0.138 -0.107 2.890
+EURUSD    MSS_PD NYAM DAILY 3R    87 0.364  0.248 -0.161 -0.114 2.746
+USDCAD   MSSFVG_AS LKZ NONE 3R   375 0.261  0.226  0.096  0.014 2.684
+EURUSD MSSFVG_PD NYAM DAILY 3R    48 0.643  0.003 -0.302 -0.151 2.660
+EURUSD   MSS_PD NYAM DAILY LIQ    83 0.334  0.113 -0.161 -0.103 2.531
+  NSDQ        MSS_AS SB PD LIQ    51 0.228  0.741  0.051 -0.005 2.419
+    SP          FVG SB NONE 3R   819 0.148  0.125 -0.102 -0.044 2.405
+EURUSD MSSFVG_AS NYAM DAILY 2R   168 0.165  0.419  0.031 -0.050 2.393
+USDCAD    MSS_AS NYPM DAILY 3R   138 0.200 -0.010 -0.201 -0.103 2.312
+XAUUSD         MSS_AS SB PD 1R   111 0.183  0.189 -0.026 -0.021 2.308
+XAUUSD        MSS_PD LKZ PD 1R   198 0.188  0.071 -0.238 -0.216 2.303
+   highest t 4.07; the same search on the matched null: highest 3.24; 99th pct real 1.32 vs null 1.19
+   cells positive in DEV, VAL and 2026: 335 of 21363
+
+2. POOLS rule x class: 2375; passing (t >= 4.07 ...): 0; highest t 1.32 vs null 1.51
+  cls                     rule    n    DEV    VAL    Y26   null     t
+metal MSSFVG_AS NYAM NONE TIME  603  0.138 -0.155 -0.199 -0.200 1.319
+metal          MSS_AS SB PD 1R  222  0.073  0.186 -0.167 -0.046 1.298
+index         FVG SB NONE TIME 4970  0.018 -0.079 -0.169 -0.089 1.291
+index          OB SB NONE TIME 3373 -0.016  0.066 -0.197 -0.087 1.216
+metal     MSSFVG_AS SB PD TIME  111  0.060  0.463 -0.379 -0.040 1.163
+index      MSS_AS SB NONE TIME 1299  0.038  0.115 -0.202 -0.034 1.135
+index           FVG SB NONE 3R 4970  0.005 -0.074 -0.150 -0.074 1.116
+metal    MSSFVG_AS NYAM PD LIQ  295  0.042  0.068 -0.019 -0.164 1.057
+metal  MSSFVG_AS NYAM NONE LIQ  482  0.064 -0.107 -0.062 -0.224 0.965
+index        MSS_AS SB NONE 3R 1299  0.024  0.078 -0.212 -0.049 0.933
+metal       MSSFVG_PD SB PD 3R  118  0.128  0.030  0.015 -0.109 0.905
+metal     MSSFVG_PD SB NONE 3R  118  0.128  0.030  0.015 -0.109 0.905
+
+3. WALK-FORWARD best of 480 per symbol on DEV (46): DEV +0.331 -> VAL -0.181 (positive 10), 2026 -0.242 (positive 8); both 3
+   models chosen: {'MSSFVG_AS': 15, 'SWEEP_PD': 12, 'SWEEP_AS': 7, 'OB': 4, 'MSS_PD': 4, 'MSSFVG_PD': 3, 'MSS_AS': 1}
+   best rule per class on DEV (pool), then VAL / 2026 (out-of-time picks if both > 0):
+   cls                      rule    n   DEV    VAL    Y26      t
+ index MSSFVG_PD NYPM DAILY TIME  184 0.159 -0.101  0.132 -0.012
+ metal  MSSFVG_AS NYAM NONE TIME  603 0.138 -0.155 -0.199  1.319
+energy         MSS_PD SB PD TIME  255 0.133 -0.108 -0.036  0.523
+    fx      MSSFVG_PD LKZ PD LIQ 4364 0.047 -0.040 -0.049  0.046
+crypto          OB SB DAILY TIME 1203 0.044 -0.069 -0.336  0.227

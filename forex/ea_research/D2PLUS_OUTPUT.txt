@@ -1,0 +1,7 @@
+USD a day per 100k gross (HOLD = 2026, context only):
+variant  OOT_mean  DEV_mean  VAL_mean  HOLD_mean  DEVVAL_t  DEVVAL_sharpe  OOT_t  maxdd_DEVVAL  diff_mean  diff_t  corr_D2 improves
+     D2    24.519    30.234    87.527     50.633     2.417          1.194  1.030    -11599.471        NaN     NaN      NaN      NaN
+    P41    18.324    29.446    77.179     45.766     2.368          1.170  0.780    -10655.253     -4.156  -0.954    0.945    False
+    P42    20.465    28.188    98.042     50.980     2.593          1.281  0.931    -10883.365     -0.580  -0.238    0.984    False
+    P43    29.084    28.788    95.651     55.027     2.479          1.224  1.169    -11911.760      2.120   1.418    0.996    False
+    P47    26.099    27.811    83.960     56.558     2.295          1.134  1.096    -10574.345     -1.316  -0.612    0.987    False

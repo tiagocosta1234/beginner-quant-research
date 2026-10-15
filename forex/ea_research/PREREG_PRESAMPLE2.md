@@ -1,0 +1,6 @@
+# Pre-registration PRESAMPLE2 (breakout day, round 34; written 2026-10-15 14:20 local, local clock, BEFORE downloading the data)
+After PRESAMPLE: the USDJPY London breakout passed its 2020-21 out-of-time check. Round 23 (descriptive) listed four other markets whose session breakout (box 08:00-08:30 London, stop orders to 11:00, stop at the other side, hold to 17:00 London) was positive in 2022-24, 2025 and 2026 on MT5 broker data: GBPUSD (+0.090 / +0.121 / +0.027), EURUSD (+0.075 / +0.067 / +0.004), CADJPY (+0.070 / +0.012 / +0.132), USDCHF (+0.002 / +0.029 / +0.021). Do they also hold before the MT5 broker data?
+Data: HistData.com free 1-minute bid files, 2020 and 2021 (EST without DST -> UTC +5 h), window 2020-01-02 .. 2021-11-30; ask = bid + MT5 broker's 2022 median spread of that pair in 08:00-17:00 London. Engine: `presample.l1_usdjpy` (the identical rule) on each pair.
+Cells (5): P1 GBPUSD, P2 EURUSD, P3 CADJPY, P4 USDCHF, P5 the four pooled (daily mean across the four).
+Gates (one look): mean net R > 0 with trade-level t >= 2.33 (P5: daily t >= 2.33) (one-sided 1%, Bonferroni 5) AND positive in 2020 and in 2021. Reported: random-entry control, and the five-pair book with USDJPY.
+Honest prior: about 10% per pair (they were weaker than USDJPY on MT5 broker and were picked by a descriptive count that chance explains: 5 of 46 vs 1.8 expected).

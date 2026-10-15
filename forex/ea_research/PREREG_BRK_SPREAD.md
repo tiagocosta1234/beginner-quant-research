@@ -1,0 +1,8 @@
+# Pre-registration BRK-SPREAD (breakout day, round 16; written 2026-10-15 12:19 local (commit time), before any code or result)
+Question: do breakouts of the RELATIVE price of two related MT5 broker work, now that the common market move is removed? FX crosses already are such spreads (tested in rounds 1-15), so only non-FX pairs: NSDQ/SP, NSDQ/DOW (New York 09:30), XAUUSD/XAGUSD (London 08:00), BRENT/WTI (New York 09:00), ETHUSD/BTCUSD (New York 09:30).
+
+## Rules
+Both legs' MT5 broker M1 bid/ask bars aligned on time. Spread value s = log(mid A) - log(mid B). Box = high/low of s over the first 30 minutes of the session (minute closes). Signal: the first minute close (open + 30 min .. open + 3 h) with s above the box high (long A / short B) or below the box low (short A / long B); entry at the NEXT minute's open with executable prices (long A at the ask, short B at the bid, and vice versa), equal dollar notional in both legs. Stop: a minute close of s back beyond the box's other side -> exit at the next minute's open, executable prices. Exit at the session close (capped 22:55 server). R = |entry spread value - box other side| (executable entry); net R includes both legs' spreads on entry and exit. Minute-close checks (the joint path inside a minute is unknown). Random-entry control: random minute in the same window, random side, same R, same exit rules.
+## Cells (5 pairs). Gates (DEV 2022-24, VAL 2025, 2026 non-clean): 1. DEV mean >= +0.05 R and t >= 2.58 (daily NW lag 1; Bonferroni 5). 2. VAL mean > 0 and t >= 1.65. 3. Beats its control by >= 0.05 R in DEV and VAL.
+## Honest prior
+About 5%: relative-value spreads mean-revert more often than they trend (STATARB tests here found mean reversion at least gross-positive).
