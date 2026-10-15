@@ -1,0 +1,26 @@
+3705 configurations, 187 eleven-day windows in 2026 each (in-sample)
+
+Best pass with breach <= 10% (optimistic daily line):
+combo  k scheme   X  pass_opt  breach_opt  pass_pess  breach_pess  windows
+  DAX  1   FLAT 100       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 200       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 300       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 400       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 500       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 600       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 700       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 800       0.0         0.0        0.0          0.0      187
+
+Best pass at ANY breach:
+                   combo  k scheme    X  pass_opt  breach_opt  pass_pess  breach_pess  windows
+    EURUSD+NIKKEI+XAUUSD  3 EQRISK 1500     0.021       0.503      0.021        0.508      187
+DAX+EURUSD+NIKKEI+XAUUSD  4 EQRISK 1400     0.021       0.540      0.021        0.540      187
+       DAX+NIKKEI+XAUUSD  3 EQRISK 1400     0.021       0.428      0.021        0.444      187
+       DAX+NIKKEI+XAUUSD  3 EQRISK 1500     0.021       0.455      0.021        0.487      187
+   DAX+DOW+NIKKEI+XAUUSD  4 EQRISK 1300     0.021       0.433      0.021        0.449      187
+
+Best single symbol (breach <= 10%):
+combo  k scheme   X  pass_opt  breach_opt  pass_pess  breach_pess  windows
+  DAX  1   FLAT 100       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 200       0.0         0.0        0.0          0.0      187
+  DAX  1   FLAT 300       0.0         0.0        0.0          0.0      187

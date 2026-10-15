@@ -1,0 +1,76 @@
+1. EACH SYMBOL ALONE, pass / breach within 30 days of each start (optimistic daily line):
+ combo    X  pass_2026  breach_2026  pass_2022-25  breach_2022-25  pass_2020-21  breach_2020-21
+   DAX  250      0.000        0.000         0.000           0.000         0.000           0.000
+   DAX  500      0.000        0.000         0.000           0.000         0.000           0.000
+   DAX 1000      0.000        0.000         0.000           0.000         0.000           0.000
+   DOW  250      0.000        0.000         0.000           0.000           NaN             NaN
+   DOW  500      0.000        0.000         0.000           0.000           NaN             NaN
+   DOW 1000      0.000        0.000         0.000           0.000           NaN             NaN
+EURUSD  250      0.000        0.000         0.000           0.000         0.000           0.000
+EURUSD  500      0.000        0.000         0.000           0.000         0.000           0.000
+EURUSD 1000      0.000        0.000         0.008           0.000         0.000           0.018
+GBPCAD  250      0.000        0.000         0.000           0.000         0.000           0.000
+GBPCAD  500      0.000        0.000         0.000           0.000         0.000           0.000
+GBPCAD 1000      0.000        0.000         0.006           0.000         0.000           0.042
+NIKKEI  250      0.000        0.000         0.000           0.000         0.000           0.000
+NIKKEI  500      0.000        0.000         0.000           0.000         0.000           0.000
+NIKKEI 1000      0.000        0.000         0.000           0.008         0.032           0.000
+USDJPY  250      0.000        0.000         0.000           0.000         0.000           0.000
+USDJPY  500      0.000        0.000         0.000           0.000         0.000           0.000
+USDJPY 1000      0.011        0.021         0.003           0.060         0.003           0.173
+XAUUSD  250      0.000        0.000         0.000           0.000         0.000           0.000
+XAUUSD  500      0.000        0.000         0.000           0.000         0.000           0.000
+XAUUSD 1000      0.000        0.000         0.020           0.000         0.000           0.083
+
+2. ALL 127 COMBINATIONS: top 15 by 2026 pass rate within 30 days (optimistic line), with the same combination in 2022-25 and 2020-21:
+                                     combo  k    X  pass_2026  breach_2026  pass_2022-25  breach_2022-25  pass_2020-21  breach_2020-21
+               EURUSD+NIKKEI+USDJPY+XAUUSD  4  500      0.066        0.007         0.017           0.008         0.022           0.072
+           DOW+EURUSD+NIKKEI+USDJPY+XAUUSD  5  500      0.066        0.000         0.016           0.008         0.022           0.072
+           DAX+EURUSD+NIKKEI+USDJPY+XAUUSD  5  500      0.058        0.000         0.027           0.009         0.022           0.102
+       DAX+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD  6  500      0.057        0.000         0.020           0.009         0.022           0.102
+        EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  5 1000      0.056        0.646         0.093           0.667         0.049           0.689
+    DOW+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  6 1000      0.056        0.674         0.073           0.703         0.049           0.689
+                  DAX+EURUSD+USDJPY+XAUUSD  4  500      0.053        0.000         0.016           0.001         0.016           0.062
+              DAX+DOW+EURUSD+USDJPY+XAUUSD  5  500      0.053        0.000         0.016           0.001         0.016           0.062
+        EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  5  500      0.049        0.007         0.025           0.020         0.010           0.090
+    DOW+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  6  500      0.049        0.007         0.018           0.020         0.010           0.090
+    DAX+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  6  500      0.048        0.082         0.043           0.015         0.010           0.109
+DAX+DOW+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD  7  500      0.048        0.082         0.039           0.016         0.010           0.109
+                      EURUSD+USDJPY+XAUUSD  3  500      0.047        0.000         0.001           0.000         0.016           0.034
+                  DOW+EURUSD+USDJPY+XAUUSD  4  500      0.047        0.000         0.005           0.000         0.016           0.034
+                      NIKKEI+USDJPY+XAUUSD  3 1000      0.047        0.326         0.056           0.232         0.029           0.492
+
+   top 10 by 2026: mean 2026 pass 5.6% / breach 13.4% -> 2022-25 3.2% / 14.5% -> 2020-21 2.4% / 20.3%
+   combinations (any size) passing more than breaching in BOTH 2020-21 and 2022-25: 0 of 381
+
+3. Pessimistic daily line, the same top 10 by 2026 (optimistic): 
+                                             pass_2026  breach_2026  pass_2022-25  breach_2022-25  pass_2020-21  breach_2020-21
+combo                                  X                                                                                       
+EURUSD+NIKKEI+USDJPY+XAUUSD            500       0.066        0.007         0.017           0.008         0.022           0.082
+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD        500       0.066        0.007         0.016           0.008         0.022           0.082
+DAX+EURUSD+NIKKEI+USDJPY+XAUUSD        500       0.058        0.000         0.027           0.009         0.022           0.114
+DAX+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD    500       0.057        0.000         0.020           0.009         0.022           0.114
+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD     1000      0.021        0.743         0.091           0.713         0.049           0.711
+DOW+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD 1000      0.021        0.771         0.073           0.769         0.049           0.711
+DAX+EURUSD+USDJPY+XAUUSD               500       0.053        0.000         0.016           0.001         0.016           0.067
+DAX+DOW+EURUSD+USDJPY+XAUUSD           500       0.053        0.000         0.016           0.002         0.016           0.067
+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD     500       0.049        0.007         0.025           0.020         0.010           0.102
+DOW+EURUSD+GBPCAD+NIKKEI+USDJPY+XAUUSD 500       0.049        0.007         0.018           0.021         0.010           0.102
+EURUSD+NIKKEI+USDJPY+XAUUSD  $ 500 2026: within 90 days pass 3.1% breach 5.1% | median days to pass 146.0
+EURUSD+NIKKEI+USDJPY+XAUUSD  $ 500 2022-25: within 90 days pass 23.2% breach 2.3% | median days to pass 128.5
+EURUSD+NIKKEI+USDJPY+XAUUSD  $ 500 2020-21: within 90 days pass 24.7% breach 37.8% | median days to pass 56.0
+EURUSD+NIKKEI+USDJPY+XAUUSD  $1000 2026: within 90 days pass 2.0% breach 98.0% | median days to pass 19.5
+EURUSD+NIKKEI+USDJPY+XAUUSD  $1000 2022-25: within 90 days pass 16.3% breach 76.0% | median days to pass 32.5
+EURUSD+NIKKEI+USDJPY+XAUUSD  $1000 2020-21: within 90 days pass 19.2% breach 79.8% | median days to pass 35.0
+DAX+EURUSD+USDJPY+XAUUSD     $ 500 2026: within 90 days pass 2.0% breach 0.0% | median days to pass 159.0
+DAX+EURUSD+USDJPY+XAUUSD     $ 500 2022-25: within 90 days pass 38.6% breach 3.5% | median days to pass 93.5
+DAX+EURUSD+USDJPY+XAUUSD     $ 500 2020-21: within 90 days pass 18.2% breach 37.7% | median days to pass 72.0
+DAX+EURUSD+USDJPY+XAUUSD     $1000 2026: within 90 days pass 2.0% breach 98.0% | median days to pass 20.0
+DAX+EURUSD+USDJPY+XAUUSD     $1000 2022-25: within 90 days pass 23.7% breach 71.5% | median days to pass 44.0
+DAX+EURUSD+USDJPY+XAUUSD     $1000 2020-21: within 90 days pass 13.8% breach 74.4% | median days to pass 29.0
+USDJPY                       $ 500 2026: within 90 days pass 0.0% breach 0.0% | median days to pass nan
+USDJPY                       $ 500 2022-25: within 90 days pass 8.8% breach 0.0% | median days to pass 191.0
+USDJPY                       $ 500 2020-21: within 90 days pass 1.2% breach 15.8% | median days to pass 203.0
+USDJPY                       $1000 2026: within 90 days pass 1.4% breach 31.0% | median days to pass 22.0
+USDJPY                       $1000 2022-25: within 90 days pass 7.2% breach 38.4% | median days to pass 101.0
+USDJPY                       $1000 2020-21: within 90 days pass 0.8% breach 44.8% | median days to pass 38.0

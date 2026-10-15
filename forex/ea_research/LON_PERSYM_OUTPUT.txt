@@ -1,0 +1,58 @@
+1-2. DEV-best London rule per symbol (46): DEV +0.258 -> 2025 -0.037 (positive 17) -> 2026 -0.107 (positive 16); kept (both > 0): 7
+   mkt   trig       filt exit  nDEV    DEV    VAL    Y26  kept
+ETHUSD   FADE     BOXDIR   rh    59  1.305  0.572 -0.479 False
+EURCAD   FADE       WIDE   rh    68  0.901 -1.000 -1.000 False
+NZDCHF   FADE TREND+WIDE   rh   119  0.692    NaN    NaN False
+ADAUSD   FADE      TREND   rh    69  0.633 -0.318 -0.425 False
+GBPAUD   FADE    SQUEEZE   rh   193  0.630 -0.618 -0.422 False
+GBPUSD   FADE TREND+WIDE   rh   277  0.591 -0.913 -1.000 False
+CADJPY   FADE TREND+WIDE   rh    74  0.557 -0.248  0.367 False
+GBPJPY  TOUCH    SQUEEZE   rh   259  0.555 -0.287  0.259 False
+NZDJPY   FADE TREND+WIDE   rh    62  0.492    NaN  0.279 False
+  NSDQ HOLD15    SQUEEZE   rh   141  0.468 -0.052  0.515 False
+    SP   FADE     BOXDIR   rh   142  0.432  0.644 -1.000 False
+   DAX HOLD15    SQUEEZE   rh   125  0.402  0.678  0.305  True
+SOLUSD  TOUCH    SQUEEZE   rh    55  0.292 -0.318    NaN False
+BTCUSD  TOUCH       WIDE   rh    60  0.246    NaN    NaN False
+EURJPY   FADE     BOXDIR   rh   188  0.240 -0.791 -0.411 False
+XRPUSD   FADE    SQUEEZE   rh    80  0.238  0.344 -0.236 False
+NZDUSD   FADE TREND+WIDE   rh   188  0.238    NaN    NaN False
+   DOW    C15 TREND+WIDE   rh    76  0.226  0.027  0.215  True
+USDJPY    C15     BOXDIR   rh   474  0.220  0.109  0.128  True
+AUDCAD HOLD15    SQUEEZE   rh    96  0.205 -0.124 -0.498 False
+AUDJPY HOLD15 TREND+WIDE   r1    76  0.204 -0.221 -0.129 False
+EURUSD HOLD15      TREND   rh   180  0.202  0.018  0.006  True
+EURAUD   FADE    SQUEEZE   rh   185  0.192  0.373 -0.310 False
+EURGBP HOLD15 TREND+WIDE   r1   114  0.187    NaN    NaN False
+EURCHF    C15       WIDE   rh    61  0.186  0.707    NaN False
+XAGUSD HOLD15    SQUEEZE   rh   121  0.182  0.068 -0.003 False
+CADCHF   FADE     BOXDIR   rh    62  0.170 -0.022 -0.921 False
+GBPCHF  TOUCH    SQUEEZE   rh   266  0.166 -0.216 -0.309 False
+AUDUSD HOLD15    SQUEEZE   rh   121  0.165 -0.299 -0.116 False
+USDCAD HOLD15 TREND+WIDE   rh   114  0.163 -0.327    NaN False
+NIKKEI HOLD15      TREND   rh   171  0.133  0.004  0.109  True
+ BRENT   FADE     BOXDIR   rh    68  0.120 -0.407  0.850 False
+AUDCHF  TOUCH    SQUEEZE   rh   267  0.110 -0.258 -0.017 False
+XAUUSD  TOUCH    SQUEEZE   r1   260  0.098  0.079  0.048  True
+USDCHF  TOUCH TREND+WIDE   rh   214  0.088  1.453    NaN False
+CHFJPY HOLD15       WIDE   rh   102  0.086  0.899 -0.281 False
+EURNZD HOLD15      TREND   r1   173  0.073 -0.331  0.062 False
+   ASX HOLD15    SQUEEZE   rh   105  0.065  0.145 -0.075 False
+NZDCAD RETEST       WIDE   rh   194  0.056  0.388    NaN False
+BCHUSD   FADE    SQUEEZE   rh    50  0.030 -0.353  0.038 False
+GBPNZD HOLD15      TREND   r1   179  0.001 -0.133 -0.109 False
+GBPCAD HOLD15    SQUEEZE   rh   125 -0.017  0.137  0.135  True
+AUDNZD HOLD15    SQUEEZE   r1   123 -0.048 -0.025  0.213 False
+   WTI    C15      TREND   rh   374 -0.065 -0.118  0.386 False
+BNBUSD HOLD15    SQUEEZE   r1    72 -0.081 -0.322 -0.036 False
+LTCUSD     C5    SQUEEZE   rh    54 -0.140 -0.479    NaN False
+
+3. OUT OF TIME 2020-21 (HistData, today's MT5 broker London spread), 7 kept rules, bar t >= 2.45, both years > 0:
+   DAX HOLD15 SQUEEZE hold: n 13 -0.544 R, t -2.10, by year {2020: np.float64(-0.544)} -> fail  (spread 1.24)
+   DOW: no HistData series
+   EURUSD HOLD15 TREND hold: n 116 +0.014 R, t +0.09, by year {2020: np.float64(-0.125), 2021: np.float64(0.15)} -> fail  (spread 6e-05)
+   GBPCAD HOLD15 SQUEEZE hold: n 73 -0.067 R, t -0.31, by year {2020: np.float64(-0.451), 2021: np.float64(0.172)} -> fail  (spread 8e-05)
+   NIKKEI HOLD15 TREND hold: n 100 +0.061 R, t +0.41, by year {2020: np.float64(0.07), 2021: np.float64(0.048)} -> fail  (spread 8)
+   USDJPY C15 BOXDIR hold: n 321 +0.153 R, t +1.38, by year {2020: np.float64(0.036), 2021: np.float64(0.273)} -> fail  (spread 0.006)
+   XAUUSD TOUCH SQUEEZE 1:1: n 158 -0.177 R, t -2.26, by year {2020: np.float64(-0.077), 2021: np.float64(-0.275)} -> fail  (spread 0.38)
+passing out of time: []

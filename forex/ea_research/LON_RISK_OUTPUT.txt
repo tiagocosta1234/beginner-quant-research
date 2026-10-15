@@ -1,0 +1,86 @@
+D:\finance\beginner-quant-research\mt5\ea_research\lon_risk.py:63: SyntaxWarning: "\$" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\$"? A raw string is also an option.
+  print(f"engine check USDJPY \$1000 2022-25 30-day pass: loop {lp:.3f} vs vectorised {P[(P.combo == 'USDJPY') & (P.X == 1000)]['p30_2022-25'].iloc[0]:.3f}")
+engine check USDJPY \$1000 2022-25 30-day pass: loop 0.003 vs vectorised 0.003
+
+1. EACH SYMBOL: best 30-day pass with 30-day breach <= 10% in 2026, any risk:
+combo scheme   X  p30_2026  b30_2026  p30_2022-25  b30_2022-25  p30_2020-21  b30_2020-21
+  DAX   FLAT 100       0.0       0.0          0.0          0.0          0.0          0.0
+DOW FLAT 100 0.0 0.0 0.0 0.0 NaN NaN
+EURUSD FLAT 100 0.0 0.0 0.0 0.0 0.0 0.0
+GBPCAD FLAT 100 0.0 0.0 0.0 0.0 0.0 0.0
+NIKKEI FLAT 100 0.0 0.0 0.0 0.0 0.0 0.0
+USDJPY FLAT 900 0.011 0.0 0.003 0.024 0.0 0.108
+XAUUSD FLAT 1400 0.018 0.018 0.115 0.009 0.013 0.154
+
+2. BEST 30-DAY PASS WITH BREACH <= 10%, chosen on 2026 (all combos, schemes, risks):
+                              combo scheme    X  p30_2026  b30_2026  p30_2022-25  b30_2022-25  p30_2020-21  b30_2020-21
+                         DOW+XAUUSD EQRISK 1400     0.138     0.077        0.162        0.154        0.051        0.244
+                         DOW+XAUUSD EQRISK 1300     0.108     0.062        0.157        0.152        0.051        0.244
+               EURUSD+USDJPY+XAUUSD EQRISK  800     0.102     0.047        0.081        0.027        0.065        0.191
+    DOW+EURUSD+NIKKEI+USDJPY+XAUUSD EQRISK  700     0.095     0.066        0.079        0.082        0.067        0.199
+    DAX+EURUSD+NIKKEI+USDJPY+XAUUSD EQRISK  700     0.094     0.079        0.109        0.105        0.065        0.199
+DAX+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD EQRISK  700     0.093     0.064        0.094        0.137        0.067        0.213
+DAX+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD EQRISK  600     0.086     0.007        0.077        0.094        0.050        0.161
+           DOW+EURUSD+USDJPY+XAUUSD EQRISK  700     0.085     0.016        0.065        0.017        0.059        0.165
+
+2. BEST 30-DAY PASS WITH BREACH <= 10%, chosen on 2022-25 (all combos, schemes, risks):
+            combo scheme    X  p30_2026  b30_2026  p30_2022-25  b30_2022-25  p30_2020-21  b30_2020-21
+DAX+EURUSD+XAUUSD EQRISK 1100     0.034     0.046        0.157        0.072        0.054        0.389
+DAX+GBPCAD+XAUUSD EQRISK 1100     0.034     0.046        0.155        0.086        0.000        0.345
+   DAX+DOW+XAUUSD EQRISK 1100     0.051     0.013        0.149        0.023        0.049        0.296
+DAX+GBPCAD+XAUUSD EQRISK 1000     0.011     0.011        0.147        0.065        0.000        0.275
+DAX+EURUSD+XAUUSD EQRISK 1000     0.023     0.023        0.140        0.060        0.042        0.318
+       DAX+XAUUSD EQRISK 1200     0.043     0.029        0.139        0.009        0.012        0.241
+    USDJPY+XAUUSD EQRISK 1200     0.067     0.126        0.137        0.059        0.055        0.324
+    EURUSD+XAUUSD EQRISK 1200     0.065     0.078        0.136        0.054        0.060        0.349
+
+2. BEST 30-DAY PASS WITH BREACH <= 10%, chosen on 2020-21 (all combos, schemes, risks):
+                          combo scheme    X  p30_2026  b30_2026  p30_2022-25  b30_2022-25  p30_2020-21  b30_2020-21
+                     DOW+NIKKEI EQRISK 1500     0.000     0.277        0.000        0.297        0.043        0.000
+DOW+EURUSD+NIKKEI+USDJPY+XAUUSD EQRISK  500     0.066     0.007        0.023        0.010        0.032        0.079
+                     DOW+NIKKEI EQRISK 1300     0.000     0.234        0.000        0.261        0.032        0.000
+                     DOW+NIKKEI EQRISK 1200     0.000     0.000        0.000        0.053        0.032        0.000
+                     DOW+NIKKEI EQRISK 1100     0.000     0.000        0.000        0.030        0.032        0.000
+                         NIKKEI   FLAT 1100     0.000     0.000        0.000        0.012        0.032        0.000
+                     DOW+NIKKEI EQRISK 1000     0.000     0.000        0.000        0.017        0.032        0.000
+                     DOW+NIKKEI EQRISK  900     0.000     0.000        0.000        0.010        0.032        0.000
+
+3. BEST 90-DAY PASS WITH BREACH <= 10%, chosen on 2026:
+                   combo scheme    X  p90_2026  b90_2026  p90_2022-25  b90_2022-25  p90_2020-21  b90_2020-21
+              DOW+XAUUSD   FLAT 1500     0.255     0.043        0.245        0.387        0.042        0.585
+          DAX+DOW+XAUUSD EQRISK 1100     0.254     0.000        0.497        0.143        0.088        0.642
+              DOW+XAUUSD EQRISK 1100     0.213     0.043        0.361        0.147        0.042        0.585
+              DOW+XAUUSD   FLAT 1400     0.213     0.043        0.223        0.390        0.042        0.585
+           USDJPY+XAUUSD EQRISK  800     0.193     0.091        0.340        0.087        0.158        0.539
+              DAX+XAUUSD EQRISK 1200     0.192     0.019        0.460        0.123        0.041        0.601
+              DOW+XAUUSD   FLAT 1300     0.191     0.043        0.202        0.366        0.014        0.528
+DAX+NIKKEI+USDJPY+XAUUSD EQRISK  500     0.188     0.000        0.362        0.029        0.106        0.331
+
+3. BEST 90-DAY PASS WITH BREACH <= 10%, chosen on 2022-25:
+                       combo scheme   X  p90_2026  b90_2026  p90_2022-25  b90_2022-25  p90_2020-21  b90_2020-21
+           DAX+USDJPY+XAUUSD EQRISK 800     0.098     0.011        0.509        0.091        0.173        0.630
+       DAX+DOW+USDJPY+XAUUSD EQRISK 700     0.085     0.000        0.479        0.092        0.167        0.579
+           DAX+USDJPY+XAUUSD EQRISK 700     0.098     0.011        0.475        0.086        0.155        0.530
+DAX+DOW+EURUSD+USDJPY+XAUUSD EQRISK 600     0.071     0.000        0.473        0.094        0.202        0.526
+    DAX+NIKKEI+USDJPY+XAUUSD EQRISK 700     0.135     0.104        0.469        0.087        0.160        0.606
+    DAX+EURUSD+USDJPY+XAUUSD EQRISK 600     0.102     0.000        0.452        0.060        0.190        0.511
+DAX+DOW+EURUSD+USDJPY+XAUUSD EQRISK 500     0.051     0.000        0.441        0.029        0.156        0.452
+DAX+DOW+NIKKEI+USDJPY+XAUUSD EQRISK 600     0.134     0.010        0.431        0.076        0.151        0.526
+
+3. BEST 90-DAY PASS WITH BREACH <= 10%, chosen on 2020-21:
+                          combo scheme   X  p90_2026  b90_2026  p90_2022-25  b90_2022-25  p90_2020-21  b90_2020-21
+DOW+EURUSD+GBPCAD+NIKKEI+USDJPY EQRISK 300       0.0       0.0        0.121        0.004        0.111        0.051
+    EURUSD+GBPCAD+NIKKEI+USDJPY EQRISK 300       0.0       0.0        0.098        0.002        0.109        0.049
+    EURUSD+GBPCAD+NIKKEI+USDJPY   FLAT 300       0.0       0.0        0.103        0.005        0.109        0.051
+DOW+EURUSD+GBPCAD+NIKKEI+USDJPY   FLAT 300       0.0       0.0        0.129        0.005        0.109        0.051
+       DOW+GBPCAD+NIKKEI+USDJPY EQRISK 400       0.0       0.0        0.142        0.024        0.108        0.040
+           GBPCAD+NIKKEI+USDJPY EQRISK 400       0.0       0.0        0.125        0.012        0.105        0.028
+   DAX+DOW+GBPCAD+NIKKEI+USDJPY EQRISK 400       0.0       0.0        0.274        0.025        0.104        0.089
+       DAX+GBPCAD+NIKKEI+USDJPY EQRISK 400       0.0       0.0        0.244        0.018        0.101        0.083
+
+4. promising (2020-21 90-day pass >= 30% and > breach): 0 of 3705
+
+5. Frontier, max 30-day pass at each 30-day breach cap (any config), per period:
+   2026 {0.02: 0.086, 0.05: 0.102, 0.1: 0.138, 0.2: 0.185, 0.3: 0.185, 0.5: 0.185}
+   2022-25 {0.02: 0.139, 0.05: 0.149, 0.1: 0.157, 0.2: 0.164, 0.3: 0.192, 0.5: 0.192}
+   2020-21 {0.02: 0.043, 0.05: 0.043, 0.1: 0.043, 0.2: 0.067, 0.3: 0.067, 0.5: 0.096}
