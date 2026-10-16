@@ -1,0 +1,7 @@
+markets 38, rows 133320, 2022-01-03..2026-10-02
+A       | DEV n 26677 net -0.035 t -3.47 gross +0.001 | VAL n  8718 net -0.025 t -1.71 gross +0.014 | HOLD sealed | placebo95 +0.000 -> DEV FAIL
+A_RV    | DEV n  2426 net -0.079 t -2.94 gross -0.053 | VAL n   758 net -0.044 t -0.78 gross -0.025 | HOLD sealed | placebo95 -0.007 -> DEV FAIL
+L_RV    | DEV n  2805 net -0.075 t -2.43 gross -0.022 | VAL n   904 net +0.010 t +0.19 gross +0.054 | HOLD sealed | placebo95 -0.027 -> DEV FAIL
+N_RV    | DEV n  2719 net -0.011 t -0.40 gross +0.045 | VAL n   985 net -0.060 t -1.15 gross -0.020 | HOLD sealed | placebo95 -0.008 -> DEV FAIL
+L_base  | DEV n 28600 net -0.049 t -4.68 gross +0.023 | VAL n  9445 net -0.076 t -4.51 gross +0.011 | HOLD sealed
+N_base  | DEV n 29072 net -0.035 t -3.41 gross +0.023 | VAL n  9750 net -0.040 t -2.12 gross +0.025 | HOLD sealed

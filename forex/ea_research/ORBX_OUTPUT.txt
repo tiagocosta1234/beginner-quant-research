@@ -1,0 +1,5 @@
+markets 38, trades 45250, 2022-01-03..2026-10-02
+BASE | DEV n 28600 net -0.049 t -4.68 gross +0.023 | VAL n  9444 net -0.076 t -4.51 gross +0.011 | 2026i n  7206 net -0.040 t -1.93 gross +0.045
+N | DEV n  1353 net +0.031 t +0.60 gross +0.078 | VAL n   489 net -0.054 t -0.88 gross +0.007 | 2026i n   284 net +0.011 t +0.14 gross +0.047 | placebo95 +0.026 -> DEV FAIL
+T | DEV n 14314 net -0.061 t -4.18 gross +0.013 | VAL n  4521 net -0.093 t -3.89 gross -0.000 | 2026i n  3579 net -0.026 t -0.96 gross +0.068 | placebo95 -0.040 -> DEV FAIL
+NT | DEV n   689 net +0.058 t +0.96 gross +0.118 | VAL n   244 net -0.036 t -0.43 gross +0.018 | 2026i n   150 net -0.058 t -0.54 gross -0.001 | placebo95 +0.048 -> DEV FAIL
