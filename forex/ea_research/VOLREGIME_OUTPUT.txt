@@ -1,0 +1,47 @@
+D:\finance\beginner-quant-research\mt5\ea_research\volregime.py:135: RuntimeWarning: divide by zero encountered in scalar divide
+  val_t=vl.mean() / vl.std() * np.sqrt(len(vl)) if len(vl) > 2 else np.nan))
+rows 112,201; streams 184; DEV 2021-12-01..2024-12-31, VAL 2025-01-01..2026-10-02
+
+## 1. Pooled effect (all 46 markets x 2 sessions), mean R per trade [market-clustered t] (n)
+stream measure tercile                    DEV                    VAL
+ break      v1     low -0.092 [-2.43] (23103) -0.124 [-4.80] (13895)
+ break      v1     mid -0.113 [-3.54] (23040) -0.095 [-4.45] (13582)
+ break      v1    high -0.080 [-3.27] (23063) -0.037 [-2.27] (13678)
+ break      v1     all -0.095 [-3.19] (69206) -0.086 [-4.58] (41155)
+ break      v2     low -0.152 [-3.69] (16603) -0.128 [-3.47] (11545)
+ break      v2     mid -0.131 [-4.06] (16543) -0.084 [-3.30] (11840)
+ break      v2    high -0.065 [-2.66] (16571) -0.059 [-3.83] (17770)
+ break      v2     all -0.116 [-3.89] (49717) -0.086 [-4.58] (41155)
+  fade      v1     low -0.214 [-6.49] (23103) -0.174 [-5.44] (13895)
+  fade      v1     mid -0.175 [-5.89] (23040) -0.164 [-7.19] (13582)
+  fade      v1    high -0.115 [-4.71] (23063) -0.112 [-7.02] (13678)
+  fade      v1     all -0.168 [-6.07] (69206) -0.150 [-7.30] (41155)
+  fade      v2     low -0.225 [-5.65] (16603) -0.189 [-4.15] (11545)
+  fade      v2     mid -0.181 [-5.58] (16543) -0.166 [-7.76] (11840)
+  fade      v2    high -0.137 [-7.16] (16571) -0.115 [-7.75] (17770)
+  fade      v2     all -0.181 [-6.52] (49717) -0.150 [-7.30] (41155)
+break/v1: best DEV tercile high, best VAL tercile high, VAL -0.037 t -2.27 -> fail
+break/v2: best DEV tercile high, best VAL tercile high, VAL -0.059 t -3.83 -> fail
+fade/v1: best DEV tercile high, best VAL tercile high, VAL -0.112 t -7.02 -> fail
+fade/v2: best DEV tercile high, best VAL tercile high, VAL -0.115 t -7.75 -> fail
+
+## 2. Cell selection: 184 streams x 2 measures x 3 terciles = 1,104 cells
+cells: 1104; DEV passes (t >= 3.9, n >= 60): 0; DEV+VAL passes: 0
+top 8 cells by DEV t, with VAL:
+   sym sess  kind measure terc  dev_n  dev_m  dev_t  val_n  val_m  val_t
+USDJPY   NY break      v1  mid    252  0.331  3.027    170  0.034  0.316
+GBPJPY  LDN break      v1  low    257  0.520  2.837    139 -0.086 -0.529
+CADJPY  LDN break      v2 high    181  0.473  2.765     90  0.002  0.009
+EURUSD  LDN break      v2  low    183  0.551  2.606    122 -0.002 -0.013
+AUDJPY  LDN break      v2 high    181  0.358  2.471    175 -0.060 -0.416
+    SP   NY break      v1  mid    256  0.216  2.409    118  0.014  0.127
+    SP   NY break      v2 high    181  0.286  2.380    277 -0.021 -0.269
+GBPJPY  LDN break      v2 high    181  0.336  2.344    127  0.035  0.215
+
+cells with DEV t >= 2: 16 (expected by chance ~25); their VAL mean +0.027, share VAL > 0: 62%
+
+## 3. Flagships by tercile (mean R, n)
+USDJPY LDN break v1: low/DEV +0.169 (256)  low/VAL +0.121 (142)  mid/DEV +0.270 (256)  mid/VAL +0.124 (167)  high/DEV -0.017 (256)  high/VAL +0.077 (136)
+USDJPY LDN break v2: low/DEV -0.108 (181)  low/VAL +0.255 (206)  mid/DEV -0.013 (181)  mid/VAL -0.042 (181)  high/DEV +0.249 (181)  high/VAL +0.059 (58)
+EURJPY LDN fade v1: low/DEV +0.088 (257)  low/VAL +0.264 (156)  mid/DEV -0.017 (257)  mid/VAL -0.092 (168)  high/DEV +0.038 (257)  high/VAL +0.190 (124)
+EURJPY LDN fade v2: low/DEV +0.150 (182)  low/VAL +0.258 (236)  mid/DEV +0.015 (181)  mid/VAL -0.030 (105)  high/DEV -0.091 (181)  high/VAL -0.079 (107)
