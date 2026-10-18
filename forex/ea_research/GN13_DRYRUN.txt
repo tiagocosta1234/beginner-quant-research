@@ -1,0 +1,17 @@
+share of bonds-up days by year: 2020: 67% 2021: 40% 2022: 30% 2023: 43% 2024: 52% 2025: 57% 2026: 31%
+B1 NSDQ: aligned trades DEV 470 VAL 167 HOLD 114 | misaligned DEV 440 | aligned longs share DEV 44%
+   hand check 2023-03-23 bond trend +1 side +1 entry 12725.20 at 10:27 NY, stop 12686.40, box 38.80
+   truncation test (data and ZN cut 2023-06-30): PASS
+   OOT NQ 2020-21 aligned trades (no P&L): 279 | port check 2022-24: common days 447, same side 100%, R correlation 0.89 (bars 80%, 0.6)
+B2 SP: aligned trades DEV 509 VAL 166 HOLD 123 | misaligned DEV 461 | aligned longs share DEV 43%
+   hand check 2023-03-13 bond trend +1 side +1 entry 3853.40 at 10:50 NY, stop 3808.40, box 45.00
+   truncation test (data and ZN cut 2023-06-30): PASS
+   OOT ES 2020-21 aligned trades (no P&L): 278 | port check 2022-24: common days 487, same side 100%, R correlation 0.87 (bars 80%, 0.6)
+B3 XAUUSD: aligned trades DEV 513 VAL 201 HOLD 140 | misaligned DEV 523 | aligned longs share DEV 42%
+   hand check 2023-04-13 bond trend +1 side +1 entry 2039.78 at 08:50 NY, stop 2026.55, box 13.23
+   truncation test (data and ZN cut 2023-06-30): PASS
+   OOT GC 2020-21 aligned trades (no P&L): 337 | port check 2022-24: common days 478, same side 100%, R correlation 0.91 (bars 80%, 0.6)
+
+All dry-run bars met (truncation PASS x3; port check same side 100%, R correlation 0.87-0.91; DEV n 470-513). Hand-check day
+2023-04-13: bonds above their 20-day mean after the SVB rally (bond trend +1), gold buy stop filled at the box high at 08:50.
+No amendment.

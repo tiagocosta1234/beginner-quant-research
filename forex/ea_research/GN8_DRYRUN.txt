@@ -1,0 +1,25 @@
+NSDQ: trades stress/calm: follow DEV 285/443 VAL 63/181 HOLD 38/137 | fade DEV 284/442 VAL 63/181 HOLD 38/137 | median box 83 spreads | MT5 broker window spread 1.670
+   hand check follow 2026-08-25 VIX(d-1) 15.85 (calm) side -1 entry 29206.52 at 10:01 NY, stop 29339.77, box 133.25
+   hand check fade 2023-08-18 VIX(d-1) 17.89 (calm) side +1 entry 14564.40 at 10:03 NY, stop 14492.00, box 72.40
+   truncation test (data and VIX cut 2023-06-30 12:00 NY): PASS
+   OOT NQ 2020-21 counts (no P&L): follow stress 287 calm 180 | fade stress 287 calm 177
+   port check follow 2022-24: common days 714, same side 97%, R correlation 0.87 (bars: 80%, 0.6)
+   port check fade 2022-24: common days 712, same side 97%, R correlation 0.95 (bars: 80%, 0.6)
+SP: trades stress/calm: follow DEV 289/451 VAL 63/182 HOLD 38/139 | fade DEV 287/450 VAL 63/181 HOLD 37/139 | median box 46 spreads | MT5 broker window spread 0.490
+   hand check follow 2025-01-03 VIX(d-1) 17.93 (calm) side +1 entry 5916.06 at 10:05 NY, stop 5888.56, box 27.50
+   hand check fade 2023-06-14 VIX(d-1) 14.61 (calm) side -1 entry 4380.20 at 10:01 NY, stop 4392.10, box 11.90
+   truncation test (data and VIX cut 2023-06-30 12:00 NY): PASS
+   OOT ES 2020-21 counts (no P&L): follow stress 296 calm 186 | fade stress 295 calm 186
+   port check follow 2022-24: common days 726, same side 96%, R correlation 0.89 (bars: 80%, 0.6)
+   port check fade 2022-24: common days 722, same side 97%, R correlation 0.90 (bars: 80%, 0.6)
+DOW: trades stress/calm: follow DEV 288/433 VAL 63/176 HOLD 37/138 | fade DEV 287/429 VAL 62/175 HOLD 37/136 | median box 66 spreads | MT5 broker window spread 2.870
+   hand check follow 2023-08-07 VIX(d-1) 17.10 (calm) side +1 entry 35379.10 at 10:08 NY, stop 35222.60, box 156.50
+   hand check fade 2026-05-28 VIX(d-1) 16.29 (calm) side -1 entry 50591.22 at 10:12 NY, stop 50859.72, box 268.50
+   truncation test (data and VIX cut 2023-06-30 12:00 NY): PASS
+
+Independent hand check (raw parquet, epochs from pandas tz conversion, not brk50.ts): NSDQ 2026-08-25 box 09:30-09:59 NY has 30
+minutes, bid high 29339.77, bid low 29206.52 (W 133.25) as the engine; minute 10:00 bid low 29211.87 (no trigger), 10:01 bid low
+29201.47 <= 29206.52 with bid open 29214.97 above the level -> sell stop filled at 29206.52 at 10:01, stop at the box high 29339.77,
+as printed. VIX close 2026-08-24 = 15.85 (calm day), as printed.
+All dry-run bars met: truncation PASS on the three markets; port check same side 96-97% (bar 80%), R correlation 0.87-0.95
+(bar 0.6); DEV counts 284-289 (stress) and 429-451 (calm), all above n >= 80. No amendment.

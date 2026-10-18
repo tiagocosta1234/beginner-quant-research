@@ -1,0 +1,14 @@
+B1 NSDQ bond-aligned: DEV n 470 +0.150 R (t +2.34) win 47% | aligned random +0.047 info +0.104 (t +1.38) | misaligned n 440 +0.049 | longs +0.132 shorts +0.165 | yrs 2022:+0.21(149)/2023:+0.18(161)/2024:+0.07(160) -> DEV FAIL
+     VAL n 167 +0.222 (t +1.62) info +0.137 misaligned -0.035 -> FAIL | OOT NQ 2020-21 n 279 -0.021 (t -0.33) info +0.021 misaligned +0.144 -> FAIL | HOLD sealed
+B2 SP bond-aligned: DEV n 509 +0.152 R (t +2.02) win 41% | aligned random +0.055 info +0.097 (t +1.09) | misaligned n 461 +0.050 | longs +0.101 shorts +0.191 | yrs 2022:+0.29(162)/2023:+0.20(175)/2024:-0.03(172) -> DEV FAIL
+     VAL n 166 +0.152 (t +1.24) info +0.103 misaligned -0.136 -> FAIL | OOT ES 2020-21 n 278 -0.060 (t -0.80) info -0.019 misaligned +0.157 -> FAIL | HOLD sealed
+B3 XAUUSD bond-aligned: DEV n 513 +0.011 R (t +0.16) win 40% | aligned random -0.029 info +0.040 (t +0.54) | misaligned n 523 +0.016 | longs +0.038 shorts -0.009 | yrs 2022:-0.07(165)/2023:+0.04(165)/2024:+0.05(183) -> DEV FAIL
+     VAL n 201 +0.166 (t +1.51) info +0.192 misaligned -0.150 -> FAIL | OOT GC 2020-21 n 337 -0.120 (t -1.77) info -0.076 misaligned +0.053 -> FAIL | HOLD sealed
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach% by date):
+  B1 $250: (637 trades, +0.169 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 1.7/4
+  B1 $500: (637 trades, +0.169 R) 30 Nov 0.0/8  22 Dec 0.1/13  30 Jun 27 19.6/26
+  B2 $250: (675 trades, +0.152 R) 30 Nov 0.0/1  22 Dec 0.0/2  30 Jun 27 3.9/13
+  B2 $500: (675 trades, +0.152 R) 30 Nov 0.0/18  22 Dec 0.2/26  30 Jun 27 19.9/45
+  B3 $250: (714 trades, +0.054 R) 30 Nov 0.0/1  22 Dec 0.0/5  30 Jun 27 0.7/27
+  B3 $500: (714 trades, +0.054 R) 30 Nov 0.1/24  22 Dec 0.3/35  30 Jun 27 9.9/62

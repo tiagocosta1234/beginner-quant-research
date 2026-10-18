@@ -1,0 +1,22 @@
+GC: MT5 broker session median spread (XAUUSD) 0.2100 | switch / flip dates 2020-21 (6): 01-30-20 03-27-20 05-27-20 05-28-20 08-31-20 11-26-20
+SI: MT5 broker session median spread (XAGUSD) 0.0190 | switch / flip dates 2020-21 (17): 02-26-20 03-16-20 04-09-20 04-13-20 04-14-20 04-15-20 04-16-20 04-17-20 04-20-20 04-21-20 04-22-20 04-23-20 04-24-20 04-27-20 04-28-20 06-29-20 08-31-20
+NQ: MT5 broker session median spread (NSDQ) 1.6700 | roll gaps 2020-21: 2020-03-16 +0.00 2020-06-15 -0.50 2020-09-14 -0.75 2020-12-14 +1.00 2021-03-15 +0.00 2021-06-14 -0.75 2021-09-13 +0.00 2021-12-13 +0.00
+ES: MT5 broker session median spread (SP) 0.4900 | roll gaps 2020-21: 2020-03-16 +0.00 2020-06-15 -0.25 2020-09-14 +0.00 2020-12-14 +0.25 2021-03-15 +0.50 2021-06-14 +0.00 2021-09-13 +0.00 2021-12-13 +0.00
+M1 W2 GC+SI: trades GC 2020:31 GC 2021:40 SI 2020:32 SI 2021:40 | total 143, entry weeks 85
+   hand check SI W2 window start 2020-01-13 side -1 entry at 2020-01-14 03:13:00 server
+   truncation test (data cut 2021-06-30 12:00 server, trades entered 40 days earlier): PASS (94 trades)
+M2 W4 NQ+ES: trades ES 2020:12 ES 2021:12 NQ 2020:12 NQ 2021:12 | total 48, entry weeks 24
+   hand check ES W4 window start 2020-01-07 side -1 entry at 2020-01-08 01:24:00 server
+   truncation test (data cut 2021-06-30 12:00 server, trades entered 40 days earlier): PASS (34 trades)
+
+--- after amendment 1 (roll months skipped for NQ / ES; no back-adjustment) ---
+M1 W2 GC+SI: trades GC 2020:31 GC 2021:40 SI 2020:32 SI 2021:40 | total 143, entry weeks 85
+   hand check SI W2 window start 2020-01-13 side -1 entry at 2020-01-14 03:13:00 server
+   truncation test (data cut 2021-06-30 12:00 server, trades entered 40 days earlier): PASS (94 trades)
+M2 W4 NQ+ES: trades ES 2020:8 ES 2021:8 NQ 2020:8 NQ 2021:8 | total 32, entry weeks 16
+   hand check ES W4 window start 2020-01-07 side -1 entry at 2020-01-08 01:24:00 server
+   truncation test (data cut 2021-06-30 12:00 server, trades entered 40 days earlier): PASS (24 trades)
+
+Independent hand check (raw parquet): SI previous week 2020-01-06..10 (01:00-23:00 server) trade low 17.815, high 18.895; first minute
+of the 2020-01-13 order window with low <= 17.815 is 2020-01-14 03:13 server (sell stop), the high is never reached, as printed.
+Roll scan (see amendment 1): ES 2020-21 switches at Friday 00:00 UTC of the week before expiry week, -7.3..-10.5 points; NQ none at 00:00 UTC.

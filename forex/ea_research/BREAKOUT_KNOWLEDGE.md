@@ -56,6 +56,24 @@ Written for the trader after the breakout research day (`BREAKOUT_DAY_2026-10-15
    - New tool: `futures/data/databento/futures_{NQ,ES,GC,SI}.F_1m.parquet` (CME 1-minute, exchange volume,
      2019-10..2026-09) gives 2020-21 out-of-time checks on the second PC; `gn5.load_fut` adds the MT5 broker cost model; roll Mondays
      (`gn5.roll_mondays`) and GC contract flips (`gn6.bad_minutes`) must be excluded.
+13h. **The window's last 17 variants, on information the chart does not hold, 0 pass; the 40-variant window is closed (GN8-GN13,
+   2026-10-18 afternoon, second PC):**
+   - VIX regime (dealer-gamma proxy, VIX >= 20 the day before): the New York breakout follows through as much on calm days as on
+     stress days (Nasdaq +0.13 vs +0.18 R in 2022-24, flat across VIX bands); fading the breakout on calm days loses in every
+     period (GN8).
+   - Late day: no continuation on big-move days; the last half hour REVERSES the day on US indices in 2020-24 (ES futures -0.40 R,
+     t -5.1), but traded as a reversal it earns only +0.06 R on MT5 broker since 2022 (a 2x-normal stop is hit on 30% of big days, often
+     both ways), so it failed development and the hold-out was not opened (GN9, GN10).
+   - BRK-WEEK's two leads fail out of time on 2020-21 futures: metals previous-week breakout +0.04 R (random +0.00), index month-
+     opening range +0.03 R (random +0.18) (GN11).
+   - Scheduled events: the post-release breakout on CPI / NFP / FOMC days is WORSE than the same rule on ordinary days (Nasdaq
+     +0.01 vs +0.18 R); Nasdaq on Treasury-auction days +0.26 R is 2022 alone (+0.63, then +0.15 / -0.01 / -0.01) (GN12).
+   - 10-year bond trend: index breakouts taken in the bond-trend direction earned +0.15 R (2022-24) and +0.22 R (2025), but picked
+     the wrong side in 2020-21 (-0.02 vs +0.14): before 2022 bonds rallied when stocks fell, since 2022 they move together, so the
+     filter tracks the stock-bond correlation sign, not a stable edge. Near miss (information t 1.38, 2025 t 1.62), closed (GN13).
+   - Data note: in 2020-21 the Databento continuous ES switched contract at 00:00 UTC on the FRIDAY before the expiry week and NQ
+     at Sunday re-opens; the expiry-week Monday rule (`gn5.roll_mondays`) holds from mid-2022. No earlier verdict changes
+     (`ROLL_2020_CHECK.md`).
 13. **The card's gold London leg did not "stop working" in 2026:** its yearly means (-0.11..+0.08 R) are all within one standard error of luck (~0.09 R); 2024 looked exactly like 2026; the opposite trade loses every year too. There was no stable edge to lose. (GOLD_ORB_2026_DIAG)
 
 ## 2. What is left that is not nothing

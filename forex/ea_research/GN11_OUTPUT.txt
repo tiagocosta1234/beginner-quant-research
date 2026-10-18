@@ -1,0 +1,4 @@
+M1 W2 GC+SI 2020-21 futures: n 143 +0.044 R (NW t +0.01) win 38% | control +0.003 (breakout - control +0.041) | yrs 2020:+0.125/2021:-0.020 -> FAIL
+   by market: GC -0.025 (n 71, control +0.162, longs -0.023 n 42, shorts -0.028) | SI +0.112 (n 72, control -0.154, longs +0.115 n 41, shorts +0.107) | 2R exit -0.064
+M2 W4 NQ+ES 2020-21 futures: n 32 +0.033 R (NW t +0.14) win 38% | control +0.182 (breakout - control -0.149) | yrs 2020:+0.237/2021:-0.170 -> FAIL
+   by market: ES +0.058 (n 16, control +0.062, longs +0.128 n 15, shorts -1.000) | NQ +0.009 (n 16, control +0.303, longs +0.203 n 13, shorts -0.832) | 2R exit -0.032

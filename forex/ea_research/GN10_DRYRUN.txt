@@ -1,0 +1,16 @@
+identity check flip=False NSDQ DEV big-day mean -0.145 (GN9: -0.145) -> OK
+identity check flip=False SP DEV big-day mean -0.058 (GN9: -0.058) -> OK
+
+Development evidence (POST-HOC, these data suggested the rule): reversal on big-move days
+  DEV 2022-24: pooled n 468 +0.058 R (t +1.06) win 51% info +0.093 (t +1.58) | NSDQ +0.048 (n 154) | SP +0.058 (n 156) | DOW +0.069 (n 158)
+  VAL 2025: pooled n 186 -0.004 R (t -0.06) win 52% info +0.010 (t +0.14) | NSDQ -0.049 (n 60) | SP +0.020 (n 61) | DOW +0.015 (n 65)
+  OOT futures 2020-21: pooled NQ+ES n 138 +0.283 R (t +2.70) win 61% info +0.267 (t +2.33) | NQ +0.203 (n 77) | ES +0.384 (n 61)
+  normal days (not big), reversal side, DEV pooled: -0.026 (n 1654)
+
+2026 hold-out big days (count only): pooled trades 166, days 92, by index NSDQ 65 SP 49 DOW 52
+
+Engine diagnostic (2026-10-18 14:41, NSDQ DEV big days, continuation vs reversal on the same 154 days): on the 107 days where neither 2 S
+stop is hit, continuation + reversal = minus the entry and exit spreads exactly (deviation 0.0000), so there is no engine fault.
+On 47 days (30%) a 2 S stop is hit: the last half hour of a big day often runs 2 S one way and comes back (2022-04-22 stopped both
+ways), so the two sides together lose 0.24 R on those days and the mirror of GN9's -0.145 is only +0.048, not +0.10.
+MT5 broker spreads at the late-day minutes are not wider than usual (NSDQ median 1.00 at 15:30 open and 15:58 close; SP 0.30; DOW 2.87).

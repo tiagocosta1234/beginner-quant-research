@@ -1,0 +1,33 @@
+V1 NSDQ follow on stress days: DEV n 285 +0.182 R (t +2.12) win 48% | control +0.030 info +0.152 (t +1.62) | calm days n 443 +0.127 | yrs 2022:+0.13(218)/2023:+0.15(42)/2024:+0.69(25) -> DEV FAIL
+     VAL n 63 -0.062 (t -0.43) info -0.109 -> FAIL | OOT NQ 2020-21 n 287 +0.043 (t +0.61) info +0.036 yrs +0.025/+0.085 -> FAIL | HOLD sealed
+V2 SP follow on stress days: DEV n 289 +0.212 R (t +2.14) win 44% | control -0.012 info +0.224 (t +2.08) | calm days n 451 +0.118 | yrs 2022:+0.25(222)/2023:-0.23(43)/2024:+0.62(24) -> DEV FAIL
+     VAL n 63 +0.007 (t +0.04) info -0.013 -> FAIL | OOT ES 2020-21 n 296 +0.083 (t +0.97) info +0.074 yrs +0.081/+0.087 -> FAIL | HOLD sealed
+V3 NSDQ fade on calm days: DEV n 442 -0.111 R (t -2.55) win 44% | control -0.045 info -0.066 (t -1.39) | stress days n 284 -0.099 | yrs 2022:+0.11(23)/2023:-0.09(199)/2024:-0.16(220) -> DEV FAIL
+     VAL n 181 -0.087 (t -1.35) info -0.050 -> FAIL | OOT NQ 2020-21 n 177 -0.105 (t -1.64) info -0.124 yrs -0.135/-0.099 -> FAIL | HOLD sealed
+V4 SP fade on calm days: DEV n 450 -0.088 R (t -1.94) win 45% | control -0.009 info -0.078 (t -1.58) | stress days n 287 -0.103 | yrs 2022:+0.17(23)/2023:-0.08(204)/2024:-0.12(223) -> DEV FAIL
+     VAL n 181 -0.027 (t -0.39) info -0.003 -> FAIL | OOT ES 2020-21 n 186 +0.009 (t +0.14) info +0.039 yrs +0.100/-0.012 -> FAIL | HOLD sealed
+
+Descriptive: each rule on each regime (net R a trade; DEV / VAL / OOT 2020-21; information over the random control in DEV)
+  NSDQ follow: stress +0.182/-0.062/+0.043 (n 285/63, info +0.152 t +1.62) | calm +0.127/+0.128/+0.080 (n 443/181, info +0.156 t +2.18)
+  NSDQ fade  : stress -0.099/-0.083/-0.043 (n 284/63, info -0.097 t -1.68) | calm -0.111/-0.087/-0.105 (n 442/181, info -0.066 t -1.39)
+  SP   follow: stress +0.212/+0.007/+0.083 (n 289/63, info +0.224 t +2.08) | calm +0.118/+0.096/+0.031 (n 451/182, info +0.092 t +1.08)
+  SP   fade  : stress -0.103/-0.131/-0.038 (n 287/63, info -0.065 t -1.09) | calm -0.088/-0.027/+0.009 (n 450/181, info -0.078 t -1.58)
+  DOW  follow: stress +0.151/+0.064/  -   (n 288/63, info +0.115 t +1.07) | calm -0.040/+0.079/  -   (n 433/176, info -0.022 t -0.32)
+  DOW  fade  : stress -0.038/+0.008/  -   (n 287/62, info -0.042 t -0.69) | calm +0.005/-0.040/  -   (n 429/175, info +0.030 t +0.64)
+
+Descriptive: by VIX band, MT5 broker 2022-25 (net R a trade, n) and futures 2020-21
+  NSDQ follow MT5 broker: 0-15 +0.134(245) 15-20 +0.124(380) 20-25 +0.135(195) 25-30 +0.185(93) 30-99 +0.070(59) | fut: 0-15 -0.086(21) 15-20 +0.102(160) 20-25 +0.080(124) 25-30 -0.036(85) 30-99 +0.068(77)
+  NSDQ fade   MT5 broker: 0-15 -0.147(244) 15-20 -0.077(380) 20-25 -0.072(195) 25-30 -0.234(92) 30-99 +0.045(59) | fut: 0-15 -0.037(20) 15-20 -0.114(158) 20-25 -0.022(124) 25-30 +0.029(85) 30-99 -0.154(77)
+  SP   follow MT5 broker: 0-15 +0.079(250) 15-20 +0.134(384) 20-25 +0.158(196) 25-30 +0.253(95) 30-99 +0.102(60) | fut: 0-15 -0.179(21) 15-20 +0.058(165) 20-25 +0.077(127) 25-30 +0.042(87) 30-99 +0.134(82)
+  SP   fade   MT5 broker: 0-15 -0.112(250) 15-20 -0.046(382) 20-25 -0.094(194) 25-30 -0.143(95) 30-99 -0.082(60) | fut: 0-15 +0.091(21) 15-20 -0.002(165) 20-25 +0.042(127) 25-30 -0.068(87) 30-99 -0.132(81)
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach% by date):
+  V1 $250: (348 trades, +0.138 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.1/3
+  V1 $500: (348 trades, +0.138 R) 30 Nov 0.0/4  22 Dec 0.0/7  30 Jun 27 2.7/25
+  V2 $250: (352 trades, +0.175 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.2/5
+  V2 $500: (352 trades, +0.175 R) 30 Nov 0.0/6  22 Dec 0.1/11  30 Jun 27 7.4/30
+  V3 $250: (623 trades, -0.104 R) 30 Nov 0.0/0  22 Dec 0.0/2  30 Jun 27 0.0/54
+  V3 $500: (623 trades, -0.104 R) 30 Nov 0.0/18  22 Dec 0.0/34  30 Jun 27 0.0/85
+  V4 $250: (631 trades, -0.070 R) 30 Nov 0.0/1  22 Dec 0.0/3  30 Jun 27 0.0/43
+  V4 $500: (631 trades, -0.070 R) 30 Nov 0.0/19  22 Dec 0.0/32  30 Jun 27 0.1/76
+  book V1-V4 $150 a trade: (1954 trades, +0.000 R) 30 Nov 0.0/3  22 Dec 0.0/8  30 Jun 27 0.2/39

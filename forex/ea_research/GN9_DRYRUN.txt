@@ -1,0 +1,29 @@
+L1 NSDQ: eligible/big days DEV 708/154 VAL 247/60 HOLD 198/65 | first trade 2022-03-01 | median S 23.7 spreads (stop 2 S = 47.3) | MT5 broker window spread 1.670
+   hand check 2024-08-22 ROD -1.64% (threshold 1.27%) side -1 entry 19496.27 at 15:30 NY, S 44.54
+   hand check 2023-01-20 ROD +2.64% (threshold 2.16%) side +1 entry 11590.00 at 15:30 NY, S 27.60
+   truncation test (data cut 2023-06-30 12:00 NY): PASS
+   OOT NQ 2020-21 (no P&L): eligible 426, big 77, first trade 2020-04-08
+   port check 2022-24: common days 696, same side 97%, R correlation 0.83, same big flag 95% (bars: 80%, 0.6)
+L2 SP: eligible/big days DEV 706/156 VAL 247/61 HOLD 197/49 | first trade 2022-03-01 | median S 18.3 spreads (stop 2 S = 36.7) | MT5 broker window spread 0.490
+   hand check 2025-02-21 ROD -1.62% (threshold 0.89%) side -1 entry 6020.16 at 15:30 NY, S 5.62
+   hand check 2025-05-08 ROD +1.39% (threshold 1.00%) side +1 entry 5707.95 at 15:30 NY, S 21.27
+   truncation test (data cut 2023-06-30 12:00 NY): PASS
+   OOT ES 2020-21 (no P&L): eligible 430, big 61, first trade 2020-04-01
+   port check 2022-24: common days 693, same side 97%, R correlation 0.73, same big flag 95% (bars: 80%, 0.6)
+L3 XAUUSD: eligible/big days DEV 732/192 VAL 257/79 HOLD 202/61 | first trade 2022-02-25 | median S 13.7 spreads (stop 2 S = 27.3) | MT5 broker window spread 0.190
+   hand check 2022-12-22 ROD -1.24% (threshold 0.95%) side -1 entry 1793.02 at 13:00 NY, S 1.78
+   hand check 2023-10-13 ROD +3.05% (threshold 0.83%) side +1 entry 1927.19 at 13:00 NY, S 1.21
+   truncation test (data cut 2023-06-30 12:00 NY): PASS
+   OOT GC 2020-21 (no P&L): eligible 412, big 76, first trade 2020-04-07
+   port check 2022-24: common days 679, same side 98%, R correlation 0.90, same big flag 96% (bars: 80%, 0.6)
+DOW DOW: eligible/big days DEV 708/158 VAL 247/65 HOLD 198/52 | first trade 2022-03-01 | median S 18.2 spreads (stop 2 S = 36.4) | MT5 broker window spread 2.870
+   hand check 2024-08-08 ROD +1.62% (threshold 0.74%) side +1 entry 39406.44 at 15:30 NY, S 96.11
+   hand check 2024-04-02 ROD -0.92% (threshold 0.70%) side -1 entry 39152.62 at 15:30 NY, S 35.53
+   truncation test (data cut 2023-06-30 12:00 NY): PASS
+
+Independent hand check (raw parquet, epochs from pandas tz conversion): NSDQ 2024-08-22 ROD = mid(15:29 close) / mid(2024-08-21
+15:59 close) - 1 = -1.64%, short entry at the 15:30 bid open 19496.27, as printed. The four hand-check days are real big days
+(22 Aug 2024 Nasdaq selloff before Jackson Hole; 20 Jan 2023 Nasdaq +2.6%; 13 Oct 2023 gold +3% after the Hamas attack).
+All dry-run bars met: truncation PASS on four markets; port check same side 97-98%, R correlation 0.73-0.90, same big flag 95-96%;
+DEV big days 154 / 156 / 192 (n >= 80). Warm-up as registered: MT5 broker trades start 2022-02-25 / 03-01, futures 2020-04-01 .. 04-08.
+Cost: stop 2 S = 27-47 spreads, so one spread is 0.02-0.04 R. No amendment.

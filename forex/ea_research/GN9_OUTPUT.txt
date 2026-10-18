@@ -1,0 +1,19 @@
+L1 NSDQ big-move days: DEV n 154 -0.145 R (t -2.92) win 42% | control -0.082 info -0.063 (t -1.08) | other days n 554 -0.025 | long-only same days -0.130 | yrs 2022:+0.00(60)/2023:-0.26(29)/2024:-0.23(65) -> DEV FAIL
+     VAL n 60 +0.047 (t +0.47) info +0.062 other days -0.033 -> FAIL | OOT NQ 2020-21 n 77 -0.206 (t -2.86) info -0.248 other days +0.035 yrs -0.072/-0.312 -> FAIL | HOLD sealed
+   by |ROD| / threshold (MT5 broker 2022-25 | futures 2020-21): 0-0.33 -0.016(350) 0.33-0.66 +0.005(231) 0.66-1 -0.096(160) 1-1.5 -0.086(134) 1.5-99 -0.100(80) | 0-0.33 +0.068(182) 0.33-0.66 +0.081(98) 0.66-1 -0.119(69) 1-1.5 -0.199(49) 1.5-99 -0.217(28)
+L2 SP big-move days: DEV n 156 -0.058 R (t -0.92) win 44% | control -0.016 info -0.043 (t -0.60) | other days n 550 -0.018 | long-only same days -0.131 | yrs 2022:+0.01(62)/2023:-0.18(31)/2024:-0.07(63) -> DEV FAIL
+     VAL n 61 -0.179 (t -2.31) info -0.143 other days +0.014 -> FAIL | OOT ES 2020-21 n 61 -0.396 (t -5.09) info -0.360 other days +0.024 yrs -0.265/-0.475 -> FAIL | HOLD sealed
+   by |ROD| / threshold (MT5 broker 2022-25 | futures 2020-21): 0-0.33 -0.019(366) 0.33-0.66 +0.015(222) 0.66-1 -0.024(148) 1-1.5 -0.097(128) 1.5-99 -0.085(89) | 0-0.33 +0.053(203) 0.33-0.66 -0.000(106) 0.66-1 -0.034(60) 1-1.5 -0.475(40) 1.5-99 -0.245(21)
+L3 XAUUSD big-move days: DEV n 192 -0.009 R (t -0.16) win 49% | control -0.019 info +0.010 (t +0.16) | other days n 540 -0.056 | long-only same days -0.028 | yrs 2022:-0.02(55)/2023:-0.15(59)/2024:+0.10(78) -> DEV FAIL
+     VAL n 79 +0.013 (t +0.16) info +0.052 other days -0.036 -> FAIL | OOT GC 2020-21 n 76 +0.010 (t +0.09) info -0.066 other days -0.118 yrs +0.168/-0.125 -> FAIL | HOLD sealed
+   by |ROD| / threshold (MT5 broker 2022-25 | futures 2020-21): 0-0.33 -0.054(305) 0.33-0.66 -0.040(249) 0.66-1 -0.063(164) 1-1.5 -0.122(134) 1.5-99 +0.114(137) | 0-0.33 -0.116(152) 0.33-0.66 -0.124(117) 0.66-1 -0.110(67) 1-1.5 -0.057(41) 1.5-99 +0.088(35)
+
+Descriptive DOW big-move days: DEV -0.040 (n 158) VAL -0.151 | other days DEV -0.013
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach% by date; R = 2 S):
+  L1 $250: (214 trades, -0.091 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/1
+  L1 $500: (214 trades, -0.091 R) 30 Nov 0.0/0  22 Dec 0.0/1  30 Jun 27 0.0/34
+  L2 $250: (217 trades, -0.092 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/1
+  L2 $500: (217 trades, -0.092 R) 30 Nov 0.0/0  22 Dec 0.0/1  30 Jun 27 0.0/38
+  L3 $250: (271 trades, -0.003 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/1
+  L3 $500: (271 trades, -0.003 R) 30 Nov 0.0/0  22 Dec 0.0/2  30 Jun 27 0.0/24
