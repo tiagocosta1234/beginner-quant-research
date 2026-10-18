@@ -1,0 +1,118 @@
+trades 526176, markets 38, 2022-01-03..2026-10-16
+per       DEV    HOLD     VAL  mkts  long%  stop_sp             group
+idea                                                                 
+N001    527.0   217.0   178.0     4   52.0     48.0       A CME micro
+N002    527.0   217.0   178.0     4   48.0     24.0       A CME micro
+N003    564.0   124.0   199.0     4   53.0     32.0       A CME micro
+N004    599.0   174.0   257.0     4   53.0     41.0       A CME micro
+N005    579.0   167.0   160.0     4   48.0     21.0       A CME micro
+N006    319.0    89.0    81.0     4   57.0     84.0       A CME micro
+N007    422.0    81.0   125.0     4   49.0     78.0       A CME micro
+N008    679.0   241.0   229.0     4   52.0    192.0       A CME micro
+N009    315.0    95.0   124.0     4   46.0     17.0       A CME micro
+N010     22.0    10.0     8.0     1   48.0     73.0       A CME micro
+N011     24.0     9.0     7.0     1   50.0     13.0       A CME micro
+N012    121.0    21.0    57.0     1   51.0      9.0       A CME micro
+N013     93.0    11.0    26.0     4   35.0     51.0       A CME micro
+N014   1489.0   396.0   528.0     4   42.0     33.0       A CME micro
+N015     91.0    30.0    37.0     2   39.0     27.0       A CME micro
+N016  12087.0  3080.0  3791.0    38   52.0     32.0    B MT5 broker liquidity
+N017  27640.0  7677.0  9638.0    38   50.0     11.0    B MT5 broker liquidity
+N018   1992.0   603.0   673.0    38   40.0     24.0    B MT5 broker liquidity
+N019   5365.0  1433.0  1875.0    38   52.0     22.0    B MT5 broker liquidity
+N020    107.0     4.0    17.0    32   45.0     33.0    B MT5 broker liquidity
+N021   5448.0  4284.0  5560.0    38   48.0      7.0    B MT5 broker liquidity
+N022    547.0    53.0   219.0    32   53.0     50.0    B MT5 broker liquidity
+N023   1345.0   116.0   204.0    38   56.0     89.0    B MT5 broker liquidity
+N024    386.0     3.0    11.0    30   56.0    280.0    B MT5 broker liquidity
+N025    425.0     1.0    10.0     8   51.0     51.0    B MT5 broker liquidity
+N026    231.0     NaN    32.0    38   61.0      8.0    B MT5 broker liquidity
+N027   1519.0   486.0   592.0     1   48.0     21.0        C lead-lag
+N028   1262.0   407.0   446.0     1   49.0     32.0        C lead-lag
+N029   1804.0   427.0   721.0     1   51.0     11.0        C lead-lag
+N030   1258.0   440.0   471.0     1   53.0     24.0        C lead-lag
+N031    680.0   223.0   240.0     1   46.0     35.0        C lead-lag
+N032   1240.0   352.0   436.0     1   47.0     14.0        C lead-lag
+N033    401.0    98.0   271.0     1   48.0      8.0        C lead-lag
+N034   1049.0   254.0   353.0     1   48.0     22.0        C lead-lag
+N035    297.0   158.0    99.0     1   43.0     40.0        C lead-lag
+N036      1.0    20.0     1.0     1   50.0      7.0        C lead-lag
+N037    986.0   287.0   319.0     1   50.0     18.0        C lead-lag
+N038    981.0   284.0   272.0     1   47.0     23.0        C lead-lag
+N039    309.0    80.0   100.0    28   49.0      7.0        D calendar
+N040     46.0    20.0    19.0     2   27.0      7.0        D calendar
+N041      8.0     NaN     4.0     1  100.0     39.0        D calendar
+N042     99.0    40.0    33.0     7   44.0     11.0        D calendar
+N043   1688.0   498.0   681.0    38   53.0      7.0        D calendar
+N044   5194.0  1470.0  1742.0    38   51.0     17.0        D calendar
+N045   4960.0  1451.0  1748.0    38   48.0      9.0        D calendar
+N046   3702.0  1053.0  1252.0     6   50.0     30.0        D calendar
+N047   1810.0   483.0   622.0    11   51.0     35.0        D calendar
+N048    556.0   158.0   181.0     3   50.0     63.0        D calendar
+N049    628.0   184.0   186.0     7   50.0     15.0        D calendar
+N050     79.0    21.0    31.0     3  100.0     67.0        D calendar
+N051    541.0   121.0   154.0    28   47.0      6.0        D calendar
+N052    617.0    35.0   267.0    38   54.0      8.0        D calendar
+N053  17848.0  5052.0  6264.0    38   51.0     16.0        E adaptive
+N054   7090.0  2030.0  2451.0    38   53.0     20.0        E adaptive
+N055  24216.0  7082.0  8715.0    38   50.0     13.0        E adaptive
+N056   3473.0   924.0  1101.0    38   59.0     48.0        E adaptive
+N057    673.0   191.0   269.0    38   47.0     49.0        E adaptive
+N058   4651.0  1224.0  1550.0    38   51.0     73.0  F+G+H price-only
+N059   4821.0  1250.0  1608.0    38   51.0     73.0  F+G+H price-only
+N060   4708.0  1228.0  1565.0    38   51.0     72.0  F+G+H price-only
+N061   4714.0  1240.0  1591.0    38   50.0     73.0  F+G+H price-only
+N062   3812.0  1001.0  1298.0    38   50.0     74.0  F+G+H price-only
+N063   4614.0  1205.0  1533.0    38   51.0     72.0  F+G+H price-only
+N064   4674.0  1211.0  1566.0    38   53.0     72.0  F+G+H price-only
+N065   4116.0  1080.0  1373.0    38   50.0     73.0  F+G+H price-only
+N066   3350.0   881.0  1182.0    38   50.0     74.0  F+G+H price-only
+N067   4827.0  1259.0  1615.0    38   50.0     73.0  F+G+H price-only
+N068   4461.0  1168.0  1490.0    38   50.0     73.0  F+G+H price-only
+N069   3178.0   838.0  1100.0    38   49.0     73.0  F+G+H price-only
+N070   5070.0  1312.0  1686.0    38   52.0     72.0  F+G+H price-only
+N071  18186.0  4782.0  6039.0    38   44.0     25.0  F+G+H price-only
+N072  15243.0  4027.0  5121.0    38   47.0     26.0  F+G+H price-only
+N073   3678.0   936.0  1223.0    38   51.0     72.0  F+G+H price-only
+N074   4620.0  1205.0  1544.0    38   48.0     72.0  F+G+H price-only
+N075  17649.0  4570.0  5794.0    38   46.0     24.0  F+G+H price-only
+N076  19498.0  5075.0  6429.0    38   48.0     25.0  F+G+H price-only
+N077   4093.0  1041.0  1346.0    38   56.0     72.0  F+G+H price-only
+N078   4760.0  1227.0  1589.0    38   48.0     72.0  F+G+H price-only
+N079    864.0   204.0   246.0    38   51.0     86.0  F+G+H price-only
+N080   2260.0   561.0   764.0     4   52.0     38.0  F+G+H price-only
+N081    990.0   253.0   281.0    38   39.0     49.0  F+G+H price-only
+N082   3277.0   813.0  1063.0    38   55.0     75.0  F+G+H price-only
+N083   3538.0   902.0  1145.0    38   48.0     73.0  F+G+H price-only
+N084   4295.0  1100.0  1422.0    38   50.0     71.0  F+G+H price-only
+N085   3479.0   900.0  1199.0    38   49.0     73.0  F+G+H price-only
+N086   3523.0   935.0  1216.0    38   52.0     71.0  F+G+H price-only
+N087   1526.0   353.0   512.0    38   54.0    134.0  F+G+H price-only
+N088    834.0   203.0   258.0    38   50.0     49.0  F+G+H price-only
+N089    210.0    57.0    60.0    38   52.0     49.0  F+G+H price-only
+N090   1181.0   297.0   372.0    38   49.0     48.0  F+G+H price-only
+N091    436.0   127.0   131.0    38   54.0    131.0  F+G+H price-only
+N092   3509.0  1015.0  1187.0     7   50.0     27.0         I factors
+N093    407.0    54.0    81.0     3   46.0     60.0         I factors
+N094    961.0   259.0   333.0     3   50.0     19.0         I factors
+N095    154.0    41.0    58.0     1   51.0     31.0   J CME attention
+N096    107.0    40.0    42.0     1   48.0     73.0   J CME attention
+N097    100.0    33.0    44.0     1   56.0     30.0   J CME attention
+N098     40.0    27.0    48.0     3    0.0     28.0      K extensions
+N099     93.0    47.0    14.0     1   53.0     34.0      K extensions
+N100    223.0    22.0    36.0    11   52.0     21.0      K extensions
+truncation EURUSD: cut 2024-09-04 04:59:56 server; trades >= 35 days before the cut 9921 vs 9921, identical True; helper states 1260 vs 1260, identical True
+truncation XAUUSD: cut 2024-08-26 15:56:22 server; trades >= 35 days before the cut 9092 vs 9092, identical True; helper states 619 vs 619, identical True
+truncation NSDQ: cut 2025-05-23 22:47:11 server; trades >= 35 days before the cut 13120 vs 13120, identical True; helper states 1624 vs 1624, identical True
+  hand check N001 XAUUSD entry 2025-06-12 14:02 LIS (09:02 NY, server 16:02) side +1 stop 42 spreads
+  hand check N014 NSDQ entry 2023-04-17 15:39 LIS (10:39 NY, server 17:39) side -1 stop 45 spreads
+  hand check N016 EURNZD entry 2024-06-18 09:47 LIS (04:47 NY, server 11:47) side -1 stop 11 spreads
+  hand check N025 EURUSD entry 2022-09-02 08:11 LIS (03:11 NY, server 10:11) side +1 stop 100 spreads
+  hand check N027 EURUSD entry 2024-02-16 10:55 LIS (05:55 NY, server 12:55) side -1 stop 25 spreads
+  hand check N039 EURNZD entry 2024-03-20 08:43 LIS (04:43 NY, server 10:43) side -1 stop 4 spreads
+  hand check N044 BRENT entry 2024-10-30 08:30 LIS (04:30 NY, server 10:30) side -1 stop 9 spreads
+  hand check N053 GBPCAD entry 2026-06-01 08:34 LIS (03:34 NY, server 10:34) side +1 stop 18 spreads
+  hand check N060 BRENT entry 2022-12-23 10:01 LIS (05:01 NY, server 12:01) side +1 stop 28 spreads
+  hand check N074 NIKKEI entry 2023-06-15 02:01 LIS (21:01 NY, server 04:01) side +1 stop 67 spreads
+  hand check N087 EURNZD entry 2022-09-09 08:05 LIS (03:05 NY, server 10:05) side +1 stop 295 spreads
+  hand check N092 NZDUSD entry 2023-07-26 10:13 LIS (05:13 NY, server 12:13) side -1 stop 54 spreads

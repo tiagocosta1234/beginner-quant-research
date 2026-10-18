@@ -1,0 +1,69 @@
+trades 30971, 2022-01-03..2026-10-16
+per      DEV   HOLD    VAL  long%  stop_sp_med      markets
+idea                                                       
+J01    368.0   87.0  114.0   51.0        121.0  NSDQ+XAUUSD
+J02    697.0  174.0  214.0   51.0        149.0  NSDQ+XAUUSD
+J03    958.0  203.0  262.0   49.0         47.0  NSDQ+XAUUSD
+J04    164.0   36.0   52.0   40.0        117.0  NSDQ+XAUUSD
+J05    106.0   20.0   24.0   69.0        115.0  NSDQ+XAUUSD
+J06    297.0   71.0  112.0   39.0        125.0  NSDQ+XAUUSD
+J07    105.0   11.0   26.0   54.0        120.0  NSDQ+XAUUSD
+J08    117.0   20.0   29.0   54.0        118.0  NSDQ+XAUUSD
+J09     47.0    NaN   10.0   58.0        145.0  NSDQ+XAUUSD
+J10    875.0  253.0  305.0   53.0         60.0  NSDQ+XAUUSD
+J11    813.0  213.0  264.0   57.0        234.0  NSDQ+XAUUSD
+J12    176.0   38.0   58.0   62.0        223.0  NSDQ+XAUUSD
+J13    861.0  252.0  295.0   54.0         63.0  NSDQ+XAUUSD
+J14    925.0  269.0  329.0   55.0         26.0  NSDQ+XAUUSD
+J15    437.0  135.0  180.0   60.0         28.0  NSDQ+XAUUSD
+J16    446.0  145.0  173.0   60.0         60.0  NSDQ+XAUUSD
+J17      3.0    NaN    NaN   67.0        127.0  NSDQ+XAUUSD
+J18    877.0  236.0  311.0   48.0         48.0  NSDQ+XAUUSD
+J19    337.0  111.0  148.0   54.0         62.0  NSDQ+XAUUSD
+J20   1117.0  285.0  390.0   51.0         31.0  NSDQ+XAUUSD
+J21    190.0   52.0   80.0   54.0         47.0  NSDQ+XAUUSD
+J22   1112.0  225.0  315.0   52.0         42.0  NSDQ+XAUUSD
+J23    545.0  122.0  165.0   58.0        106.0  NSDQ+XAUUSD
+J24    447.0  105.0  141.0   44.0         48.0  NSDQ+XAUUSD
+J25    141.0   40.0   88.0   54.0         58.0  NSDQ+XAUUSD
+J26    235.0   78.0   60.0   44.0         34.0  NSDQ+XAUUSD
+J27    120.0   33.0   42.0   63.0         75.0         NSDQ
+J28    142.0   42.0   55.0   54.0         82.0         NSDQ
+J29     73.0   22.0   20.0   51.0         74.0  NSDQ+XAUUSD
+J30     61.0   19.0   17.0   51.0         41.0  NSDQ+XAUUSD
+J31     35.0   15.0   22.0   47.0        147.0  NSDQ+XAUUSD
+J32    137.0   38.0   45.0   57.0         87.0  NSDQ+XAUUSD
+J33     38.0   13.0   10.0   62.0         74.0         NSDQ
+J34    208.0   60.0   65.0   59.0         77.0         NSDQ
+J35    383.0  105.0  126.0   52.0         77.0         NSDQ
+J36    391.0  113.0  121.0   53.0         76.0         NSDQ
+J37    386.0  110.0  118.0   57.0         76.0         NSDQ
+J38    502.0  140.0  173.0   54.0         46.0       XAUUSD
+J39    398.0  104.0  126.0   51.0         76.0         NSDQ
+J40    483.0  152.0  184.0   50.0         46.0       XAUUSD
+J41    378.0  114.0  134.0   47.0         55.0       XAUUSD
+J42    455.0  136.0  158.0   48.0         29.0       XAUUSD
+J43    218.0   63.0   75.0  100.0         76.0         NSDQ
+J44    115.0   29.0   37.0   51.0         55.0  NSDQ+XAUUSD
+J45    328.0  101.0  106.0   58.0         61.0  NSDQ+XAUUSD
+J46    172.0   47.0   65.0   46.0        117.0  NSDQ+XAUUSD
+J47     17.0    6.0    5.0   50.0        152.0  NSDQ+XAUUSD
+J48   1400.0  344.0  459.0   50.0         64.0  NSDQ+XAUUSD
+J49    280.0   68.0   73.0   47.0        120.0  NSDQ+XAUUSD
+J50    258.0   76.0   85.0   53.0         65.0       XAUUSD
+truncation NSDQ: cut 2024-08-31 02:44:15 server, trades entered >= 35 days before the cut 8408 vs 8408, identical True
+truncation XAUUSD: cut 2025-04-24 05:01:36 server, trades entered >= 35 days before the cut 10308 vs 10308, identical True
+  hand check J01 NSDQ 2026-09-08 entry 2026-09-08 14:30 LIS / 09:30 NY side +1 stop width 111 spreads
+  hand check J06 XAUUSD 2025-03-17 entry 2025-03-17 12:34 LIS / 08:34 NY side -1 stop width 71 spreads
+  hand check J11 NSDQ 2022-03-17 entry 2022-03-17 08:00 LIS / 04:00 NY side +1 stop width 509 spreads
+  hand check J15 XAUUSD 2024-09-30 entry 2024-09-30 13:35 LIS / 08:35 NY side -1 stop width 18 spreads
+  hand check J17 NSDQ 2023-05-26 entry 2023-05-26 16:41 LIS / 11:41 NY side +1 stop width 127 spreads
+  hand check J20 XAUUSD 2025-08-11 entry 2025-08-11 10:05 LIS / 05:05 NY side -1 stop width 26 spreads
+  hand check J24 NSDQ 2025-05-30 entry 2025-05-30 13:09 LIS / 08:09 NY side -1 stop width 20 spreads
+  hand check J28 NSDQ 2026-01-30 entry 2026-01-30 15:29 LIS / 10:29 NY side -1 stop width 78 spreads
+  hand check J33 NSDQ 2022-06-13 entry 2022-06-13 15:10 LIS / 10:10 NY side -1 stop width 111 spreads
+  hand check J48 XAUUSD 2026-08-31 entry 2026-08-31 14:43 LIS / 09:43 NY side -1 stop width 49 spreads
+
+Dry run finished 2026-10-18 17:31 local (local clock), before any P&L: truncation identical on NSDQ (8,408 trades) and XAUUSD (10,308); hand checks
+plausible (J33 2022-06-13 is the Celsius-crash weekend, BTC -2% or more). Below the n >= 100 DEV bar by design: J09 47, J17 3 (ER > 0.4
+mornings are rare), J29 73, J30 61, J31 35, J33 38, J47 17. No amendment.

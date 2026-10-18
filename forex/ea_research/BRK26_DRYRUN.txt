@@ -1,0 +1,45 @@
+trades 214174, markets 38, 2022-01-03..2026-10-15
+per     DEV  HOLD   VAL  mkts  long%  stop_sp
+idea                                         
+P01    2377   632   843    38   48.0     73.0
+P02    7605  1971  2575    38   55.0     26.0
+P03    3967  1042  1348    38   48.0     72.0
+P04   14500  3631  4682    38   54.0     25.0
+P05    1871   447   562    38   62.0     76.0
+P06    4246  1097  1402    38   45.0     75.0
+P07     331   114   113    38   53.0    119.0
+P08    1250   357   462    38   49.0     94.0
+P09    1230   329   470    38   50.0    142.0
+P10    5110  1317  1698    38   54.0     71.0
+P11    3510   904  1165    38   50.0     74.0
+P12   22629  6005  7565    38   51.0     26.0
+P13   10924  2694  3620    38   46.0     26.0
+P14   17018  4381  5715    38   48.0     26.0
+P15    3086   799  1074    38   49.0     74.0
+P16     106    36    33    38   46.0     86.0
+P17    1637   457   577    38   53.0     77.0
+P18    1588   397   473    38   50.0     86.0
+P19    3501   909  1171    38   48.0     73.0
+P20    4119  1069  1360    38   51.0     74.0
+P21    4838  1252  1622    38   49.0     73.0
+P22    2882   772   962    38   55.0     74.0
+P23      83    28    37    38   58.0     51.0
+P24    4201  1058  1384    38   52.0     75.0
+P25    1856   435   605    38   52.0     60.0
+P26   10085  2677  3296    38   53.0     21.0
+truncation EURUSD: cut 2024-11-04 15:36:53 server, trades >= 35 days before the cut 3299 vs 3299, identical True
+truncation XAUUSD: cut 2024-05-01 21:55:36 server, trades >= 35 days before the cut 2651 vs 2651, identical True
+truncation NSDQ: cut 2024-01-22 18:26:34 server, trades >= 35 days before the cut 2378 vs 2378, identical True
+  hand check P01 GBPCAD entry 2024-07-02 06:00 LIS side +1 stop 34 spreads
+  hand check P06 EURJPY entry 2026-06-11 02:00 LIS side -1 stop 82 spreads
+  hand check P10 GBPJPY entry 2025-09-24 07:32 LIS side +1 stop 54 spreads
+  hand check P16 AUDCHF entry 2023-12-05 11:25 LIS side -1 stop 101 spreads
+  hand check P20 EURUSD entry 2026-09-03 02:00 LIS side +1 stop 59 spreads
+  hand check P23 EURAUD entry 2022-11-17 08:46 LIS side +1 stop 91 spreads
+  hand check P25 GBPAUD entry 2024-08-06 18:01 LIS side -1 stop 91 spreads
+  hand check P26 USDCHF entry 2025-09-03 01:12 LIS side +1 stop 50 spreads
+
+Dry run finished by 2026-10-18 19:21 local (local clock), before any P&L: truncation identical on EURUSD, XAUUSD, NSDQ; hand checks on H4 bar
+boundaries or inside their order windows. Below n >= 150 in DEV (fail automatically): P16 TDST 106, P23 IOI 83. Two engine fixes
+made before this dry run (no P&L seen): a boolean lag for P24 (NaN-filled lags read as True) and P16 orders created only on the day a
+setup count first reaches 9. No amendment.

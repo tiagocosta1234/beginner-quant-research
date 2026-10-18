@@ -74,6 +74,53 @@ Written for the trader after the breakout research day (`BREAKOUT_DAY_2026-10-15
    - Data note: in 2020-21 the Databento continuous ES switched contract at 00:00 UTC on the FRIDAY before the expiry week and NQ
      at Sunday re-opens; the expiry-week Monday rule (`gn5.roll_mondays`) holds from mid-2022. No earlier verdict changes
      (`ROLL_2020_CHECK.md`).
+13i. **50 more ideas on gold and Nasdaq, 0 pass (BRK50B, 2026-10-18 evening, second PC):** one pre-registered family judged at the
+   Bonferroni bar for 50 (t >= 3.09): prior-session and closing-hour ranges, Larry Williams' "Oops", pin bars, dojis, close-location
+   trends, close-confirmed daily / weekly swings, own-session direction filters, gap-and-go, efficiency-ratio mornings, intraday
+   inside / wide-range / three-bar / Holy Grail bars, variance-ratio regimes, VIX / 10-year / copper / CME-volume conditions, Nikkei
+   / DAX / USDJPY / BTC / oil / silver leads, the FOMC cycle, the day after CPI / NFP / FOMC, level confluence, Turtle Soup, a
+   volume-clock box. DEV t-values look like noise plus the shared Nasdaq-box drift (mean +0.50, 6 above 1.65 against ~2.5 by luck);
+   the closest, a prior-day high / low that held through Europe and broke in New York (J01), made +0.133 R (t 2.96) in 2022-24 and
+   +0.117 R (t 1.55) in 2025: short of both bars. The VIX-change idea reversed in 2025 (-0.37 R, t -3.1). Hold-out sealed
+   (`BRK50B_RESULT.md`).
+13j. **30 untouched ideas on the 38 MT5 broker, 0 pass, most lose (BRK30, 2026-10-18 evening, second PC):** double / triple tops and
+   bottoms, broadening formations, morning / evening stars, Ichimoku (H4 / D1, TK cross), MACD, RSI bursts, ADX birth, Aroon, CCI,
+   regression channels, EMA 9 / 21, golden crosses, low-chop Donchian, KAMA, Elder's triple screen, Bill Williams fractals,
+   copper / gold / VIX / rate leads for FX, OPEX-Friday pinning, quarter-end flows, outside weeks, afternoon fades of the morning
+   range. DEV t mean -1.62, 4 of 30 positive, none above 1.65: the busy H1 indicator signals pay the spread (fractals t -6.5,
+   KAMA -5.3, MACD -4.1). Best: USDJPY London box in the direction of the 10-year yield (+0.137 R, t 1.25; 2025 +0.128) = the
+   unfiltered USDJPY London breakout, no added information (`BRK30_RESULT.md`). With this batch the fixed-rule breakout ideas that
+   MT5 broker's price data can express are used up.
+13k. **100 more untested breakout tests on 46 markets, 0 pass (BRK100, 2026-10-18 evening, second PC):** 79 new concepts (crypto
+   funding / weekend / Monday / expiry boxes, FX fixes and option cuts, ECB fix, US releases / FOMC / auctions for FX, VIX / rates
+   / gold / BTC / copper leads, carry side, quarter-end dollar, class-narrowest / widest boxes, DAX / Nikkei / ASX session times,
+   LBMA gold and silver fixes, oil settlement / rig count / Asia, Shanghai PM and Indian-session gold, structure, the named systems
+   of Williams / Raschke / Fisher / Dalton / Ross / Hikkake / Renko / Point and Figure / TradingView, CME-volume conditions,
+   FOMC-minutes and release-morning fades) plus 21 out-of-sample market extensions of today's NSDQ / XAUUSD ideas. DEV t mean
+   -3.16, 2 above 1.65 (5 by luck). Crypto -0.45 R (spreads); best: JPY-carry side +0.112 R t 1.84 (drift). Today's Nasdaq
+   near-misses (J01, Holy Grail, own-London direction, bond trend) do not travel to the other markets (`BRK100_RESULT.md`).
+13l. **26 more new concepts, 0 pass (BRK26, 2026-10-18 evening, second PC):** TRIX, Vortex, CMO, Ultimate Oscillator, Fisher transform,
+   Mass Index, DPO, KST, Elder Ray, Hull MA, TEMA, Williams %R, StochRSI, Awesome Oscillator, DeMark TDST, kumo twist, Chaikin
+   volatility, regression-slope turns, Schaff Trend Cycle, RVI, Balance of Power, inside-outside-inside, three-bar reversals, marubozu,
+   Al Brooks High 2. DEV t mean -1.69; the closest, the daily KST signal cross (+0.102 R, t 2.51, every DEV year positive), reversed
+   in 2025 (-0.13 R, t -2.3) (`BRK26_RESULT.md`). With BRK100 this answers the trader's "at least 100 more": 126 tests (105 new
+   concepts), 0 passes.
+13m. **100 ideas on information the breakout tests never used, 0 pass (BRK100B, 2026-10-18 night, second PC):** MT5 broker's own spread as a
+   signal (shocks, stressed / calm boxes, FX-wide states), CME volume on NSDQ / SP / XAUUSD / XAGUSD (true VWAP rules, climaxes,
+   absorption, signed volume, NVI, 12 volume oscillators, volume regimes), cross-market states (currency strength, index breadth,
+   dollar filter, triangles, correlation breaks), VIX term structure, US holidays and 37 untested named systems (Dual Thrust,
+   R-Breaker, QQE, WaveTrend, HalfTrend, AlphaTrend, the Ehlers filters, Hurst, entropy, Kalman ...). DEV t mean -1.20, 3 above 1.65
+   (5 by luck). Spread is a cost on MT5 broker, not a signal (MT5 broker's FX spreads are nearly constant); CME volume is the least bad group but
+   at chance level; the best, the NB breakout of whichever index had the busier opening half hour (M100, +0.171 R t 2.91, info t
+   3.94), was flat in 2025 (`BRK100B_RESULT.md`). 18 Oct total: 346 tests, 0 passes.
+13n. **Another 100, 0 pass (BRK100C, 2026-10-18 night, second PC):** CME microstructure (VPIN, Kyle lambda, Amihud, volume shares, roll
+   week), MT5 broker liquidity-weighted prices (= TWAP, MT5 broker spreads are nearly constant), 12 minute lead-lag pairs, untested calendars (IMM,
+   Chinese / Japanese / UK holidays, Diwali, DST weeks, moon, Fed blackout, earnings season), adaptive rules (Turtle filter, mode
+   momentum, trend vote), 34 untested moving averages / oscillators / candlesticks, factor residuals, CME attention. DEV t mean -1.37,
+   1 above 1.65 (5 by luck). Closest: US-index NB follow in earnings season +0.253 R t 2.46 (every year positive, 2025 +0.149 t 0.87).
+   Lead-lag followers do not lag enough to pay the spread; fades on thin holidays lose 0.4 R; breakout outcomes carry no memory a
+   Turtle-type filter can use. MT5 broker's recorded minute spreads change character after 2024 (shocks frequent before, rare after), so
+   spread-shock ideas cannot be validated out of sample (`BRK100C_RESULT.md`). 18 Oct total: 446 tests, 0 passes.
 13. **The card's gold London leg did not "stop working" in 2026:** its yearly means (-0.11..+0.08 R) are all within one standard error of luck (~0.09 R); 2024 looked exactly like 2026; the opposite trade loses every year too. There was no stable edge to lose. (GOLD_ORB_2026_DIAG)
 
 ## 2. What is left that is not nothing

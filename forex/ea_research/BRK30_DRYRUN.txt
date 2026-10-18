@@ -1,0 +1,53 @@
+exit 0
+trades 220731, markets 38, 2022-01-03..2026-10-16
+per     DEV  HOLD   VAL  markets  long%  stop_sp_med
+idea                                                
+K01    5416  1445  1817       38   50.0         36.0
+K02    1224   319   401       38   52.0         77.0
+K03     245    70    86       38   54.0         81.0
+K04     971   225   278       38   54.0        104.0
+K05      77    20    15       37   48.0         57.0
+K06    2223   597   796       38   52.0         74.0
+K07     615   185   179       38   51.0         94.0
+K08    2205   580   742       38   56.0         74.0
+K09    2654   704   949       38   49.0         75.0
+K10   11637  3039  3868       38   54.0         26.0
+K11    6700  1749  2156       38   47.0         29.0
+K12    2086   549   701       38   48.0         76.0
+K13    2516   675   835       38   55.0         73.0
+K14    2382   639   756       38   53.0         93.0
+K15    4385  1127  1464       38   53.0         74.0
+K16   11720  3066  3945       38   49.0         28.0
+K17   13867  3724  4703       38   49.0         26.0
+K18     148    38    46       38   53.0        192.0
+K19    8297  2058  2614       38   54.0         28.0
+K20   20080  5302  6717       38   50.0         25.0
+K21    1067   238   377       38   52.0         80.0
+K22   18198  4816  6052       38   54.0         24.0
+K23     952   254   313        2   53.0         21.0
+K24     913   260   335        2   54.0         21.0
+K25     412   108   165        3   56.0         32.0
+K26     464   113   147        1   53.0         47.0
+K27      85    19    28        3   58.0         31.0
+K28      63    16    23        5   36.0         43.0
+K29     266    55    86       38   49.0         95.0
+K30   16347  4265  5667       38   49.0         49.0
+truncation EURUSD: cut 2024-05-07 09:16:36 server, trades entered >= 35 days before the cut 2727 vs 2727, identical True
+truncation XAUUSD: cut 2024-09-20 04:00:39 server, trades entered >= 35 days before the cut 3184 vs 3184, identical True
+truncation NSDQ: cut 2024-02-01 02:45:21 server, trades entered >= 35 days before the cut 2440 vs 2440, identical True
+  hand check K01 NZDJPY entry 2023-07-26 23:44 LIS side +1 stop width 15 spreads
+  hand check K04 USDJPY entry 2023-02-13 01:31 LIS side +1 stop width 697 spreads
+  hand check K06 GBPJPY entry 2023-10-10 02:00 LIS side +1 stop width 250 spreads
+  hand check K13 NSDQ entry 2026-08-12 18:00 LIS side +1 stop width 171 spreads
+  hand check K16 EURCAD entry 2024-11-26 13:00 LIS side +1 stop width 58 spreads
+  hand check K22 DOW entry 2025-10-17 06:08 LIS side -1 stop width 87 spreads
+  hand check K25 USDCHF entry 2025-10-24 09:02 LIS side +1 stop width 8 spreads
+  hand check K28 DAX entry 2025-03-28 08:54 LIS side -1 stop width 34 spreads
+
+[exited with code 0]
+
+Dry run finished by 2026-10-18 17:47 local (local clock), before any P&L: truncation identical on EURUSD (2,727), XAUUSD (3,184), NSDQ (2,440).
+Hand checks plausible (entries on H1 / H4 boundaries of the server grid, fills outside the rollover window, K28 DAX short on
+2025-03-28 after an up first quarter). Below the n >= 150 DEV bar: K05 77, K18 148, K27 85, K28 63 (fail automatically).
+Implementation note (no rule change): K22 "1 point above the fractal" = the buy stop triggers when the ask reaches the fractal
+high (strictly above the bid high), mirrored for sells. No amendment.

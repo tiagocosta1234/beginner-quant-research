@@ -1,0 +1,118 @@
+trades 483673, markets 38, 2022-01-03..2026-10-16
+per       DEV    HOLD     VAL  mkts  long%  stop_sp           group
+idea                                                               
+M001   2273.0    49.0   148.0    35   50.0     50.0        A spread
+M002   2273.0    49.0   148.0    35   50.0     47.0        A spread
+M003   3626.0   833.0  1378.0    37   52.0     18.0        A spread
+M004   1485.0   196.0   309.0    38   53.0     21.0        A spread
+M005   1485.0   196.0   309.0    38   47.0     10.0        A spread
+M006    829.0   105.0   131.0    37   48.0     17.0        A spread
+M007   3501.0   338.0   783.0    37   51.0     30.0        A spread
+M008   1475.0    67.0   119.0    38   53.0     94.0        A spread
+M009    568.0    17.0    17.0    36   46.0     72.0        A spread
+M010   8427.0  2370.0  3058.0    38   55.0     22.0        A spread
+M011    457.0     NaN    52.0    28   54.0      6.0        A spread
+M012    621.0     NaN    78.0    28   53.0     23.0        A spread
+M013   2841.0    67.0   274.0    34   51.0     66.0        A spread
+M014    154.0    25.0    33.0    34   47.0     15.0        A spread
+M015   1219.0   244.0   345.0     4   56.0     60.0  B+G CME volume
+M016    604.0   139.0   199.0     4   55.0     52.0  B+G CME volume
+M017   2775.0   681.0   928.0     4   50.0     27.0  B+G CME volume
+M018   2775.0   681.0   928.0     4   50.0     19.0  B+G CME volume
+M019   1382.0   297.0   434.0     4   45.0     43.0  B+G CME volume
+M020    165.0    43.0    70.0     4   33.0     41.0  B+G CME volume
+M021    445.0   117.0   167.0     4   62.0     18.0  B+G CME volume
+M022    452.0    87.0   149.0     4   44.0     21.0  B+G CME volume
+M023      8.0    21.0    11.0     2   60.0     38.0  B+G CME volume
+M024     12.0     3.0     2.0     4   59.0     15.0  B+G CME volume
+M025    690.0   176.0   231.0     4   54.0     58.0  B+G CME volume
+M026    381.0    88.0   124.0     4   49.0     27.0  B+G CME volume
+M027     62.0    10.0    21.0     4   43.0     49.0  B+G CME volume
+M028     74.0    27.0    23.0     4   27.0     73.0  B+G CME volume
+M029    483.0    82.0   139.0     4   55.0     43.0  B+G CME volume
+M030      5.0     5.0     2.0     4    8.0    119.0  B+G CME volume
+M031    510.0    91.0   141.0     4   59.0     81.0  B+G CME volume
+M032    985.0   222.0   307.0     4   83.0     83.0  B+G CME volume
+M033   1557.0   392.0   517.0     4   51.0     41.0  B+G CME volume
+M034   1673.0   380.0   525.0     4   47.0     37.0  B+G CME volume
+M035   1833.0   466.0   615.0     4   51.0     42.0  B+G CME volume
+M036   1732.0   434.0   589.0     4   50.0     38.0  B+G CME volume
+M037    424.0   107.0   140.0     4   48.0    110.0  B+G CME volume
+M038   1803.0   445.0   579.0     4   44.0     36.0  B+G CME volume
+M039    410.0   100.0   140.0     4   49.0    125.0  B+G CME volume
+M040   1579.0   406.0   545.0     4   48.0     39.0  B+G CME volume
+M041    442.0   110.0   152.0     4   45.0    130.0  B+G CME volume
+M042   2109.0   518.0   692.0     4   51.0     41.0  B+G CME volume
+M043    316.0    74.0    78.0     4   42.0    137.0  B+G CME volume
+M044    397.0    89.0   124.0     4   57.0    115.0  B+G CME volume
+M045    511.0   143.0   167.0    27   52.0     18.0  C cross-market
+M046   2018.0   543.0   683.0    28   52.0     17.0  C cross-market
+M047    683.0   185.0   235.0    28   47.0      9.0  C cross-market
+M048    768.0   241.0   232.0     3   56.0     64.0  C cross-market
+M049    513.0   155.0   175.0     1   57.0     49.0  C cross-market
+M050    995.0   294.0   348.0     2   50.0     18.0  C cross-market
+M051   3483.0   858.0  1121.0    21   50.0     17.0  C cross-market
+M052     53.0     1.0    66.0     5   54.0     30.0  C cross-market
+M053   7689.0  1902.0  2417.0    38   49.0     62.0  D+E price-only
+M054   2779.0   760.0   932.0    38   46.0     48.0  D+E price-only
+M055   2793.0   650.0   920.0    38   52.0     49.0  D+E price-only
+M056   4445.0  1155.0  1484.0    38   50.0     73.0  D+E price-only
+M057  18088.0  4727.0  6065.0    38   49.0     25.0  D+E price-only
+M058   2174.0   562.0   710.0    38   43.0     74.0  D+E price-only
+M059   4119.0  1067.0  1381.0    38   51.0     74.0  D+E price-only
+M060  12188.0  3227.0  4000.0    38   49.0     28.0  D+E price-only
+M061   3439.0   893.0  1164.0    38   49.0     74.0  D+E price-only
+M062   3933.0  1013.0  1285.0    38   53.0     72.0  D+E price-only
+M063   4152.0  1071.0  1371.0    38   51.0     74.0  D+E price-only
+M064   3285.0   868.0  1112.0    38   48.0     73.0  D+E price-only
+M065   6576.0  1724.0  2284.0    38   52.0    138.0  D+E price-only
+M066  19276.0  5104.0  6488.0    38   50.0     25.0  D+E price-only
+M067   3516.0   919.0  1213.0    38   50.0     74.0  D+E price-only
+M068   2897.0   797.0  1010.0    38   47.0    135.0  D+E price-only
+M069   4610.0  1198.0  1544.0    38   54.0     73.0  D+E price-only
+M070   2464.0   584.0   775.0    38   55.0     76.0  D+E price-only
+M071   4072.0  1049.0  1365.0    38   51.0     72.0  D+E price-only
+M072   1006.0   255.0   294.0    38   55.0     48.0  D+E price-only
+M073   3747.0   974.0  1284.0    38   49.0     73.0  D+E price-only
+M074  20897.0  5490.0  6978.0    38   48.0     25.0  D+E price-only
+M075   4071.0  1051.0  1348.0    38   49.0     73.0  D+E price-only
+M076   3837.0  1002.0  1302.0    38   49.0     73.0  D+E price-only
+M077   3135.0   805.0  1067.0    38   50.0     72.0  D+E price-only
+M078   4779.0  1220.0  1592.0    38   50.0     71.0  D+E price-only
+M079  23727.0  6261.0  7869.0    38   50.0     25.0  D+E price-only
+M080   3530.0   914.0  1170.0    38   51.0     72.0  D+E price-only
+M081   3904.0  1023.0  1326.0    38   49.0     73.0  D+E price-only
+M082  10605.0  2615.0  3353.0    38   51.0     27.0  D+E price-only
+M083    785.0   257.0   328.0    38   46.0     22.0  D+E price-only
+M084   3156.0   961.0   993.0    38   58.0     26.0  D+E price-only
+M085  11867.0  3201.0  3976.0    38   50.0     26.0  D+E price-only
+M086   2853.0   336.0   664.0    38   54.0     52.0  D+E price-only
+M087   4208.0  1654.0  1924.0    38   48.0     42.0  D+E price-only
+M088     44.0    26.0    46.0     3  100.0     54.0           F VIX
+M089    495.0    60.0    47.0     3   52.0     27.0           F VIX
+M090    209.0    80.0    94.0     3   50.0     33.0           F VIX
+M091    588.0    85.0   153.0     3   50.0     77.0           F VIX
+M092     15.0     7.0    11.0     4   61.0     28.0  B+G CME volume
+M093    321.0    73.0   185.0     4   57.0     37.0  B+G CME volume
+M094    293.0   185.0   141.0     4   48.0     17.0  B+G CME volume
+M095  18503.0  4942.0  6255.0    38   47.0     25.0  D+E price-only
+M096    801.0   216.0   264.0    38   52.0     50.0  D+E price-only
+M097    601.0   187.0   231.0    28   46.0      7.0      H calendar
+M098     78.0    19.0    31.0     3   52.0     33.0      H calendar
+M099     77.0    23.0    23.0     3   42.0     72.0      H calendar
+M100    626.0   163.0   207.0     2   50.0     64.0  B+G CME volume
+truncation EURUSD: cut 2025-01-19 16:22:39 server; trades >= 35 days before the cut 9991 vs 9991, identical True; helper states 1548 vs 1548, identical True
+truncation XAUUSD: cut 2023-11-14 20:51:55 server; trades >= 35 days before the cut 9859 vs 9859, identical True; helper states 479 vs 479, identical True
+truncation NSDQ: cut 2024-04-13 00:40:01 server; trades >= 35 days before the cut 11384 vs 11384, identical True; helper states 1679 vs 1679, identical True
+  hand check M001 NZDUSD entry 2023-06-13 13:32 LIS (08:32 NY, server 15:32) side +1 stop 252 spreads
+  hand check M006 EURGBP entry 2023-06-21 08:38 LIS (03:38 NY, server 10:38) side -1 stop 101 spreads
+  hand check M015 XAUUSD entry 2023-02-23 14:37 LIS (09:37 NY, server 16:37) side -1 stop 110 spreads
+  hand check M021 XAUUSD entry 2026-06-18 15:06 LIS (10:06 NY, server 17:06) side -1 stop 25 spreads
+  hand check M033 XAUUSD entry 2022-01-18 08:01 LIS (03:01 NY, server 10:01) side -1 stop 76 spreads
+  hand check M045 USDJPY entry 2026-01-09 08:41 LIS (03:41 NY, server 10:41) side +1 stop 26 spreads
+  hand check M048 NSDQ entry 2024-12-04 15:07 LIS (10:07 NY, server 17:07) side +1 stop 32 spreads
+  hand check M053 EURAUD entry 2022-09-22 09:15 LIS (04:15 NY, server 11:15) side -1 stop 84 spreads
+  hand check M055 GBPCAD entry 2022-03-01 18:24 LIS (13:24 NY, server 20:24) side +1 stop 49 spreads
+  hand check M065 CADCHF entry 2025-01-31 08:05 LIS (03:05 NY, server 10:05) side -1 stop 88 spreads
+  hand check M082 EURGBP entry 2025-01-10 09:01 LIS (04:01 NY, server 11:01) side +1 stop 14 spreads
+  hand check M097 AUDUSD entry 2025-01-20 08:34 LIS (03:34 NY, server 10:34) side +1 stop 9 spreads
