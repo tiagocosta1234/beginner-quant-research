@@ -1,0 +1,5 @@
+identity vs gn3 O1 on MT5 broker: trades 1103 vs 1103 identical True; controls identical True
+port check 2022-24: MT5 broker n 708 +0.102 R | futures n 692 +0.065 R (diff -0.036, bar +/-0.06) | common days 689, same side 99%, R correlation 0.95 (bar >= 0.6)
+OOT counts (no P&L): trades 2020 205 2021 229 | roll Mondays skipped 8 | control draws 2515
+   hand check 2020-10-26 side +1 entry 11640.00 at 09:37 NY, stop 11591.50 (range 97.0 points)
+   hand check 2021-06-25 side -1 entry 14332.00 at 09:57 NY, stop 14363.12 (range 62.2 points)

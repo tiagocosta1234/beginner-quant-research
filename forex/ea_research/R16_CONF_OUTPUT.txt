@@ -1,0 +1,16 @@
+R16-T1 events: DEV 728 (+0.067 R), VAL 236 (+0.024 R); C3 cut box/ATR >= 0.272 (DEV 33rd pct)
+
+C1_fvg             DEV with n 421 +0.086 | without n 307 +0.041 | t +0.68 -> drop   (VAL, descriptive: with +0.001 n 140 / without +0.058; T2 retest DEV with +0.074)
+C2_trend20         DEV with n 382 +0.097 | without n 346 +0.034 | t +0.98 -> drop   (VAL, descriptive: with +0.037 n 124 / without +0.010; T2 retest DEV with +0.102)
+C3_not_small_box   DEV with n 485 +0.041 | without n 243 +0.119 | t -1.11 -> drop   (VAL, descriptive: with -0.004 n 139 / without +0.066; T2 retest DEV with +0.040)
+C4_gap_aligned     DEV with n 378 +0.080 | without n 350 +0.052 | t +0.44 -> drop   (VAL, descriptive: with -0.078 n 107 / without +0.109; T2 retest DEV with +0.064)
+C5_strong_candle   DEV with n 544 +0.061 | without n 184 +0.083 | t -0.29 -> drop   (VAL, descriptive: with +0.027 n 175 / without +0.016; T2 retest DEV with +0.047)
+C6_twap_side       DEV with n 728 +0.067 | without n   0 +nan | t +nan -> drop   (VAL, descriptive: with +0.024 n 236 / without +nan; T2 retest DEV with +0.060)
+C7_sp_confirms     DEV with n 496 +0.092 | without n 232 +0.013 | t +1.13 -> drop   (VAL, descriptive: with +0.012 n 179 / without +0.064; T2 retest DEV with +0.098)
+C8_vol_expanding   DEV with n 287 +0.035 | without n 441 +0.087 | t -0.78 -> drop   (VAL, descriptive: with -0.003 n 131 / without +0.059; T2 retest DEV with +0.032)
+
+kept on DEV: none
+combined rule (base): DEV n 728 +0.067 R (t +2.09) | VAL n 236 +0.024 R (t +0.44) vs base VAL +0.024
+VAL confirmation failed or nothing kept: HOLD 2026 stays sealed
+account NSDQ $250 a trade (964 trades 2022-25, +0.056 R; DEV part is in-sample for the selection): 22 Dec 0.0/0  31 Mar 27 0.0/3  30 Jun 27 0.0/4
+account NSDQ $500 a trade (964 trades 2022-25, +0.056 R; DEV part is in-sample for the selection): 22 Dec 0.0/11  31 Mar 27 1.3/22  30 Jun 27 8.6/25

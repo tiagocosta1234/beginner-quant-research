@@ -1,0 +1,19 @@
+G1 DEV n 355 -0.090 R (t -0.77) win 20% | control +0.011 | info -0.139 (t -1.75) | yrs -0.31/-0.23/+0.03 -> FAIL | VAL n 189 +0.250 (t +1.31) control +0.093 info +0.110 | HOLD sealed
+G2 DEV n 355 +0.115 R (t +0.67) win 14% | control +0.105 | info +0.000 (t +0.00) | yrs -0.35/-0.05/+0.26 -> FAIL | VAL n 189 +0.442 (t +1.62) control +0.342 info +0.085 | HOLD sealed
+G3 DEV n 315 +0.088 R (t +1.09) win 43% | control +0.042 | info -0.031 (t -0.56) | yrs -0.41/+0.17/+0.05 -> FAIL | VAL n 164 +0.192 (t +1.85) control +0.071 info +0.006 | HOLD sealed
+N1 DEV n 302 +0.132 R (t +1.76) win 49% | control +0.010 | info -0.072 (t -1.34) | yrs +0.20/+0.07 -> FAIL | VAL n 123 +0.053 (t +0.48) control -0.054 info -0.005 | HOLD sealed
+N2 DEV n 302 +0.224 R (t +2.07) win 37% | control +0.127 | info -0.146 (t -1.91) | yrs +0.27/+0.18 -> FAIL | VAL n 123 +0.087 (t +0.61) control -0.095 info +0.040 | HOLD sealed
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach%):
+  G1 $250: (544 trades, +0.028 R) 30 Nov 0.0/5  22 Dec 0.0/14  30 Jun 27 0.9/53
+  G1 $500: (544 trades, +0.028 R) 30 Nov 0.0/44  22 Dec 0.0/59  30 Jun 27 0.9/92
+  G2 $250: (544 trades, +0.228 R) 30 Nov 0.0/11  22 Dec 0.1/23  30 Jun 27 5.4/57
+  G2 $500: (544 trades, +0.228 R) 30 Nov 0.0/59  22 Dec 0.1/74  30 Jun 27 0.5/98
+  G3 $250: (479 trades, +0.123 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.4/8
+  G3 $500: (479 trades, +0.123 R) 30 Nov 0.0/8  22 Dec 0.1/15  30 Jun 27 10.9/36
+  N1 $250: (425 trades, +0.109 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/4
+  N1 $500: (425 trades, +0.109 R) 30 Nov 0.0/4  22 Dec 0.0/9  30 Jun 27 3.7/27
+  N2 $250: (425 trades, +0.184 R) 30 Nov 0.0/0  22 Dec 0.0/2  30 Jun 27 3.2/16
+  N2 $500: (425 trades, +0.184 R) 30 Nov 0.2/17  22 Dec 0.9/26  30 Jun 27 19.3/49
+  pair G1+N1 $250: (969 trades, +0.064 R) 30 Nov 0.0/7  22 Dec 0.0/15  30 Jun 27 3.5/45
+  pair G2+N2 $250: (969 trades, +0.209 R) 30 Nov 0.1/16  22 Dec 0.4/25  30 Jun 27 14.0/51

@@ -1,0 +1,28 @@
+events 91988, markets 38, 2022-01-03..2026-10-16
+LDN DEV base: follow-win rate 0.451, always-FOLLOW -0.070 R, always-FADE -0.094 R (n 28929)
+LDN VAL base: follow-win rate 0.445, always-FOLLOW -0.083 R, always-FADE -0.080 R (n 9534)
+NY DEV base: follow-win rate 0.390, always-FOLLOW -0.041 R, always-FADE -0.084 R (n 28667)
+NY VAL base: follow-win rate 0.398, always-FOLLOW -0.044 R, always-FADE -0.095 R (n 9613)
+
+LDN-COUNT | DEV n 15550 net -0.103 t -9.19 | follow leg n 7342 win 0.468 -0.063 | fade leg n 8208 win 0.431 -0.138 | placebo -0.082/-0.093/-0.088 | yrs -0.07/-0.10/-0.13 | AUC 0.509 -> FAIL | VAL n 5100 -0.092 t -5.06 AUC 0.511 | HOLD sealed
+     account NSDQ+XAU $250 (986 trades, -0.036 R): 22 Dec pass 0.0% / breach 7%  30 Jun 27 pass 0.0% / breach 46%
+LDN-GBM   | DEV n 11114 net -0.111 t -8.96 | follow leg n 6008 win 0.477 -0.046 | fade leg n 5106 win 0.404 -0.188 | placebo -0.111/-0.110/-0.100 | yrs -0.04/-0.15/-0.14 | AUC 0.522 -> FAIL | VAL n 3551 -0.105 t -5.11 AUC 0.523 | HOLD sealed
+     account NSDQ+XAU $250 (680 trades, -0.026 R): 22 Dec pass 0.0% / breach 2%  30 Jun 27 pass 0.0% / breach 31%
+NY -COUNT | DEV n 12422 net -0.049 t -3.58 | follow leg n 6496 win 0.470 -0.055 | fade leg n 5926 win 0.476 -0.042 | placebo -0.065/-0.067/-0.074 | yrs -0.04/-0.05/-0.06 | AUC 0.541 -> FAIL | VAL n 4059 -0.007 t -0.30 AUC 0.549 | HOLD sealed
+     account NSDQ+XAU $250 (803 trades, -0.050 R): 22 Dec pass 0.0% / breach 3%  30 Jun 27 pass 0.0% / breach 43%
+NY -GBM   | DEV n 11228 net -0.038 t -3.11 | follow leg n 5685 win 0.486 -0.027 | fade leg n 5543 win 0.470 -0.050 | placebo -0.087/-0.072/-0.079 | yrs -0.03/-0.03/-0.05 | AUC 0.586 -> FAIL | VAL n 3489 -0.014 t -0.67 AUC 0.587 | HOLD sealed
+     account NSDQ+XAU $250 (956 trades, +0.005 R): 22 Dec pass 0.0% / breach 2%  30 Jun 27 pass 0.0% / breach 24%
+
+follow-win rate by prediction decile (lowest -> highest):
+  LDN-COUNT DEV oof [0.436, 0.45, 0.449, 0.441, 0.447, 0.464, 0.453, 0.444, 0.46, 0.469]
+            VAL     [0.41, 0.421, 0.452, 0.444, 0.44, 0.456, 0.473, 0.462, 0.458, 0.436]
+  LDN-GBM   DEV oof [0.401, 0.437, 0.425, 0.452, 0.461, 0.461, 0.465, 0.479, 0.478, 0.456]
+            VAL     [0.422, 0.434, 0.395, 0.431, 0.437, 0.476, 0.453, 0.441, 0.512, 0.451]
+  NY-COUNT DEV oof [0.319, 0.356, 0.365, 0.384, 0.387, 0.402, 0.402, 0.413, 0.425, 0.448]
+            VAL     [0.323, 0.349, 0.363, 0.388, 0.396, 0.412, 0.405, 0.432, 0.478, 0.436]
+  NY-GBM   DEV oof [0.22, 0.307, 0.336, 0.379, 0.422, 0.425, 0.434, 0.456, 0.454, 0.468]
+            VAL     [0.212, 0.315, 0.364, 0.393, 0.42, 0.409, 0.444, 0.475, 0.489, 0.459]
+
+GBM LDN permutation importance (AUC drop, DEV in-sample): box_spread +0.0367, box_atr +0.0153, app5 +0.0085, delay +0.0080, volreg +0.0079, tr5 +0.0077, box_in_pd +0.0075, tr20 +0.0066
+
+GBM NY permutation importance (AUC drop, DEV in-sample): box_atr +0.0738, box_spread +0.0212, delay +0.0129, cls +0.0121, range_so_far +0.0085, volreg +0.0073, weekday +0.0073, tr20 +0.0067

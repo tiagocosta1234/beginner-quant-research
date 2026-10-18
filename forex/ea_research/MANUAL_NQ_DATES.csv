@@ -1,0 +1,57 @@
+notion_order,date,ses,side,res,chart_hi,chart_lo,confidence
+0,2026-05-15,New York,Long,Win,29190.843,28989.93,high
+1,2026-05-18,London,Long,Loss,29057.54,28962.628,high
+2,2026-05-18,New York,Short,Loss,29258.75,29041.294,high
+3,2026-05-19,London,Long,Win,28987.969,28909.12,high
+4,2026-05-19,New York,Short,Win,28971.142,28753.055,high
+5,2026-05-20,London,Short,Loss,28971.21,28930.46,high
+6,2026-05-20,New York,Short,Loss,29100.841,28930.33,high
+7,2026-05-21,New York,Short,Loss,29224.022,29084.029,high
+8,2026-05-22,London,Long,Win,29502.838,29451.022,high
+9,2026-05-22,New York,Short,Loss,29637.783,29474.003,high
+10,2026-05-25,London,Long,Loss,29895.881,29812.936,high
+11,2026-05-25,New York,Short,Win,29917.149,29864.447,high
+12,2026-05-26,London,Short,Loss,29756.449,29687.047,high
+13,2026-05-26,London,Long,Win,29756.449,29687.047,high
+14,2026-05-26,New York,Long,Win,29929.981,29753.427,high
+15,2026-05-27,London,Long,Win,30059.279,30004.458,high
+16,2026-05-27,New York,Long,Loss,30116.522,29867.261,high
+17,2026-05-28,London,Long,Win,29895.099,29842.425,high
+18,2026-05-29,London,Short,Win,30275.176,30220.698,high
+19,2026-05-29,New York,Long,Loss,30449.643,30292.404,high
+20,2026-05-29,New York,Short,Loss,30449.643,30292.404,high
+21,2026-06-01,New York,Short,Loss,30405.016,30245.992,high
+22,2026-06-01,New York,Long,Win,30405.016,30245.992,high
+23,2023-09-07,London,Long,Loss,15323.4,15291.4,high
+24,2023-09-07,New York,Long,Loss,15222.4,15139.4,high
+25,2023-09-08,New York,Long,Loss,15355.6,15255.0,high
+26,2023-09-11,London,Long,Loss,15396.2,15362.6,"medium (futures-roll week, offset -5.5)"
+27,2023-09-13,London,Long,Loss,15342.0,15302.4,high
+28,2023-09-13,New York,Long,Win,15378.0,15310.4,high
+29,2023-09-14,London,Long,Loss,15435.4,15415.8,high
+30,2023-09-14,New York,Short,Loss,15457.0,15355.0,high
+31,2023-09-15,New York,Short,Win,15447.2,15309.6,high
+32,2023-09-18,London,Long,Loss,15239.2,15215.4,high
+33,2023-09-18,New York,Long,Loss,15258.6,15167.6,high
+34,2023-09-20,London,Long,Loss,15216.8,15197.2,high
+35,2023-09-20,New York,Short,Win,15268.2,15208.0,high
+36,2023-09-21,London,Short,Loss,14945.0,14920.8,high
+37,2023-09-21,New York,Short,Loss,14853.2,14763.0,high
+38,2023-09-22,London,Long,Win,14769.4,14732.6,high
+39,2023-09-22,New York,Long,Loss,14792.2,14730.4,high
+40,2023-09-25,New York,Long,Loss,14740.2,14626.8,high
+41,2023-09-26,London,Long,Win,14684.8,14647.4,high
+42,2023-09-26,New York,Short,Loss,14697.8,14616.2,high
+43,2023-09-27,London,Long,Loss,14633.6,14602.8,high
+44,2023-09-28,New York,Long,Loss,14616.8,14586.0,high on levels; matches the LONDON box though Notion says New York
+45,2023-09-29,London,Long,Win,14801.6,14764.6,high
+46,2023-09-29,New York,Long,Loss,14904.0,14837.6,high
+47,2023-10-03,London,Long,Win,14848.0,14830.4,high
+48,2023-10-02,New York,Long,Loss,14820.2,14707.2,high
+49,,New York,Short,Win,14736.8,,unresolved (only one box line on the chart)
+50,2023-10-04,London,Long,Win,14505.2,14455.6,high
+51,2023-10-04,New York,Long,Loss,14700.6,14615.2,high
+52,2023-10-05,London,Short,Loss,14762.6,14740.0,high
+53,,New York,Short,Win,14688.4,,unresolved (only one box line on the chart)
+54,2023-10-06,London,Long,Win,14753.6,14720.4,high
+55,2023-10-06,New York,Long,Win,14670.6,14572.4,high

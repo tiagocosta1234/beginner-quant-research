@@ -1,0 +1,14 @@
+A1 XAUUSD: DEV n 753 -0.043 R (t -0.84) win 35% | control -0.067 info +0.024 (t +0.41) | yrs 2022:-0.03(252)/2023:-0.04(251)/2024:-0.06(250) | DEV longs +0.022 (413) shorts -0.123 (340) -> FAIL | VAL n 249 -0.107 (t -1.36) control -0.009 info -0.098 | HOLD sealed
+A2 XAUUSD: DEV n 522 +0.023 R (t +0.35) win 37% | control -0.025 info +0.047 (t +0.61) | yrs 2022:+0.02(165)/2023:+0.03(176)/2024:+0.02(181) -> FAIL | VAL n 177 -0.057 (t -0.60) control +0.075 info -0.132 | HOLD sealed
+O1 NSDQ: DEV n 708 +0.102 R (t +1.61) win 37% | control -0.025 info +0.127 (t +1.84) | yrs 2022:+0.19(234)/2023:+0.12(238)/2024:-0.00(236) | DEV longs +0.111 (376) shorts +0.091 (332) -> FAIL | VAL n 222 +0.061 (t +0.57) control +0.030 info +0.031 | HOLD sealed
+O2 NSDQ: DEV n 431 +0.125 R (t +1.50) win 38% | control +0.047 info +0.078 (t +0.84) | yrs 2022:+0.08(131)/2023:+0.27(153)/2024:+0.02(147) -> FAIL | VAL n 138 -0.061 (t -0.53) control -0.016 info -0.045 | HOLD sealed
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach% by date):
+  A1 $250: (1002 trades, -0.059 R) 30 Nov 0.0/7  22 Dec 0.0/18  30 Jun 27 0.1/65
+  A1 $500: (1002 trades, -0.059 R) 30 Nov 0.0/45  22 Dec 0.1/58  30 Jun 27 2.7/88
+  A2 $250: (699 trades, +0.002 R) 30 Nov 0.0/2  22 Dec 0.0/6  30 Jun 27 0.3/37
+  A2 $500: (699 trades, +0.002 R) 30 Nov 0.0/28  22 Dec 0.1/40  30 Jun 27 6.2/69
+  O1 $250: (930 trades, +0.092 R) 30 Nov 0.0/2  22 Dec 0.0/5  30 Jun 27 4.5/21
+  O1 $500: (930 trades, +0.092 R) 30 Nov 0.1/27  22 Dec 0.7/36  30 Jun 27 18.9/57
+  O2 $250: (569 trades, +0.080 R) 30 Nov 0.0/0  22 Dec 0.0/2  30 Jun 27 0.4/18
+  O2 $500: (569 trades, +0.080 R) 30 Nov 0.0/18  22 Dec 0.1/28  30 Jun 27 8.1/55

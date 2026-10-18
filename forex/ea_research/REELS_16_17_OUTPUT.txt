@@ -1,0 +1,25 @@
+NSDQ trials (net R per trade; DEV 2022-24 / VAL 2025; HOLD sealed unless DEV + VAL pass)
+  R16-T1    DEV n 728 +0.067 R (t +2.09) win 55% PF 1.18 yrs {2022: 0.085, 2023: 0.072, 2024: 0.044} -> FAIL | VAL n 236 +0.024 (t +0.44) win 53% PF 1.06
+  R16-T2    DEV n 632 +0.060 R (t +1.77) win 50% PF 1.17 yrs {2022: 0.099, 2023: 0.051, 2024: 0.032} -> FAIL | VAL n 205 +0.019 (t +0.32) win 48% PF 1.05
+  R17-EMA   DEV n 773 +0.078 R (t +1.09) win 30% PF 1.17 yrs {2022: 0.147, 2023: 0.008, 2024: 0.078} -> FAIL | VAL n 257 -0.018 (t -0.22) win 30% PF 0.96
+  R17-SWING DEV n 773 +0.076 R (t +1.07) win 33% PF 1.14 yrs {2022: 0.121, 2023: 0.016, 2024: 0.091} -> FAIL | VAL n 257 -0.085 (t -0.98) win 30% PF 0.84
+
+Reel 16 claims on NSDQ (2022-25, points per trade at 1 contract; the reel: T1 $3,760 vs T2 $1,780; T2 out > half the days; on both-traded days T2 ~2x; no-retest days $2,840):
+  days with a signal 964; T2 never filled on 127 (13%)
+  total points: T1 +5099, T2 +4466
+  days both traded (837): T1 -8108 pts, T2 +4466 pts; per trade T1 -0.068 R, T2 +0.050 R
+  no-retest days (127): T1 +13207 pts (+0.875 R a trade, win 100%)
+
+Reel 17 claims (NAS100 M5 2019-26: 1,448 trades, win 57%, PF 1.29): NSDQ 2022-25 here
+  trail ema  : n 1030, win 30%, PF 1.12, +0.054 R a trade, median stop 37.5 pts
+  trail swing: n 1030, win 33%, PF 1.07, +0.036 R a trade, median stop 37.5 pts
+
+Descriptive: same rules on SP and DOW (2022-25, R per trade / win / PF)
+  SP: R16-T1 +0.015/51%/1.04  R16-T2 -0.008/45%/0.98  R17-EMA -0.076/25%/0.84  R17-SWING -0.102/29%/0.82
+  DOW: R16-T1 +0.024/52%/1.06  R16-T2 +0.012/47%/1.03  R17-EMA -0.047/27%/0.90  R17-SWING -0.070/31%/0.87
+
+Account environment, NSDQ, $250 a trade, from 95,472 (2022-25 trades; pass% / breach%):
+  R16-T1    (964 trades, +0.056 R): 22 Dec 0.0/0  31 Mar 27 0.0/2  30 Jun 27 0.0/4
+  R16-T2    (837 trades, +0.050 R): 22 Dec 0.0/0  31 Mar 27 0.0/3  30 Jun 27 0.0/5
+  R17-EMA   (1030 trades, +0.054 R): 22 Dec 0.0/12  31 Mar 27 0.2/35  30 Jun 27 1.2/45
+  R17-SWING (1030 trades, +0.036 R): 22 Dec 0.0/17  31 Mar 27 0.3/41  30 Jun 27 1.5/51

@@ -1,0 +1,10 @@
+Q1 NQ in-play: DEV n 175 -0.017 R (t -0.11) win 24% | random-direction control -0.076 info +0.059 (t +0.32) | other days n 757 +0.084 | yrs -0.29/+0.22/+0.31/-0.35 -> FAIL | VAL n 107 +0.422 (t +1.73) info +0.215 | VAL other days -0.004 | HOLD sealed
+   by RVOL5 band (2020-25, descriptive): (0.0, 0.75] -0.064 (136) (0.75, 1.0] +0.034 (593) (1.0, 1.25] +0.147 (508) (1.25, 1.5] +0.161 (145) (1.5, 2.0] -0.071 (55) (2.0, 99.0] -1.000 (2)
+Q2 GC in-play: DEV n 162 +0.242 R (t +1.11) win 23% | random-direction control +0.084 info +0.159 (t +0.60) | other days n 733 +0.017 | yrs -0.03/+0.25/+0.00/+0.66 -> FAIL | VAL n 109 +0.305 (t +1.10) info +0.170 | VAL other days +0.003 | HOLD sealed
+   by RVOL5 band (2020-25, descriptive): (0.0, 0.75] +0.070 (513) (0.75, 1.0] -0.128 (310) (1.0, 1.25] +0.112 (202) (1.25, 1.5] +0.075 (129) (1.5, 2.0] +0.214 (114) (2.0, 99.0] +0.296 (112)
+
+Account view (2020-25 in-play trades, from 95,472, MT5 broker rules; pass% / breach% by date):
+  Q1 $250: (282 trades, +0.150 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.1/13
+  Q1 $500: (282 trades, +0.150 R) 30 Nov 0.0/5  22 Dec 0.0/14  30 Jun 27 1.5/52
+  Q2 $250: (271 trades, +0.268 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.5/16
+  Q2 $500: (271 trades, +0.268 R) 30 Nov 0.0/8  22 Dec 0.0/18  30 Jun 27 0.6/64

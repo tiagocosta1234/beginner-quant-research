@@ -14,6 +14,48 @@ Written for the trader after the breakout research day (`BREAKOUT_DAY_2026-10-15
 10. **Filters that sound right do not help:** volume surge at the breakout, busy opening box, volatility regime, NR4/NR7, inside days, trend direction outside indices, relative strength, crowd days, early movers, ML meta-labels (lift to ~0), weekly / monthly boxes, news vs quiet days, weekdays, turn of the month, after options expiry (worse), market-wide climate, relative-spread breakouts, multi-day holds, fresh 20-day breakouts (exhaustion), buffers beyond the level, levels tested several times, a confirming partner market, a lagging partner market (rounds 3-8, 12, 15-20, 31-32)
 11. **The first seconds say nothing.** On 11,684 breakouts with MT5 broker real ticks the move, tick activity, spread and order flow in the first 30 seconds do not separate real from false breakouts; the fastest and busiest are among the worst. (BRK-TICKS)
 12. **When the first breakout fails, the day chops.** Stop-and-reverse loses 0.20-0.24 R a trade; yesterday's breakout result says nothing about today's. (BRK-SAR)
+13a. **Classic chart patterns fail too (BRK_PATTERNS, 2026-10-16, 0/15):** triangles (symmetric, flat), wedges,
+   trendline breaks, head and shoulders, Darvas boxes and VCP on H1 and H4, plus 52-week highs on D1, 46 markets, 107,627
+   trades. 14 of 15 lose after costs in 2022-24; the best two (Darvas H4 +0.04 R, t 1.0; 52-week high +0.02 R) lose in
+   2025. Over a random entry with the same stop, the pattern adds -0.06..+0.07 R. Buying a 52-week high is WORSE than
+   buying at a random time in the same markets (-0.19 R): that is drift, not breakout. Wider stops cut the cost but the
+   pattern adds nothing (`BRK_PATTERNS_RESULT.md`). **Data caveat found there: MT5 broker's MT5 M1 spread field is 0 on 10-35% of
+   minutes on several FX majors (EURUSD 35%), so every bar-based round filled those minutes free; re-check positives.**
+   The USDJPY London lead was re-checked the same evening: unchanged, because its ~19-pip box dwarfs the missing ~0.1 pip
+   (`USDJPY_SPREADFIX_RESULT.md`); the flaw matters only for tight stops.
+13b. **Candle-close confirmation identifies continuation but does not pay (BRK_CONFIRM, 2026-10-16, 0/4):** waiting for a 5- or
+   15-minute candle to close outside the London / New York 30-min box cuts the share of breaks that return inside the box within
+   an hour from ~96% to ~82% / ~72% and lifts the win rate 3-5 points, but the later entry at a worse price earns less per trade
+   than the touch entry in every session (paired t -2.7..-6.1), negative in 2022-24 and 2025 (`BRK_CONFIRM_RESULT.md`).
+13c. **Break vs bounce is not predictable from 22 confluences (BRK_TWOWAY, 2026-10-16, 0/4):** at the first touch of the London /
+   New York box, a confluence count and a gradient-boosting model separate continuation from bounce with AUC 0.51-0.53 (coin
+   flip), in and out of sample. What they do predict is whether price moves a full box width at all (AUC up to 0.77, box/ATR):
+   size of the move, not its side. Trading both ways (follow / fade) loses -0.04..-0.11 R a trade (`BRK_TWOWAY_RESULT.md`).
+13d. **An unmitigated FVG between entry and stop helps breakouts a little, bounces not at all (BRK_FVG, 2026-10-16, 0/4):** a
+   5-min FVG in the break direction still unfilled inside the box lifts the follow trade by 0.03-0.04 R (t 2.5-2.9, 2022-24; also
+   in 2025) to about zero, not to a profit; an FVG beyond the box does nothing reliable for fades (`BRK_FVG_RESULT.md`).
+13e. **54 more breakout ideas, 0 pass (BRK50, 2026-10-17):** prior-day / week / month / quarter levels, pivots, Camarilla, TWAP
+   bands, Crabel stretch, intraday ranges, Frankfurt / NY FX / COMEX / NYMEX / Tokyo / Sydney / London-fix opens, cross-asset
+   alignment, calendar ranges, Keltner / Bollinger / Donchian H4, crypto ranges: none reaches t > 1.65 in 2022-24 (mean t -2.5).
+   Only lead: fading the first touch of yesterday's high / low after a > 1.8 ATR day (+0.06/+0.12/+0.12, 2025 +0.31 R, t 1.6;
+   n 564), a candidate for one out-of-time check (`BRK50_RESULT.md`).
+13f. **No confluence improves the USDJPY London breakout (UJ_CONF + UJ_C3C5_OOT, 2026-10-17):** of 9 pre-registered
+   confluences none was kept; the two that repeated in 2025 (risk-on alignment via NSDQ, unmitigated FVG in the box, each
+   ~+0.25 R better in 2022-24 and 2025) REVERSED on the 2026 hold-out (flagged -0.04 / -0.06 R vs unflagged +0.30 / +0.18 R).
+   The late-trigger filter (LDN3F F2) is wrong for USDJPY. Two agreeing periods at t ~1.5 were noise.
+13g. **Gold and Nasdaq breakouts, seven more rounds, 0 of 23 pass (GN1-GN7, 2026-10-18, second PC):**
+   - In the 200-day uptrend every long breakout is positive, and a random long in the same window earns as much (GN1); a
+     breakout the morning after a pullback or dip adds nothing (GN2). The profit is the drift, not the breakout.
+   - Gold at the Shanghai open is noise; the Nasdaq overnight range (18:00-09:30 NY) broken after the cash open is the most
+     consistent breakout found on these markets, about +0.1 R a trade in 2020-23 and 2025, beating random entries each period,
+     but it failed its DEV bar (t 1.61) and its 2020-21 out-of-time bar on CME futures (t 1.31) (GN3, GN5), and it does not carry
+     over to the S&P 500 (+0.03), the Dow (-0.10) or gold (0.00 out of time) (GN6): a Nasdaq trend effect, not a mechanism.
+   - Market-profile value areas are noise; the "80% rule" reaches the other edge 45-50% of the time (GN4).
+   - Real CME volume (Databento, on the second PC) does not rescue the 5-minute ORB; on gold's busiest opens a tight stop with a
+     10R target pays for RANDOM directions too: volatility, not direction, and clustered on 08:30 data days (GN7).
+   - New tool: `futures/data/databento/futures_{NQ,ES,GC,SI}.F_1m.parquet` (CME 1-minute, exchange volume,
+     2019-10..2026-09) gives 2020-21 out-of-time checks on the second PC; `gn5.load_fut` adds the MT5 broker cost model; roll Mondays
+     (`gn5.roll_mondays`) and GC contract flips (`gn6.bad_minutes`) must be excluded.
 13. **The card's gold London leg did not "stop working" in 2026:** its yearly means (-0.11..+0.08 R) are all within one standard error of luck (~0.09 R); 2024 looked exactly like 2026; the opposite trade loses every year too. There was no stable edge to lose. (GOLD_ORB_2026_DIAG)
 
 ## 2. What is left that is not nothing

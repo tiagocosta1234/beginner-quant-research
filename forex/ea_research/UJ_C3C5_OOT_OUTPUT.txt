@@ -1,0 +1,20 @@
+2026 hold-out: base n 201 +0.111 R (base 2026 already known)
+
+UJ+C3 risk-on  2026: n 112 -0.043 R (t -0.25, win 29%) | without the flag n 89 +0.304 R -> part A FAIL
+               by period with / without: 2022-24: +0.239 / -0.027, 2025: +0.222 / -0.013, 2026: -0.043 / +0.304
+UJ+C5 FVG      2026: n 58 -0.058 R (t -0.28, win 33%) | without the flag n 143 +0.179 R -> part A FAIL
+               by period with / without: 2022-24: +0.277 / +0.014, 2025: +0.250 / +0.036, 2026: -0.058 / +0.179
+
+account view (information only; 2022-26 trades, in-sample for 2022-25), from 95,472, pass% / breach%:
+  base   $150 haircut 0.00 (1219 trades, +0.106 R): 22 Dec 0.0/3  31 Mar 27 0.2/15  30 Jun 27 1.3/22
+  base   $250 haircut 0.00 (1219 trades, +0.106 R): 22 Dec 0.1/21  31 Mar 27 3.1/40  30 Jun 27 8.8/47
+  base   $150 haircut 0.06 (1219 trades, +0.046 R): 22 Dec 0.0/5  31 Mar 27 0.0/24  30 Jun 27 0.6/34
+  base   $250 haircut 0.06 (1219 trades, +0.046 R): 22 Dec 0.0/28  31 Mar 27 1.6/52  30 Jun 27 4.3/61
+  UJ+C3  $150 haircut 0.00 (618 trades, +0.184 R): 22 Dec 0.0/0  31 Mar 27 0.0/3  30 Jun 27 0.2/6
+  UJ+C3  $250 haircut 0.00 (618 trades, +0.184 R): 22 Dec 0.0/4  31 Mar 27 0.5/18  30 Jun 27 3.3/24
+  UJ+C3  $150 haircut 0.06 (618 trades, +0.124 R): 22 Dec 0.0/0  31 Mar 27 0.0/5  30 Jun 27 0.1/11
+  UJ+C3  $250 haircut 0.06 (618 trades, +0.124 R): 22 Dec 0.0/7  31 Mar 27 0.4/25  30 Jun 27 1.8/33
+  UJ+C5  $150 haircut 0.00 (404 trades, +0.223 R): 22 Dec 0.0/0  31 Mar 27 0.0/0  30 Jun 27 0.0/1
+  UJ+C5  $250 haircut 0.00 (404 trades, +0.223 R): 22 Dec 0.0/0  31 Mar 27 0.1/7  30 Jun 27 0.5/11
+  UJ+C5  $150 haircut 0.06 (404 trades, +0.163 R): 22 Dec 0.0/0  31 Mar 27 0.0/1  30 Jun 27 0.0/3
+  UJ+C5  $250 haircut 0.06 (404 trades, +0.163 R): 22 Dec 0.0/1  31 Mar 27 0.0/10  30 Jun 27 0.2/17

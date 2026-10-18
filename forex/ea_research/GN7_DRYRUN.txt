@@ -1,0 +1,6 @@
+Q1 NQ: rule days 1651 | in-play share by year 2020:6% 2021:4% 2022:3% 2023:3% 2024:4% 2025:5% 2026:2% | in-play trades DEV 39 VAL 22 HOLD 3 | median risk 35 spreads
+   hand check 2023-09-07 RVOL5 1.58 side -1 entry 15185.75 at 09:35 NY, stop 15203.25
+   hand check 2020-01-27 RVOL5 1.67 side +1 entry 8961.67 at 09:35 NY, stop 8925.50
+Q2 GC: rule days 1626 | in-play share by year 2020:20% 2021:14% 2022:13% 2023:15% 2024:18% 2025:18% 2026:13% | in-play trades DEV 148 VAL 86 HOLD 24 | median risk 19 spreads
+   hand check 2020-09-14 RVOL5 1.55 side +1 entry 1958.39 at 08:25 NY, stop 1956.10
+   hand check 2026-04-20 RVOL5 2.07 side -1 entry 4834.00 at 08:25 NY, stop 4842.90

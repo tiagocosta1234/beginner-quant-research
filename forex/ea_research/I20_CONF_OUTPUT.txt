@@ -1,0 +1,17 @@
+I20 trades 2022-25: 762 (2022-24 564, 2025 198); all: +0.100 / +0.310 R
+
+C1_continuation      with n 630 +0.184 R (win 0.52) | without n 132 +0.016 | diff t +1.48 | 2022-24 +0.093 vs +0.142 | 2025 +0.468 vs -0.228 -> drop
+C2_close_at_extreme  with n 535 +0.130 R (win 0.51) | without n 227 +0.212 | diff t -0.79 | 2022-24 +0.082 vs +0.147 | 2025 +0.283 vs +0.360 -> drop
+C3_stretched_5d      with n 318 +0.102 R (win 0.49) | without n 444 +0.192 | diff t -0.94 | 2022-24 -0.031 vs +0.185 | 2025 +0.406 vs +0.217 -> drop
+C4_rsi2_extreme      with n 288 +0.108 R (win 0.49) | without n 474 +0.183 | diff t -0.75 | 2022-24 -0.026 vs +0.175 | 2025 +0.464 vs +0.207 -> drop
+C5_morning           with n 405 +0.076 R (win 0.47) | without n 357 +0.244 | diff t -1.79 | 2022-24 +0.073 vs +0.135 | 2025 +0.088 vs +0.502 -> drop
+C6_slow_approach     with n 481 +0.115 R (win 0.52) | without n 281 +0.223 | diff t -1.04 | 2022-24 +0.103 vs +0.095 | 2025 +0.153 vs +0.527 -> drop
+C7_isolated_spike    with n 429 +0.096 R (win 0.52) | without n 333 +0.230 | diff t -1.36 | 2022-24 +0.104 vs +0.095 | 2025 +0.070 vs +0.549 -> drop
+
+kept: none
+shortlist rule (I20 as is): n 762, 2022-24 +0.100 R, 2025 +0.310 R (IN-SAMPLE)
+
+by class (2022-25, I20 as is): {'energy': {'size': 39, 'mean': -0.041}, 'fx': {'size': 534, 'mean': 0.122}, 'index': {'size': 136, 'mean': 0.413}, 'metal': {'size': 53, 'mean': -0.035}}
+  account NSDQ+XAUUSD $250 (57 trades 2022-25, +0.309 R, in-sample): 22 Dec pass 0.0% / breach 0%  31 Mar 27 pass 0.0% / breach 0%  30 Jun 27 pass 0.0% / breach 0%
+  account 38 markets $50, <= 5/day (644 trades 2022-25, +0.078 R, in-sample): 22 Dec pass 0.0% / breach 0%  31 Mar 27 pass 0.0% / breach 0%  30 Jun 27 pass 0.0% / breach 0%
+  account 38 markets $250, <= 5/day (644 trades 2022-25, +0.078 R, in-sample): 22 Dec pass 0.0% / breach 2%  31 Mar 27 pass 0.1% / breach 11%  30 Jun 27 pass 0.8% / breach 16%

@@ -1,0 +1,18 @@
+P1 XAUUSD down: DEV n 163 +0.035 R (t +0.20) win 21% | control +0.053 info -0.017 (t -0.08) | vs GN1 base +0.125 | yrs 2022:+0.84(3)/2023:-0.29(75)/2024:+0.29(85) -> FAIL | VAL n 75 -0.061 (t -0.29) info -0.011 vs base -0.311 | HOLD sealed
+P2 NSDQ down: DEV n 127 -0.017 R (t -0.16) win 46% | control -0.080 info +0.064 (t +0.52) | vs GN1 base -0.148 | yrs 2023:+0.07(59)/2024:-0.09(68) -> FAIL | VAL n 56 -0.045 (t -0.38) info -0.013 vs base -0.098 | HOLD sealed
+P34 NSDQ+XAUUSD pull3: DEV n 79 +0.028 R (t +0.13) win 34% | control +0.047 info -0.019 (t -0.07) | vs GN1 base +0.016 | yrs 2023:-0.22(28)/2024:+0.17(51) -> FAIL | VAL n 34 +0.328 (t +0.88) info +0.108 vs base +0.156 | HOLD sealed
+P56 NSDQ+XAUUSD dip: DEV n 59 +0.006 R (t +0.03) win 34% | control +0.019 info -0.013 (t -0.04) | vs GN1 base -0.006 | yrs 2022:+0.20(24)/2023:-0.73(16)/2024:+0.38(19) -> FAIL | VAL n 20 +0.549 (t +1.24) info +0.218 vs base +0.376 | HOLD sealed
+P3 XAUUSD (descriptive) pull3: DEV n 44 +0.118 R (t +0.34) win 25% | control +0.201 info -0.083 (t -0.19) | vs GN1 base +0.208 | yrs 2023:-0.21(15)/2024:+0.28(29) -> FAIL | VAL n 15 +0.905 (t +1.20) info +0.505 vs base +0.655 | HOLD sealed
+P4 NSDQ (descriptive) pull3: DEV n 35 -0.086 R (t -0.53) win 46% | control -0.165 info +0.080 (t +0.40) | vs GN1 base -0.218 | yrs 2023:-0.24(13)/2024:+0.01(22) -> FAIL | VAL n 19 -0.128 (t -0.59) info -0.101 vs base -0.181 | HOLD sealed
+P5 XAUUSD (descriptive) dip: DEV n 31 +0.218 R (t +0.55) win 29% | control +0.200 info +0.017 (t +0.03) | vs GN1 base +0.308 | yrs 2022:+0.70(11)/2023:-1.00(10)/2024:+0.90(10) -> FAIL | VAL n 6 +0.386 (t +0.34) info +0.082 vs base +0.136 | HOLD sealed
+P6 NSDQ (descriptive) dip: DEV n 28 -0.228 R (t -1.28) win 39% | control -0.096 info -0.133 (t -0.61) | vs GN1 base -0.360 | yrs 2022:-0.23(13)/2023:-0.29(6)/2024:-0.19(9) -> FAIL | VAL n 14 +0.619 (t +1.48) info +0.242 vs base +0.566 | HOLD sealed
+
+Account view (2022-25 trades, from 95,472, MT5 broker rules; pass% / breach% by date):
+  P1 $250: (238 trades, +0.005 R) 30 Nov 0.0/0  22 Dec 0.0/1  30 Jun 27 0.0/31
+  P1 $500: (238 trades, +0.005 R) 30 Nov 0.0/15  22 Dec 0.0/30  30 Jun 27 0.6/75
+  P2 $250: (183 trades, -0.025 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/2
+  P2 $500: (183 trades, -0.025 R) 30 Nov 0.0/1  22 Dec 0.0/3  30 Jun 27 0.0/30
+  P34 $250: (113 trades, +0.118 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/2
+  P34 $500: (113 trades, +0.118 R) 30 Nov 0.0/1  22 Dec 0.0/2  30 Jun 27 0.0/29
+  P56 $250: (79 trades, +0.143 R) 30 Nov 0.0/0  22 Dec 0.0/0  30 Jun 27 0.0/1
+  P56 $500: (79 trades, +0.143 R) 30 Nov 0.0/0  22 Dec 0.0/1  30 Jun 27 0.0/18

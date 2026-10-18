@@ -1,0 +1,15 @@
+V1 NSDQ acc: condition days 358 (DEV 245) | trades DEV 201 VAL 54 HOLD 44 | fire rate 84% | median VA width 93 spreads | VA holds 70%-73% of minutes | longs 55%
+   hand check 2023-05-02 side -1 entry 13146.90 at 17:30 server, stop 13246.43 | yesterday POC 13246.43 VAL 13199.55 VAH 13263.70
+   hand check 2025-04-29 side +1 entry 19381.54 at 17:00 server, stop 19269.89 | yesterday POC 19269.89 VAL 19165.60 VAH 19384.77
+V2 XAUUSD acc: condition days 358 (DEV 243) | trades DEV 194 VAL 44 HOLD 46 | fire rate 79% | median VA width 80 spreads | VA holds 70%-73% of minutes | longs 49%
+   hand check 2023-08-29 side +1 entry 1933.31 at 17:20 server, stop 1918.92 | yesterday POC 1918.92 VAL 1914.55 VAH 1921.64
+   hand check 2025-07-31 side +1 entry 3309.91 at 15:50 server, stop 3302.31 | yesterday POC 3302.31 VAL 3291.49 VAH 3307.42
+V3 NSDQ r80: condition days 833 (DEV 501) | trades DEV 117 VAL 44 HOLD 25 | fire rate 22% | median VA width 71 spreads | VA holds 70%-73% of minutes | longs 50%
+   hand check 2022-06-29 side +1 entry 11652.80 at 17:30 server, stop 11526.90 | yesterday POC 11725.89 VAL 11634.80 VAH 11841.61
+   hand check 2022-02-10 side +1 entry 14964.40 at 19:30 server, stop 14739.70 | yesterday POC 14982.49 VAL 14939.39 VAH 15042.10
+V4 XAUUSD r80: condition days 878 (DEV 531) | trades DEV 123 VAL 45 HOLD 21 | fire rate 22% | median VA width 61 spreads | VA holds 70%-73% of minutes | longs 47%
+   hand check 2022-11-30 side -1 entry 1750.41 at 17:50 server, stop 1764.63 | yesterday POC 1750.76 VAL 1749.98 VAH 1752.97
+   hand check 2022-01-24 side -1 entry 1831.78 at 17:20 server, stop 1843.05 | yesterday POC 1833.28 VAL 1831.39 VAH 1838.83
+profile hand check NSDQ 2023-07-28: 390 minutes, range 15620.2-15796.7, POC 15772.9 (bin count 14, POC bin count 14), VA 15720.8-15786.1 holds 70.3% of minutes
+truncation V1: cut 2025-06-01 17:16:35, trades before 221 vs 221, identical True
+truncation V4: cut 2024-02-08 03:58:38, trades before 89 vs 89, identical True

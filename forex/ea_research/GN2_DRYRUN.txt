@@ -1,0 +1,20 @@
+P1 XAUUSD down: condition days DEV 227 VAL 99 HOLD 55 | breakout trades DEV 163 VAL 75 HOLD 36 | fill rate 72%
+   hand check 2026-01-16 entry 4610.65 at 12:24 server, stop 4604.65, box 6.00
+   hand check 2025-10-10 entry 3968.51 at 10:49 server, stop 3952.46, box 16.05
+P2 NSDQ down: condition days DEV 200 VAL 83 HOLD 87 | breakout trades DEV 127 VAL 56 HOLD 57 | fill rate 65%
+   hand check 2024-04-03 entry 18076.42 at 17:00 server, stop 18024.98, box 44.95
+   hand check 2025-01-08 entry 21199.37 at 17:02 server, stop 21102.47, box 96.90
+P3 XAUUSD pull3: condition days DEV 52 VAL 22 HOLD 12 | breakout trades DEV 44 VAL 15 HOLD 9 | fill rate 79%
+   hand check 2024-02-14 entry 1990.61 at 11:32 server, stop 1987.06, box 3.55
+   hand check 2023-03-09 entry 1815.74 at 10:35 server, stop 1813.59, box 2.15
+P4 NSDQ pull3: condition days DEV 53 VAL 28 HOLD 20 | breakout trades DEV 35 VAL 19 HOLD 14 | fill rate 67%
+   hand check 2024-03-18 entry 18037.85 at 16:01 server, stop 18013.10, box 24.75
+   hand check 2023-07-25 entry 15565.10 at 17:01 server, stop 15484.80, box 80.30
+P5 XAUUSD dip: condition days DEV 37 VAL 11 HOLD 12 | breakout trades DEV 31 VAL 6 HOLD 9 | fill rate 77%
+   hand check 2023-05-19 entry 1967.86 at 12:50 server, stop 1964.32, box 3.54
+   hand check 2023-12-13 entry 1981.06 at 10:35 server, stop 1978.58, box 2.48
+P6 NSDQ dip: condition days DEV 45 VAL 18 HOLD 9 | breakout trades DEV 28 VAL 14 HOLD 6 | fill rate 67%
+   hand check 2023-08-18 entry 14636.80 at 17:40 server, stop 14564.40, box 72.40
+   hand check 2023-09-25 entry 14721.10 at 18:16 server, stop 14607.80, box 113.30
+truncation P1: cut 2024-08-03 14:22:16, trades before 125 vs 125, identical True
+truncation P6: cut 2024-09-19 07:32:53, trades before 25 vs 25, identical True

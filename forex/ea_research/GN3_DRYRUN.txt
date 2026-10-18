@@ -1,0 +1,21 @@
+A1 XAUUSD box both: eligible days 1236 | trades DEV 753 VAL 249 HOLD 197 | fill 97% | median width 24 spreads (share < 25: 51%) | longs 54%
+   hand check 2025-12-05 side +1 entry 4204.30 at 04:00 server = 10:00 local, stop 4194.72, width 9.58
+   hand check 2025-07-17 side -1 entry 3337.56 at 04:34 server = 09:34 local, stop 3341.97, width 4.41
+A2 XAUUSD box long: eligible days 1236 | trades DEV 522 VAL 177 HOLD 123 | fill 67% | median width 24 spreads (share < 25: 51%)
+   hand check 2025-05-01 side +1 entry 3249.56 at 04:35 server = 09:35 local, stop 3235.71, width 13.85
+   hand check 2026-10-05 side +1 entry 4161.15 at 04:57 server = 09:57 local, stop 4152.57, width 8.58
+O1 NSDQ on both: eligible days 1234 | trades DEV 708 VAL 222 HOLD 173 | fill 89% | median width 123 spreads (share < 25: 0%) | longs 53%
+   overnight-range low set in the first 15 min after 18:00 NY on 13.0% of days (wide-spread reopen check)
+   hand check 2025-02-17 side -1 entry 22118.17 at 16:37 server = 09:37 local, stop 22158.77, width 81.20
+   hand check 2025-04-02 side -1 entry 19143.67 at 16:31 server = 09:31 local, stop 19328.87, width 370.40
+O2 NSDQ on long: eligible days 1234 | trades DEV 431 VAL 138 HOLD 101 | fill 54% | median width 123 spreads (share < 25: 0%)
+   overnight-range low set in the first 15 min after 18:00 NY on 13.0% of days (wide-spread reopen check)
+   hand check 2023-10-16 side +1 entry 15060.70 at 16:31 server = 09:31 local, stop 15008.50, width 104.40
+   hand check 2022-10-13 side +1 entry 10936.50 at 18:21 server = 11:21 local, stop 10688.00, width 497.00
+truncation A1: cut 2025-07-25 04:54:32, trades before 889 vs 889, identical True
+truncation O1: cut 2025-07-06 17:55:43, trades before 813 vs 813, identical True
+
+Reopen check (no P&L): NSDQ median spread in the first 15 min after 18:00 NY 1.67 points = the rest of the overnight range;
+on the 160 days whose range low falls there, the spread is never > 3x the rest. The early lows are price action, not a spread
+artefact (a random walk puts the minimum of a 930-minute range in its first 15 minutes on ~8% of days; observed 13%).
+No amendment.

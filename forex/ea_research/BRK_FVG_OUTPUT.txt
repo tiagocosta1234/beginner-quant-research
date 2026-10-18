@@ -1,0 +1,25 @@
+events 91988
+LDN-FOLLOW-FVG | DEV n 8127 net -0.043 t -2.40 win 0.478 | without FVG n 20802 -0.081 win 0.460 | diff +0.037 (t +2.90) | yrs -0.03/-0.03/-0.07 -> FAIL | VAL n 2700 -0.052 t -1.71 (without -0.095) | HOLD sealed
+     account NSDQ+XAU $250 (662 trades 2022-25, -0.059 R): 22 Dec pass 0.0% / breach 3%  30 Jun 27 pass 0.0% / breach 41%
+LDN-FADE  -FVG | DEV n 5457 net -0.076 t -3.77 win 0.461 | without FVG n 23472 -0.098 win 0.451 | diff +0.022 (t +1.49) | yrs -0.04/-0.10/-0.09 -> FAIL | VAL n 1755 -0.081 t -2.42 (without -0.080) | HOLD sealed
+     account NSDQ+XAU $250 (521 trades 2022-25, +0.005 R): 22 Dec pass 0.0% / breach 1%  30 Jun 27 pass 0.0% / breach 18%
+NY -FOLLOW-FVG | DEV n 7748 net -0.019 t -1.18 win 0.491 | without FVG n 20919 -0.049 win 0.475 | diff +0.030 (t +2.51) | yrs -0.02/-0.05/+0.01 -> FAIL | VAL n 2603 +0.013 t +0.43 (without -0.066) | HOLD sealed
+     account NSDQ+XAU $250 (739 trades 2022-25, +0.057 R): 22 Dec pass 0.0% / breach 0%  30 Jun 27 pass 0.0% / breach 5%
+NY -FADE  -FVG | DEV n 6413 net -0.071 t -4.08 win 0.463 | without FVG n 22254 -0.087 win 0.455 | diff +0.016 (t +1.25) | yrs -0.07/-0.06/-0.09 -> FAIL | VAL n 2028 -0.118 t -4.05 (without -0.089) | HOLD sealed
+     account NSDQ+XAU $250 (519 trades 2022-25, -0.057 R): 22 Dec pass 0.0% / breach 0%  30 Jun 27 pass 0.0% / breach 26%
+
+Descriptive (2022-25): R by class, with / without the confluence
+ follow:
+cls             energy     fx  index  metal
+box follow_fvg                             
+LDN False       -0.186 -0.072 -0.099 -0.103
+    True        -0.081 -0.033 -0.080 -0.088
+NY  False       -0.065 -0.058 -0.014 -0.079
+    True        -0.162 -0.016  0.034  0.014
+ fade:
+cls           energy     fx  index  metal
+box fade_fvg                             
+LDN False     -0.123 -0.096 -0.048 -0.145
+    True      -0.110 -0.084 -0.032 -0.090
+NY  False     -0.089 -0.088 -0.089 -0.089
+    True      -0.098 -0.080 -0.103 -0.033

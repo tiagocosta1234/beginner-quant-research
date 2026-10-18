@@ -1,0 +1,3 @@
+identity vs gn3 O1 on MT5 broker: trades 1103 vs 1103 identical True; controls identical True
+port check 2022-24: MT5 broker n 708 +0.102 R | futures n 692 +0.065 R (diff -0.036, bar +/-0.06) | common days 689, same side 99%, R correlation 0.95 (bar >= 0.6)
+OOT 2020-21 O1 on NQ futures (MT5 broker cost): n 434 +0.100 R (t +1.31) win 39% | control +0.007 info +0.093 (t +1.14) | 2020: +0.084 (205) 2021: +0.114 (229) | longs +0.162 shorts +0.014 -> FAIL

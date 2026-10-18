@@ -1,0 +1,20 @@
+reproduction vs usdjpy_sens.run: 1219 trades here vs 1219 there; matched days 1219, max |dR| 0.00e+00
+base: DEV n 765 +0.103 R, VAL n 253 +0.108 R; C6 cut box/ATR >= 0.125
+
+C1_beyond_asia     DEV with n 204 +0.150 | without n 561 +0.086 | t +0.37 -> drop   (VAL descriptive: with -0.008 n 63 / without +0.146)
+C2_trend20         DEV with n 388 +0.113 | without n 377 +0.094 | t +0.12 -> drop   (VAL descriptive: with +0.209 n 132 / without -0.003)
+C3_risk_on         DEV with n 376 +0.239 | without n 389 -0.027 | t +1.63 -> drop   (VAL descriptive: with +0.222 n 130 / without -0.013)
+C4_usd_wide        DEV with n 372 +0.123 | without n 393 +0.085 | t +0.23 -> drop   (VAL descriptive: with +0.171 n 134 / without +0.037)
+C5_fvg             DEV with n 261 +0.277 | without n 504 +0.014 | t +1.44 -> drop   (VAL descriptive: with +0.250 n 85 / without +0.036)
+C6_not_small_box   DEV with n 510 +0.106 | without n 255 +0.098 | t +0.04 -> drop   (VAL descriptive: with +0.115 n 181 / without +0.091)
+C7_late_trigger    DEV with n 262 -0.005 | without n 503 +0.160 | t -1.06 -> drop   (VAL descriptive: with -0.047 n 95 / without +0.201)
+C8_not_stretched   DEV with n 499 +0.158 | without n 266 +0.000 | t +1.01 -> drop   (VAL descriptive: with +0.178 n 172 / without -0.042)
+C9_asia_aligned    DEV with n 376 +0.176 | without n 389 +0.033 | t +0.88 -> drop   (VAL descriptive: with +0.151 n 123 / without +0.068)
+
+kept on DEV: none
+combined rule (base): DEV n 765 +0.103 (t +1.27) | VAL n 253 +0.108 (t +0.89) vs base VAL +0.108
+VAL confirmation failed or nothing kept: HOLD 2026 not used for the subsets
+account USDJPY $150 haircut 0.0 (1018 trades 2022-25, +0.104 R): 22 Dec 0.0/2  31 Mar 27 0.2/14  30 Jun 27 1.5/20
+account USDJPY $250 haircut 0.0 (1018 trades 2022-25, +0.104 R): 22 Dec 0.1/20  31 Mar 27 3.6/38  30 Jun 27 10.1/45
+account USDJPY $150 haircut 0.06 (1018 trades 2022-25, +0.044 R): 22 Dec 0.0/5  31 Mar 27 0.1/22  30 Jun 27 0.6/32
+account USDJPY $250 haircut 0.06 (1018 trades 2022-25, +0.044 R): 22 Dec 0.1/27  31 Mar 27 2.0/50  30 Jun 27 5.3/59

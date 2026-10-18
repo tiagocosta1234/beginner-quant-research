@@ -1,0 +1,12 @@
+X1 SP: trades DEV 675 VAL 213 HOLD 173 | median range 66 spreads | MT5 broker median spread in the window 0.490 (OOT cost model)
+   hand check 2022-11-04 side -1 entry 3705.50 at 09:30 NY, stop 3730.85 (range 50.70)
+   hand check 2024-01-22 side +1 entry 4859.12 at 09:32 NY, stop 4850.50 (range 17.24)
+   OOT counts (no P&L): 2020 175 2021 223 | port check 2022-24: common days 658, same side 99%, R correlation 0.94 (bar >= 0.6)
+X2 DOW: trades DEV 708 VAL 234 HOLD 183 | median range 87 spreads | MT5 broker median spread in the window 2.870 (OOT cost model)
+   hand check 2022-03-18 side +1 entry 34437.90 at 11:08 NY, stop 34328.10 (range 219.60)
+   hand check 2026-04-02 side +1 entry 46689.52 at 10:37 NY, stop 46266.02 (range 847.00)
+X3 XAUUSD: trades DEV 618 VAL 173 HOLD 138 | median range 118 spreads | MT5 broker median spread in the window 0.190 (OOT cost model)
+   hand check 2024-12-04 side +1 entry 2651.30 at 09:25 NY, stop 2641.81 (range 18.98)
+   hand check 2024-02-06 side +1 entry 2030.87 at 09:26 NY, stop 2026.88 (range 7.99)
+   GC switch / flip minutes 2020-21: 6 dates: [datetime.date(2020, 1, 30), datetime.date(2020, 3, 27), datetime.date(2020, 5, 27), datetime.date(2020, 5, 28), datetime.date(2020, 8, 31), datetime.date(2020, 11, 26)]
+   OOT counts (no P&L): 2020 167 2021 201 | port check 2022-24: common days 544, same side 99%, R correlation 0.87 (bar >= 0.6)

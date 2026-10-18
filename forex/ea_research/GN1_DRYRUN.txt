@@ -1,0 +1,17 @@
+G1 XAUUSD: trades DEV 355 VAL 189 HOLD 80 | control draws DEV 2510 | regime ON 71% of days since 2022 | median box 4.84
+   hand check 2024-12-18 entry 2647.74 at 10:35 server, stop 2641.95, box 5.79
+   hand check 2025-12-30 entry 4373.62 at 11:11 server, stop 4351.84, box 21.78
+G2 XAUUSD: trades DEV 355 VAL 189 HOLD 80 | control draws DEV 2510 | regime ON 71% of days since 2022 | median box 4.84
+   hand check 2024-12-18 entry 2647.74 at 10:35 server, stop 2641.95, box 5.79
+   hand check 2025-12-30 entry 4373.62 at 11:11 server, stop 4351.84, box 21.78
+G3 XAUUSD: trades DEV 315 VAL 164 HOLD 77 | control draws DEV 2505 | regime ON 71% of days since 2022 | median box 8.45
+   hand check 2026-02-18 entry 4994.24 at 17:00 server, stop 4955.49, box 38.75
+   hand check 2025-09-09 entry 3668.12 at 17:00 server, stop 3658.18, box 9.94
+N1 NSDQ: trades DEV 302 VAL 123 HOLD 120 | control draws DEV 2390 | regime ON 72% of days since 2022 | median box 99.55
+   hand check 2026-06-04 entry 30307.87 at 18:00 server, stop 30133.57, box 174.30
+   hand check 2025-01-02 entry 21197.87 at 17:00 server, stop 20951.37, box 246.50
+N2 NSDQ: trades DEV 302 VAL 123 HOLD 119 | control draws DEV 2390 | regime ON 72% of days since 2022 | median box 99.42
+   hand check 2026-06-02 entry 30552.67 at 17:04 server, stop 30368.87, box 183.80
+   hand check 2024-12-23 entry 21402.07 at 18:43 server, stop 21281.57, box 120.50
+truncation G1: cut 2025-08-04 10:04:30, trades before the cut 466 vs 466, identical True
+truncation N2: cut 2024-12-01 01:25:19, trades before the cut 288 vs 288, identical True
