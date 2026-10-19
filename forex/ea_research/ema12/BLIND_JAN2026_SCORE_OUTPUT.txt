@@ -1,0 +1,9 @@
+rows 21, no-trade days 1
+all entry minutes match the logged prices
+excluded from the primary: 0 flagged, 0 logged after the result
+PRIMARY London, flagged days out   n  20 | his side: wins 13 mean R +0.008 (t 0.05, 95% CI -0.30..+0.32) | mirror -0.224 | random side -0.107 | excess +0.115 | P(random >= his) 0.2547
+London, all days                   n  20 | his side: wins 13 mean R +0.008 (t 0.05, 95% CI -0.30..+0.32) | mirror -0.224 | random side -0.107 | excess +0.115 | P(random >= his) 0.2547
+NY (secondary), flagged out        n 0
+London, extra cost 0.30 USD        n  20 | his side: wins 13 mean R -0.029 (t -0.17, 95% CI -0.34..+0.28) | mirror -0.261 | random side -0.145 | excess +0.115 | P(random >= his) 0.2547
+London, entry shifted -1 min       n  20 | his side: wins 17 mean R +0.316 (t 2.49, 95% CI +0.08..+0.55) | mirror -0.380 | random side -0.031 | excess +0.348 | P(random >= his) 0.0162
+London, entry shifted +1 min       n  20 | his side: wins 13 mean R +0.008 (t 0.05, 95% CI -0.30..+0.32) | mirror -0.222 | random side -0.106 | excess +0.114 | P(random >= his) 0.2842
