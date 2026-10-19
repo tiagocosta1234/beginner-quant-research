@@ -1,13 +1,18 @@
 """Autosave checkpoint for D:/finance/beginner-quant-research (the trader 2026-10-11: "(original wording omitted)").
 Every run: stage tracked edits + NEW text files under the allowlist, refuse anything that looks like a secret, commit as the repo's
-git identity (tiagocosta1234), push without force. If the remote moved, rebase once; on any conflict abort and only log.
-Run by the Windows task "TopSecretGitAutosave" every 30 min.   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py"""
+git identity (tiagocosta1234). LOCAL COMMIT ONLY (the trader 2026-10-19: every push needs his OK) and never more than MAX_DAILY (70) commits
+per calendar day, counting every commit on HEAD, agents' included.
+Run by the Windows task "TopSecretGitAutosave" every 30 min.   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py
+Push only when the trader has said OK:   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py --push   (no force; rebases once if the remote moved)"""
 from __future__ import annotations
 
 import datetime as dt
 import re
 import subprocess
+import sys
 from pathlib import Path
+
+MAX_DAILY = 70
 
 NO_WINDOW = 0x08000000   # CREATE_NO_WINDOW
 REPO = Path("D:/finance/beginner-quant-research")
@@ -29,9 +34,25 @@ def log(msg):
     with open(LOG, "a", encoding="utf-8") as f: f.write(f"{dt.datetime.now():%Y-%m-%d %H:%M} {msg}\n")
 
 
+def commits_today():
+    return len([l for l in git("log", "--since=midnight", "--format=%H").stdout.splitlines() if l.strip()])
+
+
+def push():
+    """Run only on the trader's explicit OK: plain push, one rebase if the remote moved, never force."""
+    if git("push", "-q", "origin", "master", check=False).returncode:
+        r = git("pull", "--rebase", "-q", "origin", "master", check=False)
+        if r.returncode: git("rebase", "--abort", check=False); return log("push rejected and rebase conflicted: nothing pushed")
+        if git("push", "-q", "origin", "master", check=False).returncode: return log("push failed after rebase")
+    log("ok: pushed on the trader's OK")
+
+
 def main():
     if git("rev-parse", "--abbrev-ref", "HEAD").stdout.strip() != "master": return log("skip: not on master")
     if (REPO / ".git/rebase-merge").exists() or (REPO / ".git/MERGE_HEAD").exists(): return log("skip: rebase/merge in progress")
+    if "--push" in sys.argv: return push()
+    n_today = commits_today()
+    if n_today >= MAX_DAILY: return log(f"skip: {n_today} commits today, daily cap {MAX_DAILY}")
     tracked = [l[3:] for l in git("status", "--porcelain", "-uno").stdout.splitlines() if l[:2].strip() in ("M", "D", "MM", "AM")]
     new = [p for p in git("ls-files", "--others", "--exclude-standard").stdout.splitlines()
            if p.startswith(NEW_OK) and Path(p).suffix.lower() in NEW_EXT and "__pycache__" not in p and (REPO / p).stat().st_size <= MAX_NEW]
@@ -45,11 +66,7 @@ def main():
     for i in range(0, len(stage), 50): git("add", "--", *stage[i:i + 50])
     if not git("diff", "--cached", "--quiet", check=False).returncode: return log("nothing staged")
     git("commit", "-q", "-m", f"Autosave checkpoint {dt.datetime.now():%Y-%m-%d %H:%M} ({len(stage)} files)\n\nAutomatic: forex/tools/git_autosave.py")
-    if git("push", "-q", "origin", "master", check=False).returncode:
-        r = git("pull", "--rebase", "-q", "origin", "master", check=False)
-        if r.returncode: git("rebase", "--abort", check=False); return log("push rejected and rebase conflicted: committed locally only")
-        if git("push", "-q", "origin", "master", check=False).returncode: return log("push failed after rebase: committed locally only")
-    log(f"ok: {len(stage)} files pushed")
+    log(f"ok: {len(stage)} files committed locally (commit {n_today + 1} of {MAX_DAILY} today), not pushed")
 
 
 if __name__ == "__main__":
