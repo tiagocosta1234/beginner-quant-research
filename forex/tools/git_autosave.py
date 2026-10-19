@@ -1,6 +1,6 @@
 """Autosave checkpoint for D:/finance/beginner-quant-research (the trader 2026-10-11: "(original wording omitted)").
 Every run: stage tracked edits + NEW text files under the allowlist, refuse anything that looks like a secret, commit as the repo's
-git identity (tiagocosta1234). LOCAL COMMIT ONLY (the trader 2026-10-19: every push needs his OK) and never more than MAX_DAILY (70) commits
+git identity (tiagocosta1234). LOCAL COMMIT ONLY (the trader 2026-10-19: every push needs his OK) and never more than MAX_DAILY (40, absolute: the trader 2026-10-19) commits
 per calendar day, counting every commit on HEAD, agents' included.
 Run by the Windows task "TopSecretGitAutosave" every 30 min.   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py
 Push only when the trader has said OK:   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py --push   (no force; rebases once if the remote moved)"""
@@ -12,7 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-MAX_DAILY = 70
+MAX_DAILY = 40
 
 NO_WINDOW = 0x08000000   # CREATE_NO_WINDOW
 REPO = Path("D:/finance/beginner-quant-research")

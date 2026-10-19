@@ -1,0 +1,11 @@
+the trader's 30 trades on MT5 broker prices: mean R +0.219, wins 24/30
+F0 ATR25 London window 2025-04-14..05-12: n  18 meanR -0.237 win 50% | whole 2025: n 227 meanR -0.148
+F0 ATR25 NY     window 2025-04-14..05-12: n  18 meanR -0.068 win 61% | whole 2025: n 229 meanR -0.061
+F0 SW15  London window 2025-04-14..05-12: n  18 meanR -0.237 win 50% | whole 2025: n 227 meanR -0.181
+F0 SW15  NY     window 2025-04-14..05-12: n  18 meanR -0.068 win 61% | whole 2025: n 229 meanR -0.041
+F30 ATR25 London window 2025-04-14..05-12: n  15 meanR +0.220 win 80% | whole 2025: n 196 meanR -0.066
+F30 ATR25 NY     window 2025-04-14..05-12: n  17 meanR -0.282 win 47% | whole 2025: n 202 meanR -0.163
+F30 SW15  London window 2025-04-14..05-12: n  15 meanR +0.220 win 80% | whole 2025: n 196 meanR -0.087
+F30 SW15  NY     window 2025-04-14..05-12: n  17 meanR -0.193 win 53% | whole 2025: n 202 meanR -0.095
+F0 pooled London+NY ATR25 r0.525: window n 36 meanR -0.153 win 56% | rest of 2025 n 420 meanR -0.100 win 59%
+F30 pooled London+NY ATR25 r0.525: window n 32 meanR -0.047 win 62% | rest of 2025 n 366 meanR -0.121 win 58%
