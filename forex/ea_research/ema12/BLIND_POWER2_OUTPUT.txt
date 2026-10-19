@@ -1,0 +1,7 @@
+expected mean R of his side | design 1: P(supported), trades | design 2: P(supported at Look 1), P(supported at Look 2), overall, P(futility stop after Jan), P(futility stop at Look 1), trades
+  -0.05 | 0.04, 27 | 0.03, 0.01, 0.04, 0.64, 0.15, 34
+  +0.06 | 0.26, 35 | 0.22, 0.09, 0.30, 0.35, 0.07, 48
+  +0.12 | 0.47, 38 | 0.41, 0.15, 0.56, 0.23, 0.03, 50
+  +0.18 | 0.70, 41 | 0.65, 0.15, 0.80, 0.12, 0.01, 49
+  +0.24 | 0.87, 42 | 0.84, 0.09, 0.93, 0.06, 0.00, 46
+  +0.29 | 0.96, 43 | 0.94, 0.03, 0.98, 0.02, 0.00, 45

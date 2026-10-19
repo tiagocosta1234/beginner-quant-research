@@ -1,0 +1,55 @@
+    rule market   sess          variant  n  wins  meanR      t  dev_R  val_R
+   EMA12 XAUUSD London  ATR25 r0.525 F0 19     8 -0.358 -2.017 -0.079 -0.148
+   EMA12 XAUUSD London ATR25 r0.525 F30 16    12  0.144  0.843 -0.096 -0.066
+   EMA12 XAUUSD London    ATR25 r1.0 F0 19     5 -0.474 -2.282 -0.052 -0.193
+   EMA12 XAUUSD London   ATR25 r1.0 F30 16     9  0.125  0.488 -0.077 -0.051
+   EMA12 XAUUSD London   SW15 r0.525 F0 19     7 -0.438 -2.527 -0.094 -0.181
+   EMA12 XAUUSD London  SW15 r0.525 F30 16    10 -0.047 -0.246 -0.116 -0.087
+   EMA12 XAUUSD London     SW15 r1.0 F0 19     6 -0.368 -1.681 -0.049 -0.150
+   EMA12 XAUUSD London    SW15 r1.0 F30 16    10  0.250  1.000 -0.057 -0.042
+   EMA12 XAUUSD     NY  ATR25 r0.525 F0 21    17  0.235  1.751 -0.054 -0.061
+   EMA12 XAUUSD     NY ATR25 r0.525 F30 19    16  0.284  2.168 -0.053 -0.163
+   EMA12 XAUUSD     NY    ATR25 r1.0 F0 21    11  0.048  0.213 -0.070 -0.032
+   EMA12 XAUUSD     NY   ATR25 r1.0 F30 19    13  0.368  1.681  0.001 -0.083
+   EMA12 XAUUSD     NY   SW15 r0.525 F0 21    17  0.235  1.751 -0.060 -0.041
+   EMA12 XAUUSD     NY  SW15 r0.525 F30 19    12 -0.037 -0.212 -0.020 -0.095
+   EMA12 XAUUSD     NY     SW15 r1.0 F0 21    12  0.106  0.486 -0.080 -0.063
+   EMA12 XAUUSD     NY    SW15 r1.0 F30 19    11  0.158  0.678 -0.024 -0.057
+   EMA12   NSDQ London  ATR25 r0.525 F0 19    12 -0.037 -0.212 -0.138 -0.153
+   EMA12   NSDQ London ATR25 r0.525 F30 15    10  0.017  0.087 -0.071 -0.153
+   EMA12   NSDQ London    ATR25 r1.0 F0 19    10  0.053  0.224 -0.124 -0.142
+   EMA12   NSDQ London   ATR25 r1.0 F30 15     8  0.067  0.250 -0.017 -0.129
+   EMA12   NSDQ London   SW15 r0.525 F0 19    12 -0.037 -0.212 -0.111 -0.171
+   EMA12   NSDQ London  SW15 r0.525 F30 15    10  0.017  0.087 -0.058 -0.168
+   EMA12   NSDQ London     SW15 r1.0 F0 19    11  0.119  0.522 -0.123 -0.186
+   EMA12   NSDQ London    SW15 r1.0 F30 15     8  0.067  0.250 -0.032 -0.135
+   EMA12   NSDQ     NY  ATR25 r0.525 F0 18    12  0.017  0.096 -0.088 -0.007
+   EMA12   NSDQ     NY ATR25 r0.525 F30 15    11  0.118  0.657 -0.049 -0.060
+   EMA12   NSDQ     NY    ATR25 r1.0 F0 18     6 -0.280 -1.240 -0.084  0.024
+   EMA12   NSDQ     NY   ATR25 r1.0 F30 15     9  0.200  0.764 -0.068 -0.023
+   EMA12   NSDQ     NY   SW15 r0.525 F0 18    11 -0.068 -0.377 -0.087 -0.020
+   EMA12   NSDQ     NY  SW15 r0.525 F30 15     9 -0.085 -0.426 -0.066 -0.070
+   EMA12   NSDQ     NY     SW15 r1.0 F0 18     5 -0.444 -2.046 -0.059 -0.005
+   EMA12   NSDQ     NY    SW15 r1.0 F30 15     6 -0.200 -0.764 -0.055 -0.119
+MANUALRULE XAUUSD London               K1 16     7 -0.344 -1.789 -0.106 -0.175
+MANUALRULE XAUUSD London               K2 16     7 -0.344 -1.789 -0.112 -0.193
+MANUALRULE XAUUSD London               K3 16     7 -0.344 -1.789 -0.104 -0.168
+MANUALRULE XAUUSD     NY               K1 15     9 -0.047 -0.259 -0.050  0.070
+MANUALRULE XAUUSD     NY               K2 15     7 -0.252 -1.319 -0.068  0.064
+MANUALRULE XAUUSD     NY               K3 15     9 -0.047 -0.259 -0.049  0.068
+MANUALRULE   NSDQ London               K1 18     9 -0.219 -1.237 -0.089 -0.146
+MANUALRULE   NSDQ London               K2 18     9 -0.222 -1.254 -0.150 -0.253
+MANUALRULE   NSDQ London               K3 18     9 -0.219 -1.237 -0.087 -0.150
+MANUALRULE   NSDQ     NY               K1 12     6 -0.195 -0.902 -0.099  0.050
+MANUALRULE   NSDQ     NY               K2 12     6 -0.250 -1.106 -0.107 -0.026
+MANUALRULE   NSDQ     NY               K3 12     6 -0.195 -0.902 -0.096  0.048
+
+--- pooled (descriptive; n per trial is about 20, so one trial's mean R has a standard error near 0.18)
+MANUALRULE gold                trials  6 | mean of trial means: Jan 2026 -0.229 | DEV 2022-24 -0.082 | VAL 2025 -0.056 | trials with Jan mean R > 0: 0
+MANUALRULE gold K1 London+NY   trials  2 | mean of trial means: Jan 2026 -0.195 | DEV 2022-24 -0.078 | VAL 2025 -0.052 | trials with Jan mean R > 0: 0
+EMA12 gold                   trials 16 | mean of trial means: Jan 2026 +0.014 | DEV 2022-24 -0.061 | VAL 2025 -0.095 | trials with Jan mean R > 0: 10
+MANUALRULE Nasdaq              trials  6 | mean of trial means: Jan 2026 -0.217 | DEV 2022-24 -0.105 | VAL 2025 -0.079 | trials with Jan mean R > 0: 0
+EMA12 Nasdaq                 trials 16 | mean of trial means: Jan 2026 -0.030 | DEV 2022-24 -0.077 | VAL 2025 -0.095 | trials with Jan mean R > 0: 9
+all 44 trials                trials 44 | mean of trial means: Jan 2026 -0.066 | DEV 2022-24 -0.076 | VAL 2025 -0.087 | trials with Jan mean R > 0: 19
+MANUALRULE gold London K1/K2/K3 Jan: n [16, 16, 16], wins [7, 7, 7], mean R [-0.344, -0.344, -0.344]
+MANUALRULE gold NY     K1/K2/K3 Jan: n [15, 15, 15], wins [9, 7, 9], mean R [-0.047, -0.252, -0.047]
