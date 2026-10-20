@@ -1,0 +1,51 @@
+set,date,ses,side,dist,tipo,hl
+Apr-May 2025,2025-04-14,London,L,1.89,FVG 1m,
+Apr-May 2025,2025-04-14,NY,S,3.68,FVG 1m,
+Apr-May 2025,2025-04-15,London,S,1.76,FVG 1m,5-bar swing
+Apr-May 2025,2025-04-15,NY,S,3.42,FVG 1m,5-bar swing
+Apr-May 2025,2025-04-16,London,L,1.94,High/Low (assumed),
+Apr-May 2025,2025-04-16,NY,L,1.78,FVG 1m,5-bar swing
+Apr-May 2025,2025-04-17,London,S,5.18,High/Low (assumed),
+Apr-May 2025,2025-04-17,NY,S,2.85,High/Low (assumed),
+Apr-May 2025,2025-04-21,London,L,0.87,High/Low (assumed),10min extreme;5-bar swing;day extreme so far
+Apr-May 2025,2025-04-21,NY,S,2.49,FVG 5m,10min extreme;5-bar swing
+Apr-May 2025,2025-04-22,London,S,3.69,FVG 1m,10min extreme;5-bar swing
+Apr-May 2025,2025-04-23,London,S,1.92,FVG 1m,
+Apr-May 2025,2025-04-24,NY,S,1.9,FVG 1m,
+Apr-May 2025,2025-04-25,London,S,1.68,FVG 1m,
+Apr-May 2025,2025-04-25,NY,S,5.09,High/Low (assumed),
+Apr-May 2025,2025-04-28,NY,S,2.47,FVG 1m,10min extreme
+Apr-May 2025,2025-04-29,London,S,2.28,FVG 1m,10min extreme;5-bar swing
+Apr-May 2025,2025-04-30,London,L,1.3,FVG 1m,5-bar swing
+Apr-May 2025,2025-04-30,NY,L,1.82,High/Low (assumed),20min extreme;5-bar swing
+Apr-May 2025,2025-05-01,London,S,1.91,FVG 1m,
+Apr-May 2025,2025-05-02,London,L,2.57,FVG 1m,10min extreme;5-bar swing
+Apr-May 2025,2025-05-05,London,L,1.74,FVG 1m,5-bar swing
+Apr-May 2025,2025-05-05,NY,S,3.1,FVG 1m,5-bar swing
+Apr-May 2025,2025-05-06,London,L,4.53,High/Low (assumed),240min extreme;5-bar swing
+Apr-May 2025,2025-05-06,NY,S,4.41,FVG 1m,30min extreme;5-bar swing
+Apr-May 2025,2025-05-07,London,L,2.18,High/Low (assumed),5-bar swing
+Apr-May 2025,2025-05-08,London,S,4.67,High/Low (assumed),10min extreme
+Apr-May 2025,2025-05-09,London,L,3.68,High/Low (assumed),120min extreme;5-bar swing;day extreme so far
+Apr-May 2025,2025-05-09,NY,S,2.26,FVG 1m,10min extreme
+Apr-May 2025,2025-05-12,NY,S,2.13,FVG 1m,
+Jan 2026,2026-01-02,London,L,3.11,High/Low (assumed),
+Jan 2026,2026-01-05,London,L,3.53,High/Low (assumed),120min extreme;5-bar swing;day extreme so far
+Jan 2026,2026-01-06,London,L,4.33,FVG 1m,10min extreme
+Jan 2026,2026-01-07,London,L,3.98,FVG 1m,5-bar swing
+Jan 2026,2026-01-08,London,L,4.84,FVG 1m,10min extreme;5-bar swing
+Jan 2026,2026-01-09,London,S,3.02,FVG 1m,120min extreme;5-bar swing
+Jan 2026,2026-01-12,London,L,3.3,High/Low (assumed),
+Jan 2026,2026-01-13,London,L,4.75,FVG 1m,60min extreme;5-bar swing
+Jan 2026,2026-01-14,London,S,2.89,FVG 1m,
+Jan 2026,2026-01-15,London,S,5.43,FVG 1m,5-bar swing
+Jan 2026,2026-01-16,London,L,3.34,FVG 1m,30min extreme;5-bar swing
+Jan 2026,2026-01-19,London,L,5.67,FVG 1m,5-bar swing
+Jan 2026,2026-01-21,London,L,7.96,FVG 1m,5-bar swing
+Jan 2026,2026-01-22,London,S,4.68,FVG 1m,
+Jan 2026,2026-01-23,London,L,6.56,FVG 1m,
+Jan 2026,2026-01-26,London,L,11.12,FVG 1m,
+Jan 2026,2026-01-27,London,S,4.94,FVG 1m,60min extreme;5-bar swing
+Jan 2026,2026-01-28,London,L,2.97,High/Low (assumed),
+Jan 2026,2026-01-29,London,S,4.11,FVG 1m,30min extreme;5-bar swing
+Jan 2026,2026-01-30,London,S,24.93,High/Low (assumed),60min extreme;5-bar swing

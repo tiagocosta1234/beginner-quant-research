@@ -1,0 +1,12 @@
+rows by group: {'aprmay2025': 29, 'jan2026': 21}
+
+R check (win: R = target distance / stop distance; loss: -1): 0 row(s) off
+  all consistent
+
+January 2026: 20 log rows against 20 FX Replay rows inside 08:00-08:15
+  2026-01-06: stop log 4451.500 / FX Replay 4451.068 (+0.432)
+  every other January field is identical
+  FX Replay days not in the log: none
+
+April-May 2025: replay_mt5.csv has 30 trades, FX Replay rows 29 | not found in FX Replay: ['2025-05-06 NY S'] | distances off: none
+FX Replay April-May rows not in replay_mt5.csv: none

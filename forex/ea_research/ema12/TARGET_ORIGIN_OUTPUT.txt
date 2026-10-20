@@ -1,0 +1,66 @@
+50 trades (30 Apr-May 2025 in-sample, 20 Jan 2026 blind log); tolerance 0.40; FVG lookback 4 h; prices only, no results used
+
+per trade (matched FVG: kind, which level, width, minutes since it formed):
+  Apr-May 2025-04-14 London L target  1.89 away | FVG 1m             [1m bear low edge, width 0.13, 171 min old] | hi/lo: -
+  Apr-May 2025-04-14 NY     S target  3.68 away | FVG 1m             [1m bull middle, width 0.99, 5 min old] | hi/lo: -
+  Apr-May 2025-04-15 London S target  1.76 away | FVG 1m             [1m bull low edge, width 0.82, 75 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-04-15 NY     S target  3.42 away | FVG 1m             [1m bear middle, width 2.27, 68 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-04-16 London L target  1.94 away | High/Low (assumed) | hi/lo: -
+  Apr-May 2025-04-16 NY     L target  1.78 away | FVG 1m             [1m bear high edge, width 1.78, 5 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-04-17 London S target  5.18 away | High/Low (assumed) | hi/lo: -
+  Apr-May 2025-04-17 NY     S target  2.85 away | High/Low (assumed) | hi/lo: -
+  Apr-May 2025-04-21 London L target  0.87 away | High/Low (assumed) | hi/lo: 10min extreme;5-bar swing;day extreme so far
+  Apr-May 2025-04-21 NY     S target  2.49 away | FVG 5m             [5m bull middle, width 3.34, 28 min old] | hi/lo: 10min extreme;5-bar swing
+  Apr-May 2025-04-22 London S target  3.69 away | FVG 1m             [1m bull low edge, width 0.60, 226 min old] | hi/lo: 10min extreme;5-bar swing
+  Apr-May 2025-04-23 London S target  1.92 away | FVG 1m             [1m bull low edge, width 1.71, 6 min old] | hi/lo: -
+  Apr-May 2025-04-24 NY     S target  1.90 away | FVG 1m             [1m bull low edge, width 0.53, 7 min old] | hi/lo: -
+  Apr-May 2025-04-25 London S target  1.68 away | FVG 1m             [1m bull low edge, width 1.31, 3 min old] | hi/lo: -
+  Apr-May 2025-04-25 NY     S target  5.09 away | High/Low (assumed) | hi/lo: -
+  Apr-May 2025-04-28 NY     S target  2.47 away | FVG 1m             [1m bull high edge, width 0.45, 66 min old] | hi/lo: 10min extreme
+  Apr-May 2025-04-29 London S target  2.28 away | FVG 1m             [1m bull middle, width 0.98, 36 min old] | hi/lo: 10min extreme;5-bar swing
+  Apr-May 2025-04-30 London L target  1.30 away | FVG 1m             [1m bear high edge, width 0.11, 6 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-04-30 NY     L target  1.82 away | High/Low (assumed) | hi/lo: 20min extreme;5-bar swing
+  Apr-May 2025-05-01 London S target  1.91 away | FVG 1m             [1m bull low edge, width 0.55, 215 min old] | hi/lo: -
+  Apr-May 2025-05-02 London L target  2.57 away | FVG 1m             [1m bull high edge, width 0.72, 164 min old] | hi/lo: 10min extreme;5-bar swing
+  Apr-May 2025-05-05 London L target  1.74 away | FVG 1m             [1m bear low edge, width 1.93, 8 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-05-05 NY     S target  3.10 away | FVG 1m             [1m bull high edge, width 1.22, 191 min old] | hi/lo: 5-bar swing
+  Apr-May 2025-05-06 London L target  4.53 away | High/Low (assumed) | hi/lo: 240min extreme;5-bar swing
+  Apr-May 2025-05-06 NY     S target  4.41 away | FVG 1m             [1m bear high edge, width 0.83, 46 min old] | hi/lo: 30min extreme;5-bar swing
+  Apr-May 2025-05-07 London L target  2.18 away | High/Low (assumed) | hi/lo: 5-bar swing
+  Apr-May 2025-05-08 London S target  4.67 away | High/Low (assumed) | hi/lo: 10min extreme
+  Apr-May 2025-05-09 London L target  3.68 away | High/Low (assumed) | hi/lo: 120min extreme;5-bar swing;day extreme so far
+  Apr-May 2025-05-09 NY     S target  2.26 away | FVG 1m             [1m bull low edge, width 1.18, 124 min old] | hi/lo: 10min extreme
+  Apr-May 2025-05-12 NY     S target  2.13 away | FVG 1m             [1m bull high edge, width 0.44, 40 min old] | hi/lo: -
+  Jan 202 2026-01-02 London L target  3.11 away | High/Low (assumed) | hi/lo: -
+  Jan 202 2026-01-05 London L target  3.53 away | High/Low (assumed) | hi/lo: 120min extreme;5-bar swing;day extreme so far
+  Jan 202 2026-01-06 London L target  4.33 away | FVG 1m             [1m bull middle, width 1.61, 33 min old] | hi/lo: 10min extreme
+  Jan 202 2026-01-07 London L target  3.98 away | FVG 1m             [1m bull high edge, width 0.50, 209 min old] | hi/lo: 5-bar swing
+  Jan 202 2026-01-08 London L target  4.84 away | FVG 1m             [1m bear middle, width 0.35, 42 min old] | hi/lo: 10min extreme;5-bar swing
+  Jan 202 2026-01-09 London S target  3.02 away | FVG 1m             [1m bull high edge, width 1.21, 184 min old] | hi/lo: 120min extreme;5-bar swing
+  Jan 202 2026-01-12 London L target  3.30 away | High/Low (assumed) | hi/lo: -
+  Jan 202 2026-01-13 London L target  4.75 away | FVG 1m             [1m bear low edge, width 1.99, 99 min old] | hi/lo: 60min extreme;5-bar swing
+  Jan 202 2026-01-14 London S target  2.89 away | FVG 1m             [1m bear low edge, width 0.13, 234 min old] | hi/lo: -
+  Jan 202 2026-01-15 London S target  5.43 away | FVG 1m             [1m bear middle, width 0.55, 222 min old] | hi/lo: 5-bar swing
+  Jan 202 2026-01-16 London L target  3.34 away | FVG 1m             [1m bull low edge, width 1.18, 125 min old] | hi/lo: 30min extreme;5-bar swing
+  Jan 202 2026-01-19 London L target  5.67 away | FVG 1m             [1m bear high edge, width 2.08, 48 min old] | hi/lo: 5-bar swing
+  Jan 202 2026-01-21 London L target  7.96 away | FVG 1m             [1m bull middle, width 2.59, 154 min old] | hi/lo: 5-bar swing
+  Jan 202 2026-01-22 London S target  4.68 away | FVG 1m             [1m bull high edge, width 0.47, 95 min old] | hi/lo: -
+  Jan 202 2026-01-23 London L target  6.56 away | FVG 1m             [1m bull low edge, width 0.44, 209 min old] | hi/lo: -
+  Jan 202 2026-01-26 London L target 11.12 away | FVG 1m             [1m bear high edge, width 0.76, 69 min old] | hi/lo: -
+  Jan 202 2026-01-27 London S target  4.94 away | FVG 1m             [1m bull high edge, width 1.53, 124 min old] | hi/lo: 60min extreme;5-bar swing
+  Jan 202 2026-01-28 London L target  2.97 away | High/Low (assumed) | hi/lo: -
+  Jan 202 2026-01-29 London S target  4.11 away | FVG 1m             [1m bear high edge, width 7.50, 159 min old] | hi/lo: 30min extreme;5-bar swing
+  Jan 202 2026-01-30 London S target 24.93 away | High/Low (assumed) | hi/lo: 60min extreme;5-bar swing
+
+counts (target matched within 0.40):
+  all 50             n 50 | on a 1-min FVG 34 | only on a 5-min FVG  1 | no FVG but on a recent high/low  8 | neither (assumed high/low)  7
+  Apr-May 2025 (30)  n 30 | on a 1-min FVG 19 | only on a 5-min FVG  1 | no FVG but on a recent high/low  6 | neither (assumed high/low)  4
+  Jan 2026 (20)      n 20 | on a 1-min FVG 15 | only on a 5-min FVG  0 | no FVG but on a recent high/low  2 | neither (assumed high/low)  3
+
+chance level: share of PLACEBO levels (same trades) that match an FVG / a high-low (real targets: FVG 1m 68%, FVG 1m or 5m 70%, hi/lo 64%)
+  mirror  1-min FVG  84% | 1m or 5m FVG  86% | high/low  44%
+  0.7x    1-min FVG  68% | 1m or 5m FVG  72% | high/low  30%
+  1.3x    1-min FVG  64% | 1m or 5m FVG  64% | high/low  30%
+  1.6x    1-min FVG  52% | 1m or 5m FVG  54% | high/low  36%
+
+width of the matched FVGs (points): min 0.11, 25% 0.51, median 0.98, 75% 1.66, max 7.50 | width / target distance: median 0.31

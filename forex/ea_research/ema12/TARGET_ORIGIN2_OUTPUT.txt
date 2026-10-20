@@ -1,0 +1,11 @@
+50 trades; unfilled-FVG test (tolerance 0.40, lookback 4 h)
+trades with no unfilled FVG on the target side at all: 22 | median FVGs visible per trade (all, filled or not): 54
+share of targets on a level (near edge, far edge or middle) of the NEAREST unfilled 1-min FVG / of the nearest TWO:
+  real (his) nearest  12% | nearest two  16%
+  mirror (placebo) nearest  14% | nearest two  16%
+  0.7x (placebo) nearest  12% | nearest two  14%
+  1.3x (placebo) nearest  20% | nearest two  22%
+  1.6x (placebo) nearest  12% | nearest two  16%
+
+widths (points) of ALL 1-min FVGs visible (n 2694): 25% 0.32, median 0.64, 75% 1.18 | of the FVG levels his targets sit on (n 153, one trade can match several): 25% 0.40, median 0.90, 75% 1.37
+share of visible FVGs narrower than 1.0 point: 69% | of the ones his targets sit on: 56%

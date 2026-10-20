@@ -1,0 +1,36 @@
+
+=== ORIGINAL stops (target distance unchanged) ===
+R-based result vs mirror and random side (his entries, MT5 broker bid/ask):
+30 Apr-May 2025 (in-sample)        n  30 | his side: wins 24 mean R +0.219 (t 1.93, 95% CI +0.01..+0.42) | mirror -0.439 | random side -0.110 | excess +0.329 | P(random >= his) 0.0069
+20 Jan 2026 (blind)                n  20 | his side: wins 13 mean R +0.008 (t 0.05, 95% CI -0.30..+0.32) | mirror -0.224 | random side -0.107 | excess +0.115 | P(random >= his) 0.2547
+USD at 2,000 risk a trade:
+  Apr-May 2025               n 30 | wins 24 | mean R +0.219 | stop median 4.34 | share of trades where USD 2,000 fits the margin cap  30% | uncapped   +13132 USD ( +438 a trade) | capped    +8539 USD ( +285 a trade, average risk 1454)
+  Jan 2026                   n 20 | wins 13 | mean R +0.008 | stop median 8.09 | share of trades where USD 2,000 fits the margin cap  65% | uncapped     +318 USD (  +16 a trade) | capped     +266 USD (  +13 a trade, average risk 1935)
+account path from 95,472.14 (+2,000 a day counted cap), trades in date order:
+  Apr-May 2025, capped               final    104011 | lowest     95472 | max drawdown   3287 | neither target nor floor
+  Jan 2026, capped                   final     95738 | lowest     91553 | max drawdown   8181 | BREACH at trade 16
+  both in order, capped              final    104276 | lowest     95472 | max drawdown   8181 | target at trade 34
+  both in order, uncapped (not placeable) final    108922 | lowest     95472 | max drawdown   8418 | target at trade 21
+bootstrap of the account, 1 trade a day, trades drawn at random from the sets, margin cap with the equity:
+  all 50 trades                      pass  63% (by 22 Dec, 47 days:  38%) | breach  37% (by 22 Dec:  34%) | still alive after 250 days   0%
+  Jan 2026 only (blind, 20)          pass  27% (by 22 Dec, 47 days:  17%) | breach  73% (by 22 Dec:  65%) | still alive after 250 days   0%
+
+=== HALF stops (target distance unchanged) ===
+R-based result vs mirror and random side (his entries, MT5 broker bid/ask):
+30 Apr-May 2025 (in-sample)        n  30 | his side: wins 19 mean R +0.296 (t 1.62, 95% CI -0.05..+0.64) | mirror -0.382 | random side -0.043 | excess +0.338 | P(random >= his) 0.0417
+20 Jan 2026 (blind)                n  20 | his side: wins 6 mean R -0.367 (t -1.66, 95% CI -0.79..+0.06) | mirror -0.369 | random side -0.368 | excess +0.001 | P(random >= his) 0.4679
+USD at 2,000 risk a trade:
+  Apr-May 2025               n 30 | wins 19 | mean R +0.296 | stop median 2.17 | share of trades where USD 2,000 fits the margin cap   0% | uncapped   +17743 USD ( +591 a trade) | capped    +8277 USD ( +276 a trade, average risk  805)
+  Jan 2026                   n 20 | wins  6 | mean R -0.367 | stop median 4.05 | share of trades where USD 2,000 fits the margin cap  15% | uncapped   -14687 USD ( -734 a trade) | capped    -8524 USD ( -426 a trade, average risk 1319)
+account path from 95,472.14 (+2,000 a day counted cap), trades in date order:
+  Apr-May 2025, capped               final    103750 | lowest     94896 | max drawdown   2147 | neither target nor floor
+  Jan 2026, capped                   final     86632 | lowest     86632 | max drawdown   8840 | BREACH at trade 6
+  both in order, capped              final     94909 | lowest     94896 | max drawdown  10987 | neither target nor floor
+  both in order, uncapped (not placeable) final     95472 | lowest     93472 | max drawdown  22000 | target at trade 21
+bootstrap of the account, 1 trade a day, trades drawn at random from the sets, margin cap with the equity:
+  all 50 trades                      pass  21% (by 22 Dec, 47 days:   9%) | breach  79% (by 22 Dec:  63%) | still alive after 250 days   0%
+  Jan 2026 only (blind, 20)          pass   0% (by 22 Dec, 47 days:   0%) | breach 100% (by 22 Dec:  99%) | still alive after 250 days   0%
+
+per-trade comparison, original vs half stop (R of his side, own stop units):
+  Apr-May 2025   wins 24 -> 19 | trades that were winners and are now losers: 5 | losers now winners: 0
+  Jan 2026       wins 13 -> 6 | trades that were winners and are now losers: 7 | losers now winners: 0

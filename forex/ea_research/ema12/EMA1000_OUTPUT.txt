@@ -1,0 +1,90 @@
+start 10:11:24 workers 8
+  ASX     done in    34s (1/46)
+  AUDCAD  done in    36s (2/46)
+  AUDUSD  done in    35s (3/46)
+  AUDJPY  done in    37s (4/46)
+  AUDCHF  done in    37s (5/46)
+  AUDNZD  done in    37s (6/46)
+  BCHUSD  done in    38s (7/46)
+  ADAUSD  done in    42s (8/46)
+  BRENT   done in    37s (9/46)
+  BNBUSD  done in    39s (10/46)
+  BTCUSD  done in    37s (11/46)
+  CADJPY  done in    38s (12/46)
+  CHFJPY  done in    38s (13/46)
+  CADCHF  done in    39s (14/46)
+  DAX     done in    38s (15/46)
+  DOW     done in    41s (16/46)
+  EURAUD  done in    55s (17/46)
+  EURCHF  done in    55s (18/46)
+  EURCAD  done in    56s (19/46)
+  EURGBP  done in    54s (20/46)
+  EURJPY  done in    54s (21/46)
+  ETHUSD  done in    57s (22/46)
+  EURNZD  done in    54s (23/46)
+  EURUSD  done in    53s (24/46)
+  GBPAUD  done in    36s (25/46)
+  GBPCAD  done in    37s (26/46)
+  GBPJPY  done in    37s (27/46)
+  GBPUSD  done in    36s (28/46)
+  GBPNZD  done in    37s (29/46)
+  GBPCHF  done in    38s (30/46)
+  LTCUSD  done in    40s (31/46)
+  NIKKEI  done in    37s (32/46)
+  NSDQ    done in    36s (33/46)
+  NZDCAD  done in    34s (34/46)
+  NZDUSD  done in    34s (35/46)
+  NZDJPY  done in    35s (36/46)
+  NZDCHF  done in    36s (37/46)
+  SOLUSD  done in    38s (38/46)
+  USDCAD  done in    34s (39/46)
+  SP      done in    36s (40/46)
+  USDJPY  done in    30s (41/46)
+  USDCHF  done in    30s (42/46)
+  WTI     done in    30s (43/46)
+  XAUUSD  done in    30s (44/46)
+  XAGUSD  done in    31s (45/46)
+  XRPUSD  done in    30s (46/46)
+
+finished 10:15:29 in 4 min | variants 1000 | CANDIDATES (all bars): 0
+DEV clustered t over the 1,000 variants: min -64.93, 5% -53.96, 25% -34.54, median -25.13, 75% -18.22, 95% -12.45, max -9.48 | share with DEV mean R > 0: 0% | DEV t >= 3.72: 0 | DEV t >= 2.58: 0
+trades per variant (DEV): median 21807 | median DEV mean R -0.1799 | median VAL mean R -0.1740
+
+best 20 by DEV t:
+ id  ema  tf     body  win tgt  stop    ses trend  dev_n  dev_R   dev_t  val_R  val_t    y22    y23    y24  noBest_t best_market  share_pos  cand
+820   20   3     wick   15  K1   3.0     NY   m30   8441 -0.076  -9.482 -0.084 -5.781 -0.071 -0.095 -0.063    -9.799        NSDQ      0.152 False
+539   12   3 wick_atr   15  K3   3.0     NY   m30   8605 -0.076  -9.696 -0.084 -5.954 -0.079 -0.095 -0.054   -10.056         DOW      0.087 False
+534   12   3 wick_atr   15  K1   3.0     NY   m30   8605 -0.077  -9.729 -0.085 -5.916 -0.080 -0.097 -0.055   -10.090         DOW      0.087 False
+963   20   5 wick_atr   15  K3   2.0 London   m30   6021 -0.116  -9.814 -0.092 -4.759 -0.074 -0.142 -0.134   -10.179      AUDUSD      0.109 False
+962   20   5 wick_atr   15  K3   2.0 London  none   7031 -0.109  -9.954 -0.095 -5.182 -0.075 -0.131 -0.122   -10.254      AUDJPY      0.152 False
+919   20   5     wick   15  K1   3.0 London   m30   6362 -0.089  -9.986 -0.066 -4.642 -0.057 -0.113 -0.098   -10.280      EURJPY      0.109 False
+847   20   3 wick_atr   15  K1   2.0     NY   m30   7917 -0.105  -9.998 -0.123 -6.581 -0.100 -0.117 -0.098   -10.440        NSDQ      0.152 False
+964   20   5 wick_atr   15  K3   3.0     NY  none   6871 -0.087 -10.143 -0.056 -4.236 -0.090 -0.095 -0.076   -10.467         DAX      0.087 False
+956   20   5 wick_atr   15  K1   3.0     NY  none   6871 -0.088 -10.177 -0.056 -4.160 -0.090 -0.096 -0.077   -10.502         DAX      0.087 False
+852   20   3 wick_atr   15  K3   3.0     NY  none  10047 -0.076 -10.320 -0.083 -6.448 -0.072 -0.097 -0.060   -10.604        NSDQ      0.109 False
+926   20   5     wick   15  K3   3.0 London  none   7464 -0.085 -10.393 -0.063 -4.823 -0.062 -0.108 -0.086   -10.647      AUDJPY      0.130 False
+890   20   5     none   15  K1   3.0     NY   m30   7521 -0.089 -10.420 -0.063 -4.564 -0.089 -0.109 -0.070   -10.693        NSDQ      0.043 False
+626   12   5     wick   15  K3   2.0     NY   m30   7870 -0.110 -10.425 -0.083 -4.509 -0.100 -0.139 -0.092   -10.640      USDCHF      0.087 False
+537   12   3 wick_atr   15  K3   2.0     NY   m30   8605 -0.104 -10.477 -0.119 -6.548 -0.111 -0.119 -0.084   -10.941        NSDQ      0.109 False
+266    8   5     wick   15  K1   2.0     NY   m30   8985 -0.110 -10.796 -0.084 -4.846 -0.098 -0.139 -0.093   -11.120         DAX      0.087 False
+465   12   3     none   15  K1   3.0     NY   m30  10701 -0.076 -10.840 -0.089 -6.800 -0.077 -0.090 -0.064   -11.155        NSDQ      0.130 False
+918   20   5     wick   15  K1   2.0 London  none   7464 -0.116 -10.846 -0.098 -5.539 -0.085 -0.144 -0.121   -11.202      AUDJPY      0.152 False
+578   12   5     none   15  K1   2.0     NY   m30   9364 -0.108 -10.949 -0.086 -4.894 -0.103 -0.138 -0.085   -11.216        NSDQ      0.043 False
+619   12   5     wick   15  K1   1.5     NY   m30   7870 -0.138 -10.986 -0.117 -5.281 -0.123 -0.167 -0.125   -11.410      AUDUSD      0.087 False
+924   20   5     wick   15  K3   1.5     NY   m30   6353 -0.150 -11.059 -0.114 -4.869 -0.141 -0.157 -0.152   -11.471         DAX      0.087 False
+
+median DEV mean R by ses: {'London': -0.2005, 'NY': -0.1583}
+
+median DEV mean R by tf: {1: -0.2341, 3: -0.178, 5: -0.1495}
+
+median DEV mean R by tgt: {'ATR1': -0.2449, 'K1': -0.1313, 'K2': -0.1761, 'K3': -0.1415, 'SW': -0.2272}
+
+median DEV mean R by stop: {1.5: -0.2221, 2.0: -0.1961, 3.0: -0.1345}
+
+median DEV mean R by body: {'none': -0.1844, 'wick': -0.1692, 'wick_atr': -0.1835}
+
+median DEV mean R by trend: {'m30': -0.1777, 'none': -0.183}
+
+median DEV mean R by ema: {8: -0.1744, 12: -0.1831, 20: -0.1823}
+
+median DEV mean R by win: {15: -0.1851, 30: -0.1867, 60: -0.17}

@@ -1,0 +1,29 @@
+variants 1000, markets 46, grid 4860; first variants:
+   {'id': 0, 'ema': 8, 'tf': 1, 'body': 'none', 'win': 15, 'tgt': 'K1', 'stop': 3.0, 'ses': 'London', 'trend': 'none'}
+   {'id': 1, 'ema': 8, 'tf': 1, 'body': 'none', 'win': 15, 'tgt': 'K2', 'stop': 2.0, 'ses': 'NY', 'trend': 'm30'}
+   {'id': 2, 'ema': 8, 'tf': 1, 'body': 'none', 'win': 15, 'tgt': 'K3', 'stop': 2.0, 'ses': 'London', 'trend': 'none'}
+
+(1) reproduction of MANUALRULE_TRIALS.csv (K1, DEV 2022-24):
+  XAUUSD  London new: n  587 meanR -0.1064 t -3.60 | MANUALRULE: n  587 meanR -0.1064 t -3.60
+  XAUUSD  NY     new: n  598 meanR -0.0501 t -1.73 | MANUALRULE: n  598 meanR -0.0501 t -1.73
+  NSDQ    London new: n  590 meanR -0.0891 t -3.01 | MANUALRULE: n  590 meanR -0.0891 t -3.01
+  NSDQ    NY     new: n  522 meanR -0.0986 t -3.10 | MANUALRULE: n  522 meanR -0.0986 t -3.10
+  largest difference (trades or 100 x mean R): 0.000
+
+(4) trades per year, baseline variant, first 8 markets:
+  ADAUSD  London trades per year {2022: 40, 2023: 15, 2024: 166, 2025: 193}
+  ASX     London trades per year {2022: 149, 2023: 114, 2024: 114, 2025: 79}
+  AUDCAD  London trades per year {2022: 182, 2023: 193, 2024: 183, 2025: 176}
+  AUDCHF  London trades per year {2022: 189, 2023: 188, 2024: 184, 2025: 184}
+  AUDJPY  London trades per year {2022: 189, 2023: 206, 2024: 184, 2025: 186}
+  AUDNZD  London trades per year {2022: 172, 2023: 193, 2024: 163, 2025: 136}
+  AUDUSD  London trades per year {2022: 193, 2023: 209, 2024: 193, 2025: 195}
+  BCHUSD  London trades per year {2022: 90, 2023: 95, 2024: 176, 2025: 170}
+
+(2) truncation test: signal recomputed with everything after the entry minute cut:
+  72 trades recomputed with the future cut, 0 mismatches
+
+(3) hand check, XAUUSD London baseline:
+  2022-04-26 signal minute 10:04 open 1902.44 close 1903.29 ema(12) -> side 1, entry 1903.29 target dist 1.98 stop dist 3.95
+  2022-04-27 signal minute 10:02 open 1898.23 close 1898.88 ema(12) -> side 1, entry 1898.94 target dist 1.44 stop dist 2.87
+  2022-04-29 signal minute 10:04 open 1912.26 close 1911.74 ema(12) -> side -1, entry 1911.76 target dist 2.52 stop dist 5.05
