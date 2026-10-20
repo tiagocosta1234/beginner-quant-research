@@ -1,0 +1,62 @@
+=== MT5 broker bid/ask R (spread of the day: Apr-May 2025 median 0.28, Jan 2026 0.32), 50 trades ===
+ALL 50                     n 50 | wins 37 (74%) | SUM R   +6.70 | mean +0.134 | median +0.520 | sd 0.68 | t +1.39 | 95% CI -0.05..+0.32
+                           avg win +0.532 | avg loss 1.000 | payoff 0.53 | break-even win rate 65% (P wins>=obs at b/e 0.12) | profit factor 1.52 | best +0.58 worst -1.00 | max DD 4.21 R | streaks W10 L3
+Apr-May 2025 (in-sample)   n 30 | wins 24 (80%) | SUM R   +6.57 | mean +0.219 | median +0.518 | sd 0.62 | t +1.93 | 95% CI -0.03..+0.42
+                           avg win +0.524 | avg loss 1.000 | payoff 0.52 | break-even win rate 66% (P wins>=obs at b/e 0.07) | profit factor 2.09 | best +0.54 worst -1.00 | max DD 2.00 R | streaks W10 L2
+Jan 2026 (blind)           n 20 | wins 13 (65%) | SUM R   +0.13 | mean +0.007 | median +0.540 | sd 0.76 | t +0.04 | 95% CI -0.31..+0.32
+                           avg win +0.548 | avg loss 1.000 | payoff 0.55 | break-even win rate 65% (P wins>=obs at b/e 0.59) | profit factor 1.02 | best +0.58 worst -1.00 | max DD 4.21 R | streaks W4 L3
+
+--- split (all 50) ---
+London                     n 37 | wins 27 (73%) | SUM R   +4.44 | mean +0.120 | median +0.520 | sd 0.69 | t +1.06 | 95% CI -0.13..+0.33
+                           avg win +0.535 | avg loss 1.000 | payoff 0.53 | break-even win rate 65% (P wins>=obs at b/e 0.21) | profit factor 1.44 | best +0.58 worst -1.00 | max DD 4.21 R | streaks W11 L3
+NY                         n 13 | wins 10 (77%) | SUM R   +2.25 | mean +0.173 | median +0.519 | sd 0.67 | t +0.93 | 95% CI -0.18..+0.52
+                           avg win +0.525 | avg loss 1.000 | payoff 0.53 | break-even win rate 66% (P wins>=obs at b/e 0.29) | profit factor 1.75 | best +0.54 worst -1.00 | max DD 1.00 R | streaks W5 L1
+Long                       n 24 | wins 17 (71%) | SUM R   +2.11 | mean +0.088 | median +0.521 | sd 0.71 | t +0.60 | 95% CI -0.23..+0.34
+                           avg win +0.536 | avg loss 1.000 | payoff 0.54 | break-even win rate 65% (P wins>=obs at b/e 0.36) | profit factor 1.30 | best +0.58 worst -1.00 | max DD 3.31 R | streaks W7 L2
+Short                      n 26 | wins 20 (77%) | SUM R   +4.59 | mean +0.177 | median +0.520 | sd 0.66 | t +1.37 | 95% CI -0.11..+0.41
+                           avg win +0.529 | avg loss 1.000 | payoff 0.53 | break-even win rate 65% (P wins>=obs at b/e 0.15) | profit factor 1.76 | best +0.56 worst -1.00 | max DD 2.93 R | streaks W5 L2
+
+--- by month ---
+2025-04 n 19 wins 16 sum R  +5.35 mean +0.282
+2025-05 n 11 wins  8 sum R  +1.22 mean +0.111
+2026-01 n 20 wins 13 sum R  +0.13 mean +0.007
+
+--- stop size (points) ---  mean 7.27 median 5.97 min 1.66 max 45.36
+
+=== same trades re-priced at today's 0.48 spread (approx.) ===
+ALL 50 at 0.48             n 50 | wins 37 (74%) | SUM R   +4.88 | mean +0.098 | median +0.483 | sd 0.68 | t +1.02 | 95% CI -0.09..+0.28
+                           avg win +0.494 | avg loss 1.030 | payoff 0.48 | break-even win rate 68% (P wins>=obs at b/e 0.21) | profit factor 1.36 | best +0.57 worst -1.06 | max DD 4.52 R | streaks W10 L3
+Apr-May at 0.48            n 30 | wins 24 (80%) | SUM R   +5.16 | mean +0.172 | median +0.463 | sd 0.62 | t +1.52 | 95% CI -0.07..+0.37
+                           avg win +0.475 | avg loss 1.041 | payoff 0.46 | break-even win rate 69% (P wins>=obs at b/e 0.12) | profit factor 1.83 | best +0.52 worst -1.06 | max DD 2.14 R | streaks W10 L2
+Jan 2026 at 0.48           n 20 | wins 13 (65%) | SUM R   -0.28 | mean -0.014 | median +0.512 | sd 0.76 | t -0.08 | 95% CI -0.33..+0.30
+                           avg win +0.528 | avg loss 1.020 | payoff 0.52 | break-even win rate 66% (P wins>=obs at b/e 0.63) | profit factor 0.96 | best +0.57 worst -1.03 | max DD 4.45 R | streaks W4 L3
+
+=== as FX Replay logged them (chart prices, no spread; 29 + 20 = 49 trades with a stop; the 6 May 2025 NY short is not in FX Replay) ===
+ALL FX Replay              n 49 | wins 37 (76%) | SUM R   +7.69 | mean +0.157 | median +0.520 | sd 0.67 | t +1.65 | 95% CI -0.03..+0.34
+                           avg win +0.532 | avg loss 1.000 | payoff 0.53 | break-even win rate 65% (P wins>=obs at b/e 0.09) | profit factor 1.64 | best +0.58 worst -1.00 | max DD 4.21 R | streaks W9 L3
+Apr-May 2025               n 29 | wins 24 (83%) | SUM R   +7.56 | mean +0.261 | median +0.520 | sd 0.59 | t +2.40 | 95% CI +0.05..+0.47
+                           avg win +0.523 | avg loss 1.000 | payoff 0.52 | break-even win rate 66% (P wins>=obs at b/e 0.04) | profit factor 2.51 | best +0.54 worst -1.00 | max DD 2.00 R | streaks W9 L2
+Jan 2026                   n 20 | wins 13 (65%) | SUM R   +0.13 | mean +0.007 | median +0.540 | sd 0.76 | t +0.04 | 95% CI -0.31..+0.32
+                           avg win +0.548 | avg loss 1.000 | payoff 0.55 | break-even win rate 65% (P wins>=obs at b/e 0.59) | profit factor 1.02 | best +0.58 worst -1.00 | max DD 4.21 R | streaks W4 L3
+
+=== dollars at a fixed risk per trade (MT5 broker bid/ask R, chronological, start 95472.14, floor 92000, lot cap 3.1) ===
+risk 2000 uncapped  | sum    +13392 | final    108864 | lowest equity     96500 (above the 92,000 floor) | worst day   -2000 | days <= -2,500: 0 | max DD 8418
+risk 2000 capped    | sum     +8716 | final    104188 | lowest equity     96058 (above the 92,000 floor) | worst day   -2000 | days <= -2,500: 0 | max DD 8147
+risk 1000 uncapped  | sum     +6696 | final    102168 | lowest equity     95986 (above the 92,000 floor) | worst day   -1000 | days <= -2,500: 0 | max DD 4209
+risk 1000 capped    | sum     +6296 | final    101768 | lowest equity     95986 (above the 92,000 floor) | worst day   -1000 | days <= -2,500: 0 | max DD 4209
+risk  500 uncapped  | sum     +3348 | final     98820 | lowest equity     95729 (above the 92,000 floor) | worst day    -500 | days <= -2,500: 0 | max DD 2104
+risk  500 capped    | sum     +3348 | final     98820 | lowest equity     95729 (above the 92,000 floor) | worst day    -500 | days <= -2,500: 0 | max DD 2104
+risk  100 uncapped  | sum      +670 | final     96142 | lowest equity     95524 (above the 92,000 floor) | worst day    -100 | days <= -2,500: 0 | max DD 421
+risk  100 capped    | sum      +670 | final     96142 | lowest equity     95524 (above the 92,000 floor) | worst day    -100 | days <= -2,500: 0 | max DD 421
+
+trades over the 3.1-lot cap at USD 2,000 risk: 29 of 50
+
+=== Jan 2026 blind sequence alone, as if started from 95472.14 (20 trades, 1 a day) ===
+risk 2000 uncapped  | sum     +261 | final     95733 | lowest     91380 at trade 16 | BREACH of 92,000 at trade 11
+risk 2000 capped    | sum     +221 | final     95693 | lowest     91511 at trade 16 | BREACH of 92,000 at trade 16
+risk 1000 uncapped  | sum     +130 | final     95602 | lowest     93426 at trade 16 | floor not touched
+risk 1000 capped    | sum     +130 | final     95602 | lowest     93426 at trade 16 | floor not touched
+risk  500 uncapped  | sum      +65 | final     95537 | lowest     94449 at trade 16 | floor not touched
+risk  500 capped    | sum      +65 | final     95537 | lowest     94449 at trade 16 | floor not touched
+risk  100 uncapped  | sum      +13 | final     95485 | lowest     95268 at trade 16 | floor not touched
+risk  100 capped    | sum      +13 | final     95485 | lowest     95268 at trade 16 | floor not touched
