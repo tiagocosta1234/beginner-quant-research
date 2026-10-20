@@ -1,0 +1,32 @@
+(1) fill invariants (fill never worse than the limit; fill minute 1..15 after the signal candle; the touch happened; rule limit behind and inverted limit ahead of the close), 25 random variants x 3 markets x 4 depths x Z / Q x both sides:
+  813196 checks (signal pairs + fills), 0 violations
+
+(2) truncation test: data after the fill minute cut, signal and fill identical (all depths, Z and Q, both sides):
+  256 fills recomputed with the future cut, 0 mismatches
+
+(3) hand check, XAUUSD London baseline (EMA 12, 1 min, wick_atr, 15 min, K1, stop 2), pullback 0.5 ATR, no spread, rule side:
+  2022-04-29 signal candle closes 10:04 mid close 1911.74 ATR 0.71 side -1 | limit 1912.10 | fill minute 10:05 mid O 1911.82 H 1912.12 L 1911.59 C 1911.59 | fill 1912.10 target 1909.24 stop 1917.83 (d 2.87) -> R -1.000
+  2022-05-05 signal candle closes 10:10 mid close 1895.96 ATR 1.02 side +1 | limit 1895.45 | fill minute 10:16 mid O 1895.74 H 1895.74 L 1894.51 C 1894.68 | fill 1895.45 target 1897.53 stop 1891.28 (d 2.09) -> R -1.000
+  2022-05-06 signal candle closes 10:04 mid close 1874.84 ATR 0.62 side +1 | limit 1874.52 | fill minute 10:11 mid O 1875.94 H 1875.94 L 1873.69 C 1873.72 | fill 1874.52 target 1875.07 stop 1873.43 (d 0.55) -> R +0.500
+
+(4) fill rates and DEV mean R, baseline variant (London, K1, stop 2), rule / inverted:
+  XAUUSD  P25   signals(DEV)  599 | Zr fill  91% R -0.052 | Zi fill  92% R +0.025 | Qr fill  88% R -0.097 | Qi fill  89% R -0.050
+  XAUUSD  P50   signals(DEV)  615 | Zr fill  86% R -0.043 | Zi fill  85% R +0.038 | Qr fill  81% R -0.103 | Qi fill  82% R -0.039
+  XAUUSD  P100  signals(DEV)  620 | Zr fill  72% R -0.030 | Zi fill  73% R +0.012 | Qr fill  69% R -0.075 | Qi fill  70% R -0.057
+  XAUUSD  PEMA  signals(DEV)  613 | Zr fill  82% R -0.057 | Zi fill  81% R +0.013 | Qr fill  79% R -0.105 | Qi fill  77% R -0.056
+  EURUSD  P25   signals(DEV)  604 | Zr fill  90% R -0.002 | Zi fill  92% R -0.062 | Qr fill  88% R -0.036 | Qi fill  89% R -0.112
+  EURUSD  P50   signals(DEV)  616 | Zr fill  84% R +0.015 | Zi fill  86% R -0.056 | Qr fill  81% R -0.030 | Qi fill  83% R -0.108
+  EURUSD  P100  signals(DEV)  623 | Zr fill  73% R +0.043 | Zi fill  73% R -0.046 | Qr fill  70% R +0.010 | Qi fill  71% R -0.087
+  EURUSD  PEMA  signals(DEV)  616 | Zr fill  83% R +0.031 | Zi fill  83% R -0.060 | Qr fill  82% R -0.005 | Qi fill  81% R -0.104
+  NSDQ    P25   signals(DEV)  605 | Zr fill  93% R -0.075 | Zi fill  93% R -0.012 | Qr fill  89% R -0.178 | Qi fill  90% R -0.088
+  NSDQ    P50   signals(DEV)  613 | Zr fill  86% R -0.056 | Zi fill  89% R -0.011 | Qr fill  84% R -0.163 | Qi fill  85% R -0.086
+  NSDQ    P100  signals(DEV)  625 | Zr fill  78% R -0.062 | Zi fill  77% R +0.008 | Qr fill  75% R -0.138 | Qi fill  72% R -0.081
+  NSDQ    PEMA  signals(DEV)  617 | Zr fill  83% R -0.055 | Zi fill  82% R -0.029 | Qr fill  79% R -0.141 | Qi fill  79% R -0.106
+  GBPUSD  P25   signals(DEV)  586 | Zr fill  91% R +0.034 | Zi fill  92% R -0.057 | Qr fill  88% R -0.022 | Qi fill  91% R -0.095
+  GBPUSD  P50   signals(DEV)  596 | Zr fill  83% R +0.024 | Zi fill  86% R -0.068 | Qr fill  81% R -0.021 | Qi fill  84% R -0.094
+  GBPUSD  P100  signals(DEV)  609 | Zr fill  71% R +0.027 | Zi fill  75% R +0.006 | Qr fill  69% R -0.010 | Qi fill  74% R -0.029
+  GBPUSD  PEMA  signals(DEV)  598 | Zr fill  83% R +0.051 | Zi fill  84% R -0.031 | Qr fill  82% R +0.019 | Qi fill  81% R -0.081
+
+real	1m53.750s
+user	0m0.015s
+sys	0m0.015s

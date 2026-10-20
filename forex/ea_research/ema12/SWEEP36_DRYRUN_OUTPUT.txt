@@ -1,0 +1,19 @@
+variants: 36 (L (30, 60) x conf ('gap', 'disp', 'either') x m (0.5, 1.0, 2.0) x session ('London', 'NY'))
+
+(1) truncation test: data after the entry minute cut, same signal and same entry (4 markets x 4 variants x up to 5 trades):
+  80 signals recomputed with the future cut, 0 mismatches
+
+(2) hand check, XAUUSD London, L 60, either, m 0.5, around 30 Apr 2025:
+  2025-04-29 side +1: confirmation candle 08:20 local, entry 08:21 at 3318.72, stop 3312.39 (6.33 away), target 3321.88 -> R +0.50
+  2025-04-30 side +1: confirmation candle 08:09 local, entry 08:10 at 3306.36, stop 3303.11 (3.26 away), target 3307.99 -> R +0.50
+  2025-05-01 side +1: confirmation candle 08:14 local, entry 08:15 at 3231.36, stop 3228.20 (3.16 away), target 3232.94 -> R -1.00
+
+(3) trades per year (XAUUSD, L 60, either, m 0.5):
+  London {2022: 194, 2023: 184, 2024: 164, 2025: 179}
+  NY {2022: 190, 2023: 191, 2024: 197, 2025: 198}
+
+(4) buy / sell mix and mean R (XAUUSD London, DEV): 542 trades, buys 275, sells 267, mean R -0.138, wins 309
+
+real	0m44.012s
+user	0m0.000s
+sys	0m0.015s

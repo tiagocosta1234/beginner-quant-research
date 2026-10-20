@@ -1,0 +1,16 @@
+HIS 50 SIGNAL CANDLES against the coded checklist (MT5 broker 1-minute mid):
+  body > sum of the wicks: 35 of 50 | follows the 30-candle trend: 36 of 50 | displacement (body >= mean range of the prior 14): 23 of 50
+  TYPE A (cross candle, small close-side wick <= 0.15 of the body): 10 | TYPE B (the candle after a cross that was not type A): 2 | neither: 39
+  with a looser 'small wick' (<= 0.25): A 10, B 1
+  type A or B AND trend-aligned: 10 of 50 | and with displacement as well: 9
+  by period (A or B and trend):
+             n  ok  A  B  trend
+group                          
+aprmay2025  29   5  6  0   0.72
+jan2026     21   5  4  2   0.71
+
+THE SAME CHECKLIST ON THE WHOLE SESSION (first 15 minutes after the open, either direction, A or B and trend-aligned):
+  candidates per session: median 1, mean 1.1, max 4 | sessions with exactly 1: 24 of 50 | with 0: 15
+  his entry is one of the candidates: 10 of 50 | when it is, candidates BEFORE his entry that he skipped: median 0, mean 0.2; AFTER his entry: median 0
+  with the displacement rule added: candidates per session median 0, mean 0.6 | his entry among them: 9 of 50
+  his entry is the FIRST candidate of its session: 8 of 10

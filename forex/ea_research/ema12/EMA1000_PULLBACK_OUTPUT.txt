@@ -1,0 +1,279 @@
+start 14:38:57 workers 8
+  ADAUSD  done in   273s (1/46)
+  BCHUSD  done in   281s (2/46)
+  ASX     done in   292s (3/46)
+  AUDNZD  done in   297s (4/46)
+  AUDCAD  done in   303s (5/46)
+  AUDJPY  done in   310s (6/46)
+  AUDCHF  done in   310s (7/46)
+  AUDUSD  done in   310s (8/46)
+  BNBUSD  done in   281s (9/46)
+  BRENT   done in   301s (10/46)
+  BTCUSD  done in   296s (11/46)
+  CADCHF  done in   302s (12/46)
+  CADJPY  done in   302s (13/46)
+  CHFJPY  done in   305s (14/46)
+  DAX     done in   319s (15/46)
+  DOW     done in   319s (16/46)
+  ETHUSD  done in   280s (17/46)
+  EURCAD  done in   298s (18/46)
+  EURAUD  done in   304s (19/46)
+  EURCHF  done in   296s (20/46)
+  EURGBP  done in   297s (21/46)
+  EURJPY  done in   296s (22/46)
+  EURNZD  done in   298s (23/46)
+  EURUSD  done in   299s (24/46)
+  GBPAUD  done in   353s (25/46)
+  GBPCAD  done in   352s (26/46)
+  GBPCHF  done in   354s (27/46)
+  LTCUSD  done in   325s (28/46)
+  GBPJPY  done in   356s (29/46)
+  GBPNZD  done in   353s (30/46)
+  GBPUSD  done in   359s (31/46)
+  NIKKEI  done in   374s (32/46)
+  NSDQ    done in   328s (33/46)
+  SOLUSD  done in   273s (34/46)
+  NZDCAD  done in   310s (35/46)
+  NZDCHF  done in   309s (36/46)
+  NZDJPY  done in   317s (37/46)
+  NZDUSD  done in   317s (38/46)
+  SP      done in   333s (39/46)
+  USDCAD  done in   309s (40/46)
+  USDCHF  done in   285s (41/46)
+  USDJPY  done in   280s (42/46)
+  WTI     done in   272s (43/46)
+  XRPUSD  done in   252s (44/46)
+  XAGUSD  done in   272s (45/46)
+  XAUUSD  done in   271s (46/46)
+
+finished 15:10:25 in 31 min | variants 1000 | candidates need DEV t >= 4.19 (Q only; Z is a ceiling that gives no candidate)
+
+reference, median DEV mean R per trade: original (real spread, market entry) -0.1799 | no spread market entry (NOCOST Z) rule -0.0048 inverted -0.0078 | real-quote limit at the signal close (NOCOST Q) rule -0.1394 inverted -0.1425 (fill 81%)
+
+DEV 2022-24 / VAL 2025, pooled over 46 markets, median over the 1,000 variants; R per FILLED trade ('per signal' counts an unfilled order as 0)
+pullback 0.25 ATR  no spread     rule     fill  87% | DEV R median -0.0212 best +0.0031 | per signal -0.0188 | >0:   0% | max t +0.28 | VAL R median -0.0215 best +0.0115 >0:   3% | candidates 0
+pullback 0.25 ATR  no spread     inverted fill  86% | DEV R median -0.0284 best +0.0105 | per signal -0.0245 | >0:   4% | max t +1.09 | VAL R median -0.0290 best +0.0041 >0:   0% | candidates 0
+pullback 0.25 ATR  real bid/ask  rule     fill  76% | DEV R median -0.1549 best -0.0508 | per signal -0.1140 | >0:   0% | max t -7.10 | VAL R median -0.1712 best -0.0565 >0:   0% | candidates 0
+pullback 0.25 ATR  real bid/ask  inverted fill  75% | DEV R median -0.1581 best -0.0387 | per signal -0.1183 | >0:   0% | max t -4.16 | VAL R median -0.1803 best -0.0501 >0:   0% | candidates 0
+pullback 0.5 ATR   no spread     rule     fill  76% | DEV R median -0.0209 best +0.0028 | per signal -0.0160 | >0:   0% | max t +0.26 | VAL R median -0.0196 best +0.0145 >0:   4% | candidates 0
+pullback 0.5 ATR   no spread     inverted fill  75% | DEV R median -0.0256 best +0.0171 | per signal -0.0199 | >0:   7% | max t +1.76 | VAL R median -0.0280 best +0.0044 >0:   1% | candidates 0
+pullback 0.5 ATR   real bid/ask  rule     fill  65% | DEV R median -0.1516 best -0.0482 | per signal -0.0946 | >0:   0% | max t -6.27 | VAL R median -0.1644 best -0.0563 >0:   0% | candidates 0
+pullback 0.5 ATR   real bid/ask  inverted fill  64% | DEV R median -0.1514 best -0.0335 | per signal -0.0977 | >0:   0% | max t -3.38 | VAL R median -0.1754 best -0.0479 >0:   0% | candidates 0
+pullback 1.0 ATR   no spread     rule     fill  55% | DEV R median -0.0187 best +0.0119 | per signal -0.0103 | >0:   2% | max t +0.93 | VAL R median -0.0193 best +0.0055 >0:   2% | candidates 0
+pullback 1.0 ATR   no spread     inverted fill  55% | DEV R median -0.0189 best +0.0389 | per signal -0.0112 | >0:  16% | max t +2.47 | VAL R median -0.0304 best +0.0077 >0:   1% | candidates 0
+pullback 1.0 ATR   real bid/ask  rule     fill  47% | DEV R median -0.1303 best -0.0357 | per signal -0.0606 | >0:   0% | max t -4.11 | VAL R median -0.1525 best -0.0477 >0:   0% | candidates 0
+pullback 1.0 ATR   real bid/ask  inverted fill  46% | DEV R median -0.1280 best -0.0216 | per signal -0.0602 | >0:   0% | max t -1.93 | VAL R median -0.1609 best -0.0487 >0:   0% | candidates 0
+retest of the EMA  no spread     rule     fill  73% | DEV R median -0.0190 best +0.0049 | per signal -0.0139 | >0:   1% | max t +0.41 | VAL R median -0.0221 best +0.0094 >0:   1% | candidates 0
+retest of the EMA  no spread     inverted fill  72% | DEV R median -0.0228 best +0.0229 | per signal -0.0170 | >0:   6% | max t +1.70 | VAL R median -0.0286 best +0.0058 >0:   2% | candidates 0
+retest of the EMA  real bid/ask  rule     fill  62% | DEV R median -0.1432 best -0.0435 | per signal -0.0839 | >0:   0% | max t -5.88 | VAL R median -0.1638 best -0.0572 >0:   0% | candidates 0
+retest of the EMA  real bid/ask  inverted fill  62% | DEV R median -0.1460 best -0.0320 | per signal -0.0892 | >0:   0% | max t -3.28 | VAL R median -0.1702 best -0.0431 >0:   0% | candidates 0
+
+direction skill (rule minus inverted)/2, DEV, median over variants, share of variants above 0:
+  pullback 0.25 ATR  no spread     +0.0021 R   66%
+  pullback 0.25 ATR  real bid/ask  +0.0018 R   61%
+  pullback 0.5 ATR   no spread     +0.0008 R   56%
+  pullback 0.5 ATR   real bid/ask  +0.0001 R   51%
+  pullback 1.0 ATR   no spread     -0.0001 R   49%
+  pullback 1.0 ATR   real bid/ask  +0.0001 R   51%
+  retest of the EMA  no spread     +0.0012 R   57%
+  retest of the EMA  real bid/ask  +0.0015 R   58%
+
+top 5 variants by DEV t, pullback 0.25 ATR, real bid/ask, rule:
+ id  ema  tf body  win tgt  stop    ses trend  P25Qr_dev_n  P25Qr_dev_R  P25Qr_dev_t  P25Qr_val_R  P25Qr_val_t  P25Qr_y22  P25Qr_y23  P25Qr_y24  P25Qr_nb_t
+626   12   5 wick   15  K3   2.0     NY   m30         6484       -0.077       -7.101       -0.092       -5.021     -0.083     -0.078     -0.069      -7.341
+919   20   5 wick   15  K1   3.0 London   m30         4914       -0.065       -7.134       -0.080       -5.032     -0.033     -0.074     -0.087      -7.401
+619   12   5 wick   15  K1   1.5     NY   m30         6484       -0.096       -7.390       -0.130       -5.958     -0.096     -0.092     -0.099      -7.716
+229    8   5 none   15  K1   3.0     NY   m30         8761       -0.054       -7.393       -0.065       -5.112     -0.057     -0.054     -0.052      -7.748
+235    8   5 none   15  K3   3.0     NY   m30         8761       -0.054       -7.401       -0.065       -5.252     -0.057     -0.053     -0.051      -7.750
+
+top 5 variants by DEV t, pullback 0.25 ATR, real bid/ask, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P25Qi_dev_n  P25Qi_dev_R  P25Qi_dev_t  P25Qi_val_R  P25Qi_val_t  P25Qi_y22  P25Qi_y23  P25Qi_y24  P25Qi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none         5639       -0.039       -4.162       -0.089       -5.477     -0.005     -0.056     -0.056      -4.391
+956   20   5 wick_atr   15  K1   3.0  NY  none         5639       -0.039       -4.223       -0.090       -5.510     -0.006     -0.056     -0.057      -4.453
+890   20   5     none   15  K1   3.0  NY   m30         6048       -0.044       -4.704       -0.088       -5.450     -0.015     -0.058     -0.059      -4.946
+620   12   5     wick   15  K1   3.0  NY  none         7688       -0.043       -4.936       -0.077       -5.226     -0.017     -0.051     -0.060      -5.112
+925   20   5     wick   15  K3   2.0  NY  none         6072       -0.059       -4.993       -0.117       -6.000     -0.014     -0.078     -0.085      -5.203
+
+top 3 variants by DEV t, pullback 0.25 ATR, no spread, rule:
+ id  ema  tf     body  win tgt  stop ses trend  P25Zr_dev_n  P25Zr_dev_R  P25Zr_dev_t  P25Zr_val_R  P25Zr_val_t  P25Zr_y22  P25Zr_y23  P25Zr_y24  P25Zr_nb_t
+849   20   3 wick_atr   15  K3   1.5  NY  none        10111        0.003        0.278       -0.017       -0.922      0.000     -0.007      0.016       0.058
+818   20   3     wick   15  K1   1.5  NY   m30         8415        0.003        0.245       -0.017       -0.858     -0.003      0.004      0.008      -0.074
+536   12   3 wick_atr   15  K3   1.5  NY  none        12558        0.000        0.009       -0.013       -0.829     -0.009     -0.010      0.020      -0.214
+
+top 3 variants by DEV t, pullback 0.25 ATR, no spread, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P25Zi_dev_n  P25Zi_dev_R  P25Zi_dev_t  P25Zi_val_R  P25Zi_val_t  P25Zi_y22  P25Zi_y23  P25Zi_y24  P25Zi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none         6526        0.009        1.091       -0.029       -1.858      0.030      0.002     -0.004       0.900
+956   20   5 wick_atr   15  K1   3.0  NY  none         6526        0.009        1.043       -0.029       -1.904      0.029      0.002     -0.004       0.851
+925   20   5     wick   15  K3   2.0  NY  none         7032        0.010        0.890       -0.031       -1.605      0.034      0.001     -0.005       0.674
+
+top 5 variants by DEV t, pullback 0.5 ATR, real bid/ask, rule:
+ id  ema  tf     body  win tgt  stop    ses trend  P50Qr_dev_n  P50Qr_dev_R  P50Qr_dev_t  P50Qr_val_R  P50Qr_val_t  P50Qr_y22  P50Qr_y23  P50Qr_y24  P50Qr_nb_t
+626   12   5     wick   15  K3   2.0     NY   m30         5532       -0.073       -6.270       -0.093       -5.141     -0.069     -0.070     -0.078      -6.546
+229    8   5     none   15  K1   3.0     NY   m30         7460       -0.051       -6.434       -0.064       -4.845     -0.049     -0.045     -0.058      -6.595
+235    8   5     none   15  K3   3.0     NY   m30         7460       -0.050       -6.485       -0.063       -4.913     -0.048     -0.045     -0.058      -6.647
+266    8   5     wick   15  K1   2.0     NY   m30         6307       -0.074       -6.712       -0.091       -5.276     -0.070     -0.067     -0.087      -7.069
+963   20   5 wick_atr   15  K3   2.0 London   m30         4015       -0.088       -6.737       -0.104       -4.481     -0.040     -0.100     -0.125      -7.053
+
+top 5 variants by DEV t, pullback 0.5 ATR, real bid/ask, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P50Qi_dev_n  P50Qi_dev_R  P50Qi_dev_t  P50Qi_val_R  P50Qi_val_t  P50Qi_y22  P50Qi_y23  P50Qi_y24  P50Qi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none         4882       -0.034       -3.377       -0.079       -4.565      0.000     -0.046     -0.056      -3.580
+956   20   5 wick_atr   15  K1   3.0  NY  none         4882       -0.034       -3.377       -0.079       -4.561     -0.001     -0.045     -0.056      -3.587
+925   20   5     wick   15  K3   2.0  NY  none         5222       -0.048       -3.829       -0.116       -5.562     -0.008     -0.057     -0.078      -4.023
+890   20   5     none   15  K1   3.0  NY   m30         5171       -0.038       -3.910       -0.085       -4.985     -0.008     -0.051     -0.057      -4.124
+922   20   5     wick   15  K2   3.0  NY   m30         4389       -0.046       -4.045       -0.109       -5.614     -0.011     -0.055     -0.075      -4.194
+
+top 3 variants by DEV t, pullback 0.5 ATR, no spread, rule:
+ id  ema  tf     body  win tgt  stop ses trend  P50Zr_dev_n  P50Zr_dev_R  P50Zr_dev_t  P50Zr_val_R  P50Zr_val_t  P50Zr_y22  P50Zr_y23  P50Zr_y24  P50Zr_nb_t
+536   12   3 wick_atr   15  K3   1.5  NY  none        11549        0.003        0.265       -0.015       -0.921     -0.003     -0.001      0.012      -0.009
+537   12   3 wick_atr   15  K3   2.0  NY   m30         7907        0.000        0.027       -0.014       -0.823     -0.006      0.005      0.002      -0.250
+849   20   3 wick_atr   15  K3   1.5  NY  none         9391       -0.000       -0.006       -0.018       -1.011     -0.005     -0.004      0.009      -0.297
+
+top 3 variants by DEV t, pullback 0.5 ATR, no spread, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P50Zi_dev_n  P50Zi_dev_R  P50Zi_dev_t  P50Zi_val_R  P50Zi_val_t  P50Zi_y22  P50Zi_y23  P50Zi_y24  P50Zi_nb_t
+956   20   5 wick_atr   15  K1   3.0  NY  none         5733        0.016        1.759       -0.025       -1.559      0.030      0.013      0.004       1.583
+964   20   5 wick_atr   15  K3   3.0  NY  none         5733        0.016        1.759       -0.025       -1.568      0.031      0.013      0.004       1.581
+925   20   5     wick   15  K3   2.0  NY  none         6145        0.017        1.500       -0.039       -1.951      0.035      0.007      0.009       1.331
+
+top 5 variants by DEV t, pullback 1.0 ATR, real bid/ask, rule:
+ id  ema  tf     body  win tgt  stop ses trend  P100Qr_dev_n  P100Qr_dev_R  P100Qr_dev_t  P100Qr_val_R  P100Qr_val_t  P100Qr_y22  P100Qr_y23  P100Qr_y24  P100Qr_nb_t
+235    8   5     none   15  K3   3.0  NY   m30          4759        -0.037        -4.106        -0.049        -3.258      -0.025      -0.032      -0.056       -4.351
+229    8   5     none   15  K1   3.0  NY   m30          4759        -0.038        -4.153        -0.050        -3.327      -0.025      -0.033      -0.057       -4.394
+266    8   5     wick   15  K1   2.0  NY   m30          4043        -0.056        -4.307        -0.074        -3.606      -0.026      -0.050      -0.095       -4.469
+626   12   5     wick   15  K3   2.0  NY   m30          3602        -0.058        -4.362        -0.074        -3.435      -0.026      -0.056      -0.097       -4.521
+306    8   5 wick_atr   15  K2   3.0  NY   m30          3803        -0.050        -4.484        -0.067        -3.823      -0.021      -0.059      -0.074       -4.625
+
+top 5 variants by DEV t, pullback 1.0 ATR, real bid/ask, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P100Qi_dev_n  P100Qi_dev_R  P100Qi_dev_t  P100Qi_val_R  P100Qi_val_t  P100Qi_y22  P100Qi_y23  P100Qi_y24  P100Qi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none          3271        -0.022        -1.930        -0.085        -4.063       0.014      -0.022      -0.058       -2.094
+956   20   5 wick_atr   15  K1   3.0  NY  none          3271        -0.022        -1.989        -0.085        -4.052       0.014      -0.022      -0.060       -2.152
+925   20   5     wick   15  K3   2.0  NY  none          3455        -0.034        -2.295        -0.121        -4.730       0.016      -0.037      -0.082       -2.497
+924   20   5     wick   15  K3   1.5  NY   m30          2921        -0.046        -2.339        -0.151        -4.907       0.027      -0.052      -0.117       -2.600
+923   20   5     wick   15  K3   1.5  NY  none          3455        -0.044        -2.471        -0.154        -5.417       0.021      -0.052      -0.102       -2.731
+
+top 3 variants by DEV t, pullback 1.0 ATR, no spread, rule:
+ id  ema  tf     body  win tgt  stop ses trend  P100Zr_dev_n  P100Zr_dev_R  P100Zr_dev_t  P100Zr_val_R  P100Zr_val_t  P100Zr_y22  P100Zr_y23  P100Zr_y24  P100Zr_nb_t
+818   20   3     wick   15  K1   1.5  NY   m30          5995         0.012         0.931        -0.007        -0.357       0.011       0.005       0.019        0.653
+827   20   3     wick   30  K3   1.5  NY   m30          9086         0.008         0.773        -0.014        -0.823       0.012      -0.001       0.013        0.458
+212    8   3 wick_atr   30  K3   3.0  NY   m30          9792         0.004         0.656        -0.008        -0.804      -0.004       0.008       0.008        0.432
+
+top 3 variants by DEV t, pullback 1.0 ATR, no spread, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  P100Zi_dev_n  P100Zi_dev_R  P100Zi_dev_t  P100Zi_val_R  P100Zi_val_t  P100Zi_y22  P100Zi_y23  P100Zi_y24  P100Zi_nb_t
+959   20   5 wick_atr   15  K2   2.0  NY  none          3896         0.036         2.467        -0.051        -2.040       0.058       0.049      -0.001        2.265
+960   20   5 wick_atr   15  K2   2.0  NY   m30          3302         0.039         2.433        -0.051        -1.927       0.067       0.050      -0.003        2.236
+923   20   5     wick   15  K3   1.5  NY  none          4113         0.038         2.352        -0.049        -1.764       0.066       0.037       0.011        2.192
+
+top 5 variants by DEV t, retest of the EMA, real bid/ask, rule:
+ id  ema  tf     body  win tgt  stop    ses trend  PEMAQr_dev_n  PEMAQr_dev_R  PEMAQr_dev_t  PEMAQr_val_R  PEMAQr_val_t  PEMAQr_y22  PEMAQr_y23  PEMAQr_y24  PEMAQr_nb_t
+919   20   5     wick   15  K1   3.0 London   m30          3977        -0.053        -5.881        -0.078        -5.055      -0.027      -0.053      -0.078       -6.118
+626   12   5     wick   15  K3   2.0     NY   m30          5211        -0.067        -5.966        -0.080        -4.648      -0.065      -0.059      -0.076       -6.193
+963   20   5 wick_atr   15  K3   2.0 London   m30          3735        -0.076        -6.042        -0.114        -5.023      -0.037      -0.080      -0.110       -6.281
+539   12   3 wick_atr   15  K3   3.0     NY   m30          6009        -0.049        -6.093        -0.069        -5.213      -0.057      -0.035      -0.054       -6.345
+926   20   5     wick   15  K3   3.0 London  none          4876        -0.050        -6.112        -0.076        -5.534      -0.030      -0.047      -0.070       -6.377
+
+top 5 variants by DEV t, retest of the EMA, real bid/ask, inverted:
+ id  ema  tf     body  win tgt  stop ses trend  PEMAQi_dev_n  PEMAQi_dev_R  PEMAQi_dev_t  PEMAQi_val_R  PEMAQi_val_t  PEMAQi_y22  PEMAQi_y23  PEMAQi_y24  PEMAQi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none          4686        -0.032        -3.279        -0.081        -4.757      -0.001      -0.039      -0.057       -3.511
+956   20   5 wick_atr   15  K1   3.0  NY  none          4686        -0.032        -3.287        -0.082        -4.779      -0.002      -0.038      -0.057       -3.517
+890   20   5     none   15  K1   3.0  NY   m30          5231        -0.034        -3.609        -0.088        -5.432      -0.014      -0.039      -0.051       -3.817
+925   20   5     wick   15  K3   2.0  NY  none          5157        -0.049        -3.941        -0.122        -5.726      -0.010      -0.060      -0.077       -4.183
+924   20   5     wick   15  K3   1.5  NY   m30          4240        -0.066        -4.081        -0.153        -5.782      -0.014      -0.084      -0.102       -4.300
+
+top 3 variants by DEV t, retest of the EMA, no spread, rule:
+ id  ema  tf     body  win tgt  stop    ses trend  PEMAZr_dev_n  PEMAZr_dev_R  PEMAZr_dev_t  PEMAZr_val_R  PEMAZr_val_t  PEMAZr_y22  PEMAZr_y23  PEMAZr_y24  PEMAZr_nb_t
+302    8   5 wick_atr   15  K1   1.5 London   m30          5837         0.005         0.410        -0.008        -0.401      -0.000       0.008       0.006        0.168
+536   12   3 wick_atr   15  K3   1.5     NY  none         11051         0.004         0.363        -0.012        -0.719      -0.009       0.001       0.019        0.157
+307    8   5 wick_atr   15  K3   1.5 London   m30          5837         0.004         0.361        -0.008        -0.387      -0.000       0.010       0.003        0.117
+
+top 3 variants by DEV t, retest of the EMA, no spread, inverted:
+ id  ema  tf body  win tgt  stop ses trend  PEMAZi_dev_n  PEMAZi_dev_R  PEMAZi_dev_t  PEMAZi_val_R  PEMAZi_val_t  PEMAZi_y22  PEMAZi_y23  PEMAZi_y24  PEMAZi_nb_t
+925   20   5 wick   15  K3   2.0  NY  none          6036         0.019         1.700        -0.039        -1.967       0.036       0.014       0.008        1.492
+923   20   5 wick   15  K3   1.5  NY  none          6036         0.023         1.666        -0.051        -2.155       0.046       0.014       0.009        1.471
+893   20   5 none   15  K3   1.5  NY  none          7448         0.021         1.645        -0.037        -1.774       0.039       0.013       0.010        1.392
+
+per market, pullback 0.25 ATR, real bid/ask, rule: median DEV mean R over the variants, 4 best and 3 worst
+model market  med_dev_R  best_dev_R  n_pos
+P25Qr EURJPY    -0.0489      0.0709     38
+P25Qr AUDUSD    -0.0580      0.0600     53
+P25Qr USDJPY    -0.0591      0.0548     54
+P25Qr AUDJPY    -0.0614      0.1067    122
+P25Qr BNBUSD    -0.5241     -0.1900      0
+P25Qr BCHUSD    -0.5743     -0.1925      0
+P25Qr LTCUSD    -0.6477     -0.2452      0
+  markets with a positive median: none
+
+per market, pullback 0.25 ATR, no spread, rule: median DEV mean R over the variants, 4 best and 3 worst
+model market  med_dev_R  best_dev_R  n_pos
+P25Zr EURCAD     0.0052      0.1717    550
+P25Zr    ASX     0.0013      0.0981    518
+P25Zr CADCHF    -0.0032      0.0983    466
+P25Zr GBPAUD    -0.0071      0.1040    403
+P25Zr LTCUSD    -0.0567      0.0393     42
+P25Zr BTCUSD    -0.0583      0.0760    139
+P25Zr BNBUSD    -0.0664      0.0583     54
+  markets with a positive median: ['EURCAD', 'ASX']
+
+per market, pullback 0.5 ATR, real bid/ask, rule: median DEV mean R over the variants, 4 best and 3 worst
+model market  med_dev_R  best_dev_R  n_pos
+P50Qr    DAX    -0.0468      0.0849    185
+P50Qr EURJPY    -0.0488      0.0431     69
+P50Qr AUDUSD    -0.0531      0.0691     74
+P50Qr GBPUSD    -0.0597      0.0677     70
+P50Qr BNBUSD    -0.5392     -0.1634      0
+P50Qr BCHUSD    -0.5652     -0.1237      0
+P50Qr LTCUSD    -0.6482     -0.2624      0
+  markets with a positive median: none
+
+per market, pullback 0.5 ATR, no spread, rule: median DEV mean R over the variants, 4 best and 3 worst
+model market  med_dev_R  best_dev_R  n_pos
+P50Zr EURCAD     0.0056      0.1450    557
+P50Zr NZDCHF    -0.0009      0.1309    496
+P50Zr CHFJPY    -0.0030      0.1430    468
+P50Zr CADCHF    -0.0033      0.1195    468
+P50Zr BNBUSD    -0.0665      0.0571     47
+P50Zr LTCUSD    -0.0676      0.0406     43
+P50Zr BTCUSD    -0.0812      0.0647     89
+  markets with a positive median: ['EURCAD']
+
+per market, pullback 1.0 ATR, real bid/ask, rule: median DEV mean R over the variants, 4 best and 3 worst
+ model market  med_dev_R  best_dev_R  n_pos
+P100Qr GBPUSD    -0.0267      0.2262    278
+P100Qr AUDUSD    -0.0365      0.1145    158
+P100Qr    DAX    -0.0465      0.0625    144
+P100Qr EURJPY    -0.0482      0.0776    109
+P100Qr ADAUSD    -0.5265     -0.0553      0
+P100Qr BNBUSD    -0.5612     -0.0514      0
+P100Qr LTCUSD    -0.6416     -0.2457      0
+  markets with a positive median: none
+
+per market, pullback 1.0 ATR, no spread, rule: median DEV mean R over the variants, 4 best and 3 worst
+ model market  med_dev_R  best_dev_R  n_pos
+P100Zr CHFJPY     0.0146      0.2740    631
+P100Zr NZDCHF     0.0065      0.1610    539
+P100Zr EURCAD     0.0050      0.1964    569
+P100Zr AUDUSD     0.0048      0.1586    557
+P100Zr ETHUSD    -0.0921      0.0394     20
+P100Zr BNBUSD    -0.0954      0.0241      8
+P100Zr BTCUSD    -0.1131      0.0377     14
+  markets with a positive median: ['CHFJPY', 'NZDCHF', 'EURCAD', 'AUDUSD', 'GBPUSD']
+
+per market, retest of the EMA, real bid/ask, rule: median DEV mean R over the variants, 4 best and 3 worst
+ model market  med_dev_R  best_dev_R  n_pos
+PEMAQr    DAX    -0.0435      0.0942    190
+PEMAQr GBPUSD    -0.0467      0.0671    149
+PEMAQr EURJPY    -0.0483      0.0824     83
+PEMAQr AUDUSD    -0.0515      0.0532     99
+PEMAQr BNBUSD    -0.5241     -0.1039      0
+PEMAQr BCHUSD    -0.5494     -0.2037      0
+PEMAQr LTCUSD    -0.6289     -0.2511      0
+  markets with a positive median: none
+
+per market, retest of the EMA, no spread, rule: median DEV mean R over the variants, 4 best and 3 worst
+ model market  med_dev_R  best_dev_R  n_pos
+PEMAZr EURCAD     0.0107      0.1887    635
+PEMAZr    ASX    -0.0019      0.1279    480
+PEMAZr CADCHF    -0.0036      0.1182    460
+PEMAZr GBPCHF    -0.0040      0.1464    446
+PEMAZr LTCUSD    -0.0662      0.0525     30
+PEMAZr ETHUSD    -0.0672      0.0504     54
+PEMAZr BTCUSD    -0.0803      0.0623     47
+  markets with a positive median: ['EURCAD']
