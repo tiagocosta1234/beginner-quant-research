@@ -1,0 +1,172 @@
+start 12:08:22 workers 8
+  ADAUSD  done in   124s (1/46)
+  BCHUSD  done in   125s (2/46)
+  ASX     done in   130s (3/46)
+  AUDNZD  done in   133s (4/46)
+  AUDCAD  done in   136s (5/46)
+  AUDCHF  done in   136s (6/46)
+  AUDJPY  done in   137s (7/46)
+  AUDUSD  done in   136s (8/46)
+  BNBUSD  done in   100s (9/46)
+  BRENT   done in   108s (10/46)
+  BTCUSD  done in   107s (11/46)
+  CADCHF  done in   109s (12/46)
+  CADJPY  done in   109s (13/46)
+  CHFJPY  done in   110s (14/46)
+  DAX     done in   113s (15/46)
+  DOW     done in   114s (16/46)
+  ETHUSD  done in   102s (17/46)
+  EURAUD  done in   110s (18/46)
+  EURCAD  done in   109s (19/46)
+  EURCHF  done in   108s (20/46)
+  EURJPY  done in   107s (21/46)
+  EURGBP  done in   108s (22/46)
+  EURNZD  done in   108s (23/46)
+  EURUSD  done in   110s (24/46)
+  GBPAUD  done in   110s (25/46)
+  GBPCAD  done in   108s (26/46)
+  LTCUSD  done in    97s (27/46)
+  GBPCHF  done in   112s (28/46)
+  GBPJPY  done in   108s (29/46)
+  GBPNZD  done in   108s (30/46)
+  GBPUSD  done in   110s (31/46)
+  NIKKEI  done in   113s (32/46)
+  NSDQ    done in   116s (33/46)
+  SOLUSD  done in    99s (34/46)
+  NZDCAD  done in   109s (35/46)
+  NZDCHF  done in   108s (36/46)
+  NZDJPY  done in   111s (37/46)
+  NZDUSD  done in   110s (38/46)
+  SP      done in   115s (39/46)
+  USDCAD  done in   109s (40/46)
+  USDCHF  done in   103s (41/46)
+  USDJPY  done in   101s (42/46)
+  XAGUSD  done in    99s (43/46)
+  WTI     done in   100s (44/46)
+  XRPUSD  done in    95s (45/46)
+  XAUUSD  done in   102s (46/46)
+
+finished 12:19:50 in 11 min | variants 1000 | bar t >= 3.99 (Q is the only realistic model; Z and L are a ceiling that produces no candidate)
+
+DEV 2022-24 / VAL 2025, pooled over 46 markets, median over the 1,000 variants (R per FILLED trade; 'per signal' counts an unfilled order as 0)
+
+Z rule  (no spread, market entry)
+  fill rate (DEV) median 100% | DEV mean R median -0.0048 best +0.0177 | per signal median -0.0048 | share of variants > 0: 19% | max clustered t +1.65 | VAL mean R median -0.0023 best +0.0362 | share > 0 43% | candidates (all bars, t >= 3.99): 0
+
+Z inverted
+  fill rate (DEV) median 100% | DEV mean R median -0.0078 best +0.0194 | per signal median -0.0078 | share of variants > 0: 17% | max clustered t +1.67 | VAL mean R median -0.0096 best +0.0325 | share > 0 26% | candidates (all bars, t >= 3.99): 0
+
+L rule  (no spread, limit at signal close)
+  fill rate (DEV) median 98% | DEV mean R median -0.0131 best +0.0132 | per signal median -0.0129 | share of variants > 0: 7% | max clustered t +1.27 | VAL mean R median -0.0103 best +0.0233 | share > 0 21% | candidates (all bars, t >= 3.99): 0
+
+L inverted
+  fill rate (DEV) median 98% | DEV mean R median -0.0152 best +0.0160 | per signal median -0.0149 | share of variants > 0: 7% | max clustered t +1.47 | VAL mean R median -0.0174 best +0.0152 | share > 0 7% | candidates (all bars, t >= 3.99): 0
+
+Q rule  (real quotes, limit at signal close)
+  fill rate (DEV) median 81% | DEV mean R median -0.1394 best -0.0481 | per signal median -0.1084 | share of variants > 0: 0% | max clustered t -5.78 | VAL mean R median -0.1586 best -0.0533 | share > 0 0% | candidates (all bars, t >= 3.99): 0
+
+Q inverted
+  fill rate (DEV) median 80% | DEV mean R median -0.1425 best -0.0330 | per signal median -0.1129 | share of variants > 0: 0% | max clustered t -3.53 | VAL mean R median -0.1684 best -0.0497 | share > 0 0% | candidates (all bars, t >= 3.99): 0
+
+WHERE THE LOSS COMES FROM (DEV, median over variants, R per trade)
+  EMA1000 original (real spread, market entry): rule -0.1799 | random side -0.1827
+  Z (spread removed, market entry)            : rule -0.0048 | inverted -0.0078 | random side -0.0049   -> the structure drag that is left: -0.0049
+  spread cost per trade (Z rule minus original rule): median +0.1774
+  direction skill without spread (Z rule minus Z inverted)/2: median +0.0022 R, share of variants > 0: 68%
+
+top 8 variants by DEV t, Z rule  (no spread, market entry):
+ id  ema  tf     body  win tgt  stop    ses trend  Zr_dev_n  Zr_dev_R  Zr_dev_t  Zr_val_R  Zr_val_t  Zr_y22  Zr_y23  Zr_y24  Zr_nb_t
+500   12   3     wick   15  K2   1.5     NY  none     14616     0.016     1.650    -0.004    -0.225   0.012   0.002   0.035    1.401
+536   12   3 wick_atr   15  K3   1.5     NY  none     13721     0.016     1.599     0.001     0.086  -0.000   0.007   0.043    1.432
+818   20   3     wick   15  K1   1.5     NY   m30      9139     0.018     1.549     0.009     0.445   0.012   0.014   0.028    1.273
+847   20   3 wick_atr   15  K1   2.0     NY   m30      8587     0.014     1.485    -0.003    -0.190   0.008   0.012   0.023    1.163
+537   12   3 wick_atr   15  K3   2.0     NY   m30      9280     0.014     1.444     0.001     0.082  -0.004   0.012   0.033    1.161
+849   20   3 wick_atr   15  K3   1.5     NY  none     10921     0.015     1.432     0.000     0.026   0.010   0.009   0.028    1.202
+846   20   3 wick_atr   15  K1   2.0     NY  none     10921     0.013     1.392    -0.001    -0.060   0.005   0.006   0.027    1.172
+983   20   5 wick_atr   60  K2   1.5 London  none     17831     0.010     1.347     0.007     0.560   0.023   0.008  -0.001    1.088
+
+top 8 variants by DEV t, L rule  (no spread, limit at signal close):
+ id  ema  tf     body  win tgt  stop    ses trend  Lr_dev_n  Lr_dev_R  Lr_dev_t  Lr_val_R  Lr_val_t  Lr_y22  Lr_y23  Lr_y24  Lr_nb_t
+847   20   3 wick_atr   15  K1   2.0     NY   m30      8462     0.012     1.269    -0.009    -0.502   0.004   0.014   0.019    0.944
+537   12   3 wick_atr   15  K3   2.0     NY   m30      9157     0.012     1.255    -0.003    -0.166  -0.008   0.014   0.029    0.967
+846   20   3 wick_atr   15  K1   2.0     NY  none     10759     0.011     1.228    -0.005    -0.321   0.002   0.008   0.024    0.985
+536   12   3 wick_atr   15  K3   1.5     NY  none     13526     0.012     1.199    -0.008    -0.490  -0.005   0.006   0.037    1.030
+818   20   3     wick   15  K1   1.5     NY   m30      9009     0.013     1.143    -0.006    -0.321   0.003   0.012   0.024    0.879
+849   20   3 wick_atr   15  K3   1.5     NY  none     10759     0.011     1.000    -0.012    -0.659   0.003   0.007   0.023    0.788
+983   20   5 wick_atr   60  K2   1.5 London  none     17459     0.007     0.889     0.002     0.173   0.018   0.004  -0.002    0.640
+462   12   3     none   15  K1   1.5     NY  none     16683     0.007     0.727    -0.010    -0.645   0.002   0.006   0.012    0.560
+
+top 8 variants by DEV t, Q rule  (real quotes, limit at signal close):
+ id  ema  tf     body  win tgt  stop    ses trend  Qr_dev_n  Qr_dev_R  Qr_dev_t  Qr_val_R  Qr_val_t  Qr_y22  Qr_y23  Qr_y24  Qr_nb_t
+919   20   5     wick   15  K1   3.0 London   m30      5140    -0.053    -5.778    -0.055    -3.844  -0.023  -0.061  -0.076   -6.015
+926   20   5     wick   15  K3   3.0 London  none      6062    -0.051    -6.046    -0.054    -3.947  -0.025  -0.058  -0.070   -6.332
+820   20   3     wick   15  K1   3.0     NY   m30      7407    -0.049    -6.093    -0.077    -5.491  -0.044  -0.053  -0.051   -6.403
+963   20   5 wick_atr   15  K3   2.0 London   m30      4912    -0.077    -6.180    -0.087    -4.405  -0.041  -0.080  -0.112   -6.443
+539   12   3 wick_atr   15  K3   3.0     NY   m30      7524    -0.050    -6.296    -0.072    -5.259  -0.054  -0.051  -0.045   -6.631
+534   12   3 wick_atr   15  K1   3.0     NY   m30      7524    -0.050    -6.301    -0.073    -5.244  -0.055  -0.051  -0.045   -6.642
+962   20   5 wick_atr   15  K3   2.0 London  none      5761    -0.074    -6.542    -0.083    -4.375  -0.042  -0.077  -0.105   -6.795
+852   20   3 wick_atr   15  K3   3.0     NY  none      8805    -0.051    -6.713    -0.070    -5.539  -0.045  -0.054  -0.053   -6.969
+
+top 8 variants by DEV t, L inverted:
+ id  ema  tf     body  win  tgt  stop ses trend  Li_dev_n  Li_dev_R  Li_dev_t  Li_val_R  Li_val_t  Li_y22  Li_y23  Li_y24  Li_nb_t
+956   20   5 wick_atr   15   K1   3.0  NY  none      7283     0.012     1.467    -0.027    -1.852   0.029   0.002   0.006    1.301
+964   20   5 wick_atr   15   K3   3.0  NY  none      7283     0.012     1.460    -0.027    -1.845   0.029   0.001   0.006    1.277
+893   20   5     none   15   K3   1.5  NY  none      9390     0.016     1.367    -0.018    -0.966   0.039  -0.007   0.016    1.243
+923   20   5     wick   15   K3   1.5  NY  none      7888     0.016     1.244    -0.027    -1.307   0.039  -0.008   0.017    1.100
+889   20   5     none   15   K1   2.0  NY  none      9390     0.012     1.215    -0.020    -1.178   0.030  -0.003   0.010    1.062
+925   20   5     wick   15   K3   2.0  NY  none      7888     0.013     1.176    -0.026    -1.451   0.029  -0.002   0.010    0.992
+931   20   5     wick   15 ATR1   3.0  NY   m30     11198     0.010     1.120    -0.013    -0.847   0.025   0.006  -0.001    0.827
+924   20   5     wick   15   K3   1.5  NY   m30      6711     0.015     1.094    -0.029    -1.249   0.031  -0.005   0.018    0.925
+
+top 8 variants by DEV t, Q inverted:
+ id  ema  tf     body  win tgt  stop ses trend  Qi_dev_n  Qi_dev_R  Qi_dev_t  Qi_val_R  Qi_val_t  Qi_y22  Qi_y23  Qi_y24  Qi_nb_t
+964   20   5 wick_atr   15  K3   3.0  NY  none      5884    -0.033    -3.528    -0.093    -5.866  -0.001  -0.048  -0.052   -3.761
+956   20   5 wick_atr   15  K1   3.0  NY  none      5884    -0.033    -3.546    -0.094    -5.872  -0.002  -0.048  -0.052   -3.779
+890   20   5     none   15  K1   3.0  NY   m30      6409    -0.034    -3.744    -0.094    -5.858  -0.010  -0.042  -0.052   -3.982
+620   12   5     wick   15  K1   3.0  NY  none      8146    -0.035    -4.185    -0.084    -5.797  -0.014  -0.039  -0.053   -4.329
+229    8   5     none   15  K1   3.0  NY   m30      9078    -0.038    -4.683    -0.073    -5.308  -0.023  -0.031  -0.058   -4.896
+235    8   5     none   15  K3   3.0  NY   m30      9078    -0.037    -4.706    -0.071    -5.248  -0.022  -0.032  -0.058   -4.919
+584   12   5     none   15  K3   3.0  NY  none      9770    -0.036    -4.736    -0.076    -5.878  -0.012  -0.041  -0.056   -4.950
+273    8   5     wick   15  K3   3.0  NY  none     10039    -0.038    -4.784    -0.071    -5.614  -0.011  -0.040  -0.064   -4.986
+
+per market, Z rule  (no spread, market entry), median DEV mean R over the variants: 6 best and 4 worst
+model market  med_dev_R  best_dev_R  n_pos
+   Zr    ASX     0.0149      0.1407    700
+   Zr EURCAD     0.0124      0.1563    675
+   Zr CADCHF     0.0112      0.1223    637
+   Zr NZDCAD     0.0094      0.1148    645
+   Zr NZDCHF     0.0068      0.1186    576
+   Zr   NSDQ     0.0061      0.1334    585
+   Zr XAUUSD    -0.0198      0.0685    227
+   Zr ETHUSD    -0.0199      0.0827    242
+   Zr    DOW    -0.0200      0.0907    282
+   Zr LTCUSD    -0.0236      0.0857    196
+  markets with a positive median: ['ASX', 'EURCAD', 'CADCHF', 'NZDCAD', 'NZDCHF', 'NSDQ', 'GBPNZD', 'BCHUSD', 'AUDUSD', 'GBPAUD', 'USDCAD']
+
+per market, L rule  (no spread, limit at signal close), median DEV mean R over the variants: 6 best and 4 worst
+model market  med_dev_R  best_dev_R  n_pos
+   Lr    ASX     0.0080      0.1220    584
+   Lr EURCAD     0.0057      0.1406    557
+   Lr CADCHF     0.0026      0.1082    532
+   Lr NZDCAD     0.0022      0.1298    520
+   Lr NZDCHF    -0.0001      0.1328    499
+   Lr GBPNZD    -0.0047      0.0955    431
+   Lr LTCUSD    -0.0330      0.0660    141
+   Lr XAUUSD    -0.0351      0.0545    102
+   Lr ETHUSD    -0.0351      0.0802    156
+   Lr    DOW    -0.0394      0.0721    153
+  markets with a positive median: ['ASX', 'EURCAD', 'CADCHF', 'NZDCAD']
+
+per market, Q rule  (real quotes, limit at signal close), median DEV mean R over the variants: 6 best and 4 worst
+model market  med_dev_R  best_dev_R  n_pos
+   Qr EURJPY    -0.0479      0.0680     68
+   Qr GBPUSD    -0.0528      0.0788     60
+   Qr USDJPY    -0.0539      0.0849     78
+   Qr AUDUSD    -0.0577      0.0449     40
+   Qr EURUSD    -0.0603      0.0243     23
+   Qr USDCAD    -0.0627      0.0215     43
+   Qr XRPUSD    -0.4148     -0.0826      0
+   Qr BNBUSD    -0.4328     -0.1178      0
+   Qr BCHUSD    -0.4601     -0.0635      0
+   Qr LTCUSD    -0.4670      0.0588      3
+  markets with a positive median: none

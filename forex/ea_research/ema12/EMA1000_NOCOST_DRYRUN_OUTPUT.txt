@@ -1,0 +1,23 @@
+(1) the market path reproduces EMA1000_MARKETS.csv (XAUUSD, 20 variants, DEV mean R):
+  largest difference (R or trade count): 0.000000
+
+(2) fill invariants (fill never worse than the limit; fill minute 1..5 after the signal candle; touch really happened), 30 random variants x 3 markets x L / Q x both sides:
+  225288 fills checked, 0 violations
+
+(3) truncation test: data after the fill minute cut, the signal and the fill must be identical (L and Q, both sides):
+  160 fills recomputed with the future cut, 0 mismatches
+
+(4) hand check, XAUUSD London baseline (EMA 12, 1 min, wick_atr, 15 min, K1, stop 2), zero spread L, rule side:
+  2022-04-27 signal candle closes 10:02 mid close 1898.88 side +1 | fill minute 10:03 mid O 1898.88 H 1899.01 L 1898.57 C 1898.57 | fill 1898.88 target 1900.38 stop 1895.88 (d 1.50) -> R +0.500
+  2022-04-29 signal candle closes 10:04 mid close 1911.74 side -1 | fill minute 10:05 mid O 1911.82 H 1912.12 L 1911.59 C 1911.59 | fill 1911.82 target 1909.24 stop 1916.76 (d 2.51) -> R -0.985
+  2022-05-02 signal candle closes 10:00 mid close 1886.58 side -1 | fill minute 10:05 mid O 1886.34 H 1886.76 L 1885.95 C 1886.47 | fill 1886.58 target 1884.69 stop 1890.34 (d 1.88) -> R +0.500
+
+(5) fill rates and DEV mean R for the baseline variant (London, K1, stop 2):
+  XAUUSD  signals(DEV)  593 | Lr fill  98% R -0.053 | Li fill  98% R +0.005 | Qr fill  91% R -0.119 | Qi fill  92% R -0.066
+  EURUSD  signals(DEV)  593 | Lr fill  99% R +0.002 | Li fill  99% R -0.001 | Qr fill  94% R -0.053 | Qi fill  93% R -0.075
+  NSDQ    signals(DEV)  596 | Lr fill  98% R -0.022 | Li fill  99% R -0.029 | Qr fill  91% R -0.144 | Qi fill  93% R -0.137
+  GBPUSD  signals(DEV)  573 | Lr fill  98% R +0.033 | Li fill  99% R -0.046 | Qr fill  92% R -0.032 | Qi fill  94% R -0.102
+
+real	1m15.021s
+user	0m0.016s
+sys	0m0.000s
