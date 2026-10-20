@@ -65,7 +65,7 @@ def main():
     if not stage: return log("nothing to save")
     for i in range(0, len(stage), 50): git("add", "--", *stage[i:i + 50])
     if not git("diff", "--cached", "--quiet", check=False).returncode: return log("nothing staged")
-    git("commit", "-q", "-m", f"Autosave checkpoint {dt.datetime.now():%Y-%m-%d %H:%M} ({len(stage)} files)\n\nAutomatic: forex/tools/git_autosave.py")
+    git("commit", "-q", "-m", f"quick autosave, {len(stage)} files ({dt.datetime.now():%d %b %H:%M})".lower() + "\n\nautomatic, from forex/tools/git_autosave.py")
     log(f"ok: {len(stage)} files committed locally (commit {n_today + 1} of {MAX_DAILY} today), not pushed")
 
 

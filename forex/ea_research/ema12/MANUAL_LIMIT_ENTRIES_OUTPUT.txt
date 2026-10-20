@@ -1,0 +1,10 @@
+his 49 trades with a stop, XAUUSD MT5 broker bid / ask, level = the bid close of his signal candle (chart price), exits on the real bid / ask, stop / target levels shifted from his FX Replay prices
+chart-price R (FX Replay, no spread): mean +0.157 | MT5 broker bid/ask market entry: mean +0.150
+  Buy  n 24 | chart R +0.088 | market R +0.054 | buy-limit at the chart price: filled 19 (79%)
+  Sell n 25 | chart R +0.223 | market R +0.242 | a sell limit at the bid fills at once, same as market
+
+BUYS (n 24): market R +0.054 (wins 17)
+  limit at the chart price, cancelled after 5 min: filled 19 | their market R -0.055 -> limit R +0.001 (conservative fill minute) / -0.000 (optimistic)
+  NOT filled 5: their market R +0.469 (wins 5 of 5) -> a limit order skips these
+
+ALL trades taken (sells at market + buys that fill): n 44 | market-all mean R +0.150 | with buy limits: +0.138 (cons) / +0.137 (opt) | sum R market-all +7.34 vs limits +6.07 / +6.05

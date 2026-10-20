@@ -1,0 +1,101 @@
+start 20:04:17 workers 6
+  ASX     done in     2s (1/46)
+  AUDCAD  done in     2s (2/46)
+  ADAUSD  done in     2s (3/46)
+  AUDCHF  done in     2s (4/46)
+  AUDJPY  done in     2s (5/46)
+  AUDNZD  done in     2s (6/46)
+  AUDUSD  done in     3s (7/46)
+  BCHUSD  done in     3s (8/46)
+  BRENT   done in     3s (9/46)
+  BNBUSD  done in     3s (10/46)
+  BTCUSD  done in     2s (11/46)
+  CADCHF  done in     2s (12/46)
+  CADJPY  done in     2s (13/46)
+  DAX     done in     3s (14/46)
+  CHFJPY  done in     3s (15/46)
+  DOW     done in     3s (16/46)
+  EURAUD  done in     3s (17/46)
+  EURCAD  done in     3s (18/46)
+  ETHUSD  done in     4s (19/46)
+  EURCHF  done in     2s (20/46)
+  EURGBP  done in     2s (21/46)
+  EURJPY  done in     2s (22/46)
+  EURNZD  done in     3s (23/46)
+  EURUSD  done in     2s (24/46)
+  GBPAUD  done in     2s (25/46)
+  GBPCAD  done in     2s (26/46)
+  GBPCHF  done in     2s (27/46)
+  GBPJPY  done in     2s (28/46)
+  GBPNZD  done in     3s (29/46)
+  GBPUSD  done in     3s (30/46)
+  LTCUSD  done in     3s (31/46)
+  NIKKEI  done in     2s (32/46)
+  NSDQ    done in     2s (33/46)
+  NZDCAD  done in     2s (34/46)
+  NZDCHF  done in     3s (35/46)
+  NZDJPY  done in     2s (36/46)
+  NZDUSD  done in     3s (37/46)
+  SOLUSD  done in     3s (38/46)
+  SP      done in     2s (39/46)
+  USDCAD  done in     2s (40/46)
+  USDCHF  done in     2s (41/46)
+  USDJPY  done in     2s (42/46)
+  WTI     done in     2s (43/46)
+  XAGUSD  done in     2s (44/46)
+  XAUUSD  done in     2s (45/46)
+  XRPUSD  done in     2s (46/46)
+
+finished 20:04:39 in 0.4 min | variants 24 | CANDIDATES (all bars, real bid / ask, DEV t >= 2.64): 0
+
+RULE, real bid / ask, DEV 2022-24 pooled over 46 markets (24 variants): trades per variant median 24921 | mean R median -0.3039 best -0.2752 | share > 0: 0% | t: min -50.69 median -30.98 max -17.87 | VAL 2025 mean R median -0.3220, share > 0 0%
+INVERTED side, real: DEV mean R median -0.3052 best -0.2736 | direction skill (rule - inverted) / 2: median +0.0012, share of variants > 0: 71%
+CONTROL (body >= 1 ATR only), real: DEV mean R median -0.3137 best -0.3005 | rule minus control (what the wick / body / BOS / EMA rules add): median +0.0100, share of variants where the rules help: 79%
+CEILING, no spread: rule DEV mean R median -0.0050 best +0.0102 (t max +0.77), share > 0 21% | control -0.0093 -> the spread costs +0.3005 R a trade at the median
+median DEV mean R (rule, real) by bos: {'none': -0.3122, 'req': -0.3017}
+median DEV mean R (rule, real) by ema: {'near': -0.3028, 'none': -0.3064}
+median DEV mean R (rule, real) by m: {0.53: -0.3115, 1.0: -0.3073, 2.0: -0.302}
+median DEV mean R (rule, real) by ses: {'London': -0.3323, 'NY': -0.2903}
+
+top 8 variants by DEV t (rule, real):
+ id  bos  ema   m    ses  r_dev_n  r_dev_R  r_dev_t  r_val_R  r_val_t  r_y22  r_y23  r_y24  r_nb_t  i_dev_R  c_dev_R  z_dev_R
+ 11  req near 2.0     NY    18287   -0.275  -17.874   -0.302  -12.327 -0.248 -0.282 -0.295 -18.292   -0.277   -0.301   -0.000
+  5  req none 2.0     NY    24081   -0.280  -19.233   -0.298  -12.924 -0.251 -0.284 -0.305 -19.724   -0.288   -0.301    0.001
+ 23 none near 2.0     NY    25317   -0.291  -22.073   -0.300  -14.803 -0.273 -0.294 -0.304 -22.634   -0.296   -0.301   -0.004
+ 17 none none 2.0     NY    29647   -0.290  -22.112   -0.312  -16.488 -0.259 -0.286 -0.324 -22.701   -0.300   -0.301   -0.002
+ 10  req near 2.0 London    18171   -0.313  -22.383   -0.289  -12.888 -0.218 -0.359 -0.354 -23.114   -0.311   -0.324    0.004
+  4  req none 2.0 London    24532   -0.318  -23.479   -0.298  -13.290 -0.222 -0.364 -0.360 -24.071   -0.323   -0.324    0.009
+  9  req near 1.0     NY    18287   -0.284  -25.502   -0.317  -17.399 -0.269 -0.289 -0.293 -26.059   -0.274   -0.300   -0.005
+ 16 none none 2.0 London    30123   -0.330  -27.524   -0.322  -15.515 -0.234 -0.368 -0.381 -28.419   -0.332   -0.324    0.010
+
+XAU alone (rule, real) DEV: trades median 544, mean R median -0.0825 best +0.0031, t max +0.06, share > 0 4% | ceiling no spread: median +0.0208
+
+XAU+NSDQ alone (rule, real) DEV: trades median 1148, mean R median -0.1110 best -0.0674, t max -1.73, share > 0 0% | ceiling no spread: median -0.0221
+
+per market, rule real: median DEV mean R over the 24 variants, 6 best and 4 worst
+kind market  med_dev_R  best_dev_R  n_pos
+   r USDCAD    -0.0199      0.0438      7
+   r    DAX    -0.0544      0.0095      1
+   r EURJPY    -0.0582      0.0046      1
+   r XAUUSD    -0.0825      0.0031      1
+   r AUDJPY    -0.0972     -0.0532      0
+   r AUDUSD    -0.1060     -0.0146      0
+   r SOLUSD    -0.8392     -0.7989      0
+   r BCHUSD    -0.8537     -0.7901      0
+   r ADAUSD    -0.8906     -0.8647      0
+   r LTCUSD    -0.8962     -0.8634      0
+  markets with a positive median: none
+
+per market, rule at mid (ceiling): median DEV mean R over the 24 variants, 6 best and 4 worst
+kind market  med_dev_R  best_dev_R  n_pos
+   z USDCAD     0.0772      0.1494     23
+   z EURNZD     0.0588      0.1735     23
+   z CADCHF     0.0385      0.1700     23
+   z BCHUSD     0.0332      0.0924     19
+   z    DAX     0.0303      0.0798     21
+   z BNBUSD     0.0260      0.1098     17
+   z USDCHF    -0.0704     -0.0076      0
+   z GBPCHF    -0.0739     -0.0057      0
+   z AUDCAD    -0.0750     -0.0133      0
+   z NIKKEI    -0.0785      0.0537      3
+  markets with a positive median: ['USDCAD', 'EURNZD', 'CADCHF', 'BCHUSD', 'DAX', 'BNBUSD', 'CADJPY', 'BTCUSD', 'XAUUSD', 'WTI', 'NZDCHF', 'AUDJPY', 'NZDUSD', 'EURCAD', 'NZDJPY', 'EURAUD', 'CHFJPY', 'BRENT', 'GBPNZD', 'EURJPY', 'AUDUSD']
