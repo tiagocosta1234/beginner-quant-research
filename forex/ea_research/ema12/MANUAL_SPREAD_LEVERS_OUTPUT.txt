@@ -1,0 +1,112 @@
+trades: Apr-May 2025 30, Jan 2026 blind (London, as scored in the blind log) 20
+
+=== A. same entries and stops, TARGET RATIO changed, bid / ask with the spread forced to S on every minute ===
+(descriptive what-if on the SAME 50 trades the rule was built on / watched: not a rule, not a test)
+target/stop    spread | all 50: wins mean R sum R      | Apr-May 2025 (30)              | Jan 2026 blind (20)           
+as logged (~0.53) feed   | 37/50  +0.134   +6.72          | 24/30  +0.219   +6.57          | 13/20  +0.008   +0.16         
+as logged (~0.53) 0.48   | 36/50  +0.104   +5.21          | 23/30  +0.168   +5.05          | 13/20  +0.008   +0.16         
+0.75           feed   | 36/50  +0.260  +13.00          | 23/30  +0.342  +10.25          | 13/20  +0.138   +2.75         
+0.75           0.48   | 36/50  +0.260  +13.00          | 23/30  +0.342  +10.25          | 13/20  +0.138   +2.75         
+1.00           feed   | 36/50  +0.431  +21.55          | 23/30  +0.533  +16.00          | 13/20  +0.277   +5.55         
+1.00           0.48   | 36/50  +0.431  +21.54          | 23/30  +0.533  +16.00          | 13/20  +0.277   +5.54         
+1.50           feed   | 27/50  +0.331  +16.55          | 16/30  +0.333  +10.00          | 11/20  +0.327   +6.55         
+1.50           0.48   | 27/50  +0.331  +16.54          | 16/30  +0.333  +10.00          | 11/20  +0.327   +6.54         
+
+=== B. spread cost by stop size, as logged targets, spread 0.48 vs the feed's own spread ===
+stop terciles (points): 1.66-4.64, 4.78-7.35, 7.60-45.36
+tercile 1 n 17 | spread 0.48 / stop = 0.142 R | mean R feed spread +0.252 -> at 0.48 +0.163 | wins 14 -> 13
+tercile 2 n 16 | spread 0.48 / stop = 0.081 R | mean R feed spread +0.152 -> at 0.48 +0.152 | wins 12 -> 12
+tercile 3 n 17 | spread 0.48 / stop = 0.048 R | mean R feed spread +0.001 -> at 0.48 +0.001 | wins 11 -> 11
+stop >= 3.00: n 48 (96%) | mean R at 0.48 +0.086 sum +4.14 | the rest (n  2): mean R +0.536 sum +1.07 | spread/stop 0.084 R vs 0.246 R
+stop >= 4.00: n 38 (76%) | mean R at 0.48 +0.053 sum +2.02 | the rest (n 12): mean R +0.266 sum +3.19 | spread/stop 0.070 R vs 0.154 R
+stop >= 5.00: n 31 (62%) | mean R at 0.48 +0.045 sum +1.39 | the rest (n 19): mean R +0.201 sum +3.82 | spread/stop 0.062 R vs 0.137 R
+stop >= 6.45: n 21 (42%) | mean R at 0.48 +0.102 sum +2.14 | the rest (n 29): mean R +0.106 sum +3.07 | spread/stop 0.052 R vs 0.118 R
+
+spread as a share of the TARGET distance: median 15% of the 50 targets (target median 3.16); shares above 25%: 9 of 50
+
+=== C. is it direction skill or drift? his side vs mirror vs random side at each target ratio (spread forced to 0.48) ===
+all 50, target as logged           n  50 | his side: wins 36 mean R +0.104 (t 1.06, 95% CI -0.11..+0.29) | mirror -0.414 | random side -0.155 | excess +0.259 | P(random >= his) 0.0074
+Jan blind 20, target as logged     n  20 | his side: wins 13 mean R +0.008 (t 0.05, 95% CI -0.30..+0.32) | mirror -0.224 | random side -0.107 | excess +0.115 | P(random >= his) 0.2547
+all 50, target 1.0 R               n  50 | his side: wins 36 mean R +0.431 (t 3.37, 95% CI +0.16..+0.67) | mirror -0.433 | random side -0.001 | excess +0.432 | P(random >= his) 0.0013
+Jan blind 20, target 1.0 R         n  20 | his side: wins 13 mean R +0.277 (t 1.28, 95% CI -0.12..+0.68) | mirror -0.282 | random side -0.002 | excess +0.279 | P(random >= his) 0.1320
+all 50, target 1.5 R               n  50 | his side: wins 27 mean R +0.331 (t 1.87, 95% CI +0.00..+0.68) | mirror -0.443 | random side -0.056 | excess +0.387 | P(random >= his) 0.0066
+Jan blind 20, target 1.5 R         n  20 | his side: wins 11 mean R +0.327 (t 1.17, 95% CI -0.17..+0.86) | mirror -0.357 | random side -0.014 | excess +0.341 | P(random >= his) 0.1050
+
+=== D. January blind trades: what the price did after entry (MT5 broker bid/ask at 0.48), best and worst excursion in R before the 17:00 close ===
+2026-01-02 L stop  5.76 | R at the logged target +0.54 | best run before the stop  3.07 R | stopped after 322 min
+2026-01-05 L stop  6.32 | R at the logged target +0.56 | best run before the stop  2.57 R | stopped after 205 min
+2026-01-06 L stop  7.84 | R at the logged target +0.55 | best run before the stop  2.05 R | stopped after 104 min
+2026-01-07 L stop  7.35 | R at the logged target +0.54 | best run before the stop  1.44 R | stopped after 201 min
+2026-01-08 L stop  8.86 | R at the logged target -1.00 | best run before the stop  0.42 R | stopped after 33 min
+2026-01-09 S stop  5.44 | R at the logged target -1.00 | best run before the stop  0.43 R | stopped after 4 min
+2026-01-12 L stop  6.35 | R at the logged target -1.00 | best run before the stop  0.15 R | stopped after 12 min
+2026-01-13 L stop  8.93 | R at the logged target +0.53 | best run before the stop  5.79 R | never stopped
+2026-01-14 S stop  5.35 | R at the logged target +0.54 | best run before the stop  1.69 R | stopped after 46 min
+2026-01-15 S stop  9.66 | R at the logged target -1.00 | best run before the stop  0.05 R | stopped after 94 min
+2026-01-16 L stop  6.10 | R at the logged target -1.00 | best run before the stop  0.22 R | stopped after 42 min
+2026-01-19 L stop  9.83 | R at the logged target +0.58 | best run before the stop  0.90 R | never stopped
+2026-01-21 L stop 13.71 | R at the logged target +0.58 | best run before the stop  1.62 R | stopped after 361 min
+2026-01-22 S stop  8.35 | R at the logged target +0.56 | best run before the stop  2.44 R | stopped after 391 min
+2026-01-23 L stop 11.94 | R at the logged target -1.00 | best run before the stop  0.12 R | stopped after 16 min
+2026-01-26 L stop 19.31 | R at the logged target -1.00 | best run before the stop  0.16 R | stopped after 114 min
+2026-01-27 S stop  9.16 | R at the logged target +0.54 | best run before the stop  1.40 R | stopped after 110 min
+2026-01-28 L stop  5.44 | R at the logged target +0.55 | best run before the stop  3.19 R | stopped after 43 min
+2026-01-29 S stop  7.60 | R at the logged target +0.54 | best run before the stop 58.26 R | never stopped
+2026-01-30 S stop 45.36 | R at the logged target +0.55 | best run before the stop  4.40 R | never stopped
+
+=== January 2026 blind trades (20), spread 0.48, per trade R at the old target / 1.0 R / 1.5 R ===
+2026-01-02 L stop  5.76 | old +0.54 | 1.0R +1.00 | 1.5R +1.50
+2026-01-05 L stop  6.32 | old +0.56 | 1.0R +1.00 | 1.5R +1.50
+2026-01-06 L stop  7.84 | old +0.55 | 1.0R +1.00 | 1.5R +1.50
+2026-01-07 L stop  7.35 | old +0.54 | 1.0R +1.00 | 1.5R -1.00
+2026-01-08 L stop  8.86 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-09 S stop  5.44 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-12 L stop  6.35 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-13 L stop  8.93 | old +0.53 | 1.0R +1.00 | 1.5R +1.50
+2026-01-14 S stop  5.35 | old +0.54 | 1.0R +1.00 | 1.5R +1.50
+2026-01-15 S stop  9.66 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-16 L stop  6.10 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-19 L stop  9.83 | old +0.58 | 1.0R +0.54 | 1.5R +0.54
+2026-01-21 L stop 13.71 | old +0.58 | 1.0R +1.00 | 1.5R +1.50
+2026-01-22 S stop  8.35 | old +0.56 | 1.0R +1.00 | 1.5R +1.50
+2026-01-23 L stop 11.94 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-26 L stop 19.31 | old -1.00 | 1.0R -1.00 | 1.5R -1.00
+2026-01-27 S stop  9.16 | old +0.54 | 1.0R +1.00 | 1.5R -1.00
+2026-01-28 L stop  5.44 | old +0.55 | 1.0R +1.00 | 1.5R +1.50
+2026-01-29 S stop  7.60 | old +0.54 | 1.0R +1.00 | 1.5R +1.50
+2026-01-30 S stop 45.36 | old +0.55 | 1.0R +1.00 | 1.5R +1.50
+old   sum +0.16 R | mean +0.008 | wins 13 | hits at the full target 13 | max drawdown 4.21 R | lowest running total -2.02 R
+1.0R  sum +5.54 R | mean +0.277 | wins 13 | hits at the full target 12 | max drawdown 3.00 R | lowest running total +1.00 R
+1.5R  sum +6.54 R | mean +0.327 | wins 11 | hits at the full target 10 | max drawdown 4.00 R | lowest running total +0.50 R
+risk 2000 uncapped  old   | sum     +318 | final     95790 | lowest     91438 | highest     99855 | best day  +1161 worst day  -2000
+risk 2000 uncapped  1.0R  | sum   +11074 | final    106547 | lowest     95472 | highest    106547 | best day  +2000 worst day  -2000
+risk 2000 capped    old   | sum     +279 | final     95751 | lowest     91569 | highest     99716 | best day  +1161 worst day  -2000
+risk 2000 capped    1.0R  | sum   +10618 | final    106090 | lowest     95472 | highest    106090 | best day  +2000 worst day  -2000
+risk 1000 uncapped  old   | sum     +159 | final     95631 | lowest     93455 | highest     97664 | best day   +581 worst day  -1000
+risk 1000 uncapped  1.0R  | sum    +5537 | final    101009 | lowest     95472 | highest    101009 | best day  +1000 worst day  -1000
+risk  100 uncapped  old   | sum      +16 | final     95488 | lowest     95270 | highest     95691 | best day    +58 worst day   -100
+risk  100 uncapped  1.0R  | sum     +554 | final     96026 | lowest     95472 | highest     96026 | best day   +100 worst day   -100
+=== E. keep his rule (stop derived from the target, ratio about 0.53) but put the target at a FURTHER level: stop and target both x k ===
+   k   | all 50: wins mean R sum R | Apr-May (30)  | Jan blind (20) | median stop (pts) | trades over the 3.1-lot cap at USD 2,000
+  0.5  | 28/50  -0.142   -7.12   | +0.015  +0.45 | -0.379  -7.57 |  2.98 | 47 of 50
+  1.0  | 36/50  +0.104   +5.21   | +0.168  +5.05 | +0.008  +0.16 |  5.97 | 29 of 50
+  1.5  | 38/50  +0.165   +8.26   | +0.219  +6.58 | +0.084  +1.68 |  8.95 | 14 of 50
+  2.0  | 39/50  +0.190   +9.52   | +0.220  +6.60 | +0.146  +2.92 | 11.94 | 2 of 50
+  3.0  | 37/50  +0.167   +8.36   | +0.154  +4.62 | +0.187  +3.73 | 17.90 | 1 of 50
+
+=== F. what price did AFTER it touched his old target (the 36-37 winners), before it reached 1.0 R (MT5 broker bid / ask, 0.48) ===
+trades that touched the old target before the stop: 36 of 50
+then reached 1.0 R before the stop: 35 | stopped out after touching the old target: 0 | still open at 17:00: 1
+among those that reached 1.0 R: deepest pullback after the old target, measured from the entry in R: median +0.27, 25th -0.14, worst -0.99; came back to the entry (<= 0 R): 10 of 29; fell below -0.5 R: 4
+minutes from the old target to 1.0 R: median 5, 75th 18, max 255
+
+=== G. his '0.50 R + 0.03 for the spread' on the 50 logged brackets ===
+target / stop: median 0.532, 10th 0.513, 90th 0.558 | extra above 0.50 R: median 0.032 R = 0.19 points (median stop 5.97)
+spread 0.28: the extra target distance covers it in 18 of 50 trades (extra >= spread); the spread is 0.047 R at the median stop, 0.053 R on average; his extra is 0.032 R
+spread 0.32: the extra target distance covers it in 12 of 50 trades (extra >= spread); the spread is 0.054 R at the median stop, 0.060 R on average; his extra is 0.032 R
+spread 0.48: the extra target distance covers it in 7 of 50 trades (extra >= spread); the spread is 0.080 R at the median stop, 0.090 R on average; his extra is 0.032 R
+stop size where a flat 0.03 R equals a 0.48 spread: 16.0 points; share of his 50 stops that large: 2 of 50
+random-walk check: stop 6.0 target 3.00 (ratio 0.50): win prob 61.3%, expected -0.48 points = -0.080 R per trade
+random-walk check: stop 6.0 target 3.18 (ratio 0.53): win prob 60.1%, expected -0.48 points = -0.080 R per trade
+random-walk check: stop 6.0 target 3.60 (ratio 0.60): win prob 57.5%, expected -0.48 points = -0.080 R per trade
+random-walk check: stop 6.0 target 6.00 (ratio 1.00): win prob 46.0%, expected -0.48 points = -0.080 R per trade
