@@ -1,0 +1,21 @@
+=== feed spread ===
+  new block (n 20)
+    primary                wins 13/20 | mean R +0.007 sum R  +0.13 | USD a trade at 2 lots    +102 | his side minus random side +0.116 (P 0.270)
+    S1 own stop / 1.0 R    wins 13/20 | mean R +0.277 sum R  +5.55 | USD a trade at 2 lots    +693 | his side minus random side +0.278 (P 0.134) | minus primary +0.271 (se 0.051)
+    S2 fixed 10 / 10       wins 12/20 | mean R +0.177 sum R  +3.54 | USD a trade at 2 lots    +354 | his side minus random side +0.229 (P 0.181) | minus primary +0.170 (se 0.164)
+    S2 dollar path from 95472.14: final 102552 | lowest 97472 (above the 92000 floor) | worst day -2000 | days <= -2,500: 0 | margin level at 2 lots 173% (margin 55160)
+=== flat 0.48 ===
+  new block (n 20)
+    primary                wins 13/20 | mean R +0.007 sum R  +0.13 | USD a trade at 2 lots    +102 | his side minus random side +0.116 (P 0.270)
+    S1 own stop / 1.0 R    wins 13/20 | mean R +0.277 sum R  +5.54 | USD a trade at 2 lots    +692 | his side minus random side +0.278 (P 0.134) | minus primary +0.270 (se 0.052)
+    S2 fixed 10 / 10       wins 12/20 | mean R +0.176 sum R  +3.53 | USD a trade at 2 lots    +353 | his side minus random side +0.279 (P 0.120) | minus primary +0.170 (se 0.164)
+    S2 dollar path from 95472.14: final 102528 | lowest 97472 (above the 92000 floor) | worst day -2000 | days <= -2,500: 0 | margin level at 2 lots 173% (margin 55160)
+
+Pre-declared readings on the new block at the feed's spread (Amendment 6 of the blind prereg, Amendment 2 of the forward prereg; a proposal to the trader only, the gate is unchanged):
+  S1 worth carrying forward (mean R >= +0.10 and >= primary +0.007): mean +0.277 -> YES
+  S2 workable for sizing (mean R > 0, no day <= -2,500, path above 92000): mean +0.177, worst day -2000, lowest 97472 -> YES
+selftest primary feed  got +0.0065 want +0.007 +/- 0.010 -> ok
+selftest primary flat  got +0.0065 want +0.007 +/- 0.002 -> ok
+selftest S1 flat       got +0.2769 want +0.277 +/- 0.002 -> ok
+selftest S2 flat       got +0.1764 want +0.176 +/- 0.002 -> ok
+selftest passed

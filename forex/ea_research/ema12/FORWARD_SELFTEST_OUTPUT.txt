@@ -1,0 +1,22 @@
+SELFTEST through the MT5 loader: n 20 | wins 13 | mean R +0.008 | mirror -0.224 | random -0.107 | excess +0.115 | P 0.2547   (blind_score.py on the same log: n 20, wins 13, +0.008, -0.224, -0.107, +0.115, P 0.2547)
+not scored: none | unlogged January weekdays: ['2026-01-20']
+
+=== secondary bracket readings (descriptive, Amendment 2), feed spread ===
+  forward block (n 20)
+    primary                wins 13/20 | mean R +0.008 sum R  +0.16 | USD a trade at 2 lots    +102 | his side minus random side +0.116 (P 0.252)
+    S1 own stop / 1.0 R    wins 13/20 | mean R +0.277 sum R  +5.55 | USD a trade at 2 lots    +689 | his side minus random side +0.278 (P 0.134) | minus primary +0.270 (se 0.051)
+    S2 fixed 10 / 10       wins 12/20 | mean R +0.177 sum R  +3.54 | USD a trade at 2 lots    +354 | his side minus random side +0.229 (P 0.181) | minus primary +0.169 (se 0.164)
+    S2 dollar path from 95472.14: final 102552 | lowest 97472 (above the 92000 floor) | worst day -2000 | days <= -2,500: 0 | margin level at 2 lots 173% (margin 55160)
+
+=== secondary bracket readings (descriptive, Amendment 2), flat 0.48 ===
+  forward block (n 20)
+    primary                wins 13/20 | mean R +0.008 sum R  +0.16 | USD a trade at 2 lots    +102 | his side minus random side +0.116 (P 0.252)
+    S1 own stop / 1.0 R    wins 13/20 | mean R +0.277 sum R  +5.54 | USD a trade at 2 lots    +688 | his side minus random side +0.278 (P 0.134) | minus primary +0.269 (se 0.051)
+    S2 fixed 10 / 10       wins 12/20 | mean R +0.176 sum R  +3.53 | USD a trade at 2 lots    +353 | his side minus random side +0.279 (P 0.120) | minus primary +0.168 (se 0.164)
+    S2 dollar path from 95472.14: final 102528 | lowest 97472 (above the 92000 floor) | worst day -2000 | days <= -2,500: 0 | margin level at 2 lots 173% (margin 55160)
+
+Pre-declared readings on the new block at the feed's spread (Amendment 6 of the blind prereg, Amendment 2 of the forward prereg; a proposal to the trader only, the gate is unchanged):
+  S1 worth carrying forward (mean R >= +0.10 and >= primary +0.008): mean +0.277 -> YES
+  S2 workable for sizing (mean R > 0, no day <= -2,500, path above 92000): mean +0.177, worst day -2000, lowest 97472 -> YES
+selftest secondaries (flat 0.48): S1 +0.2769 (blind_secondaries on the FXR log: +0.277) | S2 +0.1764 (+0.176)
+selftest secondaries ok

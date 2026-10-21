@@ -1,0 +1,75 @@
+=== baseline: brackets as he logged them, stop median 5.97 (range 1.66-45.36), spread forced to 0.48 ===
+as logged (R above)     
+      all 50: wins 36/50 meanR +0.104 sumR  +5.18 USD/trade    +126 total    +6282 excess +0.259 P 0.007
+      Apr-May 25: wins 23/30 meanR +0.168 sumR  +5.05 USD/trade    +142 total    +4245 excess +0.355 P 0.006
+      Jan 26 blind: wins 13/20 meanR +0.007 sumR  +0.13 USD/trade    +102 total    +2037 excess +0.115 P 0.271
+      with 2 fixed lots the dollars vary with his stop: risk per trade 331..9073 (median 1194); trades over USD 2,500 = 3, over USD 2,000 = 5 of 50
+
+=== fixed 10 point bracket, 2 lots (USD 200 a point: stop USD 2,000, target USD 2,000 for 10/10) ===
+10 / 10 (1:1)           
+      all 50: wins 29/50 meanR +0.151 sumR  +7.53 USD/trade    +301 total   +15056 excess +0.232 P 0.051
+      Apr-May 25: wins 17/30 meanR +0.133 sumR  +4.00 USD/trade    +267 total    +8000 excess +0.201 P 0.170
+      Jan 26 blind: wins 12/20 meanR +0.176 sumR  +3.53 USD/trade    +353 total    +7056 excess +0.280 P 0.119
+10 / 5.3 (his 0.53 ratio)
+      all 50: wins 37/50 meanR +0.132 sumR  +6.61 USD/trade    +264 total   +13220 excess +0.169 P 0.045
+      Apr-May 25: wins 22/30 meanR +0.122 sumR  +3.66 USD/trade    +244 total    +7320 excess +0.153 P 0.144
+      Jan 26 blind: wins 15/20 meanR +0.148 sumR  +2.95 USD/trade    +295 total    +5900 excess +0.191 P 0.152
+
+=== his own stop as logged, target 1.0 x that stop (the earlier lever, for comparison; USD at 2 fixed lots varies with his stop) ===
+own stop / 1.0 R        
+      all 50: wins 36/50 meanR +0.431 sumR +21.54 USD/trade    +581 total   +29031 excess +0.432 P 0.001
+      Apr-May 25: wins 23/30 meanR +0.533 sumR +16.00 USD/trade    +506 total   +15190 excess +0.532 P 0.002
+      Jan 26 blind: wins 13/20 meanR +0.277 sumR  +5.54 USD/trade    +692 total   +13841 excess +0.279 P 0.132
+
+=== paired difference in R per trade (same trades, second minus first; se = sd of the differences / sqrt(n)) ===
+  10/10 minus as logged            all 50    n 50 mean diff +0.047 se 0.119 t +0.39
+  10/10 minus as logged            Jan blind n 20 mean diff +0.170 se 0.164 t +1.03
+  10/5.3 minus as logged           all 50    n 50 mean diff +0.029 se 0.069 t +0.41
+  10/5.3 minus as logged           Jan blind n 20 mean diff +0.141 se 0.106 t +1.33
+  own stop 1.0 R minus as logged   all 50    n 50 mean diff +0.327 se 0.031 t +10.58
+  own stop 1.0 R minus as logged   Jan blind n 20 mean diff +0.270 se 0.052 t +5.23
+  10/10 minus own stop 1.0 R       all 50    n 50 mean diff -0.280 se 0.128 t -2.19
+  10/10 minus own stop 1.0 R       Jan blind n 20 mean diff -0.100 se 0.176 t -0.57
+
+days with two of the 50 trades: 10 (a USD 2,000 stop twice on the same day = -4,000, past the -2,500 daily hard breach)
+
+=== is 10 special? same entries, 1:1 and 0.53 ratio, fixed 2 lots (mean R, USD per trade at 2 lots, Jan blind in brackets) ===
+  size  5.0 pts (stop USD  1000): 1:1 all +0.240 R   +240 USD (Jan +0.200 R   +200 USD) wins 31/50 | 0.53 all +0.102 R   +102 USD (Jan -0.005 R     -5 USD) wins 36/50
+  size  7.5 pts (stop USD  1500): 1:1 all +0.240 R   +360 USD (Jan +0.300 R   +450 USD) wins 31/50 | 0.53 all +0.132 R   +198 USD (Jan -0.005 R     -8 USD) wins 37/50
+  size 10.0 pts (stop USD  2000): 1:1 all +0.151 R   +301 USD (Jan +0.176 R   +353 USD) wins 29/50 | 0.53 all +0.132 R   +264 USD (Jan +0.148 R   +295 USD) wins 37/50
+  size 12.5 pts (stop USD  2500): 1:1 all +0.148 R   +371 USD (Jan +0.171 R   +428 USD) wins 29/50 | 0.53 all +0.224 R   +560 USD (Jan +0.224 R   +560 USD) wins 40/50
+  size 15.0 pts (stop USD  3000): 1:1 all +0.123 R   +370 USD (Jan +0.168 R   +503 USD) wins 28/50 | 0.53 all +0.201 R   +602 USD (Jan +0.148 R   +443 USD) wins 39/50
+  size 20.0 pts (stop USD  4000): 1:1 all -0.050 R   -198 USD (Jan -0.137 R   -547 USD) wins 24/50 | 0.53 all +0.068 R   +274 USD (Jan -0.019 R    -75 USD) wins 34/50
+
+=== account path at 2 fixed lots from 95472.14, floor 92000, counted profit capped at +2,000 a day ===
+as logged brackets
+   Jan 2026 blind (20)            final     94524 | lowest     90120 (BELOW the floor) | worst day   -3861 | days <= -2,500: 1 | max drawdown   8340
+   all 50 in order                final     98769 | lowest     94365 (above the floor) | worst day   -3861 | days <= -2,500: 1 | max drawdown   8340
+fixed 10 / 10
+   Jan 2026 blind (20)            final    102528 | lowest     97472 (above the floor) | worst day   -2000 | days <= -2,500: 0 | max drawdown   6000
+   all 50 in order                final    104528 | lowest     89472 (BELOW the floor) | worst day   -4000 | days <= -2,500: 2 | max drawdown   6000
+fixed 10 / 5.3
+   Jan 2026 blind (20)            final    101372 | lowest     96532 (above the floor) | worst day   -2000 | days <= -2,500: 0 | max drawdown   4820
+   all 50 in order                final    107972 | lowest     94532 (above the floor) | worst day   -2000 | days <= -2,500: 0 | max drawdown   4820
+
+per-trade R of the Jan blind trades at fixed 10 / 10 and 10 / 5.3 (his side; stop-or-target, still-open trades marked at 17:00):
+  01-02 L  as logged +0.54 (stop  5.76) | 10/10 +1.00 | 10/5.3 +0.53
+  01-05 L  as logged +0.56 (stop  6.32) | 10/10 +1.00 | 10/5.3 +0.53
+  01-06 L  as logged +0.52 (stop  8.27) | 10/10 +1.00 | 10/5.3 +0.53
+  01-07 L  as logged +0.54 (stop  7.35) | 10/10 +1.00 | 10/5.3 +0.53
+  01-08 L  as logged -1.00 (stop  8.86) | 10/10 -1.00 | 10/5.3 +0.53
+  01-09 S  as logged -1.00 (stop  5.44) | 10/10 -1.00 | 10/5.3 -1.00
+  01-12 L  as logged -1.00 (stop  6.35) | 10/10 +1.00 | 10/5.3 +0.53
+  01-13 L  as logged +0.53 (stop  8.93) | 10/10 +1.00 | 10/5.3 +0.53
+  01-14 S  as logged +0.54 (stop  5.35) | 10/10 -1.00 | 10/5.3 +0.53
+  01-15 S  as logged -1.00 (stop  9.66) | 10/10 -1.00 | 10/5.3 -1.00
+  01-16 L  as logged -1.00 (stop  6.10) | 10/10 -1.00 | 10/5.3 -1.00
+  01-19 L  as logged +0.58 (stop  9.83) | 10/10 +0.53 | 10/5.3 +0.53
+  01-21 L  as logged +0.58 (stop 13.71) | 10/10 +1.00 | 10/5.3 +0.53
+  01-22 S  as logged +0.56 (stop  8.35) | 10/10 +1.00 | 10/5.3 +0.53
+  01-23 L  as logged -1.00 (stop 11.94) | 10/10 -1.00 | 10/5.3 -1.00
+  01-26 L  as logged -1.00 (stop 19.31) | 10/10 -1.00 | 10/5.3 -1.00
+  01-27 S  as logged +0.54 (stop  9.16) | 10/10 +1.00 | 10/5.3 +0.53
+  01-28 L  as logged +0.55 (stop  5.44) | 10/10 +1.00 | 10/5.3 +0.53
+  01-29 S  as logged +0.54 (stop  7.60) | 10/10 +1.00 | 10/5.3 +0.53
+  01-30 S  as logged +0.55 (stop 45.36) | 10/10 -1.00 | 10/5.3 +0.53

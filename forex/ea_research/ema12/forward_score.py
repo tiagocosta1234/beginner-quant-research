@@ -65,7 +65,17 @@ def run(F, today, start=START, quiet=False):
         if unlogged: print("  unlogged days:", ", ".join(str(d) for d in unlogged))
         for i, m in why.items(): print("  not scored %s %s: %s" % (F.loc[i, "date"], F.loc[i, "side"], m))
         for _, m in mism.iterrows(): print("  not scored %s: %s" % (m.date, m.note))
+    keep = set(Z.date.astype(str)) if len(Z) else set(); Z.attrs["log"] = log[log.date.isin(keep)].reset_index(drop=True); Z.attrs["days"] = days    # for secondaries()
     return Z, F, why, unlogged, wk
+def secondaries(Z):
+    """PREREG_FORWARD2026 Amendment 2 (logging only): S1 own stop / 1.0 R and S2 fixed 10 / 10 at 2 lots on the scorable trades, the code of blind_secondaries.py."""
+    import blind_secondaries as bs
+    L, days = Z.attrs.get("log"), Z.attrs.get("days")
+    if L is None or len(L) < 2: return None
+    out = {}
+    for sp, dd in (("feed spread", days), ("flat 0.48", bs.reprice(days))):
+        print("\n=== secondary bracket readings (descriptive, Amendment 2), %s ===" % sp); out[sp] = bs.report(bs.variants(L, dd), "forward block")
+    bs.readings(out["feed spread"]); return out
 def report(Z, F, why, unlogged, wk):
     n = len(Z)
     if n < 2: return print("scorable trades: %d (nothing to score yet)" % n)
@@ -89,6 +99,7 @@ def report(Z, F, why, unlogged, wk):
         if share <= 0.10:
             for t in sorted(set(lab)): print("  %-10s n %2d | wins %2d | mean R %+.3f" % (t, (lab == t).sum(), (mine[lab == t] > 0).sum(), mine[lab == t].mean()))
             if "width" in by: w = by.width.reindex(Z.date.astype(str)).to_numpy().astype(float); w = w[(lab == "FVG") & ~np.isnan(w)]; print("  FVG width (points): n %d, median %s" % (len(w), "%.2f" % np.median(w) if len(w) else "-"))
+    secondaries(Z)
 if __name__ == "__main__":
     if "--selftest" in sys.argv:
         J = pd.read_csv("BLIND_LOG_JAN2026.csv", dtype={"hhmm": str}); J = J[J.side.isin(["L", "S"])]; n_ = len(J)
@@ -98,6 +109,8 @@ if __name__ == "__main__":
         Z, F2, why, unl, wk = run(F, pd.Timestamp("2026-01-30").date(), start=pd.Timestamp("2026-01-02").date(), quiet=True); s = stats(Z)
         print("SELFTEST through the MT5 loader: n %d | wins %d | mean R %+.3f | mirror %+.3f | random %+.3f | excess %+.3f | P %.4f   (blind_score.py on the same log: n 20, wins 13, +0.008, -0.224, -0.107, +0.115, P 0.2547)" % (s["n"], s["wins"], s["mean"], s["mirror"], s["random"], s["excess"], s["P"]))
         print("not scored:", {F2.loc[i, "date"]: m for i, m in why.items()} or "none", "| unlogged January weekdays:", [str(d) for d in unl] or "none")
+        so = secondaries(Z); fl = so["flat 0.48"]; s1, s2 = fl["S1 own stop / 1.0 R"]["mean"], fl["S2 fixed 10 / 10"]["mean"]     # this log is the screenshot version (6 Jan stop 4451.5, not 4451.068), so S1 may differ a little from blind_secondaries' +0.277; S2 does not depend on the stop
+        print("selftest secondaries (flat 0.48): S1 %+.4f (blind_secondaries on the FXR log: +0.277) | S2 %+.4f (+0.176)" % (s1, s2)); assert abs(s2 - 0.176) <= 0.005 and abs(s1 - 0.277) <= 0.02, "secondaries selftest failed"; print("selftest secondaries ok")
         raise SystemExit
     a = [x for x in sys.argv[1:] if not x.startswith("--")]
     if not a: raise SystemExit(__doc__)
