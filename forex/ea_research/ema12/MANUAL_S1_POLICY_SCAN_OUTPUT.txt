@@ -1,0 +1,63 @@
+start 95472.14, pass 108000, floor 92000, one trade a weekday with probability 0.95, margin cap 3.1 lots, 20000 paths, horizon 260 business days
+
+=== S1 as recorded (mean R +0.43) ===
+  policy             pass% breach%  mean days     median
+  fixed 500           99.9     0.1       62.5       60.0
+  fixed 750           99.2     0.8       42.6       40.0
+  fixed 1,000         97.6     2.4       32.5       30.0
+  fixed 1,250         93.7     6.3       27.1       25.0
+  fixed 1,500         93.0     7.0       23.5       21.0
+  fixed 2,000         87.3    12.7       19.3       17.0
+  dynamic k=0.25      99.9     0.1       26.0       22.0   <- best pass
+  dynamic k=0.35      99.5     0.5       23.9       20.0   <- fastest within 1 pt of best
+  dynamic k=0.50      97.7     2.3       22.4       19.0
+  dynamic k=0.70      93.5     6.5       20.6       18.0
+
+=== S1, Jan 2026 blind only (+0.28) ===
+  policy             pass% breach%  mean days     median
+  fixed 500           98.5     1.4       95.8       90.0   <- best pass
+  fixed 750           94.9     5.1       63.7       59.0
+  fixed 1,000         91.1     8.9       45.8       41.0
+  fixed 1,250         84.1    15.9       35.3       31.0
+  fixed 1,500         81.4    18.6       28.5       25.0
+  fixed 2,000         70.9    29.1       20.3       17.0
+  dynamic k=0.25      97.9     2.1       39.4       30.0   <- fastest within 1 pt of best
+  dynamic k=0.35      93.3     6.7       33.5       25.0
+  dynamic k=0.50      85.7    14.3       27.1       21.0
+  dynamic k=0.70      76.5    23.5       22.1       18.0
+
+=== true win rate 65% at 1:1 (about +0.21) ===
+  policy             pass% breach%  mean days     median
+  fixed 500           94.3     4.1      121.7      114.0   <- best pass
+  fixed 750           89.6    10.3       79.8       72.0
+  fixed 1,000         82.6    17.4       57.0       50.0
+  fixed 1,250         77.4    22.6       44.1       39.0
+  fixed 1,500         73.7    26.3       36.6       32.0
+  fixed 2,000         68.3    31.6       27.9       24.0
+  dynamic k=0.25      92.1     7.4       54.6       42.0
+  dynamic k=0.35      84.0    15.9       44.1       34.0
+  dynamic k=0.50      74.8    25.2       35.4       29.0
+  dynamic k=0.70      69.1    30.9       30.9       26.0
+
+=== true win rate 60% at 1:1 (about +0.11) ===
+  policy             pass% breach%  mean days     median
+  fixed 500           60.1    18.6      159.9      158.0
+  fixed 750           65.4    30.8      111.8      101.0   <- best pass
+  fixed 1,000         60.4    39.1       77.9       67.0
+  fixed 1,250         56.3    43.6       58.3       49.0
+  fixed 1,500         53.3    46.7       46.3       39.0
+  fixed 2,000         49.4    50.6       32.7       27.0
+  dynamic k=0.25      64.1    33.9       69.0       53.0
+  dynamic k=0.35      56.6    43.1       51.3       40.0
+  dynamic k=0.50      49.7    50.3       39.4       33.0
+  dynamic k=0.70      47.4    52.6       35.2       29.0
+
+=== which target ratio, same entries and stops, policy fixed 1,000 and dynamic k=0.35 (post-hoc, all 50 trades, as recorded) ===
+  target/stop 0.53 as logged  mean R +0.104 | fixed 1,000     pass  74.9% breach  22.5% mean days 110.0
+  target/stop 0.53 as logged  mean R +0.104 | dynamic k=0.35  pass  72.9% breach  23.3% mean days  87.2
+  target/stop 0.75            mean R +0.260 | fixed 1,000     pass  93.4% breach   6.6% mean days  52.3
+  target/stop 0.75            mean R +0.260 | dynamic k=0.35  pass  97.5% breach   2.5% mean days  43.7
+  target/stop 1.0 = S1        mean R +0.431 | fixed 1,000     pass  97.5% breach   2.5% mean days  32.3
+  target/stop 1.0 = S1        mean R +0.431 | dynamic k=0.35  pass  99.6% breach   0.4% mean days  23.8
+  target/stop 1.5             mean R +0.331 | fixed 1,000     pass  81.0% breach  19.0% mean days  38.7
+  target/stop 1.5             mean R +0.331 | dynamic k=0.35  pass  79.5% breach  20.4% mean days  47.6

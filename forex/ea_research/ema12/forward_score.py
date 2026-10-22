@@ -5,7 +5,7 @@ FORWARD_LOG.csv = the rows of the Notion view 'Forward log' (Claude exports them
 Columns: date (YYYY-MM-DD), side (Long / Short / No trade), hhmm (HH:MM, the last closed 1-minute candle, local clock), entry, stop, target, created_utc (Notion createdTime, UTC), tipo (FVG / High / Low / Outro or empty),
          width (FVG width in points or empty), shot (1 = the screenshot shows the same last candle and the same three prices, 0 = mismatch / missing, empty = not checked yet).
 MT5 M1 bid / ask is read from the main PC's MT5 terminal (read-only: copy_rates_range; ask = bid + spread of the bar, exactly how XAUUSD_M1_rates.parquet was built; checked 14 Oct: bid OHLC identical on every minute).
-Scorable (prereg section 3): Long / Short, entry / stop / target typed, hhmm inside 08:00-08:15, row created (local clock) at most 5 minutes after the logged candle CLOSED (hhmm + 1 min + 5 min), shot = 1, entry within 1.5 USD of the MT5 broker mid (+-5 min retime allowed, as in blind_score), day finished (MT5 broker bars to 17:00 local).
+Scorable (prereg section 3): Long / Short, entry / stop / target typed, hhmm inside 07:59-08:14 (Amendment 3: the window is the market entry 08:00-08:15, the entry candle is the one after the logged candle), row created (local clock) at most 5 minutes after the logged candle CLOSED (hhmm + 1 min + 5 min), shot = 1, entry within 1.5 USD of the MT5 broker mid (+-5 min retime allowed, as in blind_score), day finished (MT5 broker bars to 17:00 local).
 Unlogged weekdays (no row at all) since START are counted; more than 10% voids the look. Decision text follows the prereg: futility at >= 20 scorable (excess < +0.05), supported at F1 (44) / F2 (80) iff mean R >= +0.10 and P <= 0.03.
 --selftest: rebuilds BLIND_LOG_JAN2026.csv as a forward log and must reproduce blind_score's January numbers through this whole path."""
 import sys, os, datetime as dt, numpy as np, pandas as pd
@@ -46,7 +46,7 @@ def run(F, today, start=START, quiet=False):
         if pd.isna(r.trade): continue
         if pd.isna(r.entry) or pd.isna(r.stop) or pd.isna(r.target): bad(i, "entry / stop / target missing"); continue
         hm = int(str(r.hhmm)[:2]) * 60 + int(str(r.hhmm)[3:5])
-        if not 8 * 60 <= hm <= 8 * 60 + 15: bad(i, "logged candle %s outside 08:00-08:15" % r.hhmm); continue
+        if not 7 * 60 + 59 <= hm <= 8 * 60 + 14: bad(i, "logged candle %s outside 07:59-08:14 (the entry candle must be 08:00-08:15, prereg Amendment 3)" % r.hhmm); continue
         cr = local(r.created_utc); close = pd.Timestamp(str(r.date) + " " + str(r.hhmm)[:5]) + pd.Timedelta(minutes=1)
         if cr > close + pd.Timedelta(minutes=5): bad(i, "row created %s, more than 5 min after the candle closed (%s)" % (cr.strftime("%H:%M:%S"), close.strftime("%H:%M"))); continue
         if cr < close - pd.Timedelta(minutes=1): bad(i, "WARNING row created %s BEFORE the logged candle closed (%s): check" % (cr.strftime("%H:%M:%S"), close.strftime("%H:%M")))

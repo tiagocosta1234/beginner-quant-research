@@ -1,0 +1,33 @@
+his 50 trades, MT5 broker bid/ask at 0.48 spread: as-logged mean R +0.104 (S1 own stop / 1.0 R: +0.431); 21 candidate subsets, minimum n 10 for ranking
+
+subset                                             n      meanR   vs rest |  S1 meanR   vs rest
+M1 ATR middle third                               16     +0.340    +0.348 |    +0.750    +0.469
+entry mid-range                                   11     +0.250    +0.187 |    +0.636    +0.264
+stop small third                                  10     +0.216    +0.141 |    +0.600    +0.212
+setup candle < 1 ATR                              29     +0.216    +0.268 |    +0.570    +0.332
+side = Short                                      26     +0.177    +0.152 |    +0.538    +0.224
+NY                                                13     +0.173    +0.094 |    +0.538    +0.146
+EMA12 slope against the side                      21     +0.164    +0.104 |    +0.502    +0.122
+30-min trend against the side                     12     +0.149    +0.060 |    +0.461    +0.040
+entry later than 2 min                            27     +0.133    +0.064 |    +0.481    +0.110
+entry at the 60-min extreme, against it (fade)    11     +0.116    +0.015 |    +0.412    -0.023
+30-min trend with the side                        38     +0.089    -0.060 |    +0.421    -0.040
+M1 ATR low third                                  17     +0.085    -0.029 |    +0.385    -0.070
+stop large third                                  27     +0.084    -0.042 |    +0.390    -0.088
+London                                            37     +0.079    -0.094 |    +0.393    -0.146
+entry within 2 min of the open                    23     +0.069    -0.064 |    +0.371    -0.110
+EMA12 slope (5 min) with the side                 29     +0.060    -0.104 |    +0.379    -0.122
+stop middle third                                 13     +0.057    -0.063 |    +0.385    -0.062
+entry at the 60-min extreme, with it (momentum)   28     +0.042    -0.141 |    +0.357    -0.167
+side = Long                                       24     +0.025    -0.152 |    +0.314    -0.224
+setup candle >= 1 ATR                             21     -0.052    -0.268 |    +0.238    -0.332
+M1 ATR high third                                 17     -0.100    -0.308 |    +0.176    -0.385
+
+max-statistic, as logged: best subset mean +0.340 | on pure noise the best of 21 subsets averages +0.351 (95th percentile +0.531) | family-wise P(noise best >= observed) = 0.539
+
+max-statistic, S1 own stop / 1.0 R: best subset mean +0.750 | on pure noise the best of 21 subsets averages +0.753 (95th percentile +1.000) | family-wise P(noise best >= observed) = 0.519
+
+clean check: best subset on the 30 Apr-May trades (n >= 8) against the 20 blind Jan 2026 trades
+  M1 ATR middle third                              Apr-May n 10 mean +0.524 | Jan n  6 mean +0.033 (Jan all +0.007) | S1 Jan +0.333
+  EMA12 slope against the side                     Apr-May n 16 mean +0.334 | Jan n  5 mean -0.380 (Jan all +0.007) | S1 Jan -0.293
+  setup candle >= 1 ATR                            Apr-May n 11 mean +0.249 | Jan n 10 mean -0.383 (Jan all +0.007) | S1 Jan -0.200
