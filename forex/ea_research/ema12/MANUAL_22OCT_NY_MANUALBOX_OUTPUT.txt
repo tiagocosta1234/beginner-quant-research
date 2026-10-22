@@ -1,0 +1,22 @@
+bars loaded: 1517, from Wed 21 Oct 13:00 to 15:20 (local)
+BOX: short entry 4073.555 (14:32 close), SL 4084.204, TP 4062.906 (10.649 pts each side); rectangle 4061.790..4062.915
+
+-- the three candles
+14:30 o 4076.775 h 4080.820 l 4076.665 c 4079.120 | body +2.345 = 1.10 ATR | upper wick 1.700 (72% of the body, 41% of the range), lower wick 0.110 | close at 59% of the range | EMA12 4077.212 ATR14 2.12
+14:31 o 4079.070 h 4079.120 l 4073.220 c 4074.495 | body -4.575 = 1.93 ATR | upper wick 0.050 (1% of the body, 1% of the range), lower wick 1.275 | close at 22% of the range | EMA12 4076.794 ATR14 2.37
+14:32 o 4074.445 h 4075.320 l 4073.095 c 4073.555 | body -0.890 = 0.39 ATR | upper wick 0.875 (98% of the body, 39% of the range), lower wick 0.460 | close at 21% of the range | EMA12 4076.296 ATR14 2.28
+
+-- highs within 0.5 pts of the 14:30 high 4080.820 in the 90 candles before it: [('14:14', 4080.615), ('14:17', 4080.8)]
+   highest high of the 90 candles before 14:30: 13:48 4091.840; SL 4084.204 is 3.38 pts above the 14:30 high
+
+-- untouched remainders of 1m gaps below the entry as of the 14:32 close (nearest first):
+   bull gap 13:23-13:25 untouched 4068.515..4068.815: its top edge is 4.74 pts below the entry (2.08 ATR)
+   bull gap 13:22-13:24 untouched 4066.930..4067.740: its top edge is 5.82 pts below the entry (2.55 ATR)
+   bull gap 13:02-13:04 untouched 4061.790..4062.915: its top edge is 10.64 pts below the entry (4.66 ATR)
+
+-- the 13:35-13:37 bullish gap: untouched part before the 14:31 candle ['4073.655..4074.665']; 14:31 close 4074.495 inside it: True; 14:32 close 4073.555 inside it: False
+
+-- hindsight outcomes of the short from 4073.555 (a short exits at the ask = bid + 0.55; entry candle 14:33; risk budget USD 832):
+   as drawn (stop = target distance): SL 4084.204 TP 4062.906, lots 0.78 -> TARGET in the 14:37 candle (about +832 USD at the target)
+   rules card (stop twice the target distance, 0.5 R): SL 4094.853 TP 4062.906, lots 0.39 -> TARGET in the 14:37 candle (about +416 USD at the target)
+   S1 (card stop, 1.0 R target): SL 4094.853 TP 4052.257, lots 0.39 -> TARGET in the 15:02 candle (about +832 USD at the target)

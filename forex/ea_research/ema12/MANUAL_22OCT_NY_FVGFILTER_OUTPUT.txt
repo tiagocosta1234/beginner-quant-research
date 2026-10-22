@@ -1,0 +1,35 @@
+14:29 candle: o 4076.765 c 4076.820 ema 4076.865 body/atr 0.03 cross False -> no
+14:30 candle: o 4076.775 c 4079.120 ema 4077.212 body/atr 1.10 cross True -> SETUP
+   LONG at the 14:31 open: entry 4079.620; inside an FVG: A(open) no | B(untouched) no | C(any, 60 bars) YES 1 gaps
+   card target: bear FVG near edge 14:11-14:13 at 4081.805 (2.18 pts) -> stop 4.37 pts (SL 4075.250), S1 TP 4083.990, lots 1.90 (min of 3.1) | hindsight: STOP 14:31
+14:31 candle: o 4079.070 c 4074.495 ema 4076.794 body/atr 1.93 cross True -> SETUP
+   SHORT at the 14:32 open: entry 4074.445; inside an FVG: A(open) no | B(untouched) no | C(any, 60 bars) YES 3 gaps
+   card target: swing low 13:36 at 4070.320 (4.12 pts) -> stop 8.25 pts (SL 4082.695), S1 TP 4066.195, lots 1.01 (min of 3.1) | hindsight: TARGET 14:35
+14:32 candle: o 4074.445 c 4073.555 ema 4076.296 body/atr 0.39 cross False -> no
+14:33 candle: o 4073.570 c 4073.445 ema 4075.857 body/atr 0.05 cross False -> no
+14:34 candle: o 4073.385 c 4072.350 ema 4075.318 body/atr 0.43 cross False -> no
+14:35 candle: o 4072.340 c 4065.285 ema 4073.774 body/atr 2.47 cross False -> no
+14:36 candle: o 4065.300 c 4065.740 ema 4072.538 body/atr 0.15 cross False -> no
+14:37 candle: o 4065.790 c 4062.365 ema 4070.973 body/atr 1.07 cross False -> no
+14:38 candle: o 4062.360 c 4065.015 ema 4070.056 body/atr 0.80 cross False -> no
+14:39 candle: o 4065.045 c 4068.285 ema 4069.784 body/atr 0.92 cross False -> no
+14:40 candle: o 4068.275 c 4063.580 ema 4068.829 body/atr 1.23 cross False -> no
+14:41 candle: o 4063.730 c 4065.170 ema 4068.266 body/atr 0.37 cross False -> no
+14:42 candle: o 4065.200 c 4063.070 ema 4067.467 body/atr 0.53 cross False -> no
+14:43 candle: o 4062.985 c 4063.615 ema 4066.874 body/atr 0.15 cross False -> no
+14:44 candle: o 4063.565 c 4059.840 ema 4065.792 body/atr 0.90 cross False -> no
+
+Which gaps sit behind the 'inside' readings (A = gap still open, B = never touched, C = any gap of the last 60 candles):
+long entry, 14:31 open + spread 4079.620
+   A []
+   B []
+   C [('bear', 4078.325, 4079.705, '14:13-14:15')]
+short entry, 14:32 open 4074.445
+   A []
+   B []
+   C [('bull', 4073.985, 4074.655, '13:31-13:33'), ('bear', 4073.655, 4074.655, '13:33-13:35'), ('bull', 4073.655, 4076.035, '13:35-13:37')]
+the DEMO entry 4074.73 at 14:32:56 (closed candles to 14:31) 4074.730
+   A []
+   B []
+   C [('bull', 4073.655, 4076.035, '13:35-13:37')]
+share of candle opens that sit inside a 1m FVG, 223 opens over the loaded history: {'A': '19%', 'B': '0%', 'C': '43%'}

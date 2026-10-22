@@ -1,0 +1,32 @@
+bars loaded: 1520, from Wed 21 Oct 13:00 to 15:23 (local)
+
+time   open      close     EMA12     vs EMA        body/ATR  tick vol
+14:20  4077.265  4076.780  4079.160   -2.38 (close)   0.18    949
+14:21  4076.770  4075.725  4078.632   -2.91 (close)   0.41    941
+14:22  4075.775  4075.785  4078.194   -2.41 (close)   0.00    892
+14:23  4075.815  4075.450  4077.772   -2.32 (close)   0.14    919
+14:24  4075.405  4074.930  4077.334   -2.40 (close)   0.19    603
+14:25  4074.965  4076.165  4077.155   -0.99 (close)   0.50    652
+14:26  4076.080  4075.835  4076.952   -1.12 (close)   0.11    427
+14:27  4075.785  4076.565  4076.892   -0.33 (close)   0.35    469
+14:28  4076.605  4076.770  4076.873   -0.10 (close)   0.08    533
+14:29  4076.765  4076.820  4076.865   -0.05 (close)   0.03    377
+14:30  4076.775  4079.120  4077.212   +1.91 (close)   1.10    1272
+14:31  4079.070  4074.495  4076.794   -2.30 (close)   1.93    1504
+14:32  4074.445  4073.555  4076.296   -2.74 (close)   0.39    1500
+14:33  4073.570  4073.445  4075.857   -2.41 (close)   0.05    1009
+14:34  4073.385  4072.350  4075.318   -2.97 (close)   0.43    1086
+14:35  4072.340  4065.285  4073.774   -8.49 (close)   2.47    1114
+14:36  4065.300  4065.740  4072.538   -6.80 (close)   0.15    1648
+14:37  4065.790  4062.365  4070.973   -8.61 (close)   1.07    1098
+14:38  4062.360  4065.015  4070.056   -5.04 (close)   0.80    1077
+
+-- the 14:31 displacement candle against the 120 candles before it:
+   body 4.575 pts: rank 6 of 121 by body size (the largest before it was 5.465); tick volume 1504: rank 4 of 121 (median before it 781)
+   the 14:30 white candle: body 2.345 pts rank 29, tick volume 1272 rank 6
+
+-- the bearish gap the displacement leaves (14:30-14:32 candles): 4075.320..4076.665 (1.34 pts); EMA12 at the 14:32 close 4076.296 is INSIDE the gap; the 14:32 high 4075.320 is the gap's bottom edge
+-- the 14:32 pullback retraced 18% of the 14:31 body (high 4075.320 against the 14:31 close 4074.495 and open 4079.070); the 14:32 candle closed at 21% of its range
+-- after the 14:32 close (entry 4073.555): highest high 4074.050 at 14:33 (EMA 12 then 4075.857); first candle with a high >= the gap bottom 4075.320: none; first candle with a high >= the EMA of that moment: 14:48 (high 4067.310, EMA 4064.577)
+-- lowest low after the entry: 4044.760 at 15:08 (target 4062.906)
+-- the day so far: high 4101.130 at 08:16; swing highs of the last two hours (13:48 4091.84, 14:17 4080.80, 14:30 4080.82) are lower highs: yes

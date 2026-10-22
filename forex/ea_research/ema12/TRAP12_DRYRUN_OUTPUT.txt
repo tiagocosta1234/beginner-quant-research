@@ -1,0 +1,24 @@
+variants: 18 (session ('London', 'NY') x window (15, 60, 240) x exit ('drawn', 'card', 'S1'))
+
+(1) truncation test: data after the entry minute cut, same signal (4 markets x 2 windows x 2 sessions, up to 5 setups each):
+  41 setups recomputed with the future cut, 0 mismatches
+
+(2) hand check: the 22 Oct NY session on his OANDA bars (MANUAL_22OCT_NY_BARS.csv, ask = bid + 0.55):
+  W 15: side -1, signal candle 14:32 local (after the continuation, EMA inside the fresh gap), entry 14:33 at 4073.570, D 5.555 -> gap edge 4068.015; drawn stop 4079.125 target 4068.015
+  W 60: side -1, signal candle 14:32 local (after the continuation, EMA inside the fresh gap), entry 14:33 at 4073.570, D 5.555 -> gap edge 4068.015; drawn stop 4079.125 target 4068.015
+  whole untouched bullish gaps below the entry at that moment (top edge, distance, size): [(np.float64(4063.19), np.float64(10.38), np.float64(1.125), '13:04'), (np.float64(4068.015), np.float64(5.555), np.float64(0.81), '13:24')]
+  control (displacement alone), W 15: [('14:31', -1, 6.43)]
+
+(3) setups per year and entry type (rule; no results):
+  XAUUSD London W 15:   0 setups {} | entry type {} | shorts 0 longs 0 | control 456
+  XAUUSD London W 60:   3 setups {2023: 2, 2024: 1} | entry type {0: 3} | shorts 1 longs 2 | control 871
+  XAUUSD NY     W 15:   1 setups {2024: 1} | entry type {0: 1} | shorts 0 longs 1 | control 442
+  XAUUSD NY     W 60:   5 setups {2023: 2, 2024: 2, 2025: 1} | entry type {0: 5} | shorts 3 longs 2 | control 826
+  funnel XAUUSD London W 60 (candidate displacement candles, both sides, every day; each line = still alive after that condition): {'displacement': 3165, 'trend': 1101, 'coil': 65, 'trap candle': 8, 'closes below the trap low': 8, 'close rule (after d or c)': 8, 'entry in the window': 8, 'whole untouched gap target': 3}
+  funnel XAUUSD London W 240 (candidate displacement candles, both sides, every day; each line = still alive after that condition): {'displacement': 12327, 'trend': 4330, 'coil': 266, 'trap candle': 45, 'closes below the trap low': 41, 'close rule (after d or c)': 38, 'entry in the window': 38, 'whole untouched gap target': 22}
+  funnel XAUUSD NY W 60 (candidate displacement candles, both sides, every day; each line = still alive after that condition): {'displacement': 2937, 'trend': 1050, 'coil': 59, 'trap candle': 7, 'closes below the trap low': 7, 'close rule (after d or c)': 7, 'entry in the window': 7, 'whole untouched gap target': 5}
+  funnel XAUUSD NY W 240 (candidate displacement candles, both sides, every day; each line = still alive after that condition): {'displacement': 11499, 'trend': 4165, 'coil': 243, 'trap candle': 45, 'closes below the trap low': 44, 'close rule (after d or c)': 42, 'entry in the window': 42, 'whole untouched gap target': 29}
+  DEV setups on every 6th market (8 markets: ADAUSD,AUDUSD,CADJPY,EURCAD,GBPAUD,LTCUSD,NZDUSD,WTI): {('London', 15): 6, ('London', 60): 26, ('NY', 15): 8, ('NY', 60): 24} -> pooled 46 markets about x5.8
+
+(4) coverage of his 29 April-May 2025 recorded trades (W 60, the session he traded):
+  the rule fires on 0 of his 29 days, on his side on 0

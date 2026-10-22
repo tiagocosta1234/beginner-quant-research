@@ -1,0 +1,63 @@
+XAUUSD, 2022-01-01..2025-12-31, real bid / ask (no spread in brackets); descriptive, not a test
+  W  15 drawn:   1 trades (London 0, NY 1), wins 0, mean R -1.000 (no spread -1.000), total -1.0 R, median D 2.18 pts
+  W  15 card :   1 trades (London 0, NY 1), wins 0, mean R -1.000 (no spread -1.000), total -1.0 R, median D 2.18 pts
+  W  15 S1   :   1 trades (London 0, NY 1), wins 0, mean R -1.000 (no spread -1.000), total -1.0 R, median D 2.18 pts
+  W  60 drawn:   8 trades (London 3, NY 5), wins 3, mean R -0.250 (no spread -0.250), total -2.0 R, median D 1.74 pts
+  W  60 card :   8 trades (London 3, NY 5), wins 5, mean R -0.062 (no spread -0.062), total -0.5 R, median D 1.74 pts
+  W  60 S1   :   8 trades (London 3, NY 5), wins 3, mean R -0.250 (no spread +0.250), total -2.0 R, median D 1.74 pts
+  W 240 drawn:  51 trades (London 22, NY 29), wins 18, mean R -0.294 (no spread -0.214), total -15.0 R, median D 2.20 pts
+  W 240 card :  51 trades (London 22, NY 29), wins 26, mean R -0.181 (no spread -0.180), total -9.3 R, median D 2.20 pts
+  W 240 S1   :  51 trades (London 22, NY 29), wins 20, mean R -0.160 (no spread -0.077), total -8.2 R, median D 2.20 pts
+
+the W 240 setups one by one (drawn exit): date, local time of the entry, side, entry type, D, R
+  2022-01-28 18:01 long  after d D 3.72 R +1.00
+  2022-02-16 15:34 short after d D 7.24 R -1.00
+  2022-03-22 11:57 long  after d D 2.20 R -1.00
+  2022-05-04 16:34 short after d D 0.80 R -1.00
+  2022-05-09 18:08 short after d D 2.00 R +1.00
+  2022-05-17 18:02 short after d D 1.30 R +1.00
+  2022-06-07 10:40 short after d D 0.99 R +1.00
+  2022-06-13 11:45 long  after d D 1.56 R -1.00
+  2022-07-15 11:36 long  after d D 1.33 R +1.00
+  2022-07-19 15:42 long  after d D 2.99 R +1.00
+  2022-09-13 15:55 short after d D 4.13 R +1.00
+  2022-09-16 17:01 short after d D 3.78 R -1.00
+  2022-09-22 11:26 long  after d D 2.72 R -1.00
+  2022-09-28 10:22 short after d D 0.52 R -1.00
+  2022-10-25 10:28 long  after d D 0.60 R -1.00
+  2022-11-24 09:47 short after d D 0.71 R -1.00
+  2022-12-30 11:16 long  after d D 1.35 R +1.00
+  2023-01-03 11:59 long  after d D 4.85 R +1.00
+  2023-01-24 11:33 long  after c+stack D 0.57 R -1.00
+  2023-01-25 15:02 short after d D 4.63 R -1.00
+  2023-02-08 18:00 long  after d D 0.58 R +1.00
+  2023-03-03 16:28 short after d D 3.80 R -1.00
+  2023-04-28 09:33 long  after d D 3.37 R -1.00
+  2023-05-15 15:17 short after d D 1.31 R +1.00
+  2023-07-13 08:53 long  after d D 0.53 R -1.00
+  2023-08-15 17:16 short after d D 0.80 R -1.00
+  2023-08-22 17:17 short after d D 0.67 R +1.00
+  2023-09-13 08:22 long  after d D 0.35 R -1.00
+  2023-11-28 17:57 short after d D 2.14 R -1.00
+  2023-12-11 16:39 long  after d D 2.31 R -1.00
+  2024-05-27 16:09 short after d D 5.85 R +0.22
+  2024-08-06 14:45 long  after d D 2.18 R -1.00
+  2024-08-14 10:59 short after c D 3.54 R -1.00
+  2024-10-09 08:41 short after d D 0.70 R +1.00
+  2024-12-24 15:09 long  after d D 2.32 R +1.00
+  2024-12-30 10:17 long  after d D 0.96 R -1.00
+  2025-02-20 17:02 short after d D 1.33 R -1.00
+  2025-04-04 17:38 long  after d D 6.02 R -1.00
+  2025-05-23 10:47 short after d D 7.03 R -1.00
+  2025-06-12 17:46 short after d D 4.07 R +1.00
+  2025-06-26 17:47 long  after d D 1.54 R +1.00
+  2025-06-27 17:46 short after d D 4.94 R -1.00
+  2025-07-14 16:38 long  after d D 7.16 R -0.21
+  2025-07-16 09:42 short after d D 0.92 R -1.00
+  2025-08-25 16:58 long  after d D 0.78 R -1.00
+  2025-11-04 18:27 short after d D 5.97 R +1.00
+  2025-11-10 17:44 short after d D 2.75 R -1.00
+  2025-11-24 11:29 long  after d D 2.86 R -1.00
+  2025-12-05 10:19 short after d D 4.56 R -1.00
+  2025-12-18 11:20 long  after d D 5.88 R -1.00
+  2025-12-31 15:22 short after d D 5.93 R -1.00

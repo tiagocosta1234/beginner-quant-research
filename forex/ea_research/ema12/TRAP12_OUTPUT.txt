@@ -1,0 +1,163 @@
+start 15:34:57 workers 8
+  AUDUSD  done in     3s (1/46)
+  AUDCHF  done in     4s (2/46)
+  AUDCAD  done in     4s (3/46)
+  AUDNZD  done in     4s (4/46)
+  ASX     done in     4s (5/46)
+  ADAUSD  done in     4s (6/46)
+  AUDJPY  done in     5s (7/46)
+  BCHUSD  done in     5s (8/46)
+  BNBUSD  done in     4s (9/46)
+  BRENT   done in     4s (10/46)
+  CADJPY  done in     3s (11/46)
+  CADCHF  done in     3s (12/46)
+  BTCUSD  done in     4s (13/46)
+  CHFJPY  done in     3s (14/46)
+  DAX     done in     3s (15/46)
+  DOW     done in     3s (16/46)
+  EURCAD  done in     3s (17/46)
+  EURAUD  done in     4s (18/46)
+  ETHUSD  done in     4s (19/46)
+  EURUSD  done in     4s (20/46)
+  EURNZD  done in     4s (21/46)
+  EURGBP  done in     4s (22/46)
+  EURJPY  done in     4s (23/46)
+  EURCHF  done in     4s (24/46)
+  GBPAUD  done in     2s (25/46)
+  GBPCAD  done in     3s (26/46)
+  GBPCHF  done in     3s (27/46)
+  NSDQ    done in     3s (28/46)
+  GBPNZD  done in     4s (29/46)
+  GBPJPY  done in     4s (30/46)
+  NIKKEI  done in     4s (31/46)
+  GBPUSD  done in     4s (32/46)
+  LTCUSD  done in     4s (33/46)
+  NZDCAD  done in     2s (34/46)
+  NZDCHF  done in     2s (35/46)
+  NZDUSD  done in     3s (36/46)
+  NZDJPY  done in     3s (37/46)
+  USDCHF  done in     4s (38/46)
+  SP      done in     4s (39/46)
+  USDCAD  done in     4s (40/46)
+  WTI     done in     3s (41/46)
+  USDJPY  done in     4s (42/46)
+  SOLUSD  done in     5s (43/46)
+  XAUUSD  done in     2s (44/46)
+  XAGUSD  done in     2s (45/46)
+  XRPUSD  done in     2s (46/46)
+
+finished 15:35:20 in 0.4 min | variants 18 | POOLED CANDIDATES (all bars, real bid / ask, DEV t >= 2.77): 0 | XAUUSD CANDIDATES: 0
+
+RULE, real bid / ask, DEV 2022-24 pooled over 46 markets (18 variants): trades per variant median 165 (min 44 max 788) | mean R median -0.1369 best +0.0909 | share > 0: 11% | t: min -8.02 median -1.65 max 0.61 | VAL 2025 mean R median -0.2403, share > 0 0%
+INVERTED side, real: DEV mean R median -0.2547 best -0.1341 | direction skill (rule - inverted) / 2: median +0.0619, share of variants > 0: 67%
+CONTROL (displacement candle alone), real: DEV trades median 27354, mean R median -0.1952 best -0.1354 | rule minus control (what trend + coil + trap + close rule add): median +0.0360, share > 0: 78%
+CEILING, no spread: rule DEV mean R median +0.0391 best +0.5000 (t max +3.89) | control -0.0026 -> the spread costs +0.1946 R a trade at the median
+median DEV mean R (rule, real) by ses: {'London': -0.109, 'NY': -0.1414}
+median DEV mean R (rule, real) by win: {15: -0.088, 60: -0.1016, 240: -0.2004}
+median DEV mean R (rule, real) by x: {'S1': -0.1257, 'card': -0.1332, 'drawn': -0.1976}
+
+all 18 variants (rule, real; pooled and XAUUSD):
+ id    ses  win     x  r_dev_n  r_dev_R  r_dev_t  r_val_n  r_val_R  r_val_t  r_y22  r_y23  r_y24  r_nb_R  r_nb_t  i_dev_R  c_dev_R  z_dev_R  r_XAU_dev_n  r_XAU_dev_R  r_XAU_dev_t  r_XAU_val_n  r_XAU_val_R  z_XAU_dev_R
+  0 London   15 drawn       44    0.091    0.607       15      NaN      NaN  0.273  0.444 -0.467   0.048   0.296   -0.636   -0.301    0.500            0          NaN          NaN            0          NaN          NaN
+  1 London   15  card       44    0.046    0.439       15      NaN      NaN  0.227  0.308 -0.400   0.013   0.121   -0.404   -0.193    0.288            0          NaN          NaN            0          NaN          NaN
+  2 London   15    S1       44   -0.156   -1.091       15      NaN      NaN -0.222  0.144 -0.467  -0.211  -1.470   -0.435   -0.196    0.068            0          NaN          NaN            0          NaN          NaN
+  3 London   60 drawn      157   -0.094   -1.230       47   -0.281   -1.925 -0.053  0.143 -0.302  -0.116  -1.499   -0.446   -0.299    0.211            3          NaN          NaN            0          NaN          NaN
+  4 London   60  card      157   -0.009   -0.172       47   -0.134   -1.235 -0.060  0.216 -0.122  -0.030  -0.520   -0.226   -0.190    0.124            3          NaN          NaN            0          NaN          NaN
+  5 London   60    S1      157   -0.109   -1.422       47   -0.189   -1.359 -0.103  0.214 -0.344  -0.132  -1.708   -0.284   -0.195    0.078            3          NaN          NaN            0          NaN          NaN
+  6 London  240 drawn      706   -0.288   -8.016      220   -0.365   -5.619 -0.255 -0.219 -0.380  -0.308  -8.466   -0.294   -0.314    0.009           17          NaN          NaN            5          NaN          NaN
+  7 London  240  card      706   -0.168   -6.444      220   -0.216   -4.242 -0.199 -0.093 -0.202  -0.179  -6.768   -0.134   -0.200    0.009           17          NaN          NaN            5          NaN          NaN
+  8 London  240    S1      706   -0.229   -6.821      220   -0.283   -4.192 -0.243 -0.096 -0.332  -0.243  -7.142   -0.140   -0.204   -0.018           17          NaN          NaN            5          NaN          NaN
+  9     NY   15 drawn       60   -0.281   -2.299        9      NaN      NaN -0.167 -0.143 -0.478  -0.361  -2.878   -0.191   -0.245   -0.078            1          NaN          NaN            0          NaN          NaN
+ 10     NY   15  card       60   -0.141   -1.514        9      NaN      NaN -0.027 -0.112 -0.273  -0.187  -1.901   -0.282   -0.144    0.013            1          NaN          NaN            0          NaN          NaN
+ 11     NY   15    S1       60   -0.034   -0.283        9      NaN      NaN  0.136  0.031 -0.245  -0.092  -0.728   -0.378   -0.135    0.172            1          NaN          NaN            0          NaN          NaN
+ 12     NY   60 drawn      173   -0.132   -1.786       44   -0.322   -2.360 -0.013 -0.070 -0.311  -0.159  -2.119   -0.239   -0.235    0.054            4          NaN          NaN            1          NaN          NaN
+ 13     NY   60  card      173   -0.125   -2.257       44   -0.237   -2.201 -0.025 -0.096 -0.259  -0.147  -2.587   -0.230   -0.142    0.025            4          NaN          NaN            1          NaN          NaN
+ 14     NY   60    S1      173   -0.023   -0.310       44   -0.192   -1.447  0.077 -0.038 -0.125  -0.054  -0.734   -0.270   -0.139    0.111            4          NaN          NaN            1          NaN          NaN
+ 15     NY  240 drawn      788   -0.263   -7.829      253   -0.387   -6.344 -0.144 -0.284 -0.371  -0.277  -8.196   -0.172   -0.256   -0.038           19          NaN          NaN           10          NaN          NaN
+ 16     NY  240  card      788   -0.171   -6.801      253   -0.232   -4.941 -0.100 -0.163 -0.256  -0.180  -7.131   -0.134   -0.160   -0.020           19          NaN          NaN           10          NaN          NaN
+ 17     NY  240    S1      788   -0.142   -4.459      253   -0.243   -4.250 -0.087 -0.161 -0.185  -0.153  -4.713   -0.140   -0.157   -0.001           19          NaN          NaN           10          NaN          NaN
+
+by entry type (rule, real, DEV), per variant:
+ id                           tag   n      R  n_xau  R_xau
+  0                       after d  44  0.091      0    NaN
+  0                       after c   0    NaN      0    NaN
+  0 after c, EMA in the fresh gap   0    NaN      0    NaN
+  1                       after d  44  0.046      0    NaN
+  1                       after c   0    NaN      0    NaN
+  1 after c, EMA in the fresh gap   0    NaN      0    NaN
+  2                       after d  44 -0.156      0    NaN
+  2                       after c   0    NaN      0    NaN
+  2 after c, EMA in the fresh gap   0    NaN      0    NaN
+  3                       after d 157 -0.094      3 -0.333
+  3                       after c   0    NaN      0    NaN
+  3 after c, EMA in the fresh gap   0    NaN      0    NaN
+  4                       after d 157 -0.009      3  0.500
+  4                       after c   0    NaN      0    NaN
+  4 after c, EMA in the fresh gap   0    NaN      0    NaN
+  5                       after d 157 -0.109      3 -0.333
+  5                       after c   0    NaN      0    NaN
+  5 after c, EMA in the fresh gap   0    NaN      0    NaN
+  6                       after d 689 -0.282     15 -0.333
+  6                       after c   4 -1.000      1 -1.000
+  6 after c, EMA in the fresh gap  13 -0.385      1 -1.000
+  7                       after d 689 -0.160     15 -0.100
+  7                       after c   4 -1.000      1 -1.000
+  7 after c, EMA in the fresh gap  13 -0.308      1  0.500
+  8                       after d 689 -0.225     15 -0.257
+  8                       after c   4 -1.000      1 -1.000
+  8 after c, EMA in the fresh gap  13 -0.231      1  1.000
+  9                       after d  59 -0.269      1 -1.000
+  9                       after c   1 -1.000      0    NaN
+  9 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 10                       after d  59 -0.127      1 -1.000
+ 10                       after c   1 -1.000      0    NaN
+ 10 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 11                       after d  59 -0.018      1 -1.000
+ 11                       after c   1 -1.000      0    NaN
+ 11 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 12                       after d 170 -0.129      4  0.000
+ 12                       after c   3 -0.333      0    NaN
+ 12 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 13                       after d 170 -0.123      4 -0.250
+ 13                       after c   3 -0.256      0    NaN
+ 13 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 14                       after d 170 -0.021      4  0.000
+ 14                       after c   3 -0.089      0    NaN
+ 14 after c, EMA in the fresh gap   0    NaN      0    NaN
+ 15                       after d 767 -0.251     19  0.011
+ 15                       after c  10 -0.600      0    NaN
+ 15 after c, EMA in the fresh gap  11 -0.818      0    NaN
+ 16                       after d 767 -0.164     19 -0.034
+ 16                       after c  10 -0.327      0    NaN
+ 16 after c, EMA in the fresh gap  11 -0.511      0    NaN
+ 17                       after d 767 -0.135     19  0.101
+ 17                       after c  10 -0.248      0    NaN
+ 17 after c, EMA in the fresh gap  11 -0.556      0    NaN
+
+per market, rule real: median DEV mean R over the variants (markets with >= 20 DEV trades), 6 best and 4 worst
+kind market  med_dev_R  best_dev_R  n_pos
+   r AUDUSD     0.1611      0.2415      2
+   r    DAX     0.1323      0.2280      2
+   r USDJPY     0.1087      0.3043      3
+   r USDCHF    -0.0574      0.0856      1
+   r BTCUSD    -0.0591      0.0616      1
+   r EURCAD    -0.0607     -0.0399      0
+   r    WTI        NaN         NaN      0
+   r XAGUSD        NaN         NaN      0
+   r XAUUSD        NaN         NaN      0
+   r XRPUSD        NaN         NaN      0
+  markets with a positive median: ['AUDUSD', 'DAX', 'USDJPY']
+
+per market, rule at mid (ceiling): median DEV mean R over the variants (markets with >= 20 DEV trades), 6 best and 4 worst
+kind market  med_dev_R  best_dev_R  n_pos
+   z BTCUSD     0.2742      0.3902      3
+   z    DAX     0.1963      0.2992      2
+   z AUDUSD     0.1784      0.2476      2
+   z USDJPY     0.1769      0.4783      3
+   z EURNZD     0.1142      0.2565      5
+   z NZDJPY    -0.0006      0.1270      1
+   z    WTI        NaN         NaN      0
+   z XAGUSD        NaN         NaN      0
+   z XAUUSD        NaN         NaN      0
+   z XRPUSD        NaN         NaN      0
+  markets with a positive median: ['BTCUSD', 'DAX', 'AUDUSD', 'USDJPY', 'EURNZD']
