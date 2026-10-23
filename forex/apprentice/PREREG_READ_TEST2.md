@@ -42,3 +42,9 @@ Written 23 Oct 2026 ~01:3x local (local clock), before the draw and before any o
   - each pool;
   - the naive 08:00 trend rule on the same days and the read's excess minus the naive one.
 - With about 70 trades (v9 trades less), SE is about 0.07: power about 75% at a true excess of +0.20, about 25% at +0.10, about 3% at zero.
+
+## Amendment 1 (scorer only; written 23 Oct 2026 08:45 local, local clock, after T100 was locked and before any outcome was shown)
+- The first `score` run crashed in the naive baseline before printing anything: `desk.simulate` returns None when the next candle's open (plus or minus 1 tick) is already at or beyond the target or the stop, so the bracket cannot be placed.
+- Rule, for the read and the naive baseline alike: such a pair (the trade or its mirror) counts as no trade, and the scorer reports how many were dropped.
+- The scorer's verdict line had left out the third pre-registered condition. It now reads: supported iff excess >= +0.10 R, P <= 0.03 AND mean R after costs > 0, as written above.
+- Nothing else changes: the calls, the bracket, the costs, the measures and the bars stay as they are.

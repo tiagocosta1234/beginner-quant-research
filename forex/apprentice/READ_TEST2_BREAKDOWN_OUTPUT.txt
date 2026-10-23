@@ -1,0 +1,13 @@
+all: n 47, mean R +0.093, excess +0.161, wins 37
+resumption / flag                n 17  mean R -0.118  excess -0.041  wins 11/17
+break of a high / low / base     n 13  mean R +0.047  excess +0.228  wins 10/13
+failed bounce / rollover         n  7  mean R +0.198  excess +0.216  wins 6/7
+reclaim / engulfing              n  3  mean R +0.412  excess -0.001  wins 3/3
+sweep and reversal               n  1  mean R +0.465  excess +0.784  wins 1/1
+signal 08:02-08:05               n 28  mean R +0.136  excess +0.215  wins 23/28
+signal 08:06 or later            n 19  mean R +0.031  excess +0.081  wins 14/19
+long                             n 28  mean R +0.040  excess +0.108  wins 21/28
+short                            n 19  mean R +0.172  excess +0.239  wins 16/19
+pool A (2022)                    n 25  mean R +0.111  excess +0.240  wins 20/25
+pool B (Jan-May 2024)            n 22  mean R +0.073  excess +0.070  wins 17/22
+no-trade days (52): the naive 08:00 trend trade would have made mean R -0.133 (wins 35/52)

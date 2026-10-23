@@ -96,16 +96,24 @@ def cmd_score():
     t = pd.read_csv(CALLS)
     if len(t) < 100 and "--force" not in sys.argv: sys.exit("only %d of 100 calls locked: no look before T100 (PREREG_READ_TEST2.md)" % len(t))
     import manual_read_baselines as B
-    d = D.raw(); me = ([], [], []); nv = ([], [], []); both = []
+
+    def pair(y, side, sig, sd, td):  # Amendment 1: a bracket the next open already crossed (simulate -> None) counts as no trade
+        try: return B.pair(y, side, sig, sd, td)
+        except TypeError: return None
+    d = D.raw(); me = ([], [], []); nv = ([], [], []); both = []; dropped = {"read": 0, "naive": 0}
     for r in t.itertuples():
         y = K.frame_for(d, pd.Timestamp(r.date)); i0 = int(np.argmax(y["lis"] >= K.DAY0 + pd.Timedelta(hours=6))); i8 = B.idx(y, "08:00")
         s = "L" if y["mc"][i8] > y["mc"][i8 - 30] else "S"; st, tg, _ = bracket(y, i8, i0, s); c8 = y["mc"][i8]
-        na, nb = B.pair(y, s, "08:00", abs(c8 - st), abs(tg - c8)); nv[0].append(na); nv[1].append(nb); nv[2].append(r.pool)
+        n2 = pair(y, s, "08:00", abs(c8 - st), abs(tg - c8))
+        if n2: nv[0].append(n2[0]); nv[1].append(n2[1]); nv[2].append(r.pool)
+        else: dropped["naive"] += 1
         if r.side in ("L", "S"):
             cl = y["mc"][B.idx(y, r.signal)]
-            a, b = B.pair(y, r.side, r.signal, abs(cl - r.stop), abs(r.target - cl)); me[0].append(a); me[1].append(b); me[2].append(r.pool)
-            both.append(((a - b) / 2) - ((na - nb) / 2))
-    out = []
+            m2 = pair(y, r.side, r.signal, abs(cl - r.stop), abs(r.target - cl))
+            if not m2: dropped["read"] += 1; continue
+            a, b = m2; me[0].append(a); me[1].append(b); me[2].append(r.pool)
+            if n2: both.append(((a - b) / 2) - ((n2[0] - n2[1]) / 2))
+    out = ["pairs dropped (entry already beyond the target or stop, Amendment 1): read %d, naive %d" % (dropped["read"], dropped["naive"])]
     for name, (a, b, p) in (("read", me), ("naive_trend30", nv)):
         obs, mir, exc, pv = B.signflip(a, b)
         out.append("%-14s n %3d  mean R %+.3f  mirror %+.3f  excess %+.3f  wins %d / %d  P %.4f" % (name, len(a), obs, mir, exc, sum(x > 0 for x in a), len(a), pv))
@@ -114,8 +122,8 @@ def cmd_score():
             if aa:
                 o2, m2, e2, p2 = B.signflip(aa, bb); out.append("    pool %s     n %3d  mean R %+.3f  excess %+.3f  P %.4f" % (pool, len(aa), o2, e2, p2))
     out.append("read excess minus naive excess on the days the read trades: %+.3f (n %d)" % (np.mean(both), len(both)))
-    obs, mir, exc, pv = B.signflip(*me[:2]); verdict = "SUPPORTED" if (exc >= 0.10 and pv <= 0.03) else "NOT SHOWN"
-    out.append("PRIMARY: excess %+.3f, P %.4f -> %s (bar: excess >= +0.10 and P <= 0.03)" % (exc, pv, verdict))
+    obs, mir, exc, pv = B.signflip(*me[:2]); verdict = "SUPPORTED" if (exc >= 0.10 and pv <= 0.03 and obs > 0) else "NOT SHOWN"
+    out.append("PRIMARY: excess %+.3f, P %.4f, mean R %+.3f -> %s (bar: excess >= +0.10, P <= 0.03 and mean R > 0)" % (exc, pv, obs, verdict))
     txt = "\n".join(out); print(txt)
     if len(t) >= 100: open(os.path.join(HERE, "READ_TEST2_OUTPUT.txt"), "w").write(txt + "\n")
 
