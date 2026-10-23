@@ -1,0 +1,8 @@
+read           n  93  mean R +0.019  mirror -0.112  excess +0.066  wins 68 / 93  P 0.1426
+    pool A     n  45  mean R -0.046  excess +0.105  P 0.1283
+    pool B     n  48  mean R +0.080  excess +0.029  P 0.3717
+naive_trend30  n 100  mean R -0.022  mirror -0.174  excess +0.076  wins 70 / 100  P 0.1124
+    pool A     n  50  mean R -0.050  excess +0.168  P 0.0343
+    pool B     n  50  mean R +0.006  excess -0.016  P 0.5858
+read excess minus naive excess on the days the read trades: -0.014 (n 93)
+PRIMARY: excess +0.066, P 0.1426 -> NOT SHOWN (bar: excess >= +0.10 and P <= 0.03)

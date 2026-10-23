@@ -1,0 +1,2 @@
+day_id,date,side,grade,reason,pc_time,sha256,entry,stop,target,exit,exit_time,R,result
+D001,2024-11-12,none,,"only cross in the window was the 08:01 long (close 993.39 over EMA 993.23, body 0.67 ATR, close outside untouched gaps), forfeited because I looked at 08:02-08:03 before deciding; no cross 08:02-08:14",2026-10-22 20:58:39,b2d1b362082cf845bbc2cc5613b27c80cb6e651bce26b9a800c5335c0850230c,,,,,,0.0,no trade

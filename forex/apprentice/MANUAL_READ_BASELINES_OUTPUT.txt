@@ -1,0 +1,9 @@
+(1) agreement with the trader (same side, his signal 07:58-08:02), 33 days:
+    learned read, full match (side + within 2 minutes of my own signal): 13
+    naive colour_0800     12   (days 16-33: 7 of 18; learned read 9)
+    naive trend30_0800    14   (days 16-33: 9 of 18; learned read 9)
+    naive since0600_0800  14   (days 16-33: 9 of 18; learned read 9)
+(2) P&L on GC, mean R per trade vs the mirror (same entry and distances, other side); sign-flip P = chance a random side does at least as well:
+    me             n 27  mean R +0.240  mirror -0.194  excess over a random side +0.217  wins 23 / 27  P 0.037
+    manual           n 32  mean R +0.043  mirror -0.224  excess over a random side +0.133  wins 23 / 32  P 0.142
+    naive_trend30  n 33  mean R +0.064  mirror -0.118  excess over a random side +0.091  wins 24 / 33  P 0.204

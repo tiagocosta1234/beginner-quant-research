@@ -1,0 +1,15 @@
+all: n 93, mean R +0.019, excess +0.066, wins 68
+pin                              n  4  mean R -0.057  excess -0.217  wins 3/4
+held level                       n 30  mean R +0.035  excess +0.031  wins 22/30
+sweep                            n 15  mean R +0.030  excess -0.003  wins 11/15
+stall under gap / end of bounce  n 19  mean R -0.015  excess -0.046  wins 13/19
+EMA-retest rejection             n  8  mean R +0.012  excess +0.092  wins 6/8
+first decisive push              n 35  mean R -0.014  excess +0.042  wins 25/35
+resumption                       n 10  mean R +0.435  excess +0.535  wins 10/10
+false break / undone             n  6  mean R -0.171  excess -0.135  wins 4/6
+signal 07:59-08:02               n 70  mean R -0.037  excess +0.017  wins 49/70
+signal 08:03 or later            n 23  mean R +0.188  excess +0.214  wins 19/23
+with the 30-min trend            n 69  mean R +0.119  excess +0.153  wins 55/69
+against the 30-min trend         n 24  mean R -0.269  excess -0.185  wins 13/24
+long                             n 52  mean R +0.129  excess +0.146  wins 42/52
+short                            n 41  mean R -0.121  excess -0.036  wins 26/41

@@ -1,0 +1,20 @@
+days scanned 1328; card-valid setups 1760; trades taken (first A/B a day) 632
+TAKEN: n  632, wins 50.6%, mean R -0.114 (se 0.039)
+  2020: n  116, wins 50.0%, mean R -0.131 (se 0.092)
+  2021: n  130, wins 48.5%, mean R -0.166 (se 0.088)
+  2022: n  110, wins 50.0%, mean R -0.133 (se 0.094)
+  2023: n  106, wins 49.1%, mean R -0.155 (se 0.097)
+  2024: n  101, wins 56.4%, mean R -0.002 (se 0.097)
+  2025: n   69, wins 50.7%, mean R -0.055 (se 0.121)
+all setups grade A: n  150, wins 46.0%, mean R -0.215 (se 0.080)
+all setups grade B: n  646, wins 52.3%, mean R -0.078 (se 0.039)
+all setups grade C: n  964, wins 51.2%, mean R -0.094 (se 0.032)
+all setups trend           yes: n  695, wins 50.8%, mean R -0.113 (se 0.037) | no: n 1065, wins 51.5%, mean R -0.089 (se 0.030)
+all setups body>=1ATR      yes: n  962, wins 52.5%, mean R -0.075 (se 0.032) | no: n  798, wins 49.6%, mean R -0.126 (se 0.035)
+all setups volume>=median  yes: n 1276, wins 50.2%, mean R -0.118 (se 0.028) | no: n  484, wins 53.7%, mean R -0.046 (se 0.045)
+all setups not chop        yes: n 1083, wins 52.1%, mean R -0.080 (se 0.030) | no: n  677, wins 49.8%, mean R -0.128 (se 0.038)
+hand-made blind days (Sep-Nov 2024) in this run: n   29, wins 31.0%, mean R -0.484 (se 0.171)
+
+real	8m5.218s
+user	0m0.000s
+sys	0m0.015s

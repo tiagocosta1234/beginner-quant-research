@@ -1,0 +1,8 @@
+primary (the trader bracket)   n 521  mean R -0.191 (se 0.032)  mirror -0.114  excess -0.039  wins 61.0%  P 0.9166
+secondary 1:1            n 521  mean R -0.206 (se 0.043)  mirror -0.128  excess -0.039  wins 46.3%  P 0.8188
+  2020: n 169  mean R -0.257  1:1 -0.192
+  2021: n 171  mean R -0.224  1:1 -0.245
+  2022: n 181  mean R -0.100  1:1 -0.182
+  L: n 291  mean R -0.159  1:1 -0.151
+  S: n 230  mean R -0.232  1:1 -0.275
+DEV VERDICT: mean R -0.191, P 0.9166 -> FAIL
