@@ -1,0 +1,31 @@
+# BIAS8 lessons (written after each reveal; allowed by PREREG_BIAS8)
+
+- B001 (S, wrong, +2.75R up): a slow overnight grind lower into a mid-range 08:00 is not a short by itself; the Asia low (997.5) held twice and London bought the open. Weight where 08:00 sits in the Asia range, not just the drift.
+- B002 (L conf 2, wrong, -6.6R): pre-open selling 07:15-07:59 with volume rising INTO the Asia low was momentum, not a dip; the low broke at 08:00 and ran 15 pts. Support near 08:00 that is being hit with rising 1m volume tends to break. Contradicts the B001 lesson only on the surface: B001 the low was tested on falling volume.
+- B003 (S conf 2, wrong, +1R): asia low held again at the open even after a volume test at 07:52; London opened by squeezing the overnight shorts. 3 days, 3 times the 08:00 move went AGAINST the last 1-2 hours of the pre-open (B001 up after drift down, B002 down after a dip into support... no: B002 continued). Score so far is noise; keep calls simple.
+- B004 (L conf 1, "wrong" by 0.1 pt, but the 1R target hit first: +0.93R): the capitulation fade worked for the first 30 min then the trend resumed. The 12:00 sign is a coarse judge; first-hour reactions and the trend can disagree.
+- B005 (L conf 1, correct, +3.6R; every target hit): overnight higher lows + 08:00 pressing the asia high = continuation. Clean overnight structure (higher lows into the high) worked; B001 had a messy drift.
+- B006 (S conf 1, wrong at 12:00 +2.2R up, but 1.5R short target hit first: +1.41R): the open went my way for an hour, then reversed. Again (B004 too) the side and the 12:00 sign disagree; the target test may matter more than the sign.
+- B007 (L conf 1, correct, every target hit by 09:30): prev-day trend + overnight shakeout recovered = continuation. 2 of 2 "overnight higher lows in the prev-day trend direction" calls hit everything.
+- B008 (L conf 2, correct, 2R hit by 12:00, 3R by 17:00): break of prev high on volume pre-open = continuation (3rd time the clean-structure call worked).
+- B009 (S conf 1, wrong +1.9R, but 1R short target hit first): no-structure chop calls are coin flips; conf 1 is right for them. Pattern so far: the first 15-30 min after 08:00 often goes my way even on wrong days (B004, B006, B009).
+- B010 (L conf 1, correct, 2R hit by 08:15): in crisis vol the overnight rebound structure (higher lows) still worked; huge S made the stop survive the 08:30 whip.
+- B011 (S conf 1, correct, -7.6R crash, every target): overnight peak then lower highs with heavy sell legs into the open = continuation, same as B005/B007/B008 in the other direction. 5 of 5 calls that followed a clear overnight structure were right; 0 of 6 others.
+- B012 (S conf 1, correct -0.7R, 2R hit by 09:15): peak-then-lower-highs worked again, smaller.
+- B013 (L conf 2, correct +2.5R, but stopped first: S was only 1.19 and the 08:00 dip was 1.6 pts). On very quiet days a 1R stop of ATR15 is inside the open noise; side right, trade lost.
+- B014 (L conf 1, wrong -1.5R; only 0.5R hit): messy V-recovery in crisis vol is not a clean structure; counts as "no structure" and lost. Tally: clean-structure calls 6/6 right on direction, no-structure calls 1/8.
+- B015 (L conf 1, wrong, stopped in the first 15 min): no-structure coin flip, lost. 1/9 now for no-structure calls; the misses are what a coin does, nothing to learn but "conf 1".
+- B016 (L conf 1, wrong -5R): I took the prev-day trend over a mild overnight down-sag (lower highs 1004.7 -> 1002.6). Overnight structure beats the prev-day trend; when they conflict, go with the overnight.
+- B017 (L conf 1, wrong -3R, 1R target hit first +0.89R): the 02:45 breakout had gone flat for 4 hours; a stale breakout is not structure. Running note: the 1R target was hit before the stop on 10 of 17 days although the 12:00 sign was right on only 7.
+- B018 (S conf 1, correct at 12:00 but stopped in the first 15 min: the open squeezed +6 before fading). Side right, trade lost again (B013 too); the 08:00-08:30 squeeze against the overnight is common.
+- B019 (L conf 2, wrong, -0.5 pt, stopped: S 0.89): the overnight grind up was the whole move; the open sold it. Tiny-S days are stop-noise whatever the side.
+- Checkpoint after B020 (paused, B021 shown but not called): 9/20 bias hits. The "clean overnight structure" pattern in these notes is labelled after the outcomes, so it is hindsight; CONF given at call time (conf 2: 2/5) does not show it. Test it only by tagging STRUCTURE yes/no in the reason BEFORE each call from B021 on.
+- From B021: compact viewer b8view.py (a subset of the bias8 show, nothing at or after 08:00; one-line reveal) to cut tokens. Each reason starts with STRUCT=yes|no, tagged before the call.
+- B027 (S, wrong): a pre-open range break in the last 15 min reversed at the open, unlike B002 where the break came with a trending night. A late range break alone is weak structure.
+- B028 (L, right +4.5R, stopped first; S 1.03). Fourth "side right, stopped" day, all with S under 1.5 (B013, B019, B026, B028). Idea for a NEW prereg later, not this one: skip or widen the stop when S < 1.5.
+- B033 (S, wrong): a 3-hour base after the overnight trend means the trend is spent; tag that STRUCT=no (B032 was the mirror and the short worked by luck).
+- B034 (L, wrong -3.4R): a vertical crisis squeeze that fades on heavy volume in the last 15 min is exhaustion, not structure.
+- B035-B036 (both S, wrong): two more overnight-down shorts reversed at the open. Recent run: London often reverses the overnight drift. Not changing anything on 4 losses; watching.
+- After B047 (tally from revealed days): 24/47 hits; longs 15/26, shorts 9/21; 26/47 days were up at 12:00, so always-long would beat me (26 vs 24). Pre-open breakdowns get squeezed at the London open (B029, B035, B036, B047). New rule from here: default LONG; short only on a strong, fresh down-structure (trend still making lower lows into 07:59, not a single breakdown bar), conf 2 or not at all.
+- B050 (L, wrong -7.7R): a late (last 30 min) range break UP against a down prev day failed, the mirror of B027. Late range breaks are weak both ways; when the late break fights the prev day, skip it as a signal.
+- After B057: default-long since B048 is 5/10, no better than before. Running total 29/57. Whatever I adjust, the no-structure days stay coins.

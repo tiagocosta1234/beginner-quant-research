@@ -1,0 +1,21 @@
+coefficients: on +0.144  l30 -0.007  pd -0.036  asia_loc -0.029  pd_loc -0.009  trend20 -0.020  si_on -0.006  es_on +0.050  vol +0.111  intercept +0.070
+== DEV in-sample (fit here, inflated): n 605  hits 317 (52.4%)  binomial P 0.1275  | always-long 313 (51.7%)  | mean R -0.141  t -0.99  P 0.8381
+   L calls: n 387  hit 53.2%  mean R -0.181  (up-rate on these days 53.2%)
+   S calls: n 218  hit 50.9%  mean R -0.069  (up-rate on these days 49.1%)
+== VAL: n 427  hits 228 (53.4%)  binomial P 0.0877  | always-long 240 (56.2%)  | mean R +0.126  t +0.82  P 0.2056
+   L calls: n 287  hit 57.1%  mean R +0.301  (up-rate on these days 57.1%)
+   S calls: n 140  hit 45.7%  mean R -0.233  (up-rate on these days 54.3%)
+BARS: (a) beats always-long and P<=0.05: False | (b) shorts hit>50% and mean R>0: False | (c) mean R>0, P<=0.05: False  ->  FAIL
+== VAL top-half confidence (no bar): n 205  hits 104 (50.7%)  binomial P 0.4445  | always-long 109 (53.2%)  | mean R -0.080  t -0.37  P 0.6458
+   L calls: n 158  hit 52.5%  mean R +0.075  (up-rate on these days 52.5%)
+   S calls: n 47  hit 44.7%  mean R -0.603  (up-rate on these days 55.3%)
+   single on       DEV sign +1  VAL hit 47.1%
+   single l30      DEV sign -1  VAL hit 50.1%
+   single pd       DEV sign -1  VAL hit 53.4%
+   single asia_loc DEV sign +1  VAL hit 48.7%
+   single pd_loc   DEV sign +1  VAL hit 45.7%
+   single trend20  DEV sign -1  VAL hit 53.2%
+   single si_on    DEV sign +1  VAL hit 48.0%
+   single es_on    DEV sign +1  VAL hit 51.5%
+   single vol      DEV sign +1  VAL hit 50.4%
+   bracket stop 2S / target 3S on VAL: mean R(S units) +0.059   | the trader's live bar: +0.5 R

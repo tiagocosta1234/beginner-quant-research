@@ -1,0 +1,32 @@
+== DEV 2019-07-01..2022-12-31 (908 weekdays)
+  T50           n  483  win 49.3%  meanR -0.160  t -3.40  P1 0.9997  noCostR -0.083
+     L-only   n  250  win 53.2%  meanR -0.080  t -1.23  P1 0.8905  noCostR -0.002
+     S-only   n  233  win 45.1%  meanR -0.245  t -3.64  P1 0.9999  noCostR -0.171
+  T80           n  507  win 48.9%  meanR -0.170  t -3.69  P1 0.9999  noCostR -0.095
+     L-only   n  264  win 51.1%  meanR -0.127  t -1.99  P1 0.9767  noCostR -0.050
+     S-only   n  243  win 46.5%  meanR -0.216  t -3.26  P1 0.9994  noCostR -0.143
+  TPD           n  576  win 47.2%  meanR -0.192  t -4.51  P1 1.0000  noCostR -0.117
+     L-only   n  277  win 50.2%  meanR -0.136  t -2.21  P1 0.9865  noCostR -0.059
+     S-only   n  299  win 44.5%  meanR -0.245  t -4.13  P1 1.0000  noCostR -0.171
+  NONE          n  673  win 49.3%  meanR -0.153  t -3.89  P1 0.9999  noCostR -0.078
+     L-only   n  339  win 52.8%  meanR -0.084  t -1.52  P1 0.9356  noCostR -0.010
+     S-only   n  334  win 45.8%  meanR -0.224  t -4.00  P1 1.0000  noCostR -0.146
+  T50 INVERTED  n  483  win 47.8%  meanR -0.193  t -4.14  P1 1.0000  noCostR -0.116
+     L-only   n  233  win 51.5%  meanR -0.114  t -1.69  P1 0.9546  noCostR -0.040
+     S-only   n  250  win 44.4%  meanR -0.266  t -4.14  P1 1.0000  noCostR -0.188
+== VAL 2023-01-01..2024-12-31 (520 weekdays)
+  T50           n  285  win 43.2%  meanR -0.282  t -4.67  P1 1.0000  noCostR -0.210
+     L-only   n  151  win 40.4%  meanR -0.344  t -4.16  P1 1.0000  noCostR -0.268
+     S-only   n  134  win 46.3%  meanR -0.213  t -2.41  P1 0.9919  noCostR -0.144
+  T80           n  299  win 44.8%  meanR -0.250  t -4.22  P1 1.0000  noCostR -0.177
+     L-only   n  164  win 43.3%  meanR -0.286  t -3.57  P1 0.9998  noCostR -0.209
+     S-only   n  135  win 46.7%  meanR -0.207  t -2.34  P1 0.9903  noCostR -0.137
+  TPD           n  329  win 47.7%  meanR -0.182  t -3.22  P1 0.9994  noCostR -0.112
+     L-only   n  168  win 46.4%  meanR -0.204  t -2.59  P1 0.9951  noCostR -0.134
+     S-only   n  161  win 49.1%  meanR -0.159  t -1.96  P1 0.9747  noCostR -0.089
+  NONE          n  383  win 52.7%  meanR -0.081  t -1.55  P1 0.9399  noCostR -0.010
+     L-only   n  202  win 52.0%  meanR -0.091  t -1.26  P1 0.8967  noCostR -0.020
+     S-only   n  181  win 53.6%  meanR -0.071  t -0.92  P1 0.8224  noCostR +0.001
+  T50 INVERTED  n  285  win 53.7%  meanR -0.065  t -1.08  P1 0.8597  noCostR +0.007
+     L-only   n  134  win 52.2%  meanR -0.092  t -1.03  P1 0.8484  noCostR -0.023
+     S-only   n  151  win 55.0%  meanR -0.042  t -0.51  P1 0.6937  noCostR +0.034
