@@ -27,3 +27,15 @@
 - **2026-04-21 result:** the trader's OWN long 4778.42 / stop 4760.92 / target 4797.15, target hit at about 12:45 (high about 4798): +1R, balance 47,554.66. Scorable, 15m flag. Claude's v4 fade long also won.
 - **2026-04-23 (batch day):** the trader gave his bias FIRST: SHORT. Claude's locked call (70b41bb8) was NO TRADE (paper 15m long). the trader to trade his own levels.
 - **2026-04-23 result:** the trader's OWN short 4713.12 / stop 4738.79 / target 4685.87, target hit at about 11:00 (low 4685.3): +1R, balance 48,072.32. Scorable, 15m flag. Claude had NO TRADE; its paper 15m-side long lost.
+- 11 May 2026 (FXR session 52a21e9a): the trader LONG 4678.57 / 4651.95 / 4705.56 -> STOP (-1R). Bought the 15m V against the 1h + daily down; the stop sat inside the 06:15 wick. Batch-2 own read now 10 trades, 7W/3L, +4R.
+- 12 May 2026: the trader SHORT 4697.09 / 4713.13 / 4680.65 -> TARGET (+1R) after 6 h of chop. Batch-2 own read: 11 trades, 8W/3L, +5R.
+- 8 Jun 2026 (FXR session 2eb6e1df): the trader LONG 4300.16 / 4260.88 / 4340.06 after the 06:15 sweep -> TARGET (+1R). Batch-2 own read: 12 trades, 9W/3L, +6R.
+- 9 Jun 2026: the trader SHORT 4330.73 / 4355.84 / 4305.17 -> STOP (-1R) on a 15:00 spike to ~4363; then the crash to 4258 passed the target. Batch-2 own read: 13 trades, 9W/4L, +5R.
+- 17 Jun 2026: the trader LONG 4331.82 / 4309.12 / 4354.84 -> TARGET (+1R) ~15:15 (FOMC day). Batch-2 own read: 14 trades, 10W/4L, +6R.
+- 18 Jun 2026: the trader LONG 4306.66 / 4259.29 / 4355.14 -> STOP (-1R); the post-FOMC V failed. Batch-2 own read: 15 trades, 10W/5L, +5R.
+- 23 Jun 2026: the trader SHORT 4114.49, stop widened to 4150.36 (1h structure), target 4078.46 -> TARGET (+1R) overnight. The original 4126.86 stop would have been hit at 11:15. Batch-2 own read: 16 trades, 11W/5L, +6R.
+- 25 Jun 2026 (new FXR session, 50,000 start): the trader SHORT 3974.68 / 3989.85 / 3959.98 at ~09:00 (flagged: not 07:59) -> STOP (-1R, -1003.59). Batch-2 own read: 17 trades, 11W/6L, +5R.
+- 6 Jul 2026 = BATCH-3 day (sealed list). the trader traded it without the 07:59 call (entry ~08:30, saw 30 min): LONG 4163.74 / 4140.36 / 4187.61 -> STOP. Logged flag=1, pre=0 (not a clean blind read).
+- 9 Jul 2026 = BATCH-2 day: the trader LONG 4108.86 / 4081.98 / 4136.37 entered at 08:00 (blind entry; read not announced to Claude first) -> TARGET ~15:15 (+1R). Batch-2 own read: 18 clean trades, 12W/6L, +6R (25 Jun flagged 09:00 entry included as a loss; 6 Jul batch-3 flagged).
+- 10 Jul 2026 = BATCH-3 day, traded without the 07:59 call (entry ~11:30): LONG -> STOP. Flagged, not a clean blind read. Batch-3 clean reads so far: 0 of 2 days used (6 Jul, 10 Jul both flagged).
+- 22 Jul 2026 = BATCH-2 day, traded without the 07:59 call (entry ~08:45): SHORT 4112.38 / 4132.37 / 4092.34 -> STOP ~14:30 spike to ~4165. Flagged (pre=0), not a clean blind read.
