@@ -1,0 +1,30 @@
+variants with enough trades: 1072 of 1072 | VAL t >= 2: 3 (luck alone: ~25) | VAL mean R > 0: 199 | PASSES (P <= 4.7e-05, DEV>0, n>=100): 0
+top 15 by VAL t (n>=100):
+  TIME/2/L/None stop1.00ATR R2                   DEV n 513 -0.092 | VAL n 319 +0.174 t+2.12 P0.0171
+  ORB/NY/30/BRK stop2.00ATR R1                   DEV n 455 -0.032 | VAL n 305 +0.079 t+2.10 P0.0178
+  GAP/NY/0.5/FOLLOW stop2.00ATR R2               DEV n 431 -0.055 | VAL n 284 +0.129 t+1.99 P0.0232
+  TIME/2/L/None stop2.00ATR R1                   DEV n 531 -0.023 | VAL n 337 +0.098 t+1.90 P0.0285
+  RSI/NY/(30, 70)/FOLLOW stop2.00ATR R1          DEV n 195 -0.040 | VAL n 122 +0.126 t+1.87 P0.0309
+  MOM/LDN/0.5/FOLLOW stop1.50ATR R1              DEV n 366 -0.158 | VAL n 213 +0.122 t+1.82 P0.0346
+  LVL/NY/PD/BRK stop2.00ATR R1                   DEV n 194 -0.079 | VAL n 135 +0.107 t+1.81 P0.0354
+  TIME/4/L/None stop1.00ATR R2                   DEV n 513 -0.090 | VAL n 318 +0.146 t+1.78 P0.0376
+  GAP/NY/0.5/FOLLOW stop1.50ATR R2               DEV n 431 -0.064 | VAL n 282 +0.128 t+1.73 P0.0416
+  GAP/NY/1.0/FOLLOW stop2.00ATR R2               DEV n 333 -0.030 | VAL n 235 +0.118 t+1.68 P0.0465
+  ORB/NY/30/BRK stop2.00ATR R2                   DEV n 455 -0.034 | VAL n 305 +0.068 t+1.66 P0.0482
+  TIME/0/L/None stop2.00ATR R2                   DEV n 532 +0.024 | VAL n 337 +0.108 t+1.61 P0.0539
+  GAP/NY/1.0/FOLLOW stop1.50ATR R2               DEV n 333 -0.026 | VAL n 235 +0.128 t+1.60 P0.0543
+  TIME/0/L/None stop1.50ATR R2                   DEV n 529 -0.006 | VAL n 336 +0.117 t+1.56 P0.0592
+  RSI/NY/(30, 70)/FOLLOW stop1.00ATR R2          DEV n 185 -0.192 | VAL n 119 +0.185 t+1.53 P0.0632
+best per style (VAL t, n>=100):
+  BB    BB/NY/2.5/BRK stop2.00ATR R1                   VAL +0.061 t+0.92 (DEV -0.043)
+  DON   DON/NY/40/BRK stop2.00ATR R1                   VAL +0.037 t+0.73 (DEV -0.076)
+  EMAX  EMAX/NY/20/26 stop1.50ATR R1                   VAL +0.096 t+1.46 (DEV +0.016)
+  GAP   GAP/NY/0.5/FOLLOW stop2.00ATR R2               VAL +0.129 t+1.99 (DEV -0.055)
+  LVL   LVL/NY/PD/BRK stop2.00ATR R1                   VAL +0.107 t+1.81 (DEV -0.079)
+  MEAN  MEAN/NY/1.0/FOLLOW stop2.00ATR R2              VAL +0.059 t+1.08 (DEV -0.025)
+  MOM   MOM/LDN/0.5/FOLLOW stop1.50ATR R1              VAL +0.122 t+1.82 (DEV -0.158)
+  NR7   NR7/LDN/None/FADE stop0.75ATR R1               VAL -0.020 t-0.24 (DEV -0.017)
+  ORB   ORB/NY/30/BRK stop2.00ATR R1                   VAL +0.079 t+2.10 (DEV -0.032)
+  PULL  PULL/NY/50/None stop2.00ATR R2                 VAL +0.044 t+0.68 (DEV -0.065)
+  RSI   RSI/NY/(30, 70)/FOLLOW stop2.00ATR R1          VAL +0.126 t+1.87 (DEV -0.040)
+  TIME  TIME/2/L/None stop1.00ATR R2                   VAL +0.174 t+2.12 (DEV -0.092)

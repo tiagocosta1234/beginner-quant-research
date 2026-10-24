@@ -1,0 +1,26 @@
+variant (slot/trend/stop/level) | DEV n meanR | VAL n meanR P | verdict
+LDN/1h/range/off       |  356 -0.003 |  229 +0.020 P0.3711 | fail
+LDN/1h/range/on        |   32 -0.060 |   26 -0.127 P0.7461 | fail
+LDN/1h/atr/off         |  277 -0.044 |  183 +0.043 P0.2767 | fail
+LDN/1h/atr/on          |   39 -0.106 |   32 -0.195 P0.8657 | fail
+LDN/1h/swing/off       |  362 -0.028 |  231 +0.007 P0.4484 | fail
+LDN/1h/swing/on        |   38 +0.065 |   29 -0.153 P0.8267 | fail
+LDN/both/range/off     |  199 +0.003 |  140 -0.035 P0.6727 | fail
+LDN/both/range/on      |   20 -0.210 |   16 -0.047 P0.5721 | fail
+LDN/both/atr/off       |  160 -0.002 |  117 +0.084 P0.1767 | fail
+LDN/both/atr/on        |   23 -0.140 |   19 -0.023 P0.5398 | fail
+LDN/both/swing/off     |  202 -0.019 |  139 -0.028 P0.6482 | fail
+LDN/both/swing/on      |   24 -0.036 |   17 -0.086 P0.6509 | fail
+NY/1h/range/off        |  373 +0.002 |  245 +0.049 P0.1642 | fail
+NY/1h/range/on         |  101 -0.039 |   60 -0.036 P0.6318 | fail
+NY/1h/atr/off          |  383 -0.064 |  236 +0.054 P0.1871 | fail
+NY/1h/atr/on           |  122 -0.078 |   72 -0.065 P0.7270 | fail
+NY/1h/swing/off        |  386 +0.012 |  246 +0.099 P0.0130 | fail
+NY/1h/swing/on         |  112 -0.045 |   64 +0.002 P0.4931 | fail
+NY/both/range/off      |  207 +0.023 |  133 +0.057 P0.2028 | fail
+NY/both/range/on       |   54 +0.028 |   39 -0.037 P0.6069 | fail
+NY/both/atr/off        |  207 -0.051 |  135 -0.014 P0.5700 | fail
+NY/both/atr/on         |   65 +0.011 |   48 -0.083 P0.7365 | fail
+NY/both/swing/off      |  212 +0.019 |  130 +0.117 P0.0273 | fail
+NY/both/swing/on       |   59 +0.007 |   39 -0.003 P0.5086 | fail
+PASSES: 0 of 24 (bar: VAL mean > 0, P <= 0.0021, DEV mean > 0, VAL n >= 60)

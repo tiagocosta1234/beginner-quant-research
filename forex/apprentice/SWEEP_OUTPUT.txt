@@ -1,0 +1,6 @@
+variant | DEV n meanR win | VAL n meanR P win | verdict
+PD/none        |  253 -0.168 45% |  142 -0.002 P0.5096 55% | fail
+PD/trend       |  125 -0.203 42% |   70 -0.024 P0.5824 54% | fail
+PD+AS/none     |  281 -0.172 46% |  163 -0.145 P0.9706 47% | fail
+PD+AS/trend    |  211 -0.126 48% |  135 -0.165 P0.9777 47% | fail
+PASSES: 0 of 4

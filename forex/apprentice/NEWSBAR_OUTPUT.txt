@@ -1,0 +1,6 @@
+variant | DEV n meanR win | VAL n meanR P win | verdict
+CONT/FULL  |  180 -0.054 49% |  195 -0.097 P0.9288 49% | fail
+CONT/HALF  |  117 -0.011 54% |  116 -0.001 P0.5051 53% | fail
+FADE/FULL  |   85 -0.165 46% |  101 +0.133 P0.0857 60% | fail
+FADE/HALF  |    5 +0.103 60% |    7 -0.248 P0.7279 43% | fail
+PASSES: 0 of 4

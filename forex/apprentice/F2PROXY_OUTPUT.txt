@@ -1,0 +1,11 @@
+== DEV: n 244 (L 130 / S 114), mean risk 9.7 pts
+   target 1.0R: win 45.9%  meanR +0.032  t +0.53  P 0.2995  totalR +7.7
+   target 1.5R: win 29.5%  meanR +0.003  t +0.04  P 0.4833  totalR +0.7
+   target 2.0R: win 18.4%  meanR -0.018  t -0.23  P 0.5909  totalR -4.3
+   target 3.0R: win  7.4%  meanR -0.003  t -0.04  P 0.5164  totalR -0.8
+== VAL: n 174 (L 114 / S 60), mean risk 11.1 pts
+   target 1.0R: win 37.4%  meanR -0.095  t -1.37  P 0.9144  totalR -16.5
+   target 1.5R: win 28.7%  meanR -0.073  t -0.89  P 0.8130  totalR -12.7
+   target 2.0R: win 21.3%  meanR -0.049  t -0.54  P 0.7050  totalR -8.6
+   target 3.0R: win  9.8%  meanR +0.006  t +0.06  P 0.4765  totalR +1.1
+BAR: 2R mean > 1R mean: True | 2R mean > 0 with P<=0.05: False  ->  FAIL

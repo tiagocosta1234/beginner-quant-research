@@ -81,3 +81,4 @@ logged_pc_time,session,replay_utc,symbol,tf,side,entry,stop,target,risk_pts,rewa
 2026-10-24 23:38,new session,day 20 Jul ~08:30 entry / seen 19:59,XAUUSD OANDA,15m,S,4003.78,4023.84,3983.68,20.06,20.10,1.00,stop,-1.0,-1003.10,47231.14,the trader's own short; spike ~12:30 stopped it
 2026-10-24 23:39,new session,day 21 Jul ~08:45 entry / seen 22 Jul 07:44,XAUUSD OANDA,15m,S,4072.11,4092.30,4052.01,20.19,20.10,1.00,target,+1.0,+1004.90,48236.04,the trader's own short; target ~14:15
 2026-10-24 23:39,new session,day 22 Jul ~08:45 entry / seen 23 Jul 07:59,XAUUSD OANDA,15m,S,4112.38,4132.37,4092.34,19.99,20.04,1.00,stop,-1.0,-999.60,47236.44,BATCH-2 day, flagged (no 07:59 call); stopped ~14:30
+2026-10-24 23:40,new session,day 24 Jul ~08:15 entry / seen 24 Jul 23:14,XAUUSD OANDA,15m,L,4045.34,4025.39,4065.73,19.95,20.39,1.02,target,+1.0,+1009.55,48245.99,BATCH-2 day, flagged; target ~15:00

@@ -39,3 +39,4 @@
 - 9 Jul 2026 = BATCH-2 day: the trader LONG 4108.86 / 4081.98 / 4136.37 entered at 08:00 (blind entry; read not announced to Claude first) -> TARGET ~15:15 (+1R). Batch-2 own read: 18 clean trades, 12W/6L, +6R (25 Jun flagged 09:00 entry included as a loss; 6 Jul batch-3 flagged).
 - 10 Jul 2026 = BATCH-3 day, traded without the 07:59 call (entry ~11:30): LONG -> STOP. Flagged, not a clean blind read. Batch-3 clean reads so far: 0 of 2 days used (6 Jul, 10 Jul both flagged).
 - 22 Jul 2026 = BATCH-2 day, traded without the 07:59 call (entry ~08:45): SHORT 4112.38 / 4132.37 / 4092.34 -> STOP ~14:30 spike to ~4165. Flagged (pre=0), not a clean blind read.
+- 24 Jul 2026 = BATCH-2 day, played through without the 07:59 call (entry ~08:15): LONG 4045.34 / 4025.39 / 4065.73 -> TARGET ~15:00 (+1R, +1009.55). Flagged (pre=0). Batch-2 days left: 6 Aug, 12 Aug, 26 Aug, 14 Sep, 28 Sep.
