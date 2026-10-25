@@ -1,0 +1,248 @@
+//@version=6
+indicator("A+ London (GC 1m)", overlay=true, max_boxes_count=500, max_labels_count=500, max_lines_count=500)
+
+// Frozen checklist: A_PLUS_SETUP_AND_DEMO_PLAN_DRAFT.md (25 Oct 2026). Draws CANDIDATES only (mechanical hard items + the 1h item).
+// Order block / FVG / sweep judgement and the news check stay with the trader. Window is on DATA time (Europe/London). Use on the 1-minute chart.
+// Past candidates are drawn on every loaded bar and scored: stop first if both hit in one bar, 0.1 pt target trade-through,
+// slippage per side, commission, time exit at 17:00 local. The dashboard covers the bars TradingView has loaded for this chart.
+emaLen  = input.int(12, "EMA length (rule: 12)", minval=2)
+minStop = input.float(1.5, "Min stop (pts)")
+maxStop = input.float(6.0, "Max stop (pts)")
+minRR   = input.float(1.5, "Min planned RR")
+swingN  = input.int(8, "Stop: extreme of last N 1m candles")
+tgtN    = input.int(60, "Target: prior extreme of last N 1m candles")
+buf     = input.float(0.1, "Stop buffer (pts)")
+slip    = input.float(0.1, "Slippage per side (pts)")
+tpThru  = input.float(0.1, "Target needs this trade-through (pts)")
+comm    = input.float(1.2, "Commission, USD per round trip per MGC")
+pv      = input.float(10.0, "USD per point per MGC")
+showDash = input.bool(true, "Show dashboard")
+showPast = input.bool(true, "Draw past setups")
+
+inWin = not na(time(timeframe.period, "0800-0816", "Europe/London"))
+newWin = inWin and not inWin[1]
+
+htf15() =>
+    e = ta.ema(close, emaLen)
+    [close[1], e[1], e[5]]
+htf60() =>
+    e = ta.ema(close, emaLen)
+    [close[1], e[1]]
+[c15, e15, e15b] = request.security(syminfo.tickerid, "15", htf15(), lookahead = barmerge.lookahead_on)
+[c60, e60] = request.security(syminfo.tickerid, "60", htf60(), lookahead = barmerge.lookahead_on)
+
+var int bias = 0
+var bool taken = false
+if newWin
+    bias := c15 > e15 and e15 > e15b ? 1 : c15 < e15 and e15 < e15b ? -1 : 0
+    taken := false
+    if showPast
+        label.new(bar_index, high, "bias " + (bias == 1 ? "LONG" : bias == -1 ? "SHORT" : "NEUTRAL"), style = label.style_label_down, color = color.new(color.gray, 35), textcolor = color.white, size = size.tiny)
+
+ema1 = ta.ema(close, emaLen)
+body = math.abs(close - open)
+upW = high - math.max(open, close)
+loW = math.min(open, close) - low
+bodyOK = body > math.max(upW, loW)
+
+longTrig = inWin and bias == 1 and close > ema1 and close[1] < ema1[1] and bodyOK
+shortTrig = inWin and bias == -1 and close < ema1 and close[1] > ema1[1] and bodyOK
+
+entryL = close + slip
+stopL = ta.lowest(low, swingN) - buf
+tgtL = ta.highest(high, tgtN)[1]
+riskL = entryL - stopL
+rrL = riskL > 0 ? (tgtL - entryL) / riskL : 0.0
+
+entryS = close - slip
+stopS = ta.highest(high, swingN) + buf
+tgtS = ta.lowest(low, tgtN)[1]
+riskS = stopS - entryS
+rrS = riskS > 0 ? (entryS - tgtS) / riskS : 0.0
+
+okL = longTrig and riskL >= minStop and riskL <= maxStop and tgtL > entryL and rrL >= minRR
+okS = shortTrig and riskS >= minStop and riskS <= maxStop and tgtS < entryS and rrS >= minRR
+
+c3L = bias == 1 and c60 > e60
+c3S = bias == -1 and c60 < e60
+sigL = okL and not taken and barstate.isconfirmed
+sigS = okS and not taken and barstate.isconfirmed
+
+fmt(x) =>
+    na(x) ? "-" : (x >= 0 ? "+" : "") + str.tostring(x, "0.00")
+
+dashCell(tbl, r, k, v, col) =>
+    table.cell(tbl, 0, r, k, text_color = color.new(color.white, 20), text_halign = text.align_left, text_size = size.small)
+    table.cell(tbl, 1, r, v, text_color = col, text_halign = text.align_right, text_size = size.small)
+
+// ---- trade state and statistics ----
+var bool inTrade = false
+var int tSide = 0
+var float tEntry = na
+var float tStop = na
+var float tTgt = na
+var float tRisk = na
+var bool tC3 = false
+var int tStartBar = na
+var box bT = na
+var box bS = na
+var line lE = na
+
+var int n = 0
+var int nW = 0
+var int nL = 0
+var float sumR = 0.0
+var float sumR2 = 0.0
+var float sumWin = 0.0
+var float sumLoss = 0.0
+var float cumR = 0.0
+var float peakR = 0.0
+var float maxDD = 0.0
+var int streak = 0
+var int maxStreak = 0
+var int nLong = 0
+var float sLong = 0.0
+var int nShort = 0
+var float sShort = 0.0
+var int nC3y = 0
+var float sC3y = 0.0
+var int nC3n = 0
+var float sC3n = 0.0
+var float lastR = na
+
+sig = (sigL or sigS) and not inTrade
+if sig
+    int sd = sigL ? 1 : -1
+    float en = sigL ? entryL : entryS
+    float st = sigL ? stopL : stopS
+    float tg = sigL ? tgtL : tgtS
+    float rk = sigL ? riskL : riskS
+    float rr = sigL ? rrL : rrS
+    bool c3 = sigL ? c3L : c3S
+    inTrade := true
+    tSide := sd
+    tEntry := en
+    tStop := st
+    tTgt := tg
+    tRisk := rk
+    tC3 := c3
+    tStartBar := bar_index
+    taken := true
+    if showPast
+        bT := box.new(bar_index, math.max(en, tg), bar_index + 20, math.min(en, tg), border_color = color.green, bgcolor = color.new(color.green, 85))
+        bS := box.new(bar_index, math.max(en, st), bar_index + 20, math.min(en, st), border_color = color.red, bgcolor = color.new(color.red, 85))
+        lE := line.new(bar_index, en, bar_index + 20, en, color = color.gray)
+        label.new(bar_index, sd == 1 ? low : high, "A+ " + (sd == 1 ? "LONG" : "SHORT") + "  RR " + str.tostring(rr, "0.0") + "  stop " + str.tostring(rk, "0.0") + "\n1h agrees: " + (c3 ? "yes" : "NO") + "\n(check zone / sweep / news)", style = sd == 1 ? label.style_label_up : label.style_label_down, color = color.new(color.blue, 25), textcolor = color.white, size = size.tiny)
+
+if inTrade and bar_index > tStartBar
+    float exitP = na
+    string why = ""
+    if tSide == 1
+        if open <= tStop
+            exitP := open - slip
+            why := "gap"
+        else if low <= tStop
+            exitP := tStop - slip
+            why := "stop"
+        else if high >= tTgt + tpThru
+            exitP := tTgt
+            why := "target"
+    else
+        if open >= tStop
+            exitP := open + slip
+            why := "gap"
+        else if high >= tStop
+            exitP := tStop + slip
+            why := "stop"
+        else if low <= tTgt - tpThru
+            exitP := tTgt
+            why := "target"
+    if na(exitP) and hour(time, "Europe/London") >= 17
+        exitP := close - slip * tSide
+        why := "time"
+    if not na(exitP)
+        r = (exitP - tEntry) * tSide / tRisk - comm / (tRisk * pv)
+        n += 1
+        sumR += r
+        sumR2 += r * r
+        cumR += r
+        peakR := math.max(peakR, cumR)
+        maxDD := math.max(maxDD, peakR - cumR)
+        if r > 0
+            nW += 1
+            sumWin += r
+            streak := 0
+        else
+            nL += 1
+            sumLoss += r
+            streak += 1
+            maxStreak := math.max(maxStreak, streak)
+        if tSide == 1
+            nLong += 1
+            sLong += r
+        else
+            nShort += 1
+            sShort += r
+        if tC3
+            nC3y += 1
+            sC3y += r
+        else
+            nC3n += 1
+            sC3n += r
+        lastR := r
+        if showPast
+            box.set_right(bT, bar_index)
+            box.set_right(bS, bar_index)
+            line.set_x2(lE, bar_index)
+            label.new(bar_index, exitP, fmt(r) + "R " + why, style = label.style_label_left, color = r > 0 ? color.new(color.green, 20) : color.new(color.red, 20), textcolor = color.white, size = size.tiny)
+        inTrade := false
+
+plot(ema1, "EMA", color = color.orange, linewidth = 2)
+bgcolor(inWin ? color.new(color.blue, 92) : na)
+plot(cumR, "Cumulative R", display = display.data_window)
+alertcondition(sigL or sigS, "A+ candidate", "A+ London candidate: check zone, sweep, news, then draw the box")
+
+// ---- dashboard ----
+var table t = table.new(position.top_right, 2, 17, bgcolor = color.new(color.black, 15), border_width = 1, border_color = color.new(color.gray, 60), frame_width = 1, frame_color = color.new(color.gray, 40))
+if barstate.islast and showDash
+    mean = n > 0 ? sumR / n : na
+    sd = n > 1 ? math.sqrt(math.max(0.0, (sumR2 - n * mean * mean) / (n - 1))) : na
+    se = n > 1 ? sd / math.sqrt(n) : na
+    pf = sumLoss < 0 ? sumWin / (-sumLoss) : na
+    mc = mean >= 0 ? color.new(color.green, 0) : color.new(color.red, 0)
+    table.cell(t, 0, 0, "A+ London · mechanical candidates", text_color = color.white, bgcolor = color.new(color.blue, 40), text_size = size.small)
+    table.merge_cells(t, 0, 0, 1, 0)
+    dashCell(t, 1, "Trades (loaded bars)", str.tostring(n), color.white)
+    dashCell(t, 2, "Win rate", n > 0 ? str.tostring(100.0 * nW / n, "0") + "%  (" + str.tostring(nW) + "W / " + str.tostring(nL) + "L)" : "-", color.white)
+    dashCell(t, 3, "Mean R (net)", n > 0 ? fmt(mean) + "R" : "-", mc)
+    dashCell(t, 4, "Std error of mean", na(se) ? "-" : "±" + str.tostring(se, "0.00") + "R", color.gray)
+    dashCell(t, 5, "Total R", fmt(sumR) + "R", sumR >= 0 ? color.green : color.red)
+    dashCell(t, 6, "Profit factor", na(pf) ? "-" : str.tostring(pf, "0.00"), color.white)
+    dashCell(t, 7, "Avg win / avg loss", (nW > 0 ? fmt(sumWin / nW) : "-") + " / " + (nL > 0 ? str.tostring(sumLoss / nL, "0.00") : "-"), color.white)
+    dashCell(t, 8, "Max drawdown", str.tostring(maxDD, "0.0") + "R", color.white)
+    dashCell(t, 9, "Longest losing streak", str.tostring(maxStreak), color.white)
+    dashCell(t, 10, "Longs mean R (n)", nLong > 0 ? fmt(sLong / nLong) + "R (" + str.tostring(nLong) + ")" : "-", color.white)
+    dashCell(t, 11, "Shorts mean R (n)", nShort > 0 ? fmt(sShort / nShort) + "R (" + str.tostring(nShort) + ")" : "-", color.white)
+    dashCell(t, 12, "1h agrees: mean R (n)", nC3y > 0 ? fmt(sC3y / nC3y) + "R (" + str.tostring(nC3y) + ")" : "-", color.white)
+    dashCell(t, 13, "1h disagrees: mean R (n)", nC3n > 0 ? fmt(sC3n / nC3n) + "R (" + str.tostring(nC3n) + ")" : "-", color.white)
+    dashCell(t, 14, "Last bias (08:00 window)", bias == 1 ? "LONG" : bias == -1 ? "SHORT" : "NEUTRAL", color.white)
+    dashCell(t, 15, "Open candidate", inTrade ? (tSide == 1 ? "LONG" : "SHORT") + " @ " + str.tostring(tEntry, "0.0") : "none", inTrade ? color.yellow : color.gray)
+    dashCell(t, 16, "Last result", na(lastR) ? "-" : fmt(lastR) + "R", na(lastR) ? color.gray : (lastR >= 0 ? color.green : color.red))
+
+// ---- static 7-year reference (Python backtest on Databento GC 1m, same rules and costs; NOT live) ----
+var table t2 = table.new(position.middle_right, 2, 13, bgcolor = color.new(color.black, 15), border_width = 1, border_color = color.new(color.gray, 60), frame_width = 1, frame_color = color.new(color.gray, 40))
+if barstate.islast and showDash
+    table.cell(t2, 0, 0, "7-year backtest, same rules (static)", text_color = color.white, bgcolor = color.new(color.orange, 40), text_size = size.small)
+    table.merge_cells(t2, 0, 0, 1, 0)
+    dashCell(t2, 1, "Period (Databento GC)", "Jun 2019 - Sep 2026", color.white)
+    dashCell(t2, 2, "Trades", "192  (about 1 day in 10)", color.white)
+    dashCell(t2, 3, "Win rate", "35%", color.white)
+    dashCell(t2, 4, "Mean R (net)", "-0.04R  (+/- 0.11)", color.red)
+    dashCell(t2, 5, "Total R", "-7.6R", color.red)
+    dashCell(t2, 6, "Longs mean R (n)", "-0.12R (83)", color.white)
+    dashCell(t2, 7, "Shorts mean R (n)", "+0.02R (109)", color.white)
+    dashCell(t2, 8, "1h agrees (n)", "-0.07R (154)", color.white)
+    dashCell(t2, 9, "1h disagrees (n)", "+0.07R (38)", color.white)
+    dashCell(t2, 10, "2024 / 2025 / 2026", "-0.52 / +0.05 / +0.18", color.white)
+    dashCell(t2, 11, "Last 12 months (n)", "+0.12R (71) +/- 0.18", color.gray)
+    dashCell(t2, 12, "Verdict", "no edge shown", color.red)

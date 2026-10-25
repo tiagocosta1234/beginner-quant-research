@@ -1,0 +1,143 @@
+//@version=5
+indicator("STDV PO3 — Optimised", overlay=true, max_boxes_count=500, max_lines_count=500)
+
+// ─── Inputs ───────────────────────────────────────────────────────────────────
+lookbackPeriod  = input.int(20,    "Range Lookback (Bars)",          minval=5)
+volMultiplier   = input.float(1.3, "Volume Confirmation Multiplier", minval=1.0)
+boxWidth        = input.int(15,    "Projection Box Width (Bars)")
+emaLength       = input.int(50,    "Trend EMA Length")
+atrLength       = input.int(14,    "ATR Length")
+atrMinMult      = input.float(0.8, "Min Range Size (× ATR)",         minval=0.1)
+cooldownMinutes = input.int(30,    "Cooldown Between Trades (min)",   minval=1)
+
+// ─── Session: London 08:00–15:59 UTC (strict) ─────────────────────────────────
+utcHour   = hour(time, "UTC")
+utcMinute = minute(time, "UTC")
+inSession = utcHour >= 8 and utcHour <= 15
+
+// ─── Session Box ──────────────────────────────────────────────────────────────
+sessionOpen = inSession and not inSession[1]
+var box sessionBox = na
+if sessionOpen
+    sessionBox := box.new(bar_index, high, bar_index + 1, low, bgcolor=color.new(color.blue, 87), border_color=color.new(color.blue, 50), border_width=1)
+if inSession and not na(sessionBox)
+    box.set_right(sessionBox,  bar_index + 1)
+    box.set_top(sessionBox,    math.max(box.get_top(sessionBox),    high))
+    box.set_bottom(sessionBox, math.min(box.get_bottom(sessionBox), low))
+
+// ─── Indicators ───────────────────────────────────────────────────────────────
+avgVol = ta.sma(volume, 20)
+rsi    = ta.rsi(close, 14)
+ema    = ta.ema(close, emaLength)
+atr    = ta.atr(atrLength)
+
+// ─── Range ────────────────────────────────────────────────────────────────────
+rollingHigh = ta.highest(high[1], lookbackPeriod)
+rollingLow  = ta.lowest(low[1],  lookbackPeriod)
+swingSize   = rollingHigh - rollingLow
+
+// ─── Filters ──────────────────────────────────────────────────────────────────
+volUp      = volume > (avgVol * volMultiplier) and close > open
+volDown    = volume > (avgVol * volMultiplier) and close < open
+rsiLong    = rsi >= 55 and rsi <= 72
+rsiShort   = rsi <= 45 and rsi >= 28
+trendUp    = close > ema
+trendDown  = close < ema
+rangeValid = swingSize >= atr * atrMinMult
+
+var int lastTradeTime = 0
+cooldownMs = cooldownMinutes * 60 * 1000
+cooldownOk = (time - lastTradeTime) > cooldownMs
+
+// ─── Signals (ONLY inside session) ───────────────────────────────────────────
+buySignal  = inSession and barstate.isconfirmed and ta.crossover(close, rollingHigh)  and volUp   and rsiLong  and trendUp   and rangeValid and cooldownOk
+sellSignal = inSession and barstate.isconfirmed and ta.crossunder(close, rollingLow)  and volDown and rsiShort and trendDown and rangeValid and cooldownOk
+
+if buySignal or sellSignal
+    lastTradeTime := time
+
+// ─── Levels ───────────────────────────────────────────────────────────────────
+longTP  = rollingHigh + swingSize
+longSL  = rollingLow
+shortTP = rollingLow  - swingSize
+shortSL = rollingHigh
+
+// ─── Trade Tracking ───────────────────────────────────────────────────────────
+var int   totalTrades  = 0
+var int   totalWins    = 0
+var float peakR        = 0.0
+var float troughR      = 0.0
+var float maxDrawdownR = 0.0
+var float cumulativeR  = 0.0
+var bool  inTrade    = false
+var bool  isLong     = false
+var float tradeSL    = na
+var float tradeTP    = na
+
+if (buySignal or sellSignal) and not inTrade
+    inTrade     := true
+    isLong      := buySignal
+    tradeSL     := isLong ? longSL  : shortSL
+    tradeTP     := isLong ? longTP  : shortTP
+    totalTrades := totalTrades + 1
+
+if inTrade and barstate.isconfirmed
+    tpHit = isLong ? high >= tradeTP : low  <= tradeTP
+    slHit = isLong ? low  <= tradeSL : high >= tradeSL
+    if tpHit or slHit
+        result    = tpHit ? 1.0 : -1.0
+        exitPrice = tpHit ? tradeTP : tradeSL
+        exitColor = tpHit ? color.green : color.red
+        if tpHit
+            totalWins := totalWins + 1
+        label.new(bar_index, exitPrice, text=tpHit ? "▲" : "▼", color=color.new(exitColor, 20), textcolor=color.white, style=tpHit ? label.style_label_up : label.style_label_down, size=size.small)
+        cumulativeR := cumulativeR + result
+        if cumulativeR > peakR
+            peakR   := cumulativeR
+            troughR := cumulativeR
+        else if cumulativeR < troughR
+            troughR := cumulativeR
+            currentDD = peakR - troughR
+            if currentDD > maxDrawdownR
+                maxDrawdownR := currentDD
+        inTrade := false
+
+// ─── Dashboard ────────────────────────────────────────────────────────────────
+var table dashboard = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 20), border_color=color.new(color.gray, 40), border_width=1, frame_color=color.new(color.gray, 20), frame_width=1)
+winRate    = totalTrades > 0 ? (totalWins / totalTrades) * 100 : 0.0
+winRateStr = totalTrades > 0 ? str.tostring(winRate, "#.#") + "%" : "—"
+ddStr      = maxDrawdownR > 0 ? str.tostring(maxDrawdownR, "#.##") + "R" : "—"
+netRStr    = totalTrades  > 0 ? str.tostring(cumulativeR,  "#.##") + "R" : "—"
+winColor   = winRate >= 50 ? color.new(color.green, 20) : color.new(color.red, 20)
+ddColor    = maxDrawdownR <= 3 ? color.new(color.green, 20) : maxDrawdownR <= 6 ? color.new(color.orange, 20) : color.new(color.red, 20)
+netRColor  = cumulativeR > 0 ? color.new(color.green, 20) : cumulativeR < 0 ? color.new(color.red, 20) : color.new(color.gray, 20)
+if barstate.islast
+    table.cell(dashboard, 0, 0, "STDV PO3 Optimised",     text_color=color.white,  text_size=size.small, bgcolor=color.new(color.navy, 10), text_halign=text.align_center)
+    table.cell(dashboard, 1, 0, "",                        text_color=color.white,  text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dashboard, 0, 1, "Total Trades",            text_color=color.silver, text_size=size.small)
+    table.cell(dashboard, 1, 1, str.tostring(totalTrades), text_color=color.white,  text_size=size.small)
+    table.cell(dashboard, 0, 2, "Wins",                    text_color=color.silver, text_size=size.small)
+    table.cell(dashboard, 1, 2, str.tostring(totalWins),   text_color=color.white,  text_size=size.small)
+    table.cell(dashboard, 0, 3, "Win Rate",                text_color=color.silver, text_size=size.small)
+    table.cell(dashboard, 1, 3, winRateStr,                text_color=color.white,  text_size=size.small, bgcolor=winColor)
+    table.cell(dashboard, 0, 4, "Max Drawdown",            text_color=color.silver, text_size=size.small)
+    table.cell(dashboard, 1, 4, ddStr,                     text_color=color.white,  text_size=size.small, bgcolor=ddColor)
+    table.cell(dashboard, 0, 5, "Net Profit",              text_color=color.silver, text_size=size.small)
+    table.cell(dashboard, 1, 5, netRStr,                   text_color=color.white,  text_size=size.small, bgcolor=netRColor)
+
+// ─── Projection Boxes ─────────────────────────────────────────────────────────
+if buySignal
+    alert("LONG: " + syminfo.ticker + " | TP: " + str.tostring(longTP, "#.##") + " | SL: " + str.tostring(longSL, "#.##"), alert.freq_once_per_bar)
+    box.new(bar_index, longTP,      bar_index + boxWidth, rollingHigh, bgcolor=color.new(color.green, 85), border_color=color.green)
+    box.new(bar_index, rollingHigh, bar_index + boxWidth, longSL,      bgcolor=color.new(color.red,   85), border_color=color.red)
+
+if sellSignal
+    alert("SHORT: " + syminfo.ticker + " | TP: " + str.tostring(shortTP, "#.##") + " | SL: " + str.tostring(shortSL, "#.##"), alert.freq_once_per_bar)
+    box.new(bar_index, shortSL,    bar_index + boxWidth, rollingLow,  bgcolor=color.new(color.red,   85), border_color=color.red)
+    box.new(bar_index, rollingLow, bar_index + boxWidth, shortTP,     bgcolor=color.new(color.green, 85), border_color=color.green)
+
+// ─── Entry Symbols ────────────────────────────────────────────────────────────
+plotshape(buySignal,  style=shape.triangleup,   location=location.belowbar, color=color.green, size=size.tiny)
+plotshape(sellSignal, style=shape.triangledown, location=location.abovebar, color=color.red,   size=size.tiny)
+plot(ema, "Trend EMA", color=color.new(color.yellow, 40), linewidth=1)
+bgcolor(inSession ? color.new(color.blue, 93) : na, title="London Session")
