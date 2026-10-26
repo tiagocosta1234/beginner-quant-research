@@ -1,0 +1,14 @@
+USDJPY London breakout on 6J futures costs (1 tick spread + $5 RT + 2 ticks slippage), 2020-26, DESCRIPTIVE (seen data)
+median box 14.5 pips = 16 6J ticks; futures friction about 0.175 R a trade
+year       n   R spot*      R 6J    t 6J    win %    random
+2020     258    +0.319    +0.099    0.49      27%    -0.083
+2021     259    +0.032    -0.182   -1.37      26%    -0.307
+2022     256    +0.281    +0.127    0.75      31%    -0.055
+2023     255    -0.176    -0.359   -2.82      21%    -0.069
+2024     256    +0.035    -0.178   -1.29      24%    -0.173
+2025     253    +0.044    -0.123   -1.05      30%    +0.050
+2026     201    +0.059    -0.246   -1.39      25%    -0.223
+all     1738    +0.086    -0.119   -2.05      26%    -0.120
+* R spot = the same trades with only the 1-tick spread (no commission / slippage)
+one trade a day at most: mean -0.119 R a trade; at $1,500 risk: $-179 a trade on average
+worst drawdown -269.3 R; longest losing run 24 trades
