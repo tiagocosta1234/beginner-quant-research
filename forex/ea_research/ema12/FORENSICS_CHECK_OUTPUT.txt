@@ -1,0 +1,12 @@
+his side     stopped 44, target reached later 28 (64%); wins 50%, mean R +0.015
+MIRROR side  stopped 49, target reached later 30 (61%); wins 44%, mean R -0.075
+
+WHAT-IF minimum stop = k x pre-entry 1-minute noise (stop = max(his, k x noise)); his side vs mirror; MT5 broker bid/ask
+  k 0, target his R:R  his: wins  50% mean R +0.015 | mirror: wins  44% mean R -0.075 | his - mirror +0.089  P 0.333
+  k 0, target 1:1      his: wins  51% mean R +0.018 | mirror: wins  43% mean R -0.132 | his - mirror +0.149  P 0.254
+  k 3, target his R:R  his: wins  52% mean R +0.063 | mirror: wins  42% mean R -0.133 | his - mirror +0.196  P 0.180
+  k 3, target 1:1      his: wins  53% mean R +0.063 | mirror: wins  44% mean R -0.109 | his - mirror +0.172  P 0.235
+  k 5, target his R:R  his: wins  51% mean R +0.052 | mirror: wins  42% mean R -0.147 | his - mirror +0.199  P 0.175
+  k 5, target 1:1      his: wins  56% mean R +0.109 | mirror: wins  43% mean R -0.132 | his - mirror +0.240  P 0.142
+  k 7, target his R:R  his: wins  53% mean R +0.071 | mirror: wins  45% mean R -0.063 | his - mirror +0.134  P 0.264
+  k 7, target 1:1      his: wins  52% mean R +0.040 | mirror: wins  47% mean R -0.063 | his - mirror +0.103  P 0.303

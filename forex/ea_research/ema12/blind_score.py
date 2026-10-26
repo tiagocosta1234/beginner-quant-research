@@ -2,6 +2,13 @@
 python blind_score.py LOG.csv        LOG.csv columns: date, ses (London/NY), side (L/S; empty = no trade), hhmm (chart clock = local, last candle visible when he clicked), entry, stop, target, flag (1 = recognised the day), pre (1 = logged before the result)
 python blind_score.py --validate     rebuilds the 30 trades of 14 Apr-12 May 2025 from replay_mt5.csv and must reproduce direction_skill.csv"""
 import sys, numpy as np, pandas as pd
+def srv_off(date):
+    """Minutes from the local clock to the MT5 broker server clock on that date. Fix 26 Oct 2026: the MT5 broker server is New York time + 7 h (it follows
+    US daylight saving), so in the US/EU DST gaps (mid-late March, late Oct - early Nov) it is local + 3 h, not + 2 h (v1 used + 2 h always)."""
+    t = pd.Timestamp(str(date) + " 12:00")
+    ny = t.tz_localize("Europe/London").tz_convert("America/New_York").utcoffset().total_seconds() / 60
+    lis = t.tz_localize("Europe/London").utcoffset().total_seconds() / 60
+    return int(ny + 7 * 60 - lis)
 DATA = "D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet"; TOL = 1.5; CLOSE_HM = {"London": 19 * 60, "NY": 23 * 60 + 30}   # server clock: 17:00 local / end of day
 def load_days(d0, d1):
     lo = int((pd.Timestamp(d0) - pd.Timedelta(days=1)).timestamp()); hi = int((pd.Timestamp(d1) + pd.Timedelta(days=2)).timestamp())
@@ -29,7 +36,7 @@ def run(g, i0, side, risk_, rew_, close_hm):
 def score(log, days, shift=0, lag=0):
     out = []
     for _, r in log.iterrows():
-        g = days[pd.Timestamp(r.date).date()]; hm = int(r.hhmm[:2]) * 60 + int(r.hhmm[3:]) + 120 + lag     # local + 2 h = MT5 broker server clock; lag 1 = the log holds the signal candle, the entry is the next candle
+        g = days[pd.Timestamp(r.date).date()]; hm = int(r.hhmm[:2]) * 60 + int(r.hhmm[3:]) + srv_off(r.date) + lag     # local -> MT5 broker server clock (srv_off); lag 1 = the log holds the signal candle, the entry is the next candle
         i0 = g.index[g.hm >= hm][0]; note = ""
         if pd.notna(r.get("entry")) and abs(g.mo[i0] - r.entry) > TOL:
             near = [i for i in range(max(i0 - 5, 0), min(i0 + 6, len(g)))]; b = min(near, key=lambda i: abs(g.mo[i] - r.entry))
@@ -37,7 +44,7 @@ def score(log, days, shift=0, lag=0):
             if abs(g.mo[b] - r.entry) <= TOL: i0 = b
         i0 = min(max(i0 + shift, 0), len(g) - 1)
         risk_ = r.risk if "risk" in r and pd.notna(r.risk) else abs(r.entry - r.stop); rew_ = r.rew if "rew" in r and pd.notna(r.rew) else abs(r.target - r.entry)
-        ch = CLOSE_HM[r.ses]; RL, RS = run(g, i0, "L", risk_, rew_, ch), run(g, i0, "S", risk_, rew_, ch)
+        ch = CLOSE_HM[r.ses] + srv_off(r.date) - 120; RL, RS = run(g, i0, "L", risk_, rew_, ch), run(g, i0, "S", risk_, rew_, ch)
         out.append(dict(date=r.date, ses=r.ses, side=r.side, flag=int(r.get("flag", 0) or 0), pre=int(r.get("pre", 1)), risk=risk_, R_L=RL, R_S=RS, R_mine=RL if r.side == "L" else RS, R_mirror=RS if r.side == "L" else RL, note=note))
     return pd.DataFrame(out)
 def summarize(Z, label, extra_cost=0.0):

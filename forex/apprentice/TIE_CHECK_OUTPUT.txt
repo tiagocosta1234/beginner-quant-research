@@ -1,0 +1,14 @@
+How often does one 1-minute bar touch BOTH stop and target? Net R a trade with the tie scored as loss / neutral / win (2020-2026)
+cost scale: 1.0 = the costs used all day; 0.5 = half (e.g. cheaper commissions + limit entries)
+  London IND MGC                  n 1653  ties  0.0%  cost 0.090R x1.0   net R: tie=loss -0.086   tie=neutral -0.086   tie=win -0.086
+  London IND MGC                  n 1653  ties  0.0%  cost 0.090R x0.5   net R: tie=loss -0.041   tie=neutral -0.041   tie=win -0.041
+  London IND MNQ                  n 1721  ties  0.0%  cost 0.040R x1.0   net R: tie=loss -0.073   tie=neutral -0.073   tie=win -0.073
+  London IND MNQ                  n 1721  ties  0.0%  cost 0.040R x0.5   net R: tie=loss -0.054   tie=neutral -0.054   tie=win -0.054
+  London IND MES                  n 1689  ties  0.1%  cost 0.113R x1.0   net R: tie=loss -0.160   tie=neutral -0.158   tie=win -0.157
+  London IND MES                  n 1689  ties  0.1%  cost 0.113R x0.5   net R: tie=loss -0.103   tie=neutral -0.102   tie=win -0.101
+  London IND MYM                  n 1253  ties  0.0%  cost 0.101R x1.0   net R: tie=loss -0.105   tie=neutral -0.105   tie=win -0.105
+  London IND MYM                  n 1253  ties  0.0%  cost 0.101R x0.5   net R: tie=loss -0.055   tie=neutral -0.055   tie=win -0.055
+  NY IND MNQ                      n 1698  ties  0.0%  cost 0.014R x1.0   net R: tie=loss +0.033   tie=neutral +0.033   tie=win +0.033
+  NY IND MNQ                      n 1698  ties  0.0%  cost 0.014R x0.5   net R: tie=loss +0.041   tie=neutral +0.041   tie=win +0.041
+  London A+ MGC (1.5-6 pt stops)  n  313  ties  0.0%  cost 0.148R x1.0   net R: tie=loss -0.023   tie=neutral -0.023   tie=win -0.023
+  London A+ MGC (1.5-6 pt stops)  n  313  ties  0.0%  cost 0.148R x0.5   net R: tie=loss +0.051   tie=neutral +0.051   tie=win +0.051

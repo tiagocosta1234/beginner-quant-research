@@ -1,0 +1,530 @@
+{"pc_time": "2026-10-26 18:04:40", "event": "start_day", "mode": "practice", "window": "practice", "day": "2021-07-01", "cursor": "2021-07-01 07:59:00"}
+{"pc_time": "2026-10-26 18:04:59", "event": "bias", "day": "2021-07-01", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2021-07-01 07:59:00"}
+{"pc_time": "2026-10-26 18:06:00", "event": "trade", "day": "2021-07-01", "mode": "practice", "side": "L", "hhmm": "08:04", "entry": 1777.8, "stop": 1776.3, "target": 1779.3, "recognised": false, "sha256": null}
+{"pc_time": "2026-10-26 18:06:12", "event": "result", "day": "2021-07-01", "mode": "practice", "outcome": "SL", "R": -1.067, "exit": 1776.3, "exit_time": "08:34", "fill": 1777.9}
+{"pc_time": "2026-10-26 18:06:16", "event": "start_day", "mode": "practice", "window": "practice", "day": "2023-06-15", "cursor": "2023-06-15 07:59:00"}
+{"pc_time": "2026-10-26 18:06:40", "event": "bias", "day": "2023-06-15", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2023-06-15 07:59:00"}
+{"pc_time": "2026-10-26 18:06:50", "event": "no_trade", "day": "2023-06-15", "mode": "practice", "reason": "08:15 reached with no trade", "cursor": "2023-06-15 08:15:00", "sha256": "a7a4e796c3f555d318a164c903af77ab714316246cbc22a6c848a61befb72133"}
+{"pc_time": "2026-10-26 18:06:57", "event": "start_day", "mode": "practice", "window": "practice", "day": "2020-08-18", "cursor": "2020-08-18 07:59:00"}
+{"pc_time": "2026-10-26 18:07:09", "event": "bias", "day": "2020-08-18", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2020-08-18 07:59:00"}
+{"pc_time": "2026-10-26 18:07:37", "event": "trade", "day": "2020-08-18", "mode": "practice", "side": "L", "hhmm": "08:08", "entry": 2000.1, "stop": 1997.0, "target": 2003.2, "recognised": false, "sha256": null}
+{"pc_time": "2026-10-26 18:07:44", "event": "result", "day": "2020-08-18", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 2003.3, "exit_time": "08:33", "fill": 2000.2}
+{"pc_time": "2026-10-26 18:46:55", "event": "reveal", "day": "2020-08-18", "mode": "practice"}
+{"pc_time": "2026-10-26 18:46:57", "event": "reveal", "day": "2020-08-18", "mode": "practice"}
+{"pc_time": "2026-10-26 18:47:01", "event": "start_day", "mode": "practice", "window": "practice", "day": "2025-06-16", "cursor": "2025-06-16 07:59:00"}
+{"pc_time": "2026-10-26 18:47:38", "event": "bias", "day": "2025-06-16", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2025-06-16 07:59:00"}
+{"pc_time": "2026-10-26 18:47:51", "event": "trade", "day": "2025-06-16", "mode": "practice", "side": "L", "hhmm": "08:03", "entry": 3437.9, "stop": 3434.3, "target": 3441.5, "recognised": false, "sha256": null}
+{"pc_time": "2026-10-26 18:47:55", "event": "result", "day": "2025-06-16", "mode": "practice", "outcome": "SL", "R": -1.028, "exit": 3434.4, "exit_time": "08:09", "fill": 3438.1}
+{"pc_time": "2026-10-26 18:47:58", "event": "start_day", "mode": "practice", "window": "practice", "day": "2025-04-17", "cursor": "2025-04-17 07:59:00"}
+{"pc_time": "2026-10-26 18:48:22", "event": "bias", "day": "2025-04-17", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2025-04-17 07:59:00"}
+{"pc_time": "2026-10-26 18:48:36", "event": "trade", "day": "2025-04-17", "mode": "practice", "side": "L", "hhmm": "08:03", "entry": 3342.8, "stop": 3338.6, "target": 3351.2, "recognised": false, "sha256": null}
+{"pc_time": "2026-10-26 18:48:38", "event": "result", "day": "2025-04-17", "mode": "practice", "outcome": "SL", "R": -1.024, "exit": 3338.8, "exit_time": "08:05", "fill": 3343.1}
+{"pc_time": "2026-10-26 18:48:41", "event": "start_day", "mode": "practice", "window": "practice", "day": "2025-08-20", "cursor": "2025-08-20 07:56:00"}
+{"pc_time": "2026-10-26 18:48:50", "event": "bias", "day": "2025-08-20", "mode": "practice", "bias": "neutral", "recognised": true, "cursor": "2025-08-20 07:56:00"}
+{"pc_time": "2026-10-26 18:48:53", "event": "skip_practice", "day": "2025-08-20"}
+{"pc_time": "2026-10-26 18:48:55", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-07-27", "cursor": "2026-07-27 07:59:00"}
+{"pc_time": "2026-10-26 18:49:27", "event": "bias", "day": "2026-07-27", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-07-27 07:59:00"}
+{"pc_time": "2026-10-26 18:49:42", "event": "trade", "day": "2026-07-27", "mode": "registered", "side": "L", "hhmm": "08:00", "entry": 4100.6, "stop": 4096.5, "target": 4106.8, "recognised": false, "sha256": "bab526fc038f30f932fb8d7dd5cccf3ae6705c11b182c5d895e056779dec497c"}
+{"pc_time": "2026-10-26 18:49:50", "event": "result", "day": "2026-07-27", "mode": "registered", "outcome": "TP", "R": 1.512, "exit": 4107.2, "exit_time": "08:21", "fill": 4101.0}
+{"pc_time": "2026-10-26 18:49:51", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-07-28", "cursor": "2026-07-28 07:59:00"}
+{"pc_time": "2026-10-26 18:50:10", "event": "bias", "day": "2026-07-28", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-07-28 07:59:00"}
+{"pc_time": "2026-10-26 18:50:29", "event": "trade", "day": "2026-07-28", "mode": "registered", "side": "L", "hhmm": "08:11", "entry": 4051.1, "stop": 4047.8, "target": 4054.4, "recognised": false, "sha256": "2ed94e5c4c618c87e9feaafd8b6f1eb63ec30430502dadf8c8f870ee362b4817"}
+{"pc_time": "2026-10-26 18:50:38", "event": "result", "day": "2026-07-28", "mode": "registered", "outcome": "SL", "R": -1.03, "exit": 4047.8, "exit_time": "08:46", "fill": 4051.2}
+{"pc_time": "2026-10-26 18:50:40", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-07-29", "cursor": "2026-07-29 07:59:00"}
+{"pc_time": "2026-10-26 18:50:56", "event": "bias", "day": "2026-07-29", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-07-29 07:59:00"}
+{"pc_time": "2026-10-26 18:51:24", "event": "trade", "day": "2026-07-29", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4043.4, "stop": 4038.3, "target": 4048.5, "recognised": false, "sha256": "706684758c69afe8ff5a2438bc5e4f89cc774f97d3936f1be4ec6a8506ccfd46"}
+{"pc_time": "2026-10-26 18:51:34", "event": "result", "day": "2026-07-29", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 4038.6, "exit_time": "09:12", "fill": 4043.8}
+{"pc_time": "2026-10-26 18:51:36", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-07-30", "cursor": "2026-07-30 07:59:00"}
+{"pc_time": "2026-10-26 18:51:48", "event": "bias", "day": "2026-07-30", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-07-30 07:59:00"}
+{"pc_time": "2026-10-26 18:52:05", "event": "trade", "day": "2026-07-30", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4103.8, "stop": 4087.9, "target": 4127.7, "recognised": false, "sha256": "8741ec791d73d6b6a285d8fa854f14c32195c70ab33102b7d6d5c29e98db9a75"}
+{"pc_time": "2026-10-26 18:52:09", "event": "result", "day": "2026-07-30", "mode": "registered", "outcome": "TP", "R": 1.503, "exit": 4128.0, "exit_time": "09:32", "fill": 4104.1}
+{"pc_time": "2026-10-26 18:52:14", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-07-31", "cursor": "2026-07-31 07:59:00"}
+{"pc_time": "2026-10-26 18:52:31", "event": "bias", "day": "2026-07-31", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-07-31 07:59:00"}
+{"pc_time": "2026-10-26 18:53:01", "event": "trade", "day": "2026-07-31", "mode": "registered", "side": "L", "hhmm": "08:04", "entry": 4135.4, "stop": 4130.5, "target": 4140.3, "recognised": false, "sha256": "fde6b944693df48beac3f16e8c736d5199a520401e37c8fe490f857e991d46a2"}
+{"pc_time": "2026-10-26 18:53:08", "event": "result", "day": "2026-07-31", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 4130.6, "exit_time": "08:29", "fill": 4135.6}
+{"pc_time": "2026-10-26 18:53:09", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-08-03", "cursor": "2026-08-03 07:59:00"}
+{"pc_time": "2026-10-26 18:53:15", "event": "bias", "day": "2026-08-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-03 07:59:00"}
+{"pc_time": "2026-10-26 18:53:28", "event": "trade", "day": "2026-08-03", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4116.7, "stop": 4127.3, "target": 4106.1, "recognised": false, "sha256": "c6b41b2f62719693b26193d164f695af47668f5fcdbd42d1e5b77bad323c6661"}
+{"pc_time": "2026-10-26 18:53:35", "event": "result", "day": "2026-08-03", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 4105.8, "exit_time": "10:30", "fill": 4116.4}
+{"pc_time": "2026-10-26 18:53:36", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-04", "cursor": "2026-08-04 07:59:00"}
+{"pc_time": "2026-10-26 18:53:41", "event": "bias", "day": "2026-08-04", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-04 07:59:00"}
+{"pc_time": "2026-10-26 18:53:51", "event": "trade", "day": "2026-08-04", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4116.6, "stop": 4122.2, "target": 4111.0, "recognised": false, "sha256": "ff80cee4e26f5bbbde4e30174c2f0d14f609b86dd60f264ed46003ab05d8520d"}
+{"pc_time": "2026-10-26 18:53:53", "event": "result", "day": "2026-08-04", "mode": "registered", "outcome": "SL", "R": -1.018, "exit": 4122.5, "exit_time": "08:33", "fill": 4116.8}
+{"pc_time": "2026-10-26 18:53:56", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-05", "cursor": "2026-08-05 07:59:00"}
+{"pc_time": "2026-10-26 18:54:03", "event": "bias", "day": "2026-08-05", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-05 07:59:00"}
+{"pc_time": "2026-10-26 18:54:26", "event": "trade", "day": "2026-08-05", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4225.3, "stop": 4220.8, "target": 4234.3, "recognised": false, "sha256": "20ae820deb0c034fd812815ce94ee5eddf65ab951e53ac0c58c30d329a91633f"}
+{"pc_time": "2026-10-26 18:54:27", "event": "result", "day": "2026-08-05", "mode": "registered", "outcome": "SL", "R": -1.022, "exit": 4220.9, "exit_time": "08:36", "fill": 4225.5}
+{"pc_time": "2026-10-26 18:54:31", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-08-07", "cursor": "2026-08-07 07:59:00"}
+{"pc_time": "2026-10-26 18:54:38", "event": "bias", "day": "2026-08-07", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-07 07:59:00"}
+{"pc_time": "2026-10-26 18:55:39", "event": "trade", "day": "2026-08-07", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4356.3, "stop": 4341.5, "target": 4378.5, "recognised": false, "sha256": "9ebd886666ce70522897877eae7eeeabc2cdc9a47a61a01c4a5775c4e4fa58a6"}
+{"pc_time": "2026-10-26 18:55:44", "event": "result", "day": "2026-08-07", "mode": "registered", "outcome": "TP", "R": 1.5, "exit": 4378.5, "exit_time": "10:45", "fill": 4356.3}
+{"pc_time": "2026-10-26 18:55:47", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-10", "cursor": "2026-08-10 07:59:00"}
+{"pc_time": "2026-10-26 18:55:53", "event": "bias", "day": "2026-08-10", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-10 07:59:00"}
+{"pc_time": "2026-10-26 18:56:17", "event": "trade", "day": "2026-08-10", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4410.3, "stop": 4401.5, "target": 4432.0, "recognised": false, "sha256": "a565308f95ec19248a30bbc8e107a5090796502d71da531c5cea39cf9a1b2625"}
+{"pc_time": "2026-10-26 18:56:22", "event": "result", "day": "2026-08-10", "mode": "registered", "outcome": "SL", "R": -1.011, "exit": 4401.7, "exit_time": "10:30", "fill": 4410.6}
+{"pc_time": "2026-10-26 18:56:24", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-11", "cursor": "2026-08-11 07:59:00"}
+{"pc_time": "2026-10-26 18:56:28", "event": "bias", "day": "2026-08-11", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-08-11 07:59:00"}
+{"pc_time": "2026-10-26 18:56:44", "event": "no_trade", "day": "2026-08-11", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2026-08-11 08:15:00", "sha256": "9fb7b6e5eeedd3431a3fd9dc573eb560854a18d21fee7509881c47c3d35da2c1"}
+{"pc_time": "2026-10-26 18:56:49", "event": "reveal", "day": "2026-08-11", "mode": "registered"}
+{"pc_time": "2026-10-26 18:56:50", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-13", "cursor": "2026-08-13 07:59:00"}
+{"pc_time": "2026-10-26 18:56:54", "event": "bias", "day": "2026-08-13", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-13 07:59:00"}
+{"pc_time": "2026-10-26 18:57:12", "event": "trade", "day": "2026-08-13", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4437.8, "stop": 4431.6, "target": 4450.2, "recognised": false, "sha256": "e86a73312ca812e33709ef2036707204c83b8fc14631bfc7276d452c7ddc7d86"}
+{"pc_time": "2026-10-26 18:57:14", "event": "result", "day": "2026-08-13", "mode": "registered", "outcome": "SL", "R": -1.016, "exit": 4431.3, "exit_time": "08:19", "fill": 4437.6}
+{"pc_time": "2026-10-26 18:57:15", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-14", "cursor": "2026-08-14 07:59:00"}
+{"pc_time": "2026-10-26 18:57:29", "event": "bias", "day": "2026-08-14", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-08-14 07:59:00"}
+{"pc_time": "2026-10-26 18:57:43", "event": "trade", "day": "2026-08-14", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4387.1, "stop": 4391.9, "target": 4379.9, "recognised": false, "sha256": "f9cf0760f8ff496e829fbeab1d70abed4dc051cd5dbdfc3b6eed050149ce122a"}
+{"pc_time": "2026-10-26 18:57:46", "event": "result", "day": "2026-08-14", "mode": "registered", "outcome": "SL", "R": -1.021, "exit": 4391.9, "exit_time": "08:24", "fill": 4387.0}
+{"pc_time": "2026-10-26 18:57:49", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-17", "cursor": "2026-08-17 07:59:00"}
+{"pc_time": "2026-10-26 18:57:59", "event": "bias", "day": "2026-08-17", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-17 07:59:00"}
+{"pc_time": "2026-10-26 18:58:18", "event": "trade", "day": "2026-08-17", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4459.3, "stop": 4449.7, "target": 4473.3, "recognised": false, "sha256": "6561abc64c704587a38abb69c8950e0a5a9ce9e3f04dcedd64746c3d416073db"}
+{"pc_time": "2026-10-26 18:58:24", "event": "result", "day": "2026-08-17", "mode": "registered", "outcome": "SL", "R": -1.01, "exit": 4449.4, "exit_time": "09:52", "fill": 4459.1}
+{"pc_time": "2026-10-26 18:58:30", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-18", "cursor": "2026-08-18 07:59:00"}
+{"pc_time": "2026-10-26 18:58:36", "event": "bias", "day": "2026-08-18", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-18 07:59:00"}
+{"pc_time": "2026-10-26 18:58:46", "event": "trade", "day": "2026-08-18", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4454.1, "stop": 4443.3, "target": 4475.7, "recognised": false, "sha256": "425be2dd1f3c01aad032babc5407697fbd5397bea67d870bd22a7d2cb1fdc56d"}
+{"pc_time": "2026-10-26 18:58:48", "event": "result", "day": "2026-08-18", "mode": "registered", "outcome": "SL", "R": -1.009, "exit": 4443.5, "exit_time": "09:10", "fill": 4454.4}
+{"pc_time": "2026-10-26 18:58:53", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-19", "cursor": "2026-08-19 07:59:00"}
+{"pc_time": "2026-10-26 18:58:57", "event": "bias", "day": "2026-08-19", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-19 07:59:00"}
+{"pc_time": "2026-10-26 18:59:07", "event": "trade", "day": "2026-08-19", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4402.8, "stop": 4390.7, "target": 4421.0, "recognised": false, "sha256": "fdf32b9dc320fe726458b17e97df1aa2d2eb351afd8207851f14768a33bd4ef2"}
+{"pc_time": "2026-10-26 18:59:08", "event": "result", "day": "2026-08-19", "mode": "registered", "outcome": "TP", "R": 1.504, "exit": 4421.1, "exit_time": "11:17", "fill": 4402.9}
+{"pc_time": "2026-10-26 18:59:11", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-20", "cursor": "2026-08-20 07:59:00"}
+{"pc_time": "2026-10-26 18:59:21", "event": "bias", "day": "2026-08-20", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-20 07:59:00"}
+{"pc_time": "2026-10-26 18:59:21", "event": "no_trade", "day": "2026-08-20", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2026-08-20 08:15:00", "sha256": "a8d2dde872a140629917cfadbe39491edb5f447181212d808d4f31fa2deff065"}
+{"pc_time": "2026-10-26 18:59:25", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-08-21", "cursor": "2026-08-21 07:59:00"}
+{"pc_time": "2026-10-26 18:59:38", "event": "bias", "day": "2026-08-21", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-21 07:59:00"}
+{"pc_time": "2026-10-26 18:59:48", "event": "trade", "day": "2026-08-21", "mode": "registered", "side": "L", "hhmm": "08:05", "entry": 4620.7, "stop": 4606.3, "target": 4635.1, "recognised": false, "sha256": "b5d29241acc1b4bb4d141ee26e6ab53733c3fd1131964fb6fe3b674debe8039a"}
+{"pc_time": "2026-10-26 18:59:49", "event": "result", "day": "2026-08-21", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 4635.4, "exit_time": "09:24", "fill": 4621.0}
+{"pc_time": "2026-10-26 18:59:54", "event": "reveal", "day": "2026-08-21", "mode": "registered"}
+{"pc_time": "2026-10-26 18:59:56", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-24", "cursor": "2026-08-24 07:59:00"}
+{"pc_time": "2026-10-26 19:00:06", "event": "bias", "day": "2026-08-24", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-08-24 07:59:00"}
+{"pc_time": "2026-10-26 19:00:29", "event": "trade", "day": "2026-08-24", "mode": "registered", "side": "S", "hhmm": "08:09", "entry": 4702.7, "stop": 4711.0, "target": 4690.3, "recognised": false, "sha256": "e881748c1baeaa1f66b87898b3323fa51d729178253894dd9cdee5f2db784189"}
+{"pc_time": "2026-10-26 19:00:30", "event": "result", "day": "2026-08-24", "mode": "registered", "outcome": "TP", "R": 1.494, "exit": 4690.5, "exit_time": "08:44", "fill": 4702.9}
+{"pc_time": "2026-10-26 19:00:35", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-25", "cursor": "2026-08-25 07:59:00"}
+{"pc_time": "2026-10-26 19:00:54", "event": "bias", "day": "2026-08-25", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-08-25 07:59:00"}
+{"pc_time": "2026-10-26 19:01:00", "event": "trade", "day": "2026-08-25", "mode": "registered", "side": "S", "hhmm": "07:59", "entry": 4694.6, "stop": 4707.7, "target": 4681.5, "recognised": false, "sha256": "b2f9effa066465d2b43a2374047306be43af9494e22d08f88c566364c7ca9577"}
+{"pc_time": "2026-10-26 19:01:01", "event": "result", "day": "2026-08-25", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 4681.7, "exit_time": "09:04", "fill": 4694.8}
+{"pc_time": "2026-10-26 19:01:03", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-08-27", "cursor": "2026-08-27 07:59:00"}
+{"pc_time": "2026-10-26 19:01:28", "event": "bias", "day": "2026-08-27", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-08-27 07:59:00"}
+{"pc_time": "2026-10-26 19:01:56", "event": "trade", "day": "2026-08-27", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4657.7, "stop": 4663.2, "target": 4649.0, "recognised": false, "sha256": "78b2985b5f24df91781c5dc99d746c0f4eca73361a129dd4e6b04f3e92612197"}
+{"pc_time": "2026-10-26 19:01:57", "event": "result", "day": "2026-08-27", "mode": "registered", "outcome": "TP", "R": 1.582, "exit": 4648.7, "exit_time": "08:26", "fill": 4657.4}
+{"pc_time": "2026-10-26 19:02:02", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-08-28", "cursor": "2026-08-28 07:59:00"}
+{"pc_time": "2026-10-26 19:02:16", "event": "bias", "day": "2026-08-28", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-28 07:59:00"}
+{"pc_time": "2026-10-26 19:03:00", "event": "trade", "day": "2026-08-28", "mode": "registered", "side": "S", "hhmm": "08:05", "entry": 4658.3, "stop": 4663.1, "target": 4653.5, "recognised": false, "sha256": "1eecc2bad2d8fce184f19a81bbdc3bfc8a261da2e2ff97533cab427ddb17ba72"}
+{"pc_time": "2026-10-26 19:03:01", "event": "result", "day": "2026-08-28", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 4653.7, "exit_time": "08:08", "fill": 4658.5}
+{"pc_time": "2026-10-26 19:03:03", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-08-31", "cursor": "2026-08-31 07:59:00"}
+{"pc_time": "2026-10-26 19:04:38", "event": "bias", "day": "2026-08-31", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-08-31 07:59:00"}
+{"pc_time": "2026-10-26 19:04:58", "event": "trade", "day": "2026-08-31", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4486.0, "stop": 4491.7, "target": 4478.9, "recognised": false, "sha256": "059241c0e560932961a09bce229c6caa7d97a22fe64d028edaf5cd44f84f087c"}
+{"pc_time": "2026-10-26 19:04:59", "event": "result", "day": "2026-08-31", "mode": "registered", "outcome": "SL", "R": -1.018, "exit": 4491.7, "exit_time": "08:21", "fill": 4485.9}
+{"pc_time": "2026-10-26 19:05:01", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-01", "cursor": "2026-09-01 07:59:00"}
+{"pc_time": "2026-10-26 19:05:06", "event": "bias", "day": "2026-09-01", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-01 07:59:00"}
+{"pc_time": "2026-10-26 19:05:14", "event": "trade", "day": "2026-09-01", "mode": "registered", "side": "S", "hhmm": "07:59", "entry": 4478.0, "stop": 4483.6, "target": 4472.1, "recognised": false, "sha256": "14bea899479fa6e601543f4089b5cd339780500be4d8597da03d57d893137d94"}
+{"pc_time": "2026-10-26 19:05:15", "event": "result", "day": "2026-09-01", "mode": "registered", "outcome": "TP", "R": 1.054, "exit": 4472.1, "exit_time": "08:30", "fill": 4478.0}
+{"pc_time": "2026-10-26 19:05:17", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-02", "cursor": "2026-09-02 07:59:00"}
+{"pc_time": "2026-10-26 19:05:24", "event": "bias", "day": "2026-09-02", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-02 07:59:00"}
+{"pc_time": "2026-10-26 19:05:34", "event": "trade", "day": "2026-09-02", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4372.8, "stop": 4365.7, "target": 4382.2, "recognised": false, "sha256": "337e04bc85b41a474aa35b3bf4f297f7fefdad60b21ee68c541e774fb0b8da8c"}
+{"pc_time": "2026-10-26 19:05:36", "event": "result", "day": "2026-09-02", "mode": "registered", "outcome": "SL", "R": -1.014, "exit": 4365.9, "exit_time": "09:35", "fill": 4373.1}
+{"pc_time": "2026-10-26 19:05:37", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-03", "cursor": "2026-09-03 07:59:00"}
+{"pc_time": "2026-10-26 19:06:02", "event": "bias", "day": "2026-09-03", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-03 07:59:00"}
+{"pc_time": "2026-10-26 19:06:22", "event": "trade", "day": "2026-09-03", "mode": "registered", "side": "S", "hhmm": "08:09", "entry": 4470.9, "stop": 4477.7, "target": 4462.1, "recognised": false, "sha256": "52c7a9c9e1e5de6a4826b0d1ac5d358d40cc744b7e1e1c865b13aabe0cd68010"}
+{"pc_time": "2026-10-26 19:06:24", "event": "result", "day": "2026-09-03", "mode": "registered", "outcome": "SL", "R": -1.015, "exit": 4477.3, "exit_time": "09:03", "fill": 4470.4}
+{"pc_time": "2026-10-26 19:06:25", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-04", "cursor": "2026-09-04 07:59:00"}
+{"pc_time": "2026-10-26 19:06:36", "event": "bias", "day": "2026-09-04", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-04 07:59:00"}
+{"pc_time": "2026-10-26 19:06:52", "event": "trade", "day": "2026-09-04", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4514.7, "stop": 4508.1, "target": 4528.9, "recognised": false, "sha256": "8f1c0aa10e8697f355a60f9689455fdb59e3b41b0cad872d8292a4a871163e5d"}
+{"pc_time": "2026-10-26 19:06:53", "event": "result", "day": "2026-09-04", "mode": "registered", "outcome": "TP", "R": 2.152, "exit": 4528.7, "exit_time": "08:42", "fill": 4514.5}
+{"pc_time": "2026-10-26 19:07:02", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-07", "cursor": "2026-09-07 07:59:00"}
+{"pc_time": "2026-10-26 19:07:17", "event": "bias", "day": "2026-09-07", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-07 07:59:00"}
+{"pc_time": "2026-10-26 19:07:26", "event": "trade", "day": "2026-09-07", "mode": "registered", "side": "L", "hhmm": "08:04", "entry": 4446.0, "stop": 4436.8, "target": 4460.5, "recognised": false, "sha256": "a2c435da5f526e19bb86e0ae216ad728c2565c1533a7516ae60d757b13ac3756"}
+{"pc_time": "2026-10-26 19:07:27", "event": "result", "day": "2026-09-07", "mode": "registered", "outcome": "TP", "R": 1.576, "exit": 4460.6, "exit_time": "09:03", "fill": 4446.1}
+{"pc_time": "2026-10-26 19:07:30", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-08", "cursor": "2026-09-08 07:59:00"}
+{"pc_time": "2026-10-26 19:07:34", "event": "bias", "day": "2026-09-08", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-08 07:59:00"}
+{"pc_time": "2026-10-26 19:07:43", "event": "trade", "day": "2026-09-08", "mode": "registered", "side": "S", "hhmm": "07:59", "entry": 4448.3, "stop": 4454.1, "target": 4442.5, "recognised": false, "sha256": "78e9e3d402aac30f1d33c9a102487f4e3fc545654b605f77f82ca366ec355981"}
+{"pc_time": "2026-10-26 19:07:44", "event": "result", "day": "2026-09-08", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 4442.7, "exit_time": "08:34", "fill": 4448.5}
+{"pc_time": "2026-10-26 19:07:46", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-09", "cursor": "2026-09-09 07:59:00"}
+{"pc_time": "2026-10-26 19:07:51", "event": "bias", "day": "2026-09-09", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2026-09-09 07:59:00"}
+{"pc_time": "2026-10-26 19:08:09", "event": "trade", "day": "2026-09-09", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4450.1, "stop": 4438.5, "target": 4461.7, "recognised": false, "sha256": "287a3884d0ead53554ce648a70848f4eefdc99b06ee4735441bf72525152675a"}
+{"pc_time": "2026-10-26 19:08:10", "event": "result", "day": "2026-09-09", "mode": "registered", "outcome": "SL", "R": -1.009, "exit": 4438.5, "exit_time": "10:45", "fill": 4450.2}
+{"pc_time": "2026-10-26 19:08:16", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-10", "cursor": "2026-09-10 07:59:00"}
+{"pc_time": "2026-10-26 19:08:29", "event": "bias", "day": "2026-09-10", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-10 07:59:00"}
+{"pc_time": "2026-10-26 19:08:47", "event": "trade", "day": "2026-09-10", "mode": "registered", "side": "S", "hhmm": "08:13", "entry": 4457.2, "stop": 4461.3, "target": 4448.4, "recognised": false, "sha256": "21a51df532e608ff098acc49cf17fa828ff5a50d1fbc5c7f2068ead2c6abf349"}
+{"pc_time": "2026-10-26 19:08:53", "event": "result", "day": "2026-09-10", "mode": "registered", "outcome": "TP", "R": 2.146, "exit": 4448.4, "exit_time": "08:34", "fill": 4457.2}
+{"pc_time": "2026-10-26 19:08:54", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-09-11", "cursor": "2026-09-11 07:59:00"}
+{"pc_time": "2026-10-26 19:09:09", "event": "bias", "day": "2026-09-11", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-11 07:59:00"}
+{"pc_time": "2026-10-26 19:09:17", "event": "trade", "day": "2026-09-11", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4394.8, "stop": 4387.8, "target": 4402.1, "recognised": false, "sha256": "9b7984f733dcd9a780d87861e4a7b3bbdd390b91c894d7730bf6c98b879665b5"}
+{"pc_time": "2026-10-26 19:09:18", "event": "result", "day": "2026-09-11", "mode": "registered", "outcome": "SL", "R": -1.014, "exit": 4387.2, "exit_time": "08:29", "fill": 4394.3}
+{"pc_time": "2026-10-26 19:09:19", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-09-15", "cursor": "2026-09-15 07:59:00"}
+{"pc_time": "2026-10-26 19:09:31", "event": "bias", "day": "2026-09-15", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-15 07:59:00"}
+{"pc_time": "2026-10-26 19:09:41", "event": "no_trade", "day": "2026-09-15", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2026-09-15 08:15:00", "sha256": "c7f7d66b01cceee5a791b59b8181ae86e291a973d19d49ae9b6f44f8af980e0f"}
+{"pc_time": "2026-10-26 19:09:48", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-09-16", "cursor": "2026-09-16 07:59:00"}
+{"pc_time": "2026-10-26 19:09:52", "event": "bias", "day": "2026-09-16", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-16 07:59:00"}
+{"pc_time": "2026-10-26 19:10:02", "event": "trade", "day": "2026-09-16", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4373.1, "stop": 4365.5, "target": 4381.8, "recognised": false, "sha256": "36c8c7b8842825a97a7ae3536bdbc79e41f4f96d06894be90c0a5379b4d74310"}
+{"pc_time": "2026-10-26 19:10:03", "event": "result", "day": "2026-09-16", "mode": "registered", "outcome": "SL", "R": -1.013, "exit": 4365.0, "exit_time": "09:01", "fill": 4372.7}
+{"pc_time": "2026-10-26 19:10:04", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-17", "cursor": "2026-09-17 07:59:00"}
+{"pc_time": "2026-10-26 19:10:11", "event": "bias", "day": "2026-09-17", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-17 07:59:00"}
+{"pc_time": "2026-10-26 19:10:33", "event": "trade", "day": "2026-09-17", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4361.6, "stop": 4344.8, "target": 4389.8, "recognised": false, "sha256": "64f1ca4fd0a272ec64f0b79553e45a47a3ea701ff0fda5927f4acdfbca12acdf"}
+{"pc_time": "2026-10-26 19:10:34", "event": "result", "day": "2026-09-17", "mode": "registered", "outcome": "SL", "R": -1.006, "exit": 4345.0, "exit_time": "10:29", "fill": 4361.9}
+{"pc_time": "2026-10-26 19:10:36", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-09-18", "cursor": "2026-09-18 07:59:00"}
+{"pc_time": "2026-10-26 19:10:49", "event": "bias", "day": "2026-09-18", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-18 07:59:00"}
+{"pc_time": "2026-10-26 19:11:03", "event": "trade", "day": "2026-09-18", "mode": "registered", "side": "S", "hhmm": "08:00", "entry": 4432.4, "stop": 4435.8, "target": 4421.5, "recognised": false, "sha256": "73c8eeb4c341510b4e0d08c1de8325dde6aebfa76379a388b85fd071c5cc318a"}
+{"pc_time": "2026-10-26 19:11:05", "event": "result", "day": "2026-09-18", "mode": "registered", "outcome": "SL", "R": -1.029, "exit": 4436.0, "exit_time": "08:29", "fill": 4432.5}
+{"pc_time": "2026-10-26 19:11:08", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-21", "cursor": "2026-09-21 07:59:00"}
+{"pc_time": "2026-10-26 19:11:13", "event": "bias", "day": "2026-09-21", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-21 07:59:00"}
+{"pc_time": "2026-10-26 19:11:28", "event": "trade", "day": "2026-09-21", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4390.8, "stop": 4387.5, "target": 4399.4, "recognised": false, "sha256": "da092f935984abcc2ff813956cd6a99b2e93248615b8c8ac3ba5ebd18f67255b"}
+{"pc_time": "2026-10-26 19:11:30", "event": "result", "day": "2026-09-21", "mode": "registered", "outcome": "SL", "R": -1.03, "exit": 4387.4, "exit_time": "08:00", "fill": 4390.8}
+{"pc_time": "2026-10-26 19:11:31", "event": "start_day", "mode": "registered", "window": "batch 3 (sealed 24 Oct)", "day": "2026-09-22", "cursor": "2026-09-22 07:59:00"}
+{"pc_time": "2026-10-26 19:11:38", "event": "bias", "day": "2026-09-22", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-22 07:59:00"}
+{"pc_time": "2026-10-26 19:11:50", "event": "trade", "day": "2026-09-22", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4356.7, "stop": 4351.2, "target": 4366.7, "recognised": false, "sha256": "46bd5a80441c57c2ce85f3b8e3ee496b2137b5fe1ba9ccad12d333f6da872224"}
+{"pc_time": "2026-10-26 19:11:52", "event": "result", "day": "2026-09-22", "mode": "registered", "outcome": "SL", "R": -1.018, "exit": 4350.4, "exit_time": "08:30", "fill": 4356.0}
+{"pc_time": "2026-10-26 19:11:53", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-23", "cursor": "2026-09-23 07:59:00"}
+{"pc_time": "2026-10-26 19:11:56", "event": "bias", "day": "2026-09-23", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-23 07:59:00"}
+{"pc_time": "2026-10-26 19:12:12", "event": "trade", "day": "2026-09-23", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4361.5, "stop": 4369.7, "target": 4351.9, "recognised": false, "sha256": "348e29ec2d848f41b0001178e4031121b857ab10b9862a8f5a770bddc7011187"}
+{"pc_time": "2026-10-26 19:12:20", "event": "result", "day": "2026-09-23", "mode": "registered", "outcome": "TP", "R": 1.171, "exit": 4352.0, "exit_time": "10:33", "fill": 4361.6}
+{"pc_time": "2026-10-26 19:12:22", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-24", "cursor": "2026-09-24 07:59:00"}
+{"pc_time": "2026-10-26 19:12:30", "event": "bias", "day": "2026-09-24", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2026-09-24 07:59:00"}
+{"pc_time": "2026-10-26 19:12:43", "event": "trade", "day": "2026-09-24", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4318.5, "stop": 4310.7, "target": 4338.1, "recognised": false, "sha256": "bb332c2ce11e40dd4fecf2dfe2dc2021ee8bc7526fb19a0a1b0158ac0702b8f9"}
+{"pc_time": "2026-10-26 19:12:44", "event": "result", "day": "2026-09-24", "mode": "registered", "outcome": "SL", "R": -1.013, "exit": 4310.5, "exit_time": "09:15", "fill": 4318.4}
+{"pc_time": "2026-10-26 19:12:46", "event": "start_day", "mode": "registered", "window": "recent 2026", "day": "2026-09-25", "cursor": "2026-09-25 07:59:00"}
+{"pc_time": "2026-10-26 19:12:49", "event": "bias", "day": "2026-09-25", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2026-09-25 07:59:00"}
+{"pc_time": "2026-10-26 19:13:01", "event": "trade", "day": "2026-09-25", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4312.1, "stop": 4302.7, "target": 4325.5, "recognised": false, "sha256": "a16931746e56768cd42b7a894a9b8aa9b0ec138deaa0bb9a5fa552699006490a"}
+{"pc_time": "2026-10-26 19:13:10", "event": "result", "day": "2026-09-25", "mode": "registered", "outcome": "TP", "R": 1.426, "exit": 4326.1, "exit_time": "09:44", "fill": 4312.7}
+{"pc_time": "2026-10-26 19:13:24", "event": "reveal", "day": "2026-09-25", "mode": "registered"}
+{"pc_time": "2026-10-26 19:13:48", "event": "reveal", "day": "2026-09-25", "mode": "registered"}
+{"pc_time": "2026-10-26 20:05:07", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-01-03", "cursor": "2025-01-03 07:59:00"}
+{"pc_time": "2026-10-26 20:05:55", "event": "bias", "day": "2025-01-03", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-01-03 07:59:00"}
+{"pc_time": "2026-10-26 20:06:55", "event": "no_trade", "day": "2025-01-03", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-01-03 08:15:00", "sha256": "2f9628e7c370f0a1772911d7ef2446403d39bac81c16f7984e08190b6908b329"}
+{"pc_time": "2026-10-26 20:06:56", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-01-10", "cursor": "2025-01-10 07:59:00"}
+{"pc_time": "2026-10-26 20:07:13", "event": "bias", "day": "2025-01-10", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-01-10 07:59:00"}
+{"pc_time": "2026-10-26 20:07:35", "event": "trade", "day": "2025-01-10", "mode": "registered", "side": "L", "hhmm": "08:07", "entry": 2702.1, "stop": 2699.1, "target": 2705.1, "recognised": false, "sha256": "3acf446b359d0704d74cefa7f561d21e6a00eef5f5c4d1adc2e17cc2a83a4831"}
+{"pc_time": "2026-10-26 20:07:37", "event": "result", "day": "2025-01-10", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 2705.1, "exit_time": "08:23", "fill": 2702.1}
+{"pc_time": "2026-10-26 20:07:38", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-01-24", "cursor": "2025-01-24 07:59:00"}
+{"pc_time": "2026-10-26 20:08:02", "event": "bias", "day": "2025-01-24", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-01-24 07:59:00"}
+{"pc_time": "2026-10-26 20:08:21", "event": "trade", "day": "2025-01-24", "mode": "registered", "side": "S", "hhmm": "08:06", "entry": 2778.5, "stop": 2781.5, "target": 2775.3, "recognised": false, "sha256": "661299e943357594f364901795ee7f27e6c1a0e17c920ce32d15839719100125"}
+{"pc_time": "2026-10-26 20:08:23", "event": "result", "day": "2025-01-24", "mode": "registered", "outcome": "SL", "R": -1.033, "exit": 2781.6, "exit_time": "08:48", "fill": 2778.5}
+{"pc_time": "2026-10-26 20:08:25", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-02-04", "cursor": "2025-02-04 07:59:00"}
+{"pc_time": "2026-10-26 20:08:47", "event": "bias", "day": "2025-02-04", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-02-04 07:59:00"}
+{"pc_time": "2026-10-26 20:09:24", "event": "trade", "day": "2025-02-04", "mode": "registered", "side": "S", "hhmm": "08:01", "entry": 2840.1, "stop": 2844.2, "target": 2835.9, "recognised": false, "sha256": "4f888d4ea243e93a77965e43b099bd7fbff95e536b505aff2fdb191df404a057"}
+{"pc_time": "2026-10-26 20:09:25", "event": "result", "day": "2025-02-04", "mode": "registered", "outcome": "SL", "R": -1.024, "exit": 2844.3, "exit_time": "08:15", "fill": 2840.1}
+{"pc_time": "2026-10-26 20:09:27", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-02-11", "cursor": "2025-02-11 07:59:00"}
+{"pc_time": "2026-10-26 20:09:46", "event": "bias", "day": "2025-02-11", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-02-11 07:59:00"}
+{"pc_time": "2026-10-26 20:10:56", "event": "trade", "day": "2025-02-11", "mode": "registered", "side": "L", "hhmm": "08:01", "entry": 2940.5, "stop": 2933.1, "target": 2950.4, "recognised": false, "sha256": "10a8cdff0ac6777d2553fe00de2a93b9191703948cf019fb7242225994b86b54"}
+{"pc_time": "2026-10-26 20:11:01", "event": "result", "day": "2025-02-11", "mode": "registered", "outcome": "SL", "R": -1.014, "exit": 2933.2, "exit_time": "09:00", "fill": 2940.7}
+{"pc_time": "2026-10-26 20:11:02", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-02-12", "cursor": "2025-02-12 07:59:00"}
+{"pc_time": "2026-10-26 20:11:27", "event": "bias", "day": "2025-02-12", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-02-12 07:59:00"}
+{"pc_time": "2026-10-26 20:11:46", "event": "trade", "day": "2025-02-12", "mode": "registered", "side": "L", "hhmm": "08:04", "entry": 2917.6, "stop": 2913.6, "target": 2921.6, "recognised": false, "sha256": "ad8461cea7944678e257644eaa890edfac0bccbcc8f79cacd7a9ab8fa5d326d1"}
+{"pc_time": "2026-10-26 20:11:47", "event": "result", "day": "2025-02-12", "mode": "registered", "outcome": "SL", "R": -1.025, "exit": 2913.4, "exit_time": "08:21", "fill": 2917.5}
+{"pc_time": "2026-10-26 20:11:48", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-02-18", "cursor": "2025-02-18 07:59:00"}
+{"pc_time": "2026-10-26 20:11:56", "event": "bias", "day": "2025-02-18", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-02-18 07:59:00"}
+{"pc_time": "2026-10-26 20:12:17", "event": "trade", "day": "2025-02-18", "mode": "registered", "side": "L", "hhmm": "08:06", "entry": 2922.8, "stop": 2918.6, "target": 2928.8, "recognised": false, "sha256": "ed01a45a0daf769d29fdb5dbd1cb3f32d97d2d709d19da2a4ebce62f50254a90"}
+{"pc_time": "2026-10-26 20:12:18", "event": "result", "day": "2025-02-18", "mode": "registered", "outcome": "TP", "R": 1.429, "exit": 2928.9, "exit_time": "12:27", "fill": 2922.9}
+{"pc_time": "2026-10-26 20:12:23", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-02-20", "cursor": "2025-02-20 07:59:00"}
+{"pc_time": "2026-10-26 20:12:37", "event": "bias", "day": "2025-02-20", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-02-20 07:59:00"}
+{"pc_time": "2026-10-26 20:12:49", "event": "no_trade", "day": "2025-02-20", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-02-20 08:15:00", "sha256": "eae42bd6768e0e43113a7333ac7260a0b604e59ef73ccafa87e570bf6359e7fc"}
+{"pc_time": "2026-10-26 20:12:54", "event": "reveal", "day": "2025-02-20", "mode": "registered"}
+{"pc_time": "2026-10-26 20:13:01", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-03-03", "cursor": "2025-03-03 07:59:00"}
+{"pc_time": "2026-10-26 20:13:22", "event": "bias", "day": "2025-03-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-03-03 07:59:00"}
+{"pc_time": "2026-10-26 20:13:52", "event": "trade", "day": "2025-03-03", "mode": "registered", "side": "L", "hhmm": "08:00", "entry": 2873.5, "stop": 2870.0, "target": 2878.5, "recognised": false, "sha256": "ff6611b213302672945f3aeb81fd4e5c3fc59d5e196b734171ba558d99d11724"}
+{"pc_time": "2026-10-26 20:13:53", "event": "result", "day": "2025-03-03", "mode": "registered", "outcome": "SL", "R": -1.029, "exit": 2870.2, "exit_time": "08:25", "fill": 2873.8}
+{"pc_time": "2026-10-26 20:13:55", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-03-06", "cursor": "2025-03-06 07:59:00"}
+{"pc_time": "2026-10-26 20:14:10", "event": "bias", "day": "2025-03-06", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-03-06 07:59:00"}
+{"pc_time": "2026-10-26 20:14:28", "event": "trade", "day": "2025-03-06", "mode": "registered", "side": "S", "hhmm": "08:11", "entry": 2916.3, "stop": 2921.6, "target": 2908.4, "recognised": false, "sha256": "67836239125ffdc09b62227cb3847fbc05afdfef4e0f81a4c761365be0e369e2"}
+{"pc_time": "2026-10-26 20:14:28", "event": "result", "day": "2025-03-06", "mode": "registered", "outcome": "TP", "R": 1.491, "exit": 2908.3, "exit_time": "08:51", "fill": 2916.2}
+{"pc_time": "2026-10-26 20:14:30", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-03-10", "cursor": "2025-03-10 07:59:00"}
+{"pc_time": "2026-10-26 20:14:39", "event": "bias", "day": "2025-03-10", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-03-10 07:59:00"}
+{"pc_time": "2026-10-26 20:14:53", "event": "trade", "day": "2025-03-10", "mode": "registered", "side": "S", "hhmm": "08:00", "entry": 2914.0, "stop": 2918.1, "target": 2908.9, "recognised": false, "sha256": "866b83d2eeccec304c8c21b31d7276e1ff2e60cc79d728a49fc296179fb2e9a1"}
+{"pc_time": "2026-10-26 20:14:54", "event": "result", "day": "2025-03-10", "mode": "registered", "outcome": "TP", "R": 1.244, "exit": 2908.8, "exit_time": "08:29", "fill": 2913.9}
+{"pc_time": "2026-10-26 20:14:55", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-03-13", "cursor": "2025-03-13 07:59:00"}
+{"pc_time": "2026-10-26 20:15:14", "event": "bias", "day": "2025-03-13", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-03-13 07:59:00"}
+{"pc_time": "2026-10-26 20:15:29", "event": "trade", "day": "2025-03-13", "mode": "registered", "side": "L", "hhmm": "08:04", "entry": 2945.6, "stop": 2942.3, "target": 2950.5, "recognised": false, "sha256": "6b46a38d76a3b6010a0c0ca9983498b41d0b9be1e4f0d6b238cb7a0ea7589093"}
+{"pc_time": "2026-10-26 20:15:30", "event": "result", "day": "2025-03-13", "mode": "registered", "outcome": "TP", "R": 1.485, "exit": 2950.5, "exit_time": "08:12", "fill": 2945.6}
+{"pc_time": "2026-10-26 20:15:32", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-05-21", "cursor": "2025-05-21 07:59:00"}
+{"pc_time": "2026-10-26 20:16:00", "event": "bias", "day": "2025-05-21", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-05-21 07:59:00"}
+{"pc_time": "2026-10-26 20:17:38", "event": "trade", "day": "2025-05-21", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 3313.5, "stop": 3303.3, "target": 3328.7, "recognised": false, "sha256": "19906d87116b0ff92a7f96c2d4e473cb22014a387669b5cefc23c08c5ef075e3"}
+{"pc_time": "2026-10-26 20:17:38", "event": "result", "day": "2025-05-21", "mode": "registered", "outcome": "SL", "R": -1.01, "exit": 3303.2, "exit_time": "13:27", "fill": 3313.5}
+{"pc_time": "2026-10-26 20:17:45", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-05-29", "cursor": "2025-05-29 07:59:00"}
+{"pc_time": "2026-10-26 20:17:58", "event": "bias", "day": "2025-05-29", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-05-29 07:59:00"}
+{"pc_time": "2026-10-26 20:18:07", "event": "trade", "day": "2025-05-29", "mode": "registered", "side": "L", "hhmm": "08:00", "entry": 3296.6, "stop": 3291.1, "target": 3302.1, "recognised": false, "sha256": "59bb8d3a5bef344b877bc2b3b73156217934b2000cae4c884140c78032c30395"}
+{"pc_time": "2026-10-26 20:18:08", "event": "result", "day": "2025-05-29", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 3302.3, "exit_time": "08:14", "fill": 3296.8}
+{"pc_time": "2026-10-26 20:18:13", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-06-11", "cursor": "2025-06-11 07:59:00"}
+{"pc_time": "2026-10-26 20:18:35", "event": "bias", "day": "2025-06-11", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-06-11 07:59:00"}
+{"pc_time": "2026-10-26 20:19:09", "event": "trade", "day": "2025-06-11", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 3356.3, "stop": 3361.3, "target": 3351.3, "recognised": false, "sha256": "5981b47b923aa0c56218d8e228fb5b6f13bbf6829784710a4dedf64360690626"}
+{"pc_time": "2026-10-26 20:19:10", "event": "result", "day": "2025-06-11", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 3361.4, "exit_time": "08:30", "fill": 3356.3}
+{"pc_time": "2026-10-26 20:19:11", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-06-13", "cursor": "2025-06-13 07:59:00"}
+{"pc_time": "2026-10-26 20:19:29", "event": "bias", "day": "2025-06-13", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-06-13 07:59:00"}
+{"pc_time": "2026-10-26 20:20:14", "event": "trade", "day": "2025-06-13", "mode": "registered", "side": "L", "hhmm": "08:12", "entry": 3432.9, "stop": 3417.2, "target": 3450.6, "recognised": false, "sha256": "6c2199a81f97e310805855bbd485cfc0cb90ecb5d06f97be0798fbc37df25cbd"}
+{"pc_time": "2026-10-26 20:20:15", "event": "result", "day": "2025-06-13", "mode": "registered", "outcome": "TP", "R": 1.127, "exit": 3450.7, "exit_time": "13:34", "fill": 3433.0}
+{"pc_time": "2026-10-26 20:20:20", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-06-27", "cursor": "2025-06-27 07:59:00"}
+{"pc_time": "2026-10-26 20:20:45", "event": "bias", "day": "2025-06-27", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-06-27 07:59:00"}
+{"pc_time": "2026-10-26 20:22:06", "event": "trade", "day": "2025-06-27", "mode": "registered", "side": "S", "hhmm": "08:03", "entry": 3304.6, "stop": 3311.9, "target": 3297.3, "recognised": false, "sha256": "3dc3ca9a42df76deeef9a12c2a390ba222747d659ef01cda74824e587ef41d84"}
+{"pc_time": "2026-10-26 20:22:07", "event": "result", "day": "2025-06-27", "mode": "registered", "outcome": "TP", "R": 1.0, "exit": 3297.5, "exit_time": "08:20", "fill": 3304.8}
+{"pc_time": "2026-10-26 20:22:09", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-07-02", "cursor": "2025-07-02 07:59:00"}
+{"pc_time": "2026-10-26 20:22:21", "event": "bias", "day": "2025-07-02", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-07-02 07:59:00"}
+{"pc_time": "2026-10-26 20:22:51", "event": "trade", "day": "2025-07-02", "mode": "registered", "side": "S", "hhmm": "08:07", "entry": 3339.7, "stop": 3344.8, "target": 3334.6, "recognised": false, "sha256": "cacd9ad8f32cf867233ff6bb5be29fd29bffeffbe81a9a210671c944e055e6b8"}
+{"pc_time": "2026-10-26 20:22:52", "event": "result", "day": "2025-07-02", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 3344.8, "exit_time": "08:47", "fill": 3339.6}
+{"pc_time": "2026-10-26 20:22:54", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-07-08", "cursor": "2025-07-08 07:59:00"}
+{"pc_time": "2026-10-26 20:23:05", "event": "bias", "day": "2025-07-08", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-07-08 07:59:00"}
+{"pc_time": "2026-10-26 20:23:34", "event": "no_trade", "day": "2025-07-08", "mode": "registered", "reason": "no setup (the trader)", "cursor": "2025-07-08 08:14:00", "sha256": "db1c049c5143c3152015a192aedf23f9e4899ed50af028f46fbc956f3c6380f9"}
+{"pc_time": "2026-10-26 20:23:40", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-07-28", "cursor": "2025-07-28 07:59:00"}
+{"pc_time": "2026-10-26 20:23:58", "event": "bias", "day": "2025-07-28", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-07-28 07:59:00"}
+{"pc_time": "2026-10-26 20:24:11", "event": "trade", "day": "2025-07-28", "mode": "registered", "side": "L", "hhmm": "08:00", "entry": 3340.1, "stop": 3336.1, "target": 3345.4, "recognised": false, "sha256": "a8f8fa06bf246fa0d2db9908389b405d7082d559435504d956301ac8486a0db9"}
+{"pc_time": "2026-10-26 20:24:12", "event": "result", "day": "2025-07-28", "mode": "registered", "outcome": "SL", "R": -1.025, "exit": 3336.2, "exit_time": "08:36", "fill": 3340.3}
+{"pc_time": "2026-10-26 20:24:14", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-01", "cursor": "2025-09-01 07:59:00"}
+{"pc_time": "2026-10-26 20:24:51", "event": "bias", "day": "2025-09-01", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-01 07:59:00"}
+{"pc_time": "2026-10-26 20:25:50", "event": "no_trade", "day": "2025-09-01", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-09-01 08:15:00", "sha256": "1b74af47410f3f44e0b2bcfcdfd4ccd2ffa71414380b7d0f0e989cca8a60eab1"}
+{"pc_time": "2026-10-26 20:25:50", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-02", "cursor": "2025-09-02 07:59:00"}
+{"pc_time": "2026-10-26 20:26:02", "event": "bias", "day": "2025-09-02", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-02 07:59:00"}
+{"pc_time": "2026-10-26 20:26:21", "event": "trade", "day": "2025-09-02", "mode": "registered", "side": "S", "hhmm": "08:08", "entry": 3555.5, "stop": 3562.0, "target": 3545.8, "recognised": false, "sha256": "ecfbae22cb1833ea3d9b094f97237bc0636cfecc4f0e987c59c687a483e89ea0"}
+{"pc_time": "2026-10-26 20:26:22", "event": "result", "day": "2025-09-02", "mode": "registered", "outcome": "TP", "R": 1.492, "exit": 3545.6, "exit_time": "08:51", "fill": 3555.3}
+{"pc_time": "2026-10-26 20:26:23", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-03", "cursor": "2025-09-03 07:59:00"}
+{"pc_time": "2026-10-26 20:26:36", "event": "bias", "day": "2025-09-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-03 07:59:00"}
+{"pc_time": "2026-10-26 20:26:58", "event": "trade", "day": "2025-09-03", "mode": "registered", "side": "L", "hhmm": "08:07", "entry": 3601.3, "stop": 3595.7, "target": 3609.7, "recognised": false, "sha256": "11547f9f00ba3b7beaeb04a2a27b89a5e3df06cb9c3183dc71e6f3992485f900"}
+{"pc_time": "2026-10-26 20:26:59", "event": "result", "day": "2025-09-03", "mode": "registered", "outcome": "SL", "R": -1.018, "exit": 3595.6, "exit_time": "08:18", "fill": 3601.3}
+{"pc_time": "2026-10-26 20:27:00", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-04", "cursor": "2025-09-04 07:59:00"}
+{"pc_time": "2026-10-26 20:27:09", "event": "bias", "day": "2025-09-04", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-04 07:59:00"}
+{"pc_time": "2026-10-26 20:27:33", "event": "trade", "day": "2025-09-04", "mode": "registered", "side": "S", "hhmm": "08:01", "entry": 3593.0, "stop": 3600.0, "target": 3584.5, "recognised": false, "sha256": "6032755eab9220150850477e9a3c794bb5df8d5326380a66d133a52a39b78e8e"}
+{"pc_time": "2026-10-26 20:27:34", "event": "result", "day": "2025-09-04", "mode": "registered", "outcome": "SL", "R": -1.014, "exit": 3600.0, "exit_time": "08:39", "fill": 3592.9}
+{"pc_time": "2026-10-26 20:27:35", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-05", "cursor": "2025-09-05 07:59:00"}
+{"pc_time": "2026-10-26 20:27:45", "event": "bias", "day": "2025-09-05", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-05 07:59:00"}
+{"pc_time": "2026-10-26 20:27:57", "event": "trade", "day": "2025-09-05", "mode": "registered", "side": "L", "hhmm": "08:07", "entry": 3610.4, "stop": 3605.3, "target": 3618.0, "recognised": false, "sha256": "1e266e47867b0cfbe529f23bf428df84a91e0792ac7144cadbb712d456e6ed0c"}
+{"pc_time": "2026-10-26 20:27:58", "event": "result", "day": "2025-09-05", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 3605.4, "exit_time": "09:01", "fill": 3610.6}
+{"pc_time": "2026-10-26 20:28:01", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-16", "cursor": "2025-09-16 07:59:00"}
+{"pc_time": "2026-10-26 20:28:17", "event": "bias", "day": "2025-09-16", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-16 07:59:00"}
+{"pc_time": "2026-10-26 20:28:29", "event": "trade", "day": "2025-09-16", "mode": "registered", "side": "L", "hhmm": "08:05", "entry": 3731.1, "stop": 3726.6, "target": 3735.6, "recognised": false, "sha256": "dba1b1ff5899e1fd81a94e4ae8afd5f4b1869d9540344ba19cc6e843a1766f3b"}
+{"pc_time": "2026-10-26 20:28:30", "event": "result", "day": "2025-09-16", "mode": "registered", "outcome": "SL", "R": -1.022, "exit": 3726.8, "exit_time": "08:35", "fill": 3731.4}
+{"pc_time": "2026-10-26 20:28:31", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-24", "cursor": "2025-09-24 07:59:00"}
+{"pc_time": "2026-10-26 20:28:51", "event": "bias", "day": "2025-09-24", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-24 07:59:00"}
+{"pc_time": "2026-10-26 20:29:08", "event": "trade", "day": "2025-09-24", "mode": "registered", "side": "L", "hhmm": "08:12", "entry": 3806.9, "stop": 3801.9, "target": 3814.4, "recognised": false, "sha256": "f59f86d5014bcf2bf227ec49e81c7d2d1c465d8b3d311b777f8a8052108b52e2"}
+{"pc_time": "2026-10-26 20:29:08", "event": "result", "day": "2025-09-24", "mode": "registered", "outcome": "SL", "R": -1.02, "exit": 3801.8, "exit_time": "09:41", "fill": 3806.9}
+{"pc_time": "2026-10-26 20:29:10", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-09-29", "cursor": "2025-09-29 07:59:00"}
+{"pc_time": "2026-10-26 20:29:21", "event": "bias", "day": "2025-09-29", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-29 07:59:00"}
+{"pc_time": "2026-10-26 20:29:39", "event": "trade", "day": "2025-09-29", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 3846.5, "stop": 3837.4, "target": 3860.1, "recognised": false, "sha256": "4b8ff36796dcfbd646f4c95f77220a8eff1f6f481a615fb9240ede2d6b9f8b3a"}
+{"pc_time": "2026-10-26 20:29:40", "event": "result", "day": "2025-09-29", "mode": "registered", "outcome": "SL", "R": -1.011, "exit": 3837.3, "exit_time": "08:40", "fill": 3846.5}
+{"pc_time": "2026-10-26 20:29:48", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-10-13", "cursor": "2025-10-13 07:59:00"}
+{"pc_time": "2026-10-26 20:30:00", "event": "bias", "day": "2025-10-13", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-10-13 07:59:00"}
+{"pc_time": "2026-10-26 20:30:13", "event": "trade", "day": "2025-10-13", "mode": "registered", "side": "S", "hhmm": "08:05", "entry": 4087.0, "stop": 4096.5, "target": 4072.8, "recognised": false, "sha256": "990eb431713e53b9388e85169bbe550dc26a2a9438ad32f932ec287806dbc82a"}
+{"pc_time": "2026-10-26 20:30:14", "event": "result", "day": "2025-10-13", "mode": "registered", "outcome": "SL", "R": -1.011, "exit": 4096.4, "exit_time": "08:46", "fill": 4086.8}
+{"pc_time": "2026-10-26 20:30:15", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-10-17", "cursor": "2025-10-17 07:59:00"}
+{"pc_time": "2026-10-26 20:30:27", "event": "bias", "day": "2025-10-17", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-10-17 07:59:00"}
+{"pc_time": "2026-10-26 20:30:53", "event": "trade", "day": "2025-10-17", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4368.4, "stop": 4383.8, "target": 4345.3, "recognised": false, "sha256": "412252bee5c1d76bd0abd926c20ec569f29c3e18e2b04de972549a0dc4ad2d53"}
+{"pc_time": "2026-10-26 20:30:54", "event": "result", "day": "2025-10-17", "mode": "registered", "outcome": "TP", "R": 1.5, "exit": 4344.8, "exit_time": "08:20", "fill": 4367.9}
+{"pc_time": "2026-10-26 20:30:55", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-10-27", "cursor": "2025-10-27 07:59:00"}
+{"pc_time": "2026-10-26 20:31:10", "event": "bias", "day": "2025-10-27", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-27 07:59:00"}
+{"pc_time": "2026-10-26 20:31:31", "event": "trade", "day": "2025-10-27", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4079.3, "stop": 4088.0, "target": 4066.3, "recognised": false, "sha256": "a98b3cf8d21096bf6d7b009bf528da96dc811523f65f0df7e745729c43fb4d94"}
+{"pc_time": "2026-10-26 20:31:31", "event": "result", "day": "2025-10-27", "mode": "registered", "outcome": "TP", "R": 1.494, "exit": 4065.9, "exit_time": "08:53", "fill": 4078.9}
+{"pc_time": "2026-10-26 20:31:33", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-11-12", "cursor": "2025-11-12 07:59:00"}
+{"pc_time": "2026-10-26 20:31:48", "event": "bias", "day": "2025-11-12", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-12 07:59:00"}
+{"pc_time": "2026-10-26 20:32:56", "event": "no_trade", "day": "2025-11-12", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-11-12 08:15:00", "sha256": "1c8ca0a682ae4ec1b798c0c042f9e380797b441579da07045680f6e14c74a0b6"}
+{"pc_time": "2026-10-26 20:33:11", "event": "reveal", "day": "2025-11-12", "mode": "registered"}
+{"pc_time": "2026-10-26 20:33:12", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-11-14", "cursor": "2025-11-14 07:59:00"}
+{"pc_time": "2026-10-26 20:33:22", "event": "bias", "day": "2025-11-14", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-14 07:59:00"}
+{"pc_time": "2026-10-26 20:33:47", "event": "trade", "day": "2025-11-14", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4177.5, "stop": 4189.1, "target": 4160.1, "recognised": false, "sha256": "742a34624398902175b196cc3d16f387fddc46bd92c0c4d435d12eaec94be815"}
+{"pc_time": "2026-10-26 20:33:48", "event": "result", "day": "2025-11-14", "mode": "registered", "outcome": "SL", "R": -1.009, "exit": 4189.0, "exit_time": "08:36", "fill": 4177.3}
+{"pc_time": "2026-10-26 20:33:49", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-11-21", "cursor": "2025-11-21 07:59:00"}
+{"pc_time": "2026-10-26 20:34:01", "event": "bias", "day": "2025-11-21", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-21 07:59:00"}
+{"pc_time": "2026-10-26 20:34:33", "event": "trade", "day": "2025-11-21", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4034.1, "stop": 4017.8, "target": 4058.5, "recognised": false, "sha256": "b8f2c573d285776b2506a4a105bd9f4fd57e0e1e6a05dfe34c7fc658635e1b9b"}
+{"pc_time": "2026-10-26 20:34:34", "event": "result", "day": "2025-11-21", "mode": "registered", "outcome": "TP", "R": 1.497, "exit": 4058.7, "exit_time": "09:19", "fill": 4034.3}
+{"pc_time": "2026-10-26 20:34:35", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-02", "cursor": "2025-12-02 07:59:00"}
+{"pc_time": "2026-10-26 20:34:46", "event": "bias", "day": "2025-12-02", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-12-02 07:59:00"}
+{"pc_time": "2026-10-26 20:35:41", "event": "no_trade", "day": "2025-12-02", "mode": "registered", "reason": "no setup (the trader)", "cursor": "2025-12-02 08:13:00", "sha256": "c93d31d66417978ebef2c440b67f5967d64bcbe1a4864eb764570e8611ace916"}
+{"pc_time": "2026-10-26 20:35:48", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-03", "cursor": "2025-12-03 07:59:00"}
+{"pc_time": "2026-10-26 20:35:55", "event": "bias", "day": "2025-12-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-12-03 07:59:00"}
+{"pc_time": "2026-10-26 20:36:10", "event": "trade", "day": "2025-12-03", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4237.6, "stop": 4230.5, "target": 4248.2, "recognised": false, "sha256": "0e8def76acbc32bda9aa6731c44013f5cfaffe86b9a6daf061fa1d0d706ea3f1"}
+{"pc_time": "2026-10-26 20:36:11", "event": "result", "day": "2025-12-03", "mode": "registered", "outcome": "SL", "R": -1.014, "exit": 4230.6, "exit_time": "09:08", "fill": 4237.8}
+{"pc_time": "2026-10-26 20:36:12", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-04", "cursor": "2025-12-04 07:59:00"}
+{"pc_time": "2026-10-26 20:36:18", "event": "bias", "day": "2025-12-04", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-12-04 07:59:00"}
+{"pc_time": "2026-10-26 20:36:29", "event": "trade", "day": "2025-12-04", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4222.9, "stop": 4215.3, "target": 4234.3, "recognised": false, "sha256": "43e616b04dfa2ffd98f4b77802f8a727245d58f20e6dab8d40c3d77f0256c59f"}
+{"pc_time": "2026-10-26 20:36:29", "event": "result", "day": "2025-12-04", "mode": "registered", "outcome": "SL", "R": -1.013, "exit": 4215.1, "exit_time": "08:59", "fill": 4222.8}
+{"pc_time": "2026-10-26 20:36:30", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-18", "cursor": "2025-12-18 07:59:00"}
+{"pc_time": "2026-10-26 20:36:41", "event": "bias", "day": "2025-12-18", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-12-18 07:59:00"}
+{"pc_time": "2026-10-26 20:36:47", "event": "trade", "day": "2025-12-18", "mode": "registered", "side": "S", "hhmm": "07:59", "entry": 4362.6, "stop": 4368.7, "target": 4353.5, "recognised": false, "sha256": "03bbe9cd2d5f5a2d2370dfcca4c2028a6b8be5d407e9baf7dd0763870aa8b770"}
+{"pc_time": "2026-10-26 20:36:48", "event": "result", "day": "2025-12-18", "mode": "registered", "outcome": "TP", "R": 1.492, "exit": 4353.4, "exit_time": "08:55", "fill": 4362.5}
+{"pc_time": "2026-10-26 20:36:49", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-26", "cursor": "2025-12-26 07:59:00"}
+{"pc_time": "2026-10-26 20:37:04", "event": "bias", "day": "2025-12-26", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-12-26 07:59:00"}
+{"pc_time": "2026-10-26 20:37:23", "event": "trade", "day": "2025-12-26", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4543.1, "stop": 4536.4, "target": 4553.1, "recognised": false, "sha256": "0ffe8fe3fa60b395cebed3a1cfa94cd2366a6e66b94ca923a721486d94f7c0f5"}
+{"pc_time": "2026-10-26 20:37:24", "event": "result", "day": "2025-12-26", "mode": "registered", "outcome": "TP", "R": 1.493, "exit": 4553.2, "exit_time": "10:19", "fill": 4543.2}
+{"pc_time": "2026-10-26 20:37:25", "event": "start_day", "mode": "registered", "window": "read v2 2025", "day": "2025-12-30", "cursor": "2025-12-30 07:59:00"}
+{"pc_time": "2026-10-26 20:37:34", "event": "bias", "day": "2025-12-30", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-12-30 07:59:00"}
+{"pc_time": "2026-10-26 20:37:52", "event": "trade", "day": "2025-12-30", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4387.3, "stop": 4373.7, "target": 4407.7, "recognised": false, "sha256": "567e0f2f0b286edd4e3f2f892bb3e898b0111d58b71d2674b8017378f4c75057"}
+{"pc_time": "2026-10-26 20:37:52", "event": "result", "day": "2025-12-30", "mode": "registered", "outcome": "SL", "R": -1.007, "exit": 4373.9, "exit_time": "08:27", "fill": 4387.6}
+{"pc_time": "2026-10-26 20:55:38", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-02", "cursor": "2025-01-02 07:59:00"}
+{"pc_time": "2026-10-26 20:56:20", "event": "bias", "day": "2025-01-02", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-01-02 07:59:00"}
+{"pc_time": "2026-10-26 20:56:34", "event": "trade", "day": "2025-01-02", "mode": "registered", "side": "L", "hhmm": "08:02", "entry": 2648.2, "stop": 2646.2, "target": 2650.2, "recognised": false, "sha256": "be3d1c56bb4700452904a5c5637fc482fbe7891a0fcf2375cf13b78a7104b7f9", "outcome_hidden": true}
+{"pc_time": "2026-10-26 20:56:46", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-07", "cursor": "2025-01-07 07:59:00"}
+{"pc_time": "2026-10-26 20:56:55", "event": "bias", "day": "2025-01-07", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-01-07 07:59:00"}
+{"pc_time": "2026-10-26 20:57:12", "event": "trade", "day": "2025-01-07", "mode": "registered", "side": "L", "hhmm": "08:10", "entry": 2654.6, "stop": 2651.8, "target": 2657.4, "recognised": false, "sha256": "6001f37676a64c432879b5bc0fb99dd28639a2dba8cdee674c5b9e54e5701ec2", "outcome_hidden": true}
+{"pc_time": "2026-10-26 20:57:14", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-14", "cursor": "2025-01-14 07:59:00"}
+{"pc_time": "2026-10-26 20:57:29", "event": "bias", "day": "2025-01-14", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-01-14 07:59:00"}
+{"pc_time": "2026-10-26 20:58:13", "event": "no_trade", "day": "2025-01-14", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-01-14 08:15:00", "sha256": "043c1cbb1190945e3a13cecbae31d71c0b510d98efa518c86b053d489f2f00fa"}
+{"pc_time": "2026-10-26 20:58:15", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-16", "cursor": "2025-01-16 07:59:00"}
+{"pc_time": "2026-10-26 20:58:25", "event": "bias", "day": "2025-01-16", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-01-16 07:59:00"}
+{"pc_time": "2026-10-26 20:58:38", "event": "trade", "day": "2025-01-16", "mode": "registered", "side": "L", "hhmm": "08:03", "entry": 2727.7, "stop": 2724.1, "target": 2731.3, "recognised": false, "sha256": "274b02b4c2f0885db9dd8baf2ea4ab16b077fee7ab0df41d9dc98ce78f30bd96", "outcome_hidden": true}
+{"pc_time": "2026-10-26 20:58:42", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-23", "cursor": "2025-01-23 07:59:00"}
+{"pc_time": "2026-10-26 20:58:56", "event": "bias", "day": "2025-01-23", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-01-23 07:59:00"}
+{"pc_time": "2026-10-26 20:59:03", "event": "trade", "day": "2025-01-23", "mode": "registered", "side": "S", "hhmm": "08:01", "entry": 2760.0, "stop": 2762.5, "target": 2757.5, "recognised": false, "sha256": "78c24c804f94222fb42935c7a50b5f8a288fab7b5f75a9bda340b19ad66bdd64", "outcome_hidden": true}
+{"pc_time": "2026-10-26 20:59:05", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-27", "cursor": "2025-01-27 07:59:00"}
+{"pc_time": "2026-10-26 20:59:11", "event": "bias", "day": "2025-01-27", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-01-27 07:59:00"}
+{"pc_time": "2026-10-26 20:59:38", "event": "no_trade", "day": "2025-01-27", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-01-27 08:15:00", "sha256": "263f14d0e215f3a8a089af78b4006cbae41c32f5d7faee66dc98843115dc6cea"}
+{"pc_time": "2026-10-26 20:59:39", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-01-28", "cursor": "2025-01-28 07:59:00"}
+{"pc_time": "2026-10-26 20:59:44", "event": "bias", "day": "2025-01-28", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-01-28 07:59:00"}
+{"pc_time": "2026-10-26 20:59:53", "event": "trade", "day": "2025-01-28", "mode": "registered", "side": "S", "hhmm": "08:00", "entry": 2742.1, "stop": 2746.5, "target": 2737.7, "recognised": false, "sha256": "d942913223f8cc240a5e9da7f0ca5ce551d3ad624d26dcb79c3b5aff1b0ba3de", "outcome_hidden": true}
+{"pc_time": "2026-10-26 20:59:54", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-02-24", "cursor": "2025-02-24 07:59:00"}
+{"pc_time": "2026-10-26 21:00:11", "event": "bias", "day": "2025-02-24", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-02-24 07:59:00"}
+{"pc_time": "2026-10-26 21:00:41", "event": "trade", "day": "2025-02-24", "mode": "registered", "side": "L", "hhmm": "08:13", "entry": 2957.6, "stop": 2953.6, "target": 2961.6, "recognised": false, "sha256": "c937614103a594f12a937a98290f14cadc9343b0fe81121c4e04895c6e4e39ab", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:00:42", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-03-04", "cursor": "2025-03-04 07:59:00"}
+{"pc_time": "2026-10-26 21:00:56", "event": "bias", "day": "2025-03-04", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-03-04 07:59:00"}
+{"pc_time": "2026-10-26 21:01:09", "event": "no_trade", "day": "2025-03-04", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-03-04 08:15:00", "sha256": "9b1ec4edb54bf1cc5b9459b5047925edd996ef9cf0dd1c9d2106b034bb834b0d"}
+{"pc_time": "2026-10-26 21:01:09", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-03-12", "cursor": "2025-03-12 07:59:00"}
+{"pc_time": "2026-10-26 21:01:15", "event": "bias", "day": "2025-03-12", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-03-12 07:59:00"}
+{"pc_time": "2026-10-26 21:01:28", "event": "trade", "day": "2025-03-12", "mode": "registered", "side": "L", "hhmm": "08:07", "entry": 2921.2, "stop": 2917.6, "target": 2924.8, "recognised": false, "sha256": "e1403f09e6a97e0a28f92843a9b1b5a84561e4fe9f77f5735c4ba1b3d521cfb0", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:01:29", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-03-24", "cursor": "2025-03-24 07:59:00"}
+{"pc_time": "2026-10-26 21:01:42", "event": "bias", "day": "2025-03-24", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-03-24 07:59:00"}
+{"pc_time": "2026-10-26 21:02:04", "event": "trade", "day": "2025-03-24", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 3029.7, "stop": 3033.2, "target": 3026.2, "recognised": false, "sha256": "5670cb57ce4db52d811b6c4885f7bca3300d0640c700710978e2671faaad7614", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:02:05", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-04-01", "cursor": "2025-04-01 07:59:00"}
+{"pc_time": "2026-10-26 21:02:16", "event": "bias", "day": "2025-04-01", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-04-01 07:59:00"}
+{"pc_time": "2026-10-26 21:02:34", "event": "trade", "day": "2025-04-01", "mode": "registered", "side": "L", "hhmm": "08:11", "entry": 3161.3, "stop": 3153.9, "target": 3168.7, "recognised": false, "sha256": "92b48b95504d41b6f0088dc08ec90727782ecbe63afa71e32607ab0fc45a42b1", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:02:35", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-05-15", "cursor": "2025-05-15 07:59:00"}
+{"pc_time": "2026-10-26 21:02:39", "event": "bias", "day": "2025-05-15", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-05-15 07:59:00"}
+{"pc_time": "2026-10-26 21:02:56", "event": "trade", "day": "2025-05-15", "mode": "registered", "side": "L", "hhmm": "08:04", "entry": 3151.8, "stop": 3139.1, "target": 3164.5, "recognised": false, "sha256": "ead0affeea53899ebab3d0d2225807de28df832af52b749871294029c1e4bcf1", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:02:56", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-05-20", "cursor": "2025-05-20 07:59:00"}
+{"pc_time": "2026-10-26 21:03:06", "event": "bias", "day": "2025-05-20", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-05-20 07:59:00"}
+{"pc_time": "2026-10-26 21:03:20", "event": "trade", "day": "2025-05-20", "mode": "registered", "side": "S", "hhmm": "08:01", "entry": 3210.4, "stop": 3216.4, "target": 3204.4, "recognised": false, "sha256": "1b0c9cf362b2fa0aac6d4fb9747909b7503f2d667f6bd4bead6dbd81092693cd", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:03:20", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-05-23", "cursor": "2025-05-23 07:59:00"}
+{"pc_time": "2026-10-26 21:03:40", "event": "bias", "day": "2025-05-23", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-05-23 07:59:00"}
+{"pc_time": "2026-10-26 21:03:56", "event": "trade", "day": "2025-05-23", "mode": "registered", "side": "S", "hhmm": "08:08", "entry": 3326.5, "stop": 3333.1, "target": 3319.9, "recognised": false, "sha256": "902d7a9cf26b9db5c70141c6bd58d8d12f0dcddc70d57b0c1f870260a998a18b", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:03:57", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-06-09", "cursor": "2025-06-09 07:59:00"}
+{"pc_time": "2026-10-26 21:04:03", "event": "bias", "day": "2025-06-09", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-06-09 07:59:00"}
+{"pc_time": "2026-10-26 21:04:16", "event": "trade", "day": "2025-06-09", "mode": "registered", "side": "S", "hhmm": "08:03", "entry": 3343.7, "stop": 3349.3, "target": 3338.1, "recognised": false, "sha256": "58db688b51ba8570909753ca9fc1161c8bb868887c3ce9f43b58a2d66f6cdad8", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:04:17", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-06-19", "cursor": "2025-06-19 07:59:00"}
+{"pc_time": "2026-10-26 21:04:22", "event": "bias", "day": "2025-06-19", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-06-19 07:59:00"}
+{"pc_time": "2026-10-26 21:04:35", "event": "trade", "day": "2025-06-19", "mode": "registered", "side": "S", "hhmm": "08:05", "entry": 3370.9, "stop": 3382.0, "target": 3359.8, "recognised": false, "sha256": "f3f338da113d06d3111c9826809997552a4926b8486c0ad3e0d02aab877e1d2e", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:04:36", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-07-03", "cursor": "2025-07-03 07:59:00"}
+{"pc_time": "2026-10-26 21:04:40", "event": "bias", "day": "2025-07-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-07-03 07:59:00"}
+{"pc_time": "2026-10-26 21:04:54", "event": "trade", "day": "2025-07-03", "mode": "registered", "side": "S", "hhmm": "08:06", "entry": 3370.1, "stop": 3374.7, "target": 3365.5, "recognised": false, "sha256": "9164e8670ac5fc1ac5dc54f2c7152593ad63f7eca85b0fb0693d313a2944f88d", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:04:55", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-07-14", "cursor": "2025-07-14 07:59:00"}
+{"pc_time": "2026-10-26 21:05:01", "event": "bias", "day": "2025-07-14", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-07-14 07:59:00"}
+{"pc_time": "2026-10-26 21:05:16", "event": "trade", "day": "2025-07-14", "mode": "registered", "side": "L", "hhmm": "08:03", "entry": 3382.4, "stop": 3375.4, "target": 3389.4, "recognised": false, "sha256": "208442c8e643503879e981cf397d36286062a8d11d8cd801f508403c06136d43", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:05:18", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-07-21", "cursor": "2025-07-21 07:59:00"}
+{"pc_time": "2026-10-26 21:05:22", "event": "bias", "day": "2025-07-21", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-07-21 07:59:00"}
+{"pc_time": "2026-10-26 21:05:36", "event": "trade", "day": "2025-07-21", "mode": "registered", "side": "L", "hhmm": "08:02", "entry": 3376.7, "stop": 3373.0, "target": 3380.4, "recognised": false, "sha256": "e07427df58d1242ed4b14bbff5363334cc51845c00c570eb8559ca09ff43c574", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:05:36", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-07-22", "cursor": "2025-07-22 07:59:00"}
+{"pc_time": "2026-10-26 21:06:02", "event": "bias", "day": "2025-07-22", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-07-22 07:59:00"}
+{"pc_time": "2026-10-26 21:06:29", "event": "trade", "day": "2025-07-22", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 3397.7, "stop": 3392.7, "target": 3402.7, "recognised": false, "sha256": "52ff76c3e875d318947388218cac449b096ef879bf14675d725f22ab40271488", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:06:31", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-09-08", "cursor": "2025-09-08 07:59:00"}
+{"pc_time": "2026-10-26 21:07:23", "event": "bias", "day": "2025-09-08", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-08 07:59:00"}
+{"pc_time": "2026-10-26 21:07:33", "event": "trade", "day": "2025-09-08", "mode": "registered", "side": "L", "hhmm": "08:03", "entry": 3638.8, "stop": 3633.2, "target": 3644.4, "recognised": false, "sha256": "73a4dcdc844db94948a025c0df0ab25552f0163609adb4b278e46ed9001c8eab", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:07:34", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-09-12", "cursor": "2025-09-12 07:59:00"}
+{"pc_time": "2026-10-26 21:08:03", "event": "bias", "day": "2025-09-12", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-12 07:59:00"}
+{"pc_time": "2026-10-26 21:08:17", "event": "trade", "day": "2025-09-12", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 3690.7, "stop": 3685.9, "target": 3695.5, "recognised": false, "sha256": "9df2a58ce18f51eca968431e3395c7a2367365bf89c01f7819a78c759646fc3d", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:08:18", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-09-19", "cursor": "2025-09-19 07:59:00"}
+{"pc_time": "2026-10-26 21:08:41", "event": "bias", "day": "2025-09-19", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-09-19 07:59:00"}
+{"pc_time": "2026-10-26 21:09:16", "event": "trade", "day": "2025-09-19", "mode": "registered", "side": "S", "hhmm": "08:04", "entry": 3679.3, "stop": 3685.3, "target": 3673.3, "recognised": false, "sha256": "aa49a200ae3622be3e3a799c282e3cb97f67d71aa7d13d398ccdca237d985cc3", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:09:18", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-09-30", "cursor": "2025-09-30 07:59:00"}
+{"pc_time": "2026-10-26 21:09:54", "event": "bias", "day": "2025-09-30", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-09-30 07:59:00"}
+{"pc_time": "2026-10-26 21:10:05", "event": "trade", "day": "2025-09-30", "mode": "registered", "side": "S", "hhmm": "08:03", "entry": 3882.6, "stop": 3890.8, "target": 3874.4, "recognised": false, "sha256": "e1de10a2b4abd5219b71dce7b8c15c8bf2bedef5260ab62d14da1251271bb102", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:10:11", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-02", "cursor": "2025-10-02 07:59:00"}
+{"pc_time": "2026-10-26 21:10:30", "event": "bias", "day": "2025-10-02", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-10-02 07:59:00"}
+{"pc_time": "2026-10-26 21:10:49", "event": "trade", "day": "2025-10-02", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 3898.0, "stop": 3889.0, "target": 3907.0, "recognised": false, "sha256": "547403ca30a5041faa1838192c5a320b4807730a679f977172d130783450313b", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:10:51", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-10", "cursor": "2025-10-10 07:59:00"}
+{"pc_time": "2026-10-26 21:11:26", "event": "bias", "day": "2025-10-10", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-10 07:59:00"}
+{"pc_time": "2026-10-26 21:12:00", "event": "trade", "day": "2025-10-10", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 3972.4, "stop": 3962.3, "target": 3982.5, "recognised": false, "sha256": "382434ecce04f078f36772b8a8bbfea1735b16f3ee87cd36c89eec099fa2f5c0", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:12:03", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-20", "cursor": "2025-10-20 07:59:00"}
+{"pc_time": "2026-10-26 21:12:20", "event": "bias", "day": "2025-10-20", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-20 07:59:00"}
+{"pc_time": "2026-10-26 21:12:37", "event": "trade", "day": "2025-10-20", "mode": "registered", "side": "L", "hhmm": "08:10", "entry": 4261.6, "stop": 4244.5, "target": 4278.7, "recognised": false, "sha256": "8c4c96ba720e938c8b955e56717cef022f98ffb35b7361d7514d823b492c4c78", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:12:38", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-22", "cursor": "2025-10-22 07:59:00"}
+{"pc_time": "2026-10-26 21:12:45", "event": "bias", "day": "2025-10-22", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-22 07:59:00"}
+{"pc_time": "2026-10-26 21:13:16", "event": "trade", "day": "2025-10-22", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4151.4, "stop": 4136.8, "target": 4166.0, "recognised": false, "sha256": "b790362a98f1de80a7f587d32d1b6b2739b3c14140680f312899bbf7f9242874", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:13:17", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-23", "cursor": "2025-10-23 07:59:00"}
+{"pc_time": "2026-10-26 21:13:22", "event": "bias", "day": "2025-10-23", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-10-23 07:59:00"}
+{"pc_time": "2026-10-26 21:13:46", "event": "trade", "day": "2025-10-23", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 4129.3, "stop": 4150.6, "target": 4108.0, "recognised": false, "sha256": "a609800088131d90aeb8ef776d9c212d337d2e5ed312e984cea9070cf8350722", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:13:47", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-24", "cursor": "2025-10-24 07:59:00"}
+{"pc_time": "2026-10-26 21:13:55", "event": "bias", "day": "2025-10-24", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-24 07:59:00"}
+{"pc_time": "2026-10-26 21:14:13", "event": "trade", "day": "2025-10-24", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4110.3, "stop": 4095.7, "target": 4124.9, "recognised": false, "sha256": "d1fce1ccf50bb3ca86cfa2c6f35059bed77169a6032dcfacb7cee57dcc65ca94", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:14:14", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-28", "cursor": "2025-10-28 07:59:00"}
+{"pc_time": "2026-10-26 21:14:22", "event": "bias", "day": "2025-10-28", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-10-28 07:59:00"}
+{"pc_time": "2026-10-26 21:14:49", "event": "trade", "day": "2025-10-28", "mode": "registered", "side": "S", "hhmm": "08:14", "entry": 3935.7, "stop": 3951.1, "target": 3920.3, "recognised": false, "sha256": "d4e4acfe85fa963d36d239d81a6defc361f73cc4d91a3b9ffd0e09c2bb571fff", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:14:50", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-10-31", "cursor": "2025-10-31 07:59:00"}
+{"pc_time": "2026-10-26 21:14:57", "event": "bias", "day": "2025-10-31", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-10-31 07:59:00"}
+{"pc_time": "2026-10-26 21:15:15", "event": "trade", "day": "2025-10-31", "mode": "registered", "side": "L", "hhmm": "08:14", "entry": 4034.8, "stop": 4023.2, "target": 4046.4, "recognised": false, "sha256": "2ccbdbb2d03555df28e6375ce5536e59d47d5c53136d6fdeff4e457feca1aaf0", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:15:16", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-11-03", "cursor": "2025-11-03 07:59:00"}
+{"pc_time": "2026-10-26 21:15:23", "event": "bias", "day": "2025-11-03", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-03 07:59:00"}
+{"pc_time": "2026-10-26 21:15:37", "event": "no_trade", "day": "2025-11-03", "mode": "registered", "reason": "08:15 reached with no trade", "cursor": "2025-11-03 08:15:00", "sha256": "71be99b2590f7e57942bcc18e86fcdf97eb3ef218b2f957455f4e08f26798e22"}
+{"pc_time": "2026-10-26 21:15:42", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-11-07", "cursor": "2025-11-07 07:59:00"}
+{"pc_time": "2026-10-26 21:15:49", "event": "bias", "day": "2025-11-07", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-07 07:59:00"}
+{"pc_time": "2026-10-26 21:16:05", "event": "trade", "day": "2025-11-07", "mode": "registered", "side": "L", "hhmm": "08:01", "entry": 4017.0, "stop": 4010.2, "target": 4023.8, "recognised": false, "sha256": "8a4829c4505fbee6d179b676e04cd3ddc87bdcaf615bf68956f7358eeb64a22a", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:16:06", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-11-10", "cursor": "2025-11-10 07:59:00"}
+{"pc_time": "2026-10-26 21:16:12", "event": "bias", "day": "2025-11-10", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-11-10 07:59:00"}
+{"pc_time": "2026-10-26 21:17:05", "event": "trade", "day": "2025-11-10", "mode": "registered", "side": "L", "hhmm": "08:11", "entry": 4087.9, "stop": 4081.4, "target": 4094.4, "recognised": false, "sha256": "d27c708cbd32859afe983ec3b2551348c1723b77b133a870f50c66ae033bc9e0", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:17:06", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-11-18", "cursor": "2025-11-18 07:59:00"}
+{"pc_time": "2026-10-26 21:17:21", "event": "bias", "day": "2025-11-18", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-11-18 07:59:00"}
+{"pc_time": "2026-10-26 21:17:30", "event": "trade", "day": "2025-11-18", "mode": "registered", "side": "L", "hhmm": "07:59", "entry": 4013.3, "stop": 4000.9, "target": 4025.7, "recognised": false, "sha256": "d583c150535fd2bbd079a976b30786b4d09918d10d19605248339c93fecad831", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:17:32", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-11-20", "cursor": "2025-11-20 07:59:00"}
+{"pc_time": "2026-10-26 21:17:36", "event": "bias", "day": "2025-11-20", "mode": "registered", "bias": "short", "recognised": false, "cursor": "2025-11-20 07:59:00"}
+{"pc_time": "2026-10-26 21:17:47", "event": "trade", "day": "2025-11-20", "mode": "registered", "side": "S", "hhmm": "08:02", "entry": 4055.6, "stop": 4066.2, "target": 4045.0, "recognised": false, "sha256": "0788a3f86b5a216b5bc12c1030a9d4657e493152c157e6b34c0fd971f5823793", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:17:48", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-12-22", "cursor": "2025-12-22 07:59:00"}
+{"pc_time": "2026-10-26 21:17:57", "event": "bias", "day": "2025-12-22", "mode": "registered", "bias": "neutral", "recognised": false, "cursor": "2025-12-22 07:59:00"}
+{"pc_time": "2026-10-26 21:18:22", "event": "trade", "day": "2025-12-22", "mode": "registered", "side": "L", "hhmm": "08:09", "entry": 4446.9, "stop": 4437.8, "target": 4456.0, "recognised": false, "sha256": "1eea0f8b8f7914adb7c88fc5867cd75d107246a47ff9df22a6afb7ff98e4497c", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:18:23", "event": "start_day", "mode": "registered", "window": "claude filter 2025", "day": "2025-12-31", "cursor": "2025-12-31 07:59:00"}
+{"pc_time": "2026-10-26 21:18:33", "event": "bias", "day": "2025-12-31", "mode": "registered", "bias": "long", "recognised": false, "cursor": "2025-12-31 07:59:00"}
+{"pc_time": "2026-10-26 21:18:54", "event": "trade", "day": "2025-12-31", "mode": "registered", "side": "S", "hhmm": "08:09", "entry": 4334.1, "stop": 4344.3, "target": 4323.9, "recognised": false, "sha256": "c9a6bf15a5e51a57faa454d48442581a82d3a6e4ceb94fec2da453fe94025c0a", "outcome_hidden": true}
+{"pc_time": "2026-10-26 21:22:20", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-07-07", "cursor": "2026-07-07 07:59:00"}
+{"pc_time": "2026-10-26 21:22:33", "event": "bias", "day": "2026-07-07", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-07-07 07:59:00"}
+{"pc_time": "2026-10-26 21:23:00", "event": "trade", "day": "2026-07-07", "mode": "practice", "side": "L", "hhmm": "08:14", "entry": 4140.7, "stop": 4127.6, "target": 4153.8, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:23:00", "event": "result", "day": "2026-07-07", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 4153.9, "exit_time": "12:19", "fill": 4140.8}
+{"pc_time": "2026-10-26 21:23:17", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-05-18", "cursor": "2026-05-18 07:59:00"}
+{"pc_time": "2026-10-26 21:23:28", "event": "bias", "day": "2026-05-18", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-05-18 07:59:00"}
+{"pc_time": "2026-10-26 21:24:01", "event": "trade", "day": "2026-05-18", "mode": "practice", "side": "S", "hhmm": "08:04", "entry": 4547.8, "stop": 4560.7, "target": 4534.9, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:24:07", "event": "result", "day": "2026-05-18", "mode": "practice", "outcome": "SL", "R": -1.008, "exit": 4560.4, "exit_time": "08:30", "fill": 4547.4}
+{"pc_time": "2026-10-26 21:24:08", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-03-04", "cursor": "2026-03-04 07:59:00"}
+{"pc_time": "2026-10-26 21:24:24", "event": "bias", "day": "2026-03-04", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-03-04 07:59:00"}
+{"pc_time": "2026-10-26 21:24:46", "event": "trade", "day": "2026-03-04", "mode": "practice", "side": "L", "hhmm": "08:06", "entry": 5169.1, "stop": 5154.6, "target": 5183.6, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:24:47", "event": "result", "day": "2026-03-04", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 5183.4, "exit_time": "08:42", "fill": 5168.9}
+{"pc_time": "2026-10-26 21:24:52", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-03-20", "cursor": "2026-03-20 07:59:00"}
+{"pc_time": "2026-10-26 21:25:05", "event": "bias", "day": "2026-03-20", "mode": "practice", "bias": "neutral", "recognised": false, "cursor": "2026-03-20 07:59:00"}
+{"pc_time": "2026-10-26 21:25:28", "event": "trade", "day": "2026-03-20", "mode": "practice", "side": "L", "hhmm": "08:14", "entry": 4717.0, "stop": 4702.9, "target": 4731.1, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:25:29", "event": "result", "day": "2026-03-20", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 4731.0, "exit_time": "08:20", "fill": 4716.9}
+{"pc_time": "2026-10-26 21:25:31", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-02-27", "cursor": "2026-02-27 07:59:00"}
+{"pc_time": "2026-10-26 21:25:40", "event": "bias", "day": "2026-02-27", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-02-27 07:59:00"}
+{"pc_time": "2026-10-26 21:26:02", "event": "trade", "day": "2026-02-27", "mode": "practice", "side": "S", "hhmm": "08:14", "entry": 5195.2, "stop": 5206.4, "target": 5184.0, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:26:03", "event": "result", "day": "2026-02-27", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 5184.4, "exit_time": "10:12", "fill": 5195.6}
+{"pc_time": "2026-10-26 21:26:55", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-01-28", "cursor": "2026-01-28 07:59:00"}
+{"pc_time": "2026-10-26 21:27:04", "event": "bias", "day": "2026-01-28", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-01-28 07:59:00"}
+{"pc_time": "2026-10-26 21:27:14", "event": "no_trade", "day": "2026-01-28", "mode": "practice", "reason": "08:15 reached with no trade", "cursor": "2026-01-28 08:15:00", "sha256": "25594a58945b7903020575af95c5b9ecfb075e3fdcc4897e894afe600f7807b5"}
+{"pc_time": "2026-10-26 21:27:18", "event": "reveal", "day": "2026-01-28", "mode": "practice"}
+{"pc_time": "2026-10-26 21:27:26", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-05-28", "cursor": "2026-05-28 07:59:00"}
+{"pc_time": "2026-10-26 21:27:39", "event": "bias", "day": "2026-05-28", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-05-28 07:59:00"}
+{"pc_time": "2026-10-26 21:27:51", "event": "trade", "day": "2026-05-28", "mode": "practice", "side": "L", "hhmm": "08:04", "entry": 4416.8, "stop": 4403.7, "target": 4429.9, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:27:51", "event": "result", "day": "2026-05-28", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 4430.1, "exit_time": "11:09", "fill": 4417.0}
+{"pc_time": "2026-10-26 21:27:53", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-06-17", "cursor": "2026-06-17 07:59:00"}
+{"pc_time": "2026-10-26 21:28:48", "event": "bias", "day": "2026-06-17", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-06-17 07:59:00"}
+{"pc_time": "2026-10-26 21:29:10", "event": "trade", "day": "2026-06-17", "mode": "practice", "side": "L", "hhmm": "08:14", "entry": 4346.9, "stop": 4337.0, "target": 4356.8, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:29:11", "event": "result", "day": "2026-06-17", "mode": "practice", "outcome": "SL", "R": -1.01, "exit": 4337.1, "exit_time": "09:45", "fill": 4347.1}
+{"pc_time": "2026-10-26 21:29:13", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-07-14", "cursor": "2026-07-14 07:59:00"}
+{"pc_time": "2026-10-26 21:30:04", "event": "bias", "day": "2026-07-14", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-07-14 07:59:00"}
+{"pc_time": "2026-10-26 21:30:19", "event": "trade", "day": "2026-07-14", "mode": "practice", "side": "L", "hhmm": "08:09", "entry": 4035.1, "stop": 4027.0, "target": 4043.2, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:30:20", "event": "result", "day": "2026-07-14", "mode": "practice", "outcome": "SL", "R": -1.012, "exit": 4027.1, "exit_time": "08:58", "fill": 4035.3}
+{"pc_time": "2026-10-26 21:30:22", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-03-23", "cursor": "2026-03-23 07:59:00"}
+{"pc_time": "2026-10-26 21:30:28", "event": "bias", "day": "2026-03-23", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-03-23 07:59:00"}
+{"pc_time": "2026-10-26 21:30:43", "event": "trade", "day": "2026-03-23", "mode": "practice", "side": "L", "hhmm": "08:04", "entry": 4223.1, "stop": 4146.0, "target": 4338.8, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:30:44", "event": "result", "day": "2026-03-23", "mode": "practice", "outcome": "TP", "R": 1.501, "exit": 4338.5, "exit_time": "11:05", "fill": 4222.8}
+{"pc_time": "2026-10-26 21:30:48", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-03-26", "cursor": "2026-03-26 07:59:00"}
+{"pc_time": "2026-10-26 21:31:09", "event": "bias", "day": "2026-03-26", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-03-26 07:59:00"}
+{"pc_time": "2026-10-26 21:31:23", "event": "trade", "day": "2026-03-26", "mode": "practice", "side": "S", "hhmm": "08:14", "entry": 4441.4, "stop": 4462.5, "target": 4409.7, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:31:24", "event": "result", "day": "2026-03-26", "mode": "practice", "outcome": "TP", "R": 1.502, "exit": 4410.0, "exit_time": "08:43", "fill": 4441.7}
+{"pc_time": "2026-10-26 21:31:26", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-02-24", "cursor": "2026-02-24 07:59:00"}
+{"pc_time": "2026-10-26 21:31:35", "event": "bias", "day": "2026-02-24", "mode": "practice", "bias": "neutral", "recognised": false, "cursor": "2026-02-24 07:59:00"}
+{"pc_time": "2026-10-26 21:31:45", "event": "trade", "day": "2026-02-24", "mode": "practice", "side": "S", "hhmm": "08:04", "entry": 5192.3, "stop": 5205.7, "target": 5178.9, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:31:45", "event": "result", "day": "2026-02-24", "mode": "practice", "outcome": "TP", "R": 1.0, "exit": 5179.0, "exit_time": "12:17", "fill": 5192.4}
+{"pc_time": "2026-10-26 21:31:48", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-02-04", "cursor": "2026-02-04 07:59:00"}
+{"pc_time": "2026-10-26 21:31:54", "event": "bias", "day": "2026-02-04", "mode": "practice", "bias": "neutral", "recognised": false, "cursor": "2026-02-04 07:59:00"}
+{"pc_time": "2026-10-26 21:32:08", "event": "trade", "day": "2026-02-04", "mode": "practice", "side": "L", "hhmm": "08:09", "entry": 5108.2, "stop": 5086.4, "target": 5140.9, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:32:09", "event": "result", "day": "2026-02-04", "mode": "practice", "outcome": "SL", "R": -1.005, "exit": 5086.6, "exit_time": "09:15", "fill": 5108.5}
+{"pc_time": "2026-10-26 21:32:10", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-02-03", "cursor": "2026-02-03 07:59:00"}
+{"pc_time": "2026-10-26 21:32:49", "event": "bias", "day": "2026-02-03", "mode": "practice", "bias": "short", "recognised": false, "cursor": "2026-02-03 07:59:00"}
+{"pc_time": "2026-10-26 21:33:05", "event": "trade", "day": "2026-02-03", "mode": "practice", "side": "S", "hhmm": "08:04", "entry": 4932.2, "stop": 4959.9, "target": 4904.5, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:33:05", "event": "result", "day": "2026-02-03", "mode": "practice", "outcome": "SL", "R": -1.004, "exit": 4959.2, "exit_time": "08:16", "fill": 4931.4}
+{"pc_time": "2026-10-26 21:33:08", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-05-26", "cursor": "2026-05-26 07:59:00"}
+{"pc_time": "2026-10-26 21:33:17", "event": "bias", "day": "2026-05-26", "mode": "practice", "bias": "neutral", "recognised": false, "cursor": "2026-05-26 07:59:00"}
+{"pc_time": "2026-10-26 21:33:44", "event": "trade", "day": "2026-05-26", "mode": "practice", "side": "L", "hhmm": "08:14", "entry": 4529.1, "stop": 4521.4, "target": 4540.6, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:33:45", "event": "result", "day": "2026-05-26", "mode": "practice", "outcome": "SL", "R": -1.013, "exit": 4520.9, "exit_time": "09:29", "fill": 4528.7}
+{"pc_time": "2026-10-26 21:33:48", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-06-08", "cursor": "2026-06-08 07:59:00"}
+{"pc_time": "2026-10-26 21:33:56", "event": "bias", "day": "2026-06-08", "mode": "practice", "bias": "long", "recognised": false, "cursor": "2026-06-08 07:59:00"}
+{"pc_time": "2026-10-26 21:34:10", "event": "trade", "day": "2026-06-08", "mode": "practice", "side": "L", "hhmm": "08:14", "entry": 4330.2, "stop": 4309.9, "target": 4360.7, "recognised": false, "sha256": null, "outcome_hidden": false}
+{"pc_time": "2026-10-26 21:34:11", "event": "result", "day": "2026-06-08", "mode": "practice", "outcome": "SL", "R": -1.005, "exit": 4310.2, "exit_time": "09:27", "fill": 4330.6}
+{"pc_time": "2026-10-26 21:34:12", "event": "start_day", "mode": "practice", "window": "practice", "day": "2026-07-13", "cursor": "2026-07-13 07:59:00"}

@@ -1,0 +1,14 @@
+=== BLIND_B2_FOR_SCORE.csv
+2026-06-25 London PRICE MISMATCH 15.79
+2026-07-06 London PRICE MISMATCH -9.59
+2026-07-10 London  PRICE MISMATCH 5.61
+excluded from the primary: 7 flagged, 5 logged after the result
+PRIMARY London, flagged days out   n  22 | his side: wins 14 mean R +0.301 (t 1.40, 95% CI -0.08..+0.68) | mirror -0.361 | random side -0.030 | excess +0.331 | P(random >= his) 0.0404
+London, all days                   n  29 | his side: wins 16 mean R +0.125 (t 0.65, 95% CI -0.23..+0.48) | mirror -0.238 | random side -0.057 | excess +0.181 | P(random >= his) 0.1261
+=== BLIND_ALL_FOR_SCORE.csv
+2026-06-25 London PRICE MISMATCH 15.79
+2026-07-06 London PRICE MISMATCH -9.59
+2026-07-10 London  PRICE MISMATCH 5.61
+excluded from the primary: 7 flagged, 5 logged after the result
+PRIMARY London, flagged days out   n  42 | his side: wins 27 mean R +0.161 (t 1.16, 95% CI -0.12..+0.42) | mirror -0.296 | random side -0.067 | excess +0.228 | P(random >= his) 0.0433
+London, all days                   n  49 | his side: wins 29 mean R +0.076 (t 0.58, 95% CI -0.18..+0.33) | mirror -0.232 | random side -0.078 | excess +0.154 | P(random >= his) 0.1104

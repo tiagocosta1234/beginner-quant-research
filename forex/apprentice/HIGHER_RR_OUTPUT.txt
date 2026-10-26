@@ -1,0 +1,50 @@
+INDICATOR (candle colour), stop = far end + 0.5 x range
+  MGC                      T1   n 1781 (245.2/yr)  win  50%  avg win +0.90  avg loss -1.08  mean net R -0.087  P 0.3760  years>0 1  2026 -0.024  
+  MGC                      T1.5 n 1781 (245.2/yr)  win  40%  avg win +1.36  avg loss -1.08  mean net R -0.100  P 0.2466  years>0 1  2026 -0.049  
+  MGC                      T2   n 1781 (245.2/yr)  win  34%  avg win +1.79  avg loss -1.08  mean net R -0.116  P 0.3218  years>0 1  2026 -0.134  
+  MGC                      T3   n 1781 (245.2/yr)  win  28%  avg win +2.43  avg loss -1.08  mean net R -0.100  P 0.2061  years>0 2  2026 +0.004  
+  MGC                      EOD  n 1781 (245.2/yr)  win  22%  avg win +3.22  avg loss -1.08  mean net R -0.143  P 0.4723  years>0 2  2026 +0.111  
+  MNQ                      T1   n 1783 (255.4/yr)  win  48%  avg win +0.95  avg loss -1.03  mean net R -0.074  P 0.9115  years>0 0  2026 -0.045  
+  MNQ                      T1.5 n 1783 (255.4/yr)  win  38%  avg win +1.43  avg loss -1.03  mean net R -0.094  P 0.9520  years>0 0  2026 -0.099  
+  MNQ                      T2   n 1783 (255.4/yr)  win  32%  avg win +1.86  avg loss -1.03  mean net R -0.094  P 0.9832  years>0 1  2026 -0.091  
+  MNQ                      T3   n 1783 (255.4/yr)  win  27%  avg win +2.52  avg loss -1.03  mean net R -0.064  P 0.9018  years>0 2  2026 -0.052  
+  MNQ                      EOD  n 1783 (255.4/yr)  win  21%  avg win +3.59  avg loss -1.03  mean net R -0.042  P 0.8608  years>0 1  2026 -0.085  
+  MES                      T1   n 1750 (250.7/yr)  win  48%  avg win +0.87  avg loss -1.11  mean net R -0.166  P 0.9778  years>0 0  2026 -0.203  
+  MES                      T1.5 n 1750 (250.7/yr)  win  38%  avg win +1.34  avg loss -1.10  mean net R -0.164  P 0.9396  years>0 0  2026 -0.280  
+  MES                      T2   n 1750 (250.7/yr)  win  33%  avg win +1.73  avg loss -1.10  mean net R -0.156  P 0.8924  years>0 0  2026 -0.280  
+  MES                      T3   n 1750 (250.7/yr)  win  28%  avg win +2.28  avg loss -1.10  mean net R -0.139  P 0.8286  years>0 0  2026 -0.273  
+  MES                      EOD  n 1750 (250.7/yr)  win  24%  avg win +2.89  avg loss -1.10  mean net R -0.143  P 0.9014  years>0 0  2026 -0.282  
+  MYM                      T1   n 1253 (257.1/yr)  win  50%  avg win +0.89  avg loss -1.09  mean net R -0.105  P 0.5654  years>0 1  2026 +0.017  
+  MYM                      T1.5 n 1253 (257.1/yr)  win  40%  avg win +1.37  avg loss -1.09  mean net R -0.104  P 0.5169  years>0 1  2026 +0.013  
+  MYM                      T2   n 1253 (257.1/yr)  win  34%  avg win +1.79  avg loss -1.09  mean net R -0.103  P 0.6076  years>0 1  2026 -0.028  
+  MYM                      T3   n 1253 (257.1/yr)  win  28%  avg win +2.48  avg loss -1.09  mean net R -0.086  P 0.5415  years>0 1  2026 -0.060  
+  MYM                      EOD  n 1253 (257.1/yr)  win  22%  avg win +3.82  avg loss -1.09  mean net R -0.035  P 0.6072  years>0 3  2026 +0.160  
+  IND pooled (PRIMARY)     T1   n 6567 (897.0/yr)  win  49%  avg win +0.90  avg loss -1.08  mean net R -0.108  P 0.9513  years>0 0  2026 -0.062  
+  IND pooled (PRIMARY)     T1.5 n 6567 (897.0/yr)  win  39%  avg win +1.38  avg loss -1.08  mean net R -0.116  P 0.9123  years>0 0  2026 -0.101  
+  IND pooled (PRIMARY)     T2   n 6567 (897.0/yr)  win  33%  avg win +1.79  avg loss -1.08  mean net R -0.118  P 0.9497  years>0 0  2026 -0.130  -> NOT SHOWN
+      by year: 2019 -0.300 (251) 2020 -0.120 (748) 2021 -0.061 (768) 2022 -0.080 (1014) 2023 -0.117 (993) 2024 -0.162 (1012) 2025 -0.101 (1010) 2026 -0.130 (771)
+  IND pooled (PRIMARY)     T3   n 6567 (897.0/yr)  win  28%  avg win +2.42  avg loss -1.07  mean net R -0.098  P 0.7842  years>0 0  2026 -0.094  
+  IND pooled (PRIMARY)     EOD  n 6567 (897.0/yr)  win  22%  avg win +3.33  avg loss -1.07  mean net R -0.095  P 0.9096  years>0 1  2026 -0.019  
+
+A+ LONDON 12 EMA, ORIG stop (gold excluded)
+  NQ                       T1   n  391 ( 57.3/yr)  win  47%  avg win +0.92  avg loss -1.08  mean net R -0.141  P 0.8676  years>0 1  2026 -0.073  
+  NQ                       T1.5 n  391 ( 57.3/yr)  win  36%  avg win +1.42  avg loss -1.08  mean net R -0.181  P 0.9811  years>0 1  2026 -0.194  
+  NQ                       T2   n  391 ( 57.3/yr)  win  31%  avg win +1.92  avg loss -1.08  mean net R -0.154  P 0.8598  years>0 2  2026 -0.170  
+  NQ                       T3   n  391 ( 57.3/yr)  win  23%  avg win +2.92  avg loss -1.08  mean net R -0.152  P 0.7613  years>0 3  2026 +0.025  
+  NQ                       EOD  n  391 ( 57.3/yr)  win   7%  avg win +9.27  avg loss -1.08  mean net R -0.314  P 0.6835  years>0 2  2026 -0.371  
+  ES                       T1   n  313 ( 46.4/yr)  win  50%  avg win +0.80  avg loss -1.19  mean net R -0.205  P 0.5897  years>0 0  2026 -0.192  
+  ES                       T1.5 n  313 ( 46.4/yr)  win  39%  avg win +1.30  avg loss -1.20  mean net R -0.213  P 0.4393  years>0 0  2026 -0.218  
+  ES                       T2   n  313 ( 46.4/yr)  win  33%  avg win +1.80  avg loss -1.20  mean net R -0.208  P 0.6088  years>0 2  2026 -0.034  
+  ES                       T3   n  313 ( 46.4/yr)  win  24%  avg win +2.80  avg loss -1.20  mean net R -0.224  P 0.4971  years>0 1  2026 -0.086  
+  ES                       EOD  n  313 ( 46.4/yr)  win  11%  avg win +7.87  avg loss -1.19  mean net R -0.208  P 0.2398  years>0 2  2026 +0.785  
+  SI                       T1   n  754 (109.3/yr)  win  49%  avg win +0.64  avg loss -1.37  mean net R -0.387  P 0.7312  years>0 1  2026 -0.173  
+  SI                       T1.5 n  754 (109.3/yr)  win  40%  avg win +1.14  avg loss -1.37  mean net R -0.371  P 0.6208  years>0 1  2026 -0.084  
+  SI                       T2   n  754 (109.3/yr)  win  34%  avg win +1.64  avg loss -1.37  mean net R -0.359  P 0.6341  years>0 1  2026 -0.187  
+  SI                       T3   n  754 (109.3/yr)  win  23%  avg win +2.65  avg loss -1.37  mean net R -0.443  P 0.9489  years>0 1  2026 -0.231  
+  SI                       EOD  n  754 (109.3/yr)  win   8%  avg win +15.00  avg loss -1.36  mean net R -0.106  P 0.6409  years>0 3  2026 +0.302  
+  APLUS NQ+ES+SI (PRIMARY) T1   n 1458 (211.3/yr)  win  48%  avg win +0.75  avg loss -1.25  mean net R -0.282  P 0.8606  years>0 1  2026 -0.143  
+  APLUS NQ+ES+SI (PRIMARY) T1.5 n 1458 (211.3/yr)  win  39%  avg win +1.25  avg loss -1.25  mean net R -0.286  P 0.8952  years>0 1  2026 -0.139  
+  APLUS NQ+ES+SI (PRIMARY) T2   n 1458 (211.3/yr)  win  33%  avg win +1.75  avg loss -1.25  mean net R -0.272  P 0.8133  years>0 1  2026 -0.159  -> NOT SHOWN
+      by year: 2019 -0.787 (23) 2020 -0.226 (235) 2021 -0.367 (205) 2022 -0.336 (303) 2023 -0.362 (198) 2024 -0.550 (169) 2025 +0.186 (197) 2026 -0.159 (128)
+  APLUS NQ+ES+SI (PRIMARY) T3   n 1458 (211.3/yr)  win  23%  avg win +2.75  avg loss -1.26  mean net R -0.318  P 0.9342  years>0 1  2026 -0.128  
+  APLUS NQ+ES+SI (PRIMARY) EOD  n 1458 (211.3/yr)  win   8%  avg win +11.62  avg loss -1.25  mean net R -0.184  P 0.5928  years>0 2  2026 +0.158  

@@ -1,0 +1,26 @@
+=== BLIND_B2_FOR_SCORE.csv
+2026-03-23 London PRICE MISMATCH 17.19
+2026-03-25 London  PRICE MISMATCH 5.43
+2026-06-25 London PRICE MISMATCH 15.79
+2026-07-06 London PRICE MISMATCH -9.59
+2026-07-10 London  PRICE MISMATCH 5.61
+excluded from the primary: 7 flagged, 5 logged after the result
+PRIMARY London, flagged days out   n  22 | his side: wins 13 mean R +0.209 (t 0.95, 95% CI -0.17..+0.60) | mirror -0.269 | random side -0.030 | excess +0.239 | P(random >= his) 0.0980
+London, all days                   n  29 | his side: wins 15 mean R +0.055 (t 0.29, 95% CI -0.30..+0.41) | mirror -0.169 | random side -0.057 | excess +0.112 | P(random >= his) 0.2248
+NY (secondary), flagged out        n 0
+London, extra cost 0.30 USD        n  22 | his side: wins 13 mean R +0.182 (t 0.83, 95% CI -0.20..+0.57) | mirror -0.296 | random side -0.057 | excess +0.239 | P(random >= his) 0.0980
+London, entry shifted -1 min       n  22 | his side: wins 13 mean R +0.195 (t 0.90, 95% CI -0.20..+0.59) | mirror -0.360 | random side -0.082 | excess +0.278 | P(random >= his) 0.0811
+London, entry shifted +1 min       n  22 | his side: wins 11 mean R +0.008 (t 0.04, 95% CI -0.43..+0.42) | mirror -0.175 | random side -0.083 | excess +0.092 | P(random >= his) 0.3288
+=== BLIND_ALL_FOR_SCORE.csv
+2026-03-23 London PRICE MISMATCH 17.19
+2026-03-25 London  PRICE MISMATCH 5.43
+2026-06-25 London PRICE MISMATCH 15.79
+2026-07-06 London PRICE MISMATCH -9.59
+2026-07-10 London  PRICE MISMATCH 5.61
+excluded from the primary: 7 flagged, 5 logged after the result
+PRIMARY London, flagged days out   n  42 | his side: wins 26 mean R +0.113 (t 0.81, 95% CI -0.16..+0.38) | mirror -0.247 | random side -0.067 | excess +0.180 | P(random >= his) 0.0893
+London, all days                   n  49 | his side: wins 28 mean R +0.035 (t 0.27, 95% CI -0.22..+0.30) | mirror -0.191 | random side -0.078 | excess +0.113 | P(random >= his) 0.1846
+NY (secondary), flagged out        n 0
+London, extra cost 0.30 USD        n  42 | his side: wins 26 mean R +0.081 (t 0.58, 95% CI -0.20..+0.34) | mirror -0.279 | random side -0.099 | excess +0.180 | P(random >= his) 0.0893
+London, entry shifted -1 min       n  42 | his side: wins 30 mean R +0.252 (t 1.97, 95% CI +0.01..+0.48) | mirror -0.370 | random side -0.058 | excess +0.311 | P(random >= his) 0.0076
+London, entry shifted +1 min       n  42 | his side: wins 24 mean R +0.007 (t 0.05, 95% CI -0.26..+0.28) | mirror -0.198 | random side -0.095 | excess +0.102 | P(random >= his) 0.2216

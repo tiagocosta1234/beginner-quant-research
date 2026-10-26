@@ -1,0 +1,42 @@
+order,date,weekday,set
+1,2026-07-27,Mon,recent 2026
+2,2026-07-28,Tue,batch 3 (sealed 24 Oct)
+3,2026-07-29,Wed,batch 3 (sealed 24 Oct)
+4,2026-07-30,Thu,recent 2026
+5,2026-07-31,Fri,batch 3 (sealed 24 Oct)
+6,2026-08-03,Mon,batch 3 (sealed 24 Oct)
+7,2026-08-04,Tue,recent 2026
+8,2026-08-05,Wed,recent 2026
+9,2026-08-07,Fri,batch 3 (sealed 24 Oct)
+10,2026-08-10,Mon,recent 2026
+11,2026-08-11,Tue,recent 2026
+12,2026-08-13,Thu,recent 2026
+13,2026-08-14,Fri,recent 2026
+14,2026-08-17,Mon,recent 2026
+15,2026-08-18,Tue,recent 2026
+16,2026-08-19,Wed,recent 2026
+17,2026-08-20,Thu,recent 2026
+18,2026-08-21,Fri,batch 3 (sealed 24 Oct)
+19,2026-08-24,Mon,recent 2026
+20,2026-08-25,Tue,recent 2026
+21,2026-08-27,Thu,batch 3 (sealed 24 Oct)
+22,2026-08-28,Fri,recent 2026
+23,2026-08-31,Mon,batch 3 (sealed 24 Oct)
+24,2026-09-01,Tue,recent 2026
+25,2026-09-02,Wed,recent 2026
+26,2026-09-03,Thu,recent 2026
+27,2026-09-04,Fri,recent 2026
+28,2026-09-07,Mon,recent 2026
+29,2026-09-08,Tue,recent 2026
+30,2026-09-09,Wed,recent 2026
+31,2026-09-10,Thu,recent 2026
+32,2026-09-11,Fri,batch 3 (sealed 24 Oct)
+33,2026-09-15,Tue,batch 3 (sealed 24 Oct)
+34,2026-09-16,Wed,batch 3 (sealed 24 Oct)
+35,2026-09-17,Thu,recent 2026
+36,2026-09-18,Fri,batch 3 (sealed 24 Oct)
+37,2026-09-21,Mon,recent 2026
+38,2026-09-22,Tue,batch 3 (sealed 24 Oct)
+39,2026-09-23,Wed,recent 2026
+40,2026-09-24,Thu,recent 2026
+41,2026-09-25,Fri,recent 2026

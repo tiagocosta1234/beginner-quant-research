@@ -1,3 +1,0 @@
-; XAUUSD 5 minute (Market), XAUUSD M5, LOCKED test 0.6x (weight 0.6 = 0.0419 lot -> 0.04 lot, effective 0.572x)
-Entry_Amount=0.04
-Use_Swing_SL=true

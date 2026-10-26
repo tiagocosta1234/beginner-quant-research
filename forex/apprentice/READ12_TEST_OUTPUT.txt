@@ -1,0 +1,11 @@
+test phase, 65 days; pairs dropped (Amendment 1): read 0, naive 0
+read12         n  51  mean R +0.053  mirror -0.139  excess +0.096  wins 28 / 51  avg win 0.95 / avg loss 1.03 = 0.91:1  P 0.2564
+    pool S     n  51  mean R +0.053  excess +0.096  P 0.2564
+naive_trend30  n  65  mean R -0.101  mirror -0.040  excess -0.031  wins 31 / 65  avg win 0.93 / avg loss 1.04 = 0.89:1  P 0.5970
+    pool S     n  65  mean R -0.101  excess -0.031  P 0.5970
+read excess minus naive excess on the days the read trades: +0.153 (n 51)
+always long 08:02, same 1:1 bracket, every day: n 65  mean R -0.119  wins 30 / 65 (Amendment 1)
+    read L only  n  30  mean R -0.053  excess -0.009  P 0.5624
+    read S only  n  21  mean R +0.204  excess +0.245  P 0.1184
+PRIMARY H1 read12: excess +0.096, P 0.2564, mean R +0.053 vs always-long -0.119, n 51 -> NOT SHOWN (bar: excess >= +0.10, P <= 0.015, mean R > 0, mean R > always-long, n >= 30)
+PRIMARY H2 naive: excess -0.031, P 0.5970, mean R -0.101 vs always-long -0.119, n 65 -> NOT SHOWN (bar: excess >= +0.10, P <= 0.015, mean R > 0, mean R > always-long, n >= 30)

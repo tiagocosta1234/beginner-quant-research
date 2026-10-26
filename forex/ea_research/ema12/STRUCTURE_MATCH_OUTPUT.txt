@@ -1,0 +1,6 @@
+days compared: 49 (06:00-08:15 local, futures minus the day's basis)
+1-minute moves: correlation 0.973 (median day)
+candle prices (open/high/low/close) after the basis: median diff 0.25, 90% within 0.74, 99% within 31.55 points
+FVGs >= 0.5 pt: spot 1020, futures 1059, same minute and direction 885 (87% of spot's)
+swing highs/lows (5-candle): spot 1781, same minute on futures 1543 (87%), price gap median 0.22, 90% within 0.63 points
+order blocks (last opposite candle before a 3-candle displacement): spot 307, futures 272, same minute and direction 220 (72% of spot's)

@@ -1,0 +1,15 @@
+(a) v2 on his past blind trades (in-sample what-if, MT5 broker bid/ask): kept 84 of 88 trades (chases dropped)
+    his side: wins 54%, mean R +0.129 | mirror: mean R -0.133 | random-side P 0.123
+    by block: 2023 Jan -1.000 (1)  2026 Feb-Jul +0.387 (19)  2026 Jan +0.277 (20)  2026-07 -0.345 (10)  2026-08 -0.039 (19)  2026-09 +0.210 (15)
+    as he actually traded (no v2), same trades: mean R +0.033
+
+(b) mechanical sides on GC 2019-07..2026-09 (40 test days excluded), MGC costs; mean R per trade, random-side P
+  15m EMA bias   tight 3x 1:1 n 1439  wins  48%  mean R -0.153  P 0.327  years>0 1/8
+  15m EMA bias   v2 5x 1.5R   n 1351  wins  39%  mean R -0.101  P 0.229  years>0 0/8
+  15m EMA bias   v2 5x 1:1    n 1351  wins  50%  mean R -0.059  P 0.126  years>0 2/8
+  candle colour  tight 3x 1:1 n 1666  wins  45%  mean R -0.205  P 0.940  years>0 0/8
+  candle colour  v2 5x 1.5R   n 1496  wins  39%  mean R -0.095  P 0.246  years>0 1/8
+  candle colour  v2 5x 1:1    n 1496  wins  49%  mean R -0.077  P 0.352  years>0 1/8
+  random         tight 3x 1:1 n 1695  wins  48%  mean R -0.142  P 0.163  years>0 1/8
+  random         v2 5x 1.5R   n 1594  wins  38%  mean R -0.118  P 0.541  years>0 0/8
+  random         v2 5x 1:1    n 1594  wins  49%  mean R -0.086  P 0.455  years>0 1/8

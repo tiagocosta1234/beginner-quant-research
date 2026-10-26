@@ -1,3 +1,0 @@
-; XAUUSD 5 minute (MQL5 Market product 147332, version 7.3), XAUUSD M5, 1.5 x frozen lot (0.01 x 6.9889 x 1.5 = 0.1048 -> 0.10)
-Entry_Amount=0.10
-Use_Swing_SL=true

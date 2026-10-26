@@ -1,0 +1,37 @@
+n,date,side,call,confidence,reason,R
+1,2025-01-02,L,SKIP,2,chasing a vertical V straight into Asia H just above the entry,-1.05
+2,2025-01-07,L,TAKE,1,V reversal off the lows; bought the first pullback; target just under Asia H,-1.036
+3,2025-01-16,L,TAKE,2,15m uptrend; tight consolidation above PDH; breakout entry with the stop below PDH,1.0
+4,2025-01-23,S,TAKE,2,15m rolling over below EMA; 1m lower highs; breakdown entry (target near PDL),-1.04
+5,2025-01-28,S,TAKE,2,15m bear flag below EMA; selling since the 07:30 high; stop above structure,1.0
+6,2025-02-24,L,SKIP,2,late entry at Asia H after an extended climb; below the 1m EMA,-1.025
+7,2025-03-12,L,TAKE,1,higher-low grind; stop behind Asia L; target under Asia H,1.0
+8,2025-03-24,S,SKIP,1,fade against 15m and 1h; resistance above helps but counter-trend,-1.029
+9,2025-04-01,L,SKIP,2,against own bias and the 15m slope; long below PDH in a post-crash range,-1.014
+10,2025-05-15,L,SKIP,2,counter-trend bounce after +25 pts; 15m and 1h down,-1.008
+11,2025-05-20,S,TAKE,1,trend-aligned breakdown but PDL and Asia L support right below,-1.017
+12,2025-05-23,S,SKIP,2,fade against a strong 15m rally; Asia H support below,-1.015
+13,2025-06-09,S,SKIP,3,shorting a clean uptrend at its highs,-1.018
+14,2025-06-19,S,TAKE,3,trend-aligned pullback short; stop above PDL / Asia L,-1.009
+15,2025-07-03,S,SKIP,1,mid-range and counter to the 15m uptrend,1.0
+16,2025-07-14,L,TAKE,1,15m reversal momentum; stop below PDL; target past PDH,-1.014
+17,2025-07-21,L,TAKE,1,15m uptrend; pullback bought at range resistance,-1.027
+18,2025-07-22,L,SKIP,2,counter to the 1m and 15m downtrend; below Asia L,1.0
+19,2025-09-08,L,TAKE,2,trend plus breakout above PDH / Asia H,1.0
+20,2025-09-12,L,TAKE,1,15m uptrend context; reversal off PDH support,-1.021
+21,2025-09-19,S,TAKE,2,trend-aligned; rejection of the 08:00 spike,-1.017
+22,2025-09-30,S,SKIP,2,selling the bottom of a 15-pt flush inside a 15m uptrend,1.0
+23,2025-10-02,L,SKIP,1,late; top of a 10-pt V,-1.011
+24,2025-10-10,L,SKIP,3,catching a knife in a crash,1.0
+25,2025-10-20,L,SKIP,1,extended breakout (chase 3x) in the middle of the 15m range,1.0
+26,2025-10-22,L,SKIP,2,whipsaw after a crash; 15m downtrend,-1.007
+27,2025-10-23,S,TAKE,2,lower highs since 07:15 in a 15m downtrend; stop above structure,1.0
+28,2025-10-24,L,SKIP,1,range top after a crash; Asia L overhead,-1.007
+29,2025-10-28,S,TAKE,3,clean downtrend; new lows below Asia L,1.0
+30,2025-10-31,L,TAKE,1,15m higher lows; pullback entry,-1.009
+31,2025-11-07,L,TAKE,2,range breakout above Asia H in a 15m uptrend,-1.015
+32,2025-11-10,L,TAKE,2,retest of the Asia H breakout in a strong 15m uptrend,-1.015
+33,2025-11-18,L,SKIP,1,sweep-and-reclaim but against a strong 15m downtrend,1.0
+34,2025-11-20,S,TAKE,2,lower highs; rejection of the 08:00 spike,1.0
+35,2025-12-22,L,TAKE,1,strong 15m uptrend; consolidation; entry mid-range,1.0
+36,2025-12-31,S,TAKE,2,breakdown below PDL in a 15m downtrend,1.0

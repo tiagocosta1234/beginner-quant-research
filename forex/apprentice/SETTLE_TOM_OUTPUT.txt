@@ -1,0 +1,13 @@
+P1 GOLD settlement momentum: side = sign(13:00 today - 13:30 prior day), trade 13:00 -> 13:30 ET
+  GC (PRIMARY)                   n  1811  win  42%  gross $/micro  -0.79  net $/micro  -3.99  net -0.0135 ATR  P 0.7688  years>0 0/7  -> NOT SHOWN
+      by year: 2019 -0.0301 2020 -0.0152 2021 -0.0148 2022 -0.0162 2023 -0.0184 2024 -0.0049 2025 -0.0027 2026 -0.0140
+
+P2 SILVER settlement momentum: side = sign(12:55 today - 13:25 prior day), trade 12:55 -> 13:25 ET
+  SI (secondary)                 n  1812  win  41%  gross $/micro  -1.14  net $/micro -12.34  net -0.0119 ATR  P 0.0028  years>0 1/7  
+      by year: 2019 -0.0073 2020 +0.0079 2021 -0.0082 2022 -0.0161 2023 -0.0318 2024 -0.0137 2025 -0.0080 2026 -0.0149
+
+P3 TURN OF THE MONTH: long 09:30 -> 15:55 ET on the last + first 3 trading days
+  ES  TOM n 312 net +0.0529 ATR ($+22.48/micro)  other n 1387 net -0.0187 ATR ($-4.20/micro)
+  NQ  TOM n 311 net +0.0491 ATR ($+36.44/micro)  other n 1382 net -0.0042 ATR ($-4.28/micro)
+  ES+NQ TOM (PRIMARY)  n 623  win 57%  net +0.0510 ATR vs other days -0.0115  diff +0.0624  permutation P 0.0126  TOM years>0 5/7  -> NOT SHOWN
+      TOM by year: 2019 -0.0435 2020 +0.1409 2021 -0.0954 2022 +0.0288 2023 +0.1216 2024 -0.0308 2025 +0.0559 2026 +0.1968

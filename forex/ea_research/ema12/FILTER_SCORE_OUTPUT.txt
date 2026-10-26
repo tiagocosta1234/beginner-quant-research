@@ -1,0 +1,10 @@
+the trader ALL   n 36  wins 15 (42%)  mean R -0.178  sum -6.40
+TAKE       n 20  wins  9 (45%)  mean R -0.111  sum -2.22
+SKIP       n 16  wins  6 (38%)  mean R -0.262  sum -4.18
+TAKE - SKIP +0.151 R, permutation P 0.3656  ->  NOT SHOWN
+  SKIP conf 1: n  6  wins  3  mean R -0.008
+  SKIP conf 2: n  8  wins  2  mean R -0.515
+  SKIP conf 3: n  2  wins  1  mean R -0.009
+  TAKE conf 1: n  8  wins  2  mean R -0.515
+  TAKE conf 2: n 10  wins  6  mean R +0.191
+  TAKE conf 3: n  2  wins  1  mean R -0.004

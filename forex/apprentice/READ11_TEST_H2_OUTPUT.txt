@@ -1,0 +1,7 @@
+H2 naive_trend30 on the sealed test pool: 150 days, dropped 0 (Amendment 1 of test 2)
+naive  n 150  mean R -0.135  mirror -0.191  excess +0.028  wins 75 / 150  avg win 0.86 / avg loss 1.13 = 0.76:1  P 0.3523
+    pool E  n  50  mean R -0.369  excess -0.093  P 0.7415
+    pool F  n  50  mean R -0.033  excess +0.079  P 0.2841
+    pool G  n  50  mean R -0.003  excess +0.097  P 0.2459
+always long 08:02, same bracket: n 150  mean R -0.186  wins 71 / 150
+PRIMARY H2: excess +0.028, P 0.3523, mean R -0.135 vs always-long -0.186, n 150 -> NOT SHOWN (bar: excess >= +0.10, P <= 0.015, mean R > 0, mean R > always-long, n >= 40)

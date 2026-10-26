@@ -1,0 +1,14 @@
+data: 2019-09-06 .. 2026-09-25, 7075 market-days (ES 1739, NQ 1730, GC 1796, SI 1810)
+baseline (always trade): mean net R -0.104 over 7075 trades; by year: 2019 -0.119 2020 -0.171 2021 -0.157 2022 -0.045 2023 -0.134 2024 -0.113 2025 -0.025 2026 -0.071
+
+R20: trades 2507 of 7075 (35% of days on)  mean taken R -0.083  (skipped -0.115)  random-filter P 0.1925  years>0 1/7  -> NOT SHOWN
+    by year: 2019 -0.251 (n 40) 2020 -0.173 (n 294) 2021 -0.169 (n 256) 2022 -0.022 (n 507) 2023 -0.087 (n 319) 2024 -0.182 (n 322) 2025 +0.020 (n 466) 2026 -0.052 (n 303)
+    by market: ES -0.159 (n 397, base -0.162) NQ -0.076 (n 710, base -0.073) GC -0.058 (n 707, base -0.083) SI -0.072 (n 693, base -0.098)
+
+R40: trades 2139 of 7075 (30% of days on)  mean taken R -0.046  (skipped -0.129)  random-filter P 0.0021  years>0 2/7  -> NOT SHOWN
+    by year: 2019 -0.160 (n 33) 2020 -0.129 (n 202) 2021 -0.129 (n 140) 2022 +0.011 (n 505) 2023 -0.057 (n 279) 2024 -0.155 (n 257) 2025 +0.016 (n 442) 2026 -0.022 (n 281)
+    by market: ES -0.080 (n 290, base -0.162) NQ -0.084 (n 581, base -0.073) GC -0.019 (n 648, base -0.083) SI -0.024 (n 620, base -0.098)
+
+R60: trades 1815 of 7075 (26% of days on)  mean taken R -0.020  (skipped -0.133)  random-filter P 0.0002  years>0 2/7  -> NOT SHOWN
+    by year: 2019 -0.198 (n 28) 2020 -0.048 (n 139) 2021 -0.096 (n 108) 2022 +0.033 (n 510) 2023 -0.110 (n 218) 2024 -0.069 (n 166) 2025 +0.035 (n 426) 2026 -0.045 (n 220)
+    by market: ES -0.092 (n 219, base -0.162) NQ -0.021 (n 447, base -0.073) GC +0.008 (n 619, base -0.083) SI -0.022 (n 530, base -0.098)
