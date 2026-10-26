@@ -1,1 +1,2 @@
 date,wallclock_time,bias,last_15m_candle_open_utc,close,ema12,ema12_4_candles_earlier,note
+2026-10-26,08:29:34,LONG,2026-10-26T07:45,4022.7,4021.24,4021.19,"BrokerAPI MGCZ26, n15=26 built from 1m (brokerapi_bias.js, run 08:1x); logged after the open: mechanical rule on candles <= 07:45 only, so the 08:00+ bars seen earlier cannot change it (the trader: separate parallel lab)"
