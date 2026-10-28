@@ -1,0 +1,264 @@
+//@version=6
+indicator("daily-trend-claude", shorttitle="dt-claude", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// daily-trend-claude: the claude.pine London A+ rule plus two filters found after the fact (post-hoc, not proven):
+//   (1) trade only in the direction of the prior daily trend (previous daily close above its 20-day average = long only, below = short only);
+//   (2) skip setups whose cost is more than 12% of the risk (about a 2.4-point stop on micro gold), so fixed costs do not eat the edge.
+// Gold test 2023-2026 (descriptive, filters chosen after seeing results): 40 trades, 68% wins, +0.27 R net, beat the opposite side (P 0.015), 4 of 4 years positive; with filter (2) only: 100 trades,
+// +0.10 R. It did NOT replicate on Nasdaq or S&P (negative). Treat it as a lead for the paper forward log, not an edge.
+// London only. Use the 1-minute chart on gold (GC / MGC). One A+ setup a day at the London open, 1:1.
+// This is the frozen "A+ London 12 EMA" plan (A_PLUS_SETUP_AND_DEMO_PLAN_DRAFT.md; mechanical test: edge_lab/london12_aplus.py, London time).
+//   Bias   = the 15-minute candle 07:45-08:00: close above its EMA12 and that EMA12 above its value 4 candles earlier = long; both below = short; else no trade.
+//   Trigger= the first 1-minute candle that opens 08:00-08:14 with its close on the bias side of the 1-minute EMA12, the previous close on the other side
+//            (a fresh cross) and a body bigger than its biggest wick. Entry = its close.
+//   Stop   = beyond the extreme of that candle and the 5 before it (plus a buffer). The risk must be 1.5 to 6 points (gold), else no trade.
+//   A+     = at least 2 of 3: (1) the candle trades into a same-direction 1-minute fair-value gap formed in the last 60 minutes, (2) price took out the
+//            Asia (00:00-07:00) low (long) / high (short), (3) the 07:00 hourly candle closed on the bias side of its EMA12.
+//   Target = 1R. Flat at 16:00 London. A bar touching stop and target counts as the stop. R is in stop distances, after costs.
+// Projections grow bar by bar and stop at the bar where the trade exits (stop, target or 16:00).
+// Deviation from the test: the candle that opens 07:59 is not used (its 15-minute bias candle is not closed yet).
+// Evidence (descriptive, GC 2019-2026): 313 A+ trades, 56% wins, -0.023 R a trade after costs, 2 of 7 years positive, random-side P 0.012 (it picks the side
+// better than chance), about +0.08 R before costs. It is NOT a proven edge: it loses a little after costs and was negative in 2026. 70% wins is not reachable.
+
+// ─── Inputs ───────────────────────────────────────────────────────────────────
+grpS      = "Setup"
+emaLen    = input.int(12, "EMA length (1m, 15m, 1h)", minval=2, group=grpS)
+swingN    = input.int(6, "Stop: extreme of the last N one-minute candles (incl. the trigger)", minval=2, group=grpS)
+stopBuf   = input.float(0.1, "Stop buffer (points)", minval=0.0, step=0.1, group=grpS)
+minStop   = input.float(1.5, "Min risk (points)", minval=0.0, step=0.1, group=grpS)
+maxStop   = input.float(6.0, "Max risk (points)", minval=0.1, step=0.1, group=grpS)
+needConf  = input.int(2, "Confluence needed (of 3)", minval=0, maxval=3, group=grpS)
+useTrend  = input.bool(true, "Only trade with the prior daily trend (prior close vs its 20-day average)", group=grpS)
+maxShare  = input.float(12.0, "Skip if cost is more than this % of the risk (0 = off)", minval=0.0, step=1.0, group=grpS)
+tgtR      = input.float(1.0, "Target (× stop distance). 1 = 1:1", minval=0.1, maxval=3.0, step=0.1, group=grpS)
+grpR      = "Risk"
+riskUSD   = input.float(500.0, "Risk per trade (USD)", minval=1.0, group=grpR)
+maxQty    = input.int(40, "Max contracts (account limit)", minval=1, group=grpR)
+costAuto  = input.bool(true, "Auto cost by symbol (all-in fee + 1 tick: MGC 0.29, MNQ 0.86, MES 0.49, MYM 3.44, M2K 0.34 pts)", group=grpR)
+costPts   = input.float(0.32, "Cost per trade, round trip (points), when Auto is off or the symbol is unknown", minval=0.0, group=grpR)
+grpV      = "Look"
+keepOld   = input.bool(true, "Keep past projections", group=grpV)
+lblSizeIn = input.string("normal", "Label size", options=["small", "normal", "large"], group=grpV)
+
+tz       = "Europe/London"
+// Realistic round-trip cost in points = all-in fee per contract / point value + one tick of slippage (fees: Broker micro schedule, MGC 1.92, MNQ and the other index micros 1.22).
+symRoot   = syminfo.root
+costUsed  = not costAuto ? costPts : symRoot == "MGC" ? 0.29 : symRoot == "GC" ? 0.145 : symRoot == "MNQ" ? 0.86 : symRoot == "NQ" ? 0.48 : symRoot == "MES" ? 0.49 : symRoot == "ES" ? 0.34 : symRoot == "MYM" ? 3.44 : symRoot == "M2K" ? 0.34 : symRoot == "MCL" ? 0.026 : symRoot == "SIL" ? 0.007 : costPts
+pointVal = syminfo.pointvalue
+lblSize  = lblSizeIn == "small" ? size.small : lblSizeIn == "large" ? size.large : size.normal
+tfOK     = timeframe.period == "1"
+
+// ─── Higher-timeframe context (previous closed candles only, no repainting) ───
+dailyUp = request.security(syminfo.tickerid, "D", close[1] > ta.sma(close, 20)[1], lookahead=barmerge.lookahead_on)
+[c15, e15, e15b] = request.security(syminfo.tickerid, "15", [close[1], ta.ema(close, emaLen)[1], ta.ema(close, emaLen)[5]], lookahead=barmerge.lookahead_on)
+[c1h, e1h]       = request.security(syminfo.tickerid, "60", [close[1], ta.ema(close, emaLen)[1]], lookahead=barmerge.lookahead_on)
+ema1  = ta.ema(close, emaLen)
+lowN  = ta.lowest(low, swingN)
+highN = ta.highest(high, swingN)
+bias  = c15 > e15 and e15 > e15b ? 1 : c15 < e15 and e15 < e15b ? -1 : 0
+
+inTrig  = not na(time(timeframe.period, "0800-0815", tz))
+inAsia  = not na(time(timeframe.period, "0000-0700", tz))
+after7  = hour(time, tz) >= 7
+newDay  = ta.change(dayofmonth(time, tz)) != 0
+
+// ─── State ────────────────────────────────────────────────────────────────────
+var bool   trigDone = false
+var bool   active   = false
+var bool   isLong   = false
+var float  entry    = na
+var float  sl       = na
+var float  tp       = na
+var float  risk     = na
+var int    qty      = 0
+var int    entryBar = na
+var int    endTime  = na
+var float  asHi     = na
+var float  asLo     = na
+var int    asN      = 0
+var float  pHi      = na
+var float  pLo      = na
+var string today    = "waiting"
+var box    tpBox    = na
+var box    slBox    = na
+var line   eLine    = na
+var line   tLine    = na
+var line   sLine    = na
+var label  sideLab  = na
+var label  eLab     = na
+var label  tLab     = na
+var label  sLab     = na
+var label  resLab   = na
+var int    trades   = 0
+var int    wins     = 0
+var int    cands    = 0
+var float  netR     = 0.0
+var float  peakR    = 0.0
+var float  maxDD    = 0.0
+var array<int>   closeTimes = array.new<int>()
+var array<float> results    = array.new<float>()
+
+moveEnds(int t) =>
+    box.set_right(tpBox, t)
+    box.set_right(slBox, t)
+    line.set_x2(eLine, t)
+    line.set_x2(tLine, t)
+    line.set_x2(sLine, t)
+    label.set_x(tLab, t)
+    label.set_x(eLab, t)
+    label.set_x(sLab, t)
+
+string msg = ""
+if tfOK
+    if newDay
+        if not keepOld
+            box.delete(tpBox)
+            box.delete(slBox)
+            line.delete(eLine)
+            line.delete(tLine)
+            line.delete(sLine)
+            label.delete(sideLab)
+            label.delete(eLab)
+            label.delete(tLab)
+            label.delete(sLab)
+            label.delete(resLab)
+        trigDone := false
+        asHi     := na
+        asLo     := na
+        asN      := 0
+        pHi      := na
+        pLo      := na
+        today    := "waiting"
+    if inAsia
+        asHi := na(asHi) ? high : math.max(asHi, high)
+        asLo := na(asLo) ? low : math.min(asLo, low)
+        asN  += 1
+    if after7
+        pHi := na(pHi) ? high : math.max(pHi, high)
+        pLo := na(pLo) ? low : math.min(pLo, low)
+
+    if barstate.isconfirmed and inTrig and not trigDone and not active and bias != 0
+        float body = math.abs(close - open)
+        float wick = math.max(high - math.max(open, close), math.min(open, close) - low)
+        bool cross = bias * (close - ema1) > 0 and bias * (close[1] - ema1[1]) < 0 and body > wick
+        if cross
+            trigDone := true
+            cands    += 1
+            bool goLong = bias > 0
+            float stopRaw = goLong ? lowN - stopBuf : highN + stopBuf
+            float r       = math.abs(close - stopRaw)
+            bool c1 = false
+            for n = 1 to 60
+                if goLong
+                    if high[n + 2] < low[n] and low <= low[n] and high >= high[n + 2]
+                        c1 := true
+                        break
+                else
+                    if low[n + 2] > high[n] and high >= high[n] and low <= low[n + 2]
+                        c1 := true
+                        break
+            bool c2 = asN > 30 and not na(asHi) and (goLong ? pLo < asLo : pHi > asHi)
+            bool c3 = bias * (c1h - e1h) > 0
+            int conf = (c1 ? 1 : 0) + (c2 ? 1 : 0) + (c3 ? 1 : 0)
+            if r < minStop or r > maxStop
+                today := "candidate skipped: risk " + str.tostring(r, "0.0") + " pts outside " + str.tostring(minStop, "0.0") + "-" + str.tostring(maxStop, "0.0")
+            else if maxShare > 0 and costUsed / r > maxShare / 100
+                today := "candidate skipped: cost " + str.tostring(100 * costUsed / r, "0") + "% of risk (max " + str.tostring(maxShare, "0") + "%)"
+            else if useTrend and goLong != dailyUp
+                today := "candidate skipped: against the daily trend (" + (dailyUp ? "up" : "down") + ")"
+            else if conf < needConf
+                today := "candidate skipped: confluence " + str.tostring(conf) + " of 3, not A+"
+            else
+                isLong   := goLong
+                entry    := close
+                risk     := r
+                sl       := math.round_to_mintick(goLong ? close - r : close + r)
+                tp       := math.round_to_mintick(goLong ? close + tgtR * r : close - tgtR * r)
+                qty      := math.min(maxQty, int(math.floor(riskUSD / (r * pointVal))))
+                entryBar := bar_index
+                endTime  := timestamp(tz, year(time, tz), month(time, tz), dayofmonth(time, tz), 16, 0, 0)
+                active   := true
+                int t0      = time_close
+                string pts  = str.tostring(r, format.mintick)
+                string usd  = str.tostring(qty * r * pointVal, "#")
+                string unit = syminfo.root
+                tpBox   := box.new(t0, math.max(close, tp), t0, math.min(close, tp), xloc=xloc.bar_time, bgcolor=color.new(color.green, 82), border_color=color.new(color.green, 30))
+                slBox   := box.new(t0, math.max(close, sl), t0, math.min(close, sl), xloc=xloc.bar_time, bgcolor=color.new(color.red, 82), border_color=color.new(color.red, 30))
+                eLine   := line.new(t0, close, t0, close, xloc=xloc.bar_time, color=color.white, width=2)
+                tLine   := line.new(t0, tp, t0, tp, xloc=xloc.bar_time, color=color.green, width=2)
+                sLine   := line.new(t0, sl, t0, sl, xloc=xloc.bar_time, color=color.red, width=2)
+                tLab    := label.new(t0, tp, "TP  " + str.tostring(tp, format.mintick) + "   +" + str.tostring(tgtR * r, format.mintick) + " pts · " + str.tostring(tgtR, "#.##") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.green, 10), textcolor=color.white, size=lblSize)
+                eLab    := label.new(t0, close, "ENTRY  " + str.tostring(close, format.mintick) + "   " + str.tostring(qty) + " " + unit, xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.gray, 10), textcolor=color.white, size=lblSize)
+                sLab    := label.new(t0, sl, "SL  " + str.tostring(sl, format.mintick) + "   -" + pts + " pts · $" + usd + " risk", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.red, 10), textcolor=color.white, size=lblSize)
+                sideLab := label.new(t0, tp, "A+ London · " + (goLong ? "LONG" : "SHORT") + " · 1:" + str.tostring(tgtR, "#.##") + " · conf " + str.tostring(conf) + "/3", xloc=xloc.bar_time, style=goLong ? label.style_label_down : label.style_label_up, color=goLong ? color.green : color.red, textcolor=color.white, size=lblSize)
+                today   := (goLong ? "LONG " : "SHORT ") + str.tostring(close, format.mintick) + " · SL " + str.tostring(sl, format.mintick) + " · TP " + str.tostring(tp, format.mintick)
+                msg     := "A+ London " + (goLong ? "LONG" : "SHORT") + " " + syminfo.ticker + " | Entry " + str.tostring(close, format.mintick) + " | SL " + str.tostring(sl, format.mintick) + " | TP " + str.tostring(tp, format.mintick) + " | Size " + str.tostring(qty) + " " + unit
+
+    if active and barstate.isconfirmed and bar_index > entryBar
+        bool timeUp = time >= endTime
+        bool slHit  = not timeUp and (isLong ? low <= sl : high >= sl)
+        bool tpHit  = not timeUp and not slHit and (isLong ? high >= tp : low <= tp)
+        moveEnds(timeUp ? time : time_close)
+        if timeUp or slHit or tpHit
+            float exitPx = timeUp ? open : slHit ? sl : tp
+            float res    = (isLong ? exitPx - entry : entry - exitPx) / risk - costUsed / risk
+            trades += 1
+            if res > 0
+                wins += 1
+            netR  += res
+            peakR := math.max(peakR, netR)
+            maxDD := math.max(maxDD, peakR - netR)
+            closeTimes.push(time)
+            results.push(res)
+            active := false
+            string how = timeUp ? "16:00 exit" : slHit ? "SL" : "TP"
+            today  := how + " " + (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R"
+            resLab := label.new(time, exitPx, (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R · " + how, xloc=xloc.bar_time, style=res > 0 ? label.style_label_up : label.style_label_down, color=color.new(res > 0 ? color.green : color.red, 20), textcolor=color.white, size=size.small)
+if msg != ""
+    alert(msg, alert.freq_once_per_bar)
+
+// ─── Visuals ──────────────────────────────────────────────────────────────────
+plotshape(tfOK and entryBar == bar_index and isLong,     "Long setup",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(tfOK and entryBar == bar_index and not isLong, "Short setup", shape.triangledown, location.abovebar, color.red,   size=size.small)
+bgcolor(tfOK and inTrig ? color.new(color.blue, 94) : na, title="London trigger window 08:00-08:15")
+plot(tfOK and inTrig ? ema1 : na, "EMA12 (1m)", color=color.new(color.orange, 20), linewidth=1)
+
+statusColor(string st) =>
+    str.startswith(st, "LONG") or str.startswith(st, "TP") ? color.new(color.green, 25) : str.startswith(st, "SHORT") or str.startswith(st, "SL") ? color.new(color.red, 25) : color.new(color.gray, 45)
+
+rColor(float v) =>
+    v > 0 ? color.new(color.green, 25) : v < 0 ? color.new(color.red, 25) : color.new(color.gray, 45)
+
+// ─── Dashboard ────────────────────────────────────────────────────────────────
+var table dash = table.new(position.top_right, 2, 10, bgcolor=color.new(color.black, 20), border_color=color.new(color.gray, 40), border_width=1, frame_color=color.new(color.gray, 20), frame_width=1)
+if barstate.islast
+    int   n     = trades
+    float wr    = n > 0 ? wins * 100.0 / n : 0.0
+    float r30   = 0.0
+    int   n30   = 0
+    int   since = time - 30 * 86400000
+    if n > 0
+        for i = 0 to n - 1
+            if closeTimes.get(i) >= since
+                r30 += results.get(i)
+                n30 += 1
+    table.cell(dash, 0, 0, tfOK ? "daily-trend-claude · A+ London 1:1" : "Use the 1 minute chart", text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 1, 0, syminfo.ticker, text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 0, 1, "London today", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 1, today, text_color=color.white, text_size=size.small, bgcolor=statusColor(today))
+    table.cell(dash, 0, 2, "Candidates / A+ trades", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 2, str.tostring(cands) + " / " + str.tostring(n), text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 3, "Win rate", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 3, n > 0 ? str.tostring(wr, "#.#") + "%" : "—", text_color=color.white, text_size=size.small, bgcolor=n > 0 ? rColor(netR) : color.new(color.gray, 45))
+    table.cell(dash, 0, 4, "Net R, all loaded history", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 4, str.tostring(netR, "#.##") + "R (" + str.tostring(n) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(netR))
+    table.cell(dash, 0, 5, "Expectancy per trade (net of costs)", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 5, n > 0 ? (netR / n >= 0 ? "+" : "") + str.tostring(netR / n, "0.000") + "R" : "—", text_color=color.white, text_size=size.small, bgcolor=rColor(netR))
+    table.cell(dash, 0, 6, "Net R, last 30 days", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 6, str.tostring(r30, "#.##") + "R (" + str.tostring(n30) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(r30))
+    table.cell(dash, 0, 7, "Max drawdown", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 7, maxDD > 0 ? str.tostring(maxDD, "#.##") + "R" : "—", text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 8, "Risk per trade", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 8, "$" + str.tostring(riskUSD, "#"), text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 9, "Test result (GC 2023-26, post-hoc)", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 9, "68% wins, +0.27R on 40 trades: a lead, not proven", text_color=color.white, text_size=size.small, bgcolor=color.new(color.gray, 45))

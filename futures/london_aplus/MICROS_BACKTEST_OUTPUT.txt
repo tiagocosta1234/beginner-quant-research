@@ -1,0 +1,18 @@
+claude.pine rule (A+ London 12 EMA, 1:1) on the merged 1m micro files, 3 Aug .. 27 Oct 2026. Realistic costs: Broker all-in fee + 1 tick per round trip.
+cost in points per round trip: MGC 0.292  MNQ 0.860  MES 0.494  MYM 3.440  M2K 0.344  MCL 0.026  SIL 0.007  MBT 30.000
+sym  cands | A+ n win% |  gross R     net R | cost as % of risk
+MGC     36 |   25   60 |   +0.200    +0.105 | 9.5%
+MNQ     27 |   15   47 |   -0.067    -0.112 | 4.5%
+MES     23 |   13   54 |   +0.077    -0.045 | 12.2%
+MYM     22 |   12   58 |   +0.167    +0.036 | 13.1%
+M2K     24 |   13   54 |   +0.077    -0.124 | 20.1%
+MCL     16 |    7   43 |   -0.143    -0.414 | 27.2%
+SIL     34 |   14   57 |   +0.143    +0.039 | 10.3%
+MBT     15 |   10   70 |   +0.400    -0.122 | 52.2%
+
+A+ all 8 micros                    n 109  win  56%  gross +0.119  net -0.040 R  total -4.4 R  avg win 0.82 avg loss -1.14  cost 16.0% of risk | mirror -0.279  random-side P 0.117
+A+ MGC MNQ MES MYM                 n  65  win  55%  gross +0.108  net +0.012 R  total +0.8 R  avg win 0.90 avg loss -1.10  cost 9.6% of risk | mirror -0.203  random-side P 0.218
+A+ MGC only                        n  25  win  60%  gross +0.200  net +0.105 R  total +2.6 R  avg win 0.91 avg loss -1.09  cost 9.5% of risk | mirror -0.295  random-side P 0.211
+  month 2026-08: n 15, net -0.200 R
+  month 2026-09: n 47, net -0.006 R
+  month 2026-10: n 47, net -0.024 R

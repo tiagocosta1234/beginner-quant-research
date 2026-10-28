@@ -1,0 +1,242 @@
+//@version=6
+indicator("claude 5min GC", shorttitle="claude 5min GC", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// 5-minute chart. Every trading day: one 1:1 setup in the first hour of London (08:00 London) and one in the first hour of New York
+// (09:30 New York), DST-aware. Setup candle = the session's first 5-minute candle. Side = its colour (doji: prior day above its 20-day
+// average = long). Entry = its close. Stop = its other end plus a buffer (never tighter than the risk floor). Target = exactly 1R.
+// Each setup is drawn as a projection: green = take profit, red = stop loss, white = entry, labelled with price, points, size and dollar risk.
+// The trade ends at TP, at SL (a bar touching both counts as SL) or at the end of the first hour. R is in stop distances, after costs,
+// so it does not depend on the dollar risk setting.
+
+// ─── Inputs ───────────────────────────────────────────────────────────────────
+grpS      = "Setups"
+windowMin = input.int(60, "Trading window (minutes from the open)", minval=15, maxval=240, step=5, group=grpS)
+useLon    = input.bool(true, "London (08:00 London)", group=grpS)
+useNY     = input.bool(true, "New York (09:30 New York)", group=grpS)
+oneLoss   = input.bool(false, "Skip New York after a London loss", group=grpS)
+grpR      = "Risk"
+riskUSD   = input.float(500.0, "Risk per trade (USD)", minval=1.0, group=grpR)
+maxQty    = input.int(40, "Max contracts (account limit)", minval=1, group=grpR)
+tgtR      = input.float(1.0, "Target (× stop distance). 1 = 1:1. Below 1 raises the win rate and lowers the payoff, it does not create edge", minval=0.1, maxval=3.0, step=0.1, group=grpR)
+bufRange  = input.float(0.5, "Stop buffer (× setup candle range beyond its extreme)", minval=0.0, step=0.1, group=grpR)
+floorATR  = input.float(0.03, "Risk floor (× prior daily ATR)", minval=0.0, step=0.01, group=grpR)
+costAuto  = input.bool(true, "Auto cost by symbol (round trip: MGC 0.32, MNQ 1.1, MES 0.74, MYM 4.4 pts)", group=grpR)
+costPts   = input.float(0.3, "Cost per trade, round trip (points), when Auto is off or the symbol is unknown", minval=0.0, group=grpR)
+grpV      = "Look"
+keepOld   = input.bool(true, "Keep past projections", group=grpV)
+lblSizeIn = input.string("normal", "Label size", options=["small", "normal", "large"], group=grpV)
+
+costUsed = not costAuto ? costPts : syminfo.root == "MGC" ? 0.32 : syminfo.root == "MNQ" ? 1.1 : syminfo.root == "MES" ? 0.74 : syminfo.root == "MYM" ? 4.4 : costPts
+pointVal = syminfo.pointvalue
+lblSize  = lblSizeIn == "small" ? size.small : lblSizeIn == "large" ? size.large : size.normal
+tfOK     = timeframe.period == "5"
+
+// ─── Daily context (prior-day values only, no repainting) ─────────────────────
+[dailyATR, trendUp] = request.security(syminfo.tickerid, "D", [ta.atr(14)[1], close[1] > ta.sma(close, 20)[1]], lookahead=barmerge.lookahead_on)
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+type Book
+    array<int>   closeTimes
+    array<float> results
+    int          trades = 0
+    int          wins   = 0
+    float        netR   = 0.0
+    float        peakR  = 0.0
+    float        maxDD  = 0.0
+
+type Sess
+    string name
+    string tz
+    int    openMin
+    bool   prevIn     = false
+    float  cOpen      = na
+    float  cHigh      = na
+    float  cLow       = na
+    box    cBox       = na
+    bool   active     = false
+    bool   isLong     = false
+    float  entry      = na
+    float  sl         = na
+    float  tp         = na
+    float  risk       = na
+    int    qty        = 0
+    int    entryBar   = na
+    int    endTime    = na
+    int    trades     = 0
+    int    wins       = 0
+    float  netR       = 0.0
+    int    lastResult = 0
+    int    lastDay    = na
+    string today      = "waiting"
+    box    tpBox      = na
+    box    slBox      = na
+    line   eLine      = na
+    line   tLine      = na
+    line   sLine      = na
+    label  sideLab    = na
+    label  eLab       = na
+    label  tLab       = na
+    label  sLab       = na
+    label  resLab     = na
+
+method clearDrawings(Sess s) =>
+    box.delete(s.cBox)
+    box.delete(s.tpBox)
+    box.delete(s.slBox)
+    line.delete(s.eLine)
+    line.delete(s.tLine)
+    line.delete(s.sLine)
+    label.delete(s.sideLab)
+    label.delete(s.eLab)
+    label.delete(s.tLab)
+    label.delete(s.sLab)
+    label.delete(s.resLab)
+
+// One bar of one session: track the setup candle, draw the 1:1 projection at its close, manage the trade to TP / SL / window end.
+method step(Sess s, Book b, bool allowed) =>
+    string msg = ""
+    int tod      = hour(time, s.tz) * 60 + minute(time, s.tz)
+    int dayKey   = year(time, s.tz) * 10000 + month(time, s.tz) * 100 + dayofmonth(time, s.tz)
+    bool inCand  = tod >= s.openMin and tod < s.openMin + 5
+    if inCand and not s.prevIn
+        if not keepOld
+            s.clearDrawings()
+        s.cOpen      := open
+        s.cHigh      := high
+        s.cLow       := low
+        s.lastDay    := dayKey
+        s.lastResult := 0
+        s.today      := "setup candle forming"
+        s.cBox       := box.new(time, high, time_close, low, xloc=xloc.bar_time, bgcolor=color.new(color.blue, 85), border_color=color.new(color.blue, 40))
+    s.prevIn := inCand
+    if inCand and barstate.isconfirmed and not s.active and not na(dailyATR)
+        if not allowed
+            s.today := "skipped: London lost today"
+        else
+            bool up     = close > s.cOpen
+            bool dn     = close < s.cOpen
+            bool goLong = up or (not dn and trendUp)
+            float r     = math.max(math.abs(close - (goLong ? s.cLow : s.cHigh)) + bufRange * (s.cHigh - s.cLow), floorATR * dailyATR)
+            int endTot  = s.openMin + windowMin
+            s.isLong   := goLong
+            s.entry    := close
+            s.risk     := r
+            s.sl       := math.round_to_mintick(goLong ? close - r : close + r)
+            s.tp       := math.round_to_mintick(goLong ? close + tgtR * r : close - tgtR * r)
+            s.qty      := r > 0 ? math.min(maxQty, int(math.floor(riskUSD / (r * pointVal)))) : 0
+            s.entryBar := bar_index
+            s.endTime  := timestamp(s.tz, year(time, s.tz), month(time, s.tz), dayofmonth(time, s.tz), int(math.floor(endTot / 60)), endTot % 60, 0)
+            s.active   := true
+            int t0      = time_close
+            string pts  = str.tostring(r, format.mintick)
+            string usd  = str.tostring(s.qty * r * pointVal, "#")
+            string unit = syminfo.root
+            s.tpBox   := box.new(t0, math.max(close, s.tp), s.endTime, math.min(close, s.tp), xloc=xloc.bar_time, bgcolor=color.new(color.green, 82), border_color=color.new(color.green, 30))
+            s.slBox   := box.new(t0, math.max(close, s.sl), s.endTime, math.min(close, s.sl), xloc=xloc.bar_time, bgcolor=color.new(color.red, 82), border_color=color.new(color.red, 30))
+            s.eLine   := line.new(t0, close, s.endTime, close, xloc=xloc.bar_time, color=color.white, width=2)
+            s.tLine   := line.new(t0, s.tp, s.endTime, s.tp, xloc=xloc.bar_time, color=color.green, width=2)
+            s.sLine   := line.new(t0, s.sl, s.endTime, s.sl, xloc=xloc.bar_time, color=color.red, width=2)
+            s.tLab    := label.new(s.endTime, s.tp, "TP  " + str.tostring(s.tp, format.mintick) + "   +" + str.tostring(tgtR * r, format.mintick) + " pts · " + str.tostring(tgtR, "#.##") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.green, 10), textcolor=color.white, size=lblSize)
+            s.eLab    := label.new(s.endTime, close, "ENTRY  " + str.tostring(close, format.mintick) + "   " + str.tostring(s.qty) + " " + unit, xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.gray, 10), textcolor=color.white, size=lblSize)
+            s.sLab    := label.new(s.endTime, s.sl, "SL  " + str.tostring(s.sl, format.mintick) + "   -" + pts + " pts · $" + usd + " risk", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.red, 10), textcolor=color.white, size=lblSize)
+            s.sideLab := label.new(t0, s.tp, s.name + " · " + (goLong ? "LONG" : "SHORT") + " · 1:" + str.tostring(tgtR, "#.##"), xloc=xloc.bar_time, style=goLong ? label.style_label_down : label.style_label_up, color=goLong ? color.green : color.red, textcolor=color.white, size=lblSize)
+            s.today   := (goLong ? "LONG " : "SHORT ") + str.tostring(close, format.mintick) + " · SL " + str.tostring(s.sl, format.mintick) + " · TP " + str.tostring(s.tp, format.mintick)
+            msg := s.name + " " + (goLong ? "LONG" : "SHORT") + " " + syminfo.ticker + " | Entry " + str.tostring(close, format.mintick) + " | SL " + str.tostring(s.sl, format.mintick) + " | TP " + str.tostring(s.tp, format.mintick) + " | Size " + str.tostring(s.qty) + " " + unit
+    if s.active and barstate.isconfirmed and bar_index > s.entryBar
+        bool timeUp = time >= s.endTime
+        bool slHit  = not timeUp and (s.isLong ? low <= s.sl : high >= s.sl)
+        bool tpHit  = not timeUp and not slHit and (s.isLong ? high >= s.tp : low <= s.tp)
+        if timeUp or slHit or tpHit
+            float exitPx = timeUp ? open : slHit ? s.sl : s.tp
+            float res    = s.risk > 0 ? (s.isLong ? exitPx - s.entry : s.entry - exitPx) / s.risk - costUsed / s.risk : 0.0
+            s.trades := s.trades + 1
+            b.trades := b.trades + 1
+            if res > 0
+                s.wins := s.wins + 1
+                b.wins := b.wins + 1
+            s.netR  := s.netR + res
+            b.netR  := b.netR + res
+            b.peakR := math.max(b.peakR, b.netR)
+            b.maxDD := math.max(b.maxDD, b.peakR - b.netR)
+            b.closeTimes.push(time)
+            b.results.push(res)
+            s.lastResult := res > 0 ? 1 : -1
+            s.active := false
+            string how = timeUp ? "hour end" : slHit ? "SL" : "TP"
+            s.today  := how + " " + (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R"
+            s.resLab := label.new(time, exitPx, (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R · " + how, xloc=xloc.bar_time, style=res > 0 ? label.style_label_up : label.style_label_down, color=color.new(res > 0 ? color.green : color.red, 20), textcolor=color.white, size=size.small)
+    msg
+
+statusColor(string st) =>
+    str.startswith(st, "LONG") or str.startswith(st, "TP") ? color.new(color.green, 25) : str.startswith(st, "SHORT") or str.startswith(st, "SL") ? color.new(color.red, 25) : color.new(color.gray, 45)
+
+rColor(float v) =>
+    v > 0 ? color.new(color.green, 25) : v < 0 ? color.new(color.red, 25) : color.new(color.gray, 45)
+
+// ─── Run both sessions ────────────────────────────────────────────────────────
+var Book book = Book.new(array.new<int>(), array.new<float>())
+var Sess lon  = Sess.new("London", "Europe/London", 8 * 60)
+var Sess ny   = Sess.new("New York", "America/New_York", 9 * 60 + 30)
+
+string lonMsg = ""
+string nyMsg  = ""
+if tfOK and useLon
+    lonMsg := lon.step(book, true)
+if tfOK and useNY
+    int nyDay    = year(time, "America/New_York") * 10000 + month(time, "America/New_York") * 100 + dayofmonth(time, "America/New_York")
+    bool lonLost = oneLoss and useLon and lon.lastResult == -1 and lon.lastDay == nyDay
+    nyMsg := ny.step(book, not lonLost)
+if lonMsg != ""
+    alert(lonMsg, alert.freq_once_per_bar)
+if nyMsg != ""
+    alert(nyMsg, alert.freq_once_per_bar)
+
+// ─── Visuals ──────────────────────────────────────────────────────────────────
+lonSig   = tfOK and useLon and lon.entryBar == bar_index
+nySig    = tfOK and useNY and ny.entryBar == bar_index
+longSig  = (lonSig and lon.isLong) or (nySig and ny.isLong)
+shortSig = (lonSig and not lon.isLong) or (nySig and not ny.isLong)
+plotshape(longSig,  "Long setup",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(shortSig, "Short setup", shape.triangledown, location.abovebar, color.red,   size=size.small)
+
+todL     = hour(time, "Europe/London") * 60 + minute(time, "Europe/London")
+todN     = hour(time, "America/New_York") * 60 + minute(time, "America/New_York")
+inLonWin = tfOK and useLon and todL >= 480 and todL < 480 + windowMin
+inNYWin  = tfOK and useNY and todN >= 570 and todN < 570 + windowMin
+bgcolor(inLonWin ? color.new(color.blue, 94) : inNYWin ? color.new(color.orange, 94) : na, title="First hour of London / New York")
+
+// ─── Dashboard ────────────────────────────────────────────────────────────────
+var table dash = table.new(position.top_right, 2, 11, bgcolor=color.new(color.black, 20), border_color=color.new(color.gray, 40), border_width=1, frame_color=color.new(color.gray, 20), frame_width=1)
+if barstate.islast
+    int   n     = book.trades
+    float wr    = n > 0 ? book.wins * 100.0 / n : 0.0
+    float r30   = 0.0
+    int   n30   = 0
+    int   since = time - 30 * 86400000
+    if n > 0
+        for i = 0 to n - 1
+            if book.closeTimes.get(i) >= since
+                r30 += book.results.get(i)
+                n30 += 1
+    table.cell(dash, 0, 0, tfOK ? "claude 5min GC" : "Set the chart to 5 minutes", text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 1, 0, syminfo.ticker, text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 0, 1, "London today", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 1, useLon ? lon.today : "off", text_color=color.white, text_size=size.small, bgcolor=statusColor(lon.today))
+    table.cell(dash, 0, 2, "New York today", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 2, useNY ? ny.today : "off", text_color=color.white, text_size=size.small, bgcolor=statusColor(ny.today))
+    table.cell(dash, 0, 3, "Net R, last 30 days", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 3, str.tostring(r30, "#.##") + "R (" + str.tostring(n30) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(r30))
+    table.cell(dash, 0, 4, "Net R, all loaded history", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 4, str.tostring(book.netR, "#.##") + "R (" + str.tostring(n) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(book.netR))
+    table.cell(dash, 0, 5, "London / New York R", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 5, str.tostring(lon.netR, "#.##") + " / " + str.tostring(ny.netR, "#.##"), text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 6, "Win rate", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 6, n > 0 ? str.tostring(wr, "#.#") + "%" : "—", text_color=color.white, text_size=size.small, bgcolor=wr >= 50 ? color.new(color.green, 25) : color.new(color.red, 25))
+    table.cell(dash, 0, 7, "Max drawdown", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 7, book.maxDD > 0 ? str.tostring(book.maxDD, "#.##") + "R" : "—", text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 10, "Expectancy per trade (net of costs)", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 10, n > 0 ? (book.netR / n >= 0 ? "+" : "") + str.tostring(book.netR / n, "0.000") + "R" : "—", text_color=color.white, text_size=size.small, bgcolor=rColor(book.netR))
+    table.cell(dash, 0, 8, "Risk per trade", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 8, "$" + str.tostring(riskUSD, "#"), text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 9, "Skip NY after a London loss", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 9, oneLoss ? "on" : "off", text_color=color.white, text_size=size.small)

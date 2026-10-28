@@ -1,0 +1,34 @@
+GC candidates with hard rules + risk bounds: DEV 162, TEST 255
+cell (F1 cost<=12%%, F2 strict C1&C3, F3 first 5 min, F4 with daily trend) -> DEV n / net R -> TEST n / net R
+  (0, 0, 0, 0)  DEV 123 -0.049 -> TEST 191 +0.012
+  (0, 0, 0, 1)  DEV  67 -0.052 -> TEST  84 +0.046
+  (0, 0, 1, 0)  DEV  71 -0.112 -> TEST 100 -0.018
+  (0, 0, 1, 1)  DEV  38 -0.105 -> TEST  50 +0.080
+  (0, 1, 0, 0)  DEV 123 -0.049 -> TEST 190 +0.007
+  (0, 1, 0, 1)  DEV  67 -0.052 -> TEST  84 +0.046
+  (0, 1, 1, 0)  DEV  71 -0.112 -> TEST  99 -0.027
+  (0, 1, 1, 1)  DEV  38 -0.105 -> TEST  50 +0.080
+  (1, 0, 0, 0)  DEV  21 +0.426 -> TEST 100 +0.096
+  (1, 0, 0, 1)  DEV  12 +0.235 -> TEST  40 +0.267
+  (1, 0, 1, 0)  DEV   9 +0.239 -> TEST  55 +0.078
+  (1, 0, 1, 1)  DEV   5 +0.102 -> TEST  24 +0.166
+  (1, 1, 0, 0)  DEV  21 +0.426 -> TEST  99 +0.088
+  (1, 1, 0, 1)  DEV  12 +0.235 -> TEST  40 +0.267
+  (1, 1, 1, 0)  DEV   9 +0.239 -> TEST  54 +0.063
+  (1, 1, 1, 1)  DEV   5 +0.102 -> TEST  24 +0.166
+
+DEV winner (n >= 60): (0, 0, 0, 0) DEV n 123 net -0.049
+DEV/TEST correlation of cell means over 16 cells: 0.52
+TEST (one look): n 191, wins 57%, mean net R +0.012, total +2.2 R, mirror -0.250, random-side P 0.034 | by year: 2023 -0.17 (16)  2024 -0.16 (38)  2025 +0.20 (76)  2026 -0.07 (61)
+unfiltered A+ on TEST (reference): n 191, mean net R +0.012
+VERDICT: NOT SHOWN
+replication NQ TEST 2023-26: chosen cell n 314 net -0.074 (P 0.526) | unfiltered A+ n 314 net -0.074
+replication ES TEST 2023-26: chosen cell n 249 net -0.196 (P 0.736) | unfiltered A+ n 249 net -0.196
+
+POST-HOC (after the look, descriptive only, not part of the bar): the cost-share filter F1 alone
+GC (1, 0, 0, 0) TEST n 100 wins 59% net +0.096 total +9.6 R mirror -0.264 P 0.041 | years>0 3/4 | avg risk 3.68 pts (cost share 8.4%)
+GC (1, 0, 0, 1) TEST n  40 wins 68% net +0.267 total +10.7 R mirror -0.433 P 0.015 | years>0 4/4 | avg risk 3.72 pts (cost share 8.3%)
+NQ (1, 0, 0, 0) TEST n 284 wins 49% net -0.082 total -23.2 R mirror -0.054 P 0.610 | years>0 1/4 | avg risk 14.83 pts (cost share 6.8%)
+NQ (1, 0, 0, 1) TEST n 148 wins 45% net -0.178 total -26.4 R mirror +0.038 P 0.920 | years>0 1/4 | avg risk 14.40 pts (cost share 7.0%)
+ES (1, 0, 0, 0) TEST n  66 wins 47% net -0.157 total -10.4 R mirror -0.036 P 0.725 | years>0 1/4 | avg risk 5.30 pts (cost share 9.6%)
+ES (1, 0, 0, 1) TEST n  32 wins 41% net -0.282 total -9.0 R mirror +0.093 P 0.881 | years>0 0/4 | avg risk 5.43 pts (cost share 9.4%)

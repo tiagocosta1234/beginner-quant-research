@@ -1,0 +1,12 @@
+GC 5m 2019-06-21..2026-09-25: 1244 trades (skipped: {'small': 86, 'both': 0, 'deep': 289, 'noreclaim': 295, 'nosweep': 223})
+shorts 632 / longs 612
+reached before the stop: 1.00 STDV 8.1%  2.00 STDV 2.5%  2.50 STDV 1.4%  4.00 STDV 0.5%
+target 1.0 STDV: wins 16.9%, mean -0.214 R, total -265.8 R, median planned RR 7.5 | by year 2019 -10  2020 -44  2021 -70  2022 +15  2023 +10  2024 -84  2025 -49  2026 -34
+target 2.0 STDV: wins 15.2%, mean -0.299 R, total -371.3 R, median planned RR 11.5 | by year 2019 -13  2020 -32  2021 -104  2022 +1  2023 -32  2024 -91  2025 -65  2026 -35
+target 2.5 STDV: wins 15.1%, mean -0.322 R, total -401.2 R, median planned RR 13.4 | by year 2019 -9  2020 -30  2021 -117  2022 -15  2023 -41  2024 -94  2025 -65  2026 -31
+target 4.0 STDV: wins 15.0%, mean -0.334 R, total -415.8 R, median planned RR 19.3 | by year 2019 -3  2020 -36  2021 -125  2022 -16  2023 -33  2024 -102  2025 -65  2026 -35
+Descriptive only. Result: NOT a candidate. Targets sit far away (median planned RR 7.5-19), 8% reach 1 STDV before the stop, every target and 6 of 8 years negative.
+
+27 Oct 2026, same entries (Asia range sweep + reclaim, GC 5m 2019-2026, 1,244 trades, median stop 2.4 pt, cost 0.32 pt = 0.13 R), target as an R multiple instead of an STDV level:
+0.10R wins 34.8% mean -0.284 | 0.15R 44.7% -0.272 | 0.20R 52.9% -0.257 | 0.25R 58.9% -0.251 | 0.30R 60.8% -0.246 | 0.40R 61.1% -0.242 | 0.50R 59.9% -0.230 | 0.75R 54.2% -0.216 | 1.00R 47.4% -0.227
+Net win rate peaks at ~61% (small targets are eaten by the 0.13 R cost) and every target is negative, 0 of 8 years positive. 70% is not reachable by changing the target.

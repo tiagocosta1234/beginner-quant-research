@@ -1,0 +1,280 @@
+//@version=6
+indicator("claude", shorttitle="claude", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// ICT Power of 3 with standard-deviation (STDV) projections, on a 1 to 15 minute chart.
+//   Accumulation = the range of the accumulation session (default Asia, 20:00-00:00 New York). Drawn as a box.
+//   Manipulation = price sweeps one side of that range inside the manipulation window (default 02:00-05:00 New York).
+//   Distribution = price closes back inside the range (the reclaim): that bar's close is the entry, opposite to the sweep.
+//   STDV levels  = the range size projected beyond the OPPOSITE side of the range: sweep of the high -> range low minus k x range
+//                  (the -1, -2, -2.5, -4 projections), sweep of the low -> range high plus k x range.
+// Stop = the sweep extreme plus a buffer. Target = a chosen STDV level, or a fixed R multiple. A bar touching stop and target counts as the stop.
+// The setup is followed to the stop or the end of the trade window so the dashboard can show how often each STDV level was reached before the stop.
+// R is in stop distances after costs. Past setups stay drawn. The history is descriptive: it is not a claim that the pattern has an edge.
+
+// ─── Inputs ───────────────────────────────────────────────────────────────────
+grpS     = "Sessions"
+tz       = input.string("America/New_York", "Timezone for the session times", group=grpS)
+accSess  = input.session("2000-0000", "Accumulation (the range)", group=grpS)
+swpSess  = input.session("0200-0500", "Manipulation window (the sweep must start here)", group=grpS)
+trdSess  = input.session("0200-1100", "Trade window (reclaim entry and management, flat at the end)", group=grpS)
+grpM     = "Model"
+minRngAT = input.float(0.15, "Minimum range (× prior daily ATR14)", minval=0.0, step=0.05, group=grpM)
+maxSweep = input.float(1.0, "Max sweep depth beyond the range (× range)", minval=0.1, step=0.1, group=grpM)
+bufTicks = input.int(2, "Stop buffer beyond the sweep extreme (ticks)", minval=0, group=grpM)
+tgtMode  = input.string("STDV level", "Target", options=["STDV level", "R multiple"], group=grpM)
+tgtK     = input.float(1.0, "Target STDV (× range projected beyond the opposite side)", minval=0.1, step=0.1, group=grpM)
+tgtR     = input.float(1.0, "Target R multiple (when Target = R multiple)", minval=0.1, step=0.1, group=grpM)
+grpL     = "STDV levels (× range)"
+k1       = input.float(1.0, "Level 1", minval=0.1, step=0.1, group=grpL)
+k2       = input.float(2.0, "Level 2", minval=0.1, step=0.1, group=grpL)
+k3       = input.float(2.5, "Level 3", minval=0.1, step=0.1, group=grpL)
+k4       = input.float(4.0, "Level 4", minval=0.1, step=0.1, group=grpL)
+grpR     = "Risk"
+riskUSD  = input.float(500.0, "Risk per trade (USD)", minval=1.0, group=grpR)
+maxQty   = input.int(40, "Max contracts (account limit)", minval=1, group=grpR)
+costAuto = input.bool(true, "Auto cost by symbol (round trip: MGC 0.32, MNQ 1.1, MES 0.74, MYM 4.4 pts)", group=grpR)
+costPts  = input.float(0.3, "Cost per trade, round trip (points), when Auto is off or the symbol is unknown", minval=0.0, group=grpR)
+grpV     = "Look"
+keepOld  = input.bool(true, "Keep past setups", group=grpV)
+lblSzIn  = input.string("normal", "Label size", options=["small", "normal", "large"], group=grpV)
+
+costUsed = not costAuto ? costPts : syminfo.root == "MGC" ? 0.32 : syminfo.root == "MNQ" ? 1.1 : syminfo.root == "MES" ? 0.74 : syminfo.root == "MYM" ? 4.4 : costPts
+pointVal = syminfo.pointvalue
+lblSize  = lblSzIn == "small" ? size.small : lblSzIn == "large" ? size.large : size.normal
+tfOK     = timeframe.isintraday and timeframe.in_seconds() <= 900
+
+// ─── Context (prior-day value only, no repainting) ────────────────────────────
+dailyATR = request.security(syminfo.tickerid, "D", ta.atr(14)[1], lookahead=barmerge.lookahead_on)
+
+inAcc = not na(time(timeframe.period, accSess, tz))
+inSwp = not na(time(timeframe.period, swpSess, tz))
+inTrd = not na(time(timeframe.period, trdSess, tz))
+
+// ─── State ────────────────────────────────────────────────────────────────────
+// st: 0 no range yet, 1 range locked (waiting for the sweep), 2 swept (waiting for the reclaim), 4 trade open, 5 finished for the day
+var int    st        = 0
+var float  rHi       = na
+var float  rLo       = na
+var int    accStart  = na
+var float  swExt     = na
+var bool   isShort   = false
+var float  entryPx   = na
+var float  slPx      = na
+var float  tpPx      = na
+var float  risk      = na
+var float  reward    = na
+var int    qty       = 0
+var int    entryBar  = na
+var bool   tgtHit    = false
+var bool   frozen    = true
+var string today     = "waiting"
+var box    rBox      = na
+var array<bool>  lvlHit    = array.new<bool>(4, false)
+var array<line>  mvLines   = array.new<line>()
+var array<label> mvLabels  = array.new<label>()
+
+var int    trades    = 0
+var int    wins      = 0
+var float  netR      = 0.0
+var float  peakR     = 0.0
+var float  maxDD     = 0.0
+var int    sweeps    = 0
+var array<int>   lvlCnt    = array.new<int>(4, 0)
+var array<int>   closeTimes = array.new<int>()
+var array<float> results   = array.new<float>()
+
+rng = rHi - rLo
+lvlK(int i) => i == 0 ? k1 : i == 1 ? k2 : i == 2 ? k3 : k4
+lvlPx(int i) => isShort ? rLo - lvlK(i) * rng : rHi + lvlK(i) * rng
+kTxt(float k) => (isShort ? "-" : "+") + str.tostring(k, "#.##")
+
+moveEnds(int t) =>
+    if not na(rBox)
+        box.set_right(rBox, t)
+    for l in mvLines
+        line.set_x2(l, t)
+    for lb in mvLabels
+        label.set_x(lb, t)
+
+deleteDrawn() =>
+    box.delete(rBox)
+    for l in mvLines
+        line.delete(l)
+    for lb in mvLabels
+        label.delete(lb)
+
+// ─── One bar ──────────────────────────────────────────────────────────────────
+string msg = ""
+if tfOK and barstate.isconfirmed
+    // new accumulation session: reset the day
+    if inAcc and not inAcc[1]
+        if not keepOld
+            deleteDrawn()
+        st       := 0
+        rHi      := high
+        rLo      := low
+        accStart := time
+        swExt    := na
+        entryBar := na
+        tgtHit   := false
+        frozen   := false
+        today    := "building the range"
+        rBox     := na
+        mvLines  := array.new<line>()
+        mvLabels := array.new<label>()
+        array.fill(lvlHit, false)
+    else if inAcc
+        rHi := math.max(rHi, high)
+        rLo := math.min(rLo, low)
+
+    // range complete: lock it and draw the box
+    if st == 0 and not inAcc and inAcc[1] and not na(rHi)
+        if na(dailyATR) or rHi - rLo < minRngAT * dailyATR
+            st    := 5
+            today := "range too small"
+        else
+            st    := 1
+            today := "range " + str.tostring(rLo, format.mintick) + " - " + str.tostring(rHi, format.mintick) + ", waiting for a sweep"
+            rBox  := box.new(accStart, rHi, time_close, rLo, xloc=xloc.bar_time, bgcolor=color.new(color.blue, 88), border_color=color.new(color.blue, 40))
+
+    // manipulation: a sweep of one side inside the window
+    if st == 1 and inSwp
+        bool up = high > rHi
+        bool dn = low < rLo
+        if up and dn
+            st    := 5
+            today := "both sides swept: no trade"
+        else if up or dn
+            st      := 2
+            isShort := up
+            swExt   := up ? high : low
+            sweeps  += 1
+            today   := "swept the " + (up ? "high" : "low") + ", waiting for the reclaim"
+            msg     := "PO3 " + syminfo.ticker + " swept the range " + (up ? "high " + str.tostring(rHi, format.mintick) : "low " + str.tostring(rLo, format.mintick))
+
+    // reclaim: close back inside the range = entry
+    if st == 2
+        swExt := isShort ? math.max(swExt, high) : math.min(swExt, low)
+        float deep = isShort ? swExt - rHi : rLo - swExt
+        if not inTrd
+            st    := 5
+            today := "swept, no reclaim"
+        else if deep > maxSweep * rng
+            st    := 5
+            today := "sweep too deep: no trade"
+        else if (isShort ? close < rHi : close > rLo)
+            float slRaw = isShort ? swExt + bufTicks * syminfo.mintick : swExt - bufTicks * syminfo.mintick
+            float rsk   = math.abs(slRaw - close)
+            float tpRaw = tgtMode == "STDV level" ? (isShort ? rLo - tgtK * rng : rHi + tgtK * rng) : (isShort ? close - tgtR * rsk : close + tgtR * rsk)
+            bool beyond = isShort ? tpRaw < close : tpRaw > close
+            if rsk <= 0 or not beyond
+                st    := 5
+                today := "reclaim, but no valid target"
+            else
+                entryPx  := close
+                slPx     := math.round_to_mintick(slRaw)
+                tpPx     := math.round_to_mintick(tpRaw)
+                risk     := math.abs(slPx - entryPx)
+                reward   := math.abs(tpPx - entryPx)
+                qty      := math.min(maxQty, int(math.floor(riskUSD / (risk * pointVal))))
+                entryBar := bar_index
+                tgtHit   := false
+                array.fill(lvlHit, false)
+                st       := 4
+                int t0    = time_close
+                string pts = str.tostring(risk, format.mintick)
+                color tpc = color.new(color.green, 10)
+                color slc = color.new(color.red, 10)
+                mvLines.push(line.new(t0, entryPx, t0, entryPx, xloc=xloc.bar_time, color=color.white, width=2))
+                mvLines.push(line.new(t0, tpPx, t0, tpPx, xloc=xloc.bar_time, color=color.green, width=2))
+                mvLines.push(line.new(t0, slPx, t0, slPx, xloc=xloc.bar_time, color=color.red, width=2))
+                mvLabels.push(label.new(t0, entryPx, "ENTRY  " + str.tostring(entryPx, format.mintick) + "   " + str.tostring(qty), xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.gray, 10), textcolor=color.white, size=lblSize))
+                mvLabels.push(label.new(t0, tpPx, "TP  " + str.tostring(tpPx, format.mintick) + "   " + str.tostring(reward / risk, "#.##") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=tpc, textcolor=color.white, size=lblSize))
+                mvLabels.push(label.new(t0, slPx, "SL  " + str.tostring(slPx, format.mintick) + "   -" + pts + " pts · $" + str.tostring(qty * risk * pointVal, "#") + " risk", xloc=xloc.bar_time, style=label.style_label_left, color=slc, textcolor=color.white, size=lblSize))
+                for i = 0 to 3
+                    float lp = math.round_to_mintick(lvlPx(i))
+                    mvLines.push(line.new(t0, lp, t0, lp, xloc=xloc.bar_time, color=color.new(color.orange, 20), style=line.style_dashed, width=1))
+                    mvLabels.push(label.new(t0, lp, kTxt(lvlK(i)) + " STDV  " + str.tostring(lp, format.mintick), xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.orange, 30), textcolor=color.white, size=size.small))
+                today := (isShort ? "SHORT " : "LONG ") + str.tostring(entryPx, format.mintick) + " · SL " + str.tostring(slPx, format.mintick) + " · TP " + str.tostring(tpPx, format.mintick)
+                msg   := "PO3 " + (isShort ? "SHORT " : "LONG ") + syminfo.ticker + " | Entry " + str.tostring(entryPx, format.mintick) + " | SL " + str.tostring(slPx, format.mintick) + " | TP " + str.tostring(tpPx, format.mintick) + " | Size " + str.tostring(qty)
+
+    // manage the trade: stop, STDV levels reached, target reached, end of window
+    if st == 4 and bar_index > entryBar
+        bool timeUp  = not inTrd
+        bool stopHit = not timeUp and (isShort ? high >= slPx : low <= slPx)
+        if not timeUp and not stopHit
+            for i = 0 to 3
+                if isShort ? low <= lvlPx(i) : high >= lvlPx(i)
+                    lvlHit.set(i, true)
+            if not tgtHit and (isShort ? low <= tpPx : high >= tpPx)
+                tgtHit := true
+        if timeUp or stopHit
+            float exitPx = timeUp ? open : slPx
+            float gross  = tgtHit ? reward : (isShort ? entryPx - exitPx : exitPx - entryPx)
+            float res    = (gross - costUsed) / risk
+            trades += 1
+            if res > 0
+                wins += 1
+            netR  += res
+            peakR := math.max(peakR, netR)
+            maxDD := math.max(maxDD, peakR - netR)
+            for i = 0 to 3
+                if lvlHit.get(i)
+                    lvlCnt.set(i, lvlCnt.get(i) + 1)
+            closeTimes.push(time)
+            results.push(res)
+            string how = tgtHit ? "TP" : stopHit ? "SL" : "window end"
+            today := how + " " + (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R"
+            label.new(time, exitPx, (res >= 0 ? "+" : "") + str.tostring(res, "0.00") + "R · " + how, xloc=xloc.bar_time, style=res > 0 ? label.style_label_up : label.style_label_down, color=color.new(res > 0 ? color.green : color.red, 20), textcolor=color.white, size=size.small)
+            st := 5
+
+    // keep the drawings reaching to the current bar until the day is over, then freeze them once
+    if (st >= 1 and st <= 4) or (st == 5 and not frozen)
+        moveEnds(time_close)
+    if st == 5
+        frozen := true
+
+if msg != ""
+    alert(msg, alert.freq_once_per_bar)
+
+// ─── Visuals ──────────────────────────────────────────────────────────────────
+plotshape(tfOK and entryBar == bar_index and not isShort, "Long setup",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(tfOK and entryBar == bar_index and isShort,     "Short setup", shape.triangledown, location.abovebar, color.red,   size=size.small)
+bgcolor(tfOK and inAcc ? color.new(color.blue, 95) : tfOK and inSwp ? color.new(color.orange, 94) : na, title="Accumulation / manipulation window")
+
+// ─── Dashboard ────────────────────────────────────────────────────────────────
+rColor(float v) =>
+    v > 0 ? color.new(color.green, 25) : v < 0 ? color.new(color.red, 25) : color.new(color.gray, 45)
+
+var table dash = table.new(position.top_right, 2, 12, bgcolor=color.new(color.black, 20), border_color=color.new(color.gray, 40), border_width=1, frame_color=color.new(color.gray, 20), frame_width=1)
+if barstate.islast
+    int   n    = trades
+    float wr   = n > 0 ? wins * 100.0 / n : 0.0
+    float r30  = 0.0
+    int   n30  = 0
+    int   since = time - 30 * 86400000
+    if n > 0
+        for i = 0 to n - 1
+            if closeTimes.get(i) >= since
+                r30 += results.get(i)
+                n30 += 1
+    string tgtTxt = tgtMode == "STDV level" ? str.tostring(tgtK, "#.##") + " STDV" : str.tostring(tgtR, "#.##") + "R"
+    table.cell(dash, 0, 0, tfOK ? "claude · STDV PO3" : "Use a 1 to 15 minute chart", text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 1, 0, syminfo.ticker, text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 0, 1, "Today", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 1, today, text_color=color.white, text_size=size.small, bgcolor=str.startswith(today, "TP") or str.startswith(today, "LONG") ? color.new(color.green, 25) : str.startswith(today, "SL") or str.startswith(today, "SHORT") ? color.new(color.red, 25) : color.new(color.gray, 45))
+    table.cell(dash, 0, 2, "Sweeps / trades", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 2, str.tostring(sweeps) + " / " + str.tostring(n), text_color=color.white, text_size=size.small)
+    table.cell(dash, 0, 3, "Win rate (target " + tgtTxt + ")", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 3, n > 0 ? str.tostring(wr, "#.#") + "%" : "—", text_color=color.white, text_size=size.small, bgcolor=n > 0 ? rColor(netR) : color.new(color.gray, 45))
+    table.cell(dash, 0, 4, "Net R, all loaded history", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 4, str.tostring(netR, "#.##") + "R (" + str.tostring(n) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(netR))
+    table.cell(dash, 0, 5, "Expectancy per trade", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 5, n > 0 ? (netR / n >= 0 ? "+" : "") + str.tostring(netR / n, "0.000") + "R" : "—", text_color=color.white, text_size=size.small, bgcolor=rColor(netR))
+    table.cell(dash, 0, 6, "Net R, last 30 days", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 6, str.tostring(r30, "#.##") + "R (" + str.tostring(n30) + " trades)", text_color=color.white, text_size=size.small, bgcolor=rColor(r30))
+    table.cell(dash, 0, 7, "Max drawdown", text_color=color.silver, text_size=size.small)
+    table.cell(dash, 1, 7, maxDD > 0 ? str.tostring(maxDD, "#.##") + "R" : "—", text_color=color.white, text_size=size.small)
+    for i = 0 to 3
+        table.cell(dash, 0, 8 + i, "Reached " + str.tostring(lvlK(i), "#.##") + " STDV before the stop", text_color=color.silver, text_size=size.small)
+        table.cell(dash, 1, 8 + i, n > 0 ? str.tostring(lvlCnt.get(i) * 100.0 / n, "#.#") + "% (" + str.tostring(lvlCnt.get(i)) + " of " + str.tostring(n) + ")" : "—", text_color=color.white, text_size=size.small)

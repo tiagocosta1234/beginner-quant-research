@@ -1,0 +1,11 @@
+cells with >= 200 DEV trades: 32 of 32 | DEV/TEST correlation of cell means 0.94
+top 5 on DEV -> TEST:
+  (300, 'wide', 0.5, True)           DEV -0.101 R (1096) -> TEST -0.125 R (1076)
+  (300, 'wide', 0.5, False)          DEV -0.103 R (2229) -> TEST -0.116 R (2167)
+  (480, 'wide', 0.5, True)           DEV -0.110 R (1176) -> TEST -0.122 R (1163)
+  (480, 'wide', 0.5, False)          DEV -0.111 R (2389) -> TEST -0.112 R (2343)
+  (300, 'wide', 1.0, False)          DEV -0.114 R (2229) -> TEST -0.134 R (2167)
+CHOSEN (300, 'wide', 0.5, True) -> TEST n 1076, wins 64.0%, mean -0.125 R, total -134.5 R, mirror mean -0.088, random-side P 0.8330
+  per market: ES -0.122 (218) | GC -0.167 (317) | NQ -0.050 (230) | SI -0.140 (311)
+  by year: 2023 -51.5  2024 -26.9  2025 -25.4  2026 -30.7
+VERDICT: NOT SHOWN (markets positive 0/4)

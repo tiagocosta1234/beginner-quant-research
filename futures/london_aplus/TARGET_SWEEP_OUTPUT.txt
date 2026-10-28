@@ -1,0 +1,10 @@
+27 Oct 2026, descriptive (not registered). claude 5min GC defaults (London 08:00 + NY 09:30 first 5m candle, stop 1R, one loss ends the day), GC 2019-06..2026-09, cost 0.32 pt.
+Only the target size changes (open5m_history.py with TP = K x R).
+K=1.00 n 2808 wins 49.6% mean -0.117 R total -329.0 R
+K=0.70 n 2950 wins 56.9% mean -0.129 R total -380.1 R
+K=0.50 n 3084 wins 63.8% mean -0.135 R total -415.0 R
+K=0.40 n 3124 wins 66.7% mean -0.145 R total -452.3 R
+K=0.30 n 3121 wins 68.8% mean -0.150 R total -469.4 R
+K=0.25 n 3045 wins 66.9% mean -0.163 R total -495.8 R
+Smaller target = higher win rate, worse expectancy (fixed costs weigh more in R). Peaks at 68.8%, never reaches 70%.
+claude.pine now has a "Target (x stop distance)" input (default 1.0) and an "Expectancy per trade" dashboard row. Edited locally only; not pasted into TradingView.
