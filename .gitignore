@@ -1,0 +1,19 @@
+# market data stays local (licensed data cannot be redistributed)
+data/
+*.parquet
+*.pkl
+*.db
+*.sqlite
+*.zip
+
+# secrets and local state
+.env
+*.env
+state/
+logs/
+*.log
+
+# python
+__pycache__/
+*.pyc
+.venv/
