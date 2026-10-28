@@ -13,7 +13,8 @@ rows = list(csv.DictReader(open(path, encoding="utf-8-sig")))
 col = next((c for c in rows[0] if c.strip().lower() in COLS), None) if rows else None
 if col is None:
     sys.exit("no result column found; expected one of " + ", ".join(COLS))
-usd = np.array([float(str(r[col]).replace("$", "").replace(",", "")) for r in rows if str(r[col]).strip() not in ("", "nan")])
+valid = [r for r in rows if str(r[col]).strip() not in ("", "nan")]
+usd = np.array([float(str(r[col]).replace("$", "").replace(",", "")) for r in valid])
 cost_r = float(sys.argv[sys.argv.index("--cost-r") + 1]) if "--cost-r" in sys.argv else 0.05   # FX Replay has no fees: subtract 0.05 R a trade
 R = usd / risk - cost_r
 n = len(R)
@@ -36,3 +37,22 @@ if n < N_BAR:
 else:
     ok = wins / n >= WIN_BAR and R.mean() > 0 and p_boot <= P_BAR
     print("VERDICT:", "SUPPORTED (a lead, not a licence)" if ok else "NOT SHOWN")
+
+# Descriptive only (Amendment 1): what other targets would have scored, from stop_pts and mfe_pts.
+# mfe_pts = furthest the price went in the trade's favour before the original stop was touched. Rows with either blank are skipped.
+cost_pts = float(sys.argv[sys.argv.index("--cost-pts") + 1]) if "--cost-pts" in sys.argv else 0.32   # gold, round trip, per micro-point
+def num(r, k):
+    try:
+        return float(str(r.get(k, "")).replace(",", ""))
+    except ValueError:
+        return None
+pairs = [(num(r, "stop_pts"), num(r, "mfe_pts")) for r in valid]
+pairs = [(s, m) for s, m in pairs if s and s > 0 and m is not None]
+if len(pairs) >= 30:
+    print(f"\nTarget scan (descriptive, not part of the verdict): {len(pairs)} trades with stop_pts and mfe_pts, cost {cost_pts} pt a trade")
+    for k in (0.5, 0.6, 0.68, 0.75, 1.0):
+        hit = np.array([m >= k * s for s, m in pairs])
+        net = np.array([(k - cost_pts / s) if h else -(1 + cost_pts / s) for (s, m), h in zip(pairs, hit)])
+        print(f"  target {k:.2f}R: hit {hit.mean():.1%}  mean net R {net.mean():+.3f}")
+elif pairs:
+    print(f"\nTarget scan: {len(pairs)} trades with stop_pts and mfe_pts, need 30")

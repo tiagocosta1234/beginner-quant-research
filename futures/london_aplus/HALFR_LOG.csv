@@ -1,1 +1,1 @@
-date,session,fx_session_id,side,risk_usd,pnl,notes
+date,session,fx_session_id,side,risk_usd,stop_pts,mfe_pts,pnl,notes
