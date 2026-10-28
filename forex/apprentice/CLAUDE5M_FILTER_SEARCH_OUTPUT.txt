@@ -1,0 +1,17 @@
+indicator, all setups: DEV win 49.2% (1820), TEST win 50.1% (1922)
+cells searched: 147 | best DEV win rate 61.7%
+
+Top 10 cells on DEV, and what they did on TEST:
+  both|W any|D with|F with|day 3                 DEV  61.7% ( 60, +0.12 R) -> TEST  43.6% ( 78, -0.19 R)
+  London|W against|D any|F with|day all          DEV  60.3% ( 63, +0.03 R) -> TEST  48.8% ( 84, -0.10 R)
+  both|W any|D any|F with|day 3                  DEV  60.0% (100, +0.06 R) -> TEST  46.9% (128, -0.15 R)
+  New York|W any|D with|F any|day 1              DEV  58.1% ( 74, +0.04 R) -> TEST  51.4% ( 74, -0.08 R)
+  New York|W with|D any|F any|day 0              DEV  57.8% ( 64, +0.02 R) -> TEST  55.3% ( 76, +0.04 R)
+  New York|W with|D any|F any|day 2              DEV  57.6% ( 66, +0.00 R) -> TEST  49.3% ( 75, -0.08 R)
+  New York|W with|D with|F any|day all           DEV  57.2% (208, +0.04 R) -> TEST  47.8% (270, -0.12 R)
+  London|W with|D any|F any|day 4                DEV  56.9% ( 72, -0.10 R) -> TEST  51.4% ( 74, -0.11 R)
+  both|W against|D against|F any|day 0           DEV  56.5% ( 85, +0.03 R) -> TEST  53.4% (116, -0.03 R)
+  New York|W any|D with|F any|day 3              DEV  56.2% ( 64, +0.05 R) -> TEST  45.2% ( 73, -0.12 R)
+
+Top-10 average: DEV 58.2% -> TEST 49.3% | correlation of DEV and TEST win rate over all cells: -0.32
+cells with TEST win rate >= 60% and >= 30 TEST trades: 0 of 147

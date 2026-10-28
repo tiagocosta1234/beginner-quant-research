@@ -1,0 +1,7 @@
+GC/MGC 5m, 2019-06-20 .. 2026-09-25: 2808 trades (1868 London, 940 New York, 934 NY skipped after a London loss)
+ALL: wins 49.6%, mean -0.117 R a trade, total -329.0 R
+  London   n 1868, wins 50.0%, mean -0.126 R
+  New York n  940, wins 48.9%, mean -0.099 R
+by year: 2019 -42.0R (208)  2020 -40.3R (381)  2021 -47.9R (385)  2022 -44.3R (396)  2023 -68.7R (380)  2024 -63.3R (381)  2025 +15.6R (405)  2026 -38.2R (272)
+30-calendar-day windows: 2626 | median -3.9 R | best +16.6 R | worst -21.1 R | share >= +8.22 R: 1.1% | share < 0: 74.5%
+last 30 days of my data (to 2026-09-25): 30 trades, -8.31 R

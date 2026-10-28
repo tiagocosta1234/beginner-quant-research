@@ -1,0 +1,19 @@
+all: n 2437, mean -0.113 R
+  high vol    n  734, wins 50.0%, mean -0.072 R, years positive 3/6
+  low vol     n  187, wins 48.1%, mean -0.218 R, years positive 0/3
+  normal vol  n 1516, wins 49.5%, mean -0.121 R, years positive 1/7
+  downtrend   n  434, wins 47.7%, mean -0.155 R, years positive 0/5
+  sideways    n 1002, wins 48.7%, mean -0.134 R, years positive 1/7
+  uptrend     n 1001, wins 51.1%, mean -0.074 R, years positive 2/7
+combined (volatility x trend):
+  high vol    downtrend  n   55, mean -0.293 R
+  high vol    sideways   n  140, mean -0.019 R
+  high vol    uptrend    n  539, mean -0.063 R
+  low vol     downtrend  n   22, mean +0.133 R
+  low vol     sideways   n  151, mean -0.268 R
+  low vol     uptrend    n   14, mean -0.228 R
+  normal vol  downtrend  n  357, mean -0.152 R
+  normal vol  sideways   n  711, mean -0.128 R
+  normal vol  uptrend    n  448, mean -0.084 R
+
+phase on the last day of data (2026-09-25): normal vol, sideways | ATR ratio 0.91

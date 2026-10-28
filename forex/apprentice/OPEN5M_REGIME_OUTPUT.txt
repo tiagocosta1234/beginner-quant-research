@@ -1,0 +1,9 @@
+all trades: n 2777, mean -0.115 R, total -318.0 R
+trade only while the last 30 days are > 0 R                  n  722, wins 48.1%, mean -0.114 R, total  -82.3 R | by year: 2019 -8.2  2020 -11.1  2021 -12.1  2022 -13.2  2023 -16.1  2024 -18.6  2025 +7.2  2026 -10.2
+trade only while the last 30 days are >= +5 R                n  116, wins 41.4%, mean -0.215 R, total  -24.9 R | by year: 2019 -2.6  2020 -1.1  2021 -1.8  2022 -2.6  2023 -2.7  2024 -0.4  2025 -10.6  2026 -3.2
+trade only while the last 30 days are >= +8.22 R (like now)  n   29, wins 44.8%, mean -0.042 R, total   -1.2 R | by year: 2022 -1.3  2025 +0.7  2026 -0.7
+trade only while the last 30 days are < 0 R                  n 2055, wins 50.4%, mean -0.115 R, total -235.7 R | by year: 2019 -22.8  2020 -29.2  2021 -35.8  2022 -31.1  2023 -52.6  2024 -44.7  2025 +8.4  2026 -28.0
+
+calendar months: 87 | correlation of a month with the next one: +0.11
+next month positive: after a positive month 26% (n 23) | after a negative month 27% (n 63) | any month 26%
+months right after a month of +8 R or better: n 1, mean next month -11.1 R, positive 0 of 1

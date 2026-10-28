@@ -1,0 +1,12 @@
+HIGH-VOL TREND DAYS (the registered rule): n 1163, wins 51.3%, mean -0.069 R, total -80.1 R, mirror mean -0.114, random-side P 0.2181
+   ES: n  104, mean -0.047 R | shorts -0.028 (74), longs -0.093 (30)
+   GC: n  483, mean +0.002 R | shorts +0.022 (54), longs -0.000 (429)
+   NQ: n  134, mean +0.030 R | shorts +0.029 (79), longs +0.030 (55)
+   SI: n  442, mean -0.182 R | shorts -0.274 (101), longs -0.155 (341)
+trend days that are NOT high-vol (reported only): n 2675, wins 50.0%, mean -0.124 R, total -332.7 R, mirror mean -0.135, random-side P 0.3850
+   ES: n  561, mean -0.126 R | shorts -0.308 (48), longs -0.109 (513)
+   GC: n  783, mean -0.061 R | shorts -0.067 (308), longs -0.057 (475)
+   NQ: n  522, mean -0.006 R | shorts -0.236 (47), longs +0.017 (475)
+   SI: n  809, mean -0.261 R | shorts -0.330 (390), longs -0.197 (419)
+
+VERDICT: NOT SHOWN (markets positive 2/4)
