@@ -7,15 +7,17 @@ were kept with their original dates.
 ## 1. June: a simulation environment for Nasdaq futures
 
 The first commit (23 June 2026) is a small Python backend for simulating MNQ (micro Nasdaq
-futures) trades from order-flow data (`futures/early_sim/`). It answered nothing yet, but it set
+futures) trades from order-flow data (`futures/early_sim/`, now only in the history). It answered
+nothing yet, but it set
 the habit that stayed for the whole project: write the rule down as code, run it on history, and
 look at the numbers before believing anything.
 
 ## 2. July to September: the futures research engine
 
 Most of the futures work lives in `futures/engine/` as numbered "rounds" (one script and one
-result per idea), with older experiments in `futures/_archive/`, NinjaScript strategies in
-`futures/ninjascript/`, and a reinforcement-learning scalper in `futures/ai_research/`.
+result per idea), with older experiments in `futures/_archive/`. NinjaScript strategies
+(`futures/ninjascript/`) and a reinforcement-learning scalper (`futures/ai_research/`) were built
+in this period and later deleted; they remain in the commit history.
 
 The ideas covered the usual intraday playbook on NQ/MNQ, ES, GC/MGC and SI: opening-range
 breakouts, VWAP z-score fades, support and resistance bounces, value-area and point-of-control

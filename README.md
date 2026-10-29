@@ -28,14 +28,18 @@ This is not financial advice, and nothing here is a working trading system.
 | `futures/engine/` | the futures research engine: one numbered "round" script and result per idea |
 | `futures/london_open_gold/` | the last week: micro-gold London-open indicator, Tokyo test, half-R test |
 | `futures/live_bot/` | a tested live-trading scaffold (risk limits, fills, strategies) with an abstract broker |
-| `futures/ai_research/`, `futures/early_sim/`, `futures/ninjascript/` | an RL scalper, the first simulation backend, NinjaScript strategies |
 | `futures/_archive/`, `futures/docs/` | older experiments and design notes |
 | `forex/ea_research/` | the MT5 research: 200+ pre-registered tests (breakouts, overnight, swap-free drift, ML, events) |
 | `forex/apprentice/` | blind chart-reading tests and a local one-bar-at-a-time replay app |
 | `forex/self_improving/` | an automated research loop and its placebo checks |
-| `forex/ea_batch/`, `forex/expert_advisors/`, `forex/early_mt5/` | MT5 expert advisors and batch-testing code |
+| `forex/ea_batch/`, `forex/expert_advisors/` | MT5 expert advisors and batch-testing code |
 | `archive/` | the earliest testing suite and retired code |
 | `docs/` | the write-ups above and [data.md](docs/data.md) |
+
+Some early work was deleted from the working tree along the way and lives only in the commit
+history: the first MNQ simulation backend (`futures/early_sim/`), a reinforcement-learning scalper
+(`futures/ai_research/`), NinjaScript strategies (`futures/ninjascript/`) and the first weeks on MT5
+(`forex/early_mt5/`). `git log -- <path>` shows them.
 
 ## Data
 
