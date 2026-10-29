@@ -1,7 +1,7 @@
 """READ-ONLY end-of-day report, opened automatically by the 17:05 scheduled task (no command needed): the account now, today's closed trades, the S1 live record since 23 Oct, and the chance to still pass by 30 Nov / 22 Dec (the output of s1_pass_tracker.py).
 Places nothing, arms nothing."""
 import os, sys, subprocess, datetime as dt, MetaTrader5 as mt5
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"; U = dt.timezone.utc; SINCE = dt.datetime(2026, 10, 23, tzinfo=U).timestamp()
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"; U = dt.timezone.utc; SINCE = dt.datetime(2026, 10, 23, tzinfo=U).timestamp()
 if not mt5.initialize(path=TERMINAL, timeout=30000): raise SystemExit("cannot attach to the MT5 broker terminal: %s" % (mt5.last_error(),))
 try:
     a = mt5.account_info(); tk = mt5.symbol_info_tick("XAUUSD+"); now = dt.datetime.fromtimestamp(tk.time, U); day0 = now.replace(hour=0, minute=0, second=0, microsecond=0)

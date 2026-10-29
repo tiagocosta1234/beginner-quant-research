@@ -1,4 +1,5 @@
-﻿import re
+﻿import os
+import re
 
 file_path = r'broker_hacker\ManualCustomBot.cs'
 with open(file_path, 'r', encoding='utf-8') as f:
@@ -58,7 +59,7 @@ code = re.sub(exec_pattern, exec_replacement, code, flags=re.DOTALL)
 with open(file_path, 'w', encoding='utf-8') as f:
     f.write(code)
 
-with open(r'C:\Users\author\Documents\NinjaTrader 8\bin\Custom\Strategies\ManualCustomBot.cs', 'w', encoding='utf-8') as f:
+with open(os.path.expanduser(r'~\Documents\NinjaTrader 8\bin\Custom\Strategies\ManualCustomBot.cs'), 'w', encoding='utf-8') as f:
     f.write(code)
 
 print("SUCCESSFULLY PATCHED USING REGEX")

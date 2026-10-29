@@ -10,7 +10,7 @@ Unlogged weekdays (no row at all) since START are counted; more than 10% voids t
 --selftest: rebuilds BLIND_LOG_JAN2026.csv as a forward log and must reproduce blind_score's January numbers through this whole path."""
 import sys, os, datetime as dt, numpy as np, pandas as pd
 from blind_score import score, TOL, CLOSE_HM
-START = pd.Timestamp("2026-10-21").date(); TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
+START = pd.Timestamp("2026-10-21").date(); TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
 try:
     from zoneinfo import ZoneInfo; LIS = ZoneInfo("Europe/London"); ZoneInfo("UTC")
 except Exception:

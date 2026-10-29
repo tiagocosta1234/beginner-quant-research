@@ -1,4 +1,5 @@
 """Replay the daily card (gold London leg, Nasdaq NY leg) on the MT5 broker terminal's own M1 bars, 2026-09-01 .. today (read-only)."""
+import os
 import sys
 sys.path.insert(0, r".")
 import MetaTrader5 as mt5, numpy as np, pandas as pd
@@ -6,7 +7,7 @@ from datetime import datetime
 from forex.ea_research.breakouts import local_clock
 from forex.ea_research.ict2 import sim
 H, M = 3600, 60
-mt5.initialize(path=r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe")
+mt5.initialize(path=os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe")
 def bars(sym):
     r = pd.DataFrame(mt5.copy_rates_range(sym, mt5.TIMEFRAME_M1, datetime(2026, 7, 15), datetime(2026, 10, 16)))
     pt = mt5.symbol_info(sym).point

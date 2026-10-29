@@ -122,7 +122,7 @@ if not df_all.empty:
     plt.ylabel('Cumulative PnL ($)')
     plt.grid(True, alpha=0.2)
     
-    out_path = r'C:\Users\author\.gemini\antigravity-cli\brain\dfca829a-205e-495d-8a77-1b34b6e6b8ea\Master_Corrected_Curve.png'
+    out_path = 'Master_Corrected_Curve.png'
     plt.savefig(out_path, facecolor='#0d1117')
     
     with open('out_master.md', 'w', encoding='utf-8') as f:

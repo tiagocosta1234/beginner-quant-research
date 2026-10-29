@@ -7,7 +7,7 @@ import re
 
 # server hours (Athens clock of the MT5 broker server) around the 17:00 New York rollover: no decision, entry or exit
 ROLLOVER_HOURS = (23, 0)
-MT5_ONLY_BANNED_FEATURES = ("vix", "skew", "curve_chg", "dxy_chg", "fng", "stab_chg", "fund_btc", "cot_", "s_nfp", "s_cpi", "s_unr", "s_fomc", "x_ES", "x_NQ")   # series the MT5 MT5 does not offer
+MT5_ONLY_BANNED_FEATURES = ("vix", "skew", "curve_chg", "dxy_chg", "fng", "stab_chg", "fund_btc", "cot_", "s_nfp", "s_cpi", "s_unr", "s_fomc", "x_ES", "x_NQ")   # series the MT5 does not offer
 SEALS = {"slow families (rules, regime, ML, new info)": "2026-01-01..2026-09-30 unread", "HF tick family": "2026-08-16..2026-10-13 unread"}
 FLOORS = {"net_bp_floor_slow": 3.0, "min_clusters": 20, "bh_q": 0.05, "placebo_worlds": 3, "placebo_max_passes": 0}
 FORBIDDEN_IMPORTS = ("order_send", "order_check", "Buy(", "Sell(", "PositionOpen", "OrderSend", "MetaTrader5.order")      # the research package never places orders

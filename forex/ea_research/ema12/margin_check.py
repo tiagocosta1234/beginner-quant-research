@@ -1,7 +1,7 @@
-"""READ-ONLY look at the attached MT5 MT5 terminal (account <acct>): leverage, margin per lot for gold and Nasdaq, lot limits, spread at today's opens, commission in recent deals.
+"""READ-ONLY look at the attached MT5 terminal (account <acct>): leverage, margin per lot for gold and Nasdaq, lot limits, spread at today's opens, commission in recent deals.
 Sends nothing: only account_info / symbol_info / order_calc_margin (a calculation) / ticks / history. python margin_check.py"""
 import os, datetime as dt, numpy as np, MetaTrader5 as mt5
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
 U = dt.timezone.utc
 if not mt5.initialize(path=TERMINAL, timeout=30000): raise SystemExit("cannot attach: %s" % (mt5.last_error(),))
 try:

@@ -238,10 +238,7 @@ out = {
         "worstMonthlyDD": round(worst_month_combined, 0),
     },
 }
-outpath = (
-    r"C:\Users\author\AppData\Local\Temp\claude\C--Users-author-Desktop-finance-top-secret"
-    r"\364cdb16-4517-4b3e-9a17-bcae316bb89e\scratchpad\two_curves\curve_data.js"
-)
+outpath = "two_curves/curve_data.js"
 with open(outpath, "w", encoding="utf-8") as f:
     f.write("window.CURVE_DATA = " + json.dumps(out) + ";\n")
 print("\nwrote", outpath)

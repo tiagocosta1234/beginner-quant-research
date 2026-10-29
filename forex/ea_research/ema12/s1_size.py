@@ -8,7 +8,7 @@ ap = argparse.ArgumentParser(); ap.add_argument("--side", required=True, choices
 ap.add_argument("--entry", type=float); ap.add_argument("--tgt", type=float, help="rules-card level target distance in points (for the Notion row)"); ap.add_argument("--sym", default="XAUUSD+"); ap.add_argument("--k", type=float, default=None)
 A = ap.parse_args()
 FLOOR, TARGET, DAYCAP, CAPLOTS, SPREAD_MAX, HALT = 92000.0, 108000.0, 2000.0, 3.1, 0.75, 93000.0
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"; U = dt.timezone.utc
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"; U = dt.timezone.utc
 SINCE = dt.datetime(2026, 10, 23, tzinfo=U).timestamp()           # the losing streak counts only trades closed from the first plan day, not the October manual trades before it
 if not mt5.initialize(path=TERMINAL, timeout=30000): raise SystemExit("cannot attach to the MT5 broker terminal: %s" % (mt5.last_error(),))
 try:

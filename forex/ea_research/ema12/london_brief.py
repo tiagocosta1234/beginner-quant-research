@@ -1,8 +1,9 @@
-"""READ-ONLY pre-London brief for XAUUSD+ from the attached MT5 MT5 terminal (local clock; server = local + 2 h). Sends nothing, places nothing.
+"""READ-ONLY pre-London brief for XAUUSD+ from the attached MT5 terminal (local clock; server = local + 2 h). Sends nothing, places nothing.
 python london_brief.py    -> state of the terminal (algo trading, open positions / pending orders, spread), Asia range, previous day high / low, EMA12 / ATR on the 1-minute chart, and the minimum stop / target table for the 3.1-lot cap."""
+import os
 import datetime as dt, numpy as np, pandas as pd, MetaTrader5 as mt5
 U = dt.timezone.utc; SYM = "XAUUSD+"
-if not mt5.initialize(path=r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe", timeout=30000): raise SystemExit("cannot attach: %s" % (mt5.last_error(),))
+if not mt5.initialize(path=os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe", timeout=30000): raise SystemExit("cannot attach: %s" % (mt5.last_error(),))
 try:
     mt5.symbol_select(SYM, True); ti, a, tk = mt5.terminal_info(), mt5.account_info(), mt5.symbol_info_tick(SYM)
     now_srv = dt.datetime.fromtimestamp(tk.time, U); now_lis = now_srv - dt.timedelta(hours=2)

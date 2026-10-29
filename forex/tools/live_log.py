@@ -3,6 +3,7 @@ decision lines from the Experts log. Read-only; writes forex/forward_test/live_t
 (the backtest rests on 2022-26 data).   python -m forex.tools.live_log [--since 2026-10-01]"""
 from __future__ import annotations
 
+import os
 import datetime as dt
 import re
 import sys
@@ -10,8 +11,8 @@ from pathlib import Path
 
 import pandas as pd
 
-TERMINAL = r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
-DATA = Path(r"C:\Users\author\AppData\Roaming\MetaQuotes\Terminal\A2DE5F95DF1B92F855BD63606EC1CA5B")
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
+DATA = Path(os.getenv("MT5_DATA_DIR", "."))  # the terminal's data folder (File > Open Data Folder in MT5)
 OUT = Path(__file__).resolve().parents[1] / "forward_test" / "live_trades.csv"
 NAME = {260931: "ManualSDB", 261011: "ManualDip", 261012: "ManualRSI2"}
 

@@ -174,10 +174,7 @@ print(by_dow.to_string())
 def points_from_daily(daily):
     return [{"t": d.isoformat(), "v": round(float(c), 2)} for d, c in zip(daily["date"], daily["cum_pnl"])]
 
-curve_path = (
-    r"C:\Users\author\AppData\Local\Temp\claude\C--Users-author-Desktop-finance-top-secret"
-    r"\364cdb16-4517-4b3e-9a17-bcae316bb89e\scratchpad\two_curves\curve_data.js"
-)
+curve_path = "two_curves/curve_data.js"
 existing = json.loads(open(curve_path, encoding="utf-8").read().split("window.CURVE_DATA = ", 1)[1].rstrip("\n;"))
 spx_entry = existing.get("spx")
 

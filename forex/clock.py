@@ -1,5 +1,5 @@
 """
-MT5 MT5 server clock -> New York time.
+MT5 server clock -> New York time.
 
 Established from data, not assumed (2026-10-01): US100.cash M1 bars (server wall-clock
 seconds) against Databento NQ (UTC), Jun-Sep 2026: the 1-minute changes correlate +0.927 at

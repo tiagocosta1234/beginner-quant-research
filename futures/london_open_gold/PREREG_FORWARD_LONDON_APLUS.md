@@ -1,6 +1,6 @@
 # PREREG_FORWARD_LONDON_APLUS: paper forward log of the london_open_indicator.pine rule, 28 Oct - 18 Dec 2026
 
-Written Tue 2026-10-27 11:38 (local clock) BEFORE any forward result. the trader: a year-end target -> plan in C:\Users\author\.claude\plans\parsed-greeting-eclipse.md.
+Written Tue 2026-10-27 11:38 (local clock) BEFORE any forward result. the trader set a year-end target.
 Base rate first: the rule is about -0.05 R over 2026 and +0.10 R over Aug-Oct (25 trades on micro gold, 109 on 8 micros); likely no edge. Honest chance of USD 10K of withdrawals by 31 Dec is well under 1%.
 
 ## Rule (frozen = london_open_indicator.pine as of today)

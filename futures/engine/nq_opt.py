@@ -3,7 +3,7 @@ import numpy as np
 
 print("Loading NQ data for Optimization...")
 try:
-    df = pd.read_parquet('C:/Users/author/teamwork_projects/massive_backtest/data_cache/NQ_5m_60d.parquet')
+    df = pd.read_parquet('data/NQ_5m_60d.parquet')
 except Exception as e:
     print(f"Could not load data: {e}")
     import sys

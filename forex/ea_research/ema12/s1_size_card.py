@@ -4,7 +4,7 @@ using the S1 plan rule: risk USD = min(2,000, k x (closed balance - 92,000), 108
 Places nothing, arms nothing. (s1_size.py does the same for one stop given on the command line, for Claude.)"""
 import os, math, datetime as dt, MetaTrader5 as mt5
 FLOOR, TARGET, DAYCAP, CAPLOTS, SPREAD_MAX, HALT, SYM = 92000.0, 108000.0, 2000.0, 3.1, 0.75, 93000.0, "XAUUSD+"
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"; U = dt.timezone.utc; SINCE = dt.datetime(2026, 10, 23, tzinfo=U).timestamp()
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"; U = dt.timezone.utc; SINCE = dt.datetime(2026, 10, 23, tzinfo=U).timestamp()
 if not mt5.initialize(path=TERMINAL, timeout=30000): raise SystemExit("cannot attach to the MT5 broker terminal: %s" % (mt5.last_error(),))
 try:
     a, ti = mt5.account_info(), mt5.terminal_info(); mt5.symbol_select(SYM, True); si, tk = mt5.symbol_info(SYM), mt5.symbol_info_tick(SYM)

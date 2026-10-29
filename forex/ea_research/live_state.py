@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 import MetaTrader5 as mt5
 
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
 START, CAP = 100_000.0, 2_000.0
 
 

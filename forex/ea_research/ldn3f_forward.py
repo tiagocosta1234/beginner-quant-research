@@ -6,7 +6,7 @@ import argparse, datetime as dt, glob, os, numpy as np, pandas as pd
 from zoneinfo import ZoneInfo
 from forex.ea_research.orbx import walk, ct, CRYPTO
 
-TERMINAL = r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
 SRV, LIS = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London")
 OUT = "data/scratch/ldn3f/forward.csv"
 MARKETS = sorted(os.path.basename(f)[:-17] for f in glob.glob("forex/data_mt5/*_M1_rates.parquet"))

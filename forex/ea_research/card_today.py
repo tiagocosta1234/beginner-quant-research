@@ -9,7 +9,7 @@ from datetime import date, datetime, timedelta, timezone
 import numpy as np
 import MetaTrader5 as mt5
 
-TERMINAL = os.getenv("mt5_MT5_TERMINAL") or r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
+TERMINAL = os.getenv("MT5_TERMINAL") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
 START, CAP, TARGET = 100_000.0, 2_000.0, 8_000.0
 MULTS = (1.2, 1.8, 2.5)
 LOTS = {1.2: (0.14, 0.05), 1.8: (0.22, 0.07), 2.5: (0.30, 0.10)}

@@ -101,7 +101,7 @@ plt.xlabel('Trade Number')
 plt.ylabel('Net PnL ($)')
 plt.legend()
 plt.grid(True, alpha=0.5)
-out_path = 'C:/Users/author/.gemini/antigravity-cli/brain/dfca829a-205e-495d-8a77-1b34b6e6b8ea/MNQ_Realistic_Equity_Curve.png'
+out_path = 'MNQ_Realistic_Equity_Curve.png'
 plt.savefig(out_path)
 
 print(f"Total Net PnL: ${total_pnl:.2f}")

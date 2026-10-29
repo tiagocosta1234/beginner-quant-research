@@ -1,7 +1,7 @@
 # PREREG NOV30 - the maximum chance of passing by 30 Nov 2026 with the gold EA pair, the dip leg and the USDJPY breakout
 
 Registered 2026-10-18 00:30 local (local clock, second PC PC-2), before any combined number was computed.
-Plan approved by the trader: `C:\Users\fisht\.claude\plans\jazzy-mapping-rossum.md`. the trader asked for a 70% chance, keeps the 30 Nov
+Plan approved by the trader. the trader asked for a 70% chance, keeps the 30 Nov
 deadline and allows three legs: the gold EA pair (ManualSDB + XAU5), the ManualDip dip leg, the USDJPY London breakout.
 A planning simulation, not an edge trial: no rule is fitted here; the legs are the registered ones.
 

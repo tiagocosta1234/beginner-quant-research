@@ -119,7 +119,7 @@ if not df_all.empty:
     plt.grid(True, alpha=0.3)
     plt.axhline(0, color='white', alpha=0.5, linestyle='--')
     
-    out_path = r'C:\Users\author\.gemini\antigravity-cli\brain\dfca829a-205e-495d-8a77-1b34b6e6b8ea\FirstToFire_30Day_Curve.png'
+    out_path = 'FirstToFire_30Day_Curve.png'
     plt.savefig(out_path, facecolor='#0d1117')
     
     with open('out.md', 'w') as f:

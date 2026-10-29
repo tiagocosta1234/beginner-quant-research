@@ -1,4 +1,4 @@
-"""Dynamic sizing from the LIVE state of 2026-10-14 (plan C:/Users/author/.claude/plans/enumerated-moseying-kazoo.md).
+"""Dynamic sizing from the LIVE state of 2026-10-14.
    python -m forex.ea_research.dp_oct14
 Same model as dp_sizing.py (DP over days left x counted profit; empirical guarded days of the pair at x1.2/1.8/2.5/3.5/5.0; block-bootstrap evaluation on the 12-month MT5 broker pool and the 2022-26 pool),
 restarted from counted profit -374.30 (balance 99,625.70) with 12 trading days left (Thu 15 Oct .. Fri 30 Oct) and x1.2 afterwards to 22 Dec (49 trading days). Floating +217 on the open XAU5 short is not counted."""
