@@ -170,7 +170,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_CLASSICS.parquet")
+    df.to_parquet("data/si_ledgers/BRK_CLASSICS.parquet")
     mt5 = df[~df.mkt.isin(list(MT5BROKER_IDX))]
     for cell, g in forex.groupby("cell"):
         r = {}

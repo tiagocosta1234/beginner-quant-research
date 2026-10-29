@@ -10,7 +10,7 @@ from forex.ea_research.brk30 import (bars, sma, rmax, rmin, rsi, adx_di, pivots,
                                   enter_at, sgn, tag, epoch, wilder)
 from forex.ea_research.brk50b import holy_grail, day_returns, fut_volume, calendars
 
-CACHE = "C:/work/scratch/brk100_trades.parquet"
+CACHE = "data/scratch/brk100_trades.parquet"
 UTC, BER, LDN, SHA, KOL, SYD = "UTC", "Europe/Berlin", "Europe/London", "Asia/Shanghai", "Asia/Kolkata", "Australia/Sydney"
 CRY = tuple(sorted(CRYPTO)); ALLM = tuple(NONC); X36 = tuple(s for s in NONC if s not in ("NSDQ", "XAUUSD"))
 FX = tuple(s for s in NONC if mclass(s) == "fx")

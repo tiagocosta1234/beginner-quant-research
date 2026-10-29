@@ -1,12 +1,12 @@
 """Offload cheap, non-sensitive text jobs (summaries, log digests, formatting) to the local FreeLLMAPI router
-(D:\\finance\\tools\\freellmapi, http://127.0.0.1:3001, free-tier models, NOT frontier quality). Never use it for trading
+(data\\tools\\freellmapi, http://127.0.0.1:3001, free-tier models, NOT frontier quality). Never use it for trading
 calls, live-risk decisions or anything from the MT5 / Notion / broker setup: those stay with Claude.
-The unified key is read from FREELLMAPI_KEY or D:/finance/tools/freellmapi/.unified_key (outside this repo; never commit it).
+The unified key is read from FREELLMAPI_KEY or data/tools/freellmapi/.unified_key (outside this repo; never commit it).
 Usage: python forex/tools/llm_offload.py "prompt" [--file PATH] [--max-tokens N] [--model auto]"""
 import os, re, sys, json, argparse, urllib.request
 
 URL = "http://127.0.0.1:3001/v1/chat/completions"
-KEY_FILE = "D:/finance/tools/freellmapi/.unified_key"
+KEY_FILE = "data/tools/freellmapi/.unified_key"
 BLOCKED_PATHS = re.compile(r"(^|[\\/])(\.env[^\\/]*|.*secret.*|.*credential.*|.*token.*|.*\.key|.*\.pem)$", re.I)
 SECRET_TEXT = re.compile(r"(api[_-]?key|secret|password|passwd|token|bearer)\s*[:=]|BEGIN [A-Z ]*PRIVATE KEY|sk-[A-Za-z0-9]{20,}|gsk_[A-Za-z0-9]{20,}", re.I)
 

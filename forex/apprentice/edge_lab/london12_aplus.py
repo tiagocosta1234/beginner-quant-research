@@ -3,7 +3,7 @@ Usage (from edge_lab): python london12_aplus.py"""
 import numpy as np, pandas as pd
 
 COST, TICK = 0.32, 0.1
-df = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts")
+df = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts")
 df = df[["ts", "open", "high", "low", "close"]].drop_duplicates("ts")
 df["lon"] = pd.to_datetime(df.ts, utc=True).dt.tz_convert("Europe/London").dt.tz_localize(None)
 df = df.set_index("lon").sort_index()

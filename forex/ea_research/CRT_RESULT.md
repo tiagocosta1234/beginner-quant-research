@@ -1,5 +1,5 @@
 # CRT result (2026-10-14 ~22:30): daily Candle Range Theory on 46 MT5 broker - NO EDGE
-Pre-registration `PREREG_CRT.md` (commit c83da32a), engine `crt.py`, trades `D:\finance\si_ledgers\CRT_trades.parquet`. Source: reel 12 (`reels/12_xauusd_x_alchemist/NOTAS.md`). 2026 never loaded.
+Pre-registration `PREREG_CRT.md` (commit c83da32a), engine `crt.py`, trades `data\si_ledgers\CRT_trades.parquet`. Source: reel 12 (`reels/12_xauusd_x_alchemist/NOTAS.md`). 2026 never loaded.
 
 Dry-run: truncation test PASS; hand check XAUUSD 2022-06-09 swept the 06-08 low (1,840.01 < 1,844.57), closed back inside (1,847.00), high under 1,859.66 -> long 2022-06-10 01:05.
 

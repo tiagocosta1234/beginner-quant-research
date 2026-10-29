@@ -1,5 +1,5 @@
 """BRK-XS exactly as in PREREG_BRK_XS.md: cross-sectional selection of session breakouts (46 MT5).
-   python -m forex.ea_research.brk_xs --dry | (no flag) run   (needs D:/finance/si_ledgers/BRK_META_events.parquet from brk_meta)"""
+   python -m forex.ea_research.brk_xs --dry | (no flag) run   (needs data/si_ledgers/BRK_META_events.parquet from brk_meta)"""
 import sys
 from concurrent.futures import ProcessPoolExecutor
 
@@ -33,7 +33,7 @@ def state():
 
 
 def build():
-    ev = pd.read_parquet("D:/finance/si_ledgers/BRK_META_events.parquet")
+    ev = pd.read_parquet("data/si_ledgers/BRK_META_events.parquet")
     k20, k60 = state()
     ev["rk20"] = [k20.at[d, m] if d in k20.index else np.nan for d, m in zip(ev.sday, ev.mkt)]
     ev["rk60"] = [k60.at[d, m] if d in k60.index else np.nan for d, m in zip(ev.sday, ev.mkt)]
@@ -82,7 +82,7 @@ def run():
     R = pd.DataFrame(rows)
     pd.set_option("display.width", 240)
     print(R.round(3).to_string(index=False))
-    R.to_csv("D:/finance/si_ledgers/BRK_XS_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_XS_cells.csv", index=False)
     for name, c in cells(ev).items():
         c = c.assign(cl=c.mkt.map(mclass))
         print(f"  {name}: " + " | ".join(f"{cl} {g[g.day <= DEV[1]].X4.mean():+.3f}/{g[(g.day >= VAL[0]) & (g.day <= VAL[1])].X4.mean():+.3f}" for cl, g in c.groupby("cl")))

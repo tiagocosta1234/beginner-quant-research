@@ -30,7 +30,7 @@ def main():
         tag = "" if sym in CROSSES else "  (context, already tested)"
         print(f"{sym}: today's MT5 broker spread {fl:.4f} | n {len(df)} {df.R.mean():+.3f} R (t {ps.tstat(df.R):+.2f}) | random {df.C.mean():+.3f} | by year {yrs}{tag}")
     allp = pd.concat([res[s].assign(mkt=s) for s in CROSSES])
-    allp.to_parquet("D:/finance/si_ledgers/PRESAMPLE3.parquet")
+    allp.to_parquet("data/si_ledgers/PRESAMPLE3.parquet")
     dm = allp.groupby("day").R.mean()
     yrs = {y: round(g.mean(), 3) for y, g in dm.groupby(dm.index.year)}
     g = [dm.mean() > 0 and nw_t(dm.to_numpy()) >= 1.96, all(v > 0 for v in yrs.values())]

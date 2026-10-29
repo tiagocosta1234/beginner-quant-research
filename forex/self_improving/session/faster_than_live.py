@@ -28,7 +28,7 @@ def main():
         tr, lo, hi = T; trs = {False: tr, True: R.runner_leg(tr, 0, "sdb")}
         for m, Lc, Pc, rn in cfgs:
             rows.append(dict(window=nm, m=m, loss=Lc, profit=("none" if Pc == NONE else Pc), runner=rn, **stats(series(trs[rn], lo, hi, m, Pc, Lc))))
-    d = pd.DataFrame(rows); d.to_csv("D:/finance/si_ledgers/FASTER_THAN_LIVE.csv", index=False)
+    d = pd.DataFrame(rows); d.to_csv("data/si_ledgers/FASTER_THAN_LIVE.csv", index=False)
     tr = d[d.window == "train"]; mt5 = d[d.window == "MT5"]
     base = mt5[(forex.m == 1.5) & (forex.loss == 1500) & (forex.profit == "none") & (~forex.runner)].iloc[0]; print("BASELINE (live plan x1.5, stop 1.5%, no ManualDip) on MT5:", {k: round(float(base[k]), 1) for k in ("p22", "p44", "p66", "p120", "breach", "med")})
     ok = tr[tr.breach <= 5].sort_values("p44", ascending=False).head(5); print("train picks (breach<=5%):"); print(ok.round(1).to_string(index=False))

@@ -202,7 +202,7 @@ def main():
         a, b = sel(T), sel(Tc)
         print("truncation:", len(a), len(b), "identical" if a.equals(b) else "DIFFERENT")
         return
-    T = collect(); T.to_parquet("D:/finance/si_ledgers/ICT_GRID.parquet"); T["cls"] = T.mkt.map(mclass)
+    T = collect(); T.to_parquet("data/si_ledgers/ICT_GRID.parquet"); T["cls"] = T.mkt.map(mclass)
     pm = {p: ((T.day >= a) & (T.day <= b)).to_numpy() for p, (a, b) in PER.items()}; dv = pm["DEV"] | pm["VAL"]
     print(f"{len(T)} rule-trades; by model (bias NONE): {T[T.bias == 'NONE'].model.value_counts().to_dict()}")
     # long format: one row per (trade, target)
@@ -225,7 +225,7 @@ def main():
     S = pd.DataFrame({"DEV": g["m"]["DEV"], "VAL": g["m"]["VAL"], "Y26": g["m"].get("Y26"), "nDEV": g["n"]["DEV"]}).join(tt).reset_index()
     S = S[S.n_dv >= 30]
     S["pass"] = (S.t >= 4.59) & (S.DEV > 0) & (S.VAL > 0) & (S.Y26 > 0) & ((3 * S.DEV + S.VAL) / 4 > S.c_dv)
-    S.to_csv("D:/finance/si_ledgers/ICT_GRID_cells.csv", index=False)
+    S.to_csv("data/si_ledgers/ICT_GRID_cells.csv", index=False)
     print(f"\n1. CELLS: {len(S)} with >= 30 trades in 2022-25; passing (t >= 4.59, > 0 DEV/VAL/2026, above null): {int(S['pass'].sum())}")
     print(S.sort_values("t", ascending=False).head(15)[["mkt", "rule", "n_dv", "DEV", "VAL", "Y26", "c_dv", "t"]].round(3).to_string(index=False))
     print(f"   highest t {S.t.max():.2f}; the same search on the matched null: highest {S.t_rnd.max():.2f}; 99th pct real {np.nanpercentile(S.t, 99):.2f} vs null {np.nanpercentile(S.t_rnd, 99):.2f}")
@@ -238,7 +238,7 @@ def main():
         d = qd.groupby("day").r.mean()
         rows.append(dict(cls=cl, rule=rule, n=len(qd), DEV=q[q.per == "DEV"].r.mean(), VAL=q[q.per == "VAL"].r.mean(), Y26=q[q.per == "Y26"].r.mean(), null=qd.c.mean(), t=tstat(d), t_null=tstat(qd.groupby("day").c.mean())))
     P = pd.DataFrame(rows); P["pass"] = (P.t >= 4.07) & (P.DEV > 0) & (P.VAL > 0) & (P.Y26 > 0) & ((3 * P.DEV + P.VAL) / 4 > P.null)
-    P.to_csv("D:/finance/si_ledgers/ICT_GRID_pools.csv", index=False)
+    P.to_csv("data/si_ledgers/ICT_GRID_pools.csv", index=False)
     print(f"\n2. POOLS rule x class: {len(P)}; passing (t >= 4.07 ...): {int(P['pass'].sum())}; highest t {P.t.max():.2f} vs null {P.t_null.max():.2f}")
     print(P.sort_values("t", ascending=False).head(12)[["cls", "rule", "n", "DEV", "VAL", "Y26", "null", "t"]].round(3).to_string(index=False))
     # 3. walk-forward per symbol and per class
@@ -247,7 +247,7 @@ def main():
     print("   models chosen:", W.rule.str.split(" ").str[0].value_counts().to_dict())
     PW = P[P.n >= 100].sort_values("DEV", ascending=False).drop_duplicates("cls")
     print("   best rule per class on DEV (pool), then VAL / 2026 (out-of-time picks if both > 0):\n" + PW[["cls", "rule", "n", "DEV", "VAL", "Y26", "t"]].round(3).to_string(index=False))
-    PW.to_csv("D:/finance/si_ledgers/ICT_GRID_classpicks.csv", index=False)
+    PW.to_csv("data/si_ledgers/ICT_GRID_classpicks.csv", index=False)
 
 
 if __name__ == "__main__":

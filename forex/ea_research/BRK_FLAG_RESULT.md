@@ -1,5 +1,5 @@
 # BRK-FLAG result (breakout day round 22, 2026-10-15 12:50): bull / bear flag breakouts are WORSE than random entries
-Pre-registration `PREREG_BRK_FLAG.md`, engine `brk_flag.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_FLAG.parquet`. 15,406 mechanically defined M5 flags on 46 markets (impulse >= 1.5 ATR in 6 bars, tight flag of 6-18 bars, stop at the flag's other side; median flagpole target 2.7 R).
+Pre-registration `PREREG_BRK_FLAG.md`, engine `brk_flag.py` (truncation PASS), rows `data\si_ledgers\BRK_FLAG.parquet`. 15,406 mechanically defined M5 flags on 46 markets (impulse >= 1.5 ATR in 6 bars, tight flag of 6-18 bars, stop at the flag's other side; median flagpole target 2.7 R).
 | exit (net R) | DEV | VAL | 2026 | random control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | F1 flagpole target | -0.137 (t -8.2) | -0.156 | -0.161 | -0.089 / -0.084 / -0.087 |

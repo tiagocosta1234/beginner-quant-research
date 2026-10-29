@@ -1,5 +1,5 @@
 # How optimistic is the M1 engine? Session breakouts and random entries replayed on MT5 broker real ticks (2026-10-15 14:34, local clock; diagnostic)
-Scripts `tick_gap.py` (breakouts) and `tick_gap2.py` (round 1's random-entry controls), rows `D:/finance/si_ledgers/TICK_GAP.parquet`, `TICK_GAP_CTRL.parquet`. All 46 markets, MT5 broker ticks Oct 2025 - Oct 2026, fills at the first tick 300 ms after the trigger (stop orders: after the level is touched; random entries: after the minute starts; stops: after they are touched), session box / stop / exit as round 1, compared with the M1 engine on the same days and sides.
+Scripts `tick_gap.py` (breakouts) and `tick_gap2.py` (round 1's random-entry controls), rows `data/si_ledgers/TICK_GAP.parquet`, `TICK_GAP_CTRL.parquet`. All 46 markets, MT5 broker ticks Oct 2025 - Oct 2026, fills at the first tick 300 ms after the trigger (stop orders: after the level is touched; random entries: after the minute starts; stops: after they are touched), session box / stop / exit as round 1, compared with the M1 engine on the same days and sides.
 | | trades | M1 engine | real ticks | gap |
 |---|---|---|---|---|
 | session breakouts | 11,631 | -0.042 R | -0.072 R | **-0.029** (median -0.007) |

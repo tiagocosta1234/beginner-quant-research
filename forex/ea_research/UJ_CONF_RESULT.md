@@ -1,7 +1,7 @@
 # UJ_CONF result - USDJPY London breakout: no confluence clears the bar, two repeat in 2025 (0 of 9 kept)
 
 Run 2026-10-17 23:53 local (local clock, second PC). Pre-registration `PREREG_UJ_CONF.md` (registered 23:52, frozen by sha256 at 23:53:02
-in `C:\work\scratch\uj_conf_freeze.txt`). Engine `uj_conf.py` (reproduces `usdjpy_sens.run` exactly: 1,219 of 1,219 trades,
+in `data\scratch\uj_conf_freeze.txt`). Engine `uj_conf.py` (reproduces `usdjpy_sens.run` exactly: 1,219 of 1,219 trades,
 max |dR| 0), output `UJ_CONF_OUTPUT.txt`. Base at today's cost (0.6-pip spread floor): DEV 765 trades +0.103 R, VAL 253 +0.108 R.
 No 2026 subset was looked at.
 

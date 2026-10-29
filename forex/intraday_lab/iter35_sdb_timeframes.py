@@ -115,7 +115,7 @@ def main():
         print(f"{name:<3} | {len(dv):3d} {dv.R.mean():+.3f} ({tstat(dv.R):+.2f}) | {len(vl):3d} {vl.R.mean():+.3f} ({tstat(vl.R):+.2f}) | {ypos}/5 {({int(k): round(float(v), 3) for k, v in yrs.items()})} | {len(f) / months:.1f} | {len(go):3d} {go.R.mean():+.3f} ({tstat(go.R):+.2f}) | {len(gp):3d} {gp.R.mean():+.3f} ({tstat(gp.R):+.2f})", flush=True)
         if name != "H1" and dv.R.mean() > 0 and tstat(dv.R) >= 1.5 and vl.R.mean() > 0 and ypos >= 3 and go.R.mean() > 0:
             hits.append(name)
-        f.to_csv(f"D:/finance/scratch/lab/iter35_{name}_mt5broker.csv", index=False)
+        f.to_csv(f"data/scratch/lab/iter35_{name}_mt5broker.csv", index=False)
     print("PRE-REGISTERED HITS (new timeframes only):", hits)
     for name in hits:
         h = res[name][0]; h = h[h.when >= "2025-01-01"]; print("HOLD (printed because the hit rule passed):", name, f"n {len(h)} mean {h.R.mean():+.3f} t {tstat(h.R):+.2f}")

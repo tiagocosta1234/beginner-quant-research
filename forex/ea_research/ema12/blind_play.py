@@ -6,7 +6,7 @@ import sys
 import pandas as pd
 
 day, hhmm, side, E, S, T = sys.argv[1], sys.argv[2], sys.argv[3], *map(float, sys.argv[4:7])
-r = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet")
+r = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet")
 t = pd.to_datetime(r.t, unit="s"); m = (t >= day) & (t < pd.Timestamp(day) + pd.Timedelta(days=1, hours=6)); r, t = r[m], t[m]
 r = r.set_axis(t.dt.tz_localize("Europe/Athens").dt.tz_convert("Europe/London").dt.tz_localize(None).to_numpy()).sort_index()
 start = pd.Timestamp("%s %s" % (day, hhmm)) + pd.Timedelta(minutes=1)

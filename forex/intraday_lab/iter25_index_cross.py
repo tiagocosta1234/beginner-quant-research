@@ -50,7 +50,7 @@ def main():
         day = df.groupby("d").net.sum().reindex(days).fillna(0.0)
         rows.append(dict(W=W, theta=th, H=H, trades=len(df), gross_bp=df.gross.mean() * 1e4, cost_bp=df.cost.mean() * 1e4, dev=sharpe(day.loc["2021-10-01":"2023-12-31"]), val=sharpe(day.loc["2024-01-01":"2024-12-31"]), hold=sharpe(day.loc["2025-01-01":"2026-10-02"])))
         print(rows[-1], flush=True)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter25_raw.csv", index=False)
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter25_raw.csv", index=False)
     c = T[(T.W == 168) & (T.theta == 3.0) & (T.H == 48)].iloc[0]; hit = bool((T.dev > 0).mean() >= .7 and (T.val > 0).mean() >= .7 and c.dev >= .5 and c.val >= .5)
     print(T[["W", "theta", "H", "trades", "gross_bp", "cost_bp", "dev", "val"]].round(2).to_string(index=False))
     print(f"\nshare positive: DEV {(T.dev > 0).mean():.0%}, VAL {(T.val > 0).mean():.0%}; centre DEV {c.dev:.2f} VAL {c.val:.2f}; PLATEAU HIT: {hit}")

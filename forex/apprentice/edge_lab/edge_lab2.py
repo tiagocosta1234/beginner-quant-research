@@ -12,7 +12,7 @@ if args.holdout and os.environ.get("HOLDOUT_OK") != "1":
 SL, THRU, COMM, PV = 0.1, 0.1, 1.2, 10.0
 MIN_RISK = 3.0
 DEV_END = pd.Timestamp("2023-12-31")
-df = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").reset_index(drop=True)
+df = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").reset_index(drop=True)
 loc = df.ts.dt.tz_convert("America/New_York").dt.tz_localize(None)
 TE = ((loc - pd.Timestamp("1970-01-01")) // pd.Timedelta(seconds=1)).to_numpy(np.int64)
 O, H, L, C = (df[k].to_numpy(float) for k in ("open", "high", "low", "close"))

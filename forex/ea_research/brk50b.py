@@ -4,7 +4,7 @@ import argparse, collections, os, numpy as np, pandas as pd
 from forex.ea_research.brk50 import Mkt, lt, last_of, LIS, NYZ, JST, H, DEV, VAL, HOLD
 from forex.ea_research.orbx import ct
 
-CACHE = "C:/work/scratch/brk50b_trades.parquet"
+CACHE = "data/scratch/brk50b_trades.parquet"
 IDEAS = [f"J{k:02d}" for k in range(1, 51)]
 GNU, NU, GU = ("NSDQ", "XAUUSD"), ("NSDQ",), ("XAUUSD",)
 UNIV = {i: GNU for i in IDEAS}

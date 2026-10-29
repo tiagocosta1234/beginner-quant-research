@@ -4,7 +4,7 @@ import sys
 import time
 from pathlib import Path
 
-LOG = Path(f"D:/finance/llm_bench/agent_overnight_{time.strftime('%Y-%m-%d')}.log")
+LOG = Path(f"data/llm_bench/agent_overnight_{time.strftime('%Y-%m-%d')}.log")
 sys.stdout = open(LOG, "a", encoding="utf-8", buffering=1)
 sys.stderr = sys.stdout
 args = sys.argv[1:]

@@ -4,7 +4,7 @@ stop at the other side, exit 17:00) re-priced with CME 6J futures costs instead 
 6J = JPY/USD, 12.5M yen, tick 0.0000005 = $6.25; it moves inversely to USDJPY, so the same box / stop / exit apply. One 6J tick in USDJPY
 units at price P is P^2 * 5e-7 (about 0.6 pip at 110, 1.1 pip at 150). Costs per trade: ask = bid + 1 tick (spread), then minus
 commission $5 round turn (0.8 tick) and slippage of 1 tick on the stop-order entry and 1 tick on the exit (always charged), in R.
-Usage (from D:/finance/beginner-quant-research): python -m forex.ea_research.fut_usdjpy"""
+Usage (from .): python -m forex.ea_research.fut_usdjpy"""
 import numpy as np
 import pandas as pd
 
@@ -78,8 +78,8 @@ def t(x):
 
 def main():
     rng = np.random.default_rng(7)
-    parts = [l1(histdata("D:/finance/data_histdata/USDJPY.parquet", "2020-01-02", "2022-01-01"), rng),
-             l1(histdata("D:/finance/data_histdata/USDJPY_2022_24.parquet", "2022-01-01", "2025-01-01"), rng),
+    parts = [l1(histdata("data/data_histdata/USDJPY.parquet", "2020-01-02", "2022-01-01"), rng),
+             l1(histdata("data/data_histdata/USDJPY_2022_24.parquet", "2022-01-01", "2025-01-01"), rng),
              l1(mt5("2025-01-01"), rng)]
     df = pd.concat(parts, ignore_index=True); df["yr"] = df.day.dt.year
     print("USDJPY London breakout on 6J futures costs (1 tick spread + $5 RT + 2 ticks slippage), 2020-26, DESCRIPTIVE (seen data)")

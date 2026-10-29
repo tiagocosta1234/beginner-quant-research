@@ -1,5 +1,5 @@
 # BRK-B12 result (breakout day round 12, 2026-10-15 12:03): overnight range, initial balance, intermarket confirmation, DAX lead - none passes
-Pre-registration `PREREG_BRK_B12.md`, engine `brk_b12.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_B12.parquet`. Hand check NSDQ 2024-06-12: overnight-range long filled 09:40 NY, +0.37 R.
+Pre-registration `PREREG_BRK_B12.md`, engine `brk_b12.py` (truncation PASS), rows `data\si_ledgers\BRK_B12.parquet`. Hand check NSDQ 2024-06-12: overnight-range long filled 09:40 NY, +0.37 R.
 US 30-minute session breakouts with no filter (reference): +0.114 / +0.073 / -0.079 R (DEV / VAL / 2026).
 
 | cell | DEV | VAL | 2026 | control DEV / VAL / 2026 |

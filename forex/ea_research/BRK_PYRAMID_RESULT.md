@@ -1,5 +1,5 @@
 # BRK-PYRAMID result (breakout day round 29, 2026-10-15 13:55, local clock): adding to winning breakouts makes them worse
-Pre-registration PREREG_BRK_PYRAMID.md, engine brk_pyramid.py (truncation PASS), rows D:/finance/si_ledgers/BRK_PYRAMID.parquet. 54,006 session breakouts on 46 markets; 45% reach +1R before the stop (25.7% one add, 19.7% two adds).
+Pre-registration PREREG_BRK_PYRAMID.md, engine brk_pyramid.py (truncation PASS), rows data/si_ledgers/BRK_PYRAMID.parquet. 54,006 session breakouts on 46 markets; 45% reach +1R before the stop (25.7% one add, 19.7% two adds).
 | cell (net R per trade, in first-R units) | DEV | VAL | 2026 | random entries, same rules DEV / VAL / 2026 |
 |---|---|---|---|---|
 | P0 one unit, hold to the close | -0.032 (t -3.5) | -0.076 | -0.037 | -0.074 / -0.102 / -0.128 |

@@ -63,7 +63,7 @@ def main():
         gross = None; rows.append(r)
         if r["net_dev"] > .5 and r["net_val"] > .5 and r["t_devval"] >= 2.0 and r["pairs_pos_devval"] >= 4:
             hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter18_raw.csv", index=False); print(T.round(2).to_string(index=False))
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter18_raw.csv", index=False); print(T.round(2).to_string(index=False))
     print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
     for h in hits:
         print(h)

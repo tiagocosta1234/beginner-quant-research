@@ -14,14 +14,14 @@ N = 20_000
 
 def series():
     out = {}
-    a = pd.read_parquet("D:/finance/si_ledgers/ORB_REFINE_NSDQ.parquet")
-    b = pd.read_parquet("D:/finance/si_ledgers/ORB_TREND_2026_NSDQ.parquet")
+    a = pd.read_parquet("data/si_ledgers/ORB_REFINE_NSDQ.parquet")
+    b = pd.read_parquet("data/si_ledgers/ORB_TREND_2026_NSDQ.parquet")
     nq = pd.concat([a[a.side == a.trend][["day", "R"]], b[b.side == b.trend][["day", "R"]]])
     out["S1 card Nasdaq trend-direction (half-box stop, 2R)"] = nq.groupby("day").R.sum()
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     us = e[(e.kind == "BRK") & e.mkt.isin(["SP", "NSDQ", "DOW"])]
     out["S2 US index session ORB, hold to close"] = us.groupby("day").X4_noTP.sum()
-    an = pd.read_parquet("D:/finance/si_ledgers/BRK_ANATOMY.parquet")
+    an = pd.read_parquet("data/si_ledgers/BRK_ANATOMY.parquet")
     k2 = an[(an.kind == "BRK") & (an.box_spreads >= 40)]
     out["S3 any market, box >= 40 spreads, hold to close"] = k2.groupby("day").close_R.sum()
     return out
@@ -68,7 +68,7 @@ def main():
                     p, b = simulate(sub, risk, h, rng)
                     rows.append(dict(system=name, pool=pool, risk=risk, horizon=hz, P_pass=p, P_breach=b, mean_R_day=mu, sd_R_day=sd))
     R = pd.DataFrame(rows)
-    R.to_csv("D:/finance/si_ledgers/BRK_MT5SIM.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_MT5SIM.csv", index=False)
     pd.set_option("display.width", 250)
     for name in S:
         print(f"\n{name}  (mean / sd of the daily R: recent {R[(R.system == name) & (R.pool == 'recent 2025-26')].mean_R_day.iloc[0]:+.3f} / {R[(R.system == name) & (R.pool == 'recent 2025-26')].sd_R_day.iloc[0]:.2f}, all {R[(R.system == name) & (R.pool == 'all 2022-26')].mean_R_day.iloc[0]:+.3f})")

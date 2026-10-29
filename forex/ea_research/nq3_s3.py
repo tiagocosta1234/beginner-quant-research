@@ -5,7 +5,7 @@ import numpy as np, pandas as pd
 from forex.ea_research import nq3 as N, combo_grid as G, pass70 as P, dip_addon as DA
 from forex.ea_research.event_macro import server_s
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
 cx = N.Ctx(); T3 = pd.DataFrame(N.s3(cx)); DA.RISK = 500.0; Tk, bb = DA.trades(); Tk, Dd = DA.day_arrays(Tk, bb); Dd = Dd * 0.75
 print(f"S3 trades {len(T3)}; points per trade: mean {T3.pts.mean():+.1f}, median {T3.pts.median():+.1f}, worst {T3.pts.min():.0f}, best {T3.pts.max():.0f}; stop distance avg {T3.mae.mean():.0f} pts MAE")
 

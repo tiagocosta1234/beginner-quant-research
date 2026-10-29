@@ -11,7 +11,7 @@ import os
 import numpy as np
 import pandas as pd
 
-TICKS = sorted(glob.glob(r"D:\finance\scratch\ticks_gold\*.parquet"))
+TICKS = sorted(glob.glob(r"data\scratch\ticks_gold\*.parquet"))
 RNG = np.random.default_rng(20261009)
 K_MS = 30 * 60 * 1000
 

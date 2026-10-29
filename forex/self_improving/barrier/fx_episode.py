@@ -72,7 +72,7 @@ def main():
                 if c <= -8000: out.append(("breach", (e.end.values[j] - e.start.values[k]) / 86400)); break
         if out:
             o = pd.DataFrame(out, columns=["r", "d"]); print(f"      from every start in 2025: {len(o)} resolved | pass {100 * (o.r == 'pass').mean():.0f}% breach {100 * (o.r == 'breach').mean():.0f}% | calendar days to pass: median {o[o.r == 'pass'].d.median():.0f}")
-        e.to_csv(f"D:/finance/si_ledgers/FX_EPISODES_S{S}_CAP{CAP}.csv", index=False)
+        e.to_csv(f"data/si_ledgers/FX_EPISODES_S{S}_CAP{CAP}.csv", index=False)
 
 
 if __name__ == "__main__":

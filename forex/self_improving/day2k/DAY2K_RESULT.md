@@ -1,6 +1,6 @@
 # DAY2K result (2026-10-14): one setup per day, 1:1, +/-2,000 USD on 28 FX pairs - NO EDGE
 
-Pre-registration `PREREG_DAY2K.md` (commit ff37067f), engine `day2k.py`, cells in `D:\finance\si_ledgers\DAY2K_cells.csv`. MT5 broker M1 bid/ask, 28 pairs, DEV 2021-12..2024-12 (about 785 trading days per cell), VAL 2025 (about 258). HOLD (2026) never loaded.
+Pre-registration `PREREG_DAY2K.md` (commit ff37067f), engine `day2k.py`, cells in `data\si_ledgers\DAY2K_cells.csv`. MT5 broker M1 bid/ask, 28 pairs, DEV 2021-12..2024-12 (about 785 trading days per cell), VAL 2025 (about 258). HOLD (2026) never loaded.
 
 ## Gates
 - Dry-run: server clock confirmed; truncation test 40/40 after amendment A1 (ATR20 definition; no rule changed); hand check matches.

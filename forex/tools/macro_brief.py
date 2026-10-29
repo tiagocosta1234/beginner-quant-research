@@ -1,5 +1,5 @@
 """Daily macro brief for the MT5 broker gold system: next US releases (server clock), which ones the guard flattens for, and the latest
-rates / VIX read from D:/finance/data_macro. Read-only, no network.   python -m forex.tools.macro_brief [--days 14]"""
+rates / VIX read from data/data_macro. Read-only, no network.   python -m forex.tools.macro_brief [--days 14]"""
 from __future__ import annotations
 
 import sys
@@ -9,7 +9,7 @@ import pandas as pd
 
 from forex.tools.make_news_file import EVENTS, server_time
 
-DATA = Path("D:/finance/data_macro")
+DATA = Path("data/data_macro")
 FLAT_KINDS = {"CPI"}          # what ManualNews.csv holds today (make_news_file.py default); keep in sync with the live file
 SERIES = {"VIXCLS": "VIX", "DGS10": "US 10y", "DGS2": "US 2y", "DFII10": "US 10y real"}
 

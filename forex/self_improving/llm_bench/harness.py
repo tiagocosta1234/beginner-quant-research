@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DATA = Path("D:/finance/llm_bench/data")
+DATA = Path("data/llm_bench/data")
 HERE = Path(__file__).resolve().parent
 SLIP = 1e-5
 SPLIT = 0.70
@@ -50,7 +50,7 @@ def net_returns(df, p):
 
 
 def sandbox(code, spec):
-    with tempfile.TemporaryDirectory(dir="D:/finance/llm_bench") as td:
+    with tempfile.TemporaryDirectory(dir="data/llm_bench") as td:
         cp, sp, op = Path(td) / "c.py", Path(td) / "s.json", str(Path(td) / "o.npz")
         cp.write_text(code, encoding="utf-8")
         sp.write_text(json.dumps(spec))

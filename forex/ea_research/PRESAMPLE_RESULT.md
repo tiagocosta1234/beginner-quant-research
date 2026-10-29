@@ -1,5 +1,5 @@
 # PRESAMPLE result (breakout day round 24, run 2026-10-15 14:14, written 14:16, local clock): the USDJPY London breakout PASSES its out-of-time check; the Nasdaq trend leg FAILS
-Pre-registration `PREREG_PRESAMPLE.md` (written before any download; A1 bid-only + MT5 broker spread; A2 source switched to HistData before the data was read), engine `presample.py`, rows `D:\finance\si_ledgers\PRESAMPLE.parquet`. Period 2020-01-02 .. 2021-11-30, never used by any test; HistData 1-minute bid bars, ask = bid + MT5 broker's 2022 median session spread (USDJPY 0.0010, NSDQ 1.00). One look.
+Pre-registration `PREREG_PRESAMPLE.md` (written before any download; A1 bid-only + MT5 broker spread; A2 source switched to HistData before the data was read), engine `presample.py`, rows `data\si_ledgers\PRESAMPLE.parquet`. Period 2020-01-02 .. 2021-11-30, never used by any test; HistData 1-minute bid bars, ask = bid + MT5 broker's 2022 median session spread (USDJPY 0.0010, NSDQ 1.00). One look.
 | lead | trades | mean net R | t | 2020 / 2021 | random control | gates | verdict |
 |---|---|---|---|---|---|---|---|
 | L1 USDJPY London breakout (box 08:00-08:30, stop orders to 11:00, stop other side, hold to 17:00 London) | 494 | **+0.260** | **+2.07** | +0.362 / +0.147 | -0.043 | YY | **PASS** |

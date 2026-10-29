@@ -26,7 +26,7 @@ On a normal CFD account a long index or gold position pays about 5-7% a year in 
 1. Daily t of net USD P&L over DEV+VAL (2022-01-03..2025-12-31) >= 2.24 (one-sided 5% / 4 trials).
 2. Mean daily P&L > 0 separately in DEV, VAL and OOT.
 3. HOLD mean > 0 (one look).
-4. Real-tick check: the same book on MT5 broker real ticks (D:/finance/ticks, server clock, 300 ms latency, execution at the first tick at or after 18:00:00.3) for 2025-10-01..2026-10-14 earns at least 75% of the M1 engine's P&L over the same days.
+4. Real-tick check: the same book on MT5 broker real ticks (data/ticks, server clock, 300 ms latency, execution at the first tick at or after 18:00:00.3) for 2025-10-01..2026-10-14 earns at least 75% of the M1 engine's P&L over the same days.
 5. Account usefulness (reported, not an edge test): from today (balance 97,708.08, counted -2,291.92, MT5 broker rules: day gain counted up to +2,000, breach at an intraday -2,500 or equity <= 92,000, pass at counted +8,000), block bootstrap (5-day blocks) over 2020-25 days, P(pass) and P(breach) by 22 Dec, 31 Mar 2027 and 30 Jun 2027 at gross G = 50k, 100k, 150k, 200k USD; daily correlation with the gold EA pair (clean_boot_lib.series("MT5 broker", 1.2)) reported.
 
 ## Dry run (before any P&L)

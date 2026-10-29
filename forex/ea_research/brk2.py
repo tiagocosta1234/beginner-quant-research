@@ -6,9 +6,9 @@ from zoneinfo import ZoneInfo
 from forex.ea_research.orbx import walk, ct, CRYPTO
 
 SRV, LIS, NY = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London"), ZoneInfo("America/New_York")
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5/"
-VOL = "D:/finance/ticks_vol/"
-CACHE = "D:/finance/scratch/brk2_trades.parquet"
+DATA = "forex/data_mt5/"
+VOL = "data/ticks_vol/"
+CACHE = "data/scratch/brk2_trades.parquet"
 DEV, VAL, HOLD = ("2022-01-01", "2025-01-01"), ("2025-01-01", "2026-01-01"), ("2026-01-01", "2026-08-16")
 
 

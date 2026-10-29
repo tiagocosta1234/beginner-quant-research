@@ -51,7 +51,7 @@ def main():
                     r_ = rows[-1]
                     if r_["t_dev"] >= 3.6 and r_["n_dev"] >= 300 and r_["net_val_bp"] > 0 and r_["t_val"] >= 2.0:
                         hits.append(dict(r_, hold_net_bp=float(net[p_ == 2].mean() * 1e4) if (p_ == 2).any() else np.nan))
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter28_raw.csv", index=False)
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter28_raw.csv", index=False)
     stab = T[(T.gross_dev_bp > 0) & (T.gross_val_bp > 0)]
     print(T.sort_values("t_dev", ascending=False).head(10).round(2).to_string(index=False))
     print(f"\ncells with enough trades: {len(T)} of 180; gross > 0 in both DEV and VAL: {len(stab)} ({len(stab) / len(T):.0%}); max gross / cost in DEV: {(T.gross_dev_bp / T.cost_bp).max():.2f}")

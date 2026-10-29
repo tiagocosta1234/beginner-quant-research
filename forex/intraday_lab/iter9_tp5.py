@@ -10,7 +10,7 @@ import pandas as pd
 
 from forex.intraday_lab.lab import ALL, Bars, run, stats
 
-OUT = Path(r"D:\finance\scratch\lab")
+OUT = Path(r"data\scratch\lab")
 
 
 def one(sym):

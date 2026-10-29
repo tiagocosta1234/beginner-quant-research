@@ -2,7 +2,7 @@
 Usage (from edge_lab): python tom_holdout.py"""
 import numpy as np, pandas as pd
 
-DLY = "D:/finance/beginner-quant-research/futures/data/daily/%s_yahoo_daily.csv"
+DLY = "futures/data/daily/%s_yahoo_daily.csv"
 COST = 0.02
 
 

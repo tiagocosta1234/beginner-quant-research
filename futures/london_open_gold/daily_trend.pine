@@ -1,7 +1,7 @@
 //@version=6
-indicator("daily-trend-claude", shorttitle="dt-claude", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+indicator("daily_trend", shorttitle="dt", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
 
-// daily-trend-claude: the claude.pine London A+ rule plus two filters found after the fact (post-hoc, not proven):
+// daily_trend: the london_open_indicator.pine London A+ rule plus two filters found after the fact (post-hoc, not proven):
 //   (1) trade only in the direction of the prior daily trend (previous daily close above its 20-day average = long only, below = short only);
 //   (2) skip setups whose cost is more than 12% of the risk (about a 2.4-point stop on micro gold), so fixed costs do not eat the edge.
 // Gold test 2023-2026 (descriptive, filters chosen after seeing results): 40 trades, 68% wins, +0.27 R net, beat the opposite side (P 0.015), 4 of 4 years positive; with filter (2) only: 100 trades,
@@ -242,7 +242,7 @@ if barstate.islast
             if closeTimes.get(i) >= since
                 r30 += results.get(i)
                 n30 += 1
-    table.cell(dash, 0, 0, tfOK ? "daily-trend-claude · A+ London 1:1" : "Use the 1 minute chart", text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
+    table.cell(dash, 0, 0, tfOK ? "daily_trend · A+ London 1:1" : "Use the 1 minute chart", text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
     table.cell(dash, 1, 0, syminfo.ticker, text_color=color.white, text_size=size.small, bgcolor=color.new(color.navy, 10))
     table.cell(dash, 0, 1, "London today", text_color=color.silver, text_size=size.small)
     table.cell(dash, 1, 1, today, text_color=color.white, text_size=size.small, bgcolor=statusColor(today))

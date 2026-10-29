@@ -1,5 +1,5 @@
 # UTBOT-VARIANTS result (2026-10-14): Key Value 2, Key Value 3, Heikin Ashi on, 46 symbols x 8 timeframes
-Pre-registration `PREREG_UTBOT_VARIANTS.md`, engine `utbot.py --variants`, output `UTBOT_VARIANTS_OUTPUT.txt`, cells `D:\finance\tmp\utbot_variant_cells.csv` (1,104 cells; 1,472 tests with the default run). 2026 hold-out unopened.
+Pre-registration `PREREG_UTBOT_VARIANTS.md`, engine `utbot.py --variants`, output `UTBOT_VARIANTS_OUTPUT.txt`, cells `data\tmp\utbot_variant_cells.csv` (1,104 cells; 1,472 tests with the default run). 2026 hold-out unopened.
 ## Verdict: no candidate in any variant
 - Placebo (100 random shifts per cell): max t over the 1,104 cells has median 2.87, 95th percentile 3.38; the registered bar was DEV t >= 4.1. Best real DEV t: +2.44 (GBPJPY H4, Heikin Ashi: +16.7 bp per trade in DEV, -2.2 in VAL).
 - Cells positive in both periods: HA 3.3%, K2 4.9%, K3 7.9% (the share rises with the Key Value only because fewer trades pay fewer spreads); median net per trade -1.7 to -2.1 bp in DEV and -1.7 to -1.8 in VAL for all three variants.

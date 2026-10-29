@@ -1,6 +1,6 @@
 import pandas as pd, numpy as np, sys
 from pathlib import Path
-O=Path("D:/finance/scratch/lab")
+O=Path("data/scratch/lab")
 def load(ph): return pd.concat([pd.read_csv(O/f"results_{ph}_{tf}.csv") for tf in (1,5,15)])
 def agg(d):
     d=d.copy(); d["se"]=np.where(d.t.abs()>1e-9,(d["mean"]/d.t).abs(),np.nan)

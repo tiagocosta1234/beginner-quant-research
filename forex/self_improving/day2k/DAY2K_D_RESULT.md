@@ -1,6 +1,6 @@
 # DAY2K-D result (2026-10-14): gold long OR short, one 1:1 / 2,000 USD trade a day - no survivor, one LEAD
 
-Pre-registration `PREREG_DAY2K_D.md` (commit 48858d5c), engine `day2kd.py`, cells `D:\finance\si_ledgers\DAY2KD_cells.csv`. XAUUSD+ only, the side chosen each day. HOLD unopened.
+Pre-registration `PREREG_DAY2K_D.md` (commit 48858d5c), engine `day2kd.py`, cells `data\si_ledgers\DAY2KD_cells.csv`. XAUUSD+ only, the side chosen each day. HOLD unopened.
 
 ## Gates
 Oracle side +0.43..+0.86 R, ML label leak +0.44..+0.85 R; placebo worlds rules 121-123 and ML 131-133: 0 survivors each (best DEV t 1.31).

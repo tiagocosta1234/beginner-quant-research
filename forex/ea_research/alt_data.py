@@ -5,7 +5,7 @@ import numpy as np, pandas as pd
 from pathlib import Path
 from forex.ea_research import more_eas as ME
 
-DATA = Path(__file__).resolve().parents[1] / "data_mt5"; ALT = Path("D:/finance/data_macro/alt")
+DATA = Path(__file__).resolve().parents[1] / "data_mt5"; ALT = Path("data/data_macro/alt")
 DEV, VAL, HOLD = ME.DEV, ME.VAL, ME.HOLD
 _U = {}
 
@@ -73,7 +73,7 @@ def al4():
 
 def al5():
     d = ME.load("XAUUSD"); b, a = ME.at(d, "hm", 1559, "bo", "date"), ME.at(d, "hm", 1559, "ao", "date"); idx = b.index.intersection(a.index).sort_values(); b, a = b[idx], a[idx]
-    y = pd.read_csv("D:/finance/data_macro/DFII10.csv", parse_dates=["observation_date"]).dropna().set_index("observation_date").iloc[:, 0].astype(float)
+    y = pd.read_csv("data/data_macro/DFII10.csv", parse_dates=["observation_date"]).dropna().set_index("observation_date").iloc[:, 0].astype(float)
     r, i = {}, 0
     while i < len(idx) - 6:
         D = idx[i]; prior = y[y.index < D]

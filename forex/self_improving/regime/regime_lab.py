@@ -17,8 +17,8 @@ from forex.ea_research import combo_grid as G, pass70 as P, dip_addon as DA
 from forex.self_improving.freeform import ff5_data as F5, ff6_data as D6
 
 HERE = Path(__file__).resolve().parent
-LEDGERS = Path("D:/finance/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
-CACHE = Path("D:/finance/scratch/si_cache/regime_data.pkl")
+LEDGERS = Path("data/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
+CACHE = Path("data/scratch/si_cache/regime_data.pkl")
 FS = (0.0, 0.5, 1.0, 1.5); GUARD = 1500.0; HZ = 44
 WIN = {"a": ("2022-01-01", "2023-06-30"), "b": ("2023-07-01", "2024-12-31"), "val": ("2025-01-01", "2025-12-31")}
 LV = (0.10, 0.25, 0.50, 0.75, 0.90)

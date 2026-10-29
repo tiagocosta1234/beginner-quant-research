@@ -18,7 +18,7 @@ def main():
     tr = (r.rolling(20).sum().abs() / (r.rolling(20).std() * np.sqrt(20))).mean(axis=1)
     rank = lambda s: s.rolling(250, min_periods=120).rank(pct=True).shift(1)          # known at the day start
     gvr, trr = rank(gv), rank(tr)
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     e = e[e.kind == "BRK"].copy()
     e["sday"] = e.t_entry // 86400
     e["gvr"], e["trr"] = e.sday.map(gvr), e.sday.map(trr)

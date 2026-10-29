@@ -26,7 +26,7 @@ def market(args):
     t = D["t"]
     tz, op_s, cl_s = session(sym)
     lc = local_clock(t, tz)
-    tv = pd.read_parquet(f"D:/finance/ticks_vol/{sym}.parquet", columns=["time", "tick_volume"])
+    tv = pd.read_parquet(f"data/ticks_vol/{sym}.parquet", columns=["time", "tick_volume"])
     tv = tv[tv.time < end].drop_duplicates("time")
     vol = pd.Series(tv.tick_volume.to_numpy(float), index=tv.time.to_numpy()).reindex(t).to_numpy()
     cv = np.concatenate([[0.0], np.nancumsum(np.where(np.isnan(vol), 0, vol))])          # prefix sums
@@ -123,7 +123,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_VOLREG.parquet")
+    df.to_parquet("data/si_ledgers/BRK_VOLREG.parquet")
     rng = np.random.default_rng(11)
     base = df[(df.day >= DEV[0]) & (df.day <= DEV[1])]
     print(f"base (all events) X4: DEV {base.X4.mean():+.3f} VAL {df[(df.day >= VAL[0]) & (df.day <= VAL[1])].X4.mean():+.3f} 2026 {df[df.day >= Y26[0]].X4.mean():+.3f}")
@@ -143,7 +143,7 @@ def run():
     R = pd.DataFrame(rows)
     pd.set_option("display.width", 260)
     print(R.round(3).to_string(index=False))
-    R.to_csv("D:/finance/si_ledgers/BRK_VOLREG_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_VOLREG_cells.csv", index=False)
     print("\nby class, X4 DEV / VAL:")
     for name, c in cells(df).items():
         c = c.assign(cl=c.mkt.map(mclass))

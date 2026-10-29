@@ -8,7 +8,7 @@ def open_min(day, sess):
     t = dt.datetime(day.year, day.month, day.day, 8, 0, tzinfo=LON) if sess == "London" else dt.datetime(day.year, day.month, day.day, 9, 30, tzinfo=NYC)
     a = t.astimezone(ATH); return a.hour * 60 + a.minute
 def load(m, last_day=None):
-    d = pd.read_parquet(f"D:/finance/beginner-quant-research/forex/data_mt5/{m}_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+    d = pd.read_parquet(f"forex/data_mt5/{m}_M1_rates.parquet").sort_values("t").reset_index(drop=True)
     d["dt"] = pd.to_datetime(d.t, unit="s"); d["day"] = d.dt.dt.date; d["hm"] = d.dt.dt.hour * 60 + d.dt.dt.minute; d["yr"] = d.dt.dt.year
     if last_day is not None: d = d[d.dt <= pd.Timestamp(last_day) + pd.Timedelta(days=1)].reset_index(drop=True)
     med = d[d.sp > 0].groupby("yr").sp.median()

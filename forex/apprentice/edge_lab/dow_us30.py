@@ -6,7 +6,7 @@ src = open("edge_lab5.py", encoding="utf-8").read().split("rng = np.random.defau
 exec(src)                                   # day_table, run_variant (Edge Lab 5 engine)
 TICK, PV, COST = 1.0, 0.5, 4.4              # MYM: 1 point a side + USD 1.20 at USD 0.50 a point = 4.4 points round trip
 
-raw = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
+raw = pd.read_parquet("forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
 raw = raw[(raw.bo > 0) & (raw.ao >= raw.bo)]
 utc = pd.to_datetime(raw.t, unit="s").dt.tz_localize("Europe/Athens", ambiguous="NaT", nonexistent="NaT").dt.tz_convert("UTC")
 df = pd.DataFrame({"open": ((raw.bo + raw.ao) / 2).to_numpy(), "high": ((raw.bh + raw.ah) / 2).to_numpy(),

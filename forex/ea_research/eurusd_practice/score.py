@@ -1,6 +1,6 @@
 import sys, json, numpy as np, pandas as pd
 rnd = sys.argv[1]; calls = json.load(open(f"calls_{rnd}.json")); meta = json.load(open(f"meta_{rnd}.json"))
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/EURUSD_M1_rates.parquet", columns=["t","bo","bh","bl","bc","ao","ah","al","ac"]).sort_values("t")
+d = pd.read_parquet("forex/data_mt5/EURUSD_M1_rates.parquet", columns=["t","bo","bh","bl","bc","ao","ah","al","ac"]).sort_values("t")
 d["dt"] = pd.to_datetime(d.t, unit="s"); d = d.set_index("dt")
 H = d.resample("1h").agg(dict(bo="first", bh="max", bl="min", bc="last", ao="first", ah="max", al="min", ac="last")).dropna()
 tot = []; print("case side  result   R   bars  note")

@@ -44,13 +44,13 @@ def main():
         S.VOLF = None; b = m(S.run(*TRN, L, m0, k, r, h), L); print(bn, "train base", {x: round(v, 1) for x, v in b.items()}, flush=True); rows = []
         for a, a5 in grid:
             S.VOLF = volf(FT, a, a5); o = m(S.run(*TRN, L, m0, k, r, h), L); rows.append(dict(a=a, a5=a5, **o))
-        S.VOLF = None; d = pd.DataFrame(rows); d.to_csv(f"D:/finance/si_ledgers/SESSION_vol_train_{bn}.csv", index=False)
+        S.VOLF = None; d = pd.DataFrame(rows); d.to_csv(f"data/si_ledgers/SESSION_vol_train_{bn}.csv", index=False)
         ok = d[(d.breach <= 10) & (d.ratio >= b["ratio"])].sort_values("up", ascending=False).head(3); print(bn, "admissible", int(((d.breach <= 10) & (d.ratio >= b["ratio"])).sum()), "of", len(d)); print(ok.round(1).to_string(index=False), flush=True)
         S.VOLF = None; e0 = m(S.run(*MT5, L, m0, k, r, h), L); final.append(dict(base=bn, variant="BASE", **e0))
         for t in ok.itertuples():
             S.VOLF = volf(FE, t.a, t.a5); final.append(dict(base=bn, variant=f"a={t.a} a5={t.a5}", **m(S.run(*MT5, L, m0, k, r, h), L)))
         S.VOLF = None
-    o = pd.DataFrame(final); o.to_csv("D:/finance/si_ledgers/SESSION_vol_test.csv", index=False); print(o.round(1).to_string(index=False))
+    o = pd.DataFrame(final); o.to_csv("data/si_ledgers/SESSION_vol_test.csv", index=False); print(o.round(1).to_string(index=False))
 
 
 if __name__ == "__main__":

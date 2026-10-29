@@ -15,7 +15,7 @@ def main():
         base = G.pair_series("MT5", m, m, g)
         for nm, S in (("pair", base), ("pair + ManualDip", G.add_dip(base, kd, g)), ("pair + RSI2", G.add_dip(base, rs, g)), ("pair + ManualDip + RSI2", G.add_dip(G.add_dip(base, kd, g), rs, g))):
             o = stats(S); rows.append(dict(size=m, loss=g, book=nm, **o)); print({k: (round(float(v), 1) if not isinstance(v, str) else v) for k, v in rows[-1].items()}, flush=True)
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/BOOK_ASSEMBLY.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/BOOK_ASSEMBLY.csv", index=False)
 
 
 if __name__ == "__main__":

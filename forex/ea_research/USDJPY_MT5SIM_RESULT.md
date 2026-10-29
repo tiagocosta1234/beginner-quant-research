@@ -1,5 +1,5 @@
 # The USDJPY London breakout on the MT5 broker account from today, alone and next to the gold EA pair (2026-10-15 14:19, local clock)
-Scripts `usdjpy_mt5sim.py` (alone; table `D:/finance/si_ledgers/USDJPY_MT5SIM.csv`) and `pair_plus_usdjpy.py` (with the pair; machinery of `pair_from_today.py`). Start: balance 97,708.08, counted -2,291.92, first day Fri 16 Oct. Rules of the leg = PRESAMPLE L1 (box 08:00-08:30 London, OCO stop orders until 11:00, stop at the other side of the box, no target, exit 17:00 London); it fills on about 98% of days.
+Scripts `usdjpy_mt5sim.py` (alone; table `data/si_ledgers/USDJPY_MT5SIM.csv`) and `pair_plus_usdjpy.py` (with the pair; machinery of `pair_from_today.py`). Start: balance 97,708.08, counted -2,291.92, first day Fri 16 Oct. Rules of the leg = PRESAMPLE L1 (box 08:00-08:30 London, OCO stop orders until 11:00, stop at the other side of the box, no target, exit 17:00 London); it fills on about 98% of days.
 
 **Alone** (block bootstrap; pass % / breach %):
 | risk a trade | 22 Dec | 31 Mar 2027 | 30 Jun 2027 |

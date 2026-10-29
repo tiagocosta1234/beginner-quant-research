@@ -1,4 +1,4 @@
-D:\finance\beginner-quant-research\mt5\ea_research\volregime.py:135: RuntimeWarning: divide by zero encountered in scalar divide
+mt5\ea_research\volregime.py:135: RuntimeWarning: divide by zero encountered in scalar divide
   val_t=vl.mean() / vl.std() * np.sqrt(len(vl)) if len(vl) > 2 else np.nan))
 rows 112,201; streams 184; DEV 2021-12-01..2024-12-31, VAL 2025-01-01..2026-10-02
 

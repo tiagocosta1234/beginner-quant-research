@@ -1,6 +1,6 @@
 # DAY2K-H result (2026-10-14): will the rest of the day be bullish or bearish? - NOT PREDICTABLE with this information
 
-Pre-registration `PREREG_DAY2K_H.md` (commit c6552be1), engine `day2kh.py`, cells `D:\finance\si_ledgers\DAY2KH_cells.csv`. Target: sign of mid(21:55 bar open) - mid(T+60 bar open), T in {10:05, 16:35}. Gold (1,005 days) and a pooled model over 34 liquid markets (35,000 rows), logistic regression and gradient boosting, walk-forward from 2022-12, features: own price structure, cross-market morning moves, USD strength, and for gold rates / gold vol / MT5 calendar / flow calendar. HOLD sealed.
+Pre-registration `PREREG_DAY2K_H.md` (commit c6552be1), engine `day2kh.py`, cells `data\si_ledgers\DAY2KH_cells.csv`. Target: sign of mid(21:55 bar open) - mid(T+60 bar open), T in {10:05, 16:35}. Gold (1,005 days) and a pooled model over 34 liquid markets (35,000 rows), logistic regression and gradient boosting, walk-forward from 2022-12, features: own price structure, cross-market morning moves, USD strength, and for gold rates / gold vol / MT5 calendar / flow calendar. HOLD sealed.
 
 ## Gates
 Leak control 100%; placebo worlds 161-163: 0 survivors (best DEV' t 0.51 / 1.90 / 2.36 against the 2.50 bar).

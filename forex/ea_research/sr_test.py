@@ -211,7 +211,7 @@ if __name__ == "__main__":
     with Pool(JOBS) as pool:
         res = pool.map(one_symbol, files)
     R = pd.DataFrame([r for rr, _ in res for r in rr])
-    R.to_csv("D:/finance/tmp/sr_cells.csv", index=False)
+    R.to_csv("data/tmp/sr_cells.csv", index=False)
     mx = []
     for dr in range(10):
         allv = np.array([x for _, p in res for x in p.get(dr, [])], dtype=float)

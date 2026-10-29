@@ -86,7 +86,7 @@ def main(dry):
         f, p = f[f.t_entry < cut - 86400].reset_index(drop=True), p[p.t_entry < cut - 86400].reset_index(drop=True)
         print("truncation:", "PASS" if len(f) == len(p) and np.allclose(f.F2, p.F2) else f"FAIL {len(f)} vs {len(p)}")
         return
-    df.to_parquet("D:/finance/si_ledgers/BRK_FLAG.parquet")
+    df.to_parquet("data/si_ledgers/BRK_FLAG.parquet")
     for col, ctl in (("F1", "C1"), ("F2", "C2")):
         r = {}
         for lab, (a, b) in (("DEV", DEV), ("VAL", VAL), ("2026", Y26)):

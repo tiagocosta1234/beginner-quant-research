@@ -18,7 +18,7 @@ SDB trade stream on MT5 broker data 2022-26 = 198 trades (110 in DEV, 45 in 2025
 In both filters the DEV edge flips sign in 2025 and the pooled permutation test is nowhere near 0.05. Descriptive, non-overlapping 5-session windows (247): corr(gold's NEXT 5-day return, previous 5-day real-yield change) = -0.033; with the USD proxy -0.103 (noise level at this size, ~0.12). The slow fundamentals carry no usable timing information for gold at the weekly horizon either. Power note: ~155 trades in the pooled sample can only show differences of ~50 bp or more, so these results say "not shown", but the sign flip between DEV and VAL is the usual signature of noise. Verdict: closed.
 
 ## B4 - data
-Read-only export from the portable MT5 broker copy (not the live terminal) into `forex/data_mt5`: XAGUSD, DAX, NIKKEI, ASX, BRENT, WTI M1 bid/ask bars (1.5-1.7M bars each, 2021-12..2026-10-03). Silver was already tested with the frozen SDB (fails); the other five are available for future registered trials. FRED DFII10 saved to `D:\finance\data_macro\DFII10.csv`.
+Read-only export from the portable MT5 broker copy (not the live terminal) into `forex/data_mt5`: XAGUSD, DAX, NIKKEI, ASX, BRENT, WTI M1 bid/ask bars (1.5-1.7M bars each, 2021-12..2026-10-03). Silver was already tested with the frozen SDB (fails); the other five are available for future registered trials. FRED DFII10 saved to `data\data_macro\DFII10.csv`.
 
 ## What B means for the account
 Nothing new around the gold pair: the pair is still the only edge, no complement or filter was found, and the 57 registered trials in total (54 earlier + these 3) have not produced a second source of edge outside gold. The honest way to raise P(pass) is size and time, not a new entry rule.

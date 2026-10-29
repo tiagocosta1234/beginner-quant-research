@@ -14,8 +14,8 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data_mt5"
 LEDGER = HERE / "LEDGER.csv"
-CACHE = Path(r"D:\finance\scratch\microscalp_cache.parquet")
-TICKS = sorted(glob.glob(r"D:\finance\scratch\ticks_gold\*.parquet"))
+CACHE = Path(r"data\scratch\microscalp_cache.parquet")
+TICKS = sorted(glob.glob(r"data\scratch\ticks_gold\*.parquet"))
 SL, TP, START, DIST, STEP, LAT, K_MS = 20.0, 4.0, 1.2, 0.6, 0.3, 300, 30 * 60 * 1000
 WINDOWS = ((6 * 3600, 14 * 3600 + 20 * 60), (14 * 3600 + 35 * 60, 15 * 3600 + 20 * 60), (15 * 3600 + 45 * 60, 21 * 3600))
 SPLIT = int(pd.Timestamp("2026-04-01").timestamp())

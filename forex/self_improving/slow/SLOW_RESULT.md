@@ -1,6 +1,6 @@
 # New information at horizons of 1, 5 and 20 days: result (2026-10-13)
 
-Pre-registration: PREREG_SLOW_INFO.md. Code: fetch_alfred.py, slow_lab.py. Ledgers: D:\finance\si_ledgers\SLOW_real.csv, SLOW_placebo71..73.csv. Macro surprises in D:\finance\data_macro\alfred. 2026 never loaded.
+Pre-registration: PREREG_SLOW_INFO.md. Code: fetch_alfred.py, slow_lab.py. Ledgers: data\si_ledgers\SLOW_real.csv, SLOW_placebo71..73.csv. Macro surprises in data\data_macro\alfred. 2026 never loaded.
 
 ## Information added to price
 CFTC Commitments of Traders positioning (legacy futures-and-options combined, 2020-2026, as-of Tuesday, usable from the Friday release: non-commercial and commercial net over open interest, 156-week percentile, 1- and 4-week changes; currency pairs as base minus quote of CME EUR/GBP/JPY/AUD/CAD/CHF/NZD, plus gold, silver, WTI, S&P, Nasdaq, DJIA, Nikkei, bitcoin, ether), naive macro-release surprises from ALFRED first-release vintages (NFP, unemployment, CPI against the previous three prints, FOMC target change; 46 / 47 / 47 / 32 releases, one vintage missing), macro regime with a two-day lag, event timing, lagged cross-asset returns (15 series), price features. About 70 features, decisions at 12:00 server each weekday, H = 1, 5, 20 trading days, real bid / ask, windows A / B / VAL 2025, 2026 sealed.

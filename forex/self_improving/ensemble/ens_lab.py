@@ -16,7 +16,7 @@ from scipy import stats
 from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff6_data as D, ff6_agent as A
 
-LED = Path("D:/finance/si_ledgers"); HE = (4, 16, 96); CLS = tuple(P3.CLASSES); MAXM = 200; BONF = 0.05 / 12
+LED = Path("data/si_ledgers"); HE = (4, 16, 96); CLS = tuple(P3.CLASSES); MAXM = 200; BONF = 0.05 / 12
 
 
 def members(ledger, cls, H):

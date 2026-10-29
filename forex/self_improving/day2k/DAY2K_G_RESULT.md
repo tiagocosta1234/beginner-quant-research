@@ -1,6 +1,6 @@
 # DAY2K-G result (2026-10-14): the strongest-trend market of the day, traded with the trend, wide 1:1 held until hit - NO EDGE
 
-Pre-registration `PREREG_DAY2K_G.md` (commit eff3c76b, amendment A1 66b4c854), engine `day2kg.py`, cells `D:\finance\si_ledgers\DAY2KG_cells.csv`. 34 liquid markets, trend score L in {20, 60, 120} days / ATR20, pick the market with the largest |score|, trade its direction, stop = target = 1.0 / 1.5 / 2.0 ATR20, held until hit. HOLD unopened.
+Pre-registration `PREREG_DAY2K_G.md` (commit eff3c76b, amendment A1 66b4c854), engine `day2kg.py`, cells `data\si_ledgers\DAY2KG_cells.csv`. 34 liquid markets, trend score L in {20, 60, 120} days / ATR20, pick the market with the largest |score|, trade its direction, stop = target = 1.0 / 1.5 / 2.0 ATR20, held until hit. HOLD unopened.
 
 ## Calibration (a failure, then an amendment, both before any real cell was read)
 Placebo worlds built by shuffling the days of the scores produced one survivor each in two of three worlds: the shuffled pick mix (BTCUSD, XAUUSD, USDJPY, mostly long) earns the 2023-25 drift, so it is not a null for timing skill. A1 added a same-mix permutation null (picks shuffled among days) as a requirement; the gate then passed (placebos 0/0/0, oracle +0.96..+0.99 R).

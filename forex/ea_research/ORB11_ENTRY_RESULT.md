@@ -1,5 +1,5 @@
 # ORB11_ENTRY_RESULT - every reasonable ENTRY on the trader's 30-minute London / NY ORB, plus a 2020-21 out-of-time check (2026-10-15, local clock 17:40)
-Pre-registrations `PREREG_ORB11_ENTRY.md` (commit f76c848e) and `PREREG_ORB11_ENTRY_OOT.md` (commit 384e1f17). Code `orb11_entry.py`, `orb11_entry_oot.py`; output `ORB11_ENTRY_OUTPUT.txt`, `ORB11_ENTRY_OOT_OUTPUT.txt`; tables `D:/finance/si_ledgers/ORB11_ENTRY_*`. Engine checks: truncation identical (6,915 trades), TOUCH 1:1 reproduces ORB11 exactly (EURUSD +0.0434 R).
+Pre-registrations `PREREG_ORB11_ENTRY.md` (commit f76c848e) and `PREREG_ORB11_ENTRY_OOT.md` (commit 384e1f17). Code `orb11_entry.py`, `orb11_entry_oot.py`; output `ORB11_ENTRY_OUTPUT.txt`, `ORB11_ENTRY_OOT_OUTPUT.txt`; tables `data/si_ledgers/ORB11_ENTRY_*`. Engine checks: truncation identical (6,915 trades), TOUCH 1:1 reproduces ORB11 exactly (EURUSD +0.0434 R).
 
 ## Verdict: no entry fixes it. 0 of 826 pools, 0 of 5,924 cells, 0 of 3 out-of-time picks
 6 triggers (stop-order touch, 5- and 15-minute close outside, still outside after 15 minutes, retest limit, fade of the failed break) x 6 filters (none, daily trend, box >= 40 spreads, squeeze, box direction, trend + wide) x 2 exits (1:1, hold to the session end), 46 MT5 broker symbols, MT5 broker bid/ask, 557,823 trades and 108,226 random entries.

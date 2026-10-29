@@ -1,6 +1,6 @@
 # Consensus surprises at tick resolution: result (2026-10-13)
 
-Pre-registration: PREREG_TICK_EVENTS.md (with Amendment 1, the clock error). Code: tick_event_lab.py. Ledgers D:\finance\si_ledgers\TICKEVENTS_real.csv / _placebo.csv. Ticks to 2026-08-15 only (sealed afterwards). 103 strong events in the tick era, 77 USD (41 tier-1).
+Pre-registration: PREREG_TICK_EVENTS.md (with Amendment 1, the clock error). Code: tick_event_lab.py. Ledgers data\si_ledgers\TICKEVENTS_real.csv / _placebo.csv. Ticks to 2026-08-15 only (sealed afterwards). 103 strong events in the tick era, 77 USD (41 tier-1).
 
 ## The error found on the way
 The first run treated the MT5 tick epoch as UTC; it is the SERVER clock (Athens, naive; proof: the daily spread peak at tick-epoch hour 0, as in the server-clock M1 files). It compared UTC release times with server-clock ticks, 3 hours off: it was invalid and was discarded before any reading. The HF family had the same bug (server hour, weekday, event features): fixed in hf_data.py, lesson L13 added to the SDS, rebuild and rerun in progress.

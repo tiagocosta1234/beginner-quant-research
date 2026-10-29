@@ -1,5 +1,5 @@
 # TRB result (2026-10-14 ~23:10): reel 13's breakout method, run walk-forward - NO EDGE; the selection picks noise
-Pre-registration `PREREG_TRB.md` (commit 1be1a5cc), engine `trb.py` (cache `D:\finance\tmp\trb_cache`), trades `D:\finance\si_ledgers\TRB_trades.parquet`. Source: `reels/13_breakout_lesson/NOTAS.md`. 2026 never loaded.
+Pre-registration `PREREG_TRB.md` (commit 1be1a5cc), engine `trb.py` (cache `data\tmp\trb_cache`), trades `data\si_ledgers\TRB_trades.parquet`. Source: `reels/13_breakout_lesson/NOTAS.md`. 2026 never loaded.
 
 Dry-run: 2,808 configurations x every day x 46 markets simulated (153 s); truncation test PASS (EURUSD, XAUUSD); hand check NSDQ 2024-03-05, 09:30-10:00 NY box 17,991.0-18,100.6 (range 109.6), sell stop filled 10:08 NY, BOTH / SL 1 / TP 1 = +1.0 R (target), TP 2 = +1.33 R (time exit) - matches the cache.
 

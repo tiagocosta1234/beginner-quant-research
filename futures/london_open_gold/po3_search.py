@@ -1,4 +1,4 @@
-"""PREREG_PO3_SEARCH: 32-cell search of the claude.pine PO3 rule (Asia range sweep + reclaim) on GC, NQ, ES, SI, DEV < 2023 / TEST >= 2023, one look.
+"""PREREG_PO3_SEARCH: 32-cell search of the london_open_indicator.pine PO3 rule (Asia range sweep + reclaim) on GC, NQ, ES, SI, DEV < 2023 / TEST >= 2023, one look.
 Usage: python po3_search.py"""
 import itertools, numpy as np, pandas as pd
 
@@ -19,7 +19,7 @@ def sim(O, H, L, C, start, side, e, sd, td, cost):
 
 trades = []
 for sym, (tick, cost) in MK.items():
-    g = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{sym}.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+    g = pd.read_parquet(f"futures/data/databento/futures_{sym}.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
     g.index = pd.DatetimeIndex(g.ts); g = g.drop(columns="ts"); g = g[~g.index.duplicated()].sort_index()
     b = g.resample("5min", label="left", closed="left").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
     ny = b.index.tz_convert("America/New_York")

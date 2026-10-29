@@ -1,5 +1,5 @@
 # BRK-SWING result (breakout day round 17, 2026-10-15 12:23): holding breakouts for days, or aligning them with a fresh 20-day breakout, makes them worse
-Pre-registration `PREREG_BRK_SWING.md`, engine `brk_swing.py` (truncation PASS; hand check NSDQ 2024-06-12: hold-to-close -0.07 R, 5-day swing +3.27 R, 10-day +0.89 R, fresh daily breakout up), rows `D:\finance\si_ledgers\BRK_SWING.parquet`.
+Pre-registration `PREREG_BRK_SWING.md`, engine `brk_swing.py` (truncation PASS; hand check NSDQ 2024-06-12: hold-to-close -0.07 R, 5-day swing +3.27 R, 10-day +0.89 R, fresh daily breakout up), rows `data\si_ledgers\BRK_SWING.parquet`.
 | cell (net R) | DEV | VAL | 2026 | random control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | S5 hold up to 5 days, 2-ATR trail after +1R | -0.083 | -0.169 | -0.064 | -0.127 / -0.208 / -0.212 |

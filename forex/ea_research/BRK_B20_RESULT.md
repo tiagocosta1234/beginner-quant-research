@@ -1,5 +1,5 @@
 # BRK-B20 result (breakout day round 20, 2026-10-15 12:46): demanding more of the breakout changes nothing
-Pre-registration `PREREG_BRK_B20.md`, engine `brk_b20.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_B20.parquet`.
+Pre-registration `PREREG_BRK_B20.md`, engine `brk_b20.py` (truncation PASS), rows `data\si_ledgers\BRK_B20.parquet`.
 | cell (net R, hold to close) | DEV | VAL | 2026 | control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | U0 plain stop orders (reference) | -0.032 | -0.076 | -0.037 | -0.085 / -0.101 / -0.119 |

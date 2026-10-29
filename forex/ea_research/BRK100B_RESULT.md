@@ -1,7 +1,7 @@
 # BRK100B result - 100 ideas on information the breakout tests never used (MT5 broker spread, CME volume, cross-market states) plus untested named systems: 0 pass
 
 Run 2026-10-18 22:14 (local clock, second PC PC-2). Pre-registration `PREREG_BRK100B.md` (registered 21:39; SHA-256
-f569d817e62a2bb355252df7db17dc80cf6b4233218d1b0d370722df7514a1b6 recorded 21:47:48 in `C:\work\scratch\brk100b_prereg.sha256` after
+f569d817e62a2bb355252df7db17dc80cf6b4233218d1b0d370722df7514a1b6 recorded 21:47:48 in `data\scratch\brk100b_prereg.sha256` after
 a time-stamp correction, before any code ran; no commits on 18 Oct), engine `brk100b.py` (BRK50 / BRK100 machinery, lesson-(a) entries),
 dry run `BRK100B_DRYRUN.txt` (truncation identical on EURUSD, XAUUSD and NSDQ for trades AND helper states; 12 hand checks), output
 `BRK100B_OUTPUT.txt`, table `BRK100B_SUMMARY.csv`, 100 ledger rows. 483,673 trades on the 38 non-crypto markets.

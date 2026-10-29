@@ -5,7 +5,7 @@ from forex.self_improving.hitrate import hitrate_lab as H
 import os
 FX = ["AUDCAD","AUDCHF","AUDJPY","AUDNZD","AUDUSD","CADCHF","CADJPY","CHFJPY","EURAUD","EURCAD","EURCHF","EURGBP","EURJPY","EURNZD","EURUSD","GBPAUD","GBPCAD","GBPCHF","GBPJPY","GBPNZD","GBPUSD","NZDCAD","NZDCHF","NZDJPY","NZDUSD","USDCAD","USDCHF","USDJPY"]
 MARKETS = FX if os.environ.get("SET") == "FX" else ["SP", "NSDQ", "DOW", "DAX", "NIKKEI", "ASX", "WTI", "BRENT", "XAGUSD", "BTCUSD", "ETHUSD", "SOLUSD", "BNBUSD", "LTCUSD", "BCHUSD", "XRPUSD", "ADAUSD"]
-DIR = "D:/finance/beginner-quant-research/forex/data_mt5/"
+DIR = "forex/data_mt5/"
 
 
 def cells(tr):
@@ -38,7 +38,7 @@ def main():
                 tp = H.simulate(d, sg, w); tp["date"] = pd.to_datetime(tp.day * 86400, unit="s")
                 zs = [c["VAL"][2] for c in cells(tp).values() if c["VAL"][0] >= 150 and not np.isnan(c["VAL"][2])]
                 plac[wd] += zs
-    o = pd.DataFrame(rows); o.to_csv("D:/finance/si_ledgers/HITRATE_" + ("fx" if os.environ.get("SET") == "FX" else "multi") + "_real.csv", index=False)
+    o = pd.DataFrame(rows); o.to_csv("data/si_ledgers/HITRATE_" + ("fx" if os.environ.get("SET") == "FX" else "multi") + "_real.csv", index=False)
     pm = [max(v) for v in plac.values() if v]; p95 = float(np.percentile(np.concatenate([plac[1], plac[2]]), 99.5)) if plac[1] else np.nan
     o["pass"] = (o.A_R > 0) & (o.B_R > 0) & (o.VAL_R >= 0.15) & (o.VAL_n >= 150) & (o.VAL_z >= (3.78 if os.environ.get('SET') == 'FX' else 3.65)) & (o.VAL_z >= max(pm))
     print("placebo max VAL t per world:", [round(x, 2) for x in pm], "| cells", len(o), "| passing", int(o["pass"].sum()))

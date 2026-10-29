@@ -1,5 +1,5 @@
 # MONTHEND_FX_RESULT - month-end FX rebalancing into the London 16:00 fix (2026-10-15, local clock 15:19)
-Pre-registration `PREREG_MONTHEND_FX.md` (commit 77b8c511; Amendment 1 before any P&L: M2's signal measured at its own entry time). Code `monthend_fx.py`. Rows `D:/finance/si_ledgers/MONTHEND_RUN.csv`.
+Pre-registration `PREREG_MONTHEND_FX.md` (commit 77b8c511; Amendment 1 before any P&L: M2's signal measured at its own entry time). Code `monthend_fx.py`. Rows `data/si_ledgers/MONTHEND_RUN.csv`.
 
 ## Verdict: 0 of 4 cells; closed. The Melvin-Prins month-end hedge flow is not in MT5 broker prices 2020-25.
 | cell | OOT 2020-21 | DEV 2022-24 | VAL 2025 | DEV+VAL t (bar 2.40) |

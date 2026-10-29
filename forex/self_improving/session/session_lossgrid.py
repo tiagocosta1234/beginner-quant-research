@@ -17,7 +17,7 @@ def main():
         adm = [x for x in g if x[4]["breach"] <= 10]; pick = max(adm, key=lambda x: x[4]["p44"]) if adm else min(g, key=lambda x: x[4]["breach"]); m0, k, r, h, tm = pick
         for nm, TT in T.items():
             o = m(S.run(*TT, L, m0, k, r, h)); rows.append(dict(L=L, cfg=f"m0 {m0} k {k:.0f} r {r:.0f} h {h:.0f}", admissible_train=bool(adm), pool=nm, **o))
-    o = pd.DataFrame(rows); o.to_csv("D:/finance/si_ledgers/SESSION_lossgrid.csv", index=False); print(o.round(1).to_string(index=False))
+    o = pd.DataFrame(rows); o.to_csv("data/si_ledgers/SESSION_lossgrid.csv", index=False); print(o.round(1).to_string(index=False))
 
 
 if __name__ == "__main__":

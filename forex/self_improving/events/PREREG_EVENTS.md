@@ -2,7 +2,7 @@
 
 the trader: "(original wording omitted)" and "(original wording omitted)". The MT5 economic calendar (MQL5 `CalendarValueHistory`) carries actual, forecast (consensus) and previous values for every event, so, unlike the ALFRED proxy of the slow family, the surprise here is the real one and is MT5-native (deployable in an EA with the same functions).
 
-## Data (exported read-only on 2026-10-13 from the portable tester terminal with `ExportCalendar.mq5`; copy at D:\finance\data_macro\mt5_calendar.csv)
+## Data (exported read-only on 2026-10-13 from the portable tester terminal with `ExportCalendar.mq5`; copy at data\data_macro\mt5_calendar.csv)
 68,353 rows 2021-12-01..2026-08-15, 1,421 events, 23 countries; times are UTC (checked: NFP at 12:30 in summer and 13:30 in winter). Used rows: importance = 3 (high), actual and forecast present, `impact` flag 1 or 2 (MetaQuotes' own classification of the surprise as positive or negative for the currency), currency in {USD, EUR, GBP, JPY, AUD, CAD, NZD, CHF}, at least 8 previous releases of the same event in the file, and time up to 2025-12-31 (2026 is never used). 1,758 usable events.
 Surprise score S = +/-|actual - forecast| / sigma_event, sign by the impact flag (positive = good for the event currency), sigma_event = standard deviation of (actual - forecast) over the PREVIOUS releases of the same event only (causal). A strong surprise is |S| >= 1.0 (fixed). Counted before any price work: 328 strong events in 2022-2024 (USD 278, others 50); only two event types have >= 20 strong events in that period, so tests are POOLED, not per event type.
 

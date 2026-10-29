@@ -161,7 +161,7 @@ def dry():
 def run():
     t0 = time.time()
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    df.to_parquet("data/si_ledgers/BRK_EXITS.parquet")
     print(f"run {time.time() - t0:.0f}s, {len(df)} rows")
     rows = []
     for kind in ("BRK", "CTRL"):
@@ -177,7 +177,7 @@ def run():
     R = pd.DataFrame(rows)
     pd.set_option("display.width", 250)
     print(R.round(3).to_string(index=False))
-    R.to_csv("D:/finance/si_ledgers/BRK_EXITS_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_EXITS_cells.csv", index=False)
     b, c = R[R.kind == "BRK"].set_index("exit"), R[R.kind == "CTRL"].set_index("exit")
     for x in EXITS:
         g = [b.at[x, "R DEV"] >= 0.05 and b.at[x, "t DEV"] >= 2.6, b.at[x, "R VAL"] > 0 and b.at[x, "t VAL"] >= 1.65,

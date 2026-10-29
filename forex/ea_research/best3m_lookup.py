@@ -2,7 +2,7 @@
    PYTHONPATH=. python forex/ea_research/best3m_lookup.py"""
 import numpy as np, pandas as pd
 import forex.ea_research.orb11_entry as oe
-T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet")
+T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet")
 C = T[T.trig == "CTRL"].set_index(["mkt", "sess", "day"])[["r1", "rh"]].rename(columns={"r1": "c1", "rh": "ch"})
 X = T[T.trig != "CTRL"].join(C, on=["mkt", "sess", "day"]).reset_index(drop=True)
 A, B = pd.Timestamp("2026-07-03"), pd.Timestamp("2026-10-02")
@@ -28,4 +28,4 @@ pd.set_option("display.width", 250)
 print(S.round(3).to_string(index=False))
 print(f"\n{len(S)} symbols; median best 3-month total {S.R_3m.median():+.1f} R; median best of RANDOM entries {S.rnd_best_3m.median():+.1f} R; "
       f"best rule positive in Jan-Jun 2026: {int((S.jan_jun > 0).sum())}, in 2022-25: {int((S.y22_25 > 0).sum())}; mean earlier R/trade {S.y22_25.mean():+.3f}")
-S.to_csv("D:/finance/scratch/best3m.csv", index=False)
+S.to_csv("data/scratch/best3m.csv", index=False)

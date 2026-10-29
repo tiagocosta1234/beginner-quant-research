@@ -105,8 +105,8 @@ def main():
             T = pd.concat([x for x in allT if x.cell.iloc[0] == c and x.period.iloc[0] in ("DEV", "VAL")]); s = stat(T)
             print(f"{c} DEV+VAL: mean {s['mean']:+.2f} bp, t {s['t']:+.2f} (bar 2.50)"); rows.append(dict(cell=c, period="DEV+VAL", **s))
     tag = f"HOLD_{hold}" if hold else "RUN"
-    pd.DataFrame(rows).to_csv(f"D:/finance/si_ledgers/WEEKEND_GAP_{tag}.csv", index=False)
-    pd.concat(allT).to_parquet(f"D:/finance/si_ledgers/WEEKEND_GAP_{tag}_trades.parquet")
+    pd.DataFrame(rows).to_csv(f"data/si_ledgers/WEEKEND_GAP_{tag}.csv", index=False)
+    pd.concat(allT).to_parquet(f"data/si_ledgers/WEEKEND_GAP_{tag}_trades.parquet")
 
 
 if __name__ == "__main__":

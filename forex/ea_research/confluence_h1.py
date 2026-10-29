@@ -15,7 +15,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data_mt5"
 LEDGER = HERE / "LEDGER.csv"
-CACHE = Path("D:/finance/tmp/confluence_h1_panel.parquet")
+CACHE = Path("data/tmp/confluence_h1_panel.parquet")
 OUT_JSON = HERE / "CONFLUENCE_H1_STATE.json"
 FX = ["AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "AUDUSD", "CADCHF", "CADJPY", "CHFJPY", "EURAUD", "EURCAD", "EURCHF", "EURGBP", "EURJPY", "EURNZD", "EURUSD", "GBPAUD", "GBPCAD", "GBPCHF", "GBPJPY", "GBPNZD", "GBPUSD",
       "NZDCAD", "NZDCHF", "NZDJPY", "NZDUSD", "USDCAD", "USDCHF", "USDJPY"]
@@ -81,7 +81,7 @@ def context(frames: dict, grid: np.ndarray) -> pd.DataFrame:
     sp = lrr("SP")
     for L in (4, 24): ctx[f"sp{L}"] = sp.rolling(L).sum()
     ctx["gold24"] = lrr("XAUUSD").rolling(24).sum()
-    ry = pd.read_csv("D:/finance/data_macro/DFII10.csv"); ry["observation_date"] = pd.to_datetime(ry.observation_date); ry = pd.to_numeric(ry.set_index("observation_date").DFII10, errors="coerce").dropna()
+    ry = pd.read_csv("data/data_macro/DFII10.csv"); ry["observation_date"] = pd.to_datetime(ry.observation_date); ry = pd.to_numeric(ry.set_index("observation_date").DFII10, errors="coerce").dropna()
     days = pd.date_range("2021-11-01", "2026-10-31", freq="D"); ryd = ry.reindex(ry.index.union(days)).ffill().reindex(days)
     dayval = pd.DataFrame({"ry_lvl": ryd.shift(1), "ry_chg5": ryd.shift(1) - ryd.shift(6)}, index=days)                 # value known at the previous day's close
     dd = pd.to_datetime(grid, unit="s").normalize(); ctx["ry_lvl"] = dayval.ry_lvl.reindex(dd).to_numpy(); ctx["ry_chg5"] = dayval.ry_chg5.reindex(dd).to_numpy()

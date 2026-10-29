@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 DATA = Path(__file__).resolve().parents[1] / "data"
-OUTDIR = Path("D:/finance/scratch/lab")
+OUTDIR = Path("data/scratch/lab")
 PAIRS = ("EURUSD", "GBPUSD", "USDJPY", "AUDUSD", "USDCAD", "USDCHF", "AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "CADCHF", "CADJPY")
 COMM, SWAP = 0.3e-4, 0.7e-4
 STOP_ATR, TGT_ATR, MAXD = 2.0, 3.0, 10

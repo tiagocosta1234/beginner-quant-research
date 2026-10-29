@@ -123,7 +123,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_SWING.parquet")
+    df.to_parquet("data/si_ledgers/BRK_SWING.parquet")
     for cell, col, ctl, lag, sel in (("S5 hold 5 days", "S5", "C_S5", 5, None), ("S10 hold 10 days", "S10", "C_S10", 5, None), ("D20 aligned, hold to close", "X4", "C_X4", 1, "d20")):
         g = df[df.side == df.fresh] if sel else df
         r = {}

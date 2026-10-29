@@ -8,7 +8,7 @@ exec(src)   # defines MARKETS, COMM, day_table, run_variant, ... (the part befor
 LOOKS = (20, 40, 60)
 rows = []
 for sym, (tick, pv) in MARKETS.items():
-    df = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
+    df = pd.read_parquet(f"futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
     df = df[["open", "high", "low", "close"]]
     days = day_table(df)
     for d, side, g, a, m in run_variant(days, tick, pv, "D1", 0.5, 1, {}):

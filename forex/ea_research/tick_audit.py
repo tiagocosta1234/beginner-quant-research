@@ -44,7 +44,7 @@ def m1_trades(sym):
 
 
 def ticks(sym):
-    parts = [pd.read_parquet(f"D:/finance/ticks/{sym}/{m}.parquet") for m in ("2025-10", "2025-11", "2025-12")]
+    parts = [pd.read_parquet(f"data/ticks/{sym}/{m}.parquet") for m in ("2025-10", "2025-11", "2025-12")]
     d = pd.concat(parts).sort_values("time_msc")
     d = d[(d.bid > 0) & (d.ask >= d.bid)]
     return d.time_msc.to_numpy(), d.bid.to_numpy(), d.ask.to_numpy()
@@ -75,7 +75,7 @@ def main():
                 out.append((s, cell, r_m1, r_t))
         print(s, "done", flush=True)
     df = pd.DataFrame(out, columns=["mkt", "cell", "R_m1", "R_tick"])
-    df.to_csv("D:/finance/si_ledgers/TICK_AUDIT_trades.csv", index=False)
+    df.to_csv("data/si_ledgers/TICK_AUDIT_trades.csv", index=False)
     pd.set_option("display.width", 200)
     g = df.groupby(["cell", "mkt"]).agg(n=("R_m1", "size"), R_m1=("R_m1", "mean"), R_tick=("R_tick", "mean"),
                                         corr=("R_m1", lambda v: np.corrcoef(v, df.loc[v.index, "R_tick"])[0, 1] if len(v) > 2 else np.nan))

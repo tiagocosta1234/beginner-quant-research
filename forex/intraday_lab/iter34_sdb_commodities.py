@@ -40,7 +40,7 @@ def main():
         print("trades by symbol:", T.groupby("sym").size().to_dict(), "| pooled", len(T), f"({len(T) / months:.1f} a month)")
         return
     ph = np.where(T.when < "2024-01-01", "dev", np.where(T.when < "2025-01-01", "val", "hold")); T["ph"] = ph; T["y"] = T.when.dt.year
-    T.to_csv("D:/finance/scratch/lab/iter34_trades.csv", index=False)
+    T.to_csv("data/scratch/lab/iter34_trades.csv", index=False)
     dv, vl = T[T.ph == "dev"], T[T.ph == "val"]
     print("per symbol: n | DEV mean (t) | VAL mean (t) | HOLD not shown")
     for s, g in T.groupby("sym"):

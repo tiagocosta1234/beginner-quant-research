@@ -1,6 +1,6 @@
 # DAY2K-E result (2026-10-14): gold, +/-2,000 almost every day, side from new information - NO EDGE
 
-Pre-registration `PREREG_DAY2K_E.md` (commit ae9e4fda), engine `day2ke.py`, cells `D:\finance\si_ledgers\DAY2KE_cells.csv`. Gold only, one trade a day with stop = target small enough that 99.2-99.7% of days end at exactly +2,000 or -2,000 (the trader's "both chances add up to 100%"). HOLD unopened.
+Pre-registration `PREREG_DAY2K_E.md` (commit ae9e4fda), engine `day2ke.py`, cells `data\si_ledgers\DAY2KE_cells.csv`. Gold only, one trade a day with stop = target small enough that 99.2-99.7% of days end at exactly +2,000 or -2,000 (the trader's "both chances add up to 100%"). HOLD unopened.
 
 ## Information used (free; paid feeds not bought)
 Rates from FRED on disk (2-year, 10-year real, breakeven = 10-year - real; lagged 2 business days), CBOE GVZ and VIX (lagged 1 business day), USD strength from the 7 MT5 broker USD pairs at the decision time, flow calendar (days to month end, first day, quarter end, weekday), MT5 USD calendar surprises and upcoming events, price structure. GLD holdings (SPDR archive returns a PDF), Yahoo futures (end 2025-01) and retail sentiment (no free history) were not usable.

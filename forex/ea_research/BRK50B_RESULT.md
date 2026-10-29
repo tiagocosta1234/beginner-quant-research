@@ -1,7 +1,7 @@
 # BRK50B result - 50 more breakout ideas on gold and Nasdaq: 0 pass
 
 Run 2026-10-18 17:31 local (local clock, second PC PC-2). Pre-registration `PREREG_BRK50B.md` (registered 17:27; SHA-256
-a5e81f3b70bd7bc37b8c1c9eedab891d3f7b57b96a4eebd6aa2aac49d9125cfe recorded in `C:\work\scratch\brk50b_prereg.sha256` before any
+a5e81f3b70bd7bc37b8c1c9eedab891d3f7b57b96a4eebd6aa2aac49d9125cfe recorded in `data\scratch\brk50b_prereg.sha256` before any
 P&L, because the trader asked for no more commits on 18 Oct), engine `brk50b.py` (BRK50's `Mkt` engine), dry run `BRK50B_DRYRUN.txt`
 (truncation identical on NSDQ and XAUUSD), output `BRK50B_OUTPUT.txt`, table `BRK50B_SUMMARY.csv`, 50 ledger rows.
 Bars per idea: DEV 2022-24 n >= 100, mean > 0 with t >= 3.09 (Bonferroni for 50), >= 2 of 3 years positive, direction information

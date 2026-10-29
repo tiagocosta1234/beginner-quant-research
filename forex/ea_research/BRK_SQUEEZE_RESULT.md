@@ -1,5 +1,5 @@
 # BRK-SQUEEZE result (breakout day round 26, 2026-10-15 13:43, local clock): squeeze breakouts are no better than random entries
-Pre-registration `PREREG_BRK_SQUEEZE.md`, engine `brk_squeeze.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_SQUEEZE.parquet`. TTM squeeze = Bollinger(20, 2) inside Keltner(20, 1.5 ATR), 6 bars or more, 46 markets.
+Pre-registration `PREREG_BRK_SQUEEZE.md`, engine `brk_squeeze.py` (truncation PASS), rows `data\si_ledgers\BRK_SQUEEZE.parquet`. TTM squeeze = Bollinger(20, 2) inside Keltner(20, 1.5 ATR), 6 bars or more, 46 markets.
 | cell (net R) | DEV | VAL | 2026 | random control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | Q1 M15 squeeze range break (n 31,167 / 11,131 / 7,829) | -0.103 (t -9.5) | -0.100 | -0.108 | -0.092 / -0.117 / -0.095 |

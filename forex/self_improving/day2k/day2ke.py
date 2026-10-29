@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from forex.self_improving.day2k import day2k as D, day2kb as B, day2kd as G
 
 warnings.filterwarnings("ignore")
-MAC = "D:/finance/data_macro/"
+MAC = "data/data_macro/"
 OBJ = ((0, 0.20, "O1-T1005-k0.20"), (1, 0.15, "O2-T1635-k0.15"))   # (T index, k, name)
 D.DEV_T = 2.50
 USD_PAIRS = [("AUDUSD", -1), ("EURUSD", -1), ("GBPUSD", -1), ("NZDUSD", -1), ("USDCAD", 1), ("USDCHF", 1), ("USDJPY", 1)]

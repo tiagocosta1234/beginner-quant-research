@@ -5,7 +5,7 @@ the trader: "add a confluence of having to exist an unmitigated fair value gap b
 tested before only as ENTRIES (ICT grid / ICT3: limit orders at the gap, every model negative in every year). An FVG used as
 a filter that "protects" the stop of a box trade has not been tested.
 
-## Events and trades (identical to BRK_TWOWAY, `brk_twoway.py`, cache `C:\work\scratch\brk_twoway_events.parquet`)
+## Events and trades (identical to BRK_TWOWAY, `brk_twoway.py`, cache `data\scratch\brk_twoway_events.parquet`)
 First touch of the London (08:00-08:30 local) or New York (09:30-10:00 NY) 30-min box high / low, 38 non-crypto MT5 broker,
 2022-01..2026-10-16; decision at the close of the touch minute, entry at the next minute's open, symmetric bracket of one box
 width W (stop and target W from the entry), exit at the session end. FOLLOW = trade in the touch direction; FADE = the

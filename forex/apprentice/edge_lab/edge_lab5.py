@@ -131,7 +131,7 @@ VARS = [(r, b) for r in ("D1", "D2", "D3", "D4") for b in (0.0, 0.5)]
 print(f"{'run':14} {'n':>5} {'TP%':>5} {'R gross':>8} {'R net':>8} {'SE':>6} {'P':>7} {'yrs+':>5}  finalist")
 finalists, best = [], {}
 for sym, (tick, pv) in MARKETS.items():
-    df = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
+    df = pd.read_parquet(f"futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
     df = df[df.index < pd.Timestamp("2024-01-01", tz="UTC")][["open", "high", "low", "close"]]  # hold-out sealed
     days = day_table(df)
     days = [x for x in days if x["date"] <= DEV_END]

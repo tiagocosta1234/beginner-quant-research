@@ -38,7 +38,7 @@ def calm_flags(x: pd.Series, days):
 
 
 def main():
-    J = json.load(open(r"D:\finance\scratch\curves2\pair_stats.json")); days = pd.DatetimeIndex(pd.to_datetime(J["days"])); pnl = pd.Series(J["const"], index=days)
+    J = json.load(open(r"data\scratch\curves2\pair_stats.json")); days = pd.DatetimeIndex(pd.to_datetime(J["days"])); pnl = pd.Series(J["const"], index=days)
     d = gold_daily(); d.index = d.index.normalize(); F = features(d); rows = []; hits = []
     for name, x in F.items():
         calm = calm_flags(x, days)
@@ -51,7 +51,7 @@ def main():
         rows.append(r)
         if all(r[f"on_{ph}"] > r[f"off_{ph}"] for ph, _, _ in PH) and r["t_pooled"] >= 2.5 and r["removed"] <= 0.40:
             hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter19_raw.csv", index=False); print(T.round(2).T.to_string()); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter19_raw.csv", index=False); print(T.round(2).T.to_string()); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
 
 
 if __name__ == "__main__":

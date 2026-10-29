@@ -1,5 +1,5 @@
 # BRK-CLASSICS result (breakout day round 8, 2026-10-15 11:57): the named breakout strategies do not pass either
-Pre-registration `PREREG_BRK_CLASSICS.md`, engine `brk_classics.py`, rows `D:\finance\si_ledgers\BRK_CLASSICS.parquet`. Truncation PASS; hand check NSDQ 2024-06-12 (CPI day): 5-minute ORB long at 09:35 NY +0.94 R, gap-go long +0.48 R, gap-fade short stopped -1 R, Williams 0.5 long -0.27 R, Williams 0.25 long +0.47 R.
+Pre-registration `PREREG_BRK_CLASSICS.md`, engine `brk_classics.py`, rows `data\si_ledgers\BRK_CLASSICS.parquet`. Truncation PASS; hand check NSDQ 2024-06-12 (CPI day): 5-minute ORB long at 09:35 NY +0.94 R, gap-go long +0.48 R, gap-fade short stopped -1 R, Williams 0.5 long -0.27 R, Williams 0.25 long +0.47 R.
 
 | cell (R per trade) | DEV | VAL | 2026 | random control DEV / VAL / 2026 | notes |
 |---|---|---|---|---|---|

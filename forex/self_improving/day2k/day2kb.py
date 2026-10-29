@@ -6,7 +6,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 from forex.self_improving.day2k import day2k as D
 
 warnings.filterwarnings("ignore")
-CAL = pathlib.Path("D:/finance/data_macro/mt5_calendar.csv"); TV = pathlib.Path("D:/finance/ticks_vol")
+CAL = pathlib.Path("data/data_macro/mt5_calendar.csv"); TV = pathlib.Path("data/ticks_vol")
 FEATS = ["m1", "m5", "m20", "am", "pdh", "pdl", "apos", "cs1", "cs5", "surp", "rr", "arng", "spr", "tvr", "nhigh", "dow"]
 SIGNED = ["m1", "m5", "m20", "am", "pdh", "pdl", "apos", "cs1", "cs5", "surp"]
 PRICE_ONLY = [f for f in FEATS if f not in ("surp", "nhigh", "tvr")]

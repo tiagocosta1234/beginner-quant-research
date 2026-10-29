@@ -1,5 +1,5 @@
 # SWAPFREE_D2X_RESULT - a wider swap-free book does not beat D2 (2026-10-15, local clock 15:26)
-Pre-registration `PREREG_SWAPFREE_D2X.md` (commit f766225f). Code `swapfree_d2x.py`, output `D2X_OUTPUT.txt`, rows `D:/finance/si_ledgers/D2X_RUN.csv`. HOLD not opened (no variant passed).
+Pre-registration `PREREG_SWAPFREE_D2X.md` (commit f766225f). Code `swapfree_d2x.py`, output `D2X_OUTPUT.txt`, rows `data/si_ledgers/D2X_RUN.csv`. HOLD not opened (no variant passed).
 
 ## Verdict: 0 of 3; D2 stays the candidate
 | variant | OOT 2020-21 (MT5 broker D1) | DEV 2022-24 | VAL 2025 | DEV+VAL t (bar 2.13) | Sharpe DEV / VAL (must beat REF) |

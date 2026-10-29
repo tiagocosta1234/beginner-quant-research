@@ -22,7 +22,7 @@ SESS_HRS = {"LON": ("Europe/London", 8, 17), "NY": ("America/New_York", 9, 16)}
 def load_hd(sym, spread):
     code = HD.get(sym, sym); frames = []
     for yr in (2020, 2021):
-        z = zipfile.ZipFile(f"D:/finance/data_histdata/DAT_ASCII_{code}_M1_{yr}.zip")
+        z = zipfile.ZipFile(f"data/data_histdata/DAT_ASCII_{code}_M1_{yr}.zip")
         name = [n for n in z.namelist() if n.lower().endswith(".csv")][0]
         frames.append(pd.read_csv(io.BytesIO(z.read(name)), sep=";", header=None, names=["dt", "bo", "bh", "bl", "bc", "v"]))
     d = pd.concat(frames)
@@ -58,7 +58,7 @@ def run_pick(name, sess, cls, trig, filt):
     by_m = X.groupby("mkt").rh.agg(["size", "mean"]).round(3)
     print(f"{name}: {trig} {sess} {cls}, {len(syms)} markets, {len(X)} trades on {len(d)} days | daily mean {d.mean():+.3f} R, t {t:+.2f} | by year {yrs} | random same days {dc.mean():+.3f} | PASS {ok}")
     print("   per market:", {m: (int(r['size']), r['mean']) for m, r in by_m.iterrows()})
-    X.to_parquet(f"D:/finance/si_ledgers/ORB11_ENTRY_OOT_{name.split()[0]}.parquet")
+    X.to_parquet(f"data/si_ledgers/ORB11_ENTRY_OOT_{name.split()[0]}.parquet")
     return ok
 
 

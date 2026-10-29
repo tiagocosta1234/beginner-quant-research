@@ -1,5 +1,5 @@
 # INDEX-OOS result (breakout day round 7, 2026-10-15 11:54): today's index-breakout leads do NOT replicate on new indices
-Pre-registration `PREREG_INDEX_OOS.md` (hypotheses frozen from MT5 broker indices before these markets were loaded), engine `index_oos.py`, rows `D:\finance\si_ledgers\INDEX_OOS.parquet`. Markets never used today: UK100 (FTSE), FRA40 (CAC 40), US2000 (Russell 2000), MT5 broker M1 bid/ask 2022-01..2026-10-02. Truncation PASS on all three; session clocks checked (fills at 08:30 London, 09:30 Paris, 10:00 New York).
+Pre-registration `PREREG_INDEX_OOS.md` (hypotheses frozen from MT5 broker indices before these markets were loaded), engine `index_oos.py`, rows `data\si_ledgers\INDEX_OOS.parquet`. Markets never used today: UK100 (FTSE), FRA40 (CAC 40), US2000 (Russell 2000), MT5 broker M1 bid/ask 2022-01..2026-10-02. Truncation PASS on all three; session clocks checked (fills at 08:30 London, 09:30 Paris, 10:00 New York).
 
 | hypothesis | trades | mean R (t) | random control | per market | by year 2022 / 23 / 24 / 25 / 26 | gates |
 |---|---|---|---|---|---|---|

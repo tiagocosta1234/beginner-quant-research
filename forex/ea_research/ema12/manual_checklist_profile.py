@@ -4,7 +4,7 @@ Coded: TYPE A = cross candle with body > sum of wicks and close-side wick <= CW 
 import numpy as np, pandas as pd
 from ema12_test import open_min
 F = pd.read_csv("FXREPLAY_TRADES_2026-10-20.csv"); F["tm"] = pd.to_datetime(F.chart_entry); F = F[F.side.isin(["Buy", "Sell"])].copy()
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+d = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
 M = pd.DataFrame(dict(lis=pd.to_datetime(d.t, unit="s") - pd.Timedelta(hours=2), o=(d.bo + d.ao) / 2, h=(d.bh + d.ah) / 2, l=(d.bl + d.al) / 2, c=(d.bc + d.ac) / 2)); M["ema"] = M.c.ewm(span=12, adjust=False).mean()
 M["atr"] = (M.h - M.l).rolling(14).mean().shift(1); idx = {t: i for i, t in enumerate(M.lis)}; o, h, l, c, e, atr = (M[k].to_numpy() for k in ("o", "h", "l", "c", "ema", "atr"))
 def cross(i): return (o[i] - e[i]) * (c[i] - e[i]) < 0

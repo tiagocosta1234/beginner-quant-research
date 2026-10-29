@@ -67,13 +67,13 @@ def main():
             key = (mode, add)
             if key not in cache: cache[key] = variant_tr(TRN, mode, add)
             S.BOOST = bo; o = m(S.run(*cache[key], L, m0, k, r, h)); rows.append(dict(boost=bo, mode=str(mode), add=str(add), **o))
-        S.BOOST = 0.0; d = pd.DataFrame(rows); d.to_csv(f"D:/finance/si_ledgers/SESSION_mgmt_train_{bn}.csv", index=False)
+        S.BOOST = 0.0; d = pd.DataFrame(rows); d.to_csv(f"data/si_ledgers/SESSION_mgmt_train_{bn}.csv", index=False)
         ok = d[(d.breach <= 10) & (d.ratio >= b["ratio"])].sort_values("up", ascending=False).head(3); print(bn, "admissible", int(((d.breach <= 10) & (d.ratio >= b["ratio"])).sum()), "of", len(d)); print(ok.round(1).to_string(index=False), flush=True)
         S.BOOST = 0.0; final.append(dict(base=bn, variant="BASE", **m(S.run(*MT5, L, m0, k, r, h))))
         for t in ok.itertuples():
             mode = None if t.mode == "None" else t.mode; add = None if t.add == "None" else eval(t.add); S.BOOST = t.boost
             final.append(dict(base=bn, variant=f"boost {t.boost} runner {t.mode} addon {t.add}", **m(S.run(*variant_tr(MT5, mode, add), L, m0, k, r, h)))); S.BOOST = 0.0
-    o = pd.DataFrame(final); o.to_csv("D:/finance/si_ledgers/SESSION_mgmt_test.csv", index=False); print(o.round(1).to_string(index=False))
+    o = pd.DataFrame(final); o.to_csv("data/si_ledgers/SESSION_mgmt_test.csv", index=False); print(o.round(1).to_string(index=False))
 
 
 if __name__ == "__main__":

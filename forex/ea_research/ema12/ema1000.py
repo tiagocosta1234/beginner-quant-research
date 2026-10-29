@@ -4,7 +4,7 @@ python ema1000.py --run [W]     the 46,000 trial series on W worker processes (d
 import sys, os, glob, itertools, datetime as dt, time
 import numpy as np, pandas as pd
 from ema12_test import open_min
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5"; MARKETS = sorted(os.path.basename(f).replace("_M1_rates.parquet", "") for f in glob.glob(DATA + "/*_M1_rates.parquet"))
+DATA = "forex/data_mt5"; MARKETS = sorted(os.path.basename(f).replace("_M1_rates.parquet", "") for f in glob.glob(DATA + "/*_M1_rates.parquet"))
 AXES = (("ema", (8, 12, 20)), ("tf", (1, 3, 5)), ("body", ("none", "wick", "wick_atr")), ("win", (15, 30, 60)), ("tgt", ("K1", "K2", "K3", "SW", "ATR1")), ("stop", (1.5, 2.0, 3.0)), ("ses", ("London", "NY")), ("trend", ("none", "m30")))
 GRID = list(itertools.product(*[v for _, v in AXES])); assert len(GRID) == 4860
 PICK = np.sort(np.random.default_rng(20261020).choice(len(GRID), 1000, replace=False)); VARIANTS = [dict(id=i, **dict(zip([k for k, _ in AXES], GRID[g]))) for i, g in enumerate(PICK)]

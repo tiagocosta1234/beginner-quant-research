@@ -1,5 +1,5 @@
 # BRK-RETEST result (breakout day round 2, 2026-10-15 11:42): retests and failed breakouts are worse than the plain stop order
-Pre-registration `PREREG_BRK_RETEST.md`, engine `brk_retest.py` (one fix after the first dry-run, before any P&L: stops of zero distance (bid = ask) are skipped; a speed fix computed the mid closes once), rows `D:\finance\si_ledgers\BRK_RETEST.parquet`. Truncation PASS; hand check NSDQ 2024-06-12: R1 retest-limit long filled 17:44 server, R2 confirmed long 17:50, both stopped (-1 R).
+Pre-registration `PREREG_BRK_RETEST.md`, engine `brk_retest.py` (one fix after the first dry-run, before any P&L: stops of zero distance (bid = ask) are skipped; a speed fix computed the mid closes once), rows `data\si_ledgers\BRK_RETEST.parquet`. Truncation PASS; hand check NSDQ 2024-06-12: R1 retest-limit long filled 17:44 server, R2 confirmed long 17:50, both stopped (-1 R).
 
 | cell (net R per trade) | DEV | VAL | 2026 | random control DEV / VAL | indices DEV / VAL / 2026 |
 |---|---|---|---|---|---|

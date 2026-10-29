@@ -2,7 +2,7 @@
 (the earlier MT5 broker minute files lack tick_volume). Same safety rules as ticks_pull.py: only initialize / terminal_info / account_info / symbols_get / symbol_info / copy_rates_range / shutdown; aborts if algo trading is allowed.
 Run it ONLY when the live account is not running on this PC (main PC idle) and the trader is not trading by hand.
    python -m forex.self_improving.hf.rates_pull [--symbols EURUSD,XAUUSD] [--start 2021-12-01] [--end 2026-08-15]
-Output: D:\\finance\\ticks_vol\\<SYMBOL>.parquet with time (UTC s), tick_volume, spread, real_volume (bars only up to --end: the sealed HOLD is not exported)."""
+Output: data\\ticks_vol\\<SYMBOL>.parquet with time (UTC s), tick_volume, spread, real_volume (bars only up to --end: the sealed HOLD is not exported)."""
 import sys
 ARGV = sys.argv[1:]
 
@@ -16,8 +16,8 @@ import MetaTrader5 as mt5
 
 from forex.self_improving import platform_v3 as P3
 
-TERMINAL = r"D:\finance\mt5_mt5_tester\terminal64.exe"
-OUT = Path("D:/finance/ticks_vol"); OUT.mkdir(parents=True, exist_ok=True)
+TERMINAL = r"data\mt5_mt5_tester\terminal64.exe"
+OUT = Path("data/ticks_vol"); OUT.mkdir(parents=True, exist_ok=True)
 
 
 def broker_name(base):

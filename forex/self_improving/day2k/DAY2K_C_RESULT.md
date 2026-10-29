@@ -1,6 +1,6 @@
 # DAY2K-C result (2026-10-14): the daily 1:1 / 2,000 USD trade over all 46 MT5 broker - NO EDGE
 
-Pre-registration `PREREG_DAY2K_C.md` (commits 88a35eb9, amendment A1 ab850ae6), engine `day2kc.py`, cells `D:\finance\si_ledgers\DAY2KC_cells.csv`, yardsticks `DAY2KC_yardsticks.csv`. 28 FX + gold, silver, Brent, WTI, SP, NSDQ, DOW, DAX, NIKKEI, ASX + 8 cryptos; up to 92 candidates a day. HOLD unopened.
+Pre-registration `PREREG_DAY2K_C.md` (commits 88a35eb9, amendment A1 ab850ae6), engine `day2kc.py`, cells `data\si_ledgers\DAY2KC_cells.csv`, yardsticks `DAY2KC_yardsticks.csv`. 28 FX + gold, silver, Brent, WTI, SP, NSDQ, DOW, DAX, NIKKEI, ASX + 8 cryptos; up to 92 candidates a day. HOLD unopened.
 
 ## Gates
 Truncation 40/40 (non-FX included). Oracle side (rules) +0.35..+0.65 R; ML with the label leaked +0.93..+1.00 R. Placebo worlds: rules 101-103 and ML 111-113: 0 survivors in all six. A1 (before any P&L): FX-only currency-strength features, empty in this universe, removed from the ML list after they crashed the first calibration.

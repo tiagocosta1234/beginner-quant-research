@@ -6,7 +6,7 @@ import numpy as np, pandas as pd
 from forex.ea_research import nq3 as N, combo_grid as G, dip_addon as DA
 from forex.ea_research.event_macro import server_s
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
 cx = N.Ctx(); T3 = pd.DataFrame(N.s3(cx)); DA.RISK = 500.0; Tk, bb = DA.trades(); Tk, Dd = DA.day_arrays(Tk, bb); Dd = Dd * 0.75
 GUARD = 1500.0; ACC = 100000.0
 rows = []

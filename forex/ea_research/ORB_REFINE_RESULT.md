@@ -1,5 +1,5 @@
 # ORB-REFINE result (2026-10-15 ~10:40 local): six refinements of the card's two breakouts - none passes; one lead
-Pre-registration `PREREG_ORB_REFINE.md` (commit 6a0a66c7), engine `orb_refine.py`, trades `D:\finance\si_ledgers\ORB_REFINE_<MKT>.parquet`, cells `ORB_REFINE_cells.csv`. 2026 never loaded.
+Pre-registration `PREREG_ORB_REFINE.md` (commit 6a0a66c7), engine `orb_refine.py`, trades `data\si_ledgers\ORB_REFINE_<MKT>.parquet`, cells `ORB_REFINE_cells.csv`. 2026 never loaded.
 Dry-run: truncation test PASS both markets; hand check 2024-06-12: gold box 2,311.96-2,315.36, short filled 2,311.96 at 10:34 server (stop 3.40 = the box); Nasdaq box 19,343.92-19,474.42, long filled 19,474.42 at 17:14 server = 10:14 NY (stop 65.25 = half the box).
 
 ## What the card's two trades did (base, net R per trade, all days)

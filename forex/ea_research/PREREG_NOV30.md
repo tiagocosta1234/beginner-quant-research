@@ -32,7 +32,7 @@ equity <= 92,000; counted profit adds min(day, +2,000); pass = counted >= +8,000
 3. For the max-pass configuration and the best pass-per-breach configuration: the same with 70% of the pair's edge (each pair
    day shifted down by 0.3 x the pool's mean pair day), two bootstrap seeds, and P(pass) by 22 Dec.
 4. Engine checks first: `pass70.simulate` on the pair alone reproduces `PAIR_FROM_TODAY_RESULT.md` from its own start state;
-   the USDJPY-only configuration reproduces the second PC run (`C:\work\scratch\pass_by_nov.txt`, ~1% by 30 Nov at $500).
+   the USDJPY-only configuration reproduces the second PC run (`data\scratch\pass_by_nov.txt`, ~1% by 30 Nov at $500).
 
 ## Honest prior
 The best configuration is expected around 10-25% by 30 Nov (MIX), with breach of the same order or higher; 70% is not

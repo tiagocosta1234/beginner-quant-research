@@ -1,6 +1,6 @@
 # P: CFTC COT positioning on 13 MT5 broker: result (2026-10-10, local local clock)
 
-Pre-registration `PREREG_COT.md` (commit 777a2ae, before download), script `cot.py`, data `D:\finance\data_macro\cot\` (CFTC legacy futures-only 2020-2026), output `COT_OUTPUT.txt`. Hold-out NOT opened.
+Pre-registration `PREREG_COT.md` (commit 777a2ae, before download), script `cot.py`, data `data\data_macro\cot\` (CFTC legacy futures-only 2020-2026), output `COT_OUTPUT.txt`. Hold-out NOT opened.
 
 ## Verdict: both trials fail acceptance 1
 | trial | DEV 2021-24 | VAL 2025 |

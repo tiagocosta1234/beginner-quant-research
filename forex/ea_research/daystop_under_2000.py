@@ -37,7 +37,7 @@ def news_flat(tr, events, bars):
 
 def news_test(stop=1700.0):
     from forex.ea_research.event_macro import server_s
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     ev = sorted(server_s(r.date, 8, 30) if r.kind in ("CPI", "NFP") else server_s(r.date, 14, 0) for r in cal.itertuples() if r.kind in ("CPI", "NFP", "FOMC"))
     ev = np.array(ev); res = {}; info = []
     for pool in ("MT5", "FT"):

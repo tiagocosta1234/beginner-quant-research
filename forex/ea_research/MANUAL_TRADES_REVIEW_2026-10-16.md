@@ -2,8 +2,8 @@
 
 the trader: "open notion and try to learn what im doing wrong on my trades, detect what divides a losing setup from a winning
 setup". Read-only via Notion's own API from the logged-in browser tab (no edits). Descriptive review, not a registered
-trial. Scripts: `C:\work\scratch\manual_trades\gold_practice.py` (+ inline analysis), trades cached in
-`C:\work\scratch\manual_trades\gold_practice.parquet`.
+trial. Scripts: `data\scratch\manual_trades\gold_practice.py` (+ inline analysis), trades cached in
+`data\scratch\manual_trades\gold_practice.parquet`.
 
 ## The table (115 rows)
 | | wins | losses | other | win rate |
@@ -63,7 +63,7 @@ the late-trigger subset has the best pass/breach ratio but it is selected after 
 ## Addendum: the Nasdaq trades (dated from the screenshots, `MANUAL_NQ_DATES.csv`)
 54 of 56 NSDQ rows dated by matching each chart's box levels to MT5 broker's NSDQ boxes: 23 trades 15 May - 1 Jun 2026, 31 trades
 7 Sep - 6 Oct 2023 (FX Replay's feed is ~15-25 points below MT5 broker after the Sep-2023 futures roll); rows 49 and 53 unresolved.
-Rule rebuilt from the charts (`C:\work\scratch\manual_trades\nq_practice.py`): 30-min box (London 08:00-08:30 local / New York
+Rule rebuilt from the charts (`data\scratch\manual_trades\nq_practice.py`): 30-min box (London 08:00-08:30 local / New York
 09:30-10:00 NY), first break, SL at the box midpoint, TP 1:1, exit 17:00 local / 16:00 NY. It reproduces 45 of 54 win/loss
 results (his stop is not always exactly at the midpoint); he took the first break on 46 of 54 (8 reversals / other side).
 

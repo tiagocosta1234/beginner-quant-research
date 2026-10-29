@@ -29,7 +29,7 @@ def pair_legs() -> dict:
 
 def streams() -> pd.DataFrame:
     S = pair_legs()
-    F = pd.read_parquet("D:/finance/tmp/factory_daily.parquet"); F.index = pd.to_datetime(F.index)
+    F = pd.read_parquet("data/tmp/factory_daily.parquet"); F.index = pd.to_datetime(F.index)
     for c in F.columns: S[f"F_{c}"] = on_cal(F[c])
     G = NG.grid("2026-09-30")
     for c in G.columns: S[f"N_{c}"] = on_cal(G[c] * 10.0)                                   # bp per 100K -> USD

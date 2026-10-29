@@ -1,5 +1,5 @@
 # BRK-MT5SIM (breakout day round 14, 2026-10-15 12:16): what the least-bad breakout systems would do on the MT5 broker account from today
-Script `brk_mt5sim.py`, table `D:\finance\si_ledgers\BRK_MT5SIM.csv`. Start = today's balance 97,708.08 (counted -2,291.92): pass = counted +8,000 (+10,291.92 more; at most +2,000 counted a day), breach = static floor 92,000 or a -2,500 day (daily sums: intraday breaches with several trades a day are understated). Block bootstrap (5-day blocks) of business days from the recent pool (2025-26) and from all 2022-26. These series come from today's searches (leads, not validated edges), so the odds are optimistic.
+Script `brk_mt5sim.py`, table `data\si_ledgers\BRK_MT5SIM.csv`. Start = today's balance 97,708.08 (counted -2,291.92): pass = counted +8,000 (+10,291.92 more; at most +2,000 counted a day), breach = static floor 92,000 or a -2,500 day (daily sums: intraday breaches with several trades a day are understated). Block bootstrap (5-day blocks) of business days from the recent pool (2025-26) and from all 2022-26. These series come from today's searches (leads, not validated edges), so the odds are optimistic.
 
 | system, risk per trade | pass by 30 Oct | breach by 30 Oct | pass by 22 Dec | breach by 22 Dec | pass by 31 Mar 2027 | breach by 31 Mar 2027 |
 |---|---|---|---|---|---|---|

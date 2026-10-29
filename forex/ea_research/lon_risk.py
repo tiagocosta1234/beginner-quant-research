@@ -52,7 +52,7 @@ def main():
                         p30, b30 = vec_cycles(n_ * X, n_ * X, dsub, s30, 30)
                         p90, b90_ = vec_cycles(n_ * X, n_ * X, dsub, s90, 90)
                         rows.append(dict(combo="+".join(combo), k=k, scheme=scheme, X=int(X), win=w, p30=p30.mean(), b30=b30.mean(), p90=p90.mean(), b90=b90_.mean()))
-    R = pd.DataFrame(rows); R.to_csv("D:/finance/si_ledgers/LON_RISK.csv", index=False)
+    R = pd.DataFrame(rows); R.to_csv("data/si_ledgers/LON_RISK.csv", index=False)
     P = R.pivot_table(index=["combo", "k", "scheme", "X"], columns="win", values=["p30", "b30", "p90", "b90"])
     P.columns = [f"{a}_{b}" for a, b in P.columns]; P = P.reset_index()
     # engine check against the loop version on one cell

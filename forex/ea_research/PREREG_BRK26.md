@@ -8,7 +8,7 @@ Ultimate Oscillator, Fisher transform, Mass Index, DPO, KST, Elder Ray, Hull MA,
 DeMark TD setup / TDST, Ichimoku kumo twist, Chaikin volatility, regression slope turns, Schaff Trend Cycle, RVI, Balance of Power,
 inside-outside-inside days, three-bar reversals, marubozu bars or Al Brooks' High 2 (the hits were "matrix", "chandelier", Chaikin
 money FLOW). Engulfing candles WERE tested (Broker-era round 222) and are left out. One family of FIXED rules, Bonferroni for 26.
-**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `C:\work\scratch\brk26_prereg.sha256` before any P&L.
+**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `data\scratch\brk26_prereg.sha256` before any P&L.
 
 ## Common rules
 Exactly BRK30's: `brk50.Mkt` fills / rollover ban / mirror / R; H1 / H4 server-grid bars from minute mids (open = first mid);

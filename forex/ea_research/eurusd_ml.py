@@ -78,7 +78,7 @@ wopen = Dd.o.reindex(mon, method="bfill").to_numpy()
 F["weekly"] = (pn - wopen) / P.atr.to_numpy()
 F["intraday"] = (pn / EU.m(np.array([int(x.timestamp()) + 3600 + 300 for x in dates])) - 1) * 1e4
 # tick volume
-vol = pd.read_parquet("D:/finance/ticks_vol/EURUSD.parquet").set_index("time").tick_volume
+vol = pd.read_parquet("data/ticks_vol/EURUSD.parquet").set_index("time").tick_volume
 vol = vol[vol.index < END.timestamp()]
 VT, VC = vol.index.to_numpy(), np.r_[0, np.cumsum(vol.to_numpy().astype(float))]
 vsum = lambda a, b: VC[np.searchsorted(VT, b)] - VC[np.searchsorted(VT, a)]
@@ -104,7 +104,7 @@ for m in ("SP", "NSDQ", "XAUUSD", "USDJPY"):
     for h in (4, 24):
         F[f"{m}_{h}"] = (o.m(now) / o.m(now - h * 3600) - 1) * 1e4
 # calendar
-cal = pd.read_csv("D:/finance/data_macro/mt5_calendar.csv", encoding="latin-1")
+cal = pd.read_csv("data/data_macro/mt5_calendar.csv", encoding="latin-1")
 cal = cal[(cal.importance == 3) & cal.currency.isin(["USD", "EUR"])]
 cal["utc"] = pd.to_datetime(cal.time, format="%Y.%m.%d %H:%M:%S")
 srv = pd.DatetimeIndex(np.sort(cal.utc.unique())).tz_localize("UTC").tz_convert("Europe/Athens").tz_localize(None)

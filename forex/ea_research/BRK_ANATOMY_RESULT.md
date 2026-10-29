@@ -1,5 +1,5 @@
 # BRK-ANATOMY (breakout day round 9, 2026-10-15 11:58, descriptive): what happens after a session breakout on MT5 broker
-Script `brk_anatomy.py`, rows `D:\finance\si_ledgers\BRK_ANATOMY.parquet`, chart `D:\finance\scratch\charts\BRK_ANATOMY.png`. Same ~54,000 session opening-range breakouts as round 1 (46 markets, 2022-2026-10-02), each compared with a random entry in the same window with the same stop distance. R = distance to the other side of the 30-minute box.
+Script `brk_anatomy.py`, rows `data\si_ledgers\BRK_ANATOMY.parquet`, chart `data\scratch\charts\BRK_ANATOMY.png`. Same ~54,000 session opening-range breakouts as round 1 (46 markets, 2022-2026-10-02), each compared with a random entry in the same window with the same stop distance. R = distance to the other side of the 30-minute box.
 
 | | breakout | random entry |
 |---|---|---|

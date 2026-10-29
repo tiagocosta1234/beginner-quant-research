@@ -7,7 +7,7 @@ from forex.ea_research.orbx import ct, CRYPTO
 from forex.ea_research.analog import mclass
 
 DATA = "forex/data_mt5/"
-CACHE = "C:/work/scratch/brk50_trades.parquet"
+CACHE = "data/scratch/brk50_trades.parquet"
 DEV, VAL, HOLD = ("2022-01-01", "2025-01-01"), ("2025-01-01", "2026-01-01"), ("2026-01-01", "2026-10-17")
 LIS, NYZ, JST, SYD, UTC = "Europe/London", "America/New_York", "Asia/Tokyo", "Australia/Sydney", "UTC"
 H = 3600

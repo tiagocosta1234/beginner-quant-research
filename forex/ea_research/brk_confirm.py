@@ -9,7 +9,7 @@ from forex.ea_research.analog import mclass
 
 SRV, LIS, NY = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London"), ZoneInfo("America/New_York")
 DATA = "forex/data_mt5/"
-CACHE = "C:/work/scratch/brk_confirm_trades.parquet"
+CACHE = "data/scratch/brk_confirm_trades.parquet"
 DEV, VAL, HOLD = ("2022-01-01", "2025-01-01"), ("2025-01-01", "2026-01-01"), ("2026-01-01", "2026-10-17")
 MODES = {"TOUCH": None, "C5": 5, "C15": 15}
 TRIALS = [("LDN", "C5"), ("LDN", "C15"), ("NY", "C5"), ("NY", "C15")]

@@ -1,6 +1,6 @@
 # ManualFVG (ICT fair value gap, DAX) in the MT5 Strategy Tester on MT5 broker real ticks (2026-10-12)
 
-EA `forex/expert_advisors/ManualFVG.mq5` (0 errors / 0 warnings, portable tester `D:\finance\mt5_mt5_tester`, never on the live terminal), DAX+, M15, Model=4 every tick based on real ticks, 2025-10-01 .. 2026-09-30, deposit 100,000, InpRiskUSD = 500. Pre-registration: PREREG_ICT_SCAN.md addendum. Runner `verify_manualfvg_mt5.py`, raw log `MANUALFVG_TESTER_LOG.txt`.
+EA `forex/expert_advisors/ManualFVG.mq5` (0 errors / 0 warnings, portable tester `data\mt5_mt5_tester`, never on the live terminal), DAX+, M15, Model=4 every tick based on real ticks, 2025-10-01 .. 2026-09-30, deposit 100,000, InpRiskUSD = 500. Pre-registration: PREREG_ICT_SCAN.md addendum. Runner `verify_manualfvg_mt5.py`, raw log `MANUALFVG_TESTER_LOG.txt`.
 
 | Run | Gaps placed | Trades | Win | Net | PF | Avg per trade | Worst day | Realised max drawdown |
 |---|---|---|---|---|---|---|---|---|

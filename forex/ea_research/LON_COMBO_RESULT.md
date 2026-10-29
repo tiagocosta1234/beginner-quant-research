@@ -1,5 +1,5 @@
 # LON_COMBO_RESULT - MT5 broker cycles of the 7 kept London rules, alone and in all 127 combinations (2026-10-15, local clock 21:38)
-Pre-registration PREREG_LON_COMBO.md (commit at 21:35); code lon_combo.py; output LON_COMBO_OUTPUT.txt; table D:/finance/si_ledgers/LON_COMBO.csv (127 combinations x 3 sizes x 2 daily-line modes).
+Pre-registration PREREG_LON_COMBO.md (commit at 21:35); code lon_combo.py; output LON_COMBO_OUTPUT.txt; table data/si_ledgers/LON_COMBO.csv (127 combinations x 3 sizes x 2 daily-line modes).
 
 ## Verdict: no symbol or combination passes the account in a month; 0 of 381 combination-size cells pass more than they breach in both 2020-21 and 2022-25
 1. **Each symbol alone (pass / breach within 30 days of a start, optimistic line):** 0% / 0% for every symbol at $250 and $500 a trade in 2026; at $1,000 a trade the best is USDJPY 1.1% / 2.1% in 2026 (2020-21: 0.3% / 17.3%). One trade a day at most per symbol cannot make 8% in 30 days without sizes that breach.

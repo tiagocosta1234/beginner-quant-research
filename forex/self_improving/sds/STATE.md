@@ -30,15 +30,15 @@ Rendered by sds/loop.py. Nothing here is applied to the account; candidates are 
 - L11 (2026-10-13) [*] The research package never places orders and never arms Algo Trading; live changes are proposals for the trader's hand.
 
 ## Last 12 events
-- 2026-10-13 09:45 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo104_037cb7e9ff5b.log", "passes": 0, "seed": 104}
-- 2026-10-13 09:46 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo105_037cb7e9ff5b.log", "passes": 0, "seed": 105}
-- 2026-10-13 09:46 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo106_037cb7e9ff5b.log", "passes": 0, "seed": 106}
-- 2026-10-13 09:47 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo107_037cb7e9ff5b.log", "passes": 0, "seed": 107}
-- 2026-10-13 09:48 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo108_037cb7e9ff5b.log", "passes": 0, "seed": 108}
-- 2026-10-13 09:49 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo109_037cb7e9ff5b.log", "passes": 0, "seed": 109}
-- 2026-10-13 09:50 ml placebo {"code_hash": "037cb7e9ff5b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_placebo110_037cb7e9ff5b.log", "passes": 0, "seed": 110}
-- 2026-10-13 09:50 ml real {"candidate": null, "code_hash": "037cb7e9ff5b", "data_hash": "da39a3ee5e", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_ml_real_037cb7e9ff5b.log", "passes": 0, "verdict": "NO
-- 2026-10-13 10:06 hf placebo {"code_hash": "bff3ff48af6b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_hf_placebo304_bff3ff48af6b.log", "passes": 0, "seed": 304}
-- 2026-10-13 10:07 hf placebo {"code_hash": "bff3ff48af6b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_hf_placebo305_bff3ff48af6b.log", "passes": 0, "seed": 305}
-- 2026-10-13 10:09 hf placebo {"code_hash": "bff3ff48af6b", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_hf_placebo306_bff3ff48af6b.log", "passes": 0, "seed": 306}
-- 2026-10-13 10:10 hf real {"candidate": null, "code_hash": "bff3ff48af6b", "data_hash": "d8b92c8d07", "log": "D:\\finance\\beginner-quant-research\\mt5\\self_improving\\sds\\logs\\sds_hf_real_bff3ff48af6b.log", "passes": 0, "verdict": "NO
+- 2026-10-13 09:45 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo104_037cb7e9ff5b.log", "passes": 0, "seed": 104}
+- 2026-10-13 09:46 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo105_037cb7e9ff5b.log", "passes": 0, "seed": 105}
+- 2026-10-13 09:46 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo106_037cb7e9ff5b.log", "passes": 0, "seed": 106}
+- 2026-10-13 09:47 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo107_037cb7e9ff5b.log", "passes": 0, "seed": 107}
+- 2026-10-13 09:48 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo108_037cb7e9ff5b.log", "passes": 0, "seed": 108}
+- 2026-10-13 09:49 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo109_037cb7e9ff5b.log", "passes": 0, "seed": 109}
+- 2026-10-13 09:50 ml placebo {"code_hash": "037cb7e9ff5b", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_placebo110_037cb7e9ff5b.log", "passes": 0, "seed": 110}
+- 2026-10-13 09:50 ml real {"candidate": null, "code_hash": "037cb7e9ff5b", "data_hash": "da39a3ee5e", "log": "mt5\\self_improving\\sds\\logs\\sds_ml_real_037cb7e9ff5b.log", "passes": 0, "verdict": "NO
+- 2026-10-13 10:06 hf placebo {"code_hash": "bff3ff48af6b", "log": "mt5\\self_improving\\sds\\logs\\sds_hf_placebo304_bff3ff48af6b.log", "passes": 0, "seed": 304}
+- 2026-10-13 10:07 hf placebo {"code_hash": "bff3ff48af6b", "log": "mt5\\self_improving\\sds\\logs\\sds_hf_placebo305_bff3ff48af6b.log", "passes": 0, "seed": 305}
+- 2026-10-13 10:09 hf placebo {"code_hash": "bff3ff48af6b", "log": "mt5\\self_improving\\sds\\logs\\sds_hf_placebo306_bff3ff48af6b.log", "passes": 0, "seed": 306}
+- 2026-10-13 10:10 hf real {"candidate": null, "code_hash": "bff3ff48af6b", "data_hash": "d8b92c8d07", "log": "mt5\\self_improving\\sds\\logs\\sds_hf_real_bff3ff48af6b.log", "passes": 0, "verdict": "NO

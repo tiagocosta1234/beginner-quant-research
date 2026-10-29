@@ -3,7 +3,7 @@
 import numpy as np, pandas as pd
 from forex.ea_research.best3m_cycle import cycle
 from forex.ea_research.analog import mclass
-T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet")
+T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet")
 X = T[(T.sess == "LON") & (T.trig == "TOUCH")].copy()
 lt = pd.to_datetime(X.t_entry, unit="s").dt.tz_localize("Europe/Athens", ambiguous="NaT", nonexistent="NaT").dt.tz_convert("Europe/London")
 X = X[(lt.dt.hour < 11).to_numpy() & (X.day <= "2026-10-02").to_numpy()]

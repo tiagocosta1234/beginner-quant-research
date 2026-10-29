@@ -18,7 +18,7 @@ DEV = ("2022-07-01", "2024-12-31")
 VAL = ("2025-01-01", "2025-12-31")
 YEARS = (("2022H2", "2022-07-01", "2022-12-31"), ("2023", "2023-01-01", "2023-12-31"),
          ("2024", "2024-01-01", "2024-12-31"), ("2025", "2025-01-01", "2025-12-31"))
-OUT = Path("D:/finance/si_ledgers")
+OUT = Path("data/si_ledgers")
 SYMS = sorted(Path(p).name.replace("_M1_rates.parquet", "") for p in glob.glob("forex/data_mt5/*_M1_rates.parquet"))
 
 

@@ -15,7 +15,7 @@ the trader 2026-10-14: "we cant invest anymore money, everything has to be local
 | quarantine of bad data | the harness drops no source silently: the MT5 broker bars were already cleaned (bid/ask checked, duplicates removed) |
 | costs: 0.1% per round trip | real MT5 broker bid/ask at every position change + 0.1 bp slippage; no changes in the 23:00-00:59 server window |
 | cost per run | tokens only, $0 (local) |
-| scoreboard | `--board` (and `D:\finance\llm_bench\results\*.json`) |
+| scoreboard | `--board` (and `data\llm_bench\results\*.json`) |
 
 Gates per lane: G1 valid output on all sources, G2 causal (the future is cut and the positions must not change), G3 active but not hyperactive (median >= 20 trades, < 0.2 changes per bar), G4 median holdout net > 0, G5 holdout positive in >= 60% of sources, G6 beats buy-and-hold in >= 60% of sources, G7 placebo >= 90%, G8 profitable in BOTH train and holdout in >= 60% of sources.
 
@@ -26,4 +26,4 @@ Gates per lane: G1 valid output on all sources, G2 causal (the future is cut and
 - 2026 stays sealed: the data stops at 2025-12-31, so nothing this bench finds has touched the unread 2026 period.
 
 ## Files
-`data.py` (builds the sources into D:/finance/llm_bench/data), `sandbox.py` (runs model code in a separate interpreter: AST allow-list, only numpy/pandas/math, no file/network access, 240 s timeout), `harness.py` (costs, rollover rule, gates, placebo, causality), `runner.py` (Ollama loop, controls, scoreboard).
+`data.py` (builds the sources into data/llm_bench/data), `sandbox.py` (runs model code in a separate interpreter: AST allow-list, only numpy/pandas/math, no file/network access, 240 s timeout), `harness.py` (costs, rollover rule, gates, placebo, causality), `runner.py` (Ollama loop, controls, scoreboard).

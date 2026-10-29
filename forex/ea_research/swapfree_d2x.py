@@ -18,7 +18,7 @@ ALL = VAR["X3"]
 
 
 def ft_daily(m, spread):
-    d = pd.read_parquet(f"D:/finance/beginner-quant-research/forex/data/{FT[m]}_D1.parquet")
+    d = pd.read_parquet(f"forex/data/{FT[m]}_D1.parquet")
     d.index = pd.to_datetime(d.time // 86400 * 86400, unit="s"); d = d[(d.index >= "2020-01-01") & (d.index < "2021-12-01")]
     return pd.DataFrame({"mark": d.close, "low": d.low, "bo": d.close, "ao": d.close + spread})
 
@@ -55,8 +55,8 @@ def main():
             st = S.stats(pd.concat([ser[(v, 'DEV')], ser[(v, 'VAL')]])); rows.append(dict(variant=v, period="DEV+VAL", **st))
             print(f"{v} DEV+VAL: t {st['t']:+.2f} Sharpe {st['sharpe']:+.2f} (bar t >= 2.13; Sharpe above REF_D2 in DEV and VAL)")
     tag = f"HOLD_{hold}" if hold else "RUN"
-    pd.DataFrame(rows).to_csv(f"D:/finance/si_ledgers/D2X_{tag}.csv", index=False)
-    pd.concat({f"{k[0]}_{k[1]}": s for k, s in ser.items()}).to_parquet(f"D:/finance/si_ledgers/D2X_{tag}_series.parquet")
+    pd.DataFrame(rows).to_csv(f"data/si_ledgers/D2X_{tag}.csv", index=False)
+    pd.concat({f"{k[0]}_{k[1]}": s for k, s in ser.items()}).to_parquet(f"data/si_ledgers/D2X_{tag}_series.parquet")
 
 
 if __name__ == "__main__":

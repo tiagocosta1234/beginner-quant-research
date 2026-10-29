@@ -75,7 +75,7 @@ def main():
     H = pd.DataFrame(hrs, columns=["mkt", "d", "h", "side", "t_entry", "R", "C", "box_sp"]); H["day"] = pd.to_datetime(H.d, unit="s")
     S = pd.DataFrame(sq, columns=["cell", "mkt", "d", "side", "t_entry", "R", "C"]); S["day"] = pd.to_datetime(S.d, unit="s")
     F = pd.DataFrame(fl); F = F[F.day >= "2022-01-01"]
-    old_h = pd.read_parquet("D:/finance/si_ledgers/BRK_HOURS.parquet"); old_s = pd.read_parquet("D:/finance/si_ledgers/BRK_SQUEEZE.parquet"); old_f = pd.read_parquet("D:/finance/si_ledgers/BRK_FLAG.parquet")
+    old_h = pd.read_parquet("data/si_ledgers/BRK_HOURS.parquet"); old_s = pd.read_parquet("data/si_ledgers/BRK_SQUEEZE.parquet"); old_f = pd.read_parquet("data/si_ledgers/BRK_FLAG.parquet")
     H = H[H.day >= "2022-01-01"]; S = S[S.day >= "2022-01-01"]
     summarize("BRK-HOURS all cells, first run ", old_h, "R", "C"); summarize("BRK-HOURS all cells, fill fix  ", H, "R", "C")
     for c in ("Q1", "Q3"):

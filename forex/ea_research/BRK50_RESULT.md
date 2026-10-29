@@ -2,7 +2,7 @@
 
 Run 2026-10-17 23:00 local (local clock, second PC). Pre-registration and brief `PREREG_BRK50.md` (registered 22:48; amendment 1
 before any P&L, amendment 2 after the dry run before any P&L was looked at; frozen by sha256 at 23:00:39 with the trade cache,
-`C:\work\scratch\brk50_freeze.txt`; not committed first because GitNexus cannot run on this second PC). Engine `brk50.py`, output
+`data\scratch\brk50_freeze.txt`; not committed first because GitNexus cannot run on this second PC). Engine `brk50.py`, output
 `BRK50_OUTPUT.txt`, table `BRK50_SUMMARY.csv`. 758,019 trades, 46 markets, 2022-01..2026-10-16, real MT5 broker bid/ask with zero-spread
 minutes repaired. Dry run: truncation identical on EURUSD / XAUUSD / NSDQ / BTCUSD; hand checks correct. HOLD 2026 sealed for all.
 

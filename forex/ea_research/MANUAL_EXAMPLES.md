@@ -34,5 +34,5 @@ entry window. FX Replay has no OCO and no expiry: orders must be cancelled by ha
    strong 5-day move are the only features consistent across 2022-24, 2025 and 2026; registered as LDN3F (forward).
 
 ## Tools
-- `D:/finance/scratch/ldn_feat/side_stats.py <YYYY-MM-DD> XAUUSD` - single-side stats with data before the day.
-- `D:/finance/scratch/ldn_feat/whipsaw.py XAUUSD` - whipsaw rate by box size.
+- `data/scratch/ldn_feat/side_stats.py <YYYY-MM-DD> XAUUSD` - single-side stats with data before the day.
+- `data/scratch/ldn_feat/whipsaw.py XAUUSD` - whipsaw rate by box size.

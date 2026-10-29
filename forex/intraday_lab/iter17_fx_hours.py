@@ -31,7 +31,7 @@ def main():
             r["pos_dev"] = int((net[ph == "dev"].mean(axis=0) > 0).sum()); r["pos_val"] = int((net[ph == "val"].mean(axis=0) > 0).sum()); rows.append(r)
             if r["t_dev"] >= 3.5 and r["net_val"] > 0 and r["t_val"] >= 2.0 and r["pos_dev"] >= 4 and r["pos_val"] >= 4:
                 hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter17_raw.csv", index=False)
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter17_raw.csv", index=False)
     print(T.sort_values("t_dev", ascending=False).head(12).round(2).to_string(index=False))
     print(f"\ncells {len(T)}; net_dev > 0: {(T.net_dev > 0).mean():.0%}; net_val > 0 among them: {(T[T.net_dev > 0].net_val > 0).mean():.0%}; median cost bp {T.cost_bp.median():.2f}")
     print(f"PRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")

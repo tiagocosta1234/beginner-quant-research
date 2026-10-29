@@ -6,15 +6,15 @@ src = open("edge_lab5.py", encoding="utf-8").read().split("rng = np.random.defau
 exec(src)
 
 tick, pv = MARKETS["GC"]
-df = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").set_index("ts")
+df = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").set_index("ts")
 T = pd.DataFrame(run_variant(day_table(df[["open", "high", "low", "close"]]), tick, pv, "D1", 0.5, 1, {}), columns=["date", "side", "g", "a", "m"])
 T["date"] = pd.to_datetime(T.date).dt.normalize(); T = T[T.date >= "2019-09-01"].reset_index(drop=True); T["yr"] = T.date.dt.year
 
-ry = pd.read_csv("D:/finance/data_macro/DFII10.csv", na_values=["."]).dropna()
+ry = pd.read_csv("data/data_macro/DFII10.csv", na_values=["."]).dropna()
 ry["d"] = pd.to_datetime(ry.observation_date); ry = ry.set_index("d")["DFII10"].astype(float)
-eu = pd.read_csv("D:/finance/beginner-quant-research/futures/data/daily/6E=F_yahoo_daily.csv")
+eu = pd.read_csv("futures/data/daily/6E=F_yahoo_daily.csv")
 eu["d"] = pd.to_datetime(eu.date); eu = eu.set_index("d")["close"].astype(float)
-ev = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); evd = set(pd.to_datetime(ev.date).dt.normalize())
+ev = pd.read_csv("data/data_macro/event_calendar.csv"); evd = set(pd.to_datetime(ev.date).dt.normalize())
 
 
 def asof_prior(s, d):

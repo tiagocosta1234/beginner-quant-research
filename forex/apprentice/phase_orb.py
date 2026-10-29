@@ -19,7 +19,7 @@ def walk(H, L, C, k0, side, entry, risk, cost, last):
 
 rows = []
 for sym, (tick, cost, sessions) in MK.items():
-    g = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{sym}.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+    g = pd.read_parquet(f"futures/data/databento/futures_{sym}.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
     g.index = pd.DatetimeIndex(g.ts); g = g.drop(columns="ts"); g = g[~g.index.duplicated()].sort_index()
     td = (g.index.tz_convert("America/New_York") + pd.Timedelta(hours=7)).normalize().tz_localize(None)
     D = g.groupby(td).agg(high=("high", "max"), low=("low", "min"), close=("close", "last"))

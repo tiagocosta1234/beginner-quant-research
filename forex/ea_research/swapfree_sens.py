@@ -33,7 +33,7 @@ def main():
         S.DEC_MIN = h * 60; Dh = {"MT5": S.build("MT5"), "HD": S.build("HD")}
         rows.append(run(f"decide {h}:00 server", Dh, C))
     S.DEC_MIN = 18 * 60
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/SWAPFREE_SENS.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/SWAPFREE_SENS.csv", index=False)
 
 
 if __name__ == "__main__":

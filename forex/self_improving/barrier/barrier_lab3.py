@@ -35,7 +35,7 @@ def main():
         print(f"{'placebo ' + str(pl) if pl else 'REAL'}: B meanR {st['B_meanR']:+.3f} | VAL n={st['n']} cl={st['cl']} meanR {st['meanR']:+.3f} (stop units) hit {100 * st['hit']:.0f}% z={st['z']:.2f} p={st['p']:.4f} | floor passed={ok}", flush=True)
         if pl is None:
             names = [m for m in P3.CLASSES[CLS]["members"] if len(B2.D6.bars15(m)) > 40000]; t_in = V["t0"][sel]; hold = np.where(s_[sel] > 0, V["dur_l"][sel], V["dur_s"][sel]) * 3600.0
-            df = pd.DataFrame(dict(sym=[names[i] for i in V["mkt"][sel]], side=s_[sel], R=R_[sel], t_in=t_in, t_out=t_in + hold)).dropna(); df.to_csv("D:/finance/si_ledgers/BARRIER3_fx_val_trades.csv", index=False)
+            df = pd.DataFrame(dict(sym=[names[i] for i in V["mkt"][sel]], side=s_[sel], R=R_[sel], t_in=t_in, t_out=t_in + hold)).dropna(); df.to_csv("data/si_ledgers/BARRIER3_fx_val_trades.csv", index=False)
             grid = np.arange(df.t_in.min(), df.t_out.max(), 3600.0); t_in_a, t_out_a = df.t_in.values, df.t_out.values; sym = df.sym.values
             cnt = np.array([((t_in_a <= g) & (t_out_a > g)).sum() for g in grid]); dist = np.array([len(set(sym[(t_in_a <= g) & (t_out_a > g)])) for g in grid]); act = cnt > 0
             print(f"\nTRADES {len(df)} in VAL | long share {100 * (df.side > 0).mean():.1f}% | median hold {np.median(hold) / 3600:.0f}h | mean R {df.R.mean():+.3f}")

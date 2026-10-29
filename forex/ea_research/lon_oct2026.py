@@ -32,7 +32,7 @@ for k in range(1, len(syms) + 1):
             for X in XS:
                 po, bo = windows(net * X, starts, net * X); pp, bp = windows(net * X, starts, neg * X)
                 rows.append(dict(combo="+".join(combo), k=k, scheme=scheme, X=int(X), pass_opt=po, breach_opt=bo, pass_pess=pp, breach_pess=bp, windows=len(starts)))
-R = pd.DataFrame(rows); R.to_csv("D:/finance/si_ledgers/LON_OCT2026.csv", index=False)
+R = pd.DataFrame(rows); R.to_csv("data/si_ledgers/LON_OCT2026.csv", index=False)
 pd.set_option("display.width", 250)
 print(f"{len(R)} configurations, {R.windows.iloc[0]} eleven-day windows in 2026 each (in-sample)\n")
 print("Best pass with breach <= 10% (optimistic daily line):")

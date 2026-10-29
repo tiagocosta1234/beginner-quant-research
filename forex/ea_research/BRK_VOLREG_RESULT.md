@@ -1,5 +1,5 @@
 # BRK-VOLREG result (breakout day round 3, 2026-10-15 11:45): volume and volatility regime do not separate good breakouts from bad
-Pre-registration `PREREG_BRK_VOLREG.md`, engine `brk_volreg.py`, rows `D:\finance\si_ledgers\BRK_VOLREG.parquet`. Base = round 1's 54,006 session stop-order breakouts, exit hold-to-close (X4): DEV -0.032 / VAL -0.076 / 2026 -0.037 R. Tick-volume coverage 97%. Truncation PASS; hand check NSDQ 2024-06-12 X4 -0.072 (as round 1), relative breakout volume 1.03, trend +1.
+Pre-registration `PREREG_BRK_VOLREG.md`, engine `brk_volreg.py`, rows `data\si_ledgers\BRK_VOLREG.parquet`. Base = round 1's 54,006 session stop-order breakouts, exit hold-to-close (X4): DEV -0.032 / VAL -0.076 / 2026 -0.037 R. Tick-volume coverage 97%. Truncation PASS; hand check NSDQ 2024-06-12 X4 -0.072 (as round 1), relative breakout volume 1.03, trend +1.
 
 | cell (X4, R per trade) | DEV | VAL | 2026 | indices DEV / VAL / 2026 |
 |---|---|---|---|---|

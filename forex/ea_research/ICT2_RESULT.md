@@ -1,5 +1,5 @@
 # ICT2 result (2026-10-14 ~22:20): SMT divergence, ICT 2022 model, NWOG on MT5 broker - NO EDGE
-Pre-registration `PREREG_ICT2.md` (commit c3d5d0a6), engine `ict2.py`, trades `D:\finance\si_ledgers\ICT2_trades.parquet`, cells `ICT2_cells.csv`. 2026 never loaded.
+Pre-registration `PREREG_ICT2.md` (commit c3d5d0a6), engine `ict2.py`, trades `data\si_ledgers\ICT2_trades.parquet`, cells `ICT2_cells.csv`. 2026 never loaded.
 
 ## Dry-run
 Truncation test PASS (EURUSD, XAUUSD, SP, DAX); hand check EURUSD LONDON 2022-07-27: EURUSD traded 0.1 pip under its Asian low (1.01277 vs 1.01278) while GBPUSD stayed above its own (1.20400 vs 1.20352), close back inside -> bullish SMT, long 10:01 server, stop at the low. SMT runs on 13 markets (SP has two twins), as corrected in the pre-registration before any P&L.

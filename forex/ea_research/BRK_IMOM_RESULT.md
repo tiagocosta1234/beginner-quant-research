@@ -1,5 +1,5 @@
 # BRK-IMOM result (breakout day round 28, 2026-10-15 13:52, local clock): no intraday momentum from the opening move to the last half hour
-Pre-registration `PREREG_BRK_IMOM.md` (amendment A1 before any P&L: every reference time one minute before the close, because 16:00 NY is 23:00 server), engine `brk_imom.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_IMOM.parquet`. Net bp per trade (one spread), trade = the last half hour of the session in the direction of the first half-hour move away from the previous close (Gao, Han, Li and Zhou 2018).
+Pre-registration `PREREG_BRK_IMOM.md` (amendment A1 before any P&L: every reference time one minute before the close, because 16:00 NY is 23:00 server), engine `brk_imom.py` (truncation PASS), rows `data\si_ledgers\BRK_IMOM.parquet`. Net bp per trade (one spread), trade = the last half hour of the session in the direction of the first half-hour move away from the previous close (Gao, Han, Li and Zhou 2018).
 | cell, INDEX class (primary) | DEV | VAL | 2026 | long-only same half hour DEV / VAL / 2026 |
 |---|---|---|---|---|
 | G1 direction of the first half hour (n 3,706 / 1,181 / 860) | -1.80 bp (t -3.6) | -1.47 | -1.22 | -1.42 / -0.56 / -0.94 |

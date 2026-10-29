@@ -65,7 +65,7 @@ def main():
         rows.append(r)
         if r["net_dev"] > 0.5 and r["net_val"] > 0.5 and r["t_devval"] >= 3.0 and r["pos_dev"] >= 4 and r["pos_val"] >= 4:
             hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter16_raw.csv", index=False)
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter16_raw.csv", index=False)
     print(T.round(2).to_string(index=False))
     print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
     for h in hits:

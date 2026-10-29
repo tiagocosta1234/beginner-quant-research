@@ -1,5 +1,5 @@
 # PRESAMPLE3 result (breakout day round 35, 2026-10-15 14:25, local clock): JPY crosses at the London open do not pass at today's spreads
-Pre-registration `PREREG_PRESAMPLE3.md` (before download), engine `presample3.py`, rows `D:/finance/si_ledgers/PRESAMPLE3.parquet`. Identical L1 rule, HistData 2020-01-02 .. 2021-11-30, ask = bid + MT5 broker's CURRENT (Oct 2025 - Oct 2026) median 08:00-17:00 London spread. One look.
+Pre-registration `PREREG_PRESAMPLE3.md` (before download), engine `presample3.py`, rows `data/si_ledgers/PRESAMPLE3.parquet`. Identical L1 rule, HistData 2020-01-02 .. 2021-11-30, ask = bid + MT5 broker's CURRENT (Oct 2025 - Oct 2026) median 08:00-17:00 London spread. One look.
 | cross | today's MT5 broker spread | trades | mean net R | t | 2020 / 2021 | random |
 |---|---|---|---|---|---|---|
 | EURJPY | 0.007 | 492 | +0.114 | +1.16 | +0.199 / +0.021 | +0.012 |

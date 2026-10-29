@@ -1,5 +1,5 @@
 # PRESAMPLE2 result (breakout day round 34, 2026-10-15 14:23, local clock): the other four markets do NOT confirm; CADJPY comes close
-Pre-registration `PREREG_PRESAMPLE2.md` (before download), engine `presample2.py` (the identical L1 rule), rows `D:/finance/si_ledgers/PRESAMPLE2.parquet`. HistData 1-minute bid 2020-01-02 .. 2021-11-30, ask = bid + MT5 broker's 2022 median session spread. One look.
+Pre-registration `PREREG_PRESAMPLE2.md` (before download), engine `presample2.py` (the identical L1 rule), rows `data/si_ledgers/PRESAMPLE2.parquet`. HistData 1-minute bid 2020-01-02 .. 2021-11-30, ask = bid + MT5 broker's 2022 median session spread. One look.
 | cell | trades | mean net R | t | 2020 / 2021 | random | verdict |
 |---|---|---|---|---|---|---|
 | P1 GBPUSD | 495 | +0.037 | +0.41 | +0.095 / -0.026 | +0.140 | FAIL |

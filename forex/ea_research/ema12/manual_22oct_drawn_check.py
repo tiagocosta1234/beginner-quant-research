@@ -4,7 +4,7 @@ Same conventions as MANUAL_21OCT_DRAWN_TRADE_OUTPUT.txt: local clock = MT5 serve
 short fills at the bid, the stop is hit when the ask reaches it, the target when the ask reaches it, stop first inside one bar.
 Run from the repo: python -B forex/ea_research/ema12/manual_22oct_drawn_check.py > forex/ea_research/ema12/MANUAL_22OCT_DRAWN_TRADE_OUTPUT.txt"""
 import sys, numpy as np, pandas as pd
-sys.path.insert(0, r"D:\finance\beginner-quant-research\mt5\ea_research\ema12"); sys.dont_write_bytecode = True
+sys.path.insert(0, r"mt5\ea_research\ema12"); sys.dont_write_bytecode = True
 import forward_score as F
 D = F.load_days_mt5("2026-10-22", "2026-10-22")
 Z = D[pd.Timestamp("2026-10-22").date()].copy()

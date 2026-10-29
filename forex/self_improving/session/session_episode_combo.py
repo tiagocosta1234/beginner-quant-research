@@ -16,7 +16,7 @@ def main():
             e = E.replay("MT5", 1.5, 2000.0, L, scaled(t, 1.5)); o = E.account(e, 2000.0, L); ps = o[o.r == "pass"]
             row = dict(L=L, variant=nm, episodes=len(e), hit=100 * (e.res == 1).mean(), ep_days=(e.end - e.start).median() / 86400, daily_breach_eps=int(e.breach.sum()), worst_day=e.worst_day.min(), starts=len(o), pass_pct=100 * (o.r == "pass").mean(), breach_pct=100 * (o.r == "breach").mean(), med_cal_days=ps.d.median(), med_bd=0.71 * ps.d.median())
             rows.append(row); print({k: (round(float(v), 1) if not isinstance(v, str) else v) for k, v in row.items()}, flush=True)
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/SESSION_episode_combo.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/SESSION_episode_combo.csv", index=False)
 
 
 if __name__ == "__main__":

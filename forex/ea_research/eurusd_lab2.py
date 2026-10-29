@@ -60,7 +60,7 @@ def add(base, te, sig, hold):
 
 
 # ------------------------------------------------------------------ C: calendar timing
-cal = pd.read_csv("D:/finance/data_macro/mt5_calendar.csv", encoding="latin-1")
+cal = pd.read_csv("data/data_macro/mt5_calendar.csv", encoding="latin-1")
 cal = cal[(cal.importance == 3) & cal.currency.isin(["USD", "EUR"])]
 cal["utc"] = pd.to_datetime(cal.time, format="%Y.%m.%d %H:%M:%S")
 cal = cal[(cal.utc >= "2022-03-01") & (cal.utc < END)]
@@ -93,7 +93,7 @@ for hh, t in slots:
                 add(f"X-{hh}-{L}", t, np.sign(s), 240)
         h.append(s)
 # V: tick volume
-vol = pd.read_parquet("D:/finance/ticks_vol/EURUSD.parquet").set_index("time").tick_volume
+vol = pd.read_parquet("data/ticks_vol/EURUSD.parquet").set_index("time").tick_volume
 vol = vol[vol.index < END.timestamp()]
 VT, VC = vol.index.to_numpy(), np.r_[0, np.cumsum(vol.to_numpy().astype(float))]
 

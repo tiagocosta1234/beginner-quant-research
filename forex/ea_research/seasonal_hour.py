@@ -16,7 +16,7 @@ from forex.ea_research import confluence_h1 as H
 HERE = Path(__file__).resolve().parent
 DATA = H.DATA
 LEDGER = HERE / "LEDGER.csv"
-CACHE = Path("D:/finance/tmp/seasonal_hour_bars.parquet")
+CACHE = Path("data/tmp/seasonal_hour_bars.parquet")
 OUT_JSON = HERE / "SEASONAL_HOUR_STATE.json"
 MARKETS = H.MARKETS
 CLS = H.CLS

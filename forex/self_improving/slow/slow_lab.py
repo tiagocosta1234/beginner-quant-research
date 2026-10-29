@@ -16,7 +16,7 @@ import xgboost as xgb
 from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff5_data as F5, ff6_data as D6
 
-LEDGERS = Path("D:/finance/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
+LEDGERS = Path("data/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
 DEC_T0 = 11 * 3600 + 45 * 60                                              # decision bar starts 11:45 server time, ends 12:00
 HL = (1, 5, 20); WINS = {"a": D6.WA, "b": D6.WB, "val": D6.VAL}
 QS = (0.50, 0.70, 0.80, 0.90, 0.95); N_MIN, CL_MIN, BP_MIN = 100, 20, 3.0; BONF = 0.05 / 12
@@ -34,7 +34,7 @@ FEATS = PRICE + COTF + SURP + MACRO + CROSS + TIMEF
 
 
 def cot_tables():
-    d = pd.concat([pd.read_csv(f, low_memory=False) for f in sorted(glob.glob("D:/finance/data_macro/cot/deacot20*/annual.txt"))], ignore_index=True)
+    d = pd.concat([pd.read_csv(f, low_memory=False) for f in sorted(glob.glob("data/data_macro/cot/deacot20*/annual.txt"))], ignore_index=True)
     d["code"] = d["CFTC Contract Market Code"].astype(str).str.strip(); d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); oi = pd.to_numeric(d["Open Interest (All)"], errors="coerce")
     d["nc"] = (pd.to_numeric(d["Noncommercial Positions-Long (All)"], errors="coerce") - pd.to_numeric(d["Noncommercial Positions-Short (All)"], errors="coerce")) / oi
     d["c"] = (pd.to_numeric(d["Commercial Positions-Long (All)"], errors="coerce") - pd.to_numeric(d["Commercial Positions-Short (All)"], errors="coerce")) / oi
@@ -74,7 +74,7 @@ def rsi(c, n):
 
 
 def surprise_tables():
-    s = pd.read_csv("D:/finance/data_macro/alfred/surprises.csv"); out = {}
+    s = pd.read_csv("data/data_macro/alfred/surprises.csv"); out = {}
     for kind, nm, hh, mm in (("NFP", "s_nfp", 8, 30), ("UNRATE", "s_unr", 8, 30), ("CPI", "s_cpi", 8, 30), ("FOMC", "s_fomc", 14, 0)):
         k = s[s.kind == kind].sort_values("release_date"); out[nm] = pd.DataFrame({"v": k.value.values, "t": [F5.server_s(d, hh, mm) for d in k.release_date]}).set_index("t")
     return out
@@ -83,7 +83,7 @@ def surprise_tables():
 def yahoo():
     out = {}
     for k, f in YAH.items():
-        d = pd.read_csv(f"D:/finance/data_macro/yahoo/{f}.csv"); d.index = pd.to_datetime(d.Date); c = pd.to_numeric(d.Close, errors="coerce").dropna()
+        d = pd.read_csv(f"data/data_macro/yahoo/{f}.csv"); d.index = pd.to_datetime(d.Date); c = pd.to_numeric(d.Close, errors="coerce").dropna()
         out[k] = pd.DataFrame({"r1": c.pct_change(1), "r5": c.pct_change(5)})
     return out
 

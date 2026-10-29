@@ -1,6 +1,6 @@
 # Intraday lab: lessons, flaws and winning patterns (the trader /goal 2026-10-06: 1 / 5 / 15 minute bars, self-developed, learn from mistakes)
 
-Engine: `lab.py` (MT5 broker M1 bid/ask bars 2021-09..2026-10, 11 symbols, real spread, USD 6/lot commission on FX and gold, entry next bar open, stop-first). Pre-registered rules and results per iteration: `PREREG.md`. Raw results: `D:\finance\scratch\lab\`.
+Engine: `lab.py` (MT5 broker M1 bid/ask bars 2021-09..2026-10, 11 symbols, real spread, USD 6/lot commission on FX and gold, entry next bar open, stop-first). Pre-registered rules and results per iteration: `PREREG.md`. Raw results: `data\scratch\lab\`.
 Phases: DEV 2021-10..2023-12, VAL 2024, HOLDOUT 2025-01..2026-10 (looked at only for candidates).
 
 ## Iterations

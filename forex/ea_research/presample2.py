@@ -16,7 +16,7 @@ LO, HI = pd.Timestamp("2020-01-02").timestamp(), pd.Timestamp("2021-12-01").time
 def load_hd(sym, floor):
     frames = []
     for yr in (2020, 2021):
-        z = zipfile.ZipFile(f"D:/finance/data_histdata/DAT_ASCII_{sym}_M1_{yr}.zip")
+        z = zipfile.ZipFile(f"data/data_histdata/DAT_ASCII_{sym}_M1_{yr}.zip")
         name = [n for n in z.namelist() if n.lower().endswith(".csv")][0]
         frames.append(pd.read_csv(io.BytesIO(z.read(name)), sep=";", header=None, names=["dt", "bo", "bh", "bl", "bc", "v"]))
     d = pd.concat(frames)
@@ -49,12 +49,12 @@ def main():
         g = [df.R.mean() > 0 and tstat(df.R) >= 2.33, all(v > 0 for v in yrs.values())]
         print(f"{sym} (MT5 broker spread floor {fl:.5f}, price median {np.median(D['bc']):.4f}): n {len(df)} {df.R.mean():+.3f} R (t {tstat(df.R):+.2f}) | random {df.C.mean():+.3f} | by year {yrs} | gates {''.join('Y' if z else 'n' for z in g)} PASS {all(g)}")
     allp = pd.concat([v.assign(mkt=k) for k, v in res.items()])
-    allp.to_parquet("D:/finance/si_ledgers/PRESAMPLE2.parquet")
+    allp.to_parquet("data/si_ledgers/PRESAMPLE2.parquet")
     dm = allp.groupby("day").R.mean()
     yrs = {y: round(g.mean(), 3) for y, g in dm.groupby(dm.index.year)}
     g = [dm.mean() > 0 and nw_t(dm.to_numpy()) >= 2.33, all(v > 0 for v in yrs.values())]
     print(f"P5 the four pooled: days {len(dm)} {dm.mean():+.3f} R a day-trade (daily t {nw_t(dm.to_numpy()):+.2f}) | by year {yrs} | gates {''.join('Y' if z else 'n' for z in g)} PASS {all(g)}")
-    pre = pd.read_parquet("D:/finance/si_ledgers/PRESAMPLE.parquet")
+    pre = pd.read_parquet("data/si_ledgers/PRESAMPLE.parquet")
     book = pd.concat([allp[["day", "R"]], pre[pre.lead == "L1"][["day", "R"]]])
     bm = book.groupby("day").R.mean()
     print(f"context - five-pair book with USDJPY: {bm.mean():+.3f} R a day-trade (daily t {nw_t(bm.to_numpy()):+.2f}); correlation of daily R between pairs:")

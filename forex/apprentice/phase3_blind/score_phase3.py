@@ -7,7 +7,7 @@ import numpy as np, pandas as pd
 
 LOG = sys.argv[1] if len(sys.argv) > 1 else "PHASE3_LOG.csv"
 SL, THRU, COMM, PV = 0.1, 0.1, 1.2, 10.0
-df = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").reset_index(drop=True)
+df = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet").sort_values("ts").reset_index(drop=True)
 loc = df.ts.dt.tz_convert("Europe/London").dt.tz_localize(None)
 T = ((loc - pd.Timestamp("1970-01-01")) // pd.Timedelta(seconds=1)).to_numpy(np.int64)
 O, H, L, C = (df[k].to_numpy(float) for k in ("open", "high", "low", "close"))

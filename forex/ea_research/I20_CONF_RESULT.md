@@ -1,7 +1,7 @@
 # I20_CONF result - no confluence improves the post-expansion-day fade consistently (0 of 7 kept)
 
 Run 2026-10-17 23:29 local (local clock, second PC). Pre-registration `PREREG_I20_CONF.md` (registered 23:29, frozen by sha256 at
-23:29:43 in `C:\work\scratch\i20_conf_freeze.txt`). Engine `i20_conf.py`, output `I20_CONF_OUTPUT.txt`. In-sample by design:
+23:29:43 in `data\scratch\i20_conf_freeze.txt`). Engine `i20_conf.py`, output `I20_CONF_OUTPUT.txt`. In-sample by design:
 I20 was chosen as the best of 54 ideas on these same 2022-25 trades (762: 564 in 2022-24, 198 in 2025). No 2026 row was read.
 
 | confluence | with: n, R | without: n, R | diff t | 2022-24 with / without | 2025 with / without | kept |

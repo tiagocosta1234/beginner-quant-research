@@ -6,7 +6,7 @@ All trades LONG, entry at the ASK, exit at the BID (spread paid), return in bp o
 
 - SE1 OVERNIGHT: buy at the 15:59:00 New York bar open, sell at the next trading day's 09:30:00 bar open (consecutive trading days, gap <= 4 calendar days). Overnight-premium literature (Cooper-Cliff-Gulen, Lou-Polk-Skouras).
 - SE2 TURN OF MONTH: buy at 15:59 NY on the 4th-from-last trading day of a month, sell at 15:59 NY on the 3rd trading day of the next month (Ariel 1987, Lakonishok-Smidt 1988).
-- SE3 PRE-FOMC DRIFT: buy at 14:00:00 NY on the trading day BEFORE an FOMC announcement, sell at 14:00:00 NY on the announcement day, i.e. just before the statement (Lucca-Moench 2015). FOMC dates from `D:\finance\data_macro\event_calendar.csv`.
+- SE3 PRE-FOMC DRIFT: buy at 14:00:00 NY on the trading day BEFORE an FOMC announcement, sell at 14:00:00 NY on the announcement day, i.e. just before the statement (Lucca-Moench 2015). FOMC dates from `data\data_macro\event_calendar.csv`.
 
 Periods by entry date: DEV 2022-01-01 .. 2024-12-31, VAL 2025, HOLD-OUT 2026-01-01 .. 2026-09-30 (one look, accepted trials only).
 

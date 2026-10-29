@@ -46,4 +46,4 @@ for _ in range(30):
             x = np.where(s * sg > 0, a.lb, a.sb); best = max(best, x.mean() / (x.std() / np.sqrt(len(x))))
     mx.append(best)
 print("pure-noise best-of-%d t in 2026: median %.2f, 95th %.2f" % (len(S), np.median(mx), np.percentile(mx, 95)))
-S.to_csv("D:/finance/tmp/fx3_fit2026.csv", index=False)
+S.to_csv("data/tmp/fx3_fit2026.csv", index=False)

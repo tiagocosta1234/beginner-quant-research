@@ -11,11 +11,11 @@ RISKS = (150, 250, 400, 600, 1000)
 
 
 def pools():
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     e = e[e.mkt == "USDJPY"]
     days = pd.DatetimeIndex(sorted(e.day.unique()))
     r8 = e[e.kind == "BRK"].groupby("day").X4_noTP.first().reindex(days).fillna(0.0)
-    p = pd.read_parquet("D:/finance/si_ledgers/PRESAMPLE.parquet")
+    p = pd.read_parquet("data/si_ledgers/PRESAMPLE.parquet")
     p = p[p.lead == "L1"]
     d20 = pd.bdate_range("2020-01-02", "2021-11-30")
     r20 = p.groupby("day").R.first().reindex(d20).fillna(0.0)
@@ -57,7 +57,7 @@ def main():
                 r[f"breach {k}"] = 100 * np.mean((st == 2) & (day < h))
             rows.append(r)
     T = pd.DataFrame(rows)
-    T.to_csv("D:/finance/si_ledgers/USDJPY_MT5SIM.csv", index=False)
+    T.to_csv("data/si_ledgers/USDJPY_MT5SIM.csv", index=False)
     pd.set_option("display.width", 250)
     for k in HZ:
         print(f"\n{k}: pass% / breach%")

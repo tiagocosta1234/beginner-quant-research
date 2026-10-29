@@ -59,13 +59,13 @@ def main():
         if not hold:
             st = S.stats(pd.concat([ser[(CELL, 'DEV')], ser[(CELL, 'VAL')]])); rows.append(dict(cell=CELL, period="DEV+VAL", **st))
             print(f"{CELL} DEV+VAL: t {st['t']:+.2f} Sharpe {st['sharpe']:+.2f} (bar 1.96)")
-    R = pd.read_parquet("D:/finance/si_ledgers/SWAPFREE_RUN_series.parquet")
+    R = pd.read_parquet("data/si_ledgers/SWAPFREE_RUN_series.parquet")
     for c in LOOK:
         if (c, "DEV") in ser:
             j = pd.concat([ser[(c, "DEV")].V, ser[(c, "VAL")].V]).to_frame("x").join(pd.concat([R.loc["D2_DEV"], R.loc["D2_VAL"]]).V.rename("d2"), how="inner")
             print(f"{c} daily correlation with D2 (2022-25): {j.corr().iloc[0, 1]:+.3f}")
     tag = f"HOLD_{hold}" if hold else "RUN"
-    pd.DataFrame(rows).to_csv(f"D:/finance/si_ledgers/XS_MOM_IDX_{tag}.csv", index=False)
+    pd.DataFrame(rows).to_csv(f"data/si_ledgers/XS_MOM_IDX_{tag}.csv", index=False)
 
 
 if __name__ == "__main__":

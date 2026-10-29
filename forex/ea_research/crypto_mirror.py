@@ -6,7 +6,7 @@ from pathlib import Path
 from forex.ea_research import intraday_dip as ID, core4_bb as CB
 
 COINS = {"BTCUSD": "BTCUSDT", "ETHUSD": "ETHUSDT", "LTCUSD": "LTCUSDT", "SOLUSD": "SOLUSDT", "XRPUSD": "XRPUSDT", "ADAUSD": "ADAUSDT", "BNBUSD": "BNBUSDT", "BCHUSD": "BCHUSDT"}
-ALT = Path("D:/finance/data_macro/alt"); PROOF = ("2020-01-01", "2021-11-30"); SEC = 14400
+ALT = Path("data/data_macro/alt"); PROOF = ("2020-01-01", "2021-11-30"); SEC = 14400
 
 
 def klines(sym):

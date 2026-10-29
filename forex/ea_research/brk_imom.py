@@ -73,7 +73,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_IMOM.parquet")
+    df.to_parquet("data/si_ledgers/BRK_IMOM.parquet")
     for cls in ("index", "fx", "metal", "energy", "crypto"):
         for cell in ("G1", "G2"):
             g = df[df.c == cls]

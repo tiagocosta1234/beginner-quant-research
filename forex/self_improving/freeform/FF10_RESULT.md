@@ -1,6 +1,6 @@
 # Free-form trader v6 (M1 information, price-pattern vocabulary, all available series, MT5 broker environment): result (2026-10-13)
 
-Pre-registration: PREREG_V6_M1.md (plus PREREG_V5_PROP.md and PREREG_FREEFORM.md). Code: ff6_data.py, ff6_agent.py, acct_env.py. Ledgers (outside git): D:\finance\si_ledgers\FF10_*. 2026 never loaded.
+Pre-registration: PREREG_V6_M1.md (plus PREREG_V5_PROP.md and PREREG_FREEFORM.md). Code: ff6_data.py, ff6_agent.py, acct_env.py. Ledgers (outside git): data\si_ledgers\FF10_*. 2026 never loaded.
 
 ## What the agent saw
 All M1 bid/ask OHLC bars (2021-12..2026-10, 46 symbols) aggregated into 15-minute decision bars with the M1 statistics of each bar (1-minute variance, Parkinson variance, moving minutes, up share, mean / max / last spread, last-5-minute return, largest 1-minute range); decisions at every bar close, entry at the next bar open, exits 15 minutes to 2 days later, real bid and ask at both ends. 87 causal features (checked: cutting the future changes none of the 85 non-cross-sectional ones): price at several scales, micro-structure, time, previous-day and today's levels, round numbers, candle patterns (body and wick shares, range vs median, engulfing, inside bar, run) on 15m and 60m bars, fractal swings and the HH/HL state, the latest unfilled fair-value gap, an order-block proxy, the macro event calendar, the daily macro regime (VIX rank, curve, dollar, VIX9D/VIX, SKEW), crypto sentiment and funding, cross-sectional ranks. Real ticks exist only since 2025-10-01 and were not usable for training.

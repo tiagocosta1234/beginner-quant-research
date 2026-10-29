@@ -25,14 +25,14 @@ def one(sym):
             for ph, x in T.groupby("phase"):
                 rows.append(dict(sym=sym, k=k, phase=ph, n=len(x), mean=x.R.mean(), sd=x.R.std(ddof=1) if len(x) > 2 else np.nan, win=(x.R > 0).mean()))
     if sym == "XAUUSD":
-        T = sdb.simulate(sym, m1); T["phase"] = T.year.map(phase); T.to_csv(r"D:\finance\scratch\lab\iter14_gold_original.csv", index=False)
+        T = sdb.simulate(sym, m1); T["phase"] = T.year.map(phase); T.to_csv(r"data\scratch\lab\iter14_gold_original.csv", index=False)
     return rows
 
 
 def main():
     with Pool(4) as p:
         D = pd.DataFrame([r for x in p.map(one, list(ALL)) for r in x])
-    D.to_csv(r"D:\finance\scratch\lab\iter14_raw.csv", index=False)
+    D.to_csv(r"data\scratch\lab\iter14_raw.csv", index=False)
     print("TEST A: per symbol mean R (n) by k and phase")
     P = D.pivot_table(index=["k", "sym"], columns="phase", values=["mean", "n"]); P.columns = [f"{a}_{b}" for a, b in P.columns]; print(P.round(3).to_string())
     o = D[(D.sym != "XAUUSD") & (D.n >= 20)]; out = []
@@ -43,7 +43,7 @@ def main():
     print("\nPOOLED over the 10 non-gold symbols:"); print(Q.round(3).to_string(index=False))
     hit = Q[(Q.pooled_dev > 0) & (Q.pooled_val > 0) & (Q.t_val >= 2.5) & (Q.pos_dev >= 7) & (Q.pos_val >= 7)]
     print("\nPRE-REGISTERED MULTI-SYMBOL HITS:", len(hit)); print(hit.round(3).to_string(index=False) if len(hit) else "none")
-    g = pd.read_csv(r"D:\finance\scratch\lab\iter14_gold_original.csv")
+    g = pd.read_csv(r"data\scratch\lab\iter14_gold_original.csv")
     print("\nTEST B: gold original (1.9%) in R units")
     print(g.groupby("year").agg(n=("R", "size"), meanR=("R", "mean"), win=("R", lambda x: (x > 0).mean()), long=("side", lambda x: (x > 0).mean())).round(3).to_string())
     print(g.groupby("phase").agg(n=("R", "size"), meanR=("R", "mean"), t=("R", lambda x: x.mean() / (x.std(ddof=1) / np.sqrt(len(x))))).round(3).to_string())

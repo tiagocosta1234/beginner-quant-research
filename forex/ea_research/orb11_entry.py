@@ -158,7 +158,7 @@ def main():
         O = pd.DataFrame(m11(("EURUSD", END)), columns=["mkt", "sess", "day", "kind", "side", "t_entry", "Rpx", "R11", "R11_opt", "R_hold"])
         print(f"TOUCH 1:1 {T[T.trig == 'TOUCH'].r1.mean():+.4f} vs ORB11 {O[O.kind == 'ORB'].R11.mean():+.4f} (n {int((T.trig == 'TOUCH').sum())} vs {int((O.kind == 'ORB').sum())})")
         return
-    T = collect(); T.to_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet")
+    T = collect(); T.to_parquet("data/si_ledgers/ORB11_ENTRY.parquet")
     T["cls"] = T.mkt.map(mclass)
     C = T[T.trig == "CTRL"].set_index(["mkt", "sess", "day"])[["r1", "rh"]].rename(columns={"r1": "c1", "rh": "ch"})
     X = T[T.trig != "CTRL"].join(C, on=["mkt", "sess", "day"]).reset_index(drop=True)
@@ -181,7 +181,7 @@ def main():
                                 rnd=X[m & dv][cx].mean(), t=tstat(d), t_rnd=tstat(dc)))
     P = pd.DataFrame(out)
     P["pass"] = (P.t >= 3.81) & (P.DEV > 0) & (P.VAL > 0) & (P.Y26 > 0) & ((P.DEV * 3 + P.VAL) / 4 > P.rnd)
-    P.to_csv("D:/finance/si_ledgers/ORB11_ENTRY_pools.csv", index=False)
+    P.to_csv("data/si_ledgers/ORB11_ENTRY_pools.csv", index=False)
     for s in ("LON", "NY"):
         q = P[P.pool == s]
         for x in ("1:1", "hold"):
@@ -208,7 +208,7 @@ def main():
             if (pm["DEV"][m]).sum() >= 50 and (best is None or r["DEV"] > best["DEV"]): best = r
         if best: wf.append(best)
     S = pd.DataFrame(rows); S["pass"] = (S.t >= 4.33) & (S.DEV > 0) & (S.VAL > 0) & (S.Y26 > 0) & (S.DEV > S.rnd)
-    S.to_csv("D:/finance/si_ledgers/ORB11_ENTRY_cells.csv", index=False)
+    S.to_csv("data/si_ledgers/ORB11_ENTRY_cells.csv", index=False)
     W = pd.DataFrame(wf)
     print(f"\n2. CELLS: {len(S)} tested, passing (t >= 4.33, > 0 DEV/VAL/2026, above random): {int(S['pass'].sum())}")
     print(S.sort_values("t", ascending=False).head(12)[["mkt", "sess", "trig", "filt", "exit", "n", "DEV", "VAL", "Y26", "rnd", "t"]].round(3).to_string(index=False))

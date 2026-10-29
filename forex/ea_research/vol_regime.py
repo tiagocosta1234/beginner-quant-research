@@ -6,7 +6,7 @@ import numpy as np, pandas as pd
 from scipy import stats
 from forex.ea_research import combo_grid as G
 
-CB = "D:/finance/data_macro/cboe"
+CB = "data/data_macro/cboe"
 DEV = ("2022-01-03", "2024-12-31"); VAL = ("2025-01-01", "2025-12-31"); HOLD = ("2026-01-01", "2026-09-30")
 
 

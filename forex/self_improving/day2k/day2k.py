@@ -8,7 +8,7 @@ import numpy as np, pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 DATA = ROOT / "mt5" / "data_mt5"
-CACHE = pathlib.Path("D:/finance/si_ledgers")
+CACHE = pathlib.Path("data/si_ledgers")
 PAIRS = ["AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "AUDUSD", "CADCHF", "CADJPY", "CHFJPY", "EURAUD", "EURCAD", "EURCHF", "EURGBP", "EURJPY", "EURNZD",
          "EURUSD", "GBPAUD", "GBPCAD", "GBPCHF", "GBPJPY", "GBPNZD", "GBPUSD", "NZDCAD", "NZDCHF", "NZDJPY", "NZDUSD", "USDCAD", "USDCHF", "USDJPY"]
 TS = (10 * 3600 + 5 * 60, 16 * 3600 + 35 * 60)     # decision times T (server clock, seconds into the day)

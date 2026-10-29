@@ -1,5 +1,5 @@
 # SR result (2026-10-14): objective swing-level support/resistance trading, 46 symbols x H1/H2/H4
-Pre-registration `PREREG_SR.md`, engine `sr_test.py`, output `SR_OUTPUT.txt`, cells `D:\finance\tmp\sr_cells.csv` (552 cells). 2026 hold-out unopened.
+Pre-registration `PREREG_SR.md`, engine `sr_test.py`, output `SR_OUTPUT.txt`, cells `data\tmp\sr_cells.csv` (552 cells). 2026 hold-out unopened.
 ## Verdict: no candidate; swing levels carry no more information than random levels
 - Placebo (levels shifted by a random -2..+2 ATR, 10 draws, max DEV t over all cells): 1.83-2.64, 95th percentile 2.62. The best real cell, USDJPY H4 breakout (+0.19 R, t +2.61 in DEV), sits exactly at the placebo ceiling and is -0.05 R (t -0.72) in VAL. Registered bar was t >= 4.0.
 - Cells positive in DEV 16.5%, in VAL 15.8%, in both 4.2%. Median mean R per trade for both bounce and breakout, on all three timeframes: -0.06 to -0.12 R (DEV and VAL), i.e. about the spread and the 1.5R-target geometry with no information: fading the level and following it lose by the same amount (the sign-symmetry signature of a zero-information rule paying cost).

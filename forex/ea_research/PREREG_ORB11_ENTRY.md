@@ -33,7 +33,7 @@ DEV 2022-01..2024-12, VAL 2025, 2026-01..2026-10-02. 2026 is ALREADY OPEN for th
 1. Pooled pass: DEV+VAL daily t >= 3.81 (one-sided 5% over 720 + 144), mean > 0 in DEV, VAL and 2026, and above the random entries on the same days.
 2. Cell pass: DEV+VAL t >= 4.33 (one-sided 5% over 6,624), mean > 0 in DEV, VAL, 2026, above the random entries.
 3. Walk-forward: per symbol-session and per session-class, choose the best of the 72 rules on DEV only; report its VAL and 2026 means and how many stay positive. The same search with each rule's trades replaced by the random entries on the same days (same exit) gives the luck ceiling for the highest t.
-4. Anything that passes: real MT5 broker ticks (D:/finance/ticks, server clock) for 2025-10..2026-10 and a HistData 2020-21 out-of-time check before it is called a candidate.
+4. Anything that passes: real MT5 broker ticks (data/ticks, server clock) for 2025-10..2026-10 and a HistData 2020-21 out-of-time check before it is called a candidate.
 
 ## Honest prior
 Today's rounds already tested retest (worse), failed-breakout reversals (random-like), volume, tick confirmation, trend (helps indices only, dies in 2026), wide box (necessary, not sufficient), squeeze, and a meta-labeling model (about 0). Expected: no passing cell or pool; this round is the consolidated answer on the trader's exact rule. The day's variant count is far above the 40-variant window; the Bonferroni bars above are the protection.

@@ -133,7 +133,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_RETEST.parquet")
+    df.to_parquet("data/si_ledgers/BRK_RETEST.parquet")
     rows = []
     for cell in CELLS:
         g = df[df.cell == cell]
@@ -150,7 +150,7 @@ def run():
     R = pd.DataFrame(rows)
     pd.set_option("display.width", 260)
     print(R.round(3).to_string(index=False))
-    R.to_csv("D:/finance/si_ledgers/BRK_RETEST_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_RETEST_cells.csv", index=False)
     print("\nby class, E_close (DEV / VAL):")
     for cell in CELLS:
         g = df[df.cell == cell].assign(c=lambda z: z.mkt.map(mclass))

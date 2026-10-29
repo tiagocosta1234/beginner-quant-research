@@ -114,7 +114,7 @@ rng = np.random.default_rng(20261025)
 print(f"{'run':8} {'n':>5} {'win%':>5} {'R gross':>8} {'R net':>8} {'SE':>6} {'P':>7} {'yrs+':>5}  finalist")
 finalists = []
 for sym, (tick, pv) in MARKETS.items():
-    df = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
+    df = pd.read_parquet(f"futures/data/databento/futures_{sym}.F_1m.parquet").sort_values("ts").set_index("ts")
     df = df[df.index < pd.Timestamp("2024-01-01", tz="UTC")]  # hold-out sealed
     for tf in TFS:
         rows = [r for r in run(df, tick, pv, tf) if r[0] <= DEV_END]

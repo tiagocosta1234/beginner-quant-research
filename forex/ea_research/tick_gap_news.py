@@ -21,7 +21,7 @@ def market(args):
     if tz != "Europe/London":
         return []
     rows = []
-    for f in sorted(glob.glob(f"D:/finance/ticks/{sym}/*.parquet")):
+    for f in sorted(glob.glob(f"data/ticks/{sym}/*.parquet")):
         t = pd.read_parquet(f, columns=["time_msc", "bid", "ask"]).sort_values("time_msc")
         t = t[(t.bid > 0) & (t.ask >= t.bid)]
         if len(t) < 1000:
@@ -71,13 +71,13 @@ def market(args):
 
 
 def main():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     news = set(pd.to_datetime(cal[cal.kind.isin(["CPI", "NFP"])].date).dt.date)
     with ProcessPoolExecutor(4) as ex:
         res = list(ex.map(market, [(s, news) for s in SYMS]))
     T = pd.DataFrame([r for rr in res for r in rr], columns=["mkt", "day", "news", "hold", "flat"]).dropna()
     T["c"] = T.mkt.map(mclass)
-    T.to_parquet("D:/finance/si_ledgers/TICK_GAP_NEWS.parquet")
+    T.to_parquet("data/si_ledgers/TICK_GAP_NEWS.parquet")
     print(f"London-session markets on real ticks, {len(T)} breakouts ({int(T.news.sum())} on CPI / NFP days): hold {T.hold.mean():+.3f} R | news flat {T.flat.mean():+.3f} R | on news days {T[T.news].hold.mean():+.3f} -> {T[T.news].flat.mean():+.3f}")
     print(T.groupby("c")[["hold", "flat"]].mean().round(3).to_string())
 

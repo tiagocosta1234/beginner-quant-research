@@ -7,7 +7,7 @@ For each trade, on MT5 broker bid / ask prices (a buy enters at the ask, exits a
 R is in units of his stop distance (R = P&L / his stop distance), so costs (spread) are included."""
 import numpy as np, pandas as pd, datetime as dt
 F = pd.read_csv("FXREPLAY_TRADES_2026-10-20.csv"); F["tm"] = pd.to_datetime(F.chart_entry); F = F[F.side.isin(["Buy", "Sell"]) & F.stop.notna()].copy()
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+d = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
 lis = pd.to_datetime(d.t, unit="s") - pd.Timedelta(hours=2); idx = {t: i for i, t in enumerate(lis)}
 bo, bh, bl, bc, ao, ah, al, ac = (d[k].to_numpy() for k in ("bo", "bh", "bl", "bc", "ao", "ah", "al", "ac")); o, h, l, c = (bo + ao) / 2, (bh + ah) / 2, (bl + al) / 2, (bc + ac) / 2
 ema = pd.Series(c).ewm(span=12, adjust=False).mean().to_numpy(); atr = pd.Series(h - l).rolling(14).mean().shift(1).to_numpy(); lisn = lis.to_numpy()

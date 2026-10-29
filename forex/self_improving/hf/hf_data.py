@@ -1,6 +1,6 @@
 """Tick features and execution labels for the frequent-trading family (PREREG_HF.md).
    python -m forex.self_improving.hf.hf_data [--symbols EURUSD,SP] [--force]
-Reads D:\\finance\\ticks\\<SYM>\\*.parquet (ticks before 2026-08-16 UTC only: the HOLD of this family is never loaded) and writes D:\\finance\\ticks_feat\\<SYM>.parquet."""
+Reads data\\ticks\\<SYM>\\*.parquet (ticks before 2026-08-16 UTC only: the HOLD of this family is never loaded) and writes data\\ticks_feat\\<SYM>.parquet."""
 import sys
 ARGV = sys.argv[1:]
 
@@ -11,7 +11,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-TICKS = Path("D:/finance/ticks"); FEAT = Path("D:/finance/ticks_feat"); FEAT.mkdir(parents=True, exist_ok=True)
+TICKS = Path("data/ticks"); FEAT = Path("data/ticks_feat"); FEAT.mkdir(parents=True, exist_ok=True)
 CUT = int(pd.Timestamp("2026-08-16", tz="UTC").value // 10**6)           # ms: nothing at or after this instant is loaded (sealed HOLD of this family)
 SYMS = {"fx": ["EURUSD", "GBPUSD", "USDJPY", "AUDUSD", "USDCAD", "USDCHF"], "cmd": ["XAUUSD"], "idx": ["SP", "NSDQ", "DOW", "DAX"], "crypto": ["BTCUSD"]}
 HLIST = (1, 5, 15, 60); DLIST = (0.0, 1.0); LAT = 300; WAIT = 60000
@@ -23,7 +23,7 @@ EVENT_NY = {"NFP": (8, 30), "CPI": (8, 30), "FOMC": (14, 0)}
 
 
 def events_utc():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); out = {}
+    cal = pd.read_csv("data/data_macro/event_calendar.csv"); out = {}
     for k, (hh, mm) in EVENT_NY.items():
         out[k] = np.array(sorted(int((pd.Timestamp(f"{d} {hh:02d}:{mm:02d}").tz_localize("America/New_York").tz_convert("Europe/Athens").tz_localize(None) - pd.Timestamp("1970-01-01")) // pd.Timedelta(seconds=1)) for d in cal[cal.kind == k].date))      # tick epoch = SERVER clock
     out["ANY"] = np.array(sorted(np.concatenate([out[k] for k in EVENT_NY]))); return out

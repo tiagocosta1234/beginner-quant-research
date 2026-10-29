@@ -173,7 +173,7 @@ if __name__ == "__main__":
     for _, p in res:
         plc.update(p)
     R = pd.DataFrame(rows)
-    R.to_csv("D:/finance/tmp/utbot_variant_cells.csv" if "--variants" in sys.argv else "D:/finance/tmp/utbot_cells.csv", index=False)
+    R.to_csv("data/tmp/utbot_variant_cells.csv" if "--variants" in sys.argv else "data/tmp/utbot_cells.csv", index=False)
     pm = np.array([[x for x in v] for v in plc.values()], dtype=float)
     mx = np.nanmax(pm, axis=0)
     ceil = np.nanpercentile(mx, 95)

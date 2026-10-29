@@ -24,7 +24,7 @@ def main():
             kd = 0.0 if D is None else float(D.reindex(days).fillna(0).V.sum()); gold = float(np.asarray(base["V"]).sum())
             rows.append(dict(size=m, loss=g, dip_risk=r, dip_net_12m=kd, gold_net_12m=gold, p44=full["p44"], p120=full["p120"], breach=full["breach"], med=full["med"], p44_nogoldrun=cut["p44"], p120_nogoldrun=cut["p120"], breach_nogoldrun=cut["breach"], med_nogoldrun=cut["med"]))
             print({k: (round(float(v), 1) if not isinstance(v, str) else v) for k, v in rows[-1].items()}, flush=True)
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/MANUALDIP_WEIGHT.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/MANUALDIP_WEIGHT.csv", index=False)
 
 
 if __name__ == "__main__":

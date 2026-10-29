@@ -56,7 +56,7 @@ def main():
     print(T.pivot(index="period", columns="variant", values="t").reindex([p[0] for p in PERIODS]).round(2).to_string())
     print("\ntrades by period:")
     print(T.pivot(index="period", columns="variant", values="n").reindex([p[0] for p in PERIODS]).to_string())
-    T.to_csv("C:/work/scratch/usdjpy_spreadfix.csv", index=False)
+    T.to_csv("data/scratch/usdjpy_spreadfix.csv", index=False)
 
 
 if __name__ == "__main__":

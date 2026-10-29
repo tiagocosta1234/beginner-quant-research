@@ -1,5 +1,5 @@
 # BRK-LAG result (breakout day round 31, 2026-10-15 14:05, local clock): the laggard does not catch up
-Pre-registration PREREG_BRK_LAG.md, engine brk_lag.py (truncation PASS), rows D:/finance/si_ledgers/BRK_LAG.parquet. When at least half of the other members of a related group (US indices, USD-weak FX, JPY-weak crosses, metals, energy, crypto) have broken out of their opening box in the same direction, enter the member still inside its box at market, stop one box away, hold to the close.
+Pre-registration PREREG_BRK_LAG.md, engine brk_lag.py (truncation PASS), rows data/si_ledgers/BRK_LAG.parquet. When at least half of the other members of a related group (US indices, USD-weak FX, JPY-weak crosses, metals, energy, crypto) have broken out of their opening box in the same direction, enter the member still inside its box at market, stop one box away, hold to the close.
 | Z1 laggard entry (net R) | DEV | VAL | 2026 | random side, same minute |
 |---|---|---|---|---|
 | all groups (n 6,570 / 2,428 / 1,745) | -0.043 (t -1.3) | -0.074 | -0.047 | -0.031 / -0.034 / -0.024 |

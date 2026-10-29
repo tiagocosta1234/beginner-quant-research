@@ -1,7 +1,7 @@
 # R16_CONF result - no confluence improves reel 16's NY-box breakout (0 of 8 kept)
 
 Run 2026-10-17 23:49-23:50 local (local clock, second PC). Pre-registration `PREREG_R16_CONF.md` (registered 23:49; amendment 1 at 23:50
-after the first run crashed on an empty group, engine fix only; hashes in `C:\work\scratch\r16_conf_freeze.txt`). Engine
+after the first run crashed on an empty group, engine fix only; hashes in `data\scratch\r16_conf_freeze.txt`). Engine
 `r16_conf.py`, output `R16_CONF_OUTPUT.txt`. Base: R16-T1 on MT5 broker NSDQ (DEV 728 trades +0.067 R, VAL 236 trades +0.024 R).
 Selection on DEV 2022-24 only; 2025 shown for each flag as a descriptive check; HOLD 2026 stays sealed.
 

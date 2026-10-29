@@ -1,5 +1,5 @@
 # D2_MT5RULE_RESULT - the D2 book under MT5 broker Pro's exact daily-line and profit-cap rules (2026-10-15, local clock 15:50)
-Pre-registration `PREREG_D2_MT5RULE.md` (commit 107bdeb4). Code `d2_mt5rule.py`, output `D2_MT5RULE_OUTPUT.txt`, rows `D:/finance/si_ledgers/D2_MT5RULE.csv`. **Supersedes the account tables of SWAPFREE_DRIFT (bar 5, CPPI), D2_ACCOUNT, d2_dynsize and VALIDATED_BOOK**, which measured each day from the previous day's equity and treated floating profit as counted.
+Pre-registration `PREREG_D2_MT5RULE.md` (commit 107bdeb4). Code `d2_mt5rule.py`, output `D2_MT5RULE_OUTPUT.txt`, rows `data/si_ledgers/D2_MT5RULE.csv`. **Supersedes the account tables of SWAPFREE_DRIFT (bar 5, CPPI), D2_ACCOUNT, d2_dynsize and VALIDATED_BOOK**, which measured each day from the previous day's equity and treated floating profit as counted.
 
 ## The rule that changes the answer
 MT5 broker (Daily Drawdown article 11769446, read today): loss level = day-start BALANCE - 2,500; breach if equity or balance touches it. For a book that holds positions for weeks, floating losses carried from earlier days count against today's line, floating profit gives no room, and profit counts only when realised, at most +2,000 a day (MT5 broker Pro removes the rest at rollover).

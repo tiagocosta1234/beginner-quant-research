@@ -13,7 +13,7 @@ import forex.ea_research.presample as ps
 def histdata(years):
     frames = []
     for yr in years:
-        z = zipfile.ZipFile(f"D:/finance/data_histdata/DAT_ASCII_USDJPY_M1_{yr}.zip")
+        z = zipfile.ZipFile(f"data/data_histdata/DAT_ASCII_USDJPY_M1_{yr}.zip")
         name = [n for n in z.namelist() if n.lower().endswith(".csv")][0]
         frames.append(pd.read_csv(io.BytesIO(z.read(name)), sep=";", header=None, names=["dt", "bo", "bh", "bl", "bc", "v"]))
     d = pd.concat(frames)
@@ -26,7 +26,7 @@ def histdata(years):
 def main():
     fj = ps.mt5_floor("USDJPY", "Europe/London", 8, 17)
     d = histdata((2022, 2023, 2024))
-    d.to_parquet("D:/finance/data_histdata/USDJPY_2022_24.parquet")
+    d.to_parquet("data/data_histdata/USDJPY_2022_24.parquet")
     orig = pd.read_parquet
     pd.read_parquet = lambda f, *a, **k: d if f.endswith("USDJPY.parquet") else orig(f, *a, **k)
     import forex.ea_research.presample as ps2
@@ -41,7 +41,7 @@ def main():
     loc = pd.to_datetime(D["t"], unit="s").tz_localize("UTC").tz_convert("Europe/London").tz_localize(None)
     D["lc"] = loc.values.astype("datetime64[s]").astype(np.int64)
     h = ps.l1_usdjpy(D, np.random.default_rng(2020))
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     e = e[(e.mkt == "USDJPY") & (e.kind == "BRK") & (e.day < "2025-01-01")][["day", "side", "X4_noTP"]]
     print("HistData engine vs MT5 broker data, USDJPY London session breakout held to 17:00 (mean R):")
     for y in (2022, 2023, 2024):

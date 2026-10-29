@@ -1,6 +1,6 @@
 # VOLREGIME_RESULT - volatility-regime filter on opening-range breakouts and fades (2026-10-16, local clock ~10:05 local)
 Pre-registration `PREREG_VOLREGIME.md` (commit 323480e1, 09:54, before any filtered P&L); code `volregime.py`; output
-`VOLREGIME_OUTPUT.txt`; cell table `D:/finance/scratch/volregime_cells.csv`. 184 streams (46 MT5 broker x London/NY x breakout/fade),
+`VOLREGIME_OUTPUT.txt`; cell table `data/scratch/volregime_cells.csv`. 184 streams (46 MT5 broker x London/NY x breakout/fade),
 112,201 stream-days, DEV 2021-12..2024-12, VAL 2025-01..2026-10-02, MT5 broker M1 bid/ask, 1-minute bars (real-tick cost not included).
 
 ## Verdict: no edge; 0 of 4 pooled tests and 0 of 1,104 cells pass

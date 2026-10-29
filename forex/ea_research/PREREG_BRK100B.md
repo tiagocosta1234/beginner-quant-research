@@ -26,7 +26,7 @@ volatility breakout (Dual Thrust uses a 4-day range); P06 tested the Fisher tran
 **Data limits found while designing (18 Oct):** MT5 broker minute files carry bid OHLC and one spread per minute (ask = bid + spread, so no
 intrabar spread information); the event calendar has dates only (no forecasts); the Yahoo daily files have no volume (the planned
 ETF-volume ideas were replaced by CME-volume regimes, group G).
-**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `C:\work\scratch\brk100b_prereg.sha256` before any P&L.
+**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `data\scratch\brk100b_prereg.sha256` before any P&L.
 
 ## Common rules
 - Data, clock, daily H / L / C / ATR20, fills, rollover ban, mirror trade and R as BRK50 / BRK100 (`brk50.Mkt`). ALL = the 38

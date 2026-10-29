@@ -12,7 +12,7 @@ from forex.ea_research.brk50b import fut_volume, calendars
 from forex.ea_research.brk100b import (shift1, sig2, flips, nxt, mclose, enter_k, enter_t, mk, bars2, bc2, run_bc, spread_rs, cbox, wma,
                                      ssmooth, FX, USI, IDX6, CME4, METALS, USDP, START, H4)
 
-CACHE = "C:/work/scratch/brk100c_trades.parquet"
+CACHE = "data/scratch/brk100c_trades.parquet"
 IDEAS = [f"N{k:03d}" for k in range(1, 101)]
 LDN, BER, SHA = "Europe/London", "Europe/Berlin", "Asia/Shanghai"
 JPYX = ("AUDJPY", "CADJPY", "CHFJPY", "EURJPY", "GBPJPY", "NZDJPY", "USDJPY")

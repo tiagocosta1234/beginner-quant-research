@@ -7,4 +7,4 @@ K=0.40 n 3124 wins 66.7% mean -0.145 R total -452.3 R
 K=0.30 n 3121 wins 68.8% mean -0.150 R total -469.4 R
 K=0.25 n 3045 wins 66.9% mean -0.163 R total -495.8 R
 Smaller target = higher win rate, worse expectancy (fixed costs weigh more in R). Peaks at 68.8%, never reaches 70%.
-claude.pine now has a "Target (x stop distance)" input (default 1.0) and an "Expectancy per trade" dashboard row. Edited locally only; not pasted into TradingView.
+london_open_indicator.pine now has a "Target (x stop distance)" input (default 1.0) and an "Expectancy per trade" dashboard row. Edited locally only; not pasted into TradingView.

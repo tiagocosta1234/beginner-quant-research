@@ -91,7 +91,7 @@ def main():
         print("truncation:", np.allclose(V[sel(m)][:len(Vc[sel(mc)])], Vc[sel(mc)]))
         return
     meta, V = collect(); meta["cls"] = meta.mkt.map(mclass)
-    np.save("D:/finance/si_ledgers/ORB11_GRID_V.npy", V); meta.to_parquet("D:/finance/si_ledgers/ORB11_GRID_meta.parquet")
+    np.save("data/si_ledgers/ORB11_GRID_V.npy", V); meta.to_parquet("data/si_ledgers/ORB11_GRID_meta.parquet")
     pmask = {p: ((meta.day >= a) & (meta.day <= b)).to_numpy() for p, (a, b) in PER.items()}
     orb, ctl = (meta.kind == "ORB").to_numpy(), (meta.kind == "CTRL").to_numpy()
     print(f"{orb.sum()} breakout trades, {ctl.sum()} random entries, {V.shape[1]} exits each")
@@ -116,7 +116,7 @@ def main():
             dv = V[m & km & (pmask["DEV"] | pmask["VAL"]), j]
             rows.append(dict(mkt=mk, sess=ss, kind=kind, exit=NAMES[j], DEV=mu[j], VAL=V[m & km & pmask["VAL"], j].mean(), Y26=V[m & km & pmask["Y26"], j].mean(),
                              t=dv.mean() / dv.std() * np.sqrt(len(dv)) if dv.std() > 0 else 0))
-    W = pd.DataFrame(rows); W.to_csv("D:/finance/si_ledgers/ORB11_GRID_walkforward.csv", index=False)
+    W = pd.DataFrame(rows); W.to_csv("data/si_ledgers/ORB11_GRID_walkforward.csv", index=False)
     for kind in ("ORB", "CTRL"):
         w = W[W.kind == kind]
         print(f"  {kind}: {len(w)} cells; DEV-best mean DEV {w.DEV.mean():+.3f} -> VAL {w.VAL.mean():+.3f} (positive {int((w.VAL > 0).sum())}), 2026 {w.Y26.mean():+.3f} (positive {int((w.Y26 > 0).sum())}); positive in VAL AND 2026: {int(((w.VAL > 0) & (w.Y26 > 0)).sum())}")
@@ -129,7 +129,7 @@ def main():
         ok = (t >= 4.4) & (V[mo & pmask["DEV"]].mean(0) > 0) & (V[mo & pmask["VAL"]].mean(0) > 0) & (V[mo & pmask["Y26"]].mean(0) > 0) & (V[mo].mean(0) > V[mc].mean(0))
         allp.append((mk, ss, float(np.nanmax(t)), NAMES[int(np.nanargmax(t))], int(ok.sum())))
     P = pd.DataFrame(allp, columns=["mkt", "sess", "max_t", "exit_max_t", "passing_exits"]).sort_values("max_t", ascending=False)
-    P.to_csv("D:/finance/si_ledgers/ORB11_GRID_cells.csv", index=False)
+    P.to_csv("data/si_ledgers/ORB11_GRID_cells.csv", index=False)
     print(f"\n3. Cells passing (t >= 4.4, > 0 in DEV, VAL, 2026, beats random): {int(P.passing_exits.sum())} of 9,108. Highest DEV+VAL t per cell:")
     print(P.head(10).to_string(index=False))
     # random-entry ceiling: the same max-t on random entries
@@ -143,7 +143,7 @@ def main():
     hm = pd.DataFrame(V[m].mean(0).reshape(len(SL), len(TP)), index=[f"SL {s:g}B" for s in SL], columns=[("none" if np.isinf(t) else f"{t:g}R") for t in TP])
     hc = pd.DataFrame(V[mc].mean(0).reshape(len(SL), len(TP)), index=hm.index, columns=hm.columns)
     print("\n4. All symbols, both sessions, 2022-25, R per trade (rows = stop in box widths, columns = target):\nBREAKOUT\n" + hm.round(3).to_string() + "\nRANDOM ENTRY\n" + hc.round(3).to_string())
-    hm.to_csv("D:/finance/si_ledgers/ORB11_GRID_heat.csv")
+    hm.to_csv("data/si_ledgers/ORB11_GRID_heat.csv")
 
 
 if __name__ == "__main__":

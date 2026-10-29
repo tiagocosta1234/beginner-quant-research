@@ -11,7 +11,7 @@ LAT = 300   # ms
 
 
 def load():
-    t = pd.concat([pd.read_parquet(f) for f in sorted(glob.glob("D:/finance/ticks/USDJPY/*.parquet"))])
+    t = pd.concat([pd.read_parquet(f) for f in sorted(glob.glob("data/ticks/USDJPY/*.parquet"))])
     t = t.sort_values("time_msc").drop_duplicates("time_msc")
     ms = t.time_msc.to_numpy(np.int64)
     srv = pd.to_datetime(ms, unit="ms")
@@ -55,13 +55,13 @@ def main():
             px = bid[x] if side > 0 else ask[x]
         rows.append((pd.Timestamp(d * 86400, unit="s"), side, side * (px - e) / R, (ask[f] - bid[f]), R))
     T = pd.DataFrame(rows, columns=["day", "side", "R", "spread", "Rpx"])
-    mt5 = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    mt5 = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     mt5 = mt5[(forex.mkt == "USDJPY") & (forex.kind == "BRK")][["day", "side", "X4_noTP"]]
     m = T.merge(mt5, on="day", suffixes=("_tick", "_m1"))
     print(f"ticks: {len(T)} trades {T.day.min().date()}..{T.day.max().date()}, mean {T.R.mean():+.3f} R, win {np.mean(T.R > 0):.0%}, median spread at fill {T.spread.median():.4f}, median R {T.Rpx.median():.3f}")
     print(f"common days with the M1 engine: {len(m)}; same side {np.mean(m.side_tick == m.side_m1):.0%}; R correlation {np.corrcoef(m.R, m.X4_noTP)[0, 1]:+.3f}; "
           f"mean R ticks {m.R.mean():+.3f} vs M1 {m.X4_noTP.mean():+.3f} (difference {m.R.mean() - m.X4_noTP.mean():+.3f})")
-    T.to_parquet("D:/finance/si_ledgers/USDJPY_TICKS.parquet")
+    T.to_parquet("data/si_ledgers/USDJPY_TICKS.parquet")
 
 
 if __name__ == "__main__":

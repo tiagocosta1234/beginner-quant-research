@@ -3,8 +3,8 @@ import numpy as np, pandas as pd
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 import forex.ea_research.orb11_entry as oe, forex.ea_research.orb11_entry_oot as oo
 from forex.ea_research.lon_persym import london_spread, HD_OK
-S = pd.read_csv("D:/finance/si_ledgers/LON_PERSYM.csv"); K = S[S.kept]
-T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")]
+S = pd.read_csv("data/si_ledgers/LON_PERSYM.csv"); K = S[S.kept]
+T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")]
 fig, axes = plt.subplots(len(K), 1, figsize=(11, 2.3 * len(K)), sharex=True)
 load0 = oe.load
 for ax, r in zip(axes, K.itertuples()):

@@ -20,7 +20,7 @@ def main():
                 days_with += 1; sh = P[m] - J * exp[m]; tot += int(m.sum()); b = (sh <= -2500.0); bad += int(b.sum()); badd += int(b.any())
             row[f"J{J}_pct_minutes"] = 100 * bad / max(tot, 1); row[f"J{J}_pct_days"] = 100 * badd / max(days_with, 1)
         rows.append(row); print({k: round(v, 1) for k, v in row.items()}, flush=True)
-    o = pd.DataFrame(rows); o.to_csv(f"D:/finance/si_ledgers/STRESS_jumps{'' if M == 1.5 else '_x' + str(M)}.csv", index=False)
+    o = pd.DataFrame(rows); o.to_csv(f"data/si_ledgers/STRESS_jumps{'' if M == 1.5 else '_x' + str(M)}.csv", index=False)
     tm, bc, sp = S.bars; d = np.abs(np.diff(bc)); gap = np.diff(tm); ok = (gap == 60) & ((tm[1:] % 86400) // 3600 >= 1) & ((tm[1:] % 86400) // 3600 < 23); wk = gap > 6 * 3600
     t12 = tm[1:] >= tm[-1] - 365 * 86400; yrs = (tm[-1] - tm[0]) / 86400 / 365
     print("1-minute moves >= J USD per year (all years / last 12 months):", {J: (int(((d >= J) & ok).sum() / yrs * 10) / 10, int(((d >= J) & ok & t12).sum())) for J in JS})

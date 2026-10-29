@@ -7,7 +7,7 @@ import numpy as np, pandas as pd
 from forex.ea_research import combo_grid as G, pass70 as P, dip_addon as DA, fincept_mt5_verify as V
 from forex.ea_research.event_macro import server_s
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
 P.C0 = 0.0; GUARD = 1500.0; RISK = 500.0; KSTOP = 3.0
 
 

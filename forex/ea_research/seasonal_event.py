@@ -42,7 +42,7 @@ def series():
         s.append(pd.Series(r))
     out["SE2"] = avg(s)
     # SE3: prior trading day 14:00 ask -> FOMC day 14:00 bid
-    fo = pd.to_datetime(pd.read_csv("D:/finance/data_macro/event_calendar.csv").query("kind == 'FOMC'").date); s = []
+    fo = pd.to_datetime(pd.read_csv("data/data_macro/event_calendar.csv").query("kind == 'FOMC'").date); s = []
     for m in US:
         e, x = P[m]["a1400"], P[m]["b1400"]; r = {}
         for F in fo:

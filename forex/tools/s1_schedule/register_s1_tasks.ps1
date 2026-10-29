@@ -2,7 +2,7 @@
 # Run:    powershell -ExecutionPolicy Bypass -File register_s1_tasks.ps1        Remove: powershell -ExecutionPolicy Bypass -File unregister_s1_tasks.ps1
 # Nothing here trades or arms anything; the tasks only show reminders and run the read-only morning brief.
 $ErrorActionPreference = "Stop"
-$root = "D:\finance\beginner-quant-research\mt5\tools\s1_schedule"; $ps = "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe"; $folder = "\S1Live\"
+$root = "mt5\tools\s1_schedule"; $ps = "$env:WINDIR\System32\WindowsPowerShell\v1.0\powershell.exe"; $folder = "\S1Live\"
 $first = "2026-10-23"; $end = "2026-11-22T23:59:59"; $user = "$env:USERDOMAIN\$env:USERNAME"
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -WakeToRun -ExecutionTimeLimit (New-TimeSpan -Minutes 15)
 $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited

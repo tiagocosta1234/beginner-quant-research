@@ -1,6 +1,6 @@
 # Pre-registration: does an implied-vol regime (CBOE GVZ, VIX term structure, SKEW) predict the gold pair's daily P&L? (written 2026-10-12, before any outcome was looked at)
 
-Source of the data: CBOE history CSVs fetched with the Fincept Terminal's key-free CBOE endpoint (`D:\finance\data_macro\cboe\*.csv`, 2008-2026). New to us: we only held VIXCLS before.
+Source of the data: CBOE history CSVs fetched with the Fincept Terminal's key-free CBOE endpoint (`data\data_macro\cboe\*.csv`, 2008-2026). New to us: we only held VIXCLS before.
 Question: if a regime separates the pair's good days from its bad days, risk could be scaled by it. If not, nothing changes.
 
 ## Test (3 trials, fixed now)

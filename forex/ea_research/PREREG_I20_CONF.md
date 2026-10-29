@@ -8,7 +8,7 @@ years. This round only builds a shortlist; the decisive test stays the unchanged
 the main PC), and the 2026 hold-out stays sealed.
 
 ## Events
-The I20 trades in `C:\work\scratch\brk50_trades.parquet` (frozen with BRK50), 38 non-crypto markets, 2022-2025 only. No 2026 row
+The I20 trades in `data\scratch\brk50_trades.parquet` (frozen with BRK50), 38 non-crypto markets, 2022-2025 only. No 2026 row
 is read. Expansion day = yesterday (the previous trading day); up day if its close > its 01:00-server open. "Touched level" =
 PDH (fade = short) or PDL (fade = long).
 

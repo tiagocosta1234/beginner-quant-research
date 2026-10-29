@@ -13,7 +13,7 @@ tm, bc, sp = bars; day_of = tm // 86400
 d_start = np.searchsorted(day_of, np.unique(day_of)); ud = np.unique(day_of); rng = {}; ret = {}
 for k, d in enumerate(ud):
     a = d_start[k]; b = d_start[k + 1] if k + 1 < len(ud) else len(tm); seg = bc[a:b]; rng[d] = np.log(seg.max() / seg.min()); ret[d] = np.log(seg[-1] / seg[0])
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); evd = {kind: set(int(server_s(r.date, 8, 30) // 86400) for r in cal.itertuples() if r.kind == kind) for kind in ("CPI", "NFP", "FOMC")}
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); evd = {kind: set(int(server_s(r.date, 8, 30) // 86400) for r in cal.itertuples() if r.kind == kind) for kind in ("CPI", "NFP", "FOMC")}
 rows = []
 for pool in ("MT5", "FT"):
     S = G.add_dip(G.pair_series(pool, 1.5, 1.5, I.GUARD), I.Dd, I.GUARD); days = np.asarray(S["days"]); V = np.asarray(S["V"], float); Hi = np.asarray(S["Hi"], float)

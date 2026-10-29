@@ -1,7 +1,7 @@
 # Pre-registration: five hypotheses on data we never used (family AL) (written 2026-10-12, before any return was computed)
 
 the trader: "(original wording omitted)". Fincept Terminal is the data source: its scripts point at key-free feeds (alternative.me Fear & Greed, DefiLlama stablecoins, FRED), plus Binance's public funding-rate history. These are not price-derived signals, which is what 13 price-only families lacked.
-Files (all pulled 2026-10-12 into `D:\finance\data_macro\alt`): `fng.csv`, `funding_BTCUSDT.csv`, `funding_ETHUSDT.csv`, `stablecoins.csv`; real yields `D:\finance\data_macro\DFII10.csv`.
+Files (all pulled 2026-10-12 into `data\data_macro\alt`): `fng.csv`, `funding_BTCUSDT.csv`, `funding_ETHUSDT.csv`, `stablecoins.csv`; real yields `data\data_macro\DFII10.csv`.
 Instruments on MT5 broker M1 bid/ask (`data_mt5`, 2021-12 .. 2026-10-02, swap-free): BTCUSD+ and ETHUSD+ (24/7) for AL1-AL4, XAUUSD+ for AL5. Spread paid on every fill (long: ask in / bid out; short: bid in / ask out). Return in bp of the entry price. BTC and ETH trades of the same entry date are averaged into one observation. One position per asset at a time (a signal while a position is open is ignored).
 Periods by entry date: DEV 2022-01-01 .. 2024-12-31, VAL 2025, HOLD-OUT 2026-01-01 .. 2026-09-30 (one look, accepted trials only).
 

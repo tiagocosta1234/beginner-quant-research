@@ -1,6 +1,6 @@
 # Machine learning on the raw 15-minute bars: result (2026-10-13)
 
-Pre-registration: PREREG_ML.md (with Amendment 1). Code: ml_lab.py, check script ml_hour_check.py (scratchpad). Ledgers: D:\finance\si_ledgers\ML_real_run1_rollover.csv, ML2_real.csv, ML2_placebo5{4,5,6}.csv (and the calibration ML_placebo5{1,2,3}.csv). 2026 never loaded.
+Pre-registration: PREREG_ML.md (with Amendment 1). Code: ml_lab.py, check script ml_hour_check.py (scratchpad). Ledgers: data\si_ledgers\ML_real_run1_rollover.csv, ML2_real.csv, ML2_placebo5{4,5,6}.csv (and the calibration ML_placebo5{1,2,3}.csv). 2026 never loaded.
 
 ## Setup
 Raw input: the last 48 bars (12 hours) of a market, OHLC of the bid as log(price / current close) over the bar volatility, plus two M1-derived numbers per bar (1-minute realised variance over volatility squared, spread over its median), hour and weekday encodings and the log of the volatility regime: 293 numbers, no hand-made indicator. One XGBoost model per class (idx, fx, cmd, crypto) and horizon (1 hour, 4 hours, 1 day) = 12 cells, trained on window A (2022-01..2023-06), early stopping and signal threshold on B (2023-07..2024-12), looked at on VAL (2025) once per design. Entries on the grid of spacing H (no overlap), real bid / ask and the conservative flat carry. Cell passes only if VAL net >= +3 bp, >= 100 trades, >= 20 weekly clusters and excess p < 0.05/12.

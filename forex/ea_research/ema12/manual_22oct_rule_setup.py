@@ -74,7 +74,7 @@ for _, r in T[(T.hm >= 7 * 60 + 55) & (T.hm <= 8 * 60 + 16)].iterrows():
     cross = "UP" if (r.o < r.ema < r.c) else "DOWN" if (r.o > r.ema > r.c) else "-"
     print("%s  %.2f  %.2f  %.2f  %.2f  %+.2f  %.2f  %.2f  %.2f  %.2f  %5.2f    %-4s   %s" % (r.lis.strftime("%H:%M"), r.o, r.h, r.l, r.c, body, upw, lwr, r.ema, r.atr, abs(body) / r.atr, cross, "yes" if abs(body) > max(upw, lwr) else "no"))
 # MT5 broker bars for scoring
-sys.path.insert(0, r"D:\finance\beginner-quant-research\mt5\ea_research\ema12")
+sys.path.insert(0, r"mt5\ea_research\ema12")
 import forward_score as F
 Z = F.load_days_mt5("2026-10-22", "2026-10-22")[pd.Timestamp("2026-10-22").date()].copy()
 Z["lis"] = Z.dt - pd.Timedelta(hours=2); Z["hm2"] = Z.lis.dt.hour * 60 + Z.lis.dt.minute

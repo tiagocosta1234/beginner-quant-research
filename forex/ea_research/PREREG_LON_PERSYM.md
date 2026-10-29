@@ -2,7 +2,7 @@
 the trader: "(original wording omitted)" (a London-open breakout strategy for each symbol on its own).
 
 ## Candidates per symbol (72, from ORB11_ENTRY, London session only)
-30-minute box 08:00-08:30 London; 6 triggers (touch, 5- / 15-minute close outside, still outside after 15 minutes, retest limit, fade of the failed break) x 6 filters (none, daily trend, box >= 40 spreads, squeeze, box direction, trend + wide) x 2 exits (1:1, hold to 17:00 London); MT5 broker bid/ask, spreads paid; trades table D:/finance/si_ledgers/ORB11_ENTRY.parquet (truncation-tested).
+30-minute box 08:00-08:30 London; 6 triggers (touch, 5- / 15-minute close outside, still outside after 15 minutes, retest limit, fade of the failed break) x 6 filters (none, daily trend, box >= 40 spreads, squeeze, box direction, trend + wide) x 2 exits (1:1, hold to 17:00 London); MT5 broker bid/ask, spreads paid; trades table data/si_ledgers/ORB11_ENTRY.parquet (truncation-tested).
 
 ## Procedure (per symbol, 46 symbols)
 1. Choose the rule with the highest mean R in DEV 2022-24 (at least 50 DEV trades). Nothing else is looked at for the choice.

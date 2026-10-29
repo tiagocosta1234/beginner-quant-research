@@ -137,8 +137,8 @@ def main():
                 print(f"   control (business day 10) {p}: mean {sc['mean']:+.2f} bp, t {sc['t']:+.2f}")
                 rows.append(dict(cell=cell, period=f"CONTROL_{p}", **sc))
     tag = f"HOLD_{hold}" if hold else "RUN"
-    pd.DataFrame(rows).to_csv(f"D:/finance/si_ledgers/MONTHEND_{tag}.csv", index=False)
-    pd.concat(allT).to_parquet(f"D:/finance/si_ledgers/MONTHEND_{tag}_trades.parquet")
+    pd.DataFrame(rows).to_csv(f"data/si_ledgers/MONTHEND_{tag}.csv", index=False)
+    pd.concat(allT).to_parquet(f"data/si_ledgers/MONTHEND_{tag}_trades.parquet")
 
 
 if __name__ == "__main__":

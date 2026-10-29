@@ -1,4 +1,4 @@
-# PREREG_PO3_SEARCH: one finite search for a profitable version of the claude.pine PO3 (Asia range sweep + reclaim) rule
+# PREREG_PO3_SEARCH: one finite search for a profitable version of the london_open_indicator.pine PO3 (Asia range sweep + reclaim) rule
 
 Written Tue 2026-10-27 (local clock) BEFORE any result. the trader: "do a more profitable indicator". Base rate first: the default rule loses -0.21 R (GC, 1 STDV target) and
 -0.23 to -0.28 R at every fixed target, 0 of 8 years positive; 10 earlier families and a 147-cell filter search found nothing. Likely outcome: NOT SHOWN.
@@ -21,4 +21,4 @@ Also reported, not gating: DEV-to-TEST correlation of cell means, the top-5 DEV 
 ## RESULT (one look, Tue 2026-10-27 ~10:1x local clock; `po3_search.py` -> PO3_SEARCH_OUTPUT.txt) -- NOT SHOWN
 All 32 cells negative on DEV and TEST (DEV/TEST correlation 0.94: the losses are stable, not noise). Chosen cell (sweep to 05:00, wide stop, 0.5 R, with-trend):
 TEST 1,076 trades, 64.0% wins, mean -0.125 R, mirror -0.088, random-side P 0.83, markets positive 0/4 (ES -0.122, GC -0.167, NQ -0.050, SI -0.140), every year negative.
-The PO3 rule is closed; claude.pine keeps it as a drawing tool only.
+The PO3 rule is closed; london_open_indicator.pine keeps it as a drawing tool only.

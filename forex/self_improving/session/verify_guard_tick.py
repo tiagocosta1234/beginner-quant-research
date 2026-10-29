@@ -6,7 +6,7 @@ import numpy as np, pandas as pd
 from forex.ea_batch import mt5data_run as ER
 from forex.self_improving.session import session_sdbrunner as R, session_episode_combo as C
 
-TR, TERM = ER.TR, ER.TERM_DIR; SRC = Path(r"D:\finance\beginner-quant-research\mt5\expert_advisors"); EXP = TERM / "MQL5" / "Experts" / "the trader"
+TR, TERM = ER.TR, ER.TERM_DIR; SRC = Path(r"mt5\expert_advisors"); EXP = TERM / "MQL5" / "Experts" / "the trader"
 import os
 DSP = os.environ.get('DSP', '2.4'); MULT = float(os.environ.get('MULT', '1.5')); PCAP = os.environ.get('PCAP', '2.0')
 TAG = 'L' + str(int(float(DSP) * 1000)) + ('' if MULT == 1.5 else '_x' + str(MULT)) + ('' if PCAP == '2.0' else '_nocap')
@@ -39,12 +39,12 @@ def main():
         write_list(t, MULT); compile_ea()
         r = TR.run_test("pair_replay_" + TAG + "_" + nm.replace(" ", "_"), r"the trader\PairReplay.ex5", "XAUUSD+", "M1", "2025.10.01", "2026.09.30", {"InpDailyStopPct": DSP, "InpProfitCapPct": PCAP, "InpFloorStopPct": "6.5", "InpShiftSec": "0"}, timeout=14400)
         print(f"{nm}: net {r['net']:,.0f} | note {r['note']!r} | seconds {r['seconds']} | eq DD {r['eq_dd']}", flush=True)
-        d = read_log("pair_replay.csv"); d.to_csv(f"D:/finance/si_ledgers/PAIRREPLAY_{TAG}_{nm.replace(' ', '_')}_log.csv", index=False)
+        d = read_log("pair_replay.csv"); d.to_csv(f"data/si_ledgers/PAIRREPLAY_{TAG}_{nm.replace(' ', '_')}_log.csv", index=False)
         ev = d[d.event.isin(["DAYSTOP", "PROFITCAP", "EMERGENCY"])].copy(); ev["rel"] = ev.equity - ev.dayref; snap = d[d.event == "SNAP"].copy(); snap["rel"] = snap.equity - snap.dayref
         print(f"  events: PROFITCAP {int((ev.event == 'PROFITCAP').sum())}, DAYSTOP {int((ev.event == 'DAYSTOP').sum())}, EMERGENCY {int((ev.event == 'EMERGENCY').sum())}; worst equity vs day start balance {snap.rel.min():,.0f}; END {d[d.event == 'END'].detail.tolist()}")
         ds = ev[ev.event == 'DAYSTOP']; print(f"  DAYSTOP levels: min {ds.rel.min():,.0f} max {ds.rel.max():,.0f} mean {ds.rel.mean():,.0f}; snapshots at or below -2,500 vs day start: {int((snap.rel <= -2500).sum())} (days: {snap[snap.rel <= -2500].time.dt.date.nunique()})", flush=True)
         rows.append(dict(variant=nm, net=r["net"], eq_dd=r["eq_dd"], profitcap=int((ev.event == "PROFITCAP").sum()), daystop=int((ev.event == "DAYSTOP").sum()), worst_rel=snap.rel.min()))
-    pd.DataFrame(rows).to_csv(f"D:/finance/si_ledgers/PAIRREPLAY_{TAG}_summary.csv", index=False)
+    pd.DataFrame(rows).to_csv(f"data/si_ledgers/PAIRREPLAY_{TAG}_summary.csv", index=False)
 
 
 if __name__ == "__main__":

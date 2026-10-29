@@ -1,5 +1,5 @@
 import sys, numpy as np, pandas as pd
-sys.path.insert(0, r"D:\finance\beginner-quant-research\mt5\apprentice")
+sys.path.insert(0, r"mt5\apprentice")
 import desk as D
 d = D.raw(); d = d[(d["lis"] >= "2026-04-28") & (d["lis"] < "2026-06-27")].reset_index(drop=True)
 # replay market entries (date, hh:mm, side, entry, stop) from FXR_SESSION_LOG / logs

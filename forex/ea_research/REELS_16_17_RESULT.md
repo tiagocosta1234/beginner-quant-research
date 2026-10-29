@@ -2,7 +2,7 @@
 
 Run 2026-10-17 23:42 local (local clock, second PC). Pre-registration `PREREG_REELS_16_17.md` (registered ~23:41; its header first said 23:45, a guess,
 corrected after the run; frozen by sha256 at 23:42:32 in
-`C:\work\scratch\reels_16_17_freeze.txt`). Engine `reels_16_17.py`, output `REELS_16_17_OUTPUT.txt`. MT5 broker NSDQ M1 bid/ask
+`data\scratch\reels_16_17_freeze.txt`). Engine `reels_16_17.py`, output `REELS_16_17_OUTPUT.txt`. MT5 broker NSDQ M1 bid/ask
 2022-01..2026-10-16 (zero-spread minutes repaired); HOLD 2026 sealed (no trial passed DEV). Reel 15 (Zenith) has no rules and
 is not testable (`reels/15_zenith_nq_prop_81pct_no_rules/NOTAS.md`).
 

@@ -107,7 +107,7 @@ def main():
             TR[tr] += sim(D, dd, m, tr)
     T = {k: pd.DataFrame(v) for k, v in TR.items()}
     for k, x in T.items():
-        x.to_parquet(f"C:/work/scratch/hwr_{k}.parquet")
+        x.to_parquet(f"data/scratch/hwr_{k}.parquet")
     print("Trials (net R a trade; DEV 2022-24 / VAL 2025; HOLD only for DEV + VAL passers)")
     passers = []
     for k, x in T.items():

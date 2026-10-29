@@ -58,8 +58,8 @@ def main():
             if x:
                 rows.append(dict(pair=pair, day=pd.Timestamp(d * 86400, unit="s"), side=side, R=x[3], C=xc[3] if xc else np.nan))
     df = pd.DataFrame(rows); df = df[df.day >= DEV[0]]
-    df.to_parquet("D:/finance/si_ledgers/BRK_USDIDX.parquet")
-    ex = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    df.to_parquet("data/si_ledgers/BRK_USDIDX.parquet")
+    ex = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     for pair, g in df.groupby("pair"):
         r = {}
         for lab, (a, b) in (("DEV", DEV), ("VAL", VAL), ("2026", Y26)):

@@ -1,7 +1,7 @@
 # BRK_CONFIRM result - a candle close beyond the box: fewer bounces, but worse trades (0 of 4 pass)
 
 Run 2026-10-16 19:48-19:49 local (local clock, second PC). Pre-registration `PREREG_BRK_CONFIRM.md` (registered 19:34, amendment 1
-before any P&L; frozen by sha256 at 19:48:25 in `C:\work\scratch\brk_confirm_freeze.txt`, not committed first because GitNexus
+before any P&L; frozen by sha256 at 19:48:25 in `data\scratch\brk_confirm_freeze.txt`, not committed first because GitNexus
 cannot run on this second PC). Engine `brk_confirm.py`, output `BRK_CONFIRM_OUTPUT.txt`. 268,114 trades, 38 non-crypto MT5 broker, 2022-01..2026-10-16, real bid/ask with zero-spread minutes repaired. HOLD 2026 stays sealed (no trial reached it).
 
 ## Verdict

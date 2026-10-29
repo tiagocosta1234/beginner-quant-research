@@ -1,5 +1,5 @@
 # BRK-META result (breakout day round 5, 2026-10-15 11:50): a model trained on past breakouts adds ~0.1 R by picking index breakouts, not enough
-Pre-registration `PREREG_BRK_META.md` (amendment A1 before any P&L: causal breadth), engine `brk_meta.py`, events `D:\finance\si_ledgers\BRK_META_events.parquet` (53,898 session breakouts, 21 features). Truncation PASS on the features.
+Pre-registration `PREREG_BRK_META.md` (amendment A1 before any P&L: causal breadth), engine `brk_meta.py`, events `data\si_ledgers\BRK_META_events.parquet` (53,898 session breakouts, 21 features). Truncation PASS on the features.
 
 | (R per trade, hold to close) | DEV 2023-24 | VAL 2025 | 2026 | placebo DEV (3 worlds) |
 |---|---|---|---|---|

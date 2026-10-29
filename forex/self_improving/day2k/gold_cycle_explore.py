@@ -74,5 +74,5 @@ def report(risk):
                 j+=1
     for h,lab in ((12,"30 Oct"),(33,"30 Nov"),(49,"22 Dec"),(60,"60 bd")):
         print(f"  bootstrap P(pass) by {lab} ({h} bd): {100*np.mean((res==1)&(dday<h)):.1f}%  breach by then {100*np.mean((res==2)&(dday<h)):.1f}%")
-    c.to_csv(f"D:/finance/si_ledgers/GOLD_CYCLES_risk{int(risk)}.csv",index=False); x.to_csv(f"D:/finance/si_ledgers/GOLD_TRADES_risk{int(risk)}.csv",index=False)
+    c.to_csv(f"data/si_ledgers/GOLD_CYCLES_risk{int(risk)}.csv",index=False); x.to_csv(f"data/si_ledgers/GOLD_TRADES_risk{int(risk)}.csv",index=False)
 for rk in (2000.0,900.0): report(rk)

@@ -1,5 +1,5 @@
 # LON_PERSYM_RESULT - one London-open breakout strategy per symbol, chosen and validated separately (2026-10-15, local clock 21:23)
-Pre-registration PREREG_LON_PERSYM.md (commit at 21:22). Code lon_persym.py, output LON_PERSYM_OUTPUT.txt, tables D:/finance/si_ledgers/LON_PERSYM*.csv.
+Pre-registration PREREG_LON_PERSYM.md (commit at 21:22). Code lon_persym.py, output LON_PERSYM_OUTPUT.txt, tables data/si_ledgers/LON_PERSYM*.csv.
 
 ## Verdict: 0 of 46 symbols has a London-open breakout strategy that survives
 1. Best of 72 London rules per symbol, chosen on 2022-24: average **+0.258 R** a trade in 2022-24 -> **-0.037** in 2025 (17 of 46 positive) -> **-0.107** in 2026 (16 of 46 positive). The choice is mostly the failed-break fade or small squeeze samples, which look best in sample by chance.

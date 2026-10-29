@@ -1,4 +1,4 @@
-D:\finance\beginner-quant-research\mt5\ea_research\lon_risk.py:63: SyntaxWarning: "\$" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\$"? A raw string is also an option.
+mt5\ea_research\lon_risk.py:63: SyntaxWarning: "\$" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\$"? A raw string is also an option.
   print(f"engine check USDJPY \$1000 2022-25 30-day pass: loop {lp:.3f} vs vectorised {P[(P.combo == 'USDJPY') & (P.X == 1000)]['p30_2022-25'].iloc[0]:.3f}")
 engine check USDJPY \$1000 2022-25 30-day pass: loop 0.003 vs vectorised 0.003
 

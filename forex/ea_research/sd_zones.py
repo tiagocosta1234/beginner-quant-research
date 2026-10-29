@@ -14,7 +14,7 @@ from forex.ea_research import stacked_va as G
 
 HERE = Path(__file__).resolve().parent
 STATE = HERE / "SD_ZONES_STATE.json"
-CACHE = Path("D:/finance/tmp/sd_zones_trades.parquet")
+CACHE = Path("data/tmp/sd_zones_trades.parquet")
 MKTS = G.FX + G.IDX + ["XAUUSD"]
 PER = G.PER
 

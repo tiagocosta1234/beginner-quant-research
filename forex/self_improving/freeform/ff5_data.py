@@ -12,8 +12,8 @@ import pandas as pd
 from forex.self_improving import platform_v3 as P3
 
 DATA = P3.DATA
-CACHE = Path("D:/finance/scratch/si_cache")
-MACRO = Path("D:/finance/data_macro")
+CACHE = Path("data/scratch/si_cache")
+MACRO = Path("data/data_macro")
 HS = (1, 2, 4, 8, 24, 48, 96)
 LEVELS = (0.03, 0.10, 0.25, 0.50, 0.75, 0.90, 0.97)
 HOUR_LV = (0, 3, 6, 9, 12, 15, 18, 21); DOW_LV = (0, 1, 2, 3, 4)

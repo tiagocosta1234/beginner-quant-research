@@ -1,5 +1,5 @@
 # COST-OOS result (breakout day round 11, 2026-10-15 12:01): the cost filter avoids losses out of sample but does not create profit
-Pre-registration `PREREG_COST_OOS.md`, engine `cost_oos.py`, rows `D:\finance\si_ledgers\COST_OOS.parquet`. Instruments never used today (MT5 broker files): UK100, FRA40, US2000, MSFT, NVDA (XPTUSD / XPDUSD produced no box >= 25 spreads: their spreads are too wide). Net R with an assumed commission of 0.5 median spread per round trip.
+Pre-registration `PREREG_COST_OOS.md`, engine `cost_oos.py`, rows `data\si_ledgers\COST_OOS.parquet`. Instruments never used today (MT5 broker files): UK100, FRA40, US2000, MSFT, NVDA (XPTUSD / XPDUSD produced no box >= 25 spreads: their spreads are too wide). Net R with an assumed commission of 0.5 median spread per round trip.
 
 Profile by box width (spreads): < 10 **-0.533** (1,434), 10-15 -0.067, 15-25 -0.086, 25-40 +0.026, 40-60 +0.040, > 60 -0.063. All boxes -0.133.
 | rule | trades | net R (with commission) | trade t / daily t | positive instruments | by year 2022 / 23 / 24 / 25 / 26 | gates |

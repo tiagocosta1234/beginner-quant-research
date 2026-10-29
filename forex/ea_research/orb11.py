@@ -79,7 +79,7 @@ def main():
         a = T[(T.t_entry < cut - 86400) & (T.kind == "ORB")].reset_index(drop=True); b = Tc[(Tc.t_entry < cut - 86400) & (Tc.kind == "ORB")].reset_index(drop=True)
         print("truncation:", len(a), len(b), "identical" if a[["t_entry", "R11"]].equals(b[["t_entry", "R11"]]) else "DIFFERENT")
         return
-    T = collect(); T.to_parquet("D:/finance/si_ledgers/ORB11.parquet")
+    T = collect(); T.to_parquet("data/si_ledgers/ORB11.parquet")
     T["yr"] = T.day.dt.year
     def per(df, p): a, b = PER[p]; return df[(df.day >= a) & (df.day <= b)]
     o = T[T.kind == "ORB"]; c = T[T.kind == "CTRL"]
@@ -101,7 +101,7 @@ def main():
         dv = pd.concat([per(g, 'DEV'), per(g, 'VAL')]); r["t"] = tstat(dv.R11); r["win"] = np.mean(g.R11 > 0)
         r["pass"] = bool(r["t"] >= 3.06 and r["DEV"] > 0 and r["VAL"] > 0 and r["Y26"] > 0)
         rows.append(r)
-    S = pd.DataFrame(rows).sort_values("t", ascending=False); S.to_csv("D:/finance/si_ledgers/ORB11_cells.csv", index=False)
+    S = pd.DataFrame(rows).sort_values("t", ascending=False); S.to_csv("data/si_ledgers/ORB11_cells.csv", index=False)
     pd.set_option("display.width", 250)
     print("\nTop 15 cells by DEV+VAL t (bar 3.06; mean > 0 in DEV, VAL, 2026):")
     print(S.head(15)[["mkt", "sess", "n", "DEV", "VAL", "Y26", "t", "win", "pass"]].round(3).to_string(index=False))

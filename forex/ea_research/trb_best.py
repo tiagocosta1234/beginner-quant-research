@@ -1,6 +1,6 @@
 """The best breakout the TRB grid can find in 2022-24, and what it did in 2025 and 2026 (the trader 2026-10-15: "is this truly the best the
 breakouts can get? I don't believe it"). 2026 is already open for the breakout family (ORB_TREND_2026_RESULT.md).
-   python -m forex.ea_research.trb_best            builds the cache to 2026-10-02 (D:/finance/tmp/trb_cache_2026) and reports"""
+   python -m forex.ea_research.trb_best            builds the cache to 2026-10-02 (data/tmp/trb_cache_2026) and reports"""
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
@@ -10,7 +10,7 @@ import pandas as pd
 from forex.ea_research import trb
 
 END26 = pd.Timestamp("2026-10-03").timestamp()
-CACHE26 = Path("D:/finance/tmp/trb_cache_2026")
+CACHE26 = Path("data/tmp/trb_cache_2026")
 PER = {"IS 2022-24": ("2022-01-01", "2024-12-31"), "2025": ("2025-01-01", "2025-12-31"), "2026": ("2026-01-01", "2026-10-02")}
 
 
@@ -55,7 +55,7 @@ def main():
             r[f"n {k}"], r[f"R/trade {k}"], r[f"$ {k}"] = int(n), (tot / n if n else np.nan), tot * 1000
         rows.append(r)
     D = pd.DataFrame(rows).sort_values("R/trade IS 2022-24", ascending=False)
-    D.to_csv("D:/finance/si_ledgers/TRB_BEST.csv", index=False)
+    D.to_csv("data/si_ledgers/TRB_BEST.csv", index=False)
     pd.set_option("display.width", 260); pd.set_option("display.max_colwidth", 40)
     cols = ["sym", "best_config", "n IS 2022-24", "R/trade IS 2022-24", "$ IS 2022-24", "R/trade 2025", "$ 2025", "R/trade 2026", "$ 2026"]
     print(D[cols].round(3).to_string(index=False))

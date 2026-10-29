@@ -1,5 +1,5 @@
 # WEEKEND_GAP_RESULT - fading the weekend reopen gap (2026-10-15, local clock 15:41)
-Pre-registration `PREREG_WEEKEND_GAP.md` (commit 8bbd8b4a). Code `weekend_gap.py`, output `WEEKEND_GAP_OUTPUT.txt`, rows `D:/finance/si_ledgers/WEEKEND_GAP_RUN.csv`. HOLD not opened.
+Pre-registration `PREREG_WEEKEND_GAP.md` (commit 8bbd8b4a). Code `weekend_gap.py`, output `WEEKEND_GAP_OUTPUT.txt`, rows `data/si_ledgers/WEEKEND_GAP_RUN.csv`. HOLD not opened.
 
 ## Verdict: 0 of 4; closed. Weekend gaps on MT5 broker do not fill by Monday 10:00 or 16:00 server.
 | cell | OOT 2020-21 | DEV 2022-24 | VAL 2025 | DEV+VAL t (bar 2.50) |

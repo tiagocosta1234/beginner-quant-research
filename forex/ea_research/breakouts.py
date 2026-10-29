@@ -285,7 +285,7 @@ def run():
     t0 = time.time()
     df = collect(END, True)
     print(f"run {time.time() - t0:.0f}s, {len(df)} trades", flush=True)
-    df.to_parquet("D:/finance/si_ledgers/BRK_trades.parquet")
+    df.to_parquet("data/si_ledgers/BRK_trades.parquet")
     rows = []
     for (cell, world), g in df.groupby(["cell", "world"]):
         r = dict(cell=cell, world=world)
@@ -297,7 +297,7 @@ def run():
             r[f"y{y % 100}"] = g[g.day.dt.year == y].R.mean()
         rows.append(r)
     R = pd.DataFrame(rows)
-    R.to_csv("D:/finance/si_ledgers/BRK_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_cells.csv", index=False)
     pd.set_option("display.width", 220)
     print(R.round(3).to_string(index=False))
     plc = R[R.world != "real"]

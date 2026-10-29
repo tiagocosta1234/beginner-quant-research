@@ -12,7 +12,7 @@ import pandas as pd
 
 from forex.intraday_lab.lab import ALL, Bars, commission_price
 
-OUT = Path(r"D:\finance\scratch\lab")
+OUT = Path(r"data\scratch\lab")
 HS = (3, 12, 48)
 
 

@@ -14,7 +14,7 @@ from pathlib import Path
 
 from forex.self_improving.llm_bench import harness as H
 
-RES = Path("D:/finance/llm_bench/results")
+RES = Path("data/llm_bench/results")
 OLLAMA = "http://localhost:11434/api/chat"
 
 PROMPT = """You are an algorithmic trader. Write ONE Python function `strategy(df)` that returns a numpy array of positions, one per row of `df`, with values -1 (short), 0 (flat) or 1 (long).

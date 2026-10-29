@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-PATH = r"D:\finance\beginner-quant-research\futures\data\databento\futures_NQ.F_1m.parquet"
+PATH = r"futures\data\databento\futures_NQ.F_1m.parquet"
 COST = 0.86
 MIN_S = 8.0
 TEST_START = pd.Timestamp("2023-01-01", tz="UTC").date()
@@ -112,4 +112,4 @@ for label, sub in (("DEV (descriptive)", dev), ("TEST (single look)", test)):
     report("H1 follow  ", sub, "h1", True)
     report("H2 fade    ", sub, "h2", True)
     report("H3 breakout", sub, "H3", False)
-df.to_csv(r"D:\finance\beginner-quant-research\london_aplus\TOKYO_MNQ_DAYS.csv", index=False)
+df.to_csv(r"futures\london_open_gold\TOKYO_MNQ_DAYS.csv", index=False)

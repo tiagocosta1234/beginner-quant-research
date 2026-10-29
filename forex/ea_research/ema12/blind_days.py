@@ -6,7 +6,7 @@ from ema12_test import open_min
 BATCH = {"1": ("2026-01-01", "2026-01-31", 20261019, None), "2": ("2026-02-02", "2026-09-30", 20261020, 30)}
 b = sys.argv[sys.argv.index("--batch") + 1] if "--batch" in sys.argv else "1"
 lo, hi, seed, k = BATCH[b]
-t = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet", columns=["t"],
+t = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet", columns=["t"],
                     filters=[("t", ">=", int(pd.Timestamp(lo).timestamp())), ("t", "<", int((pd.Timestamp(hi) + pd.Timedelta(days=1)).timestamp()))]).t
 d = pd.DataFrame({"dt": pd.to_datetime(t, unit="s")}); d["day"] = d.dt.dt.date; d["hm"] = d.dt.dt.hour * 60 + d.dt.dt.minute
 ok = sorted(dy for dy, g in d.groupby("day") if dy.weekday() < 5 and ((g.hm >= open_min(dy, "London")) & (g.hm <= open_min(dy, "London") + 14)).sum() >= 10)

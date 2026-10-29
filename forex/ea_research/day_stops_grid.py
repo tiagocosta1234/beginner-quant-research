@@ -1,6 +1,6 @@
 """Mandatory daily loss stop L and daily profit stop P on the installed pair (SDB + XAU5 x size, CPI flat), grid L,P in {1000, 1500, 2000, 2500}; the day ends at the first of -L / +P (all positions closed, no more trades that day),
 otherwise at midnight. Bootstrap of the daily series (pass70.simulate, MT5 broker breach rules: in-day low <= -2,500 or equity <= 92,000; counted profit cap 2,000/day; pass at +8,000 counted or the pass lock), fresh account, MIX of the MT5 broker and FT pools.
-python -m forex.ea_research.day_stops_grid --size 1.5     (appends to D:/finance/si_ledgers/DAYSTOPS_<size>.csv)"""
+python -m forex.ea_research.day_stops_grid --size 1.5     (appends to data/si_ledgers/DAYSTOPS_<size>.csv)"""
 import sys
 ARGV = sys.argv[1:]
 import os
@@ -21,7 +21,7 @@ def series(pool, m, Pc, Lc, ref):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--size", type=float, required=True); a = ap.parse_args(ARGV); out = f"D:/finance/si_ledgers/DAYSTOPS_{a.size}.csv"; refs = {p: G.pair_series(p, 1.5, 1.5, 1500.0)["days"] for p in ("MT5", "FT")}
+    ap = argparse.ArgumentParser(); ap.add_argument("--size", type=float, required=True); a = ap.parse_args(ARGV); out = f"data/si_ledgers/DAYSTOPS_{a.size}.csv"; refs = {p: G.pair_series(p, 1.5, 1.5, 1500.0)["days"] for p in ("MT5", "FT")}
     for Lc in GRID:
         for Pc in GRID:
             st, dy, w, l = [], [], [], []

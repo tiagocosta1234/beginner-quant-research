@@ -26,7 +26,7 @@ def market(args):
     t = D["t"]
     tz, op_s, cl_s = session(sym)
     lc = local_clock(t, tz)
-    tv = pd.read_parquet(f"D:/finance/ticks_vol/{sym}.parquet", columns=["time", "tick_volume"])
+    tv = pd.read_parquet(f"data/ticks_vol/{sym}.parquet", columns=["time", "tick_volume"])
     tv = tv[tv.time < end].drop_duplicates("time")
     vol = pd.Series(tv.tick_volume.to_numpy(float), index=tv.time.to_numpy()).reindex(t).to_numpy()
     cv = np.concatenate([[0.0], np.nancumsum(np.where(np.isnan(vol), 0, vol))])
@@ -168,7 +168,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_META_events.parquet")
+    df.to_parquet("data/si_ledgers/BRK_META_events.parquet")
     DEVp, VALp, Y26 = ("2023-01-01", "2024-12-31"), ("2025-01-01", "2025-12-31"), ("2026-01-01", "2026-10-02")
     base = [stats(df, *p) for p in (DEVp, VALp, Y26)]
     print(f"base (all events) DEV {base[0][1]:+.3f} VAL {base[1][1]:+.3f} 2026 {base[2][1]:+.3f}")

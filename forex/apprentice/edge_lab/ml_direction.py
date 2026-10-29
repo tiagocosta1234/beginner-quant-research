@@ -9,16 +9,16 @@ from sklearn.preprocessing import StandardScaler
 import xgboost as xgb
 
 warnings.filterwarnings("ignore")
-DB = "D:/finance/beginner-quant-research/futures/data/databento/futures_%s.F_1m.parquet"
-MAC = "D:/finance/data_macro/"
-DLY = "D:/finance/beginner-quant-research/futures/data/daily/"
+DB = "futures/data/databento/futures_%s.F_1m.parquet"
+MAC = "data/data_macro/"
+DLY = "futures/data/daily/"
 MK = {"MGC": ("GC", 0.32), "MNQ": ("NQ", 1.1), "MES": ("ES", 0.74), "SI": ("SI", 0.0112), "MYM": ("DOW", 4.4)}
 COT = {"MGC": "GOLD - COMMODITY EXCHANGE", "MNQ": "NASDAQ MINI", "MES": "E-MINI S&P 500 -", "SI": "SILVER - COMMODITY", "MYM": "DJIA"}
 
 
 def load_min(src):
     if src == "DOW":
-        r = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
+        r = pd.read_parquet("forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
         r = r[(r.bo > 0) & (r.ao >= r.bo)]
         utc = pd.to_datetime(r.t, unit="s").pipe(lambda x: x - pd.Timedelta(hours=7)).dt.tz_localize("America/New_York", ambiguous="NaT", nonexistent="NaT").dt.tz_convert("UTC")
         d = pd.DataFrame({k: ((r["b" + k[0]] + r["a" + k[0]]) / 2).to_numpy() for k in ("open", "high", "low", "close")}, index=utc.to_numpy())

@@ -8,7 +8,7 @@ import pandas as pd
 
 from forex.intraday_lab.lab import FX, Bars, commission_price
 
-OUT = Path(r"D:\finance\scratch\lab")
+OUT = Path(r"data\scratch\lab")
 GROUPS = {"FX6": FX, "IDX4": ("US100.cash", "US30.cash", "US500.cash", "GER40.cash")}
 PH = {"dev": ("2021-10-01", "2023-12-31"), "val": ("2024-01-01", "2024-12-31"), "hold": ("2025-01-01", "2026-10-02")}
 

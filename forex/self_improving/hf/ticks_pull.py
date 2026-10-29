@@ -1,8 +1,8 @@
-"""READ-ONLY tick export from the portable tester terminal (D:\\finance\\mt5_mt5_tester) through the MetaTrader5 Python package.
+"""READ-ONLY tick export from the portable tester terminal (data\\mt5_mt5_tester) through the MetaTrader5 Python package.
 Uses ONLY initialize / terminal_info / account_info (login and server, no balance) / symbols_get / symbol_info / copy_ticks_range / shutdown. No order function is imported or called.
    python -m forex.self_improving.hf.ticks_pull --test            (one symbol, one hour)
    python -m forex.self_improving.hf.ticks_pull --symbols EURUSD,XAUUSD --start 2025-10-01 --end 2026-10-13
-Output: D:\\finance\\ticks\\<SYMBOL>\\<YYYY-MM>.parquet with time_msc (UTC ms), bid, ask, flags."""
+Output: data\\ticks\\<SYMBOL>\\<YYYY-MM>.parquet with time_msc (UTC ms), bid, ask, flags."""
 import sys
 ARGV = sys.argv[1:]
 
@@ -15,8 +15,8 @@ import numpy as np
 import pandas as pd
 import MetaTrader5 as mt5
 
-TERMINAL = r"D:\finance\mt5_mt5_tester\terminal64.exe"
-OUT = Path("D:/finance/ticks"); OUT.mkdir(parents=True, exist_ok=True)
+TERMINAL = r"data\mt5_mt5_tester\terminal64.exe"
+OUT = Path("data/ticks"); OUT.mkdir(parents=True, exist_ok=True)
 SAFE = ("initialize", "terminal_info", "account_info", "symbols_get", "symbol_info", "copy_ticks_range", "shutdown", "last_error", "symbol_select")
 
 

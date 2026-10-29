@@ -14,7 +14,7 @@ import pandas as pd
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parents[1] / "data"
-CACHE = Path(r"D:\finance\scratch\lab_cache"); CACHE.mkdir(parents=True, exist_ok=True)
+CACHE = Path(r"data\scratch\lab_cache"); CACHE.mkdir(parents=True, exist_ok=True)
 FX = ("EURUSD", "GBPUSD", "USDJPY", "AUDUSD", "USDCAD", "USDCHF")
 INDEX = ("US100.cash", "US30.cash", "US500.cash", "GER40.cash")
 ALL = FX + ("XAUUSD",) + INDEX

@@ -12,7 +12,7 @@ FOLDS = ((2022, 2023), (2023, 2024), (2024, 2025), (2025, 2026))
 
 
 def features(end_day=None):
-    df = pd.read_parquet("D:/finance/si_ledgers/BRK_HOURS.parquet")
+    df = pd.read_parquet("data/si_ledgers/BRK_HOURS.parquet")
     if end_day is not None:
         df = df[df.day < end_day]
     df = df.sort_values("t_entry").reset_index(drop=True)
@@ -69,7 +69,7 @@ def run():
         imp = pd.Series(mdl.feature_importances_, index=FEATS).sort_values(ascending=False).head(5).round(3).to_dict()
         print(f"fold train<= {tr_last} -> {te}: selected {ts.sel.mean():.1%} of {len(ts)} | top features {imp}")
     T = pd.concat(out)
-    T[["mkt", "day", "h", "side", "R", "pred", "sel", "yr"]].to_parquet("D:/finance/si_ledgers/BRK_ML2.parquet")
+    T[["mkt", "day", "h", "side", "R", "pred", "sel", "yr"]].to_parquet("data/si_ledgers/BRK_ML2.parquet")
     r = {}
     for lab, yrs in (("DEV", (2023, 2024)), ("VAL", (2025,)), ("2026", (2026,))):
         s = T[T.yr.isin(yrs)]

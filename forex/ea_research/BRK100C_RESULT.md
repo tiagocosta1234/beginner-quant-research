@@ -1,7 +1,7 @@
 # BRK100C result - another 100 ideas (CME microstructure, MT5 broker liquidity-weighted prices, minute lead-lag, untested calendars, adaptive rules, untested indicators): 0 pass
 
 Run 2026-10-18 22:33 (local clock, second PC PC-2). Pre-registration `PREREG_BRK100C.md` (SHA-256
-b2e2e89089172fd0f8b3196af3e3c5a6537bd7c65569072619e18d55fc4d045d recorded 21:59:18 in `C:\work\scratch\brk100c_prereg.sha256`, before
+b2e2e89089172fd0f8b3196af3e3c5a6537bd7c65569072619e18d55fc4d045d recorded 21:59:18 in `data\scratch\brk100c_prereg.sha256`, before
 any code and before any BRK100B result; no commits on 18 Oct), engine `brk100c.py` (BRK100B's helpers). Three code-vs-pre-registration
 mismatches were found by reading the code before any run and fixed (N011 used the ES share instead of the NQ share, N022 measured from
 01:05 server instead of 01:05 local, the Amihud history skipped days without a next-day session). The first dry run (4 worker

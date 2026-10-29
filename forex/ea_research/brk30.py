@@ -6,7 +6,7 @@ from forex.ea_research.brk50 import Mkt, lt, last_of, LIS, NYZ, JST, H, DEV, VAL
 from forex.ea_research.orbx import ct
 from forex.ea_research.analog import mclass
 
-CACHE = "C:/work/scratch/brk30_trades.parquet"
+CACHE = "data/scratch/brk30_trades.parquet"
 IDEAS = [f"K{k:02d}" for k in range(1, 31)]
 UNIV = {i: tuple(NONC) for i in IDEAS}
 UNIV.update({"K23": ("AUDUSD", "AUDJPY"), "K24": ("AUDUSD", "AUDJPY"), "K25": ("USDJPY", "USDCHF", "XAUUSD"), "K26": ("USDJPY",),

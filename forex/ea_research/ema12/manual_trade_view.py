@@ -3,7 +3,7 @@ python manual_trade_view.py "2025-05-05 08:08" Buy 3260.66 3257.291 3262.4      
 Prints: the candles around the signal with EMA12 and tags (cross / touch / 1-minute gaps), the signal-candle shape, BOS, displacement, sweep, 5-minute gaps near the target, equal-high / low zones at the target and stop, lot numbers at USD 2,000, and what happened next. Nothing is a test."""
 import sys, numpy as np, pandas as pd
 sigt = pd.Timestamp(sys.argv[1]); side = sys.argv[2]; s = 1 if side == "Buy" else -1; ent, stp, tgt = (float(x) for x in sys.argv[3:6])
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+d = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
 M = pd.DataFrame(dict(lis=pd.to_datetime(d.t, unit="s") - pd.Timedelta(hours=2), o=(d.bo+d.ao)/2, h=(d.bh+d.ah)/2, l=(d.bl+d.al)/2, c=(d.bc+d.ac)/2)).reset_index(drop=True)
 M["ema"] = M.c.ewm(span=12, adjust=False).mean(); M["atr"] = (M.h-M.l).rolling(14).mean().shift(1); i0 = int(M.index[M.lis == sigt][0]); o, h, l, c, e, atr = (M[k].to_numpy() for k in ("o", "h", "l", "c", "ema", "atr"))
 off = ent - c[i0]; E, S, T = ent - off, stp - off, tgt - off; sd = abs(E - S); td = abs(T - E)

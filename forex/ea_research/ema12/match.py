@@ -1,7 +1,7 @@
 import pandas as pd, numpy as np, sys
 sys.path.insert(0, ".")
 exec(open("st.py").read().split("print(\"n\"")[0])   # reuse rows -> D, d, ses, win, E, S, T, risk, rew
-raw = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet")
+raw = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet")
 raw = raw[(raw.t >= 1740787200) & (raw.t < 1759276800)].copy()          # 2025-03-01 .. 2025-09-30
 raw["dt"] = pd.to_datetime(raw.t, unit="s")
 raw["day"] = raw.dt.dt.date; raw["hm"] = raw.dt.dt.hour*60 + raw.dt.dt.minute

@@ -1,5 +1,5 @@
 # ORB11_GRID_RESULT - every stop / target on the trader's 30-minute London / NY ORB (2026-10-15, local clock 16:09)
-Pre-registration `PREREG_ORB11_GRID.md` (commit 47da8554). Code `orb11_grid.py`, output `ORB11_GRID_OUTPUT.txt`, files `D:/finance/si_ledgers/ORB11_GRID_*`. Engine check: SL 1 box / TP 1R reproduces ORB11 exactly (EURUSD +0.0434 R both).
+Pre-registration `PREREG_ORB11_GRID.md` (commit 47da8554). Code `orb11_grid.py`, output `ORB11_GRID_OUTPUT.txt`, files `data/si_ledgers/ORB11_GRID_*`. Engine check: SL 1 box / TP 1R reproduces ORB11 exactly (EURUSD +0.0434 R both).
 
 ## Verdict: the stop and target are not the problem. 0 of 9,108 cells pass.
 99 exits (stop 0.1-3 box widths x target 0.25-10R or none) x 2 sessions x 46 symbols, on 117,799 breakout entries and 119,491 random entries, MT5 broker real bid/ask.

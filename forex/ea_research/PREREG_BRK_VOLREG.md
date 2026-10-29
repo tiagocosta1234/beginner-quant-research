@@ -1,5 +1,5 @@
 # Pre-registration BRK-VOLREG (breakout day, round 3; written 2026-10-15 11:44 local (commit time), before any code or result)
-Question: do volume or the volatility regime separate good breakouts from bad ones? Base events = round 1's session stop-order breakouts on 46 markets (same boxes, fills, R = the other side of the box), exit = hold to the session close (round 1's best, X4); 2R reported too. Tick volume = MT5 M1 tick_volume from `D:\finance\ticks_vol` (to 2026-08-15; MT5-native, deployable).
+Question: do volume or the volatility regime separate good breakouts from bad ones? Base events = round 1's session stop-order breakouts on 46 markets (same boxes, fills, R = the other side of the box), exit = hold to the session close (round 1's best, X4); 2R reported too. Tick volume = MT5 M1 tick_volume from `data\ticks_vol` (to 2026-08-15; MT5-native, deployable).
 
 ## Features (known at the fill)
 - rel_vol_fill: tick volume of the 5 minutes ending at the fill minute / median of the same 5 local minutes over the previous 20 session days.

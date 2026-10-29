@@ -14,7 +14,7 @@ from forex.intraday_lab import iter29_fx_swing as sw
 from forex.intraday_lab import sdb
 
 DATA = Path(__file__).resolve().parents[1] / "data"
-OUTDIR = Path("D:/finance/scratch/lab")
+OUTDIR = Path("data/scratch/lab")
 PAIRS = ("EURUSD GBPUSD USDJPY AUDUSD USDCAD USDCHF NZDUSD EURGBP EURJPY EURCHF EURAUD EURCAD EURNZD GBPJPY GBPCHF GBPAUD GBPCAD GBPNZD "
          "AUDJPY AUDCHF AUDCAD AUDNZD NZDJPY NZDCHF NZDCAD CADJPY CADCHF CHFJPY").split()
 FAMS = ("DON20", "DON55", "PB", "MR", "SDB")

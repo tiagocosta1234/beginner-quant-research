@@ -1,4 +1,4 @@
-"""the trader 27 Oct 2026: "this strategy on the 5 minute on MGC has returned 8.22 R in 30 calendar days" (claude.pine / SESSION_OPEN_5M_1TO1.pine
+"""the trader 27 Oct 2026: "this strategy on the 5 minute on MGC has returned 8.22 R in 30 calendar days" (london_open_indicator.pine / SESSION_OPEN_5M_1TO1.pine
 dashboard). Bar-for-bar replication of the indicator's DEFAULTS on GC 1m (Databento, = MGC price) 2019-06..2026-09 resampled to 5m:
 London 08:00 London + New York 09:30 New York setup candle (5m), Candle direction (doji -> prior-day close above SMA20), r = max(|close -
 extreme| + 0.5 x candle range, 0.03 x prior-day ATR14), entry at the candle close, 1R target, exit at TP / SL (same bar = SL) / the open
@@ -6,7 +6,7 @@ of the first bar at or after open + 60 min, cost 0.32 pt round trip (the indicat
 Descriptive, not a registered test. Usage: python open5m_history.py"""
 import numpy as np, pandas as pd
 
-g = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+g = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
 g.index = pd.DatetimeIndex(g.ts); g = g.drop(columns="ts"); g = g[~g.index.duplicated()].sort_index()
 b5 = g.resample("5min", label="left", closed="left").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
 # daily bars by CME trading day (17:00 New York roll) for ATR14 / SMA20 of PRIOR days

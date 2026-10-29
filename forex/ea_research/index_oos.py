@@ -129,7 +129,7 @@ def dry():
 
 def run():
     df = pd.concat([run_market(s) for s in MKTS], ignore_index=True)
-    df.to_parquet("D:/finance/si_ledgers/INDEX_OOS.parquet")
+    df.to_parquet("data/si_ledgers/INDEX_OOS.parquet")
     df = df[df.day >= "2022-01-01"]
     cells = {"H1 session ORB, hold to close": df[df.kind == "H1"], "H2 = H1 trend direction": df[(df.kind == "H1") & (df.side == df.trend)], "H3 month opening range": df[df.kind == "H3"]}
     from forex.ea_research.ict2 import nw_t

@@ -1,7 +1,7 @@
 # SWAPFREE_DRIFT_RESULT - long-only risk-balanced book on MT5 broker's swap-free terms (2026-10-15, local clock 15:15)
 
 > **2026-10-15 15:52: the account numbers in this file are SUPERSEDED by `D2_MT5RULE_RESULT.md`** (MT5 broker's daily line is set from the day-start BALANCE, so a held book carries floating losses into the line, and only realised profit counts, at most +2,000 a day). The edge results (DEV / VAL / OOT / HOLD / ticks) are unaffected.
-Pre-registration: `PREREG_SWAPFREE_DRIFT.md` (commit cb25fd63, Amendment 1 before any P&L). Code: `swapfree_drift.py`, `swapfree_ticks.py`, `swapfree_mt5sim.py`. Rows: `D:/finance/si_ledgers/SWAPFREE_*.csv`.
+Pre-registration: `PREREG_SWAPFREE_DRIFT.md` (commit cb25fd63, Amendment 1 before any P&L). Code: `swapfree_drift.py`, `swapfree_ticks.py`, `swapfree_mt5sim.py`. Rows: `data/si_ledgers/SWAPFREE_*.csv`.
 
 ## Verdict
 **D2 (inverse-vol long book with a 200-day trend filter) and D4 (D2 + volatility target) pass every pre-registered edge bar: they are profitable on MT5 broker after MT5 broker's real costs.** D1 / D3 (always long) narrowly miss the t bar. **But they do not help the account from today:** alone, breach is larger than pass at every size; next to the gold EA pair they add 3-4 points of pass by 22 Dec for 3-7 points of breach. A Sharpe-1 beta book cannot climb +10,292 while staying above a floor 5,708 away.

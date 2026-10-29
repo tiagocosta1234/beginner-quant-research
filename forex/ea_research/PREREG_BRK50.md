@@ -121,6 +121,6 @@ information below the spread; the new level types and conditions are the unteste
    I28 / I29 window end stated (16:00).
 2. (2026-10-17, after the dry run, before any P&L was looked at) The dry run's truncation test flagged the bar ideas I48-I51:
    the truncated run kept December 2021 warm-up trades that the full build drops (`day >= 2022-01-01`); with the same filter the
-   test is identical on EURUSD, XAUUSD, NSDQ and BTCUSD (entries, sides, R and mirror R; `C:\work\scratch\brk50_trunc2.txt`).
+   test is identical on EURUSD, XAUUSD, NSDQ and BTCUSD (entries, sides, R and mirror R; `data\scratch\brk50_trunc2.txt`).
    Test artefact only, no rule change. Hand check: I21 EURJPY 2023-03-22 stop of 635 spreads verified (10-day stretch 0.635 JPY,
    MT5 broker spread 0.001 JPY in March 2023).

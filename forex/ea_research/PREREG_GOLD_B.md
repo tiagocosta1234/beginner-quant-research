@@ -19,7 +19,7 @@ Acceptance (all): confirmed keeps >= 40% of the trades; difference (confirmed - 
 Power note: about 215 trades in 2022-26 (roughly 150 in 2022-25); with a trade-level sd near 150 bp the permutation test only reaches p <= 0.05 for a difference around 50 bp or more, which would have to be economically huge. A failure therefore means "not shown", not "shown absent".
 
 ## G3 - SDB entries confirmed by the 10-year real yield
-Same trade stream and outcome as G2. Data: FRED DFII10 (10-year TIPS yield, daily, public), saved in D:\finance\data_macro; point in time: the value of the previous business day (1-day lag). Real-yield change over the 5 sessions before the entry day: dy = DFII10(D-1) - DFII10(D-6) (percentage points).
+Same trade stream and outcome as G2. Data: FRED DFII10 (10-year TIPS yield, daily, public), saved in data\data_macro; point in time: the value of the previous business day (1-day lag). Real-yield change over the 5 sessions before the entry day: dy = DFII10(D-1) - DFII10(D-6) (percentage points).
 CONFIRMED when (long and dy <= 0) or (short and dy >= 0) (gold tends to follow falling real yields).
 Statistics and acceptance: identical to G2 (own permutation test).
 Reported, not a trial: the 5-day correlation of gold returns with real-yield changes in the same sample, to show whether the relation even exists in this data.

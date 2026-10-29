@@ -12,9 +12,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-MT5 = Path("D:/finance/beginner-quant-research/forex/data_mt5")
-HD = Path("D:/finance/data_histdata")
-OUTD = Path("D:/finance/si_ledgers")
+MT5 = Path("forex/data_mt5")
+HD = Path("data/data_histdata")
+OUTD = Path("data/si_ledgers")
 MK = ("SP", "NSDQ", "DAX", "NIKKEI", "XAUUSD")
 HDN = {"SP": "SPXUSD", "NSDQ": "NSXUSD", "DAX": "GRXEUR", "NIKKEI": "JPXJPY", "XAUUSD": "XAUUSD", "EURUSD": "EURUSD", "USDJPY": "USDJPY"}
 CCY = {"DAX": "EURUSD", "NIKKEI": "USDJPY"}

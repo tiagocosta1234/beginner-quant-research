@@ -10,7 +10,7 @@ from forex.ea_research.orbx import ct, CRYPTO
 from forex.ea_research.analog import mclass
 
 DATA = "forex/data_mt5/"
-CACHE = "C:/work/scratch/brk_twoway_events.parquet"
+CACHE = "data/scratch/brk_twoway_events.parquet"
 DEV_Y, VAL_Y = (2022, 2023, 2024), 2025
 FEATS = ["box_atr", "box_spread", "delay", "app5", "app30", "day_move", "pdx", "beyond_pd", "asia", "tr5", "tr20", "gap",
          "box_in_pd", "range_so_far", "sp_touch", "volreg", "weekday", "cls", "yday", "touch_body"]

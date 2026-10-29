@@ -26,7 +26,7 @@ def main():
             for leg in (("-",) if days is None else ("both", "sdb", "xau5")):
                 t = tr if days is None else (M.runner(tr, days) if leg == "both" else runner_leg(tr, days, leg)); S.BOOST = 0.0; df = S.run(t, lo, hi, 1500.0, 1.5, 0.0, 0.0, 0.0); o = M.m(df)
                 rows.append(dict(window=nm, mode=mode, leg=leg, **o)); print(f"{nm:17s} {mode:8s} {leg:5s}: +2000 {o['up']:.1f}% -1500 {o['down']:.1f}% ratio {o['ratio']:.0f}% | P44 {o['p44']:.1f}% P120 {o['p120']:.1f}% breach {o['breach']:.1f}% med {o['med']:.0f}", flush=True)
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/SESSION_sdbrunner.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/SESSION_sdbrunner.csv", index=False)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 # Gold London breakout (the card's gold leg): what changed in 2026? (2026-10-15 13:56, local clock, descriptive, no test)
-Trades: the card's gold rule (box 08:00-08:30 London, stop = box clipped 0.12-0.36% of price, 2R target, exit 14:00 London), files ORB_REFINE_XAUUSD (2022-25) and ORB_TREND_2026_XAUUSD (2026) in D:/finance/si_ledgers.
+Trades: the card's gold rule (box 08:00-08:30 London, stop = box clipped 0.12-0.36% of price, 2R target, exit 14:00 London), files ORB_REFINE_XAUUSD (2022-25) and ORB_TREND_2026_XAUUSD (2026) in data/si_ledgers.
 | year | trades | mean R | win % | the opposite trade (fade) | median box % of price | stopped at -1R | at +2R | longs / shorts mean R | with / against the 20-day trend |
 |---|---|---|---|---|---|---|---|---|---|
 | 2022 | 245 | +0.037 | 38% | -0.126 | 0.20% | 58% | 28% | -0.08 / +0.17 | +0.14 / -0.06 |

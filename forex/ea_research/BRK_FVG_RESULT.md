@@ -1,7 +1,7 @@
 # BRK_FVG result - an unmitigated FVG between entry and stop helps the breakout a little, not enough (0 of 4 pass)
 
 Run 2026-10-16 20:33 local (local clock, second PC). Pre-registration `PREREG_BRK_FVG.md` (registered 20:28, no amendments; frozen by
-sha256 at 20:33:12 in `C:\work\scratch\brk_fvg_freeze.txt`, not committed first: GitNexus cannot run on this second PC). Engine
+sha256 at 20:33:12 in `data\scratch\brk_fvg_freeze.txt`, not committed first: GitNexus cannot run on this second PC). Engine
 `brk_fvg.py`, output `BRK_FVG_OUTPUT.txt`. Same 91,988 first-touch events and trades as BRK_TWOWAY (symmetric one-box bracket,
 real bid/ask, 38 non-crypto markets). HOLD 2026 sealed. Dry run: truncation identical on 3 markets; hand checks correct.
 

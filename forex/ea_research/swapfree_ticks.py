@@ -13,7 +13,7 @@ DAY = 86_400_000
 
 def tick_daily(m):
     fr = []
-    for f in sorted(glob.glob(f"D:/finance/ticks/{m}/*.parquet")):
+    for f in sorted(glob.glob(f"data/ticks/{m}/*.parquet")):
         t = pd.read_parquet(f, columns=["time_msc", "bid", "ask"])
         t = t[(t.bid > 0) & (t.ask > 0)]
         t["date"] = t.time_msc // DAY; ms = t.time_msc % DAY
@@ -42,8 +42,8 @@ def main():
         print(f"{v} 2025-10-01..2026-10-02: ticks {tk.V.sum():+.0f} (mean {tk.V.mean():+.1f}/day, worst low {tk.B.min():.0f}, cost {tk.attrs['cost']:.0f}) vs M1 {m1.V.sum():+.0f} "
               f"(worst low {m1.B.min():.0f}, cost {m1.attrs['cost']:.0f}) -> ratio {r:.2f} (bar >= 0.75); daily corr {np.corrcoef(tk.V.reindex(m1.index).fillna(0), m1.V)[0, 1]:.3f}; to 2026-10-13 on ticks {tk2.V.sum():+.0f}")
         rows.append(dict(variant=v, ticks=tk.V.sum(), m1=m1.V.sum(), ratio=r, ticks_to_1013=tk2.V.sum(), tick_worst_low=tk.B.min(), m1_worst_low=m1.B.min()))
-        tk2.to_parquet(f"D:/finance/si_ledgers/SWAPFREE_TICKS_{v}.parquet")
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/SWAPFREE_TICKS.csv", index=False)
+        tk2.to_parquet(f"data/si_ledgers/SWAPFREE_TICKS_{v}.parquet")
+    pd.DataFrame(rows).to_csv("data/si_ledgers/SWAPFREE_TICKS.csv", index=False)
 
 
 if __name__ == "__main__":

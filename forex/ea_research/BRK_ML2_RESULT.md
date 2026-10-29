@@ -1,5 +1,5 @@
 # BRK-ML2 result (breakout day round 33, 2026-10-15 14:11, local clock): a model can find the LOSING breakouts, not winning ones
-Pre-registration PREREG_BRK_ML2.md (amendments A1, A2 before any P&L), engine brk_ml2.py (truncation PASS after A2), rows D:/finance/si_ledgers/BRK_ML2.parquet. Walk-forward XGBoost on 986,184 hour-map breakouts (15 features known at entry), trading the events predicted in the top decile of each model's training predictions.
+Pre-registration PREREG_BRK_ML2.md (amendments A1, A2 before any P&L), engine brk_ml2.py (truncation PASS after A2), rows data/si_ledgers/BRK_ML2.parquet. Walk-forward XGBoost on 986,184 hour-map breakouts (15 features known at entry), trading the events predicted in the top decile of each model's training predictions.
 | S1 top-decile selection (net R) | DEV (2023-24) | VAL (2025) | 2026 | the unselected events DEV / VAL / 2026 |
 |---|---|---|---|---|
 | (n 23,759 / 12,150 / 10,127) | -0.017 (t -0.8) | +0.015 (t 0.1) | +0.038 | -0.111 / -0.116 / -0.099 |

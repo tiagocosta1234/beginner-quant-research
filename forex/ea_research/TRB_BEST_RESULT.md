@@ -1,5 +1,5 @@
 # TRB-BEST (2026-10-15 ~11:20 local): the best breakout the grid finds in 2022-24, and what it did in 2025 and 2026
-the trader: "is this truly the best the breakouts can get? I don't believe it". Script `trb_best.py` (cache `D:\finance\tmp\trb_cache_2026`, table `D:\finance\si_ledgers\TRB_BEST.csv`). For each of the 46 MT5 broker, the configuration with the highest total net R over 2022-2024 (at least 150 trades) out of the 2,808 TRB variants (39 box times x 3 box lengths x both/long/short x 8 stop/target sets; stop orders at the box, real bid/ask), then the same configuration in 2025 and 2026-01..10-02 (2026 already opened for the breakout family in ORB_TREND_2026_RESULT.md).
+the trader: "is this truly the best the breakouts can get? I don't believe it". Script `trb_best.py` (cache `data\tmp\trb_cache_2026`, table `data\si_ledgers\TRB_BEST.csv`). For each of the 46 MT5 broker, the configuration with the highest total net R over 2022-2024 (at least 150 trades) out of the 2,808 TRB variants (39 box times x 3 box lengths x both/long/short x 8 stop/target sets; stop orders at the box, real bid/ask), then the same configuration in 2025 and 2026-01..10-02 (2026 already opened for the breakout family in ORB_TREND_2026_RESULT.md).
 
 | | in-sample 2022-24 | 2025 | 2026 (9 months) |
 |---|---|---|---|

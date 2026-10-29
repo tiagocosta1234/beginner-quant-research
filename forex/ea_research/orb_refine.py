@@ -144,7 +144,7 @@ def run():
     for s in CFG:
         df = trades(s)
         df = df[df.day >= DEV[0]]
-        df.to_parquet(f"D:/finance/si_ledgers/ORB_REFINE_{s}.parquet")
+        df.to_parquet(f"data/si_ledgers/ORB_REFINE_{s}.parquet")
         b = per(df, *DEV)
         print(f"\n=== {s} base card trade (all days): ", end="")
         for y in YEARS:
@@ -168,7 +168,7 @@ def run():
             res.append(dict(mkt=s, cell=name, nD=len(dv), mD=dv.Rc.mean(), tD=tstat(dv.Rc), nV=len(vl), mV=vl.Rc.mean(), tV=tstat(vl.Rc),
                             y22=yrs[0], y23=yrs[1], y24=yrs[2], y25=yrs[3], placebo95=p95, gates="".join("Y" if v else "n" for v in g), PASS=all(g)))
     R = pd.DataFrame(res)
-    R.to_csv("D:/finance/si_ledgers/ORB_REFINE_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/ORB_REFINE_cells.csv", index=False)
     pd.set_option("display.width", 220)
     print("\n" + R.round(3).to_string(index=False))
 

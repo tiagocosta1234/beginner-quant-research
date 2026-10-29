@@ -13,13 +13,13 @@ STOP_PCT = {"XAUUSD": 0.26, "NSDQ": 0.20, "SP": 0.20, "USDJPY": 0.13, "EURUSD": 
 
 
 def load(sym):
-    t = pd.concat([pd.read_parquet(f, columns=["time_msc", "bid", "ask"]) for f in sorted(glob.glob(f"D:/finance/ticks/{sym}/*.parquet"))])
+    t = pd.concat([pd.read_parquet(f, columns=["time_msc", "bid", "ask"]) for f in sorted(glob.glob(f"data/ticks/{sym}/*.parquet"))])
     t = t[(t.bid > 0) & (t.ask >= t.bid)].sort_values("time_msc")
     return t.time_msc.to_numpy(np.int64), t.bid.to_numpy(), t.ask.to_numpy()
 
 
 def main():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     cal = cal[(cal.date >= "2025-10-01") & (cal.date <= "2026-10-12")]
     ev = [(r.kind, r.date, server_s(r.date, 14, 0) if r.kind == "FOMC" else server_s(r.date, 8, 30)) for r in cal.itertuples()]
     rows = []
@@ -46,7 +46,7 @@ def main():
             out["R10"], out["R60"] = out["move10"] / stop, out["move60"] / stop
             rows.append(out)
     T = pd.DataFrame(rows)
-    T.to_csv("D:/finance/si_ledgers/NEWS_GAPS.csv", index=False)
+    T.to_csv("data/si_ledgers/NEWS_GAPS.csv", index=False)
     pd.set_option("display.width", 200)
     g = T.groupby(["sym", "kind"]).agg(events=("R10", "size"), move10_median=("move10", "median"), R10_median=("R10", "median"), R10_max=("R10", "max"),
                                        share_R10_over_1=("R10", lambda x: np.mean(x > 1)), R60_median=("R60", "median"), share_R60_over_1=("R60", lambda x: np.mean(x > 1)),

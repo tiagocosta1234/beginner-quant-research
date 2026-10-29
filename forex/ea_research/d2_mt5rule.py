@@ -8,7 +8,7 @@ from forex.ea_research import swapfree_drift as S
 from forex.ea_research import swapfree_mt5sim as Q
 
 MK = S.MK
-LED = "D:/finance/si_ledgers"
+LED = "data/si_ledgers"
 START_BAL = Q.START_BAL
 GUARD, BREACH, SKIM, LOCK = 1500.0, 2500.0, 1800.0, 108_100.0
 NOSTOP = False    # stats run: rules active but the path never stops at a pass or a breach; events recorded in EVENTS

@@ -1,7 +1,7 @@
 # VALIDATED_BOOK_RESULT - account plans built only from legs that survived an out-of-time test (2026-10-15, local clock 15:37)
 
 > **2026-10-15 15:52: the account numbers in this file are SUPERSEDED by `D2_MT5RULE_RESULT.md`** (MT5 broker's daily line is set from the day-start BALANCE, so a held book carries floating losses into the line, and only realised profit counts, at most +2,000 a day). The edge results (DEV / VAL / OOT / HOLD / ticks) are unaffected.
-Pre-registration `PREREG_VALIDATED_BOOK.md` (commit 7e39d4de). Code `validated_book.py`, output `VALIDATED_BOOK_OUTPUT.txt`, rows `D:/finance/si_ledgers/VALIDATED_BOOK.csv`.
+Pre-registration `PREREG_VALIDATED_BOOK.md` (commit 7e39d4de). Code `validated_book.py`, output `VALIDATED_BOOK_OUTPUT.txt`, rows `data/si_ledgers/VALIDATED_BOOK.csv`.
 
 ## Verdict: no add-on qualifies; D2 (100k gross, 1,500 day guard) alone is the best validated plan
 Bar: +2 points of pass by 30 Jun 27 with at most +1 point of breach. pass% / breach%:

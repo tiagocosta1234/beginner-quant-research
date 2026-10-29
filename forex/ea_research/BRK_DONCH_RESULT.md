@@ -1,5 +1,5 @@
 # BRK-DONCH result (breakout day round 21, 2026-10-15 12:48): intraday Donchian (turtle) breakouts are slightly negative everywhere except indices
-Pre-registration `PREREG_BRK_DONCH.md`, engine `brk_donch.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_DONCH.parquet`. Stop 2 ATR (R), turtle exit on the N/2 channel, flat at the session close.
+Pre-registration `PREREG_BRK_DONCH.md`, engine `brk_donch.py` (truncation PASS), rows `data\si_ledgers\BRK_DONCH.parquet`. Stop 2 ATR (R), turtle exit on the N/2 channel, flat at the session close.
 | cell (net R) | DEV | VAL | 2026 | indices DEV / VAL / 2026 |
 |---|---|---|---|---|
 | M15 N=20 | -0.028 (60,721) | -0.044 | -0.041 | +0.037 / +0.102 / +0.017 |

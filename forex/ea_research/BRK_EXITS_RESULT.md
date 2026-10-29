@@ -1,5 +1,5 @@
 # BRK-EXITS result (breakout day round 1, 2026-10-15 11:30): no exit makes the session breakout pay
-Pre-registration `PREREG_BRK_EXITS.md`, engine `brk_exits.py`, rows `D:\finance\si_ledgers\BRK_EXITS.parquet`. 46 markets, 33,041 DEV / 12,229 VAL / 8,736 2026 breakouts and as many random-entry controls. Dry-run: truncation PASS; hand check NSDQ 2024-06-12 long filled 17:14 server (as ORB-REFINE), every exit near -0.07 R at the close (price came back to the entry by the end of the FOMC day).
+Pre-registration `PREREG_BRK_EXITS.md`, engine `brk_exits.py`, rows `data\si_ledgers\BRK_EXITS.parquet`. 46 markets, 33,041 DEV / 12,229 VAL / 8,736 2026 breakouts and as many random-entry controls. Dry-run: truncation PASS; hand check NSDQ 2024-06-12 long filled 17:14 server (as ORB-REFINE), every exit near -0.07 R at the close (price came back to the entry by the end of the FOMC day).
 
 | exit | breakout DEV / VAL / 2026 (R per trade) | random-entry control DEV / VAL | win % DEV | avg win / loss (R) |
 |---|---|---|---|---|

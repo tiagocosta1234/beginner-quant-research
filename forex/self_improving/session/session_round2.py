@@ -20,7 +20,7 @@ def metrics(df):
 
 
 def main():
-    out = "D:/finance/si_ledgers/SESSION_round2_train.csv"
+    out = "data/si_ledgers/SESSION_round2_train.csv"
     TR = S.load("FT", "2022-01-01", "2024-12-31"); rows = []
     for Lc, m0, k, r, h, mm, p in itertools.product((750.0, 1000.0, 1500.0, 2000.0), (2.0, 3.0, 4.0, 6.0), (0.0, 1.0, 3.0), (0.0, 1.0), (0.0, 3.0), (6.0, 10.0), (1.0, 0.5)):
         S.MMAX = mm; PROT["p"] = p; df = S.run(*TR, Lc, m0, k, r, h); p44, br, p120 = metrics(df)
@@ -33,7 +33,7 @@ def main():
         for L, m0, k, r, h, mm, p, tag in tests:
             S.MMAX = mm; PROT["p"] = p; df = S.run(*T, L, m0, k, r, h); p44, br, p120 = metrics(df)
             res.append(dict(pool=nm, tag=tag, L=L, m0=m0, k=k, r=r, hstop=h, mmax=mm, prot=p, up=100 * (df.res == 1).mean(), down=100 * (df.res == -1).mean(), unres=100 * (df.res == 0).mean(), p44=p44, p120=p120, breach=br))
-    o = pd.DataFrame(res); o.to_csv("D:/finance/si_ledgers/SESSION_round2_test.csv", index=False); print(o.round(1).to_string(index=False))
+    o = pd.DataFrame(res); o.to_csv("data/si_ledgers/SESSION_round2_test.csv", index=False); print(o.round(1).to_string(index=False))
 
 
 if __name__ == "__main__":

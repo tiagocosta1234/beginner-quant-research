@@ -165,7 +165,7 @@ def main():
         st, ev, _ = account(r[bi], trd[bi], 250)
         print(f"  {name:9s} ({len(x)} trades, {x[col].mean():+.3f} R): " + "  ".join(
             f"{k} {100*np.mean((st==1)&(ev<h)):.1f}/{100*np.mean((st==2)&(ev<h)):.0f}" for k, h in HZ.items() if k in ("22 Dec", "31 Mar 27", "30 Jun 27")))
-    pd.concat([r16.assign(market="NSDQ")]).to_parquet("C:/work/scratch/reel16_nsdq.parquet")
+    pd.concat([r16.assign(market="NSDQ")]).to_parquet("data/scratch/reel16_nsdq.parquet")
 
 
 if __name__ == "__main__":

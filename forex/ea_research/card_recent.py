@@ -1,6 +1,6 @@
 """Replay the daily card (gold London leg, Nasdaq NY leg) on the MT5 broker terminal's own M1 bars, 2026-09-01 .. today (read-only)."""
 import sys
-sys.path.insert(0, r"D:\finance\beginner-quant-research")
+sys.path.insert(0, r".")
 import MetaTrader5 as mt5, numpy as np, pandas as pd
 from datetime import datetime
 from forex.ea_research.breakouts import local_clock

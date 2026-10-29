@@ -118,7 +118,7 @@ def run():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_HOURS.parquet")
+    df.to_parquet("data/si_ledgers/BRK_HOURS.parquet")
     per = {"DEV": DEV, "VAL": VAL, "2026": Y26}
     out = []
     for (h, c), g in df.groupby(["h", "c"]):
@@ -129,7 +129,7 @@ def run():
         r["pass"] = (r["DEV"] >= 0.05 and r["t_DEV"] >= 3.48) and (r["VAL"] > 0 and r["t_VAL"] >= 1.65) and (r["DEV"] - r["ctl_DEV"] >= 0.05 and r["VAL"] - r["ctl_VAL"] >= 0.05)
         out.append(r)
     T = pd.DataFrame(out)
-    T.to_csv("D:/finance/si_ledgers/BRK_HOURS_cells.csv", index=False)
+    T.to_csv("data/si_ledgers/BRK_HOURS_cells.csv", index=False)
     print("cells passing:", int(T["pass"].sum()), "of", len(T))
     show = T.sort_values("t_DEV", ascending=False).head(12)
     print("top 12 cells by DEV t:")
@@ -157,8 +157,8 @@ def run():
                 ax[i, j].text(xx, yy, f"{val:+.2f}", ha="center", va="center", fontsize=6)
     fig.colorbar(im, ax=ax, shrink=0.6)
     fig.suptitle("BRK-HOURS: 60-minute box breakouts by hour of day, MT5 broker real bid/ask, hold up to 6 h (R per trade)")
-    fig.savefig("D:/finance/scratch/charts/BRK_HOURS.png", dpi=110, bbox_inches="tight")
-    print("chart D:/finance/scratch/charts/BRK_HOURS.png")
+    fig.savefig("data/scratch/charts/BRK_HOURS.png", dpi=110, bbox_inches="tight")
+    print("chart data/scratch/charts/BRK_HOURS.png")
 
 
 if __name__ == "__main__":

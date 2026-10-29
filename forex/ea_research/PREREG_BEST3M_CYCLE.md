@@ -2,7 +2,7 @@
 the trader: "simula a evaluation cycle where it looks for all those best setups at the same time".
 
 ## Trades
-The ORB11_ENTRY trade table (D:/finance/si_ledgers/ORB11_ENTRY.parquet, MT5 broker M1 bid/ask, spreads paid, 46 symbols, 144 rules per symbol without FADE: 2 sessions x 5 triggers x 6 filters x 2 exits). Risk per trade X USD (stop = X): P&L = R x X. Sizes X = 100, 200, 300 USD.
+The ORB11_ENTRY trade table (data/si_ledgers/ORB11_ENTRY.parquet, MT5 broker M1 bid/ask, spreads paid, 46 symbols, 144 rules per symbol without FADE: 2 sessions x 5 triggers x 6 filters x 2 exits). Risk per trade X USD (stop = X): P&L = R x X. Sizes X = 100, 200, 300 USD.
 
 ## Two versions
 - A IN-SAMPLE (what the table shows): the per-symbol best rule of 2026-07-03..10-02 (best3m_lookup.py), traded over that same period, one cycle starting 2026-07-03. Not causal: reported only to show what the look-back table promises.

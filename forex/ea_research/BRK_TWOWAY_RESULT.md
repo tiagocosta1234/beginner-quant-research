@@ -2,7 +2,7 @@
 
 Run 2026-10-16 20:23 local (local clock, second PC); direction diagnostic 20:24-20:25. Pre-registration `PREREG_BRK_TWOWAY.md`
 (registered 20:18; amendment 1 ~20:21 before any label or P&L was looked at; frozen by sha256 at 20:23:01 in
-`C:\work\scratch\brk_twoway_freeze.txt`, plus a post-run time-stamp correction recorded there). Engine `brk_twoway.py`, output
+`data\scratch\brk_twoway_freeze.txt`, plus a post-run time-stamp correction recorded there). Engine `brk_twoway.py`, output
 `BRK_TWOWAY_OUTPUT.txt`. 91,988 first-touch events, 38 non-crypto MT5 broker, 2022-01..2026-10-16; HOLD 2026 sealed.
 
 ## Base rates (symmetric bracket: stop and target one box width from the entry, exit at the session end)

@@ -1,6 +1,6 @@
 # DAY2K-B result (2026-10-14): a learned quality score for one 1:1 setup a day - NO EDGE
 
-Pre-registration `PREREG_DAY2K_B.md` (commit 7349fd84), engine `day2kb.py`, cells in `D:\finance\si_ledgers\DAY2KB_cells.csv`. Same trade object and outcome matrix as `DAY2K_RESULT.md`. 28 MT5 broker FX pairs x 2 sides = 56 candidates a day; the model's top candidate is the day's single setup. Walk-forward, quarterly refit, expanding window, scored from 2022-12-01. HOLD (2026-01-01..08-14) never loaded.
+Pre-registration `PREREG_DAY2K_B.md` (commit 7349fd84), engine `day2kb.py`, cells in `data\si_ledgers\DAY2KB_cells.csv`. Same trade object and outcome matrix as `DAY2K_RESULT.md`. 28 MT5 broker FX pairs x 2 sides = 56 candidates a day; the model's top candidate is the day's single setup. Walk-forward, quarterly refit, expanding window, scored from 2022-12-01. HOLD (2026-01-01..08-14) never loaded.
 
 ## Information added versus round 1
 Currency strength (8 currencies aggregated over the pairs containing them, 1 and 5 days), MT5 economic-calendar surprises already published that day (impact = actual vs forecast, 87.5% agreement with the sign of actual - forecast), importance-3 events due in the next 4 hours, tick-volume ratio since 01:05, Asian-range position and size, previous-day high/low distance, 20-day change, range ratio, spread/ATR, weekday.

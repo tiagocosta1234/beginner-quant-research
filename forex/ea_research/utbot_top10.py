@@ -2,7 +2,7 @@
 import sys, numpy as np, pandas as pd
 sys.argv = [sys.argv[0]]
 from forex.ea_research import utbot as U
-a = pd.read_csv("D:/finance/tmp/utbot_cells.csv"); a["var"] = "base"; b = pd.read_csv("D:/finance/tmp/utbot_variant_cells.csv")
+a = pd.read_csv("data/tmp/utbot_cells.csv"); a["var"] = "base"; b = pd.read_csv("data/tmp/utbot_variant_cells.csv")
 R = pd.concat([a, b]); cells = R[(R.mu_DEV > 0) & (R.mu_VAL > 0)].reset_index(drop=True)
 VAR = {"base": (1.0, False), "k2": (2.0, False), "k3": (3.0, False), "ha": (1.0, True)}
 cache, rows = {}, []
@@ -24,7 +24,7 @@ for r in cells.itertuples():
                      mdd=float((np.maximum.accumulate(cum) - cum).max()), tdev=r.t_DEV, tval=r.t_VAL))
 T = pd.DataFrame(rows); T["excess"] = T.ut - T.bh
 T = T.sort_values("excess", ascending=False).reset_index(drop=True)
-T.to_csv("D:/finance/tmp/utbot_top_cells.csv", index=False)
+T.to_csv("data/tmp/utbot_top_cells.csv", index=False)
 pd.set_option("display.width", 250)
 print(T.head(10)[["sym", "tf", "var", "trades", "win", "ut", "bh", "excess", "ut_dev", "bh_dev", "ut_val", "bh_val", "mdd", "tdev", "tval"]].round(0).to_string())
 print("cells where UT Bot beat buy-and-hold in BOTH sub-periods:", int(((T.ut_dev > T.bh_dev) & (T.ut_val > T.bh_val)).sum()), "of", len(T))

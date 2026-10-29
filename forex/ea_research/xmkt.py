@@ -84,7 +84,7 @@ def signal_window(out, hyp, L, F, a, b, c, e, same=True, prev_day=False):
 
 
 def x15(out, W, C):
-    cal = pd.read_csv("D:/finance/data_macro/mt5_calendar.csv", encoding="latin-1")
+    cal = pd.read_csv("data/data_macro/mt5_calendar.csv", encoding="latin-1")
     ev = cal[cal.event_id == 840200001].time.drop_duplicates()
     tu = pd.to_datetime(ev, format="%Y.%m.%d %H:%M:%S").dt.tz_localize("UTC").dt.tz_convert("Europe/Athens").dt.tz_localize(None)
     for ts in tu.astype("datetime64[s]").astype("int64"):
@@ -175,7 +175,7 @@ def main():
         if not same:
             m = a.merge(b, on=["hyp", "mkt", "t_entry"], how="outer", indicator=True); print(m[m._merge != "both"].groupby("hyp").size())
         return
-    T = run(); T.to_parquet("D:/finance/si_ledgers/XMKT.parquet")
+    T = run(); T.to_parquet("data/si_ledgers/XMKT.parquet")
     rows = []
     for h, g in T.groupby("hyp"):
         p = {k: g[(g.day >= a) & (g.day <= b)] for k, (a, b) in PER.items()}
@@ -188,7 +188,7 @@ def main():
     print("net / gross in basis points per trade (DEV 2022-24 + VAL 2025), by period:")
     print(R.round(2).to_string(index=False))
     print("\nby market, net bp 2022-25:", T[(T.day <= "2025-12-31")].groupby(["hyp", "mkt"]).net_bp.agg(["size", "mean"]).round(2).to_string())
-    R.to_csv("D:/finance/si_ledgers/XMKT.csv", index=False)
+    R.to_csv("data/si_ledgers/XMKT.csv", index=False)
 
 
 if __name__ == "__main__":

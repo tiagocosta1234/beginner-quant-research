@@ -10,7 +10,7 @@ from forex.ea_research import utbot as U
 RISK, START = 500.0, 100000.0
 T0, T1 = pd.Timestamp("2026-01-01").timestamp(), pd.Timestamp("2026-10-03").timestamp()
 VAR = {"base": (1.0, False), "k2": (2.0, False), "k3": (3.0, False), "ha": (1.0, True)}
-a = pd.read_csv("D:/finance/tmp/utbot_cells.csv"); a["var"] = "base"; b = pd.read_csv("D:/finance/tmp/utbot_variant_cells.csv")
+a = pd.read_csv("data/tmp/utbot_cells.csv"); a["var"] = "base"; b = pd.read_csv("data/tmp/utbot_variant_cells.csv")
 R0 = pd.concat([a, b]); A = R0[(R0.mu_DEV > 0) & (R0.mu_VAL > 0)][["sym", "tf", "var"]].values.tolist()
 syms = sorted(os.path.basename(f).replace("_M1_rates.parquet", "") for f in glob.glob(U.DATA + "*_M1_rates.parquet"))
 B = [[s, "H1", "base"] for s in syms]
@@ -84,4 +84,4 @@ for ax, (name, (T, eq, s, mo)) in zip(axs, outs.items()):
 fig.suptitle("UT Bot, each trade risks 500 USD (Key x ATR), account 100,000, 2026-01-01..2026-10-02, real bid/ask (EXPLORATORY: 2026 opened)", fontsize=11)
 fig.tight_layout(); fig.savefig("forex/ea_research/UTBOT_PORT2026_EQUITY.png", dpi=100)
 for name, (T, eq, s, mo) in outs.items():
-    T.to_csv(f"D:/finance/tmp/utbot_port2026_{name[0]}.csv", index=False)
+    T.to_csv(f"data/tmp/utbot_port2026_{name[0]}.csv", index=False)

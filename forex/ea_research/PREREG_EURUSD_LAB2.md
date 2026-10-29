@@ -3,7 +3,7 @@ the trader: "try everything to find a profitable strategy on EURUSD". EA1 (price
 Honest prior: about 3% that any cell survives all gates.
 
 ## Data, clock, execution (common)
-MT5 broker M1 bid/ask for EURUSD (and GBPUSD, AUDUSD, NZDUSD for family X), server clock (Europe/Athens). MT5 calendar `D:\finance\data_macro\mt5_calendar.csv` (UTC; converted to the server clock via Europe/Athens), M1 tick volume `D:\finance\ticks_vol\EURUSD.parquet`.
+MT5 broker M1 bid/ask for EURUSD (and GBPUSD, AUDUSD, NZDUSD for family X), server clock (Europe/Athens). MT5 calendar `data\data_macro\mt5_calendar.csv` (UTC; converted to the server clock via Europe/Athens), M1 tick volume `data\ticks_vol\EURUSD.parquet`.
 Entry at the OPEN of the stated M1 minute at the ask (long) / bid (short); exit at the open of the M1 minute `hold` minutes later at bid / ask; slippage 0.1 bp per side; the result is net basis points per trade (no stop, no target). Nothing is entered or exited in server hours 23 and 0; a trade whose entry or exit minute has no bar is skipped. Only data before the entry minute is used. Script loads 2022-03-01..2025-12-31 unless `--hold`.
 
 ## Families and cells (36)

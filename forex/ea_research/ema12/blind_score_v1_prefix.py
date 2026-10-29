@@ -2,7 +2,7 @@
 python blind_score.py LOG.csv        LOG.csv columns: date, ses (London/NY), side (L/S; empty = no trade), hhmm (chart clock = local, last candle visible when he clicked), entry, stop, target, flag (1 = recognised the day), pre (1 = logged before the result)
 python blind_score.py --validate     rebuilds the 30 trades of 14 Apr-12 May 2025 from replay_mt5.csv and must reproduce direction_skill.csv"""
 import sys, numpy as np, pandas as pd
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet"; TOL = 1.5; CLOSE_HM = {"London": 19 * 60, "NY": 23 * 60 + 30}   # server clock: 17:00 local / end of day
+DATA = "forex/data_mt5/XAUUSD_M1_rates.parquet"; TOL = 1.5; CLOSE_HM = {"London": 19 * 60, "NY": 23 * 60 + 30}   # server clock: 17:00 local / end of day
 def load_days(d0, d1):
     lo = int((pd.Timestamp(d0) - pd.Timedelta(days=1)).timestamp()); hi = int((pd.Timestamp(d1) + pd.Timedelta(days=2)).timestamp())
     r = pd.read_parquet(DATA, filters=[("t", ">=", lo), ("t", "<", hi)]).sort_values("t").reset_index(drop=True)

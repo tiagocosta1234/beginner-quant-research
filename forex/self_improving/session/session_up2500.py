@@ -19,7 +19,7 @@ def main():
     for nm, T in (("MT5 12m", S.load("MT5")), ("FT 2025-26", S.load("FT", "2025-01-01", "2026-09-30"))):
         for L, m0, k, r, h, tag in cfg:
             df = S.run(*T, L, m0, k, r, h); p44, p120, br = m(df); out.append(dict(pool=nm, tag=tag, L=L, m0=m0, k=k, r=r, hstop=h, up=100 * (df.res == 1).mean(), down=100 * (df.res == -1).mean(), unres=100 * (df.res == 0).mean(), p44=p44, p120=p120, breach=br, worst=df.low.min()))
-    o = pd.DataFrame(out); o.to_csv("D:/finance/si_ledgers/SESSION_up2500_test.csv", index=False); print(o.round(1).to_string(index=False))
+    o = pd.DataFrame(out); o.to_csv("data/si_ledgers/SESSION_up2500_test.csv", index=False); print(o.round(1).to_string(index=False))
 
 
 if __name__ == "__main__":

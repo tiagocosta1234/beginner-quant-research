@@ -12,7 +12,7 @@ import pandas as pd
 from forex.self_improving import platform_pit as PIT
 
 DATA = Path(__file__).resolve().parents[1] / "data_mt5"
-CACHE = Path("D:/finance/scratch/si_cache"); CACHE.mkdir(parents=True, exist_ok=True)
+CACHE = Path("data/scratch/si_cache"); CACHE.mkdir(parents=True, exist_ok=True)
 NY = "America/New_York"
 FX = ["AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "AUDUSD", "CADCHF", "CADJPY", "CHFJPY", "EURAUD", "EURCAD", "EURCHF", "EURGBP", "EURJPY", "EURNZD", "EURUSD",
       "GBPAUD", "GBPCAD", "GBPCHF", "GBPJPY", "GBPNZD", "GBPUSD", "NZDCAD", "NZDCHF", "NZDJPY", "NZDUSD", "USDCAD", "USDCHF", "USDJPY"]

@@ -1,5 +1,5 @@
 # BRK-SPREAD result (breakout day round 16, 2026-10-15 12:20): relative-spread breakouts lose (two legs = double the spread)
-Pre-registration `PREREG_BRK_SPREAD.md`, engine `brk_spread.py` (truncation PASS; hand check NSDQ/SP 2024-06-03: short spread entered 17:04 server, +0.26 R, box 23 bp), rows `D:\finance\si_ledgers\BRK_SPREAD.parquet`.
+Pre-registration `PREREG_BRK_SPREAD.md`, engine `brk_spread.py` (truncation PASS; hand check NSDQ/SP 2024-06-03: short spread entered 17:04 server, +0.26 R, box 23 bp), rows `data\si_ledgers\BRK_SPREAD.parquet`.
 | pair (net R) | DEV | VAL | 2026 | random control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | NSDQ / SP | -0.073 | -0.151 | -0.110 | -0.073 / -0.274 / -0.115 |

@@ -6,7 +6,7 @@ from multiprocessing import Pool
 from forex.ea_research.orbx import ct
 
 DATA = "forex/data_mt5/"
-CACHE = "C:/work/scratch/brk_patterns_trades.parquet"
+CACHE = "data/scratch/brk_patterns_trades.parquet"
 DEV, VAL, HOLD = ("2022-01-01", "2025-01-01"), ("2025-01-01", "2026-01-01"), ("2026-01-01", "2026-10-17")
 TF = {"H1": 3600, "H4": 14400, "D1": 86400}
 HOLDBARS = {"H1": 120, "H4": 60, "D1": 20}

@@ -1,13 +1,13 @@
-"""27 Oct 2026, descriptive (not registered): the claude.pine rule (A+ London 12 EMA, 1:1) on every 1-minute futures file on disk, 2026 only.
-Rule = claude.pine: 15m bias candle 07:45 London (close vs EMA12, EMA12 vs 4 candles earlier), first 1m candle opening 08:00-08:14 that freshly crosses the 1m EMA12 on the bias
+"""27 Oct 2026, descriptive (not registered): the london_open_indicator.pine rule (A+ London 12 EMA, 1:1) on every 1-minute futures file on disk, 2026 only.
+Rule = london_open_indicator.pine: 15m bias candle 07:45 London (close vs EMA12, EMA12 vs 4 candles earlier), first 1m candle opening 08:00-08:14 that freshly crosses the 1m EMA12 on the bias
 side with body > biggest wick, entry at its close, stop beyond the last 6 candles + 1 tick, risk bounds 0.0375%..0.15% of price (= gold's 1.5..6 pt at ~4000), A+ = 2 of 3
 (FVG in the last 60 min, Asia 00:00-07:00 sweep, 07:00 hourly candle vs its EMA12), 1R target, stop first on a tie, flat at 16:00 London.
 Costs (points, round trip): GC/MGC 0.32, NQ/MNQ 1.1, ES/MES 0.74, MYM 4.4, SI 0.025 (earlier preregs); M2K, MCL, SIL, MBT, MET = 2 ticks + USD 1.20 / point value (assumption).
 Data: Databento GC NQ ES SI (full 2026 to 25 Sep) and BrokerAPI 1m files (only 29 Jul..25 Sep 2026 exist). Usage: python london_aplus_2026.py"""
 import numpy as np, pandas as pd
 
-DB = "D:/finance/beginner-quant-research/futures/data/databento/futures_%s.F_1m.parquet"
-TX = "D:/finance/beginner-quant-research/futures/data/%s_1MIN_BROKERAPI.csv"
+DB = "futures/data/databento/futures_%s.F_1m.parquet"
+TX = "futures/data/%s_1MIN_BROKERAPI.csv"
 SPEC = {  # name: (source, tick, cost points)
     "GC": ("db", 0.1, 0.32), "NQ": ("db", 0.25, 1.1), "ES": ("db", 0.25, 0.74), "SI": ("db", 0.005, 0.025),
     "MGC": ("tx", 0.1, 0.32), "MNQ": ("tx", 0.25, 1.1), "MES": ("tx", 0.25, 0.74), "MYM": ("tx", 1.0, 4.4),
@@ -82,7 +82,7 @@ def run(name, src, tick, cost):
 
 
 out = []
-print("claude.pine rule, 2026, 1-minute futures. A+ = hard rules + 2 of 3 confluence; B = hard rules only. Net R after costs, 1:1.")
+print("london_open_indicator.pine rule, 2026, 1-minute futures. A+ = hard rules + 2 of 3 confluence; B = hard rules only. Net R after costs, 1:1.")
 print("%-4s %-9s %5s | %4s %5s %8s | %4s %5s %8s" % ("sym", "window", "cands", "A+ n", "win%", "mean R", "B n", "win%", "mean R"))
 for name, (src, tick, cost) in SPEC.items():
     R, cand = run(name, src, tick, cost)

@@ -9,7 +9,7 @@ def srv_off(date):
     ny = t.tz_localize("Europe/London").tz_convert("America/New_York").utcoffset().total_seconds() / 60
     lis = t.tz_localize("Europe/London").utcoffset().total_seconds() / 60
     return int(ny + 7 * 60 - lis)
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet"; TOL = 1.5; CLOSE_HM = {"London": 19 * 60, "NY": 23 * 60 + 30}   # server clock: 17:00 local / end of day
+DATA = "forex/data_mt5/XAUUSD_M1_rates.parquet"; TOL = 1.5; CLOSE_HM = {"London": 19 * 60, "NY": 23 * 60 + 30}   # server clock: 17:00 local / end of day
 def load_days(d0, d1):
     lo = int((pd.Timestamp(d0) - pd.Timedelta(days=1)).timestamp()); hi = int((pd.Timestamp(d1) + pd.Timedelta(days=2)).timestamp())
     r = pd.read_parquet(DATA, filters=[("t", ">=", lo), ("t", "<", hi)]).sort_values("t").reset_index(drop=True)

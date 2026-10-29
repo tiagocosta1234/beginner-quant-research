@@ -1,5 +1,5 @@
 # BEST3M_CYCLE_RESULT - an MT5 broker evaluation trading every symbol's best recent breakout at once (2026-10-15, local clock 17:54)
-Pre-registration PREREG_BEST3M_CYCLE.md (commit a01a73a9). Code best3m_cycle.py, output BEST3M_CYCLE_OUTPUT.txt, cycles D:/finance/si_ledgers/BEST3M_CYCLE_B.csv. Dry run: the monthly picks are identical when the data after the pick date is cut. MT5 broker bid/ask, spreads paid; MT5 broker Pro rules (8% target, 92,000 floor, 2,500 daily line from the day-start balance, +2,000 a day counted).
+Pre-registration PREREG_BEST3M_CYCLE.md (commit a01a73a9). Code best3m_cycle.py, output BEST3M_CYCLE_OUTPUT.txt, cycles data/si_ledgers/BEST3M_CYCLE_B.csv. Dry run: the monthly picks are identical when the data after the pick date is cut. MT5 broker bid/ask, spreads paid; MT5 broker Pro rules (8% target, 92,000 floor, 2,500 daily line from the day-start balance, +2,000 a day counted).
 
 ## Verdict: the policy breaches almost every cycle; even the look-back table itself breaches above $100 a trade
 - **A, in-sample (the table's 46 rules traded over the same 3 months they were chosen on, 2026-07-03..10-02):** +541.6 R on 1,906 trades (21 a day). At $100 a trade it passes in 18 days (worst day -$1,554, losers-only -$2,097). At $200 or $300 a trade it BREACHES in 0-7 days: one day lost -16.8 R because about 20 correlated setups fail together.

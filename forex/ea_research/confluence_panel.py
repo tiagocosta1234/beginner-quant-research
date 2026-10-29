@@ -86,7 +86,7 @@ def context(frames: dict[str, pd.DataFrame], cal: pd.DatetimeIndex) -> pd.DataFr
     for L in (5, 20): ctx[f"risk{L}"] = sp.rolling(L).sum()
     sg = np.sqrt((sp ** 2).ewm(alpha=0.06, min_periods=40, adjust=False).mean()); ctx["riskvol"] = sg.rolling(252, min_periods=120).rank(pct=True)
     ctx["gold20"] = lrr("XAUUSD").rolling(20).sum()
-    ry = pd.read_csv("D:/finance/data_macro/DFII10.csv"); ry["observation_date"] = pd.to_datetime(ry.observation_date); ry = pd.to_numeric(ry.set_index("observation_date").DFII10, errors="coerce").dropna()
+    ry = pd.read_csv("data/data_macro/DFII10.csv"); ry["observation_date"] = pd.to_datetime(ry.observation_date); ry = pd.to_numeric(ry.set_index("observation_date").DFII10, errors="coerce").dropna()
     ryc = ry.reindex(ry.index.union(cal)).ffill().reindex(cal).shift(1)       # value known at the previous weekday's close
     ctx["ry_lvl"] = ryc; ctx["ry_chg5"] = ryc - ryc.shift(5); ctx["ry_chg20"] = ryc - ryc.shift(20)
     return ctx

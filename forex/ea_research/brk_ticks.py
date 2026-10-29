@@ -20,7 +20,7 @@ DEVp, VALp = ("2025-10-01", "2026-03-31"), ("2026-04-01", "2026-09-30")
 
 def ticks(sym):
     parts = []
-    for p in sorted(Path(f"D:/finance/ticks/{sym}").glob("*.parquet")):
+    for p in sorted(Path(f"data/ticks/{sym}").glob("*.parquet")):
         if "2025-10" <= p.stem <= "2026-09":
             d = pd.read_parquet(p, columns=["time_msc", "bid", "ask"])
             parts.append(d[(d.bid > 0) & (d.ask >= d.bid)])
@@ -125,7 +125,7 @@ def dry():
 
 def run():
     df = collect()
-    df.to_parquet("D:/finance/si_ledgers/BRK_TICKS.parquet")
+    df.to_parquet("data/si_ledgers/BRK_TICKS.parquet")
     b = [stats(df, *p) for p in (DEVp, VALp)]
     print(f"base: DEV n{b[0][0]} {b[0][1]:+.3f} (t {b[0][2]:+.2f}) | VAL n{b[1][0]} {b[1][1]:+.3f} (t {b[1][2]:+.2f})")
     for k, v in cells(df).items():

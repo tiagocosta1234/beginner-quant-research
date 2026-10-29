@@ -194,7 +194,7 @@ def main():
         O = pd.DataFrame(m11(("EURUSD", END)), columns=["mkt", "sess", "day", "kind", "side", "t_entry", "Rpx", "R11", "R11_opt", "R_hold"])
         print(f"TOUCH BOX 1R {T[T.ent == 'TOUCH']['BOX 1R'].mean():+.4f} vs ORB11 {O[O.kind == 'ORB'].R11.mean():+.4f}")
         return
-    T = collect(); T.to_parquet("D:/finance/si_ledgers/ORB11_ICTSTOP.parquet"); T["cls"] = T.mkt.map(mclass)
+    T = collect(); T.to_parquet("data/si_ledgers/ORB11_ICTSTOP.parquet"); T["cls"] = T.mkt.map(mclass)
     rcols = [r.split(" ", 1)[1] for r in RULES if r.startswith("TOUCH")]
     C = T[T.ent == "CTRL"].set_index(["mkt", "sess", "day"])[rcols]
     X = T[T.ent != "CTRL"].reset_index(drop=True)
@@ -213,7 +213,7 @@ def main():
                 out.append(dict(pool=" ".join(key), rule=f"{ent} {rc}", n=int(m.sum()), DEV=X.loc[m & pm["DEV"], rc].mean(), VAL=X.loc[m & pm["VAL"], rc].mean(),
                                 Y26=X.loc[m & pm["Y26"], rc].mean(), rnd=Cj.loc[m & dv, rc].mean(), win=(X.loc[m, rc] > 0).mean(), t=tstat(d)))
     P = pd.DataFrame(out); P["pass"] = (P.t >= 3.69) & (P.DEV > 0) & (P.VAL > 0) & (P.Y26 > 0) & ((3 * P.DEV + P.VAL) / 4 > P.rnd)
-    P.to_csv("D:/finance/si_ledgers/ORB11_ICTSTOP_pools.csv", index=False)
+    P.to_csv("data/si_ledgers/ORB11_ICTSTOP_pools.csv", index=False)
     for s in ("LON", "NY"):
         q = P[P.pool == s].set_index("rule")
         print(f"\n1. {s}, all symbols (R per trade of the INITIAL stop; rnd = random entries, same stop rule, 2022-25):")
@@ -235,7 +235,7 @@ def main():
                 if pm["DEV"][idx].sum() >= 50 and (best is None or r["DEV"] > best["DEV"]): best = r
         if best: wf.append(best)
     S = pd.DataFrame(rows); S["pass"] = (S.t >= 4.22) & (S.DEV > 0) & (S.VAL > 0) & (S.Y26 > 0) & (S.DEV > S.rnd)
-    S.to_csv("D:/finance/si_ledgers/ORB11_ICTSTOP_cells.csv", index=False); W = pd.DataFrame(wf)
+    S.to_csv("data/si_ledgers/ORB11_ICTSTOP_cells.csv", index=False); W = pd.DataFrame(wf)
     print(f"\n2. CELLS: {len(S)} tested, passing (t >= 4.22, > 0 DEV/VAL/2026, above random): {int(S['pass'].sum())}")
     print(S.sort_values("t", ascending=False).head(10)[["mkt", "sess", "rule", "n", "DEV", "VAL", "Y26", "rnd", "t"]].round(3).to_string(index=False))
     print(f"   highest t {S.t.max():.2f}; random entries with the same rules: highest {S.t_rnd.max():.2f}")

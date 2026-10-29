@@ -1,7 +1,7 @@
 # Pre-registration hashes of 18 Oct 2026 (second PC PC-2)
 
 the trader asked for no commits on 18 Oct, so each round's pre-registration was proven by a SHA-256 of its PREREG file written to
-`C:\work\scratch\<name>_prereg.sha256` (second PC only) before any P&L. This file copies those records into the repo and re-checks
+`data\scratch\<name>_prereg.sha256` (second PC only) before any P&L. This file copies those records into the repo and re-checks
 each hash against the committed PREREG file (2026-10-18 22:40, local clock).
 
 ## PREREG_BRK50B.md

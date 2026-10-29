@@ -57,7 +57,7 @@ def main():
         return
     from forex.ea_research import combo_grid as cg, pass70 as P
     from forex.ea_research.event_macro import server_s
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     cg.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))   # news flat on CPI only (11-Oct plan)
     print("horizons in business days from", a.start, HZ)
     # ---- engine check: reproduce PAIR_FROM_TODAY (x1.5 + ManualDip 500 from 97,708 on Fri 16 Oct: 18.0% by 30 Nov, 36.5% by 22 Dec, MIX)

@@ -44,7 +44,7 @@ print("    as he actually traded (no v2), same trades: mean R %+.3f" % F[F.date.
 # ---------------------------------------------------------------- (b) mechanical sides on futures
 import blind_png as B
 test_days = set(pd.read_csv("BLIND_V2_2025.csv").date)
-g = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+g = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
 g.index = pd.DatetimeIndex(g.ts.dt.tz_convert("Europe/London").dt.tz_localize(None)); g = g[~g.index.duplicated()].drop(columns="ts")
 O, H, Lo, C = (g[k].to_numpy() for k in ("open", "high", "low", "close")); T = g.index.to_numpy()
 c15 = g.close.resample("15min", label="left", closed="left").last().dropna(); e15 = c15.ewm(span=12, adjust=False).mean()

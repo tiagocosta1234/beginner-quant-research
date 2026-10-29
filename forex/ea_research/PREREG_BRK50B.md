@@ -9,7 +9,7 @@ this is one more pre-registered family of 50 FIXED rules (no tuning, no variants
 BRK50 was. It reopens no closed family: excluded are BRK50's 54 ideas, the ~45 families listed in `PREREG_BRK50.md`, BRK_PATTERNS
 / CONFIRM / TWOWAY / FVG, the ICT rounds, the noise area, the hour map and TRB grids, and GN1-GN13.
 **Pre-registration evidence (no commits today):** this file's SHA-256 and the PC-clock time are written to
-`C:\work\scratch\brk50b_prereg.sha256` before any P&L; the file is committed unchanged later (amendments appended below).
+`data\scratch\brk50b_prereg.sha256` before any P&L; the file is committed unchanged later (amendments appended below).
 
 ## Common rules
 - Data: MT5 broker M1 bid/ask, `forex/data_mt5`, 2021-12 .. 2026-10-16, zero-spread minutes repaired (`brk_patterns.load`); server clock =

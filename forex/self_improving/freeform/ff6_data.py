@@ -14,7 +14,7 @@ from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff5_data as F5
 
 DATA = P3.DATA
-CACHE = Path("D:/finance/scratch/si_cache"); MACRO = Path("D:/finance/data_macro")
+CACHE = Path("data/scratch/si_cache"); MACRO = Path("data/data_macro")
 BAR = 900
 HS = (1, 2, 4, 8, 16, 32, 96, 192)                              # holding horizons in 15-minute bars (15 min .. 2 days)
 LEVELS = F5.LEVELS; HOUR_LV = F5.HOUR_LV; DOW_LV = F5.DOW_LV; QMIN_LV = (0, 1, 2, 3)

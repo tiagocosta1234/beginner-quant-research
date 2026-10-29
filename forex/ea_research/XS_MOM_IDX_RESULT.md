@@ -1,5 +1,5 @@
 # XS_MOM_IDX_RESULT - cross-country index momentum, market-neutral (2026-10-15, local clock 15:43)
-Pre-registration `PREREG_XS_MOM_IDX.md` (commit ba97ec00). Code `xs_mom_idx.py`, output `XS_MOM_IDX_OUTPUT.txt`, rows `D:/finance/si_ledgers/XS_MOM_IDX_RUN.csv`. HOLD not opened.
+Pre-registration `PREREG_XS_MOM_IDX.md` (commit ba97ec00). Code `xs_mom_idx.py`, output `XS_MOM_IDX_OUTPUT.txt`, rows `data/si_ledgers/XS_MOM_IDX_RUN.csv`. HOLD not opened.
 
 ## Verdict: 0 of 2; closed
 | cell | OOT (MT5 broker D1) | DEV 2022-24 | VAL 2025 | DEV+VAL t (bar 1.96) |

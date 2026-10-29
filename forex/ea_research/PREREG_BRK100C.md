@@ -16,7 +16,7 @@ BRK100B M015-M020 used a CME-volume VWAP on 4 markets (group B uses a 1 / spread
 BRK100B M001-M014 used each market's own spread (N025 / N026 use other markets' spread shocks); K27 tested the OPEX-Friday pin and
 K28 quarter-end rebalancing (not the roll week); L035 tested VIX >= VIX3M on US indices (N098 applies it to yen carry: a market
 extension); I41 tested the intraday oil direction for USDCAD (N099 uses the daily oil shock).
-**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `C:\work\scratch\brk100c_prereg.sha256` before any P&L.
+**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `data\scratch\brk100c_prereg.sha256` before any P&L.
 
 ## Common rules
 Exactly BRK100B's (`PREREG_BRK100B.md`, "Common rules"): `brk50.Mkt` fills / rollover ban / mirror / R; ALL = the 38 non-crypto

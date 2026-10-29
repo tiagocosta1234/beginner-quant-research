@@ -1,7 +1,7 @@
 """Descriptive (not a test): rank the ORB11_ENTRY rules by their 2026 result, with the random-entry luck ceiling. PYTHONPATH=. python forex/ea_research/best2026_lookup.py"""
 import numpy as np, pandas as pd
 import forex.ea_research.orb11_entry as oe
-T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet")
+T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet")
 C = T[T.trig=="CTRL"].set_index(["mkt","sess","day"])[["r1","rh"]].rename(columns={"r1":"c1","rh":"ch"})
 X = T[T.trig!="CTRL"].join(C, on=["mkt","sess","day"]).reset_index(drop=True)
 X["yr"] = X.day.dt.year
@@ -24,4 +24,4 @@ print(len(S), "rules tested in 2026 (>=30 trades)")
 print(S.head(15).round(3).to_string(index=False))
 print(f"luck: highest 2026 t on random entries (same days, same exit) {S.t26_rnd.max():.2f}; 99th pct real {np.nanpercentile(S.t26,99):.2f} vs random {np.nanpercentile(S.t26_rnd,99):.2f}")
 top = S.head(50); print(f"top 50 by 2026: mean 2026 {top.R26.mean():+.3f}, mean 2022-25 {top.pre.mean():+.3f}, positive 2022-25 {int((top.pre>0).sum())}/50")
-S.to_csv("D:/finance/scratch/best2026_entry.csv", index=False)
+S.to_csv("data/scratch/best2026_entry.csv", index=False)

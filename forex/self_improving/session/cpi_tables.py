@@ -7,7 +7,7 @@ import numpy as np, pandas as pd
 from forex.ea_research import combo_grid as G, pass70 as P, rsi2_leg as R2, event_macro as EM
 from forex.self_improving.session import faster_than_live as F, session_sdbrunner as R
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); G.EV = np.array(sorted(EM.server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI")); P.C0 = 0.0; F.P.C0 = 0.0
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); G.EV = np.array(sorted(EM.server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI")); P.C0 = 0.0; F.P.C0 = 0.0
 rng = np.random.default_rng(11)
 
 
@@ -50,7 +50,7 @@ def main():
             t = R.runner_leg(tr, 0, "sdb") if rn else tr; Dd.append(dict(profit=("none" if Pc == F.NONE else Pc), runner=rn, **F.stats(F.series(t, lo, hi, 1.5, Pc, 1500.0))))
     dD = pd.DataFrame(Dd); show("D session variants at x1.5 / 1.5% (CPI list)", Dd, dD)
     with pd.ExcelWriter if False else open(os.devnull, "w"): pass
-    dA.to_csv("D:/finance/si_ledgers/CPI_TABLE_A_pair.csv", index=False); dB.to_csv("D:/finance/si_ledgers/CPI_TABLE_B_book.csv", index=False); dC.to_csv("D:/finance/si_ledgers/CPI_TABLE_C_manualdip.csv", index=False); dD.to_csv("D:/finance/si_ledgers/CPI_TABLE_D_sessions.csv", index=False)
+    dA.to_csv("data/si_ledgers/CPI_TABLE_A_pair.csv", index=False); dB.to_csv("data/si_ledgers/CPI_TABLE_B_book.csv", index=False); dC.to_csv("data/si_ledgers/CPI_TABLE_C_manualdip.csv", index=False); dD.to_csv("data/si_ledgers/CPI_TABLE_D_sessions.csv", index=False)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 Run 2026-10-16 18:08-18:13 local (local clock; file save times), second PC PC-2. Pre-registration `PREREG_BRK_PATTERNS.md`
 (frozen 18:07:40 before the run; sha256 ecd68c81... prereg / 05ea53f9... engine, recorded in
-`C:\work\scratch\brk_patterns_freeze.txt`; not committed first because GitNexus cannot be installed on this ARM second PC,
+`data\scratch\brk_patterns_freeze.txt`; not committed first because GitNexus cannot be installed on this ARM second PC,
 see below). Engine `brk_patterns.py`; output `BRK_PATTERNS_OUTPUT.txt` (final), `BRK_PATTERNS_OUTPUT_run1_bugged.txt`
 (first run, two bugs, kept for the record). Data: MT5 broker M1 bid/ask for 46 markets, 2021-12-01..2026-10-16, pulled read-only
 from the second PC's MT5 broker terminal (`forex/ea_batch/mt5data_m1_export_laptop.py`). 107,627 trades. HOLD 2026 stays sealed.

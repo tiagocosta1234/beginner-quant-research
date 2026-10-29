@@ -17,4 +17,4 @@ for col, (nm, T) in enumerate((("MT5 broker pool, Oct 2025 - Sep 2026", S.load("
     ax.set_title(f"System D - {nm}\n{len(df)} sessions: +2,000 on {100 * (df.res == 1).mean():.0f}%, -1,500 on {100 * (df.res == -1).mean():.0f}%, unresolved {100 * (df.res == 0).mean():.0f}%", fontsize=10); ax.legend(fontsize=8, loc="upper left"); ax.set_ylabel("USD since start"); ax.grid(alpha=.25)
     colors = np.where(df.res == 1, "#2da44e", np.where(df.res == -1, "#cf222e", "#c9d1d9")); bx.bar(d, df.pnl.values, color=colors, width=1.0); bx.set_ylabel("session P&L"); bx.axhline(0, color="k", lw=.5); bx.grid(alpha=.25)
 fig.suptitle("Session system D: equity curve (green = day ended +2,000, red = -1,500, grey = unresolved)", fontsize=11); fig.tight_layout()
-fig.savefig("D:/finance/beginner-quant-research/forex/self_improving/session/session_D_equity.png", dpi=110)
+fig.savefig("forex/self_improving/session/session_D_equity.png", dpi=110)

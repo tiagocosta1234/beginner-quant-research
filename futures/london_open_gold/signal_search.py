@@ -1,8 +1,8 @@
-"""PREREG_SIGNAL_SEARCH: 16-cell filter search on the claude.pine London A+ rule. GC DEV 2019-09..2022-12 / TEST 2023-01..2026-09, one look; NQ and ES replication (secondary).
-Usage (from london_aplus): python signal_search.py"""
+"""PREREG_SIGNAL_SEARCH: 16-cell filter search on the london_open_indicator.pine London A+ rule. GC DEV 2019-09..2022-12 / TEST 2023-01..2026-09, one look; NQ and ES replication (secondary).
+Usage (from london_open_gold): python signal_search.py"""
 import itertools, numpy as np, pandas as pd
 
-DB = "D:/finance/beginner-quant-research/futures/data/databento/futures_%s.F_1m.parquet"
+DB = "futures/data/databento/futures_%s.F_1m.parquet"
 COST = {"GC": 0.292, "NQ": 0.860, "ES": 0.494}; TICK = {"GC": 0.1, "NQ": 0.25, "ES": 0.25}
 
 

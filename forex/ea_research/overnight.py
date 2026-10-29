@@ -64,7 +64,7 @@ if __name__ == "__main__":
         for nm in ("N1", "N2"):
             md, td = trial(T, nm, "DEV"); mv, tv = trial(T, nm, "VAL"); res[nm] = md > 0 and td >= 2.0 and mv > 0
             print(f"   {nm}: acceptance 1-2 {'PASSED (hold-out may be opened)' if res[nm] else 'FAILED (closed)'}")
-        T.to_parquet("D:/finance/tmp/overnight_dev.parquet")
+        T.to_parquet("data/tmp/overnight_dev.parquet")
     if a.holdout:
         T = table("2026-09-30")
         for nm in ("N1", "N2"): trial(T, nm, "HOLD")

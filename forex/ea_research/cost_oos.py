@@ -54,7 +54,7 @@ def run_inst(sym):
 def main():
     df = pd.concat([run_inst(s) for s in INST], ignore_index=True)
     df = df[df.day >= "2022-01-01"]
-    df.to_parquet("D:/finance/si_ledgers/COST_OOS.parquet")
+    df.to_parquet("data/si_ledgers/COST_OOS.parquet")
     tt = lambda x: x.mean() / (x.std(ddof=1) / np.sqrt(len(x))) if len(x) > 2 else np.nan
     df["bin"] = pd.cut(df.box_spreads, [0, 10, 15, 25, 40, 60, 1e9], labels=["<10", "10-15", "15-25", "25-40", "40-60", ">60"])
     print("profile (net R with the commission assumption, by box width in spreads):")

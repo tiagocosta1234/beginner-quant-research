@@ -1,6 +1,6 @@
 import sys, json, numpy as np, pandas as pd, matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 from pathlib import Path
-OUT = Path("D:/finance/scratch/eurusd_practice"); rnd = int(sys.argv[1]); n = int(sys.argv[2])
+OUT = Path("data/scratch/eurusd_practice"); rnd = int(sys.argv[1]); n = int(sys.argv[2])
 d = pd.read_parquet("forex/data_mt5/EURUSD_M1_rates.parquet", columns=["t","bo","bh","bl","bc","ao","ac"]).sort_values("t")
 d["dt"] = pd.to_datetime(d.t, unit="s"); d = d.set_index("dt"); mid = lambda a,b: (a+b)/2
 d["o"]=(d.bo+d.ao)/2; d["c"]=(d.bc+d.ac)/2; d["h"]=d.bh+(d.ao-d.bo)/2; d["l"]=d.bl+(d.ao-d.bo)/2

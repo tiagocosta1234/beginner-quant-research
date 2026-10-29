@@ -23,7 +23,7 @@ Requested by the trader ("(original wording omitted)") after the descriptive GBP
 
 ## Trials (3; the base rule is the yardstick, not a trial)
 - **N  news day**: the day has at least one importance-3 event in the MT5 economic calendar
-  (`D:/finance/data_macro/mt5_calendar.csv`, times UTC) for one of the market's currencies with release time in
+  (`data/data_macro/mt5_calendar.csv`, times UTC) for one of the market's currencies with release time in
   [06:00, 10:00) local. Currencies: FX = both legs; XAUUSD, XAGUSD, WTI, BRENT, SP, NSDQ, DOW = USD; DAX = EUR;
   NIKKEI = JPY; ASX = AUD.
 - **T  trend agreement**: breakout side == sign(close of the previous server day - close of the server day before

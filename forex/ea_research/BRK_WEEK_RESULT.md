@@ -1,5 +1,5 @@
 # BRK-WEEK result (breakout day round 4, 2026-10-15 11:47): bigger boxes cut the cost, not the noise; two small leads
-Pre-registration `PREREG_BRK_WEEK.md`, engine `brk_week.py`, rows `D:\finance\si_ledgers\BRK_WEEK.parquet`. Truncation PASS (40-day margin); hand check XAUUSD W1 week of 2022-10-17: short filled Wed 2022-10-19 09:52 server, closed Friday at -0.45 R.
+Pre-registration `PREREG_BRK_WEEK.md`, engine `brk_week.py`, rows `data\si_ledgers\BRK_WEEK.parquet`. Truncation PASS (40-day margin); hand check XAUUSD W1 week of 2022-10-17: short filled Wed 2022-10-19 09:52 server, closed Friday at -0.45 R.
 
 | cell (R per trade) | DEV | VAL | 2026 | control DEV / VAL / 2026 | indices DEV / VAL / 2026 |
 |---|---|---|---|---|---|

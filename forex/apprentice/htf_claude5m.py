@@ -2,7 +2,7 @@
 Usage: python htf_claude5m.py"""
 import numpy as np, pandas as pd
 
-g = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+g = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
 g.index = pd.DatetimeIndex(g.ts); g = g.drop(columns="ts"); g = g[~g.index.duplicated()].sort_index()
 b5 = g.resample("5min", label="left", closed="left").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
 tday1 = (g.index.tz_convert("America/New_York") + pd.Timedelta(hours=7)).normalize().tz_localize(None)
@@ -15,8 +15,8 @@ D["Dbias"] = np.where((D.close.shift(1) > sma20.shift(1)) & (sma20.shift(1) > sm
              np.where((D.close.shift(1) < sma20.shift(1)) & (sma20.shift(1) < sma20.shift(6)), -1, 0))
 Wk = D.close.resample("W-FRI").last().dropna(); s10 = Wk.rolling(10).mean()
 Wb = pd.Series(np.where((Wk > s10) & (s10 > s10.shift(4)), 1, np.where((Wk < s10) & (s10 < s10.shift(4)), -1, 0)), index=Wk.index)
-ry = pd.read_csv("D:/finance/data_macro/DFII10.csv", na_values=["."]).dropna(); ry.index = pd.to_datetime(ry.observation_date); ry = ry.DFII10.astype(float)
-eu = pd.read_csv("D:/finance/beginner-quant-research/futures/data/daily/6E=F_yahoo_daily.csv"); eu.index = pd.to_datetime(eu.date); eu = eu.close.astype(float)
+ry = pd.read_csv("data/data_macro/DFII10.csv", na_values=["."]).dropna(); ry.index = pd.to_datetime(ry.observation_date); ry = ry.DFII10.astype(float)
+eu = pd.read_csv("futures/data/daily/6E=F_yahoo_daily.csv"); eu.index = pd.to_datetime(eu.date); eu = eu.close.astype(float)
 eu20 = eu.rolling(20).mean()
 days = pd.DataFrame(index=D.index)
 days["W"] = pd.merge_asof(pd.DataFrame({"d": D.index}), pd.DataFrame({"d": Wb.index, "w": Wb.values}), on="d", direction="backward", allow_exact_matches=False).w.fillna(0).astype(int).values

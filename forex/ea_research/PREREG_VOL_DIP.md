@@ -1,6 +1,6 @@
 # Pre-registration: does an implied-vol regime improve ManualDip (index dip-reversal)? (written 2026-10-12, before any outcome was looked at)
 
-Follows `VOL_REGIME_RESULT.md` (vol regime does not separate the gold pair's days). ManualDip is the only non-gold edge we have (z3 <= -1.5, Mon-Thu, 3-sigma stop, next-day exit); a classic idea is that dip-buying works better when fear is high / VIX in backwardation. Data: CBOE history in `D:\finance\data_macro\cboe\`.
+Follows `VOL_REGIME_RESULT.md` (vol regime does not separate the gold pair's days). ManualDip is the only non-gold edge we have (z3 <= -1.5, Mon-Thu, 3-sigma stop, next-day exit); a classic idea is that dip-buying works better when fear is high / VIX in backwardation. Data: CBOE history in `data\data_macro\cboe\`.
 
 ## Test (3 trials, fixed now)
 - Outcome: the ManualDip trades exactly as `dip_addon.trades()` / `day_arrays()` with DA_Z=1.5 produce them (SP, NSDQ, DOW, DAX, 2022-2026), per-trade return in bp = pl / (q * e) * 1e4. Trades on the same decision date are averaged into ONE observation (the four indices are strongly correlated, so a day, not a trade, is the unit).

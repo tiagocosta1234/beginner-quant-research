@@ -3,7 +3,7 @@ Asia range 20:00-00:00 New York, sweep inside 02:00-05:00, reclaim (close back i
 target = STDV level projected from the OPPOSITE side of the range (k x range), min range 0.15 x prior daily ATR14, sweep depth <= 1 x range,
 stop wins ties, trade followed to stop / 11:00 for the level-reach stats, cost 0.32 pt. Usage: python stdv_po3.py"""
 import numpy as np, pandas as pd
-g = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
+g = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet", columns=["ts", "open", "high", "low", "close"])
 g.index = pd.DatetimeIndex(g.ts); g = g.drop(columns="ts"); g = g[~g.index.duplicated()].sort_index()
 b = g.resample("5min", label="left", closed="left").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
 ny = b.index.tz_convert("America/New_York")

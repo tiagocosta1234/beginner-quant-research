@@ -14,7 +14,7 @@ from forex.ea_research import stacked_va as G
 
 HERE = Path(__file__).resolve().parent
 STATE = HERE / "STACKED_VA_TARGETS_STATE.json"
-CACHE = Path("D:/finance/tmp/stacked_va_targets.parquet")
+CACHE = Path("data/tmp/stacked_va_targets.parquet")
 TARGETS = ("T1", "T2", "T3", "T4", "T5", "T6", "T7")
 
 

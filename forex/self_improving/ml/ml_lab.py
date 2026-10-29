@@ -18,7 +18,7 @@ from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff6_data as D6
 
 HERE = Path(__file__).resolve().parent
-LEDGERS = Path("D:/finance/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
+LEDGERS = Path("data/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
 NB = 48; HLIST = (4, 16, 96); HIDX = [D6.HS.index(h) for h in HLIST]; WINS = {"a": D6.WA, "b": D6.WB, "val": D6.VAL}
 QS = (0.50, 0.70, 0.80, 0.90, 0.95); N_MIN, CL_MIN, BP_MIN = 100, 20, 3.0; BONF = 0.05 / 12
 

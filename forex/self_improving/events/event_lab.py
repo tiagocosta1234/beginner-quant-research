@@ -9,8 +9,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DATA = Path("D:/finance/beginner-quant-research/forex/data_mt5")
-CAL = "D:/finance/data_macro/mt5_calendar.csv"
+DATA = Path("forex/data_mt5")
+CAL = "data/data_macro/mt5_calendar.csv"
 CCY = ["USD", "EUR", "GBP", "JPY", "AUD", "CAD", "NZD", "CHF"]
 SIGN = {"USD": {"EURUSD": -1, "GBPUSD": -1, "AUDUSD": -1, "NZDUSD": -1, "USDJPY": 1, "USDCAD": 1, "USDCHF": 1, "XAUUSD": -1}, "EUR": {"EURUSD": 1}, "GBP": {"GBPUSD": 1}, "JPY": {"USDJPY": -1}, "AUD": {"AUDUSD": 1}, "CAD": {"USDCAD": -1}, "NZD": {"NZDUSD": 1}, "CHF": {"USDCHF": -1}}
 TIER1 = ["Non-Farm", "Nonfarm", "Unemployment Rate", "Average Hourly Earnings", "CPI", "Retail Sales", "GDP", "Initial Jobless Claims", "PMI", "Fed Interest Rate", "FOMC"]
@@ -79,7 +79,7 @@ def main():
                 rows.append(dict(pool=pn, delay=delay, H=H, n_dev=res["DEV"][3], dev_net=res["DEV"][0], dev_p=res["DEV"][1], dev_null=res["DEV"][2], n_val=res["VAL"][3], val_net=res["VAL"][0], val_p=res["VAL"][1]))
                 r = rows[-1]; print(f"{pn:22s} delay {delay}m H {H:2d}m | DEV n={r['n_dev']:3d} net {r['dev_net']:+7.2f} bp (random-direction mean {r['dev_null']:+.2f}) p={r['dev_p']:.4f} | 2025 n={r['n_val']:3d} net {r['val_net']:+7.2f} bp p={r['val_p']:.3f}", flush=True)
     df = pd.DataFrame(rows); df["pass_dev"] = (df.dev_p < BONF) & (df.dev_net > 0); df["pass_val"] = df.pass_dev & (df.val_p < 0.05) & (df.val_net > 0)
-    df.to_csv(f"D:/finance/si_ledgers/EVENTS_{'placebo' if a.placebo else 'real'}.csv", index=False); print(f"DONE: DEV passes {int(df.pass_dev.sum())} of {len(df)} (Bonferroni p < {BONF:.4f}) | also pass 2025: {int(df.pass_val.sum())} | best DEV p {df.dev_p.min():.4f}")
+    df.to_csv(f"data/si_ledgers/EVENTS_{'placebo' if a.placebo else 'real'}.csv", index=False); print(f"DONE: DEV passes {int(df.pass_dev.sum())} of {len(df)} (Bonferroni p < {BONF:.4f}) | also pass 2025: {int(df.pass_val.sum())} | best DEV p {df.dev_p.min():.4f}")
 
 
 if __name__ == "__main__":

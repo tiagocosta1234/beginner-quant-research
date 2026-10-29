@@ -44,7 +44,7 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--mult", type=float, default=1.5); ap.add_argument("--pool", default="MT5"); ap.add_argument("--dn", type=float, default=1500.0); ap.add_argument("--up", type=float, default=2000.0); ap.add_argument("--quiet", action="store_true"); a = ap.parse_args(ARGV)
     global UP, DN; UP, DN = a.up, a.dn
     e = replay(a.pool, a.mult); e["start_dt"] = pd.to_datetime(e.start, unit="s"); e["end_dt"] = pd.to_datetime(e.end, unit="s"); e["hours"] = (e.end - e.start) / 3600.0
-    e.to_csv(f"D:/finance/si_ledgers/EPISODES_{a.pool}_x{a.mult}" + ("" if (a.up, a.dn) == (2000.0, 1500.0) else f"_u{int(a.up)}_d{int(a.dn)}") + ".csv", index=False)
+    e.to_csv(f"data/si_ledgers/EPISODES_{a.pool}_x{a.mult}" + ("" if (a.up, a.dn) == (2000.0, 1500.0) else f"_u{int(a.up)}_d{int(a.dn)}") + ".csv", index=False)
     d = e[e.res != 0]; print(f"{a.pool} x{a.mult} up {a.up:.0f} dn {a.dn:.0f}: {len(d)} closed episodes | +2000: {int((d.res == 1).sum())} ({100 * (d.res == 1).mean():.0f}%) | -1500: {int((d.res == -1).sum())} | median length {d.hours.median():.0f} h, mean {d.hours.mean():.0f} h | net {d.pnl.sum():+,.0f}")
     if not a.quiet: print(e[e.start_dt >= "2026-08-25"][["start_dt", "end_dt", "res", "pnl", "hours", "trades"]].round(0).to_string(index=False))
     # time to a +8000 account result: from every starting episode, cumulate +2000 / -1500 results; pass at >= +8000, breach at <= -8000

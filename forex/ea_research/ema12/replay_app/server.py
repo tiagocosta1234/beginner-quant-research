@@ -19,7 +19,7 @@ from urllib.parse import urlparse, parse_qs
 import numpy as np, pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__)); EMA12 = os.path.dirname(HERE)
-DATA = "D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet"
+DATA = "futures/data/databento/futures_GC.F_1m.parquet"
 PORT = 8611
 LOG = os.path.join(EMA12, "BLIND_LOG_EXTRA_FUT.csv")            # the registered log (blind_score.py format + price_source)
 RES = os.path.join(EMA12, "BLIND_RESULTS_EXTRA_FUT.csv")        # futures outcome of each registered trade (secondary, Amendment 8)

@@ -1,6 +1,6 @@
 """READ-ONLY daily helper for the October sizing card (forex/mt5_SIZING_CARD_OCT.md): attaches to the MT5 broker terminal, never sends an order, never changes a setting.
    python -m forex.ea_research.card_today            -> counted profit, the day number, today's multiplier, lots, and the day's rules
-Table = the capped DP (lambda 0.3) saved by dp_oct14_capped.py (D:/finance/tmp/dp_oct14_capped_lam0.3.npy)."""
+Table = the capped DP (lambda 0.3) saved by dp_oct14_capped.py (data/tmp/dp_oct14_capped_lam0.3.npy)."""
 from __future__ import annotations
 
 import os
@@ -18,7 +18,7 @@ GRID0, STEP = -8000.0, 100.0
 
 
 def main():
-    pol = np.load("D:/finance/tmp/dp_oct14_capped_lam0.3.npy")
+    pol = np.load("data/tmp/dp_oct14_capped_lam0.3.npy")
     if not mt5.initialize(path=TERMINAL, timeout=30000):
         raise SystemExit(f"cannot attach: {mt5.last_error()}")
     try:

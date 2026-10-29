@@ -1,7 +1,7 @@
 # BRK30 result - 30 untouched breakout ideas on the 38 MT5 broker: 0 pass, most lose the spread
 
 Run 2026-10-18 evening (local clock, second PC PC-2). Pre-registration `PREREG_BRK30.md` (registered 17:42; SHA-256
-e8eb1b710bf0163ebb71d581eb700ad61d334eebb23085c8318ec19f385245c5 in `C:\work\scratch\brk30_prereg.sha256` before any P&L; no commits
+e8eb1b710bf0163ebb71d581eb700ad61d334eebb23085c8318ec19f385245c5 in `data\scratch\brk30_prereg.sha256` before any P&L; no commits
 on 18 Oct at the trader's request), engine `brk30.py` (BRK50's `Mkt`), dry run `BRK30_DRYRUN.txt` (truncation identical on EURUSD,
 XAUUSD, NSDQ), output `BRK30_OUTPUT.txt`, table `BRK30_SUMMARY.csv`, 30 ledger rows. 220,731 trades, 2022-01 .. 2026-10.
 Bars per idea: DEV 2022-24 n >= 150, mean > 0 with t >= 2.94 (Bonferroni for 30), >= 2 of 3 years positive, information over the

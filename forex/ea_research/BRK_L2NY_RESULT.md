@@ -1,5 +1,5 @@
 # BRK-L2NY result (breakout day round 36, 2026-10-15 14:44, local clock): the London-morning range broken in New York = random entries
-Pre-registration `PREREG_BRK_L2NY.md`, engine `brk_l2ny.py` (truncation PASS; fill-minute rule), rows `D:/finance/si_ledgers/BRK_L2NY.parquet`. Box 08:00-12:00 London, OCO stop orders 12:00-16:00, hold to 20:00 London, 46 markets.
+Pre-registration `PREREG_BRK_L2NY.md`, engine `brk_l2ny.py` (truncation PASS; fill-minute rule), rows `data/si_ledgers/BRK_L2NY.parquet`. Box 08:00-12:00 London, OCO stop orders 12:00-16:00, hold to 20:00 London, 46 markets.
 | cell (net R, M1 bars) | DEV | VAL | 2026 | random control DEV / VAL / 2026 |
 |---|---|---|---|---|
 | N1 stop at the other side (n 32,464 / 11,940 / 8,675) | -0.054 (t -5.4) | -0.060 | -0.050 | -0.045 / -0.065 / -0.078 |

@@ -10,7 +10,7 @@ import forex.ea_research.orb11_entry as oe
 import forex.ea_research.orb11_entry_oot as oo
 from forex.ea_research.orb11 import PER
 
-HD_OK = lambda s: os.path.exists(f"D:/finance/data_histdata/DAT_ASCII_{oo.HD.get(s, s)}_M1_2020.zip")
+HD_OK = lambda s: os.path.exists(f"data/data_histdata/DAT_ASCII_{oo.HD.get(s, s)}_M1_2020.zip")
 
 
 def london_spread(sym):
@@ -22,7 +22,7 @@ def london_spread(sym):
 
 def main():
     pd.set_option("display.width", 250)
-    T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")].reset_index(drop=True)
+    T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")].reset_index(drop=True)
     pm = {p: ((T.day >= a) & (T.day <= b)).to_numpy() for p, (a, b) in PER.items()}
     rows = []
     for mk, g in T.groupby("mkt"):
@@ -53,7 +53,7 @@ def main():
         ok = bool(len(s) > 20 and s.mean() > 0 and t >= bar and all(v > 0 for v in yrs.values()))
         out.append(dict(mkt=r.mkt, rule=f"{r.trig} {r.filt} {r.exit}", n=len(s), mean=s.mean(), t=t, years=yrs, passed=ok))
         print(f"   {r.mkt} {r.trig} {r.filt} {'1:1' if r.exit == 'r1' else 'hold'}: n {len(s)} {s.mean():+.3f} R, t {t:+.2f}, by year {yrs} -> {'PASS' if ok else 'fail'}  (spread {sp:.5g})")
-    S.to_csv("D:/finance/si_ledgers/LON_PERSYM.csv", index=False); pd.DataFrame(out).to_csv("D:/finance/si_ledgers/LON_PERSYM_OOT.csv", index=False)
+    S.to_csv("data/si_ledgers/LON_PERSYM.csv", index=False); pd.DataFrame(out).to_csv("data/si_ledgers/LON_PERSYM_OOT.csv", index=False)
     print("passing out of time:", [o["mkt"] for o in out if o.get("passed")])
 
 

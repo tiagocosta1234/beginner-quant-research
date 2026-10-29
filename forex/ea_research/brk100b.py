@@ -10,7 +10,7 @@ from forex.ea_research.brk30 import ema, wilder, sma, rmax, rmin, true_range, rs
 from forex.ea_research.brk100 import BX, LB, NB, SESSION, DLV, PARTNER56, ydaily, open_mid
 from forex.ea_research.brk50b import fut_volume
 
-CACHE = "C:/work/scratch/brk100b_trades.parquet"
+CACHE = "data/scratch/brk100b_trades.parquet"
 IDEAS = [f"M{k:03d}" for k in range(1, 101)]
 FX = tuple(s for s in NONC if mclass(s) == "fx")
 USI = ("SP", "NSDQ", "DOW"); IDX6 = USI + ("DAX", "NIKKEI", "ASX")

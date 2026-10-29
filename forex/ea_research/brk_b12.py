@@ -132,7 +132,7 @@ def dry():
 
 def run():
     cells, base_us = collect(END)
-    pd.concat([v.assign(cell=k) for k, v in cells.items()]).to_parquet("D:/finance/si_ledgers/BRK_B12.parquet")
+    pd.concat([v.assign(cell=k) for k, v in cells.items()]).to_parquet("data/si_ledgers/BRK_B12.parquet")
     print("US 30-min session breakouts, no filter: " + " | ".join(f"{p} {base_us[(base_us.day >= a) & (base_us.day <= b)].R.mean():+.3f}" for p, (a, b) in (("DEV", DEV), ("VAL", VAL), ("2026", Y26))))
     for k, v in cells.items():
         r = {}

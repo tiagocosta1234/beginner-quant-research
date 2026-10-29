@@ -1,6 +1,6 @@
 # ManualONB (strategy S3) in the MT5 Strategy Tester on MT5 broker real ticks (2026-10-12)
 
-EA `forex/expert_advisors/ManualONB.mq5` (compiled 0 errors / 0 warnings in the portable tester `D:\finance\mt5_mt5_tester`, never on the live terminal), NSDQ+, M1, Model=4 every tick based on real ticks, 2025-10-01 .. 2026-09-30, deposit 100,000, InpRiskUSD = 300 per trade. Pre-registration: PREREG_NQ3.md addendum 2. Runner `verify_manualonb_mt5.py`, raw log `MANUALONB_TESTER_LOG.txt`.
+EA `forex/expert_advisors/ManualONB.mq5` (compiled 0 errors / 0 warnings in the portable tester `data\mt5_mt5_tester`, never on the live terminal), NSDQ+, M1, Model=4 every tick based on real ticks, 2025-10-01 .. 2026-09-30, deposit 100,000, InpRiskUSD = 300 per trade. Pre-registration: PREREG_NQ3.md addendum 2. Runner `verify_manualonb_mt5.py`, raw log `MANUALONB_TESTER_LOG.txt`.
 
 | Run | Trades | Win | Net | PF | Avg per trade | Equity DD |
 |---|---|---|---|---|---|---|

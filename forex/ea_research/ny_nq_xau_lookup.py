@@ -1,6 +1,6 @@
 import numpy as np, pandas as pd
 import forex.ea_research.orb11_entry as oe
-T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess=="NY") & T.mkt.isin(["NSDQ","XAUUSD"])]
+T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess=="NY") & T.mkt.isin(["NSDQ","XAUUSD"])]
 C = T[T.trig=="CTRL"].set_index(["mkt","day"])[["r1","rh"]].rename(columns={"r1":"c1","rh":"ch"})
 X = T[T.trig!="CTRL"].join(C, on=["mkt","day"])
 pd.set_option("display.width",250)

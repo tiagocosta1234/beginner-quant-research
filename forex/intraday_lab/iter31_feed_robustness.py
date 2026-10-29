@@ -15,7 +15,7 @@ from forex.intraday_lab import sdb
 ROOT = Path(__file__).resolve().parents[2]
 GC = ROOT / "futures" / "data" / "databento" / "futures_GC.F_1m.parquet"
 HALF = 0.085          # half of MT5 XAUUSD's median spread (17 points x 0.01)
-OUT = Path("D:/finance/scratch/lab")
+OUT = Path("data/scratch/lab")
 
 
 def gc_m1():

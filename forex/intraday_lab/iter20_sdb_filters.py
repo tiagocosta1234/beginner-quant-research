@@ -36,7 +36,7 @@ def main():
     with Pool(3, initializer=init) as p:
         A = pd.concat(p.map(one, grid), ignore_index=True)
     ts = pd.to_datetime(A.t_entry, unit="s"); A["dow"] = ts.dt.dayofweek; A["hr"] = ts.dt.hour; A["dom"] = ts.dt.day
-    A["ph"] = np.where(A.year <= 2023, "dev", np.where(A.year == 2024, "val", "hold")); A.to_parquet(r"D:\finance\scratch\lab\iter20_trades.parquet")
+    A["ph"] = np.where(A.year <= 2023, "dev", np.where(A.year == 2024, "val", "hold")); A.to_parquet(r"data\scratch\lab\iter20_trades.parquet")
     au = A[(A.K == 23) & (A.S == 7) & (A.B == 9) & (A.E == 9)]; rows = []; hits = []
     for name, f in FILTERS.items():
         r = dict(filter=name); good = {}
@@ -52,7 +52,7 @@ def main():
         rows.append(r)
         if all(good[ph] >= 0.7 for ph in good) and r["author_t"] >= 2.0 and r["kept_share_trades"] >= 0.6:
             hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter20_raw.csv", index=False); print(T.round(3).to_string(index=False)); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter20_raw.csv", index=False); print(T.round(3).to_string(index=False)); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
     for h in hits:
         print(h)
 

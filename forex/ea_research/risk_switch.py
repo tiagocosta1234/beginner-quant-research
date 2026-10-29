@@ -5,11 +5,11 @@ import numpy as np, pandas as pd
 from forex.ea_research import combo_grid as G, pass70 as P, dip_addon as DA
 from forex.ea_research.event_macro import server_s
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+cal = pd.read_csv("data/data_macro/event_calendar.csv")
 G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
 P.C0 = 560.0; GUARD = 1500.0; DA.RISK = 500.0
 T, bb = DA.trades(); T, Dd = DA.day_arrays(T, bb); Dd = Dd * 0.75
-g = pd.read_parquet("D:/finance/beginner-quant-research/forex/data/XAUUSD_D1.parquet", columns=["time", "close"]); g["day"] = g.time // 86400
+g = pd.read_parquet("forex/data/XAUUSD_D1.parquet", columns=["time", "close"]); g["day"] = g.time // 86400
 c = g.drop_duplicates("day").set_index("day").close.sort_index(); sma = c.rolling(200).mean(); on_prev = (c > sma).shift(1)      # filter for day D uses D-1 close and average
 
 

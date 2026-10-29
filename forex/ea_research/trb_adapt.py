@@ -82,7 +82,7 @@ def main():
     A = pd.DataFrame(rows)
     pd.set_option("display.width", 200)
     print(A.round(3).to_string(index=False))
-    A.to_csv("D:/finance/si_ledgers/TRB_ADAPT.csv", index=False)
+    A.to_csv("data/si_ledgers/TRB_ADAPT.csv", index=False)
 
 
 if __name__ == "__main__":

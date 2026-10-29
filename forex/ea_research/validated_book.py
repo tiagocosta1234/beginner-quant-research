@@ -14,7 +14,7 @@ HAIR = 0.06
 def main():
     DE, DH = S.build("MT5"), S.build("HD"); C = S.spliced_closes(DE, DH); cache = A.day_cache()
     d2 = {G: A.run(cache, C, G, 1500, "2022-01-03", "2026-10-02") for G in (75_000, 100_000)}
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet"); e = e[(e.mkt == "USDJPY") & (e.kind == "BRK")]
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet"); e = e[(e.mkt == "USDJPY") & (e.kind == "BRK")]
     uj = e.groupby(pd.to_datetime(e.day)).X4_noTP.first() - HAIR
     da = cg.dip_days(500); da.index = pd.to_datetime(da.index, unit="D")
     days = d2[100_000].index; days = days[days >= "2022-02-15"]
@@ -35,7 +35,7 @@ def main():
             vv = np.asarray(V)[m]
             print(f"{lab:28s} {nm}: mean {vv.mean():+.1f}/day sd {vv.std():.0f} | " + " | ".join(f"{k} {p:.1f}/{b:.1f}" for k, (p, b) in cells.items()), flush=True)
             rows.append(dict(config=lab, pool=nm, mean=vv.mean(), sd=vv.std(), **{f"pass {k}": p for k, (p, b) in cells.items()}, **{f"breach {k}": b for k, (p, b) in cells.items()}))
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/VALIDATED_BOOK.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/VALIDATED_BOOK.csv", index=False)
 
 
 if __name__ == "__main__":

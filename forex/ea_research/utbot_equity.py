@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 sys.argv = [sys.argv[0]]
 from forex.ea_research import utbot as U
 
-a = pd.read_csv("D:/finance/tmp/utbot_cells.csv"); a["var"] = "base"
-b = pd.read_csv("D:/finance/tmp/utbot_variant_cells.csv")
+a = pd.read_csv("data/tmp/utbot_cells.csv"); a["var"] = "base"
+b = pd.read_csv("data/tmp/utbot_variant_cells.csv")
 R = pd.concat([a, b]); cells = R[(R.mu_DEV > 0) & (R.mu_VAL > 0)].sort_values(["sym", "tf", "var"]).reset_index(drop=True)
 VAR = {"base": (1.0, False), "k2": (2.0, False), "k3": (3.0, False), "ha": (1.0, True)}
 cache, curves, bh = {}, {}, {}

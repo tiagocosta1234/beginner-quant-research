@@ -52,7 +52,7 @@ def main():
             stuck = {k: 100 * np.mean((st == 3) & (day < h)) for k, h in HZ.items()}
             print(f"{nm} {lab:14s}: " + " | ".join(f"{k} {p:.1f}/{b:.1f}/{stuck[k]:.1f}" for k, (p, b) in cells.items()), flush=True)
             rows.append(dict(pool=nm, policy=lab, **{f"pass {k}": p for k, (p, b) in cells.items()}, **{f"breach {k}": b for k, (p, b) in cells.items()}, **{f"stuck {k}": v for k, v in stuck.items()}))
-    pd.DataFrame(rows).to_csv("D:/finance/si_ledgers/D2_DYNSIZE.csv", index=False)
+    pd.DataFrame(rows).to_csv("data/si_ledgers/D2_DYNSIZE.csv", index=False)
 
 
 if __name__ == "__main__":

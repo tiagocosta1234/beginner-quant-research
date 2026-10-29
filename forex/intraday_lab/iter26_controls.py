@@ -61,7 +61,7 @@ def main():
         jobs += [(thr, "fade", 0, None), (thr, "carry", 0, None)] + [(thr, "random", s, None) for s in range(10)] + [(thr, "fade", 0, k) for k in range(6)]
     with Pool(3, initializer=init) as p:
         R = pd.DataFrame(p.map(ensemble, jobs, chunksize=1))
-    R.to_csv(r"D:\finance\scratch\lab\iter26_raw.csv", index=False); print(R.round(2).to_string(index=False))
+    R.to_csv(r"data\scratch\lab\iter26_raw.csv", index=False); print(R.round(2).to_string(index=False))
     for thr in (-2.0, -4.0):
         f = R[(R.thr == thr) & (R["mode"] == "fade") & R["drop"].isna()].iloc[0]; c = R[(R.thr == thr) & (R["mode"] == "carry")].iloc[0]; pl = R[(R.thr == thr) & (R["mode"] == "random")]
         lo = R[(R.thr == thr) & (R["mode"] == "fade") & R["drop"].notna()]

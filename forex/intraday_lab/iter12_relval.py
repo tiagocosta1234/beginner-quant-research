@@ -32,7 +32,7 @@ def main():
             for ph, m in (("dev", year[ix] <= 2023), ("val", year[ix] == 2024), ("hold", year[ix] >= 2025)):
                 rows.append(dict(pair=a + "/" + bsym, L=L, thr=thr, H=H, phase=ph, n=int(m.sum()), sig=float(fwd[m].mean()) if m.sum() else np.nan, net=float((fwd - cost)[m].mean()) if m.sum() else np.nan,
                                  sd=float((fwd - cost)[m].std(ddof=1)) if m.sum() > 2 else np.nan, cost=float(cost[m].mean()) if m.sum() else np.nan))
-    D = pd.DataFrame(rows); D.to_csv(r"D:\finance\scratch\lab\iter12_raw.csv", index=False)
+    D = pd.DataFrame(rows); D.to_csv(r"data\scratch\lab\iter12_raw.csv", index=False)
     out = []
     for k, x in D[D.n >= 20].groupby(["L", "thr", "H", "phase"]):
         N = x.n.sum(); m = (x.n * x.net).sum() / N; se = np.sqrt((((x.sd) * np.sqrt(x.n)) ** 2).sum()) / N

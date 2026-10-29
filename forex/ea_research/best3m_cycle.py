@@ -12,7 +12,7 @@ DATA_END = pd.Timestamp("2026-10-02")
 
 
 def long_table():
-    T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet")
+    T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet")
     T = T[(T.trig != "CTRL") & (T.trig != "FADE") & (T.day <= DATA_END)].reset_index(drop=True)
     parts = []
     for f in oe.FILTS:
@@ -88,7 +88,7 @@ def main():
     for y, g in R[R.X == 200].groupby("yr"):
         o, p = g[g["mode"] == "optimistic"], g[g["mode"] == "pessimistic"]
         print(f"   {y}: {(o.st == 1).mean():.0%} / {(o.st == 2).mean():.0%} | {(p.st == 1).mean():.0%} / {(p.st == 2).mean():.0%}  ({len(o)} starts)")
-    R.to_csv("D:/finance/si_ledgers/BEST3M_CYCLE_B.csv", index=False)
+    R.to_csv("data/si_ledgers/BEST3M_CYCLE_B.csv", index=False)
     # A in-sample: the table's rules, traded over the same 3 months
     A0 = pd.Timestamp("2026-07-03"); w = Z[(Z.day >= A0)]
     agg = w.groupby(["mkt", "rule"]).R.agg(["sum", "size"]).reset_index(); agg = agg[agg["size"] >= 15]

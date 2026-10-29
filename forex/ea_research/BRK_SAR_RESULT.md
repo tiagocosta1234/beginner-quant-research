@@ -1,5 +1,5 @@
 # BRK-SAR result (breakout day round 18, 2026-10-15 12:29): stop-and-reverse is the worst breakout trade of the day; streaks mean nothing
-Pre-registration `PREREG_BRK_SAR.md` (written before the run, committed with it), engine `brk_sar.py`, rows `D:\finance\si_ledgers\BRK_SAR.parquet`.
+Pre-registration `PREREG_BRK_SAR.md` (written before the run, committed with it), engine `brk_sar.py`, rows `data\si_ledgers\BRK_SAR.parquet`.
 | cell (net R) | DEV | VAL | 2026 | control / reference |
 |---|---|---|---|---|
 | SAR: reverse when the first breakout's stop is hit, hold to close | -0.201 (t -12.4, 21,086) | -0.230 | -0.242 | random entry after the stop-out -0.074 / -0.099 / -0.120 |

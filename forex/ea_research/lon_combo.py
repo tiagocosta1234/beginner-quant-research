@@ -15,8 +15,8 @@ WIN = {"2026": ("2026-01-01", "2026-08-31"), "2022-25": ("2022-01-01", "2025-12-
 
 
 def series():
-    S = pd.read_csv("D:/finance/si_ledgers/LON_PERSYM.csv"); K = S[S.kept]
-    T = pd.read_parquet("D:/finance/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")]
+    S = pd.read_csv("data/si_ledgers/LON_PERSYM.csv"); K = S[S.kept]
+    T = pd.read_parquet("data/si_ledgers/ORB11_ENTRY.parquet"); T = T[(T.sess == "LON") & (T.trig != "CTRL")]
     out = {}; load0 = oe.load
     for r in K.itertuples():
         g = T[(T.mkt == r.mkt) & (T.trig == r.trig)]; g = g[oe.fmask(g, r.filt)]
@@ -59,7 +59,7 @@ def main():
                         if w == "2020-21" and "DOW" in combo and len(combo) == 1: r.update({f"pass_{w}": np.nan, f"breach_{w}": np.nan}); continue
                         p, b_, n = cycles(dd, w, X, pess, ends[w]); r.update({f"pass_{w}": p, f"breach_{w}": b_})
                     rows.append(r)
-    R = pd.DataFrame(rows); R.to_csv("D:/finance/si_ledgers/LON_COMBO.csv", index=False)
+    R = pd.DataFrame(rows); R.to_csv("data/si_ledgers/LON_COMBO.csv", index=False)
     cols = ["combo", "X", "pass_2026", "breach_2026", "pass_2022-25", "breach_2022-25", "pass_2020-21", "breach_2020-21"]
     o = R[R.line == "opt"]
     print("1. EACH SYMBOL ALONE, pass / breach within 30 days of each start (optimistic daily line):")

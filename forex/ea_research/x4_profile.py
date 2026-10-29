@@ -5,7 +5,7 @@ import numpy as np, pandas as pd
 from forex.ea_research import combo_grid as G, pass70 as P, dip_addon as DA
 from forex.ea_research.event_macro import server_s
 
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
+cal = pd.read_csv("data/data_macro/event_calendar.csv"); G.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
 DA.RISK = 500.0; T, bb = DA.trades(); T, Dd = DA.day_arrays(T, bb); Dd = Dd * 0.75
 P.C0 = 0.0
 CFG = {"INSTALLED x1.5, guard 1,500": (1.5, 1.0, 1500.0), "x4.0 (+ManualDip x4), guard 2,000": (4.0, 4.0, 2000.0)}

@@ -1,5 +1,5 @@
 # ORB11_ICTSTOP_RESULT - ICT-style stops on the trader's 30-minute London / NY ORB (2026-10-15, local clock 18:06)
-Pre-registrations PREREG_ORB11_ICTSTOP.md and PREREG_ICTSTOP_OOT.md. Code orb11_ictstop.py; output ORB11_ICTSTOP_OUTPUT.txt, ICTSTOP_OOT_OUTPUT.txt; tables D:/finance/si_ledgers/ORB11_ICTSTOP_*. Engine checks: truncation identical (2,568 trades), TOUCH BOX 1R = ORB11 exactly (+0.0434 on EURUSD).
+Pre-registrations PREREG_ORB11_ICTSTOP.md and PREREG_ICTSTOP_OOT.md. Code orb11_ictstop.py; output ORB11_ICTSTOP_OUTPUT.txt, ICTSTOP_OOT_OUTPUT.txt; tables data/si_ledgers/ORB11_ICTSTOP_*. Engine checks: truncation identical (2,568 trades), TOUCH BOX 1R = ORB11 exactly (+0.0434 on EURUSD).
 
 ## Verdict: no ICT stop fixes it. 0 of 528 pools, 0 of 4,048 cells; the one lead fails its 2020-21 check at today's spread
 Stops: box (baseline), equilibrium (box 50%), last confirmed M5 swing, order block (last opposite M5 candle), FVG (candle-1 extreme; FVG required), structure trail, breakeven after +1R then structure trail; targets 1R / 2R / 3R / none; entries touch and 5-minute close; 46 symbols, MT5 broker bid/ask.

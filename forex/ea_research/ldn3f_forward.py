@@ -1,15 +1,15 @@
 """LDN3F forward test (PREREG_LDN3F.md): London 30-min breakout 1:1 with the three entry filters.
 READ-ONLY MT5 use: initialize, symbols_get, copy_rates_range, shutdown. Never sends orders.
 Usage: python -m forex.ea_research.ldn3f_forward [--since 2026-10-19] [--until YYYY-MM-DD]
-Writes D:/finance/scratch/ldn3f/forward.csv (one row per market-day with a trigger) and prints the status."""
+Writes data/scratch/ldn3f/forward.csv (one row per market-day with a trigger) and prints the status."""
 import argparse, datetime as dt, glob, os, numpy as np, pandas as pd
 from zoneinfo import ZoneInfo
 from forex.ea_research.orbx import walk, ct, CRYPTO
 
 TERMINAL = r"C:\Program Files\MT5 MT5 Terminal\terminal64.exe"
 SRV, LIS = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London")
-OUT = "D:/finance/scratch/ldn3f/forward.csv"
-MARKETS = sorted(os.path.basename(f)[:-17] for f in glob.glob("D:/finance/beginner-quant-research/forex/data_mt5/*_M1_rates.parquet"))
+OUT = "data/scratch/ldn3f/forward.csv"
+MARKETS = sorted(os.path.basename(f)[:-17] for f in glob.glob("forex/data_mt5/*_M1_rates.parquet"))
 MARKETS = [m for m in MARKETS if m not in CRYPTO]
 
 

@@ -1,9 +1,9 @@
-"""Autosave checkpoint for D:/finance/beginner-quant-research (the trader 2026-10-11: "(original wording omitted)").
+"""Autosave checkpoint for . (the trader 2026-10-11: "(original wording omitted)").
 Every run: stage tracked edits + NEW text files under the allowlist, refuse anything that looks like a secret, commit as the repo's
 git identity (tiagocosta1234). LOCAL COMMIT ONLY (the trader 2026-10-19: every push needs his OK). Daily limit: the trader 2026-10-22 said 40 commits a day is the MINIMUM ("it can go more than 40 commits") and then "max is 90 commits a day",
 so MAX_DAILY is 90 (it was a ceiling of 40 on 2026-10-19), counting every commit on HEAD, agents' included.
-Run by the Windows task "TopSecretGitAutosave" every 30 min.   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py
-Push only when the trader has said OK:   python D:/finance/beginner-quant-research/forex/tools/git_autosave.py --push   (no force; rebases once if the remote moved)"""
+Run by the Windows task "TopSecretGitAutosave" every 30 min.   python forex/tools/git_autosave.py
+Push only when the trader has said OK:   python forex/tools/git_autosave.py --push   (no force; rebases once if the remote moved)"""
 from __future__ import annotations
 
 import datetime as dt
@@ -15,7 +15,7 @@ from pathlib import Path
 MAX_DAILY = 90
 
 NO_WINDOW = 0x08000000   # CREATE_NO_WINDOW
-REPO = Path("D:/finance/beginner-quant-research")
+REPO = Path(".")
 LOG = REPO / "forex/tools/git_autosave.log"
 NEW_OK = ("forex/ea_research/", "Knowledge_Base/", "forex/expert_advisors/", "forex/forward_test/", "forex/ea_batch/", "forex/tools/", "CLAUDE.md")
 NEW_EXT = {".py", ".md", ".csv", ".txt", ".json", ".png", ".mq5", ".mqh", ".set", ".ps1", ".bat"}

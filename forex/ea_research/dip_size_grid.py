@@ -11,7 +11,7 @@ from forex.ea_research.event_macro import server_s
 from forex.ea_batch.mt5_mc_config import CH
 
 P.C0 = 560.0; HZ = {"30 Nov": 36, "22 Dec": 52, "31 Jan": 79}
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+cal = pd.read_csv("data/data_macro/event_calendar.csv")
 EV = np.array(sorted(server_s(r.date, 8, 30) if r.kind in ("CPI", "NFP") else server_s(r.date, 14, 0) for r in cal.itertuples() if r.kind in ("CPI", "NFP", "FOMC")))
 bars = L.bars(); base = {}
 for pool in ("MT5", "FT"):

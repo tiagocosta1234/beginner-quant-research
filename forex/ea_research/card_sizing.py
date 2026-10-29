@@ -6,8 +6,8 @@ import pandas as pd
 
 
 def day_series(trend_only):
-    g = pd.concat([pd.read_parquet("D:/finance/si_ledgers/ORB_REFINE_XAUUSD.parquet")[["day", "R"]], pd.read_parquet("D:/finance/si_ledgers/ORB_TREND_2026_XAUUSD.parquet")[["day", "R"]]]).groupby("day").R.first()
-    n = pd.concat([pd.read_parquet("D:/finance/si_ledgers/ORB_REFINE_NSDQ.parquet")[["day", "R", "side", "trend"]], pd.read_parquet("D:/finance/si_ledgers/ORB_TREND_2026_NSDQ.parquet")[["day", "R", "side", "trend"]]])
+    g = pd.concat([pd.read_parquet("data/si_ledgers/ORB_REFINE_XAUUSD.parquet")[["day", "R"]], pd.read_parquet("data/si_ledgers/ORB_TREND_2026_XAUUSD.parquet")[["day", "R"]]]).groupby("day").R.first()
+    n = pd.concat([pd.read_parquet("data/si_ledgers/ORB_REFINE_NSDQ.parquet")[["day", "R", "side", "trend"]], pd.read_parquet("data/si_ledgers/ORB_TREND_2026_NSDQ.parquet")[["day", "R", "side", "trend"]]])
     nq = (n[n.side == n.trend] if trend_only else n).groupby("day").R.first()
     days = pd.bdate_range("2022-01-03", "2026-10-02")
     return pd.DataFrame({"g": g.reindex(days), "n": nq.reindex(days)})
@@ -45,7 +45,7 @@ def main():
                     p, b = simulate(sub, risk, h, rng)
                     rows.append(dict(version="trend-only Nasdaq" if trend_only else "Nasdaq both sides", pool=pool, risk=risk, horizon=hz, P_pass=p, P_breach=b))
     R = pd.DataFrame(rows)
-    R.to_csv("D:/finance/si_ledgers/CARD_SIZING.csv", index=False)
+    R.to_csv("data/si_ledgers/CARD_SIZING.csv", index=False)
     pd.set_option("display.width", 220)
     t = R.pivot_table(index=["version", "pool", "risk"], columns="horizon", values=["P_pass", "P_breach"])
     print((t * 100).round(1).to_string())

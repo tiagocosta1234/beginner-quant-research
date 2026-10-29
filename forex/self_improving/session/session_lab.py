@@ -96,7 +96,7 @@ def summarize(df):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--smoke", action="store_true"); ap.add_argument("--L", default="1000,1500,2000"); a = ap.parse_args(ARGV)
     import time
-    TR = load("FT", "2022-01-01", "2024-12-31"); out = "D:/finance/si_ledgers/SESSION_train.csv"
+    TR = load("FT", "2022-01-01", "2024-12-31"); out = "data/si_ledgers/SESSION_train.csv"
     grid = [(1.5, 0, 0, 0)] if a.smoke else list(itertools.product((1.0, 1.5, 2.0, 3.0, 4.0), (0.0, 1.0, 3.0), (0.0, 1.0), (0.0, 3.0)))
     for Lc in map(float, a.L.split(",")):
         for m0, k, r, hs in grid:

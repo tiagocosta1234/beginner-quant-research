@@ -2,7 +2,7 @@
 Usage (from edge_lab): python published_effects.py"""
 import numpy as np, pandas as pd
 
-DB = "D:/finance/beginner-quant-research/futures/data/databento/futures_%s.F_1m.parquet"
+DB = "futures/data/databento/futures_%s.F_1m.parquet"
 COST = {"ES": 0.74, "NQ": 1.1, "GC": 0.32, "SI": 0.0112}
 USD = {"ES": 5, "NQ": 2, "GC": 10, "SI": 1000}
 TOL = np.timedelta64(5, "m")

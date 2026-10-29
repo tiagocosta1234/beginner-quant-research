@@ -126,7 +126,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_SQUEEZE.parquet")
+    df.to_parquet("data/si_ledgers/BRK_SQUEEZE.parquet")
     names = {"Q1": "M15 squeeze range break", "Q2": "M15 squeeze release (TTM)", "Q3": "H1 squeeze range break"}
     for cell, g in df.groupby("cell"):
         r = {}

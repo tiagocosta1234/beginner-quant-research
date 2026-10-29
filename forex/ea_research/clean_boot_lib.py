@@ -2,7 +2,7 @@
 Builds the guarded daily series (V = day result, B = lowest in-day equity vs the day's start, Hi = highest) of the pair for a size multiplier and a WEEKEND POLICY, on the two pools used everywhere in the clean studies:
   MT5   = last 12 months (2025-10-01..2026-09-30): MT5 broker real-tick trades + MT5 broker bars ("regime 12M", gold in a strong trend)
   FT   = 2022-01-01..2026-09-30: MT5 broker trades scaled by 4,100 / price + MT5 broker bars ("regime 5Y")
-Loss cap 2,000 only (profit cap and pass lock OFF), exactly as clean_nolock_plan.py. Series are cached in D:\\finance\\scratch\\clean_cache.
+Loss cap 2,000 only (profit cap and pass lock OFF), exactly as clean_nolock_plan.py. Series are cached in data\\scratch\\clean_cache.
 Weekend policies: HOLD (as live), FLAT_ALL (every position closed 10 minutes before the last bar of each market closure longer than 30 hours, never reopened), FLAT_SDB, FLAT_XAU5."""
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from forex.ea_batch import mt5data_guard_carry as GC
 from forex.ea_batch.mt5data_sizing_long import trades_mt5broker
 
 A, CAPD, TARGET = C.A, C.CAPD, C.TARGET
-CACHE = Path(r"D:\finance\scratch\clean_cache"); CACHE.mkdir(parents=True, exist_ok=True)
+CACHE = Path(r"data\scratch\clean_cache"); CACHE.mkdir(parents=True, exist_ok=True)
 POOLS = {"MT5": ("mt5", "2025-10-01", "2026-09-30"), "FT": ("mt5broker", "2022-01-01", "2026-09-30")}
 _bars = None
 

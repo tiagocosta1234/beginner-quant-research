@@ -1,6 +1,6 @@
 # Free-form trader (v4): result (2026-10-13)
 
-Pre-registration: PREREG_FREEFORM.md with Amendments 1-7 (every change and every failed calibration is written there). Code: ff_data.py, ff_agent.py. Ledgers (append-only, outside git): D:\finance\si_ledgers\FF*_*.csv. 2026 (HOLD) never loaded.
+Pre-registration: PREREG_FREEFORM.md with Amendments 1-7 (every change and every failed calibration is written there). Code: ff_data.py, ff_agent.py. Ledgers (append-only, outside git): data\si_ledgers\FF*_*.csv. 2026 (HOLD) never loaded.
 
 ## What the agent is
 Hourly bars of 46 MT5 broker symbols in 4 classes; 22 causal features; it composes its own rules (side x horizon x 1-3 conditions, class included, an effectively unbounded space); it searches evolutionarily and re-weights its own operators; explore on window A (2022-01..2023-06), confirm promoted rules once on window B (2023-07..2024-12), validate once on 2025; test = cluster-robust (weekly) Student t on the GROSS bid-to-bid excess over random timing on the allowed grid, plus a +3 bp NET floor on B and VAL; Benjamini-Hochberg q = 0.05 over all B tests; no entries in the rollover hours (server 23 and 0); one entry per H bars per market.

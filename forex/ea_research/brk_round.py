@@ -95,7 +95,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_ROUND.parquet")
+    df.to_parquet("data/si_ledgers/BRK_ROUND.parquet")
     for cell, g0 in df.groupby("cell"):
         g, o = g0[g0.kind == "round"], g0[g0.kind == "offset"]
         r = {}

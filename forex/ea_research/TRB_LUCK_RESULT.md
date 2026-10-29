@@ -1,5 +1,5 @@
 # TRB-LUCK result (breakout day round 30, 2026-10-15 13:59, local clock): "a different best breakout every year" is exactly what luck produces
-Pre-registration PREREG_TRB_LUCK.md, engine trb_luck.py, table D:/finance/si_ledgers/TRB_LUCK.csv. 46 markets x 2,808 breakout variants (TRB grid), day bootstrap within each market-year, 500 draws.
+Pre-registration PREREG_TRB_LUCK.md, engine trb_luck.py, table data/si_ledgers/TRB_LUCK.csv. 46 markets x 2,808 breakout variants (TRB grid), day bootstrap within each market-year, 500 draws.
 | year | markets | observed yearly prize (best variant, mean R per trade, avg over markets) | average variant (grand mean) | luck, all variants equal: median / 95th pct (p) | luck, stable variant quality: median / 95th pct (p) |
 |---|---|---|---|---|---|
 | 2022 | 41 | +0.224 | -0.212 | +0.219 / +0.242 (p 0.35) | +0.237 / +0.260 (p 0.86) |

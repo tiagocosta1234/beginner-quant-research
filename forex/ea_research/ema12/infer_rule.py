@@ -1,7 +1,7 @@
 """Infer what the trader's 12 EMA entries look like on MT5 XAUUSD M1 (server clock), using the 30 dated trades (replay_mt5.csv)."""
 import numpy as np, pandas as pd
 O = pd.read_csv("replay_mt5.csv")
-raw = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet")
+raw = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet")
 raw["dt"] = pd.to_datetime(raw.t, unit="s"); raw = raw.sort_values("dt").reset_index(drop=True)
 raw["mid"] = (raw.bc + raw.ac) / 2; raw["mh"] = (raw.bh + raw.ah) / 2; raw["ml"] = (raw.bl + raw.al) / 2
 raw["ema"] = raw.mid.ewm(span=12, adjust=False).mean()

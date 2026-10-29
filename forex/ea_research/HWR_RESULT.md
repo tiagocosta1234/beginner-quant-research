@@ -1,7 +1,7 @@
 # HWR result - high win rate and small daily wins are achievable; a profit that passes MT5 broker is not (0 of 3 pass)
 
 Run 2026-10-18 00:07 local (local clock, second PC). Pre-registration `PREREG_HWR.md` (registered 00:06; frozen by sha256 at 00:07:25 in
-`C:\work\scratch\hwr_freeze.txt`). Engine `hwr.py`, output `HWR_OUTPUT.txt`, trades `C:\work\scratch\hwr_*.parquet`. Six indices
+`data\scratch\hwr_freeze.txt`). Engine `hwr.py`, output `HWR_OUTPUT.txt`, trades `data\scratch\hwr_*.parquet`. Six indices
 (SP NSDQ DOW DAX NIKKEI ASX), MT5 broker M1 bid/ask, long only, stop 3 daily SD, R = P&L / risk to the stop. HOLD 2026 sealed.
 
 ## Trials

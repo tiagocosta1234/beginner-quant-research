@@ -30,7 +30,7 @@ NM = M1 - M0 + 1
 acc = {k: np.zeros(NM) for k in ("n", "up", "dn", "aon", "bon")}
 last_mid = np.full(NM, np.nan)
 for mo in MONTHS:
-    t = pd.read_parquet(f"D:/finance/ticks/EURUSD/{mo}.parquet")
+    t = pd.read_parquet(f"data/ticks/EURUSD/{mo}.parquet")
     t = t[t.time_msc < CUT_MS]
     ms = t.time_msc.to_numpy() // 60000 - M0
     b, a, f = t.bid.to_numpy(), t.ask.to_numpy(), t["flags"].to_numpy().astype(int)

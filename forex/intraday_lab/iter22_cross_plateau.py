@@ -37,7 +37,7 @@ def main():
         for nm, a, b in (("dev", "2021-10-01", "2023-12-31"), ("val", "2024-01-01", "2024-12-31"), ("hold_CONTAMINATED", "2025-01-01", "2026-10-02")):
             r[f"sh_{nm}"] = sharpe(day.loc[a:b]); r[f"flip_{nm}"] = sharpe(flip.loc[a:b])
         rows.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter22_raw.csv", index=False); print(T.round(2).to_string(index=False))
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter22_raw.csv", index=False); print(T.round(2).to_string(index=False))
     c = T[(T.W == 168) & (T.theta == 3.0) & (T.H == 48)].iloc[0]
     print(f"\nshare of 27 cells with Sharpe > 0: DEV {(T.sh_dev > 0).mean():.0%}, VAL {(T.sh_val > 0).mean():.0%}, both {((T.sh_dev > 0) & (T.sh_val > 0)).mean():.0%}; centre DEV {c.sh_dev:.2f} VAL {c.sh_val:.2f}")
     hit = ((T.sh_dev > 0).mean() >= 0.7) and ((T.sh_val > 0).mean() >= 0.7) and c.sh_dev >= 0.5 and c.sh_val >= 0.5

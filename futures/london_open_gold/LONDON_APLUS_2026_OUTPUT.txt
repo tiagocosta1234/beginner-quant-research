@@ -1,4 +1,4 @@
-claude.pine rule, 2026, 1-minute futures. A+ = hard rules + 2 of 3 confluence; B = hard rules only. Net R after costs, 1:1.
+london_open_indicator.pine rule, 2026, 1-minute futures. A+ = hard rules + 2 of 3 confluence; B = hard rules only. Net R after costs, 1:1.
 sym  window    cands | A+ n  win%   mean R |  B n  win%   mean R
 GC   2026        105 |   64    50   -0.096 |   91    46   -0.172
 NQ   2026        110 |   63    46   -0.141 |   85    51   -0.049
@@ -25,11 +25,11 @@ BrokerAPI files only cover 29 Jul..25 Sep 2026 (about 2 months, EMA warm-up 3 da
 Result: every full-year 2026 market is negative (GC -0.096, NQ -0.141, ES -0.207, SI -0.302); pooled A+ 213 trades -0.170 R, random-side P 0.66 (the gold side-skill from 2019-25 is gone in 2026).
 
 UPDATE 27 Oct 2026 ~11:2x: Databento ends 25 Sep, so the gap to today was filled with Yahoo 1m (GC=F NQ=F ES=F SI=F, free, last 30 days, front-month; data quality below Databento).
-Window 30 Sep .. 27 Oct, same claude.pine rule, GC with the fixed 1.5-6 pt bounds, others % of price.
+Window 30 Sep .. 27 Oct, same london_open_indicator.pine rule, GC with the fixed 1.5-6 pt bounds, others % of price.
 GC: 10 setups, 8 A+ = 5 wins / 3 losses, +0.103 R a trade (+0.8 R total). Last gold setup: Tue 27 Oct 08:06 London SHORT 4011.5, SL 4015.0, TP 4008.0, A+ (FVG + 1h), target hit +0.91 R.
 NQ: 5 A+, 2 wins, mean -0.25 R | ES: 5 A+, 3 wins | SI: 7 A+, 3 wins, mean -0.28 R. Too few trades to read; gold Jan-27 Oct 2026 A+: 72 trades, about -0.075 R.
 
 UPDATE 27 Oct 2026 ~11:5x: BrokerAPI API pulled again with the trader's new key (read-only get_bars, key passed as an env var for that one run, not saved anywhere); files in futures/data/brokerapi_2026-10-27/ (9 micros, 28 Aug .. 27 Oct, 1m, front contract only).
-claude.pine rule on them, 2 Sep..27 Oct: A+ 92 trades, 58% wins, -0.067 R (random-side P 0.045, mirror -0.415); without MET (cost assumption gives one -3.3 R trade) -0.032 R over 91; B hard rules 124 trades -0.023 R, P 0.013.
+london_open_indicator.pine rule on them, 2 Sep..27 Oct: A+ 92 trades, 58% wins, -0.067 R (random-side P 0.045, mirror -0.415); without MET (cost assumption gives one -3.3 R trade) -0.032 R over 91; B hard rules 124 trades -0.023 R, P 0.013.
 Per symbol A+: MGC +0.139 (16), MNQ +0.017 (13), MES -0.022 (12), MYM -0.001 (12), M2K -0.180 (13), MCL -0.268 (4), SIL -0.159 (11), MBT +0.017 (10), MET 1 trade.
 Same pattern as 2019-25 gold: it picks the side better than chance (mirror is far worse) but costs leave it at about zero / slightly negative. Two months, one run: a lead for forward logging, not evidence.

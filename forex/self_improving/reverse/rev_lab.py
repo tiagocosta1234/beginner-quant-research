@@ -7,7 +7,7 @@ os.environ.setdefault("FF6_MT5ONLY", "1")
 import numpy as np, pandas as pd
 from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff6_data as D, ff6_agent as A
-LED = Path("D:/finance/si_ledgers")
+LED = Path("data/si_ledgers")
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--placebo", type=int, default=None); a = ap.parse_args(ARGV)

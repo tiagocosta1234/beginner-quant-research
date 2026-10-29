@@ -1,7 +1,7 @@
 # UJ_C3C5_OOT result - both USDJPY confluences fail on the 2026 hold-out, and reverse (not confirmed)
 
 Run 2026-10-17 23:56 local (local clock, second PC). Pre-registration `PREREG_UJ_C3C5_OOT.md` (registered 23:56; frozen by sha256 at
-23:56:26 together with the unchanged `uj_conf.py`, `C:\work\scratch\uj_c3c5_freeze.txt`). Engine `uj_c3c5_oot.py`, output
+23:56:26 together with the unchanged `uj_conf.py`, `data\scratch\uj_c3c5_freeze.txt`). Engine `uj_c3c5_oot.py`, output
 `UJ_C3C5_OOT_OUTPUT.txt`. Part A (2026 hold-out, 2026-01-01..2026-10-16) run; part B (2020-21 HistData, main PC) is now moot for the
 verdict, because a rule needed to pass both.
 

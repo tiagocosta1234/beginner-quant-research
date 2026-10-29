@@ -22,7 +22,7 @@ MODES = ("BOTH", "LONG", "SHORT")
 INDICES = ("SP", "NSDQ", "DOW", "DAX")
 DEV = ("2022-07-01", "2024-12-31")
 VAL = ("2025-01-01", "2025-12-31")
-CACHE = Path("D:/finance/tmp/trb_cache")
+CACHE = Path("data/tmp/trb_cache")
 
 
 def outcomes(D, k, side, e, rng, kend):
@@ -215,7 +215,7 @@ def run():
         parts = [walk(s, None if world == "real" else world) for s in SYMS]
         res[world] = (pd.concat([p[0] for p in parts]), pd.concat([p[1] for p in parts]))
     w, il = res["real"]
-    w.to_parquet("D:/finance/si_ledgers/TRB_trades.parquet")
+    w.to_parquet("data/si_ledgers/TRB_trades.parquet")
     rows = []
     for world, (df, _) in res.items():
         for cell, x in (("W1", df), ("W2", df[df.mkt.isin(INDICES)])):
@@ -224,7 +224,7 @@ def run():
             yrs = [x[x.day.dt.year == y].R.mean() for y in (2022, 2023, 2024, 2025)]
             rows.append(dict(cell=cell, world=str(world), nD=nD, mD=mD, gD=gD, tD=tD, nV=nV, mV=mV, gV=gV, tV=tV, y22=yrs[0], y23=yrs[1], y24=yrs[2], y25=yrs[3]))
     R = pd.DataFrame(rows)
-    R.to_csv("D:/finance/si_ledgers/TRB_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/TRB_cells.csv", index=False)
     pd.set_option("display.width", 220)
     print(R.round(3).to_string(index=False))
     for cell in ("W1", "W2"):

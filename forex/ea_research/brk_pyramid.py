@@ -133,7 +133,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_PYRAMID.parquet")
+    df.to_parquet("data/si_ledgers/BRK_PYRAMID.parquet")
     b, c = df[df.kind == "BRK"], df[df.kind == "CTRL"]
     for col in ("P0", "P1", "P2"):
         r = {}

@@ -119,7 +119,7 @@ def run():
             r[lab] = (len(s), s.R.mean(), nw_t(s.groupby("day").R.mean().to_numpy()), s.C.mean())
         g = [r["DEV"][1] >= 0.05 and r["DEV"][2] >= 2.58, r["VAL"][1] > 0 and r["VAL"][2] >= 1.65, r["DEV"][1] - r["DEV"][3] >= 0.05 and r["VAL"][1] - r["VAL"][3] >= 0.05]
         print(f"{p[0]}/{p[1]}: " + " | ".join(f"{k} n{v[0]} {v[1]:+.3f} (t {v[2]:+.2f}) ctl {v[3]:+.3f}" for k, v in r.items()) + f" | gates {''.join('Y' if z else 'n' for z in g)} PASS {all(g)}")
-    pd.concat(out).to_parquet("D:/finance/si_ledgers/BRK_SPREAD.parquet")
+    pd.concat(out).to_parquet("data/si_ledgers/BRK_SPREAD.parquet")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 """Macro-release surprise proxies from ALFRED first-release vintages (PREREG_SLOW_INFO.md). Only releases up to 2025-12-31 are fetched (2026 stays sealed).
    python -m forex.self_improving.slow.fetch_alfred
-Output D:\\finance\\data_macro\\alfred\\surprises.csv: kind, release_date, value (the surprise proxy), raw (the first-print change)."""
+Output data\\data_macro\\alfred\\surprises.csv: kind, release_date, value (the surprise proxy), raw (the first-print change)."""
 import io
 import time
 import urllib.request
@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-OUT = Path("D:/finance/data_macro/alfred"); OUT.mkdir(parents=True, exist_ok=True)
+OUT = Path("data/data_macro/alfred"); OUT.mkdir(parents=True, exist_ok=True)
 URL = "https://alfred.stlouisfed.org/graph/alfredgraph.csv?id={sid}&vintage_date={vd}&cosd={cosd}"
 LAST = "2025-12-31"
 
@@ -30,7 +30,7 @@ def series(df): s = pd.to_numeric(df.iloc[:, 1], errors="coerce"); s.index = pd.
 
 
 def main():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv"); rows = []
+    cal = pd.read_csv("data/data_macro/event_calendar.csv"); rows = []
     for d in cal[cal.kind == "NFP"].date:
         if d > LAST: continue
         p, u = vintage("PAYEMS", d), vintage("UNRATE", d)

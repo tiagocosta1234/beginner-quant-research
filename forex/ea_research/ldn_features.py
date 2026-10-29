@@ -7,8 +7,8 @@ from multiprocessing import Pool
 from zoneinfo import ZoneInfo
 from forex.ea_research.orbx import walk, CRYPTO
 SRV, LIS = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London")
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5/"
-OUT = "D:/finance/scratch/ldn_feat/trades.parquet"
+DATA = "forex/data_mt5/"
+OUT = "data/scratch/ldn_feat/trades.parquet"
 
 
 def smin(day, h, m):

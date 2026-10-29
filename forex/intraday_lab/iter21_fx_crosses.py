@@ -32,7 +32,7 @@ def main():
         rows.append(r)
         if r["net_dev"] > 0 and r["net_val"] > 0 and r["t_devval"] >= 3.0 and r["pos_dev"] >= 10 and r["pos_val"] >= 10:
             hits.append(r)
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter21_raw.csv", index=False); print(T.round(2).to_string(index=False)); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter21_raw.csv", index=False); print(T.round(2).to_string(index=False)); print(f"\nPRE-REGISTERED HITS (k = {len(T)}): {len(hits)}")
     for h in hits:
         print(h)
 

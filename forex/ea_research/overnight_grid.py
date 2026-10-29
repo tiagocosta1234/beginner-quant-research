@@ -69,7 +69,7 @@ def tstat(X): return X.mean() / (X.std(ddof=1) / np.sqrt(len(X)))
 
 
 def dev():
-    G = grid(); G.to_parquet("D:/finance/tmp/overnight_grid.parquet"); d, v = sl(G, PER["DEV"]), sl(G, PER["VAL"]); T = tstat(d)
+    G = grid(); G.to_parquet("data/tmp/overnight_grid.parquet"); d, v = sl(G, PER["DEV"]), sl(G, PER["VAL"]); T = tstat(d)
     print(f"variants {G.shape[1]} | DEV nights {len(d)} | DEV t: median {T.median():+.2f}, share > 0 {100*(T > 0).mean():.0f}%, share >= 2 {100*(T >= 2).mean():.1f}%, best {T.max():+.2f} ({T.idxmax()})")
     rng = np.random.default_rng(5); X = (d - d.mean()).to_numpy(); n = len(X); mx = []
     for _ in range(300):

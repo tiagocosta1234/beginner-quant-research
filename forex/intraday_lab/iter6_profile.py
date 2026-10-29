@@ -50,7 +50,7 @@ def main():
                 rows.append(dict(ea=ea, feat=name, side=sname, n=len(x), entry_mean=round(float(x.mean()), 3), all_mean=round(float(mu), 3), d=round(float(d), 3), t=round(float(d / se), 2)))
         R = pd.DataFrame(rows)
         print(R.reindex(R.t.abs().sort_values(ascending=False).index).head(14).to_string(index=False))
-        R.to_csv(f"D:/finance/scratch/lab/iter6_profile_{ea}.csv", index=False)
+        R.to_csv(f"data/scratch/lab/iter6_profile_{ea}.csv", index=False)
         # hour distribution of entries
         h = pd.Series(b.hour[i]).value_counts(normalize=True).sort_index(); print("entry hours (share):", {int(k): round(float(v), 2) for k, v in h[h >= 0.05].items()})
         dow = pd.Series(((b.t[i] // 86400 + 4) % 7)).value_counts(normalize=True).sort_index(); print("entry weekday share (0=Mon):", {int(k): round(float(v), 2) for k, v in dow.items()})

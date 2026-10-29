@@ -22,7 +22,7 @@ def mt5_floor(sym, tz, a_h, b_h):
 
 
 def load_duka(name, tz, floor):
-    d = pd.read_parquet(f"D:/finance/data_histdata/{name}.parquet").sort_values("t_utc").drop_duplicates("t_utc")
+    d = pd.read_parquet(f"data/data_histdata/{name}.parquet").sort_values("t_utc").drop_duplicates("t_utc")
     d = d[(d.t_utc >= pd.Timestamp("2020-01-02").timestamp()) & (d.t_utc < pd.Timestamp("2021-12-01").timestamp())]   # amendment A2: HistData, prereg window
     D = {k: d[k].to_numpy(float) for k in ("bo", "bh", "bl", "bc", "ao", "ah", "al", "ac")}
     sp = np.maximum(D["ao"] - D["bo"], floor)                    # floor the ask at bid + MT5 broker's median spread
@@ -118,7 +118,7 @@ def main():
     print("price check: USDJPY median", round(np.median(J["bc"]), 3), "| Nasdaq-100 median", round(np.median(N["bc"]), 1))
     l1 = l1_usdjpy(J, rng); l2all = l2_nasdaq(N, rng)
     l2 = l2all[l2all.side == l2all.trend]
-    pd.concat([l1.assign(lead="L1"), l2all.assign(lead="L2all")]).to_parquet("D:/finance/si_ledgers/PRESAMPLE.parquet")
+    pd.concat([l1.assign(lead="L1"), l2all.assign(lead="L2all")]).to_parquet("data/si_ledgers/PRESAMPLE.parquet")
     for name, df, col in (("L1 USDJPY London breakout, hold to 17:00", l1, "R"), ("L2 card Nasdaq leg, trend direction only", l2, "R")):
         yrs = {y: round(g[col].mean(), 3) for y, g in df.groupby(df.day.dt.year)}
         g = [df[col].mean() > 0 and tstat(df[col]) >= 1.96, all(v > 0 for v in yrs.values())]

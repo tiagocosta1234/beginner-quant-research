@@ -179,7 +179,7 @@ def main():
         a, b = sel(T), sel(Tc)
         print("truncation:", len(a), len(b), "identical" if a.equals(b) else "DIFFERENT")
         return
-    T = collect(); T.to_parquet("D:/finance/si_ledgers/ICT3.parquet"); T["cls"] = T.mkt.map(mclass)
+    T = collect(); T.to_parquet("data/si_ledgers/ICT3.parquet"); T["cls"] = T.mkt.map(mclass)
     L = pd.concat([T[["mkt", "cls", "kz", "day", "model", "filt", f"r_{g}", f"c_{g}"]].rename(columns={f"r_{g}": "r", f"c_{g}": "c"}).assign(tg=g) for g in TG], ignore_index=True)
     L = L[L.r.notna()].reset_index(drop=True)
     L["per"] = np.select([((L.day >= a) & (L.day <= b)).to_numpy() for a, b in PER.values()], list(PER.keys()), "PRE")
@@ -195,7 +195,7 @@ def main():
     S = pd.DataFrame({"DEV": g["m"]["DEV"], "VAL": g["m"]["VAL"], "Y26": g["m"].get("Y26"), "nDEV": g["n"]["DEV"]}).join(tt).reset_index()
     S = S[S.n_dv >= 30]
     S["pass"] = (S.t >= 4.67) & (S.DEV > 0) & (S.VAL > 0) & (S.Y26 > 0) & ((3 * S.DEV + S.VAL) / 4 > S.c_dv)
-    S.to_csv("D:/finance/si_ledgers/ICT3_cells.csv", index=False)
+    S.to_csv("data/si_ledgers/ICT3_cells.csv", index=False)
     print(f"\n1. CELLS: {len(S)} with >= 30 trades in 2022-25; passing (t >= 4.67, > 0 DEV/VAL/2026, above null): {int(S['pass'].sum())}")
     print(S.sort_values("t", ascending=False).head(15)[["mkt", "rule", "n_dv", "DEV", "VAL", "Y26", "c_dv", "t"]].round(3).to_string(index=False))
     print(f"   highest t {S.t.max():.2f}; matched null highest {S.t_rnd.max():.2f}; 99th pct real {np.nanpercentile(S.t, 99):.2f} vs null {np.nanpercentile(S.t_rnd, 99):.2f}; positive in all 3 periods {int(((S.DEV > 0) & (S.VAL > 0) & (S.Y26 > 0)).sum())}")
@@ -206,14 +206,14 @@ def main():
         rows.append(dict(cls=cl, rule=rule, n=len(qd), DEV=q[q.per == "DEV"].r.mean(), VAL=q[q.per == "VAL"].r.mean(), Y26=q[q.per == "Y26"].r.mean(),
                          null=qd.c.mean(), t=tstat(qd.groupby("day").r.mean()), t_null=tstat(qd.groupby("day").c.mean())))
     P = pd.DataFrame(rows); P["pass"] = (P.t >= 4.19) & (P.DEV > 0) & (P.VAL > 0) & (P.Y26 > 0) & ((3 * P.DEV + P.VAL) / 4 > P.null)
-    P.to_csv("D:/finance/si_ledgers/ICT3_pools.csv", index=False)
+    P.to_csv("data/si_ledgers/ICT3_pools.csv", index=False)
     print(f"\n2. POOLS rule x class: {len(P)}; passing: {int(P['pass'].sum())}; highest t {P.t.max():.2f} vs null {P.t_null.max():.2f}")
     print(P.sort_values("t", ascending=False).head(12)[["cls", "rule", "n", "DEV", "VAL", "Y26", "null", "t"]].round(3).to_string(index=False))
     W = S[S.nDEV >= 50].sort_values("DEV", ascending=False).drop_duplicates("mkt")
     print(f"\n3. WALK-FORWARD best of 240 per symbol on DEV ({len(W)}): DEV {W.DEV.mean():+.3f} -> VAL {W.VAL.mean():+.3f} (positive {int((W.VAL > 0).sum())}), 2026 {W.Y26.mean():+.3f} (positive {int((W.Y26 > 0).sum())}); both {int(((W.VAL > 0) & (W.Y26 > 0)).sum())}")
     PW = P[P.n >= 100].sort_values("DEV", ascending=False).drop_duplicates("cls")
     print("   best rule per class on DEV, then VAL / 2026 (out-of-time picks if both > 0):\n" + PW[["cls", "rule", "n", "DEV", "VAL", "Y26", "t"]].round(3).to_string(index=False))
-    PW.to_csv("D:/finance/si_ledgers/ICT3_classpicks.csv", index=False)
+    PW.to_csv("data/si_ledgers/ICT3_classpicks.csv", index=False)
 
 
 if __name__ == "__main__":

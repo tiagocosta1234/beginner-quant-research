@@ -1,6 +1,6 @@
 # DAY2K-I result (2026-10-14): index intraday momentum (first half hour -> last half hour) - no net edge
 
-Pre-registration `PREREG_DAY2K_I.md` (commit 1f233cbe), engine `day2ki.py`, cells `D:\finance\si_ledgers\DAY2KI_cells.csv`. SP, NSDQ, DOW (New York 09:30-16:00) and DAX (Berlin 09:00-17:30), exchange time converted to the server clock per day with the real DST rules; entry at the open of the last-half-hour bar on the executable side, exit at the session-end bar open; costs included. HOLD sealed.
+Pre-registration `PREREG_DAY2K_I.md` (commit 1f233cbe), engine `day2ki.py`, cells `data\si_ledgers\DAY2KI_cells.csv`. SP, NSDQ, DOW (New York 09:30-16:00) and DAX (Berlin 09:00-17:30), exchange time converted to the server clock per day with the real DST rules; entry at the open of the last-half-hour bar on the executable side, exit at the session-end bar open; costs included. HOLD sealed.
 
 ## Gates
 Oracle +12..+18 bp; truncation 40/40; DST check; placebos 171-173: 0 survivors (best t 1.03 / 0.40 / 1.33).

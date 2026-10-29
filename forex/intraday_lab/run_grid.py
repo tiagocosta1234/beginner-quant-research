@@ -1,4 +1,4 @@
-"""Run the pre-registered grid for one phase and timeframe(s): every family x params x symbol, written to D:\\finance\\scratch\\lab\\results_<phase>_<tf>.csv.
+"""Run the pre-registered grid for one phase and timeframe(s): every family x params x symbol, written to data\\scratch\\lab\\results_<phase>_<tf>.csv.
 Parallel by symbol (WORKERS processes; the trader: "use as much power as you wish ... not too much though": 4 of 16 cores, memory is the limit).
   python -m forex.intraday_lab.run_grid dev 5 15      (add  --only EURUSD  for a smoke test)
 """
@@ -15,7 +15,7 @@ import pandas as pd
 from forex.intraday_lab import families as F
 from forex.intraday_lab.lab import ALL, Bars, run, stats
 
-OUT = Path(r"D:\finance\scratch\lab"); OUT.mkdir(parents=True, exist_ok=True)
+OUT = Path(r"data\scratch\lab"); OUT.mkdir(parents=True, exist_ok=True)
 WORKERS = 4
 
 

@@ -1,5 +1,5 @@
 # USDJPY London breakout: sensitivity map (2026-10-15 14:20, local clock; diagnostic, not a test)
-Script `usdjpy_sens.py`, table `D:/finance/si_ledgers/USDJPY_SENS.csv`. Same engine as PRESAMPLE L1 (OCO stop orders for 150 min after the box, stop at the other side, no target), 27 neighbours: open 07:00 / 08:00 / 09:00 London x box 15 / 30 / 60 min x exit 15:00 / 17:00 / 20:00 London. Mean net R a trade; 2020-21 on HistData (+ MT5 broker spread), 2022-26 on MT5 broker bid/ask.
+Script `usdjpy_sens.py`, table `data/si_ledgers/USDJPY_SENS.csv`. Same engine as PRESAMPLE L1 (OCO stop orders for 150 min after the box, stop at the other side, no target), 27 neighbours: open 07:00 / 08:00 / 09:00 London x box 15 / 30 / 60 min x exit 15:00 / 17:00 / 20:00 London. Mean net R a trade; 2020-21 on HistData (+ MT5 broker spread), 2022-26 on MT5 broker bid/ask.
 | open | box / exit | 2020-21 | 2022-24 | 2025 | 2026 |
 |---|---|---|---|---|---|
 | **08:00** | 15 / 15:00 | +0.120 | +0.229 | +0.037 | +0.231 |

@@ -134,7 +134,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_WEEK.parquet")
+    df.to_parquet("data/si_ledgers/BRK_WEEK.parquet")
     df["wk"] = df.day.dt.to_period("W")
     rows = []
     for cell in ("W1", "W2", "W4"):
@@ -152,7 +152,7 @@ def run():
     R = pd.DataFrame(rows)
     pd.set_option("display.width", 260)
     print(R.round(3).to_string(index=False))
-    R.to_csv("D:/finance/si_ledgers/BRK_WEEK_cells.csv", index=False)
+    R.to_csv("data/si_ledgers/BRK_WEEK_cells.csv", index=False)
     print("\nby class, E_close (DEV / VAL / 2026):")
     for cell in ("W1", "W2", "W4"):
         g = df[df.cell == cell].assign(c=lambda z: z.mkt.map(mclass))

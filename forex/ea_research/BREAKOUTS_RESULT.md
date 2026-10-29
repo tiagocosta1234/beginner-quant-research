@@ -1,5 +1,5 @@
 # BRK result (2026-10-14 ~22:55): classic breakouts on 46 MT5 broker - NO EDGE (two weak leads)
-Pre-registration `PREREG_BREAKOUTS.md` (commit 8ddbeac2), engine `breakouts.py`, trades `D:\finance\si_ledgers\BRK_trades.parquet`. 2026 never loaded. The first real run was stopped after 10 minutes and rerun with the placebo's day lists computed once per market (speed only; no rule, cell or threshold changed; no statistic had been printed).
+Pre-registration `PREREG_BREAKOUTS.md` (commit 8ddbeac2), engine `breakouts.py`, trades `data\si_ledgers\BRK_trades.parquet`. 2026 never loaded. The first real run was stopped after 10 minutes and rerun with the placebo's day lists computed once per market (speed only; no rule, cell or threshold changed; no statistic had been printed).
 
 Dry-run: truncation test PASS; hand check NSDQ 2022-02-16: 09:30-10:00 NY box 14,378.2-14,512.1, first M5 close above it at 14:20 NY -> long 14:25 NY, stop at the box low (1.21%).
 

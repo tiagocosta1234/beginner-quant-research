@@ -118,7 +118,7 @@ if cand:
 
 # ---- MT5 broker check on NSDQ+ (read-only MT5): same distances from the MT5 broker fill, short at the bid, stop / target on the ask ----
 import sys, datetime as dt
-sys.path.insert(0, r"D:\finance\beginner-quant-research\mt5\ea_research\ema12"); sys.dont_write_bytecode = True
+sys.path.insert(0, r"mt5\ea_research\ema12"); sys.dont_write_bytecode = True
 import MetaTrader5 as mt5, forward_score as F
 if not mt5.initialize(path=F.TERMINAL, timeout=30000): raise SystemExit("cannot attach to the MT5 broker terminal: %s" % (mt5.last_error(),))
 try:

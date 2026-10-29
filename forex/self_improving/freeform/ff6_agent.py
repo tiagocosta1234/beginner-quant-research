@@ -1,6 +1,6 @@
 """Free-form trader agent v6: M1 information in 15-minute decisions, price-pattern vocabulary, trained inside the MT5 broker account environment (PREREG_V6_M1.md).
    python -m forex.self_improving.freeform.ff6_agent --gens 20 --pop 2000 --seed 1 [--placebo 7] [--tag NAME]
-Append-only ledger on D:\\finance\\si_ledgers (outside git); compact summary files are written next to this module. 2026 data is never loaded."""
+Append-only ledger on data\\si_ledgers (outside git); compact summary files are written next to this module. 2026 data is never loaded."""
 import sys
 ARGV = sys.argv[1:]          # legacy mt5broker modules overwrite sys.argv at import time
 
@@ -19,7 +19,7 @@ from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff6_data as D, acct_env as E
 
 HERE = Path(__file__).resolve().parent
-LEDGERS = Path("D:/finance/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
+LEDGERS = Path("data/si_ledgers"); LEDGERS.mkdir(parents=True, exist_ok=True)
 COLS = ["when", "stage", "gen", "hash", "rule", "op", "n", "clusters", "mean_bp", "z", "p"]
 PROMO_Z, PROMO_N, PROMO_CL, PROMO_TOP, PROMO_BP = 2.5, 150, 20, 300, 1.0      # window A -> B promotion (A net mean >= 1 bp: search guidance only)
 B_N, B_CL, BP_MIN, Q = 100, 20, 3.0, 0.05

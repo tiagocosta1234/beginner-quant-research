@@ -6,7 +6,7 @@ the trader: "both chances should always add up to 100%", "go get whatever inform
 XAUUSD+ only, one trade a day, entry at the open of the bar T+60 s on the executable side, stop = target = k x ATR20, forced close at 21:55 (the remaining ~1-2% of days end with a partial result and are reported), tie in one bar = loss. Object O1: T 10:05, k 0.20 (98.9% resolved). Object O2: T 16:35, k 0.15 (98.0% resolved).
 
 ## New information (all free, all causal at T)
-- Rates (FRED, from `D:\finance\data_macro`): 2-year nominal (DGS2), 10-year nominal (DGS10), 10-year real (DFII10), breakeven = DGS10 - DFII10. H.15 values for a date are published the next US afternoon, so on server day d only observations dated <= d minus 2 business days are used. Features: 1-day and 5-day changes of DGS2, DFII10, breakeven.
+- Rates (FRED, from `data\data_macro`): 2-year nominal (DGS2), 10-year nominal (DGS10), 10-year real (DFII10), breakeven = DGS10 - DFII10. H.15 values for a date are published the next US afternoon, so on server day d only observations dated <= d minus 2 business days are used. Features: 1-day and 5-day changes of DGS2, DFII10, breakeven.
 - Gold implied volatility GVZ and VIX (CBOE closes, `cboe/`): observations dated <= d minus 1 business day. Features: 1-day log change of each, GVZ percentile over the previous 250 observations.
 - USD strength from the MT5 broker FX prices at T (mean signed 1-day and 5-day normalised change of the 7 USD pairs, the round-B code).
 - Flow calendar from the date: business days to month end, first business day of the month, quarter-end window (last 3 business days of Mar/Jun/Sep/Dec), weekday.

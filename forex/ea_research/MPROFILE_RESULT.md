@@ -1,5 +1,5 @@
 # MPROFILE result (2026-10-14 ~22:10): market-profile plays on 46 MT5 broker - NO EDGE
-Pre-registration `PREREG_MPROFILE.md` (commit 384fbb73), engine `mprofile.py`, trades `D:\finance\si_ledgers\MPROFILE_trades.parquet`, cells `MPROFILE_cells.csv`. 2026 never loaded.
+Pre-registration `PREREG_MPROFILE.md` (commit 384fbb73), engine `mprofile.py`, trades `data\si_ledgers\MPROFILE_trades.parquet`, cells `MPROFILE_cells.csv`. 2026 never loaded.
 
 ## Dry-run
 46 markets; truncation test PASS (EURUSD, XAUUSD, SP, BTCUSD: every trade before the cut identical); hand check EURUSD 2024-07-03 profile POC 1.07434 / VAH 1.07797 / VAL 1.07362 (day range 1.07362-1.08168), 2024-07-04 opened above the VA and stayed there -> DRIVE long 05:05. One fix before P&L: early-close days end at the day's last bar instead of being skipped (skipping them needed a future bar). The first run crashed while saving (a column type), before any statistic was printed; rerun unchanged.

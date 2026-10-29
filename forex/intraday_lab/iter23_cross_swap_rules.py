@@ -70,7 +70,7 @@ def main():
         rows.append(dict(W=W, theta=th, H=H, trades=len(df), net_noswap_bp=df.ns.mean() * 1e4, net_swap_bp=df.sw.mean() * 1e4,
                          dev_ns=sharpe(a.loc["2021-10-01":"2023-12-31"]), dev_sw=sharpe(b.loc["2021-10-01":"2023-12-31"]), val_ns=sharpe(a.loc["2024-01-01":"2024-12-31"]), val_sw=sharpe(b.loc["2024-01-01":"2024-12-31"])))
         print(f"cell {W}/{th}/{H}: {rows[-1]}", flush=True)
-    R = pd.DataFrame(rows); R.to_csv(r"D:\finance\scratch\lab\iter23_cells.csv", index=False)
+    R = pd.DataFrame(rows); R.to_csv(r"data\scratch\lab\iter23_cells.csv", index=False)
     en, es = sum(ens_ns) / len(CELLS), sum(ens_sw) / len(CELLS); ctr = R[(R.W == 168) & (R.theta == 3.0) & (R.H == 48)].iloc[0]
     print(f"\nCENTRE: DEV no-swap {ctr.dev_ns:.2f} swap {ctr.dev_sw:.2f} | VAL no-swap {ctr.val_ns:.2f} swap {ctr.val_sw:.2f}; mean swap cost {(ctr.net_noswap_bp - ctr.net_swap_bp):.2f} bp a trade")
     print("ENSEMBLE Sharpe  no-swap / swap:")
@@ -88,7 +88,7 @@ def main():
         v = dayv_np * L * 1e5; m = intra_np * L * 1e5
         o = PS.evaluate(v, m, pd.DatetimeIndex(days)); sd = pd.Series(v).std()
         print(f"  L = {L} x account per leg: ann. vol {sd * np.sqrt(252) / 1e5:5.1%} of $100K | pass {o.p2:4.0%} breach {o.b2:4.0%} median {o.days_med:4.0f} days | worst day {o.worst_day:.1f}% | total {v.sum() / 1e3:,.0f}K over the sample", flush=True)
-    pd.DataFrame({"day": days, "v_unit": dayv_np, "m_unit": intra_np}).to_csv(r"D:\finance\scratch\lab\iter23_ensemble_daily.csv", index=False)
+    pd.DataFrame({"day": days, "v_unit": dayv_np, "m_unit": intra_np}).to_csv(r"data\scratch\lab\iter23_ensemble_daily.csv", index=False)
 
 
 if __name__ == "__main__":

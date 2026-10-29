@@ -16,7 +16,7 @@ HN = {k: int(np.busday_count(START, np.datetime64(v))) for k, v in HZ.items()}
 
 
 def main():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     cg.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
     dip = cg.dip_days(500)
     H = max(HN.values()) + 1

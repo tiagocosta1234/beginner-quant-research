@@ -1,7 +1,7 @@
 """Gold intraday hit-rate lab (see PREREG_HITRATE.md). python -m forex.self_improving.hitrate.hitrate_lab"""
 import numpy as np, pandas as pd
 
-F = "D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet"
+F = "forex/data_mt5/XAUUSD_M1_rates.parquet"
 WINDOWS = {"A": ("2021-12-01", "2023-06-30"), "B": ("2023-07-01", "2024-12-31"), "VAL": ("2025-01-01", "2025-12-31")}
 RULES = ["asian-break", "asian-fade", "ldn-mom", "ldn-fade", "ny-mom", "ny-fade", "sweep", "trend", "antitrend", "gap-fade", "gap-follow"]
 
@@ -63,7 +63,7 @@ def main():
                 x = tr[(tr.rule == rule) & (tr.date >= a) & (tr.date <= b)]; n = len(x); dec = x[x.res != 0]
                 m = x.R.mean() if n else np.nan; z = m / (x.R.std() / np.sqrt(n)) if n > 5 else np.nan; r.update({f"{nm}_n": n, f"{nm}_R": m, f"{nm}_z": z, f"{nm}_hit": 100 * (dec.res == 1).mean() if len(dec) else np.nan, f"{nm}_to": 100 * (x.res == 0).mean() if n else np.nan})
             r["pass"] = bool(r["A_R"] > 0 and r["B_R"] > 0 and r["VAL_R"] >= 0.15 and r["VAL_z"] >= 3.0 and r["VAL_n"] >= 150); rows.append(r)
-    o = pd.DataFrame(rows); o.to_csv("D:/finance/si_ledgers/HITRATE_real.csv", index=False)
+    o = pd.DataFrame(rows); o.to_csv("data/si_ledgers/HITRATE_real.csv", index=False)
     cols = ["rule", "w", "A_n", "A_R", "B_R", "VAL_n", "VAL_R", "VAL_z", "VAL_hit", "VAL_to", "pass"]; print(o[cols].round(3).to_string(index=False)); print("cells passing:", int(o["pass"].sum()), "of", len(o))
 
 

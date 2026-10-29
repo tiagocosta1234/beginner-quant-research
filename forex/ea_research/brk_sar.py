@@ -75,7 +75,7 @@ def main():
     with ProcessPoolExecutor(8) as ex:
         df = pd.concat(list(ex.map(market, SYMS)), ignore_index=True)
     df = df[df.day >= DEV[0]]
-    df.to_parquet("D:/finance/si_ledgers/BRK_SAR.parquet")
+    df.to_parquet("data/si_ledgers/BRK_SAR.parquet")
     def st(g, col, a, b):
         s = g[(g.day >= a) & (g.day <= b)].dropna(subset=[col])
         return len(s), s[col].mean(), nw_t(s.groupby("day")[col].mean().to_numpy())

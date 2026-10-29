@@ -19,7 +19,7 @@ H, M = 3600, 60
 def market(sym):
     tz, op, cl = session(sym)
     rows = []
-    for f in sorted(glob.glob(f"D:/finance/ticks/{sym}/*.parquet")):
+    for f in sorted(glob.glob(f"data/ticks/{sym}/*.parquet")):
         t = pd.read_parquet(f, columns=["time_msc", "bid", "ask"]).sort_values("time_msc")
         t = t[(t.bid > 0) & (t.ask >= t.bid)]
         if len(t) < 1000:
@@ -72,8 +72,8 @@ def main():
     with ProcessPoolExecutor(4) as ex:
         res = list(ex.map(market, SYMS))
     T = pd.DataFrame([r for rr in res for r in rr], columns=["mkt", "day", "side", "R_tick"])
-    T.to_parquet("D:/finance/si_ledgers/TICK_GAP.parquet")
-    mt5 = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    T.to_parquet("data/si_ledgers/TICK_GAP.parquet")
+    mt5 = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     mt5 = mt5[forex.kind == "BRK"][["mkt", "day", "side", "X4_noTP"]]
     m = T.merge(mt5, on=["mkt", "day"], suffixes=("_t", "_m"))
     m = m[m.side_t == m.side_m]

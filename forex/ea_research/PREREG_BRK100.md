@@ -11,7 +11,7 @@ round 1 tested each market's main-session 30-minute box (crypto on the New York 
 every server hour on all 46 markets; the fixing / cut / exchange-time ideas below use 30-minute boxes at other times and are new
 rules but relatives of that map. **L080-L100 are not new concepts:** they are today's NSDQ / XAUUSD-only ideas run on the markets
 where they were never run (cross-market out-of-sample tests).
-**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `C:\work\scratch\brk100_prereg.sha256` before any P&L.
+**Pre-registration evidence (no commits on 18 Oct):** SHA-256 and time in `data\scratch\brk100_prereg.sha256` before any P&L.
 
 ## Common rules
 - Data, clock, daily H / L / C / O / ATR, fills, rollover ban, mirror trade, R as BRK50 / BRK50B / BRK30 (`brk50.Mkt`); BRK30's bar

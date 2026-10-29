@@ -21,7 +21,7 @@ SEEDS = (41, 42, 43)
 DEV = ("2022-01-01", "2024-12-31")
 VAL = ("2025-01-01", "2025-12-31")
 YEARS = (2022, 2023, 2024, 2025)
-OUT = Path("D:/finance/si_ledgers")
+OUT = Path("data/si_ledgers")
 SYMS = sorted(Path(p).name.replace("_M1_rates.parquet", "") for p in glob.glob("forex/data_mt5/*_M1_rates.parquet"))
 
 

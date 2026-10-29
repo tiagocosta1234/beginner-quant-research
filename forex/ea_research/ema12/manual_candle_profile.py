@@ -4,7 +4,7 @@ No results of the trades are used; nothing here is a test, a bar or a rule. Writ
 import numpy as np, pandas as pd, datetime as dt
 from ema12_test import open_min
 F = pd.read_csv("FXREPLAY_TRADES_2026-10-20.csv"); F["tm"] = pd.to_datetime(F.chart_entry); F = F[F.side.isin(["Buy", "Sell"])].copy()
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+d = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
 d["lis"] = pd.to_datetime(d.t, unit="s") - pd.Timedelta(hours=2)          # server clock = local + 2 h
 M = pd.DataFrame(dict(lis=d.lis, o=(d.bo + d.ao) / 2, h=(d.bh + d.ah) / 2, l=(d.bl + d.al) / 2, c=(d.bc + d.ac) / 2)); M["ema"] = M.c.ewm(span=12, adjust=False).mean()
 rng = (M.h - M.l); M["atr"] = rng.rolling(14).mean().shift(1); idx = {t: i for i, t in enumerate(M.lis)}

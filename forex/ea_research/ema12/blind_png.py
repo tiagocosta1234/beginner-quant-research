@@ -9,12 +9,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-SRC = "D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet"
+SRC = "forex/data_mt5/XAUUSD_M1_rates.parquet"
 
 
 def load_fut(day, cutoff):
     """the trader 26 Oct: "this tests should have been on futures data" -> Databento GC continuous 1m (the MGC price), local clock."""
-    r = pd.read_parquet("D:/finance/beginner-quant-research/futures/data/databento/futures_GC.F_1m.parquet")
+    r = pd.read_parquet("futures/data/databento/futures_GC.F_1m.parquet")
     r = r[["ts", "open", "high", "low", "close"]].drop_duplicates("ts")
     ts = pd.to_datetime(r.ts, utc=True)
     lo, hi = pd.Timestamp(day, tz="UTC") - pd.Timedelta(days=12), pd.Timestamp(day, tz="UTC") + pd.Timedelta(days=1)

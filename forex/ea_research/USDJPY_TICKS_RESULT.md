@@ -1,5 +1,5 @@
 # USDJPY London breakout on MT5 broker REAL TICKS (2026-10-15 14:29, local clock; diagnostic): the last year is about break-even after real execution
-Script `usdjpy_ticks.py`, rows `D:/finance/si_ledgers/USDJPY_TICKS.parquet`. MT5 broker USDJPY ticks 2025-10-01 .. 2026-10-12 (server clock -> London), box from tick bids 08:00-08:30, first trigger tick 08:30-11:00, fills at real ticks 300 ms later, stop at the other side of the box (filled at the tick 300 ms after it is touched), exit 17:00.
+Script `usdjpy_ticks.py`, rows `data/si_ledgers/USDJPY_TICKS.parquet`. MT5 broker USDJPY ticks 2025-10-01 .. 2026-10-12 (server clock -> London), box from tick bids 08:00-08:30, first trigger tick 08:30-11:00, fills at real ticks 300 ms later, stop at the other side of the box (filled at the tick 300 ms after it is touched), exit 17:00.
 | version (262 trades) | mean R |
 |---|---|
 | real ticks, 300 ms in and out | -0.020 |

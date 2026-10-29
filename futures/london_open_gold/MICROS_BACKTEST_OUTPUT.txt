@@ -1,4 +1,4 @@
-claude.pine rule (A+ London 12 EMA, 1:1) on the merged 1m micro files, 3 Aug .. 27 Oct 2026. Realistic costs: Broker all-in fee + 1 tick per round trip.
+london_open_indicator.pine rule (A+ London 12 EMA, 1:1) on the merged 1m micro files, 3 Aug .. 27 Oct 2026. Realistic costs: Broker all-in fee + 1 tick per round trip.
 cost in points per round trip: MGC 0.292  MNQ 0.860  MES 0.494  MYM 3.440  M2K 0.344  MCL 0.026  SIL 0.007  MBT 30.000
 sym  cands | A+ n win% |  gross R     net R | cost as % of risk
 MGC     36 |   25   60 |   +0.200    +0.105 | 9.5%

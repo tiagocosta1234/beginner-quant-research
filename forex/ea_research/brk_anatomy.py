@@ -1,6 +1,6 @@
 """BRK-ANATOMY (breakout day round 9, descriptive, no strategy): what happens after a session opening-range breakout on the 46 MT5,
 compared with a random entry at the same place in the day. Same events as BRK-EXITS (round 1).
-   python -m forex.ea_research.brk_anatomy     -> tables + D:/finance/scratch/charts/BRK_ANATOMY.png"""
+   python -m forex.ea_research.brk_anatomy     -> tables + data/scratch/charts/BRK_ANATOMY.png"""
 import zlib
 from concurrent.futures import ProcessPoolExecutor
 
@@ -89,7 +89,7 @@ def main():
     df = pd.DataFrame([r for rr in res for r in rr])
     df = df[df.day >= "2022-01-01"]
     df["cls"], df["year"] = df.mkt.map(mclass), df.day.dt.year
-    df.to_parquet("D:/finance/si_ledgers/BRK_ANATOMY.parquet")
+    df.to_parquet("data/si_ledgers/BRK_ANATOMY.parquet")
     b, c = df[df.kind == "BRK"], df[df.kind == "CTRL"]
     pd.set_option("display.width", 220)
     cols = ["back15", "back60", "hit1R", "hit2R", "hit3R", "mfe60", "mfe_all", "mae_all", "close_R", "cost_R"]
@@ -117,8 +117,8 @@ def main():
     ax[1].plot(yy.index, -yy["cost R"], "s--", label="minus spread cost (R)", color="#c62828")
     ax[1].axhline(0, color="#666", lw=0.8); ax[1].set_title("Net result per trade (hold to close) vs the cost of one spread", fontsize=10); ax[1].legend(fontsize=8)
     for a in ax: a.grid(alpha=0.25)
-    plt.tight_layout(); plt.savefig("D:/finance/scratch/charts/BRK_ANATOMY.png", dpi=110)
-    print("chart D:/finance/scratch/charts/BRK_ANATOMY.png")
+    plt.tight_layout(); plt.savefig("data/scratch/charts/BRK_ANATOMY.png", dpi=110)
+    print("chart data/scratch/charts/BRK_ANATOMY.png")
 
 
 if __name__ == "__main__":

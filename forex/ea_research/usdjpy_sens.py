@@ -57,7 +57,7 @@ def main():
                          R_2025=b[(b.day >= "2025-01-01") & (b.day < "2026-01-01")].R.mean(), R_2026=b[b.day >= "2026-01-01"].R.mean(), n_all=len(a) + len(b)))
     T = pd.DataFrame(rows)
     T["all_positive"] = (T[["R_2020_21", "R_2022_24", "R_2025", "R_2026"]] > 0).all(axis=1)
-    T.to_csv("D:/finance/si_ledgers/USDJPY_SENS.csv", index=False)
+    T.to_csv("data/si_ledgers/USDJPY_SENS.csv", index=False)
     print(T.round(3).to_string(index=False))
     print(f"\ncells positive in all four periods: {int(T.all_positive.sum())} of {len(T)}; mean over the grid by period: " + ", ".join(f"{c} {T[c].mean():+.3f}" for c in ("R_2020_21", "R_2022_24", "R_2025", "R_2026")))
 

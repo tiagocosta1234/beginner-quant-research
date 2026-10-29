@@ -9,7 +9,7 @@ from forex.ea_research.brk_twoway import build as build_events
 from forex.ea_research.orbx import ct
 
 DEV_Y, VAL_Y = (2022, 2023, 2024), 2025
-CACHE = "C:/work/scratch/brk_fvg_flags.parquet"
+CACHE = "data/scratch/brk_fvg_flags.parquet"
 
 
 def fvgs(D):

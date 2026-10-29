@@ -1,7 +1,7 @@
 # BRK100 result - 100 more untested breakout tests on 46 MT5 broker: 0 pass
 
 Run 2026-10-18 evening (local clock, second PC PC-2). Pre-registration `PREREG_BRK100.md` (registered 18:45; SHA-256
-9246a54c207b6c28914f9ba1b0971e5244d7b7f5662d06cb06a24ea719078de5 in `C:\work\scratch\brk100_prereg.sha256` before any P&L; no commits
+9246a54c207b6c28914f9ba1b0971e5244d7b7f5662d06cb06a24ea719078de5 in `data\scratch\brk100_prereg.sha256` before any P&L; no commits
 on 18 Oct at the trader's request), engine `brk100.py`, dry run `BRK100_DRYRUN.txt` (truncation identical on EURUSD, XAUUSD, NSDQ,
 BTCUSD), output `BRK100_OUTPUT.txt`, table `BRK100_SUMMARY.csv`, 100 ledger rows. 647,585 trades, 2022-01 .. 2026-10.
 The 100 = 79 new concepts (L001-L079) + 21 out-of-sample market extensions of today's NSDQ / XAUUSD-only ideas (L080-L100).

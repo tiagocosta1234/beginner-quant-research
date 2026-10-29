@@ -13,7 +13,7 @@ Detector (RSI / MACD divergence). A repo-wide search found no test of: double / 
 Ichimoku, Aroon, MACD zero / signal crosses, CCI, regression channels, EMA crosses, golden crosses, choppiness, KAMA, Elder's
 Triple Screen, Bill Williams fractals / Alligator, copper / gold / VIX / rate leads for FX, OPEX-Friday pinning, quarter-end flows.
 **Pre-registration evidence (still no commits on 18 Oct):** the SHA-256 of this file and the time go to
-`C:\work\scratch\brk30_prereg.sha256` before any P&L; the file is committed unchanged later.
+`data\scratch\brk30_prereg.sha256` before any P&L; the file is committed unchanged later.
 
 ## Common rules
 - Data, clock, daily H / L / C / ATR, fills, rollover ban, mirror trade and R exactly as BRK50 / BRK50B (`brk50.Mkt`).

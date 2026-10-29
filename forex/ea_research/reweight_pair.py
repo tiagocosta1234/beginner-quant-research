@@ -7,7 +7,7 @@ from forex.ea_research.event_macro import server_s
 from forex.ea_batch.mt5_mc_config import CH
 
 P.C0 = 560.0; HZ = {"30 Nov": 36, "22 Dec": 52, "31 Jan": 79}
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+cal = pd.read_csv("data/data_macro/event_calendar.csv")
 EV = np.array(sorted(server_s(r.date, 8, 30) if r.kind in ("CPI", "NFP") else server_s(r.date, 14, 0) for r in cal.itertuples() if r.kind in ("CPI", "NFP", "FOMC")))
 bars = L.bars(); print("SDB lot | XAU5 lot || P(pass) MIX 30 Nov / 22 Dec / 31 Jan | breach | worst day MT5 / FT | days < -1,900 | mean/day MT5 / FT")
 for ms, mx in ((1.5, 1.5), (1.0, 2.0), (1.0, 2.5), (0.5, 2.5), (0.5, 3.0), (0.0, 3.0), (0.0, 4.0), (1.0, 3.0), (1.5, 2.0)):

@@ -1,6 +1,6 @@
 # Ensemble of the weak rules as one hypothesis: result (2026-10-13)
 
-Pre-registration: PREREG_ENSEMBLE.md. Code: ens_lab.py. Ledgers: D:\finance\si_ledgers\ENS_real.csv, ENS_placebo81..83.csv. Source ledger: FF10_mt5real.csv (MT5-only free-form run, 185,054 rules). 2026 never used.
+Pre-registration: PREREG_ENSEMBLE.md. Code: ens_lab.py. Ledgers: data\si_ledgers\ENS_real.csv, ENS_placebo81..83.csv. Source ledger: FF10_mt5real.csv (MT5-only free-form run, 185,054 rules). 2026 never used.
 
 ## What was done
 Members chosen on window A only (>= 150 trades, >= 20 clusters, net >= +1 bp, z >= 2.5; one representative per class, side, horizon and feature set; at most 200 per ensemble by A z). Vote = sum of side x condition-true over members, trade when |vote| >= k (the 90th percentile of non-zero |vote| on A), one entry per H bars, real bid/ask, rollover excluded. 12 ensembles (4 classes x H 4/16/96 bars). Pass on B: >= 100 trades, >= 20 clusters, net >= +3 bp, p < 0.05/12; then one look at 2025.

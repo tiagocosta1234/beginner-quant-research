@@ -1,6 +1,6 @@
 """Episode game with MT5 broker's daily loss rule ENFORCED. The account only ever ends an episode at +UP or -DN of equity since the episode started (multi-day, no midnight reset, all positions closed at the barrier,
 new episode at once). Each server day the equity change since 00:00 is tracked (floating included); a drop of 2,500 or more inside any server day is an MT5 broker hard breach and is flagged on the episode in which it happens.
-Pair only (SDB + XAU5 x size, CPI flat), ManualDip not included.  python -m forex.ea_research.episode_mt5 --size 1.5 [--pool MT5] (appends one row per (UP, DN) to D:/finance/si_ledgers/EP8_<size>_<pool>.csv)"""
+Pair only (SDB + XAU5 x size, CPI flat), ManualDip not included.  python -m forex.ea_research.episode_mt5 --size 1.5 [--pool MT5] (appends one row per (UP, DN) to data/si_ledgers/EP8_<size>_<pool>.csv)"""
 import sys
 ARGV = sys.argv[1:]
 import os
@@ -57,7 +57,7 @@ def account(e, UP, DN):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--size", type=float, required=True); ap.add_argument("--pool", default="MT5"); ap.add_argument("--ups", default="1000,1500,2000,2500"); ap.add_argument("--dns", default="1000,1500,2000,2500"); a = ap.parse_args(ARGV)
-    out = f"D:/finance/si_ledgers/EP8_{a.size}_{a.pool}.csv"; src, aa, bb = L.POOLS[a.pool]; lo = L.day(aa)
+    out = f"data/si_ledgers/EP8_{a.size}_{a.pool}.csv"; src, aa, bb = L.POOLS[a.pool]; lo = L.day(aa)
     tr = news_flat(L.merge(L.ea_trades(src, "sdb", CH["sdb"] * a.size, lo), L.ea_trades(src, "xau5", CH["xau5"] * a.size, lo)), G.EV, bars)
     for DN in map(float, a.dns.split(",")):
         for UP in map(float, a.ups.split(",")):

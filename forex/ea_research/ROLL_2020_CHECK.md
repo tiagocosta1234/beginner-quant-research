@@ -1,7 +1,7 @@
 # ROLL_2020_CHECK - where the 2020-21 CME futures switch contract, and whether earlier rounds were affected
 
 Written 2026-10-18 14:53 local (local clock, second PC PC-2), found by the GN11 dry run. Data: `futures/data/databento/
-futures_{NQ,ES}.F_1m.parquet` (one continuous series, no contract names). Output: `C:\work\scratch\roll_check.txt` (second PC).
+futures_{NQ,ES}.F_1m.parquet` (one continuous series, no contract names). Output: `data\scratch\roll_check.txt` (second PC).
 
 ## Facts
 - **From mid-2022** both NQ and ES switch at 00:00 UTC on the Monday of the quarterly expiry week (jumps +26 .. +297 NQ points,

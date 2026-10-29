@@ -5,9 +5,9 @@ from multiprocessing import Pool
 from zoneinfo import ZoneInfo
 
 SRV, LIS = ZoneInfo("Europe/Athens"), ZoneInfo("Europe/London")
-DATA = "D:/finance/beginner-quant-research/forex/data_mt5/"
-CACHE = "D:/finance/scratch/orbx_trades.parquet"
-CAL = "D:/finance/data_macro/mt5_calendar.csv"
+DATA = "forex/data_mt5/"
+CACHE = "data/scratch/orbx_trades.parquet"
+CAL = "data/data_macro/mt5_calendar.csv"
 CRYPTO = {"ADAUSD", "BCHUSD", "BNBUSD", "BTCUSD", "ETHUSD", "LTCUSD", "SOLUSD", "XRPUSD"}
 USD_LIKE = {"XAUUSD": ["USD"], "XAGUSD": ["USD"], "WTI": ["USD"], "BRENT": ["USD"], "SP": ["USD"], "NSDQ": ["USD"],
             "DOW": ["USD"], "DAX": ["EUR"], "NIKKEI": ["JPY"], "ASX": ["AUD"]}

@@ -1,6 +1,6 @@
 """DESCRIPTIVE ONLY (20 Oct, the trader: put limit orders on the prices so spreads do not cost): his 49 FX Replay trades with a stop on MT5 broker bid / ask, market entry against a buy limit at the chart (bid) price cancelled after 5 minutes; sells fill at once. python manual_limit_entries.py > MANUAL_LIMIT_ENTRIES_OUTPUT.txt. Not a test: n 24 buys, in-sample, fill-minute handled two ways."""
 import pandas as pd, numpy as np
-d = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
+d = pd.read_parquet("forex/data_mt5/XAUUSD_M1_rates.parquet").sort_values("t").reset_index(drop=True)
 d["lis"] = pd.to_datetime(d.t, unit="s") - pd.Timedelta(hours=2)
 pos = {t: i for i, t in enumerate(d.lis)}
 bl, bh, al, ah, bc, ac = (d[c].to_numpy() for c in ("bl", "bh", "al", "ah", "bc", "ac"))

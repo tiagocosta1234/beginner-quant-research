@@ -19,7 +19,7 @@ new MT5-native information (tick_volume, never used in any breakout test so far)
 ## Relative box volume (RV)
 RV = sum of M1 tick_volume inside the box / median of the same sum over the previous 20 trading days of that market
 (causal: today's box is complete before any entry; the median uses earlier days only). Source
-`D:/finance/ticks_vol/<SYM>.parquet` (MT5 copy_rates, to 2026-08-15). "High volume" = RV >= 1.5 (fixed a priori).
+`data/ticks_vol/<SYM>.parquet` (MT5 copy_rates, to 2026-08-15). "High volume" = RV >= 1.5 (fixed a priori).
 
 ## Trials (4)
 - **A**    ASIA box, all days (not yet seen in any test).

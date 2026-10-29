@@ -15,4 +15,4 @@ for lam in (0.3, 1.0):
     print("            " + " ".join(f"{c:>6d}" for c in cols))
     for j in range(D.H1):
         print(f"day {j+1:2d}/12   " + " ".join(f"{('x'+str(D.MULTS[pol[j][int(round((c - D.GRID[0]) / D.STEP))]])):>6s}" for c in cols))
-    np.save(f"D:/finance/tmp/dp_oct14_capped_lam{lam}.npy", pol)
+    np.save(f"data/tmp/dp_oct14_capped_lam{lam}.npy", pol)

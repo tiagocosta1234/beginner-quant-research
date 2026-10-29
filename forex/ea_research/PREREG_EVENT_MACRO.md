@@ -2,7 +2,7 @@
 
 Written 2026-10-10 14:55 local (local clock; the hand-written stamp said 14:56, corrected from the commit 2782714 at 14:55:49), BEFORE any simulation of these rules. Context: the trader's goal "um novo sistema, 70% chance de passar o desafio este mes" (spec: about 500-600 USD a day, daily Sharpe 0.5-0.85); intraday stat-arb (family R) and every price-only indicator family are closed. Scheduled macro announcements are the last source of information not yet used in this lab. Even a real event edge trades only on 3-5 days a month, so it CANNOT meet the 70%-this-month spec (it would have to earn the whole month's 8% on a handful of days); the test is run for the second-leg target (+62 USD a day, 22 Dec at 70%) and to close the class.
 
-## Calendar (public, saved before any P&L in `D:\finance\data_macro\event_calendar.csv`)
+## Calendar (public, saved before any P&L in `data\data_macro\event_calendar.csv`)
 FOMC statement days from federalreserve.gov/monetarypolicy/fomccalendars.htm (second day of each scheduled meeting; the 2025-08-22 notation vote excluded); Employment Situation (NFP) and CPI release days from the BLS release archives (bls.gov/bls/news-release/empsit.htm, cpi.htm; dates from the archive file names), plus the NFP of 2022-01-07 (December 2021 report). The October 2025 reports were not published (federal funding lapse); the delayed November / December 2025 dates are kept as published. All releases at 08:30 ET, FOMC statements at 14:00 ET. Times are converted with the America/New_York and Europe/Athens (MT5 broker server) time zones.
 
 ## V1: pre-FOMC drift (Lucca and Moench 2015), long US indices

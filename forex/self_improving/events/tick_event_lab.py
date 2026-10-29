@@ -11,7 +11,7 @@ import pandas as pd
 
 from forex.self_improving.events import event_lab as EL
 
-TICKS = Path("D:/finance/ticks")
+TICKS = Path("data/ticks")
 CUT = int(pd.Timestamp("2026-08-16").value // 10**6)                      # sealed: nothing at or after this instant is loaded
 START = int(pd.Timestamp("2025-10-01").value // 10**6)
 LAT = 300; BONF = 0.05 / 4; DELAYS = (10, 30); HOLDS = (60, 300)
@@ -82,7 +82,7 @@ def main():
             up, dn, sg, bl = map(np.array, (up, dn, sg, bl)); obs, p, nm = EL.perm_p(up, dn, sg, bl, rng) if len(up) >= 10 else (np.nan, 1.0, np.nan)
             x = np.where(sg > 0, up, dn); rows.append(dict(delay=delay, hold=hold, n=len(up), net=obs, p=p, nullmean=nm, win=float((x > 0).mean()) if len(x) else np.nan, sd=float(x.std(ddof=1)) if len(x) > 2 else np.nan))
             print(f"USD pool | delay {delay:2d}s hold {hold:3d}s | events {len(up):3d} | net {obs:+7.2f} bp (random-direction mean {nm:+.2f}) win {rows[-1]['win']*100:4.1f}% sd {rows[-1]['sd']:.1f} | p={p:.4f}", flush=True)
-    df = pd.DataFrame(rows); df["pass"] = (df.p < BONF) & (df.net > 0) & (df.n >= 40); df.to_csv(f"D:/finance/si_ledgers/TICKEVENTS_{'placebo' if a.placebo else 'real'}.csv", index=False)
+    df = pd.DataFrame(rows); df["pass"] = (df.p < BONF) & (df.net > 0) & (df.n >= 40); df.to_csv(f"data/si_ledgers/TICKEVENTS_{'placebo' if a.placebo else 'real'}.csv", index=False)
     print(f"DONE: passing {int(df['pass'].sum())} of {len(df)} (Bonferroni p < {BONF:.4f}, >= 40 events)")
     if not a.placebo:
         for name, sel in (("all strong USD events", usd), ("tier-1 USD events", usd[usd.tier1])):

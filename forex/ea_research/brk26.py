@@ -7,7 +7,7 @@ from forex.ea_research.orbx import ct
 from forex.ea_research.brk30 import (ema, sma, wilder, rmax, rmin, true_range, rsi, cross_up, cross_dn, bc_trades, bs_trade,
                                   enter_at, tag, epoch, ichimoku)
 
-CACHE = "C:/work/scratch/brk26_trades.parquet"
+CACHE = "data/scratch/brk26_trades.parquet"
 IDEAS = [f"P{k:02d}" for k in range(1, 27)]
 START = pd.Timestamp("2022-01-01")
 

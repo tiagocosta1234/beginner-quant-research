@@ -19,7 +19,7 @@ def market(args):
     sym, ctrl = args
     tz, op, cl = session(sym)
     rows = []
-    for f in sorted(glob.glob(f"D:/finance/ticks/{sym}/*.parquet")):
+    for f in sorted(glob.glob(f"data/ticks/{sym}/*.parquet")):
         t = pd.read_parquet(f, columns=["time_msc", "bid", "ask"]).sort_values("time_msc")
         t = t[(t.bid > 0) & (t.ask >= t.bid)]
         if len(t) < 1000:
@@ -60,15 +60,15 @@ def market(args):
 
 
 def main():
-    mt5 = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    mt5 = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     mt5 = mt5[forex.day >= "2025-10-01"]
     c = mt5[forex.kind == "CTRL"]
     jobs = [(s, {r.day: (r.t_entry, r.side) for r in c[c.mkt == s].itertuples()}) for s in SYMS]
     with ProcessPoolExecutor(4) as ex:
         res = list(ex.map(market, jobs))
     C = pd.DataFrame([r for rr in res for r in rr], columns=["mkt", "day", "side", "C_tick"])
-    C.to_parquet("D:/finance/si_ledgers/TICK_GAP_CTRL.parquet")
-    B = pd.read_parquet("D:/finance/si_ledgers/TICK_GAP.parquet")
+    C.to_parquet("data/si_ledgers/TICK_GAP_CTRL.parquet")
+    B = pd.read_parquet("data/si_ledgers/TICK_GAP.parquet")
     cm = C.merge(c[["mkt", "day", "side", "X4_noTP"]], on=["mkt", "day", "side"])
     bm = B.merge(mt5[forex.kind == "BRK"][["mkt", "day", "side", "X4_noTP"]], on=["mkt", "day", "side"])
     print(f"controls on ticks: {len(cm)} | M1 {cm.X4_noTP.mean():+.3f} R, ticks {cm.C_tick.mean():+.3f} R, gap {(cm.C_tick - cm.X4_noTP).mean():+.3f}")

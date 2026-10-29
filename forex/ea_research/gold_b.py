@@ -12,7 +12,7 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data_mt5"
-MACRO = Path(r"D:\finance\data_macro")
+MACRO = Path(r"data\data_macro")
 LEDGER = HERE / "LEDGER.csv"
 RES = HERE.parent / "ea_batch" / "mt5data"
 PERIODS = {"SMOKE": ("2023-02-01", "2023-02-28"), "DEV": ("2022-01-01", "2024-12-31"), "VAL": ("2025-01-01", "2025-12-31"), "POOL": ("2022-01-01", "2025-12-31"), "HOLD": ("2026-01-01", "2026-09-30")}

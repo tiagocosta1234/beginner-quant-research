@@ -13,7 +13,7 @@ P.C0 = -2291.92
 
 
 def usdjpy_days():
-    e = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    e = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     e = e[(e.mkt == "USDJPY") & (e.kind == "BRK")]
     return e.groupby("day").X4_noTP.first()
 
@@ -27,7 +27,7 @@ def with_usdjpy(S, uj, risk):
 
 
 def main():
-    cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+    cal = pd.read_csv("data/data_macro/event_calendar.csv")
     cg.EV = np.array(sorted(server_s(r.date, 8, 30) for r in cal.itertuples() if r.kind == "CPI"))
     dip = cg.dip_days(500)
     uj = usdjpy_days()

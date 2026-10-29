@@ -11,13 +11,13 @@ SPEC = {"MGC": ("GC", 0.1, 10.0), "MNQ": ("NQ", 0.25, 2.0), "MES": ("ES", 0.25, 
 
 def load(src_sym):
     if src_sym == "DOW":
-        raw = pd.read_parquet("D:/finance/beginner-quant-research/forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
+        raw = pd.read_parquet("forex/data_mt5/DOW_M1_rates.parquet").drop_duplicates("t").sort_values("t")
         raw = raw[(raw.bo > 0) & (raw.ao >= raw.bo)]
         utc = pd.to_datetime(raw.t, unit="s").dt.tz_localize("Europe/Athens", ambiguous="NaT", nonexistent="NaT").dt.tz_convert("UTC")
         df = pd.DataFrame({k: ((raw["b" + k[0]] + raw["a" + k[0]]) / 2).to_numpy() for k in ("open", "high", "low", "close")}, index=utc.to_numpy())
         df = df[~df.index.isna()]; df.index = pd.DatetimeIndex(df.index).tz_convert("UTC")
     else:
-        df = pd.read_parquet(f"D:/finance/beginner-quant-research/futures/data/databento/futures_{src_sym}.F_1m.parquet").sort_values("ts").set_index("ts")
+        df = pd.read_parquet(f"futures/data/databento/futures_{src_sym}.F_1m.parquet").sort_values("ts").set_index("ts")
         df = df[["open", "high", "low", "close"]]
     df = df[~df.index.duplicated()].sort_index()
     return df[df.index >= (START - pd.Timedelta(days=60)).tz_localize("UTC")]   # 60 days of lead-in for ATR14 / SMA20

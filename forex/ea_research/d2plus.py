@@ -74,7 +74,7 @@ def main():
     T = pd.DataFrame(rows); pd.set_option("display.width", 250)
     print("USD a day per 100k gross (HOLD = 2026, context only):")
     print(T.round(3).to_string(index=False))
-    T.to_csv("D:/finance/si_ledgers/D2PLUS.csv", index=False)
+    T.to_csv("data/si_ledgers/D2PLUS.csv", index=False)
 
 
 if __name__ == "__main__":

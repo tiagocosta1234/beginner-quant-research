@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data_mt5"
 LEDGER = HERE / "LEDGER.csv"
 STATE = HERE / "STACKED_VA_STATE.json"
-CACHE = Path("D:/finance/tmp/stacked_va_trades.parquet")
+CACHE = Path("data/tmp/stacked_va_trades.parquet")
 FX = ["AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "AUDUSD", "CADCHF", "CADJPY", "CHFJPY", "EURAUD", "EURCAD", "EURCHF", "EURGBP", "EURJPY", "EURNZD", "EURUSD", "GBPAUD", "GBPCAD", "GBPCHF", "GBPJPY", "GBPNZD", "GBPUSD",
       "NZDCAD", "NZDCHF", "NZDJPY", "NZDUSD", "USDCAD", "USDCHF", "USDJPY"]
 IDX = ["SP", "NSDQ", "DOW", "DAX", "NIKKEI", "ASX"]

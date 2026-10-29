@@ -68,7 +68,7 @@ def main(dry):
     T = pd.DataFrame(rows)
     print(T.round(3).to_string(index=False))
     if not dry:
-        T.to_csv("D:/finance/si_ledgers/TRB_LUCK.csv", index=False)
+        T.to_csv("data/si_ledgers/TRB_LUCK.csv", index=False)
         inside = int((T.p_N2 > 0.05).sum())
         print(f"years with the prize inside N2 (p > 0.05): {inside} of {len(T)} -> " + ("LUCK explains the yearly best breakout" if inside >= 4 else ("evidence of year-specific breakout types" if inside <= 1 else "mixed")))
 

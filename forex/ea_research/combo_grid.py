@@ -16,7 +16,7 @@ from forex.ea_batch.mt5_mc_config import CH
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "COMBO_GRID_OUTPUT.csv")
 P.C0 = 560.0; HZ = {"30Nov": 36, "22Dec": 52, "31Jan": 79}
 SDB, XAU, DIP, GUARD = (0, .6, .9, 1.2, 1.5, 1.8), (0, .6, 1.0, 1.5, 2.0), (0, 250, 500, 1000), (1500.0, 1700.0)
-cal = pd.read_csv("D:/finance/data_macro/event_calendar.csv")
+cal = pd.read_csv("data/data_macro/event_calendar.csv")
 EV = np.array(sorted(server_s(r.date, 8, 30) if r.kind in ("CPI", "NFP") else server_s(r.date, 14, 0) for r in cal.itertuples() if r.kind in ("CPI", "NFP", "FOMC")))
 bars = L.bars(); DAYS = {}
 

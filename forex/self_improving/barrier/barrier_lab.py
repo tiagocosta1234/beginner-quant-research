@@ -10,7 +10,7 @@ from forex.self_improving import platform_v3 as P3
 from forex.self_improving.freeform import ff6_data as D6
 from forex.self_improving.ml import ml_lab_tv as M
 
-LED = Path("D:/finance/si_ledgers"); NB = 48; K = 32; KS = (1.0, 2.0); WINS = {"a": D6.WA, "b": D6.WB, "val": D6.VAL}
+LED = Path("data/si_ledgers"); NB = 48; K = 32; KS = (1.0, 2.0); WINS = {"a": D6.WA, "b": D6.WB, "val": D6.VAL}
 N_MIN, CL_MIN, R_MIN, BONF = 100, 20, 0.20, 0.05 / 8; QS = (0.50, 0.70, 0.80, 0.90, 0.95); GRID = 8
 
 

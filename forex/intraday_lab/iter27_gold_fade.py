@@ -37,7 +37,7 @@ def main():
             out.append((idx[t + H].normalize(), gross - cost + sw, gross, cost, sw)); t += H
         df = pd.DataFrame(out, columns=["d", "net", "gross", "cost", "sw"]); day = df.groupby("d").net.sum().reindex(days).fillna(0.0)
         rows.append(dict(W=W, theta=th, H=H, trades=len(df), gross_bp=df.gross.mean() * 1e4, cost_bp=df.cost.mean() * 1e4, swap_bp=df.sw.mean() * 1e4, dev=sharpe(day.loc["2021-10-01":"2023-12-31"]), val=sharpe(day.loc["2024-01-01":"2024-12-31"]), hold=sharpe(day.loc["2025-01-01":"2026-10-02"])))
-    T = pd.DataFrame(rows); T.to_csv(r"D:\finance\scratch\lab\iter27_raw.csv", index=False); print(T[["W", "theta", "H", "trades", "gross_bp", "cost_bp", "swap_bp", "dev", "val"]].round(2).to_string(index=False))
+    T = pd.DataFrame(rows); T.to_csv(r"data\scratch\lab\iter27_raw.csv", index=False); print(T[["W", "theta", "H", "trades", "gross_bp", "cost_bp", "swap_bp", "dev", "val"]].round(2).to_string(index=False))
     c = T[(T.W == 168) & (T.theta == 3.0) & (T.H == 48)].iloc[0]; hit = bool((T.dev > 0).mean() >= .7 and (T.val > 0).mean() >= .7 and c.dev >= .5 and c.val >= .5)
     print(f"\nshare positive: DEV {(T.dev > 0).mean():.0%}, VAL {(T.val > 0).mean():.0%}; centre DEV {c.dev:.2f} VAL {c.val:.2f}; PLATEAU HIT: {hit}")
     if hit:

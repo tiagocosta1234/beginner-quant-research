@@ -12,7 +12,7 @@ START_BAL = 97_708.08
 START = np.datetime64("2026-10-16")
 HZ = {k: int(np.busday_count(START, np.datetime64(v))) for k, v in {"30 Oct": "2026-10-31", "22 Dec": "2026-12-23", "31 Mar 27": "2027-04-01", "30 Jun 27": "2027-07-01"}.items()}
 GS = (50_000, 100_000, 150_000, 200_000)
-LED = "D:/finance/si_ledgers"
+LED = "data/si_ledgers"
 
 
 def simulate(V, B, H, rng, paths=20000):

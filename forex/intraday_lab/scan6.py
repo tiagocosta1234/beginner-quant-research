@@ -9,7 +9,7 @@ import pandas as pd
 
 from forex.intraday_lab.lab import ALL, Bars, commission_price
 
-OUT = Path(r"D:\finance\scratch\lab")
+OUT = Path(r"data\scratch\lab")
 TF = 5; HS = (48, 96, 288); AS = (5, 10); PULL = {"P1": 0.0, "P2": 0.5}
 
 

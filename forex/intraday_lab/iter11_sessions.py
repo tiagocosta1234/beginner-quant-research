@@ -50,7 +50,7 @@ def main():
             D["phase"] = np.where(D.year <= 2023, "dev", np.where(D.year == 2024, "val", "hold"))
             for (W, H, ph), x in D.groupby(["W", "H", "phase"]):
                 out.append(dict(group=g, hyp=hyp, W=W, H=H, phase=ph, n=len(x), sig=x.sig.mean(), net=x.net.mean(), t=x.net.mean() / (x.net.std(ddof=1) / np.sqrt(len(x))) if len(x) > 3 else np.nan, cost=(x.sig - x.net).mean()))
-    R = pd.DataFrame(out); R.to_csv(r"D:\finance\scratch\lab\iter11_raw.csv", index=False)
+    R = pd.DataFrame(out); R.to_csv(r"data\scratch\lab\iter11_raw.csv", index=False)
     P = R.pivot_table(index=["group", "hyp", "W", "H"], columns="phase", values=["n", "sig", "net", "t", "cost"]); P.columns = [f"{a}_{b}" for a, b in P.columns]; P = P.reset_index()
     print("K =", len(P))
     hit = P[(P.net_dev > 0) & (P.t_dev >= 3.6) & (P.net_val > 0) & (P.t_val >= 2)]

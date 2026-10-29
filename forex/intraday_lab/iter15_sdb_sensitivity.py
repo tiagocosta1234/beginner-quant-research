@@ -33,7 +33,7 @@ def main():
     grid = list(product((15, 23, 31), (5, 7, 9), (7, 9, 12), (6, 9, 12)))
     with Pool(4, initializer=init) as p:
         D = pd.DataFrame(p.map(one, grid))
-    D.to_csv(r"D:\finance\scratch\lab\iter15_raw.csv", index=False)
+    D.to_csv(r"data\scratch\lab\iter15_raw.csv", index=False)
     a = D[(D.K == 23) & (D.S == 7) & (D.B == 9) & (D.E == 9)].iloc[0]
     print(f"author's set: n {int(a.n)}, mean R {a['mean']:.3f} (t {a.t:.2f}); DEV {a.dev:.3f} VAL {a.val:.3f} HOLD {a.hold:.3f}")
     print(f"\n81 combinations: share with mean R > 0: overall {(D['mean'] > 0).mean():.0%}, DEV {(D.dev > 0).mean():.0%}, VAL {(D.val > 0).mean():.0%}, HOLD {(D.hold > 0).mean():.0%}, all three {((D.dev > 0) & (D.val > 0) & (D.hold > 0)).mean():.0%}")

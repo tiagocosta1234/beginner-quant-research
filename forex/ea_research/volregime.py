@@ -154,7 +154,7 @@ def main():
                     x = g[(g.period == per) & (g[v + "_terc"] == terc)]["R_" + kind]
                     parts.append(f"{terc}/{per} {x.mean():+.3f} ({len(x)})")
             print(f"{sym} {sess} {kind} {v}: " + "  ".join(parts))
-    C.to_csv("D:/finance/scratch/volregime_cells.csv", index=False)
+    C.to_csv("data/scratch/volregime_cells.csv", index=False)
 
 
 if __name__ == "__main__":

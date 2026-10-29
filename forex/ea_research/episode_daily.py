@@ -1,5 +1,5 @@
 """Daily equity of the episode game (+up / -dn, multi-day) on the installed pair: marks the equity (closed episodes + the open episode's floating P&L) at the last bar of every server day.
-python -m forex.ea_research.episode_daily --pool MT5 --mult 5.0 --dn 2000     writes D:/finance/si_ledgers/DAILY_<pool>_x<m>_dn<dn>.csv  (date, equity, pnl, episode_closed)"""
+python -m forex.ea_research.episode_daily --pool MT5 --mult 5.0 --dn 2000     writes data/si_ledgers/DAILY_<pool>_x<m>_dn<dn>.csv  (date, equity, pnl, episode_closed)"""
 import sys
 ARGV = sys.argv[1:]
 import os
@@ -42,7 +42,7 @@ def daily(pool, m, UP, DN):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--pool", default="MT5"); ap.add_argument("--mult", type=float, default=1.5); ap.add_argument("--up", type=float, default=2000.0); ap.add_argument("--dn", type=float, default=1500.0); a = ap.parse_args(ARGV)
-    d = daily(a.pool, a.mult, a.up, a.dn); d.to_csv(f"D:/finance/si_ledgers/DAILY_{a.pool}_x{a.mult}_dn{int(a.dn)}.csv", index=False)
+    d = daily(a.pool, a.mult, a.up, a.dn); d.to_csv(f"data/si_ledgers/DAILY_{a.pool}_x{a.mult}_dn{int(a.dn)}.csv", index=False)
     y = d[pd.to_datetime(d.date) >= "2026-01-01"]; print(f"{a.pool} x{a.mult} dn{int(a.dn)}: days {len(d)}, 2026 days {len(y)}, 2026 pnl {y.pnl.sum():+,.0f}, best day {y.pnl.max():+,.0f}, worst day {y.pnl.min():+,.0f}, +2000 / -dn closes in 2026: {int((y.closed > 0).sum())} / {int((y.closed < 0).sum())}")
 
 

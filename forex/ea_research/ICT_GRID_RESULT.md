@@ -1,5 +1,5 @@
 # ICT_GRID_RESULT - every combination of the core ICT concepts on every MT5 broker symbol (2026-10-15, local clock 18:16)
-Pre-registration PREREG_ICT_GRID.md. Code ict_grid.py, output ICT_GRID_OUTPUT.txt, tables D:/finance/si_ledgers/ICT_GRID_*. Dry run: truncation identical (22,186 trades), killzone times checked by hand.
+Pre-registration PREREG_ICT_GRID.md. Code ict_grid.py, output ICT_GRID_OUTPUT.txt, tables data/si_ledgers/ICT_GRID_*. Dry run: truncation identical (22,186 trades), killzone times checked by hand.
 
 ## Verdict: 0 of 21,363 cells, 0 of 2,375 pools; no class pick survives 2025 and 2026, so no out-of-time check was triggered
 8 entry models (sweep of prior-day / Asian liquidity, sweep + MSS, sweep + MSS + FVG limit, FVG continuation, BOS + order-block limit) x 4 killzones (London, NY AM, silver bullet, NY PM) x 3 biases (none, daily, premium / discount) x 5 targets (1R, 2R, 3R, opposite liquidity, 15:55 NY) x 46 symbols; 1,709,297 rule trades on MT5 broker bid/ask with a matched random trade (same day, killzone, stop distance and target) for each.

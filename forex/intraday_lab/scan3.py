@@ -9,7 +9,7 @@ import pandas as pd
 
 from forex.intraday_lab.lab import Bars, commission_price
 
-OUT = Path(r"D:\finance\scratch\lab")
+OUT = Path(r"data\scratch\lab")
 SYMS = ("US100.cash", "US30.cash", "US500.cash", "GER40.cash", "XAUUSD")
 HS = {5: (12, 24, 48), 15: (4, 8, 16)}
 

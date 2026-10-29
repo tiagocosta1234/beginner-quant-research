@@ -1,5 +1,5 @@
 # ICT3_RESULT - the remaining ICT concepts as complete strategies on every MT5 broker symbol (2026-10-15, local clock 18:26)
-Pre-registration PREREG_ICT3.md (commit 82024ed4). Code ict3.py, output ICT3_OUTPUT.txt, tables D:/finance/si_ledgers/ICT3_*. Dry run: truncation identical (5,805 trades).
+Pre-registration PREREG_ICT3.md (commit 82024ed4). Code ict3.py, output ICT3_OUTPUT.txt, tables data/si_ledgers/ICT3_*. Dry run: truncation identical (5,805 trades).
 
 ## Verdict: 0 of 8,454 cells, 0 of 1,018 pools; no class pick is positive in 2025 and 2026, so no out-of-time check was triggered. The ICT family is closed for mechanical rules.
 Models: Judas swing / PO3 around the midnight open, silver bullet FVG toward the draw on liquidity, OTE (70.5% retracement after sweep + MSS), breaker block, turtle soup (20-day range), CBDR 2-SD fade; filters none / midnight open / draw on liquidity; targets 1R / 2R / 3R / liquidity / 15:55 NY; 413,710 rule trades with a matched random trade each.

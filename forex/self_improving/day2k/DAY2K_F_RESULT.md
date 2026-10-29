@@ -1,6 +1,6 @@
 # DAY2K-F result (2026-10-14): round-number level reactions as the daily 1:1 setup - NO EDGE
 
-Pre-registration `PREREG_DAY2K_F.md` (commit adc9017f), engine `day2kf.py`, cells `D:\finance\si_ledgers\DAY2KF_cells.csv`. 11 instruments (gold 25 USD grid, SP 50, NSDQ/DOW/DAX 250, six FX pairs at 0.0050 / USDJPY 0.50), first level cross of the day (10:06-20:00 server), trade FADE or CONTINUE with stop = target = 0.3 or 0.6 ATR20, mid-price level with half-spread entry cost, close 21:55. Control: grids shifted by 0.37 / 0.23 / 0.61 of the step. HOLD unopened.
+Pre-registration `PREREG_DAY2K_F.md` (commit adc9017f), engine `day2kf.py`, cells `data\si_ledgers\DAY2KF_cells.csv`. 11 instruments (gold 25 USD grid, SP 50, NSDQ/DOW/DAX 250, six FX pairs at 0.0050 / USDJPY 0.50), first level cross of the day (10:06-20:00 server), trade FADE or CONTINUE with stop = target = 0.3 or 0.6 ATR20, mid-price level with half-spread entry cost, close 21:55. Control: grids shifted by 0.37 / 0.23 / 0.61 of the step. HOLD unopened.
 
 ## Gates
 Oracle side +0.55..+0.91 R; truncation 53/53; shifted-grid placebos: 0 cells at t >= 3.10 (best t 2.18 / 1.77 / 1.74).

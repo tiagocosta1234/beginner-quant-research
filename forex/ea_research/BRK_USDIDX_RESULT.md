@@ -1,5 +1,5 @@
 # BRK-USDIDX result (breakout day round 23, 2026-10-15 12:52): a USD-index breakout is not a better signal than the pair's own breakout
-Pre-registration `PREREG_BRK_USDIDX.md`, engine `brk_usdidx.py`, rows `D:\finance\si_ledgers\BRK_USDIDX.parquet`.
+Pre-registration `PREREG_BRK_USDIDX.md`, engine `brk_usdidx.py`, rows `data\si_ledgers\BRK_USDIDX.parquet`.
 | cell (net R, hold to 17:00 London) | DEV | VAL | 2026 | random control | the pair's own session breakout (round 1) |
 |---|---|---|---|---|---|
 | X1 EURUSD in the USD index's breakout direction | +0.027 (t 0.26) | -0.038 | -0.109 | +0.085 / -0.095 / -0.268 | +0.075 / +0.067 / +0.004 |

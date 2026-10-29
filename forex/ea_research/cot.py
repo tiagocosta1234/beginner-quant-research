@@ -21,7 +21,7 @@ PER = {"DEV": ("2021-01-01", "2024-12-31"), "VAL": ("2025-01-01", "2025-12-31"),
 
 
 def cot():
-    d = pd.concat([pd.read_csv(f, low_memory=False, dtype={"CFTC Contract Market Code": str}) for f in sorted(glob.glob("D:/finance/data_macro/cot/deacot*/annual.txt"))])
+    d = pd.concat([pd.read_csv(f, low_memory=False, dtype={"CFTC Contract Market Code": str}) for f in sorted(glob.glob("data/data_macro/cot/deacot*/annual.txt"))])
     d["code"] = d["CFTC Contract Market Code"].str.strip(); d = d[d.code.isin(CODES)]
     d["date"] = pd.to_datetime(d["As of Date in Form YYYY-MM-DD"]); d["net"] = (d["Noncommercial Positions-Long (All)"] - d["Noncommercial Positions-Short (All)"]) / d["Open Interest (All)"]
     return d[["code", "date", "net"]].drop_duplicates(["code", "date"]).sort_values(["code", "date"])

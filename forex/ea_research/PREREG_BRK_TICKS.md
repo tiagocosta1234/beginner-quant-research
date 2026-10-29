@@ -1,5 +1,5 @@
 # Pre-registration BRK-TICKS (breakout day, round 13; written 2026-10-15 12:16 local (commit time), before any code or result)
-Question: does the tick-level behaviour in the first seconds of a breakout tell real breakouts from false ones? MT5 broker real ticks (`D:\finance\ticks\<SYM>\<YYYY-MM>.parquet`, server-clock ms, bid/ask) 2025-10-01..2026-09-30, 46 markets; boxes and session exits from the MT5 broker M1 bars as in round 1.
+Question: does the tick-level behaviour in the first seconds of a breakout tell real breakouts from false ones? MT5 broker real ticks (`data\ticks\<SYM>\<YYYY-MM>.parquet`, server-clock ms, bid/ask) 2025-10-01..2026-09-30, 46 markets; boxes and session exits from the MT5 broker M1 bars as in round 1.
 
 ## Event and entry
 Session 30-minute box (round 1). The first TICK after the box end at which the ask reaches the box high (or the bid reaches the box low), before open + 3 h, is the touch. Entry 30 seconds after the touch at the first tick after that moment (ask for longs, bid for shorts); stop at the other side of the box; hold to the session close (M1 exit, capped 22:55 server). R = |entry - stop|; skipped if R < 2 spreads or if price is already back beyond the stop. Base = every such event.

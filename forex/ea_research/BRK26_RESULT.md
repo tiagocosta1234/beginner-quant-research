@@ -1,7 +1,7 @@
 # BRK26 result - 26 more new breakout concepts (named indicators and price-action patterns): 0 pass
 
 Run 2026-10-18 evening (local clock, second PC PC-2). Pre-registration `PREREG_BRK26.md` (registered 19:18; SHA-256
-b1b44afb8127ef52b620e7fd7475ae63985471e676150e6817a13a0dbe9c8586 in `C:\work\scratch\brk26_prereg.sha256` before any P&L; no commits
+b1b44afb8127ef52b620e7fd7475ae63985471e676150e6817a13a0dbe9c8586 in `data\scratch\brk26_prereg.sha256` before any P&L; no commits
 on 18 Oct), engine `brk26.py` (BRK30's machinery), dry run `BRK26_DRYRUN.txt` (truncation identical on EURUSD, XAUUSD, NSDQ),
 output `BRK26_OUTPUT.txt`, table `BRK26_SUMMARY.csv`, 26 ledger rows. 214,174 trades on the 38 non-crypto markets.
 Bars: DEV 2022-24 n >= 150, t >= 2.89 (Bonferroni for 26), >= 2 of 3 years positive, information t >= 2.0; VAL 2025 t >= 1.65.

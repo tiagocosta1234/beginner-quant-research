@@ -1,5 +1,5 @@
 # BRK-ROUND result (breakout day round 27, 2026-10-15 13:49, local clock): no round-number effect; a fill-minute bug found and fixed
-Pre-registration `PREREG_BRK_ROUND.md` (with correction A and bug-fix amendment B1), engine `brk_round.py` (truncation PASS), rows `D:\finance\si_ledgers\BRK_ROUND.parquet`. Event: the first M1 bar that trades through the first round level beyond the last 24 hours' high / low (step = the 1-2-5 value nearest 0.5% of price; stop half a step).
+Pre-registration `PREREG_BRK_ROUND.md` (with correction A and bug-fix amendment B1), engine `brk_round.py` (truncation PASS), rows `data\si_ledgers\BRK_ROUND.parquet`. Event: the first M1 bar that trades through the first round level beyond the last 24 hours' high / low (step = the 1-2-5 value nearest 0.5% of price; stop half a step).
 | cell (net R) | DEV | VAL | 2026 | same rule at NON-round levels DEV / VAL / 2026 | random entry DEV / VAL / 2026 |
 |---|---|---|---|---|---|
 | K1 hold 60 min (n 29,550 / 10,383 / 6,405) | -0.038 (t -4.4) | -0.043 | -0.061 | -0.037 / -0.080 / -0.066 | -0.033 / -0.059 / -0.054 |

@@ -13,7 +13,7 @@ whatever the result (a single look is a lead, not a validated rule).
 - **H2 fade**: same candle; enter the opposite direction; stop = the candle's extreme on the side of its direction; target 1R.
 - **H3 breakout**: range of 00:00-00:29; enter at the close of the first 1m bar after 00:30 that closes beyond the range, in that direction; stop = the opposite end of the range; target 1R.
 Skip a day if the stop distance S < 8 NQ points, if the candle is a doji (H1/H2), or if bars are missing. Ties (stop and target in the same 1m bar) = stop.
-Costs: 0.86 NQ points per round trip (MNQ all-in fee + 1 tick slippage, same constant as `claude.pine`), net R = gross R - 0.86 / S. Unfilled / missing bars: skip.
+Costs: 0.86 NQ points per round trip (MNQ all-in fee + 1 tick slippage, same constant as `london_open_indicator.pine`), net R = gross R - 0.86 / S. Unfilled / missing bars: skip.
 
 ## Scoring (single look)
 DEV = 2019-10 .. 2022-12 (descriptive only; nothing is tuned: no free parameters). TEST = 2023-01-01 .. latest, scored once.

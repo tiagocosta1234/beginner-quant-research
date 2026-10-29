@@ -80,7 +80,7 @@ def dry():
 
 def run():
     df = collect(END)
-    df.to_parquet("D:/finance/si_ledgers/BRK_L2NY.parquet")
+    df.to_parquet("data/si_ledgers/BRK_L2NY.parquet")
     for cell in ("N1", "N2"):
         r = {}
         for lab, (a, b) in (("DEV", DEV), ("VAL", VAL), ("2026", Y26)):

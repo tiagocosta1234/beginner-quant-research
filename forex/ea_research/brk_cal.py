@@ -23,7 +23,7 @@ def flags(days):
 
 
 def main():
-    ex = pd.read_parquet("D:/finance/si_ledgers/BRK_EXITS.parquet")
+    ex = pd.read_parquet("data/si_ledgers/BRK_EXITS.parquet")
     ex["c"] = ex.mkt.map(mclass)
     out = []
     for m, g in ex.groupby("mkt"):
