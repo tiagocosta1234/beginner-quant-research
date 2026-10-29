@@ -43,7 +43,7 @@ python -m live_bot.main                          # dry_run by default: no networ
 | `practice` | yes | your own `BrokerClient` subclass |
 | `live` | yes | your adapter **and** `BOT_CONFIRM_LIVE=I_UNDERSTAND_THIS_IS_REAL_MONEY` |
 
-Other settings come from environment variables: `BOT_STRATEGY`, `BOT_INSTRUMENT`,
+Copy `.env.example` to `.env` for the full list of settings with safe defaults. The main ones: `BOT_STRATEGY`, `BOT_INSTRUMENT`,
 `BOT_TIMEFRAMES`, `BOT_INITIAL_DAYS`, `BOT_DYNAMIC_SIZING`, and the `BRACKET_*` sizing values.
 
 ## History caches

@@ -1,0 +1,9 @@
+# Research scripts (futures/engine, futures/london_open_gold, forex/*). The live bot has its own
+# futures/live_bot/requirements.txt. MetaTrader5 is only needed for the MT5 data pulls (Windows).
+numpy>=1.26
+pandas>=2.1
+polars>=1.0
+pyarrow>=15
+scipy>=1.11
+scikit-learn>=1.4
+matplotlib>=3.8
