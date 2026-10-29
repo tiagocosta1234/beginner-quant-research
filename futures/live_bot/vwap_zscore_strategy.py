@@ -3,10 +3,10 @@ edge alongside `random_entry_atr_trail_strategy.py` (MNQ) and
 `support_resistance_bounce_strategy.py` (MGC).
 
 Source of truth: `futures/engine/round49_vwap_zscore.py` for the
-signal mechanics, `futures/docs/TRADING_JOURNAL.md`'s 2026-09-21
+signal mechanics, the research log's 2026-09-21
 entry for how this file's numbers were checked (a real Monte Carlo sizing
-search: 70% probability of reaching the account's profit target before the
-real Oct 30 withdrawal deadline is NOT reachable at any risk/trade -- P(success)
+search: 70% probability of reaching the the profit goal before the
+self-set deadline is NOT reachable at any risk/trade -- P(success)
 asymptotes around 50-52% even at deliberately unrealistic sizes, because past
 ~$1,400/trade every simulated path either hits the target or hits the
 account's daily loss limit/trailing floor before day 20; there is no

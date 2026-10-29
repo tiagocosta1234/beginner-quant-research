@@ -1,2 +1,0 @@
-- 2026-10-13 00:18 gen 0: 300 new specs, cumulative m=300, best DEV z this gen 3.36 | S1 survivors 0 {} | VAL passes (S2) 0 of 0 looked at
-- 2026-10-13 00:19 gen 1: 300 new specs, cumulative m=600, best DEV z this gen 4.71 | S1 survivors 40 {'fx/pop_short': 16, 'fx/low_dip': 15, 'crypto/low_dip': 4, 'fx/rsi_dip': 3, 'cmd/low_dip': 1, 'idx/low_dip': 1} | VAL passes (S2) 1 of 40 looked at

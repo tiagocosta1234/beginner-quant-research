@@ -18,7 +18,7 @@ from pathlib import Path
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-from live_bot.broker_client import BrokerClient, BrokerConfig
+from live_bot.broker_client import BrokerClient, BrokerConfig, create_broker
 from live_bot.pnl_tracker import PnlTracker, EventType
 from live_bot.flatten_routine import FlattenRoutine
 from live_bot.deployment import (
@@ -98,7 +98,7 @@ class IntegratedTradingBot:
 
         # Broker
         broker_config = BrokerConfig.from_env()
-        self.broker = BrokerClient(broker_config)
+        self.broker = create_broker(broker_config)
         await self.broker.connect()
 
         # PnL Tracker

@@ -1,10 +1,10 @@
 """Round 192's disciplined bracket (POC reversion, Round 178 + Value Area
 rejection, Round 184) -- the trader's chosen strategy for evaluations from the
 2026-09-29 split-strategy Monte Carlo (see futures/docs/
-TRADING_JOURNAL.md, "split-strategy Monte Carlo" entry: this signal's real
-eval-stage pass rate, 27.9% over a 15-day window at the 50K tier, is ~11x
+the research log, "split-strategy Monte Carlo" entry: this signal's real
+capped pass rate, 27.9% over a 15-day window at the base size, is ~11x
 the combined POC+VA live-stage signal's 2.5%, purely because capping
-daily P&L avoids triggering Broker's consistency-rule ratchet).
+daily P&L avoids triggering the best-day share limit).
 
 TWO REAL ADAPTATIONS from the backtested Round 192, both documented here
 rather than silently applied -- this is not a 1:1 reproduction of the
@@ -43,8 +43,8 @@ number. Read these before trusting a forward-test run to reproduce it:
    this repo uses, not by this bot polling and reacting after the fact
    (which could miss a fast-moving bar the same way any reactive check
    can). Net effect matches Round 192's real purpose for the win cap
-   (never let a single day exceed 55% of the $50K Test's $3,000 target
-   and force the consistency-rule ratchet) without new EXIT-signal wiring
+   (never let a single day exceed 55% of a $3,000 profit goal
+   and force the best-day share limit) without new EXIT-signal wiring
    in main.py, which currently has none (checked 2026-09-29: run()'s poll
    loop only handles SignalAction.ENTER_LONG/ENTER_SHORT).
 
@@ -142,17 +142,17 @@ import pandas as pd
 
 from live_bot.strategy_interface import Signal, SignalAction, Strategy
 
-# RISK_PER_TRADE / CAP_WIN_DOLLARS / MAX_CONTRACTS are TIER-DEPENDENT and
+# RISK_PER_TRADE / CAP_WIN_DOLLARS / MAX_CONTRACTS are SIZE-DEPENDENT and
 # configurable via env vars -- round192's $300/leg and $1,650 win cap (55%
-# of the $50K Test's $3,000 target) are specifically 50K-tier numbers;
-# the 27.9% eval-stage pass rate this strategy was chosen for was validated
-# at that tier. A different account tier needs these RESCALED, not reused
+# of a $3,000 profit goal) are specifically base size numbers;
+# the 27.9% capped pass rate this strategy was chosen for was validated
+# at that tier. A different account size needs these RESCALED, not reused
 # as-is: reinvestment_snowball.py's own real tier definitions give the
-# $150K tier contract_mult=3.0 (target=$9,000, mll=$4,500), so ALL THREE
+# 3x size contract_mult=3.0 (target=$9,000, mll=$4,500), so ALL THREE
 # figures scale by the same factor for that tier (0.55 x $9,000 = $4,950,
 # matching 1650 x 3 exactly -- confirmed 2026-09-29 the two derivations
 # agree, not just assumed). BRACKET_RISK_PER_TRADE / BRACKET_CAP_WIN_DOLLARS
-# / BRACKET_MAX_CONTRACTS in the environment override the 50K-tier
+# / BRACKET_MAX_CONTRACTS in the environment override the base size
 # defaults below; set them to match whatever account is actually connected
 # (checked via a real, read-only broker.get_account_balance() call, not
 # assumed from live_bot/.env's ACCOUNT_STARTING_BALANCE alone -- that field

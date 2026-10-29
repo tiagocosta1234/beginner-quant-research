@@ -474,8 +474,8 @@ class TestCommissionAndSlippage:
         assert position.average_entry_price == 20_000.0
 
 
-class TestWithdrawalGateCalculation:
-    """Test 5-day $150 withdrawal gate threshold calculation."""
+class TestWinningDaysGateCalculation:
+    """Test the 5-day, $150 winning-days counter."""
 
     def test_daily_summary_winning_day(self, tracker):
         """Test daily summary calculation for a winning trading day."""

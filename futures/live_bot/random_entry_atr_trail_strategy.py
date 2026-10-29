@@ -4,8 +4,7 @@ Source of truth: `futures/docs/EDGE_VALIDATION_RESULTS.md` Rounds 19-26
 (2026-09-19/20). Read the "Final Campaign Synthesis" section there before trusting
 this file -- it documents exactly what was and wasn't validated, including that
 success is NOT the likely outcome even at the best sizing found (Round 26: ~21%
-probability of reaching the account's profit target before the confirmed 2026-12-10
-deadline, vs. real probability of blowing the account first). This file makes the
+probability of reaching the the profit goal before the self-set deadline, vs. real probability of blowing the account first). This file makes the
 research DEPLOYABLE; it does not make it SAFE or LIKELY TO WORK. That's a decision
 for whoever configures `main.py`'s BOT_MODE, not something this file settles.
 

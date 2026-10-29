@@ -19,6 +19,6 @@ if (-not (Test-Path $logDir)) {
 }
 $logFile = Join-Path $logDir ("manual_live_{0}.log" -f (Get-Date -Format "yyyy-MM-dd_HHmmss"))
 
-# .env (BOT_MODE=live, the real account, Round 75 sizing) is read by main.py
+# .env (BOT_MODE=live, the configured account and sizing) is read by main.py
 # itself via load_dotenv() -- nothing live-specific needs to be passed here.
 python -m live_bot.main *>&1 | Tee-Object -FilePath $logFile

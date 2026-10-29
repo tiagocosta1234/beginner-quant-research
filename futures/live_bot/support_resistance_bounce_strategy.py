@@ -31,8 +31,8 @@ and the more recent folds are more representative of what's ahead.
 
 Sizing: Round 31's combined-portfolio Monte Carlo (see EDGE_VALIDATION_RESULTS.md
 Round 31) found that sizing each edge at its OWN individually-buffer-safe level
-(MNQ $75, MGC $200) is too conservative to reach the account's profit target
-before the real Oct 30 withdrawal deadline (0.4% success over the real ~20-day
+(MNQ $75, MGC $200) is too conservative to reach the the profit goal
+before the self-set deadline (0.4% success over the real ~20-day
 window). Round 34's finer sweep (confirmed non-fluke across 10 MC seeds in
 Round 33) refined this to MNQ $245 / MGC $650 per trade -- 87.8% success / 3.8%
 ruin, the best real risk-adjusted point (success keeps climbing to ~89% around

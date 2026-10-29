@@ -1,93 +1,31 @@
 """Entry point wiring risk_governor + broker_client + strategy_interface together.
 
-Modes (set via BOT_MODE env var, default "dry_run"):
-  dry_run  — no network calls at all. Just proves the pieces import and wire up
-             correctly. This is the default so nothing runs live by accident.
-  practice — connects to the BrokerAPI Practice account (same API surface as
-             live, zero real-money risk). Requires BROKERAPI_API_KEY,
-             BROKERAPI_USERNAME, BROKERAPI_ACCOUNT_NAME (practice account name)
-             in the environment — see .env.example.
-  live     — connects to whatever account BROKERAPI_ACCOUNT_NAME resolves to.
-             Requires BOT_CONFIRM_LIVE=I_UNDERSTAND_THIS_IS_REAL_MONEY in
-             addition to the credentials above. DO NOT use until: (1) a
-             strategy has passed walk-forward validation, (2) this whole
-             pipeline has been run against the Practice account successfully,
-             (3) risk_governor's numbers (consistency %, static lock HWM) are
-             confirmed against the real account. See README.md checklist.
+Modes (BOT_MODE, default "dry_run"):
+  dry_run  - no network calls at all; proves the pieces import and wire up. The default,
+             so nothing runs live by accident.
+  practice - a simulated/demo account through your own BrokerClient subclass.
+  live     - a real account; also requires BOT_CONFIRM_LIVE=I_UNDERSTAND_THIS_IS_REAL_MONEY.
+             Do not use before a strategy has passed out-of-sample validation and the whole
+             pipeline has run on a practice account.
 
-Strategy (set via BOT_STRATEGY env var, default "noop" — deliberately, NOT
-any of the three below; switching strategies is a real decision, this file
-will not make it for you by defaulting into it):
-  noop                        — always holds. Zero trading risk. The default.
-  random_entry_atr_trail      — the MNQ edge validated in Rounds 19-26. One
-             instrument, one bot process (BOT_INSTRUMENT=MNQ). Read
-             `random_entry_atr_trail_strategy.py`'s module docstring first.
-  support_resistance_bounce   — the MGC edge validated in Rounds 30/30b. One
-             instrument, one bot process (BOT_INSTRUMENT=MGC). Read
-             `support_resistance_bounce_strategy.py`'s module docstring first.
-  vwap_zscore                 — the MNQ edge from Round 49 (2026-09-20/21). One
-             instrument, one bot process (BOT_INSTRUMENT=MNQ). Read
-             `vwap_zscore_strategy.py`'s module docstring first -- in
-             particular, a real Monte Carlo search (2026-09-21) found that
-             70% probability of reaching this account's profit target before
-             the real Oct 30 withdrawal deadline is NOT reachable by sizing this
-             edge alone at ANY risk/trade (asymptotes ~50-52%, see
-             `futures/docs/TRADING_JOURNAL.md`'s 2026-09-21 entry).
-  manual                         — TOD filter + VWAP-Z, combined in ONE process
-             (BOT_INSTRUMENT=MNQ; not two separate processes the way the MNQ+MGC
-             note below describes, since both trade MNQ and would risk a double
-             position). Per-signal sizing ($2,100 TOD / $1,500 VWAP-Z, Round 69,
-             2026-09-22, corrected from Round 63's $2,400/$600 after a real sizing-
-             formula bug fix, not just a re-tune) is set inside `manual_strategy.py`
-             itself via `Signal.risk_dollars` -- but MAX_SINGLE_TRADE_RISK MUST be
-             raised to >= $2,100 (`.env`: `MAX_SINGLE_TRADE_RISK=2100`) or
-             check_position_size() silently rejects every TOD signal. This sizing
-             is paired with `SELF_IMPOSED_DAILY_STOP=3000` (risk_governor.py rule
-             8) -- set both together, not independently. BOT_DYNAMIC_SIZING still
-             should not be enabled for this strategy (would override its explicit
-             per-edge risk_dollars). Read `manual_strategy.py`'s module docstring and
-             `TRADING_JOURNAL.md`'s Round 69/69b entries first.
-  disciplined_bracket         — POC-reversion + VA-rejection, EVAL-STAGE (Round 192,
-             single leg at a time, take-profit capped at $1,650 to dodge Broker's
-             consistency-rule ratchet). Read `disciplined_bracket_strategy.py`'s
-             module docstring first.
-  combined              — the same two legs, LIVE-STAGE counterpart
-             (uncapped take-profit -- the cap above only exists for the eval-stage
-             ratchet). Switching between this and disciplined_bracket above IS the
-             eval-vs-live stage switch for this account; always set explicitly
-             per the real dashboard, never auto-detected. Read
-             `combined_strategy.py`'s module docstring first.
+Strategy (BOT_STRATEGY, default "noop", which always holds; choosing a strategy is a
+deliberate decision this file will not make for you):
+  random_entry_atr_trail     - random side with an ATR trailing stop (MNQ), Rounds 19-26
+  support_resistance_bounce  - support/resistance bounce (MGC), Rounds 30/30b
+  vwap_zscore                - VWAP z-score fade (MNQ), Round 49
+  manual                     - time-of-day filter plus VWAP-Z in one MNQ process; per-signal
+                               sizing lives in manual_strategy.py (MAX_SINGLE_TRADE_RISK must
+                               allow it, paired with SELF_IMPOSED_DAILY_STOP)
+  ote_fvg                    - OTE retracement plus 15m FVG sweep-reclaim, NY session (Round 76/87)
+  disciplined_bracket        - POC reversion plus value-area rejection with a capped daily win
+                               (Round 192), one leg at a time
+  combined                   - the same two legs, uncapped, with a pre-trained meta-label filter
 
-Running BOTH edges together (Round 31's actual finding — see below) means
-running TWO separate bot processes against the same account, one per
-instrument/strategy pair above; this file does not orchestrate multi-instrument
-trading within a single process. As of Round 31 (2026-09-20), the deadline that
-matters is the real withdrawal-request deadline (2026-10-30, not the Test's own
-2026-12-10 expiration — see `futures/docs/EDGE_VALIDATION_RESULTS.md`
-Round 28), and the risk-per-trade that actually gives good odds against that
-short window is NOT either edge's individually-buffer-safe size: Round 31 found
-MNQ $75 / MGC $200 (each edge's own safe size) gives only 0.4% probability of
-reaching the profit target in the real ~20-day window, while sizing up gives
-dramatically better odds. Round 34's refined sweep (finer steps than Round 31b's,
-confirmed non-fluke across 10 MC seeds in Round 33): **MNQ $245 / MGC $650 —
-87.8% success against 3.8% ruin**, the actual recommended sizing for this
-deadline, set via `AccountConfig.max_single_trade_risk` per process (or
-`RiskGovernor.check_position_size`'s ceiling — default raised to $700 on
-2026-09-20 so it doesn't silently reject the $650 MGC signal). This is Monte
-Carlo evidence over resampled real historical trades, not a guarantee — read
-Rounds 31, 33, and 34 in full before trusting it.
+Each strategy trades one instrument; two instruments mean two bot processes. Read each
+strategy file's docstring before using it: none of them kept an edge out of sample.
 
-Sizing (set via BOT_DYNAMIC_SIZING=1 to enable, default disabled — fixed
-`AccountConfig.max_single_trade_risk` per trade): equity-scaled sizing per
-`risk_governor.DynamicSizingConfig`, found in Round 26 to change the shape of
-the risk/reward trade-off, not just its magnitude — also not defaulted on. Round
-31's 83.4%/3.8% finding above used FIXED risk per trade, not this dynamic
-sizing; combining the two hasn't been tested.
-
-This file HAS been run end-to-end against a real API key, on the Practice
-account (2026-09-21/22) — the auth/order/event round-trip is confirmed, not
-just the code path up to `broker_client.connect()`. The real (non-Practice)
-account has not been separately exercised; treat that as its own go-live step.
+Sizing: fixed AccountConfig.max_single_trade_risk per trade by default; BOT_DYNAMIC_SIZING=1
+switches to equity-scaled sizing (risk_governor.DynamicSizingConfig).
 """
 
 from __future__ import annotations
@@ -101,12 +39,9 @@ from pathlib import Path
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-# BUGFIX (2026-09-30): load .env BEFORE importing any live_bot module. Strategy
-# modules read tier sizing from the environment at import time
-# (disciplined_bracket_strategy / combined_strategy BRACKET_*), and with
-# load_dotenv() further down they always got the $50K defaults -- the first live
-# trade on the $150K Practice account went out at 3 contracts / $300 risk
-# instead of 9 / $900. Kept in its original try/except form.
+# Load .env BEFORE importing any live_bot module: strategy modules read their sizing from the
+# environment at import time, and loading it later once sent the first practice trade out at a
+# third of the intended size.
 try:
     from dotenv import load_dotenv
 
@@ -114,7 +49,7 @@ try:
 except ImportError:  # pragma: no cover - dotenv is a convenience, not a hard requirement
     pass
 
-from live_bot.broker_client import BrokerClient, BrokerConfig
+from live_bot.broker_client import BrokerClient, BrokerConfig, create_broker
 from live_bot.combined_strategy import CombinedStrategy
 from live_bot.disciplined_bracket_strategy import DisciplinedBracketStrategy
 from live_bot.fill_recorder import FillRecorder, trading_date
@@ -155,16 +90,11 @@ log = logging.getLogger("live_bot")
 
 POLL_INTERVAL_SECONDS = 30
 
-# Fallback seed values if ACCOUNT_STARTING_BALANCE/ACCOUNT_STARTING_HWM aren't set in
-# the environment -- these are the real account's last known state as of 2026-09-19
-# (see live_bot/tests/test_risk_governor.py), NOT the account_config fresh-start
-# defaults. In practice/live mode, the live-fetched balance (via
-# broker.get_account_balance()) always overrides this balance fallback once
-# connected; the high-water-mark fallback is still used either way, since BrokerAPI's
-# API has no field for historical HWM -- re-verify both numbers on the BrokerAPI
-# dashboard before trusting them for a real run.
-FALLBACK_STARTING_BALANCE = 245_815.38
-FALLBACK_STARTING_HWM = 250_877.88
+# Example seed values used when ACCOUNT_STARTING_BALANCE / ACCOUNT_STARTING_HWM are not set. In practice
+# or live mode the broker's balance overrides the balance once connected; the high-water mark must be
+# set by you, since brokers rarely report it.
+FALLBACK_STARTING_BALANCE = 250_000.0
+FALLBACK_STARTING_HWM = 250_000.0
 
 
 def _select_strategy() -> Strategy:
@@ -173,124 +103,42 @@ def _select_strategy() -> Strategy:
         return NoOpStrategy()
     if name == "random_entry_atr_trail":
         log.warning(
-            "BOT_STRATEGY=random_entry_atr_trail: this is the one validated edge in "
-            "this repo's research, deployable but NOT likely to succeed on its own -- "
-            "Round 26's best sizing found ~21%% probability of reaching the profit "
-            "target vs. a real probability of blowing the account first. See "
-            "random_entry_atr_trail_strategy.py's module docstring before proceeding."
+            "BOT_STRATEGY=random_entry_atr_trail: random side with an ATR trailing stop (Rounds 19-26); a control strategy, practice only."
         )
         tod_filter = os.getenv("BOT_TOD_FILTER", "0") == "1"
         if tod_filter:
             log.warning(
-                "BOT_TOD_FILTER=1: entries restricted to the last third of the RTH "
-                "session (Round 39). Confirmed 2026-09-20 (Round 40) this alone still "
-                "gives ~0%% probability of reaching the profit target before the real "
-                "deadline -- see random_entry_atr_trail_strategy.py's module docstring."
+                "BOT_TOD_FILTER=1: entries restricted to the last third of the RTH session (Round 39)."
             )
         return RandomEntryAtrTrailStrategy(tod_filter=tod_filter)
     if name == "support_resistance_bounce":
         log.warning(
-            "BOT_STRATEGY=support_resistance_bounce: the MGC edge validated in Rounds "
-            "30/30b. See support_resistance_bounce_strategy.py's module docstring "
-            "before proceeding, including the live-vs-backtest gap it documents on "
-            "level detection while a position is open."
+            "BOT_STRATEGY=support_resistance_bounce: MGC support/resistance bounce (Rounds 30/30b); see the strategy docstring for the level-detection caveat; practice only."
         )
         return SupportResistanceBounceStrategy()
     if name == "vwap_zscore":
         log.warning(
-            "BOT_STRATEGY=vwap_zscore: the MNQ edge from Round 49. A real Monte Carlo "
-            "sizing search (2026-09-21) found 70%% probability of reaching this "
-            "account's profit target before the real Oct 30 deadline is NOT reachable "
-            "at any risk/trade for this edge alone -- P(success) asymptotes ~50-52%%. "
-            "See vwap_zscore_strategy.py's module docstring before proceeding."
+            "BOT_STRATEGY=vwap_zscore: MNQ VWAP z-score fade (Round 49); practice only."
         )
         return VwapZScoreStrategy()
     if name == "manual":
         log.warning(
-            "BOT_STRATEGY=manual: TOD filter ($1,680/trade) + VWAP-Z ($1,200/trade) combined "
-            "in one MNQ process (Round 75, 2026-09-23 -- resized down from Round 69's "
-            "$2,100/$1,500 after a real DLL breach from manual trading shrank the account's "
-            "buffer to $1,719.94; the old sizing's larger leg alone would now exceed the "
-            "entire buffer and get rejected outright). Per-signal risk_dollars is set inside "
-            "manual_strategy.py itself; MAX_SINGLE_TRADE_RISK's fixed ceiling ($2,100 in .env) "
-            "is no longer the binding constraint -- the real remaining drawdown buffer is, and "
-            "it is now TIGHTER than SELF_IMPOSED_DAILY_STOP=3000, so that rule won't fire "
-            "before the buffer check does. This is the most aggressive sizing the real buffer "
-            "can support, not a conservative choice: TOD at $1,680 is 97.7%% of the entire "
-            "buffer, so a single losing TOD trade leaves ~$40 of margin. Chosen deliberately, "
-            "after being shown the real trade-off (Round 75, futures/engine/"
-            "round75_250k_post_breach_resweep.py): P(success)=19.1%%, P(ruin)=62.8%% against "
-            "the real $22,402.18 target gap and 27 trading days to the 2026-10-30 deadline -- "
-            "success RISES with sizing here because conservative sizing can't close that gap "
-            "in time at all (P(success)=0.0%% at 1x baseline). "
-            "See manual_strategy.py's module docstring and TRADING_JOURNAL.md Round 75 "
-            "before proceeding."
+            "BOT_STRATEGY=manual: time-of-day filter plus VWAP-Z in one MNQ process; per-signal sizing is set in manual_strategy.py; practice only."
         )
         return ManualStrategy()
     if name == "ote_fvg":
         log.warning(
-            "BOT_STRATEGY=ote_fvg: OTE (61.8-79%% retracement) + 15m FVG sweep-reclaim, "
-            "NY RTH-only entries (Round 76, resized in Round 87 -- stop=10pts/RR=1:4, was "
-            "1:2 -- specifically so a single trade's own win stays under the real $1,650/day "
-            "consistency-derived cap). Best real eval-stage candidate found this campaign, "
-            "TRUE walk-forward validated (parameters chosen using only data prior to each "
-            "test fold, not hindsight): $50K Test P(success)=77.2%%, P(ruin)=22.8%%, "
-            "median=4.0 days, real BrokerAPI/BrokerAPI MNQ data, real one-position-at-a-time + "
-            "$1,000 day-cap + $1,650 preemptive daily-profit-cap gating, real 55%% "
-            "consistency check. Verified exhaustively: zero of 31 real walk-forward days "
-            "exceed $1,650 (see round87's docstring). Wired in 2026-09-24 as the shadow-test "
-            "step of the deployment roadmap -- confirm BOT_MODE=practice before running; "
-            "this has NOT been validated for a live/real-money account. See "
-            "ote_fvg_strategy.py's module docstring for the full prerequisite checklist."
+            "BOT_STRATEGY=ote_fvg: OTE retracement plus 15m FVG sweep-reclaim, NY session entries (Rounds 76/87); practice only."
         )
         return OteFvgStrategy()
     if name == "disciplined_bracket":
         log.warning(
-            "BOT_STRATEGY=disciplined_bracket: Round 192's POC-reversion + VA-rejection "
-            "disciplined bracket (the trader's chosen strategy for evaluations, 2026-09-29 "
-            "split-strategy Monte Carlo -- real eval-stage pass rate 27.9%% vs the "
-            "live-stage combined signal's 2.5%%, 15-day window, 50K tier). WIRED UP AS "
-            "A SCOPED-DOWN ADAPTATION, not a 1:1 port of Round 192: single leg at a time "
-            "(has_open_position()'s one-position gate was not weakened to allow Round "
-            "192's two CONCURRENT legs) and the $1,650 win cap is enforced by clipping "
-            "the take-profit price at entry, not mark-to-market monitoring (main.py has "
-            "no EXIT-signal handling to flatten an open position mid-day). Both "
-            "adaptations make this WEAKER than Round 192's real 27.9%% backtested "
-            "number -- read disciplined_bracket_strategy.py's module docstring in full "
-            "before trusting a forward-test run to reproduce it. Entry/exit price-level "
-            "logic verified 2026-09-29 against the original backtest functions "
-            "(round178_volume_profile_poc.py, round184_value_area_breakout.py) across "
-            "60 real historical NQ sessions, 0 mismatches -- but the FIRST live session "
-            "produces no entry by design (no seeded 'yesterday' profile, only a seeded "
-            "20-session range). Confirm BOT_MODE=practice before running; this has NOT "
-            "been validated for a live/real-money account."
+            "BOT_STRATEGY=disciplined_bracket: POC reversion plus value-area rejection with a capped daily win (Round 192), one leg at a time; the first session produces no entry by design; practice only."
         )
         return DisciplinedBracketStrategy()
     if name == "combined":
         log.warning(
-            "BOT_STRATEGY=combined: live-stage counterpart to disciplined_bracket -- "
-            "same two legs (meta-labeled POC-reversion + unfiltered VA-rejection), single leg "
-            "at a time, but UNCAPPED take-profit (the $1,650 win cap exists only to dodge "
-            "Broker's eval-stage consistency-rule ratchet; once live there's no ratchet to "
-            "dodge, so this strategy is deliberately stronger, not just a copy). Switching "
-            "BOT_STRATEGY between disciplined_bracket and combined IS the eval-vs-live "
-            "stage switch for this account -- always set explicitly, never auto-detected off "
-            "the dashboard; a mismatch (live stage still running the capped strategy, or "
-            "vice versa) is a real, silent cost, not a crash, so check the dashboard's stage "
-            "yourself before switching. The meta-labeling model (poc_meta_model.json) is "
-            "pre-trained and serialized, not trained live, with its confidence threshold fit "
-            "on the training set's own distribution (not the OOS test set's, which would be a "
-            "real look-ahead problem for live use). Parity-verified 2026-09-29 against "
-            "round198_meta_labeling_poc.py's own reference feature values and predictions "
-            "across 8 real dates spanning six months, after catching and fixing two real bugs "
-            "in this file's own reconstruction: a P&L sign bug in _resolve_day_outcome (short "
-            "trades' stop/target branches weren't multiplied by direction, inverting every "
-            "short outcome) and a range_chg formula bug (was comparing two 20-day rolling "
-            "averages; the trained model expects a single day's range vs. the range exactly "
-            "20 sessions earlier, ranges.pct_change(20).shift(1)). See combined_strategy.py's "
-            "module docstring and TRADING_JOURNAL.md's 2026-09-29 entry for the full account. "
-            "Confirm BOT_MODE=practice before running; this has NOT been validated for a "
-            "live/real-money account."
+            "BOT_STRATEGY=combined: the same two legs, uncapped, filtered by the pre-trained meta-label model (poc_meta_model.json); practice only."
         )
         return CombinedStrategy()
     raise ValueError(
@@ -552,7 +400,7 @@ async def run() -> None:
             "Risk-governance defaults overridden: max_single_trade_risk=$%.0f "
             "(default $700), consecutive_loss_limit=%d (default 2). Confirm this "
             "is deliberate -- these are the two rules directly protecting the "
-            "account's real $4,937.50 buffer.",
+            "remaining buffer.",
             max_single_trade_risk, consecutive_loss_limit,
         )
     # Opt-in, disabled unless set -- see risk_governor.py rule 8. This is the
@@ -566,7 +414,7 @@ async def run() -> None:
             "today's realized+floating P&L, minus the proposed trade's own risk, "
             "would already be at or past -$%.0f. This is tighter than the real "
             "Broker daily_loss_limit and is enforced in check_position_size(), "
-            "before any order is placed -- see TRADING_JOURNAL.md Round 69.",
+            "before any order is placed (Round 69).",
             self_imposed_daily_stop, self_imposed_daily_stop,
         )
     _max_daily_profit_env = os.getenv("MAX_DAILY_PROFIT")
@@ -588,23 +436,12 @@ async def run() -> None:
     )
     if _profit_target_balance_env:
         account_config_kwargs["profit_target_balance"] = float(_profit_target_balance_env)
-    # AccountConfig's own defaults (trailing_dd_amount=$10,000, daily_loss_limit=$5,000)
-    # are the $250K account's real numbers -- REAL GAP FOUND 2026-09-29 while connecting
-    # a different (150K-tier) Practice account for the first time: neither had an env
-    # override, so running against any other tier would silently use the WRONG failure
-    # floor. Confirmed dangerous, not theoretical: this exact $150K account's real MLL
-    # is $4,500 (reinvestment_snowball.FIRMS["broker_150k"]), giving a real floor of
-    # HWM-$4,500 -- $5,500 TIGHTER than the $250K default's HWM-$10,000 floor would have
-    # silently allowed. Added the same deliberate-opt-in env override pattern as every
-    # other AccountConfig field above; get this right for whatever account is actually
-    # connected before trusting the risk governor's numbers, same warning as every other
-    # override here.
+    # AccountConfig's defaults are examples; set TRAILING_DD_AMOUNT and DAILY_LOSS_LIMIT to your own limits.
     _trailing_dd_env = os.getenv("TRAILING_DD_AMOUNT")
     if _trailing_dd_env:
         account_config_kwargs["trailing_dd_amount"] = float(_trailing_dd_env)
         log.warning(
-            "TRAILING_DD_AMOUNT=$%.0f active (default $10,000, the $250K account's "
-            "real number) -- confirm this matches whatever account is actually "
+            "TRAILING_DD_AMOUNT=$%.0f active (default $10,000) -- confirm this matches whatever account is actually "
             "connected before trusting remaining_drawdown_buffer().",
             float(_trailing_dd_env),
         )
@@ -612,18 +449,11 @@ async def run() -> None:
     if _daily_loss_limit_env:
         account_config_kwargs["daily_loss_limit"] = float(_daily_loss_limit_env)
         log.warning(
-            "DAILY_LOSS_LIMIT=$%.0f active (default $5,000, the $250K account's "
-            "real number) -- confirm this matches whatever account is actually "
+            "DAILY_LOSS_LIMIT=$%.0f active (default $5,000) -- confirm this matches whatever account is actually "
             "connected before trusting daily_loss_breached().",
             float(_daily_loss_limit_env),
         )
-    account_config = AccountConfig(**account_config_kwargs)  # NOTE: consistency_cap_pct
-    # and static_lock_hwm are UNCONFIRMED defaults — see risk_governor.py docstring.
-    # profit_target_balance falls back to the $250K account's own default
-    # ($265,000) unless PROFIT_TARGET_BALANCE is set in .env -- get this right
-    # for whatever account is actually configured, or the consistency-rule
-    # check (rule 3) silently uses the wrong target for it.
-    # Do not go live without verifying these against the real account.
+    account_config = AccountConfig(**account_config_kwargs)  # every limit here is a setting; set yours before any live use
 
     log.info("Starting live_bot in mode=%s instrument=%s", broker_config.mode, broker_config.instrument)
 
@@ -642,7 +472,7 @@ async def run() -> None:
     log.info(f"PnLTracker initialized: db_path={db_path}")
 
     # Initialize broker and connect
-    broker = BrokerClient(broker_config)
+    broker = create_broker(broker_config)
     await broker.connect()
 
     if broker_config.mode != "dry_run":
@@ -848,7 +678,7 @@ async def run() -> None:
                         # only ever wired into FlattenRoutine's own internal
                         # failure modes, never into THIS path, the one that matters
                         # most (the exact shutdown that happened, unnoticed for
-                        # hours, on the $250K account). Fixed here rather than left
+                        # hours, on the practice account). Fixed here rather than left
                         # alongside AlertHandler's other stub-removal fix, since a
                         # working alert() with nothing calling it on the real
                         # breach path would have been an incomplete fix.

@@ -64,7 +64,7 @@ class AlertHandler:
     """Sends a real email on a risk breach/compliance event, in addition to
     the normal logging every caller already gets. Implemented 2026-09-24 --
     this was a pure no-op stub before (`# TODO: Implement with real alert
-    backends`), meaning tonight's real events (the $250K breach, the
+    backends`), meaning tonight's real events (the practice-account breach, the
     reconcile_balance() test) would have produced zero external notification
     even if every other check had worked perfectly.
 

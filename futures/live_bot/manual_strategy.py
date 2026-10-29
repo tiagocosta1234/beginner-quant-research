@@ -1,92 +1,21 @@
-"""the trader: the combined TOD-filter + VWAP-Z edge (Rounds 57-59), wired up as one
-live Strategy under a single name/process, since both trade MNQ and can't run
-as independent bot processes without risking a double position on the same
-instrument.
+"""The combined time-of-day filter + VWAP-Z edge (Rounds 57-59), run as one Strategy in one
+process, since both trade MNQ and two processes could open a double position.
 
-Source of truth: `futures/docs/TRADING_JOURNAL.md`'s 2026-09-21
-entries (Rounds 57-63) for how this exact configuration was derived and
-checked -- read those before trusting this file with anything beyond a
-Practice-mode rehearsal.
+Composition, not reimplementation: wraps one `RandomEntryAtrTrailStrategy` (`tod_filter=True`,
+the Round 39 last-third-of-session variant) and one `VwapZScoreStrategy`, calls both every bar
+and returns whichever fires; on the rare same-bar tie, TOD wins. Each source carries its own
+`Signal.risk_dollars` (TOD_RISK, VWAPZ_RISK below), the one field neither wrapped class sets.
 
-SIZING UPDATED 2026-09-22 (Round 69): $2,400/$600 (Round 63's numbers) is
-SUPERSEDED -- not because the dollar amounts were wrong, but because the
-SIZING FORMULA under it was: every resolver in this campaign (and main.py's
-own handle_entry_signal, fixed in the same round) sized contracts against
-the signal's tight initial_stop_distance_points, not the wider
-trail_distance_points the stop is actually placed at (trail_distance =
-TRAIL_ATR_MULT(1.5) x initial distance). That meant "$2,400 risk" could
-realize up to ~$3,600 on a trade with zero favorable excursion -- confirmed
-against real TOD losses up to -$3,635.67. Once contracts are sized against
-the TRUE stop distance (main.py's fix, same commit) and a same-day halt is
-enforced BEFORE a new entry whose own worst-case loss could breach a chosen
-ceiling (risk_governor.py's new self_imposed_daily_stop, rule 8), a real,
-verified daily-loss ceiling becomes possible. Swept four ceiling levels
-against the account's current state (balance $247,937.86, buffer $7,059.98,
-target gap $17,062.14, 19 real eval days to 2026-10-30) -- $3,000 had the
-best success-minus-ruin edge of the four (+2.6pp; the $5,000-ceiling point,
-closest to the old sizing's real behavior, actually has ruin EXCEEDING
-success, -1.8pp). Chosen: **TOD_RISK=$2,100, VWAPZ_RISK=$1,500,
-self_imposed_daily_stop=$3,000 -> P(success)=32.0%, P(ruin)=29.4%**. Verified
-empirically, not just asserted: worst real historical day under this exact
-sizing + halt rule was -$2,972.88, full history total P&L $488,167, EV/day
-$517.13 (mean) / -$551.60 (median -- the edge depends on catching enough
-large-winner days to outweigh a majority of small losing ones, same shape
-VWAP-Z has shown throughout). See TRADING_JOURNAL.md Round 69/69b before
-changing this again -- the sizing is a function of the CURRENT buffer,
-target gap, AND the chosen daily-ceiling tradeoff, not a fixed constant.
+Sizing lesson (Round 69): every resolver first sized contracts against the tight initial stop
+distance, while the stop actually sits at the wider trail distance (1.5x), so a "$2,400 risk"
+trade could lose about $3,600. Contracts are now sized against the true stop distance, and a
+pre-emptive daily stop (risk_governor rule 8) refuses an entry whose own worst case could cross
+the day's ceiling. Over the full history the worst day under that rule stayed inside the cap.
+The edge depends on a minority of large winning days (median day negative), and it did not
+hold up out of sample.
 
-RESIZED AGAIN 2026-09-22/23 (Round 75), after a real DLL breach from manual
-trading shrank the account's buffer to $1,719.94 (balance $242,597.82, MLL
-floor $240,877.88 -- both read directly off the real BrokerAPI dashboard, not
-computed). $2,100/$1,500 no longer fits: the larger leg alone would exceed
-the entire remaining buffer, so check_position_size() would reject every
-the trader signal outright. Round 75 (`futures/engine/
-round75_250k_post_breach_resweep.py`) re-swept sizing against TODAY's real
-buffer/target-gap($22,402.18)/deadline(27 trading days to 2026-10-30): success
-probability turned out to RISE with sizing here, not fall, because the target
-gap is ~13x the buffer -- conservative sizing simply can't close that gap in
-time (P(success) rounds to 0.0% at 1x) and just runs out the clock instead.
-User made an explicit, informed choice to take the most aggressive sizing the
-real buffer can support: **TOD_RISK=$1,680, VWAPZ_RISK=$1,200 ->
-P(success)=19.1%, P(ruin)=62.8%**, after being shown this exact trade-off
-table. This is NOT a "safer" resize -- TOD at $1,680 is 97.7% of the entire
-remaining buffer; a single losing TOD trade leaves ~$40 of margin. There is
-no room to size this UP further: the buffer itself is now the binding
-constraint, not max_single_trade_risk. Re-sweep before changing this again if
-the account's real balance/buffer moves meaningfully in either direction.
-
-Composition, not reimplementation: wraps one `RandomEntryAtrTrailStrategy`
-(`tod_filter=True`, the Round 39 last-third-of-session variant) and one
-`VwapZScoreStrategy` internally, calling both every bar and returning
-whichever fires -- reusing the two already-tested strategy classes rather
-than re-deriving their signal logic a third time. Per-source sizing is set
-explicitly here (`TOD_RISK=$2,400`, `VWAPZ_RISK=$600`, Round 63's corrected
-numbers), since `Signal.risk_dollars` is the one field neither wrapped class
-sets on its own -- both deliberately leave it at `None` ("use the account
-default"), since neither was ever meant to dictate its own dollar size in
-isolation.
-
-Gating: no custom "one position at a time" logic needed here --
-`main.py`'s `handle_entry_signal()` already refuses any new entry while
-`broker.has_open_position()` is True, for every strategy, which is exactly
-the rule Round 57's backtest enforced explicitly via
-`resolve_trailing_sequential_per_signal_risk`. The two edges gate each other
-through that existing mechanism; this file doesn't need to know about it.
-
-Daily loss limit: also already real, existing infrastructure, not something
-this file implements. `risk_governor.AccountConfig.daily_loss_limit`
-(default $5,000, matching `DAILY_LOSS_LIMIT` throughout this campaign's
-Monte Carlo work) is enforced every poll cycle by `main.py`'s own
-`governor.evaluate()` call, for every strategy -- the exact hard per-day cap
-Round 59 simulated offline is what this account's real risk governor already
-does live, with zero extra code required.
-
-Tie-break for the (extremely rare) case both edges fire on the identical
-1-minute bar: TOD is checked first. Round 57's backtest sorted the two raw
-signal streams by exact timestamp before gating, which has no well-defined
-tie-break for a genuine tie either (pandas' default sort is not stable) --
-this is a reasonable, documented choice, not a claimed reproduction of a
-specific backtest artifact.
+One position at a time and the daily loss limit are enforced by main.py and the risk governor
+for every strategy, so this file does not implement them.
 """
 
 from __future__ import annotations
@@ -97,17 +26,12 @@ from live_bot.random_entry_atr_trail_strategy import RandomEntryAtrTrailStrategy
 from live_bot.strategy_interface import Signal, SignalAction, Strategy
 from live_bot.vwap_zscore_strategy import VwapZScoreStrategy
 
-TOD_RISK = 1680.0
+TOD_RISK = 1680.0   # example sizing; set to your own risk
 VWAPZ_RISK = 1200.0
 
 
 class ManualStrategy(Strategy):
-    """TOD filter ($1,680/trade) + VWAP-Z ($1,200/trade), combined -- Round 75's
-    post-breach resize, the most aggressive sizing the account's real $1,719.94
-    buffer can support (see module docstring). SELF_IMPOSED_DAILY_STOP=3000 in
-    the environment is now looser than the real buffer and won't be the binding
-    check -- check_position_size()'s buffer check is. Was $2,400/$600 (Round 63)
-    until 2026-09-22, then $2,100/$1,500 (Round 69) until 2026-09-23."""
+    """TOD filter + VWAP-Z combined, with per-source risk (see the module docstring)."""
 
     def __init__(self, tod: Strategy | None = None, vwapz: Strategy | None = None) -> None:
         # Injectable for testing the priority/tie-break logic in isolation

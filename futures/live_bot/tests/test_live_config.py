@@ -5,7 +5,7 @@ Run with: python live_bot/tests/test_live_config.py
 
 1. account_update balance extraction: the real event is a raw dict with the
    balance nested under "data" (payload copied from the live log below).
-2. .env must be loaded before strategy modules read their tier sizing at import.
+2. .env must be loaded before strategy modules read their sizing at import.
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from live_bot.broker_client import BrokerClient, BrokerConfig  # noqa: E402
+from live_bot.broker_client import BrokerConfig, DryRunBroker  # noqa: E402
 
 RESULTS: list[tuple[str, bool, str]] = []
 
@@ -28,8 +28,8 @@ def check(name: str, condition: bool, detail: str = "") -> None:
     RESULTS.append((name, condition, detail))
 
 
-# Verbatim shape of the first real account_update on ACCOUNT-ID.
-REAL_EVENT = {"action": 1, "data": {"id": 28075594, "name": "ACCOUNT-ID", "balance": 149637.84,
+# Shape of the first real account_update event (identifiers replaced).
+REAL_EVENT = {"action": 1, "data": {"id": 1, "name": "ACCOUNT-ID", "balance": 149637.84,
                                     "canTrade": True, "isVisible": True, "simulated": True}}
 
 
@@ -39,7 +39,7 @@ class Obj:
 
 
 def extracted(event):
-    b = BrokerClient(BrokerConfig())
+    b = DryRunBroker(BrokerConfig())
     asyncio.run(b._on_account_update(event))
     return b._latest_live_balance
 

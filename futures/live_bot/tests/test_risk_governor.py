@@ -51,7 +51,7 @@ def test_daily_loss_lockout_does_not_false_trigger():
 
 def test_trailing_drawdown_breach():
     config = AccountConfig()
-    # Current real account state: balance 245,815.38, floor 240,877.88 -> buffer 4,937.50
+    # Example account state: balance 245,815.38, floor 240,877.88 -> buffer 4,937.50
     gov = RiskGovernor(config, starting_balance=245_815.38, starting_high_water_mark=250_877.88)
     gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=245_815.38)
     assert abs(gov.trailing_floor() - 240_877.88) < 0.01, gov.trailing_floor()
@@ -103,7 +103,7 @@ def test_session_flatten_due_after_310pm_ct():
 
 
 def _fifty_k_config(**overrides):
-    """Real $50K Test shape: starting_balance=$50,000, profit target=$3,000
+    """A $50K account with a $3,000 profit goal: starting_balance=$50,000, profit target=$3,000
     (profit_target_balance=$53,000), matching Broker's own worked example."""
     kwargs = dict(starting_balance=50_000.0, profit_target_balance=53_000.0, consistency_cap_pct=0.55)
     kwargs.update(overrides)
@@ -111,7 +111,7 @@ def _fifty_k_config(**overrides):
 
 
 def test_consistency_cap_matches_real_broker_example():
-    """Directly replicates help.broker.com's own worked example: "$50K account:
+    """Replicates the usual worked example: "$50K account:
     $1,600 best day / $3,000 total profit = 53%" -- a compliant, PASSING case
     (53% < 55%). $1,400 prior + $1,600 today = exactly the $3,000 target."""
     gov = RiskGovernor(_fifty_k_config(), starting_balance=50_000.0, starting_high_water_mark=50_000.0)
@@ -240,7 +240,7 @@ def test_realized_only_does_not_false_trigger_when_floating_is_small():
 
 def test_unrealized_loss_alone_triggers_trailing_drawdown():
     config = AccountConfig()
-    # Real account state: balance 245,815.38, floor 240,877.88 -> buffer 4,937.50
+    # Example account state: balance 245,815.38, floor 240,877.88 -> buffer 4,937.50
     gov = RiskGovernor(config, starting_balance=245_815.38, starting_high_water_mark=250_877.88)
     gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=245_815.38)
     # No realized loss at all yet, but an open position is $5,000 underwater --
@@ -285,7 +285,7 @@ def test_position_size_accepted_within_cap_and_buffer():
 
 
 def test_position_size_rejected_over_shrunk_buffer_even_under_fixed_cap():
-    # Real account state: buffer is only 4,937.50. Shrink it further with a loss
+    # Example account state: buffer is only 4,937.50. Shrink it further with a loss
     # so it drops below the (otherwise-fine) 600 fixed cap, and confirm the
     # dynamic buffer check catches what the fixed cap alone would miss.
     gov = RiskGovernor(
@@ -452,7 +452,7 @@ def test_dynamic_sizing_disabled_by_default():
 
 def test_dynamic_sizing_below_start_uses_lower_fraction():
     config = AccountConfig(dynamic_sizing=DynamicSizingConfig(frac_below_start=0.04, frac_above_start=0.12))
-    # Real account state: below starting_balance (250,000), buffer = 4,937.50
+    # Example account state: below starting_balance (250,000), buffer = 4,937.50
     gov = RiskGovernor(config, starting_balance=245_815.38, starting_high_water_mark=250_877.88)
     gov.start_new_trading_day(dt.date(2026, 9, 21), opening_balance=245_815.38)
     expected = 0.04 * 4_937.50  # 197.50, between the default floor/ceil
@@ -568,7 +568,7 @@ def test_max_daily_profit_disabled_by_default():
 
 def test_max_daily_profit_rejects_new_entry_once_cap_reached():
     """the trader's exact instruction: "we cant have days above $1650" -- $1,650 =
-    0.55 x the real $3,000 $50K target, the theoretical max a single day can be
+    0.55 x a $3,000 profit goal, the theoretical max a single day can be
     and still be consistency-compliant right at the target."""
     gov = RiskGovernor(
         AccountConfig(max_single_trade_risk=2_100.0, max_daily_profit=1_650.0),

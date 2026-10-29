@@ -1,6 +1,6 @@
 """OTE + 15m FVG sweep-reclaim strategy (MNQ) -- live-wireable port of
 `futures/engine/round76_ote_pdarray_formalized.py`'s
-`detect_ote_signals`, the best real eval-stage candidate found in this
+`detect_ote_signals`, the best real capped candidate found in this
 campaign's 2026-09-24 strategy search. Sizing history: FIXED_STOP_POINTS=10
 since Round 82 (was 20, the videos' own constant, never fit to MNQ's real
 volatility); RR was set to 1:4 in Round 87 (was 1:2, Round 82's in-sample
@@ -12,7 +12,7 @@ impossible for real MNQ, a feed defect, not a market condition; fixed via
 `round11_fvg_bias.load_1m_mnq_reconciled()`, cross-validated against the
 legacy dataset). Re-run on the corrected data, the walk-forward's own
 latest (most-current) folds select RR=1:3, not 1:4 -- see
-TRADING_JOURNAL.md's 2026-09-24 "DATA FIXED" entry for the full derivation.
+the research log's 2026-09-24 "DATA FIXED" entry for the full derivation.
 
 INVALIDATED 2026-09-25 (Round 104) -- the numbers below are WRONG, kept only
 so the correction is visible in-place rather than silently deleted. Rounds
@@ -30,7 +30,7 @@ campaign's own significance bar (bootstrap P(edge>0)=53.6%, 90% CI
 [-$139.78, $159.02] -- straddles zero, not >=90%). Plain reading: there is
 currently NO statistically validated real edge for this strategy on MNQ.
 Full derivation and the buggy-vs-fixed comparison table:
-TRADING_JOURNAL.md's 2026-09-25 "MAJOR CORRECTION" entry. Do not fund or
+the research log's 2026-09-25 "MAJOR CORRECTION" entry. Do not fund or
 attempt a real Test purchase off the numbers below -- they do not hold.
 The live code's OWN stop/RR constants just below (FIXED_STOP_POINTS=10,
 RR=3.0) are UNAFFECTED by this bug (self-consistent at detection time) but
@@ -43,7 +43,7 @@ now, not proven wrong as specific numbers, just no longer backed by the
 each test fold, not hindsight over the whole sample -- NY RTH-only entries,
 single-trade-compliant sizing, real $1,650/day cap enforced PREEMPTIVELY,
 not reactively): n=56 real trades, bootstrap P(true edge>0)=100.0%,
-$50K-eval P(success)=100.0%, P(ruin)=0.0%, median=5.0 days at a 10-day
+baseline P(success)=100.0%, P(ruin)=0.0%, median=5.0 days at a 10-day
 window.~~ INVALIDATED -- see above.
 
 STATUS (2026-09-25): WIRED IN for Practice-mode shadow-testing
@@ -106,7 +106,7 @@ MAX_LOOKAHEAD_BARS = 240    # abandon a candidate sweep if no valid entry within
 OTE_LO, OTE_HI = 0.618, 0.79
 FIXED_STOP_POINTS = 10.0    # round82 finding, 2026-09-24: the videos' own 20pt constant was
                              # never fit to MNQ's real volatility; sweeping stop x RR found this
-                             # dominates (P(success)=95.3% vs 20pt's 63.7% on the $50K eval),
+                             # dominates (P(success)=95.3% vs 20pt's 63.7% in the baseline simulation),
                              # and unlike prior "great numbers" this campaign has found, it holds
                              # up under OOS-split/tail-concentration scrutiny -- see round82's
                              # own docstring for the full verification, not just the headline.
@@ -117,7 +117,7 @@ RR = 3.0                    # round97/98 finding, 2026-09-24 (was 4.0, round87's
                              # trade win at this RR is $1,155.20 (20 contracts, 10pt stop) --
                              # comfortably under the trader's real $1,650/day cap, same margin logic as
                              # round87's own derivation, just re-run on trustworthy data.
-RISK_DOLLAR = 400.0         # matches the validated $50K-eval backtest's sizing
+RISK_DOLLAR = 400.0         # matches the validated baseline backtest's sizing
 POINT_VALUE_MNQ = 2.0       # $ per 1.0 price point, one MNQ contract (round11's POINT_VALUE["MNQ"])
 COMMISSION_RT = 1.24        # $ per contract round trip (round11's COMMISSION_RT)
 TICK_SIZE_MNQ = 0.25        # round11's TICK_SIZE["MNQ"]

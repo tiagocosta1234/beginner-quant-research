@@ -1,4 +1,4 @@
-# Registers the trader's live $250K bot to start automatically at Windows logon.
+# Registers the live bot to start automatically at Windows logon.
 #
 # YOU run this yourself -- Claude prepared it but won't register it, same
 # reason it won't launch main.py directly: this makes the bot start trading
@@ -9,13 +9,13 @@
 # Run this in an elevated (Run as Administrator) PowerShell window:
 #   powershell -ExecutionPolicy Bypass -File "live_bot\register_manual_startup_task.ps1"
 #
-# To check it later:      Get-ScheduledTask -TaskName "the trader-250K-LiveBot"
-# To turn it off:         Unregister-ScheduledTask -TaskName "the trader-250K-LiveBot" -Confirm:$false
-# To run it right now (without waiting for a reboot): Start-ScheduledTask -TaskName "the trader-250K-LiveBot"
+# To check it later:      Get-ScheduledTask -TaskName "LiveBot"
+# To turn it off:         Unregister-ScheduledTask -TaskName "LiveBot" -Confirm:$false
+# To run it right now (without waiting for a reboot): Start-ScheduledTask -TaskName "LiveBot"
 
 $ErrorActionPreference = "Stop"
 
-$taskName = "the trader-250K-LiveBot"
+$taskName = "LiveBot"
 $scriptPath = "live_bot\start_manual_live.ps1"
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" `
@@ -37,7 +37,7 @@ $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable -DontStopOnIdleEnd -ExecutionTimeLimit ([TimeSpan]::Zero)
 
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger `
-    -Settings $settings -Description "Starts live_bot (the trader, real $250K Freedom Test account) at logon. Round 75, 2026-09-23." `
+    -Settings $settings -Description "Starts live_bot at logon." `
     -Force
 
 Write-Host "Registered '$taskName'. It will start automatically at your next logon."

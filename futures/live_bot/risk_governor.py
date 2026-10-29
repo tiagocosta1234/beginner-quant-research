@@ -1,172 +1,37 @@
-"""Strategy-agnostic risk governance for the BrokerAPI $250k Freedom Test account.
+"""Strategy-agnostic risk limits for the live bot.
 
-This module enforces Broker's account-survival rules independently of whatever
-strategy is plugged in via strategy_interface.py, and independently of the broker
-connection in broker_client.py. It has NO network dependency, so it can be (and is,
-see tests/test_risk_governor.py) fully unit tested with synthetic P&L sequences.
+The governor enforces self-imposed risk limits independently of the strategy plugged in via
+strategy_interface.py and of the broker connection in broker_client.py. It has no network
+dependency, so it is fully unit tested with synthetic P&L sequences (tests/test_risk_governor.py).
 
-Rules enforced:
-  1. Daily Loss Limit (DLL) — hard real-time lockout once today's realized loss
-     reaches the configured limit.
-  2. EOD trailing drawdown floor — the account fails if balance ever falls to or
-     below high_water_mark - trailing_dd_amount, where high_water_mark is the
-     highest EOD-settled balance ever reached. Broker's real accounts typically
-     also have a "static lock" level: once the HWM crosses some threshold, the
-     floor stops trailing further. That threshold (static_lock_hwm below) is
-     UNCONFIRMED for this specific $250k Freedom Test product — verify on the
-     BrokerAPI dashboard before relying on it. Until confirmed, static_lock_hwm
-     defaults to None, meaning the floor trails forever (the more conservative
-     assumption — it will never overstate the remaining buffer).
-
-     SEPARATE from static_lock_hwm: confirmed 2026-09-20 via Broker's own withdrawal
-     policy article (Knowledge_Base/BROKER_LIVE_WITHDRAWAL_RULES.md) that the first
-     withdrawal ever requested on this account sets the Maximum Loss Limit to $0
-     PERMANENTLY -- it does not re-anchor to (new balance - trailing_dd_amount)
-     the way this module's trailing_floor() computes it pre-withdrawal. After that
-     first withdrawal, none of this governor's trailing-floor math still describes
-     the account's real MLL; the entire remaining balance becomes the loss floor,
-     and staying safe becomes a deliberate choice about how much to request, not
-     something this code enforces. Not yet wired into AccountConfig/RiskGovernor
-     since the exact post-eval numbers (real withdrawal cap for this $250k tier,
-     minimum request amount) are still unconfirmed -- see that file before this
-     account's first withdrawal.
-  3. Consistency limit — caps how much of total accumulated profit any single day
-     may represent. Implemented as: for a given day, once that day's own profit
-     would exceed consistency_cap_pct of the account's total net profit
-     (prior days' profit + today's profit), no further profit-taking should be
-     booked today. This governor only flags/limits new profit; it does not (and
-     should not) try to force a loss to "fix" an already-booked overage.
-  4. Session flatten — every open position must be closed before
-     session_flatten_time (default 3:10 PM CT, per Broker's live/eval rules).
-  5. Per-trade position-size cap — check_position_size() rejects any proposed
-     trade whose risk exceeds max_single_trade_risk, or exceeds whatever
-     drawdown buffer is actually left (whichever is smaller). Added after
-     reviewing this account's historical discretionary trading record (Notion
-     "Live Trading Journal", 93 trades, Jan-Jun 2026): position-size variance,
-     not signal quality, was the dominant cause of realized damage there — at
-     least 9 separate live/eval accounts were blown, and the trader's own
-     in-the-moment notes repeatedly cite oversized or "accidental" risk as the
-     proximate cause ("Had to risk like 200$ or else this eval is gonna go to
-     shit"; "risked 2%, i thought too much on accident"). A hard, code-enforced
-     ceiling on risk-per-trade — not just on cumulative daily/trailing loss —
-     directly targets that specific, evidenced failure mode.
-  6. Consecutive-loss lockout — new entries are blocked after
-     consecutive_loss_limit realized losing fills in a row within a single day
-     (a breakeven fill neither extends nor resets the streak). This automates a
-     discipline the same discretionary journal shows was sometimes self-imposed
-     ("2 BE's, unlucky tho... done for the day" after a losing pair) and
-     sometimes not (leading directly into several of the blown-account entries)
-     — making it a hard rule rather than a willpower decision in the moment.
-  8. Self-imposed daily stop (opt-in, disabled by default) — check_position_size()
-     rejects a proposed trade if today's realized+floating P&L, minus that trade's
-     own proposed risk, would already be at or past -self_imposed_daily_stop. This
-     is DELIBERATELY TIGHTER than the real Broker daily_loss_limit (rule 1) and is
-     the account holder's own choice, not a Broker rule — added 2026-09-22 after
-     `futures/docs/TRADING_JOURNAL.md` Round 69 found that a same-day
-     circuit breaker can only ever act BETWEEN trades: it cannot shrink the trade
-     that crosses the threshold, so a real guarantee requires refusing a new entry
-     whose own worst-case loss could push the day past the ceiling, not just
-     reacting once the ceiling is already breached. Verified empirically (Round 69)
-     against 3.8 years of real historical data at the trader's chosen sizing (TOD $2,100 /
-     VWAP-Z $1,500, self_imposed_daily_stop=$3,000): worst historical day under this
-     exact rule was -$2,972.88, inside the cap with real margin.
-  12. Self-imposed daily PROFIT cap (opt-in, disabled by default, max_daily_profit) —
-      the mirror image of rule 8: check_position_size() rejects a new entry that
-      could breach the cap. Added 2026-09-24 per the trader's direct instruction ("we
-      cant have days above $1650") — $1,650 = 0.55 x the real $3,000 $50K Test
-      target, the theoretical maximum a single day can be and still be
-      consistency-compliant once cumulative profit is exactly at the target (see
-      rule 3). FIXED the same day: the first version only checked REACTIVELY
-      (today's P&L already at/past the cap) -- proven insufficient in the backtest
-      engine (round76's resolve_outcomes_gated) once two individually-compliant
-      wins the same real day still summed past $1,650, since the first alone never
-      triggered the reactive check. Now also checks PREEMPTIVELY, mirroring rule
-      8's own loss-side principle: if the caller supplies proposed_reward_dollars
-      (Signal.expected_reward_dollars, only available for a fixed-target/bracket
-      strategy), a trade whose own best-case win would breach the cap is refused
-      before it happens, not after. `ote_fvg_strategy.py` was resized the same day
-      to a single-trade win under $1,650 (stop=10pts/RR=1:4) specifically so this
-      guarantee is actually meaningful, not just gating around a sizing that
-      already violates it on its own.
-  10. Real-balance reconciliation — reconcile_balance() compares this governor's
-      own tracked current_balance against the broker's live settled balance
-      each poll cycle. A mismatch beyond balance_reconciliation_tolerance means
-      money moved on the account that record_fill() never saw — the exact,
-      real failure mode from 2026-09-22 (manual trading on the same account
-      desynced the governor undetected, which then falsely attributed the
-      resulting equity swing to the trader and tripped a DAILY_LOSS_LIMIT +
-      TRAILING_DRAWDOWN breach that shut the bot down while it was flat the
-      whole session). Unlike that incident's actual failure (a false breach
-      from *misattributed* P&L), a real desync with no threshold crossed is a
-      *silent* one — nothing else here would notice a manual trade that
-      doesn't also blow through a threshold this governor already watches.
-      Once tripped, the mismatch flag is sticky for the life of this
-      RiskGovernor instance (not cleared by start_new_trading_day) — main.py
-      treats it as a hard breach requiring the bot process to stop, the same
-      as rules 1/2, so a human re-checks and restarts with corrected state
-      rather than the loop silently trading on with unknown real risk.
-  11. Consecutive-losing-days lockout — new entries are blocked after
-      consecutive_losing_days_limit completed trading DAYS in a row that each
-      ended net negative (checked once per day, in start_new_trading_day(), not
-      per-fill). Distinct from rule 6: that counter resets every single day, so
-      it only ever catches several losses packed into ONE day, never a run of
-      separate bad days. Added 2026-09-24 after a real walk-forward backtest
-      (futures/engine/round83_ote_true_walkforward.py) surfaced
-      exactly this gap — 5 real, separate losing days in a row (each one
-      individually safe at -$889.60, well under the real $1,000 day cap) summed
-      to -$4,448, more than the real $2,000 MLL, entirely invisible to rule 6.
-      the trader's direct instruction: "we can't be having more than 5 losing
-      streaks" — default set to 5 accordingly.
-  9. Dynamic, equity-scaled position sizing (opt-in, disabled by default) —
-     compute_dynamic_risk() returns risk-per-trade as a fraction of the buffer
-     actually remaining RIGHT NOW, not a fixed dollar amount, with a smaller
-     fraction while underwater vs. the account's original starting balance and
-     a larger one once above it. `futures/docs/EDGE_VALIDATION_RESULTS.md`
-     Round 26 (2026-09-20) found this changes the shape of the risk/reward
-     trade-off, not just its magnitude, versus fixed-dollar sizing (Round 25):
-     at the asymmetric rule Round 26 found most capital-efficient, simulated
-     probability of reaching the account's profit target exceeded probability
-     of blowing it for the first time across the whole campaign. This is a
-     REAL RISK-TOLERANCE CHOICE, not something this governor should default
-     into silently — `AccountConfig.dynamic_sizing` is None (disabled) unless
-     explicitly set, and callers must opt in deliberately. check_position_size()
-     still enforces the same hard ceiling/buffer checks on whatever risk value
-     is actually proposed, whether it came from compute_dynamic_risk() or a
-     fixed default — dynamic sizing changes what gets PROPOSED, not the
-     governor's willingness to reject an unsafe proposal.
-
-Unrealized (floating) P&L: DLL and trailing-drawdown checks below include the
-current open position's mark-to-market P&L, not just realized/settled P&L (see
-`update_unrealized_pnl`). This was a known gap flagged in README.md item #10 —
-whether Broker computes these thresholds off real-time equity or EOD-settled
-balance only was unconfirmed at time of writing, so this governor takes the
-more conservative assumption (real-time) rather than risk being blind to a
-fast adverse move on an open position. Re-verify against the real account
-before assuming either behavior.
-
-All account numbers below are current as of 2026-09-18 and MUST be re-verified
-before the bot is pointed at a real account, especially:
-  - consistency_cap_pct — CONFIRMED 2026-09-20 via a real BrokerAPI dashboard
-    screenshot of this account (futures/screenshots/, "Captura de
-    ecrã 2026-09-20 114848.png"): the dashboard's own "Consistency Target" rule
-    reads "Best day is below 55% of profit target" — 55%, not the 50% this file
-    used as "the stricter of two candidates" before this screenshot existed.
-    That was the wrong direction to be wrong in (a stricter default here would
-    have blocked otherwise-legal profitable days, not exposed the account to
-    extra risk), but it's now a real confirmed number, not a guess. The same
-    screenshot also confirms the trailing-floor and HWM figures below
-    ($240,877.88 / $250,877.88) exactly, and the account's current balance
-    range, both already correct.
-  - static_lock_hwm — still not directly confirmed, but the same 2026-09-20
-    dashboard screenshot is suggestive evidence it's correctly `None`: the
-    dashboard's own rules panel is headed "1 RULE: Maximum Loss Limit" —
-    singular, only the trailing drawdown rule listed, no separate static-lock
-    rule shown anywhere on the page. Not fully conclusive from a dashboard
-    screenshot alone (a static lock could still exist without a dedicated UI
-    callout), but a real signal, not just an assumption. Confirm with Broker
-    support or the account agreement text for full certainty before relying on
-    it, especially once the account's balance moves far enough past a HWM
-    where a lock (if one exists) could plausibly engage.
+Limits (all amounts are settings in AccountConfig, not facts about any account):
+  1. Daily loss limit: hard lockout once today's realized loss reaches the limit.
+  2. Trailing maximum drawdown: stop trading if equity falls to the highest end-of-day balance
+     minus trailing_dd_amount. Optionally the floor stops trailing once the high-water mark
+     passes static_lock_hwm (None = it trails forever, the conservative choice).
+  3. Best-day share: once today's profit would exceed consistency_cap_pct of total net profit,
+     no further profit is booked today. The governor only limits new profit; it never forces a
+     loss to "fix" a day that is already over the share.
+  4. Session flatten: every position is closed before session_flatten_time.
+  5. Per-trade risk cap: check_position_size() rejects a trade whose risk exceeds
+     max_single_trade_risk or the drawdown buffer actually left, whichever is smaller.
+     Oversized trades, not bad signals, did most of the damage in the author's manual trading.
+  6. Consecutive-loss lockout: no new entries after consecutive_loss_limit losing fills in a row
+     within one day (a breakeven fill neither extends nor resets the streak).
+  8. Daily stop, pre-emptive (opt-in): a trade is refused if today's P&L minus that trade's own
+     risk would already be past -self_imposed_daily_stop. A circuit breaker can only act between
+     trades, so a real guarantee must refuse the trade that could cross the line.
+  9. Equity-scaled sizing (opt-in): compute_dynamic_risk() sizes each trade as a fraction of the
+     buffer left right now, smaller while underwater and larger once above the start.
+ 10. Balance reconciliation: reconcile_balance() compares the tracked balance with the broker's
+     settled balance each poll. A mismatch means money moved that record_fill() never saw (for
+     example a manual trade on the same account); the flag is sticky and main.py stops the bot
+     so a human re-checks the state.
+ 11. Consecutive losing days: no new entries after consecutive_losing_days_limit days in a row
+     that each ended negative. Rule 6 resets daily, so it cannot see a run of separate bad days;
+     a walk-forward test found five small losing days summing past the drawdown limit.
+ 12. Daily profit cap (opt-in, max_daily_profit): the mirror of rule 8, refusing a fixed-target
+     trade whose own best case would push the day past the cap.
 """
 
 from __future__ import annotations
@@ -203,14 +68,14 @@ class DynamicSizingConfig:
 
 @dataclass(frozen=True)
 class AccountConfig:
-    """Constants for the BrokerAPI $250k Freedom Test (verify before live use)."""
+    """Default risk-limit settings. Examples only: set your own before any live use."""
 
     starting_balance: float = 250_000.0
     profit_target_balance: float = 265_000.0  # starting_balance + $15,000
-    daily_loss_limit: float = 5_000.0  # Broker's real hard DLL (2% of $250k)
+    daily_loss_limit: float = 5_000.0  # example: 2% of the starting balance
     trailing_dd_amount: float = 10_000.0  # distance from HWM to failure floor
-    static_lock_hwm: float | None = None  # UNCONFIRMED — see module docstring
-    consistency_cap_pct: float = 0.55  # CONFIRMED via real dashboard screenshot, 2026-09-20 — see module docstring
+    static_lock_hwm: float | None = None  # None = the floor trails forever; see rule 2
+    consistency_cap_pct: float = 0.55  # best day at most 55% of total profit; see rule 3
     session_flatten_time: dt.time = dt.time(15, 10)  # 3:10 PM CT
     timezone: ZoneInfo = CENTRAL_TZ
     # Hard $ cap on any one trade's risk; see rule 5 above. Was $600 (a coincidental
@@ -222,27 +87,14 @@ class AccountConfig:
     # default against the actual recommended sizing before relying on either.
     max_single_trade_risk: float = 700.0
     consecutive_loss_limit: int = 2  # lock out new entries after this many losses in a row; see rule 6
-    # Real gap found 2026-09-24: consecutive_loss_limit above resets every single day
-    # (start_new_trading_day), so it only ever guards against several losses packed
-    # into ONE day -- it does nothing against a run of separate BAD DAYS, which is
-    # exactly what a real walk-forward backtest surfaced (5 losing days in a row,
-    # -$4,448 total, i.e. more than the real $2,000 MLL, even though each single day
-    # was gated to a safe -$889.60). Added per the trader's direct instruction ("we can't be
-    # having more than 5 losing streaks") -- see rule 11 / consecutive_losing_days_breached().
+    # consecutive_loss_limit resets every day, so it cannot see a run of separate bad days;
+    # rule 11 caps consecutive losing days (a walk-forward test found five small losing days
+    # summing past the drawdown limit). Default 5.
     consecutive_losing_days_limit: int = 5
     self_imposed_daily_stop: float | None = None  # opt-in, tighter-than-DLL same-day cap; see rule 8
-    # Opt-in, disabled by default -- blocks new entries once today's own profit
-    # is already at or past this cap. Added 2026-09-24 per the trader's direct
-    # instruction ("we cant have days above $1650") -- $1,650 = 0.55 x the real
-    # $3,000 $50K-Test target, the theoretical max a single day can be and
-    # still be compliant once cumulative profit is exactly at the target (see
-    # rule 12 below). REAL LIMIT, disclosed not hidden: this blocks a SECOND
-    # trade from compounding on top of an already-large day, but cannot stop a
-    # single trade's own fixed take-profit from landing above the cap in one
-    # atomic fill -- e.g. the currently-wired OTE/FVG strategy's own per-trade
-    # win ($3,155.20 at its stop=10pts/RR=1:8 sizing) already exceeds $1,650 by
-    # itself. Guaranteeing this fully would require resizing the strategy's own
-    # per-trade target, a separate change from this governor-level gate.
+    # Opt-in daily profit cap (rule 12): blocks new entries once today's profit is at or past
+    # it. It cannot stop one fixed-target fill from landing above the cap, so size the
+    # strategy's own target under it.
     max_daily_profit: float | None = None
     dynamic_sizing: DynamicSizingConfig | None = None  # opt-in equity-scaled sizing; see rule 9
     # Dollar slack allowed between this governor's tracked balance and the broker's
@@ -620,9 +472,8 @@ class RiskGovernor:
         flagged. Confirmed with a real $3,500-in-one-day test:
         consistency_breached() returned False. Fixed by gating on the actual
         profit_target_balance (already on AccountConfig, never referenced here
-        before) rather than "any prior profit at all" -- matches Broker's own
-        worked example ("$50K account: $1,600 best day / $3,000 total profit =
-        53%, under 55%") and every backtest's Monte Carlo (`cum >= target and
+        before) rather than "any prior profit at all" -- matches the usual worked example (a $1,600 best day out
+        of $3,000 total profit is 53%, under 55%) and every backtest's Monte Carlo (`cum >= target and
         best_day <= cap*cum`), which already modeled it this way.
 
         Fix 2 (this pass): fix 1 still only checked TODAY's own contribution --
