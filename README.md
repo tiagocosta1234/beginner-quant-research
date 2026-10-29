@@ -1,6 +1,6 @@
 # beginner-quant-research
 
-[![live bot tests](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml/badge.svg)](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml)
+[![tests](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml/badge.svg)](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml)
 
 Five months of a beginner's systematic trading research, June to October 2026: intraday ideas
 on CME futures, a move to forex and CFDs on MetaTrader 5, and a return to futures. Everything is

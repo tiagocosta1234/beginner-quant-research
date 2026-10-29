@@ -1,11 +1,11 @@
-name: live bot tests
+name: tests
 
 on:
   push:
   pull_request:
 
 jobs:
-  tests:
+  live-bot:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,3 +17,15 @@ jobs:
       - name: Run the live bot test files
         working-directory: futures
         run: python live_bot/tests/run_all.py
+
+  drift-book:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install numpy pandas matplotlib pytest
+      - name: Run the drift book tests (made-up prices, no network)
+        run: python -m pytest drift_book -q
