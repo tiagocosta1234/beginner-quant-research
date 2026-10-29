@@ -1,5 +1,7 @@
 # beginner-quant-research
 
+[![live bot tests](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml/badge.svg)](https://github.com/tiagocosta1234/beginner-quant-research/actions/workflows/tests.yml)
+
 Five months of a beginner's systematic trading research, June to October 2026: intraday ideas
 on CME futures, a move to forex and CFDs on MetaTrader 5, and a return to futures. Everything is
 kept, including (mostly) the failures, with the original commit dates.
@@ -19,6 +21,7 @@ This is not financial advice, and nothing here is a working trading system.
    drift book.
 3. [docs/methods.md](docs/methods.md): pre-registration, hold-outs, random baselines, costs.
 4. [docs/lessons.md](docs/lessons.md): what each wrong turn taught.
+   Also: [docs/timeline.md](docs/timeline.md) and [docs/glossary.md](docs/glossary.md).
 5. [forex/ea_research/INDEX.md](forex/ea_research/INDEX.md) and [futures/engine/INDEX.md](futures/engine/INDEX.md): every test, by family.
 
 ## What is where
