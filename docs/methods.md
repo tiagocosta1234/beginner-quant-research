@@ -30,7 +30,8 @@ at VAL or HOLD; the closest misses were logged and never reopened.
 - **Random side.** The same entries with a coin-flip direction, thousands of times. If the real
   rule does not beat most coin-flip copies, the direction carries no skill.
 - **Random-walk win rates.** With a stop of 1 and a target of k, a random walk wins about
-  1/(1+k) of the time. A 65% win rate at a 0.5R target is what chance gives.
+  1/(1+k) of the time. A 65% win rate at a 0.5R target is what chance gives (derivation in
+  [statistics.md](statistics.md)).
 - **Always long** (for markets with drift) and **naive versions** of the same idea.
 - **Placebo worlds** for the automated research loop: shuffled or synthetic markets where no
   edge can exist. Any "edge" the loop found there showed how often it finds noise.

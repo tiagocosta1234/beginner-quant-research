@@ -36,7 +36,9 @@ normal CFD swap. The trend filter halves the worst drawdown but doesn't add retu
 1. [docs/journey.md](docs/journey.md): what was tried, in order, and why the market changed twice.
 2. [docs/swap-costs.md](docs/swap-costs.md): swap and financing in forex versus futures, and the
    drift book.
-3. [docs/methods.md](docs/methods.md): pre-registration, hold-outs, random baselines, costs.
+3. [docs/methods.md](docs/methods.md): pre-registration, hold-outs, random baselines, costs, and
+   [docs/statistics.md](docs/statistics.md): the maths behind them (random-walk win rates,
+   multiple testing, how much a Sharpe ratio is worth), each number checked by simulation.
 4. [docs/lessons.md](docs/lessons.md): what each wrong turn taught.
    Also: [docs/results-summary.md](docs/results-summary.md), [docs/timeline.md](docs/timeline.md) and
    [docs/glossary.md](docs/glossary.md).
