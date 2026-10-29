@@ -15,6 +15,22 @@ signal.
 
 This is not financial advice, and nothing here is a working trading system.
 
+## Rerun the main result
+
+The original tests used broker data I can't share, so [drift_book/](drift_book/) rebuilds the
+drift book on free daily data, adds a decade the research never saw (2010-19), and compares
+swap-free, CFD-swap and futures holding costs:
+
+```
+pip install -r requirements.txt
+python -m drift_book          # about 15 seconds, writes drift_book/results/
+python -m pytest drift_book   # no network needed
+```
+
+On free data it makes about 7.6% a year swap-free since 2010, 6.2% on futures and 4.3% with a
+normal CFD swap. The trend filter halves the worst drawdown but doesn't add return.
+[Full results](drift_book/results/RESULTS.md).
+
 ## Start here
 
 1. [docs/journey.md](docs/journey.md): what was tried, in order, and why the market changed twice.
@@ -30,6 +46,7 @@ This is not financial advice, and nothing here is a working trading system.
 
 | folder | contents |
 |---|---|
+| `drift_book/` | the drift book rebuilt on free data: small, tested, one command |
 | `futures/engine/` | the futures research engine: one numbered "round" script and result per idea |
 | `futures/london_open_gold/` | the last week: micro-gold London-open indicator, Tokyo test, half-R test |
 | `futures/live_bot/` | a tested live-trading scaffold (risk limits, fills, strategies) with an abstract broker |

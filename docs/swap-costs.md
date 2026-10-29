@@ -49,6 +49,15 @@ Refinements did not improve it (`SWAPFREE_D2X_RESULT.md`, `D2PLUS_RESULT.md`): a
 silver or more indices added correlated risk, and different weighting schemes were 0.95 to 1.00
 correlated with the original. The edge is the trend-filtered drift itself, not the details.
 
+### Rerun on free data
+
+`python -m drift_book` ([drift_book/](../drift_book/)) runs the same rules on free daily closes from
+2010, once for each holding cost. Since 2010 it makes about 7.6% a year swap-free, 6.2% on futures
+and 4.3% with a normal CFD swap; 2010-19, which the research never looked at, is weaker (4.9% a
+year) but positive. The trend filter cuts the worst drawdown from -25% to -14% and gives up return
+for it. The numbers differ from the MT5 ones (index levels without dividends, daily closes), so
+the direction matters more than the exact figures.
+
 ### What it would take on futures
 
 The same idea on futures pays no swap, so the financing drag drops to the cash rate already

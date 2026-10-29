@@ -17,6 +17,7 @@ of the repo: these are the honest numbers.
 | Breakouts across many markets | MT5 symbols | USD/JPY London about +0.05 to +0.15 R | small, fragile | `forex/ea_research/INDEX.md` |
 | Overnight index holding | US index CFDs | +2.8 bp a night vs 50-90 bp noise | real but tiny | `forex/ea_research/OVERNIGHT_RESULT.md` |
 | Long-only trend-filtered drift book (D2) | MT5 multi-asset | +24 to +88 USD a day per 100k, hold-out +50.6 | **passed every bar** (needs free holding) | `docs/swap-costs.md` |
+| Same book rerun on free daily data, 2010-2026 | 5 indices/ETF | +7.6% a year swap-free, +4.3% with CFD swap; 2010-19 +4.9% | positive in every period, filter adds no return | `drift_book/` |
 | Automated rule search (12,000 rules) | 46 MT5 symbols | 0 survivors after calibration | no edge | `forex/self_improving/README.md` |
 | Published effects (overnight drift, intraday momentum, turn of month) | ES, NQ, GC, SI | faded since 2021 / failed hold-out | not shown | `forex/apprentice/README.md` |
 | Videos tested (NY box breakout, first 5-minute candle vs EMA12) | NQ | 0 of 4 variants each | no edge | `docs/lessons.md` |
