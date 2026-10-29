@@ -17,4 +17,5 @@ was committed in a few large snapshots, so the commit counts understate it.
 | 26-28 Oct 2026 | back to CME futures: London-open gold, Tokyo MNQ, the half-R comparison | `futures/london_open_gold/` |
 | 29 Oct 2026 | this public version: history scrubbed of private details, docs and indexes written | `docs/` |
 
-Commits per month: June 2, July 2, September 212, October about 1,100.
+Commits per month: June 2, July 2, September 143, October 618. Busy days were grouped into at most 40 commits each
+for the public version; the content and dates are unchanged.
